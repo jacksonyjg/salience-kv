@@ -30,8 +30,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from core.model_loader import load_model_and_tokenizer
 from core.dataset_loader import load_longbench_task, ALL_TASKS
-from core.kv_methods import create_kv_method
-from core.evaluator import Evaluator
+from core.evaluator_v2 import EvaluatorV2
 from core.results_manager import (
     save_results_csv, save_results_json, format_table_row,
     print_result_table, get_timestamp,
@@ -78,7 +77,7 @@ def parse_args():
 
 
 def run_method_on_all_tasks(
-    evaluator: Evaluator,
+    evaluator: EvaluatorV2,
     method_name: str,
     tasks: List[str],
     budget_ratio: float,
@@ -95,8 +94,6 @@ def run_method_on_all_tasks(
     task_throughputs = []
     task_mem_reductions = []
     
-    kv_method = create_kv_method(method_name, evaluator.cfg)
-    
     for task_name in tasks:
         logger.info(f"\n  Task: {task_name}")
         
@@ -104,7 +101,7 @@ def run_method_on_all_tasks(
             samples = load_longbench_task(task_name, num_samples=num_samples, seed=seed)
             result = evaluator.evaluate_task(
                 samples=samples,
-                kv_method=kv_method,
+                method_name=method_name,
                 budget_ratio=budget_ratio,
             )
             
@@ -163,7 +160,7 @@ def main():
         use_flash_attn=args.use_flash_attn,
     )
     
-    evaluator = Evaluator(
+    evaluator = EvaluatorV2(
         model=model,
         tokenizer=tokenizer,
         model_config=model_config,

@@ -96,14 +96,20 @@ def make_prompt(model_key: str, tokenizer, context: str, question: str, task_typ
         # Qwen3: apply_chat_template 사용 (enable_thinking=False 필수)
         # thinking mode가 켜지면 <think> 토큰이 추가되어 성능 측정 왜곡 발생
         messages = [{"role": "user", "content": user_content}]
-        prompt = tokenizer.apply_chat_template(
-            messages,
-            tokenize=False,
-            add_generation_prompt=True,
-        )
+        try:
+            prompt = tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+                enable_thinking=False,
+            )
+        except TypeError:
+            prompt = tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True,
+            )
         # Transformers 버전 호환: thinking 태그 강제 제거
-        prompt = prompt.replace("<think>\n\n</think>\n\n", "")
-        prompt = prompt.replace("<think>", "").replace("</think>", "")
         return prompt
 
     elif fmt == "phi3_chat":
@@ -229,9 +235,15 @@ def load_model_and_tokenizer(
     # Gemma-2: sliding_window attention 관련 경고 억제
     if model_key == "gemma-2-2b":
         model_kwargs["attn_implementation"] = "eager"
-    
+
+    # Qwen3: SDPA는 attn_weights=None 반환 → hook으로 attention 수집 불가
+    # eager로 강제해야 Hybrid Score의 Attention 신호(α=0.40) 작동
+    if model_key == "qwen3-4b":
+        model_kwargs["attn_implementation"] = "eager"
+
     model = AutoModelForCausalLM.from_pretrained(model_name, **model_kwargs)
     model.eval()
+    
     
     # 실제 모델 config에서 head 정보 업데이트 (설정값과 다를 수 있음)
     actual_num_heads = model.config.num_attention_heads

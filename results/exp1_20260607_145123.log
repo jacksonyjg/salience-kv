@@ -1,0 +1,116 @@
+2026-06-07 14:51:23,875 [INFO] __main__: Experiment 1: Main Results
+2026-06-07 14:51:23,876 [INFO] __main__:   Model: qwen3-4b
+2026-06-07 14:51:23,876 [INFO] __main__:   Mode: full
+2026-06-07 14:51:23,877 [INFO] __main__:   Budget: 20%
+2026-06-07 14:51:23,878 [INFO] __main__:   Tasks: ['hotpotqa']
+2026-06-07 14:51:23,879 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-07 14:51:23,879 [INFO] __main__:   Samples/task: 2
+2026-06-07 14:51:23,880 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-07 14:51:23,881 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-07 14:51:23,988 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:23,994 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 14:51:24,091 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:24,093 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-07 14:51:24,108 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-07 14:51:24,188 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-07 14:51:24,246 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-07 14:51:25,101 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-07 14:51:25,108 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-07 14:51:25,141 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:25,147 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 14:51:41,754 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:41,761 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-07 14:51:41,840 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-07 14:51:41,865 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-07 14:51:41,877 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 14:51:41,879 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-07 14:51:41,879 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 14:51:41,881 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 14:51:41,881 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 14:51:41,918 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:42,001 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 14:51:42,560 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:42,591 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-07 14:51:42,623 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:42,656 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-07 14:51:42,964 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-06-07 14:51:42,965 [INFO] core.evaluator_v2: [fullkv] hotpotqa (2샘플, budget=20%)
+2026-06-07 14:51:50,293 [INFO] __main__:   → score=16.80, mem_red=100.0%, ttft=793.3ms
+2026-06-07 14:51:50,294 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 14:51:50,295 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-07 14:51:50,296 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 14:51:50,307 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 14:51:50,308 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 14:51:50,370 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:50,399 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 14:51:51,080 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-06-07 14:51:51,082 [INFO] core.evaluator_v2: [streaming] hotpotqa (2샘플, budget=20%)
+2026-06-07 14:51:58,008 [INFO] __main__:   → score=16.67, mem_red=80.0%, ttft=717.6ms
+2026-06-07 14:51:58,011 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 14:51:58,012 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-07 14:51:58,012 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 14:51:58,013 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 14:51:58,014 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 14:51:58,085 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:51:58,117 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 14:51:58,755 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-06-07 14:51:58,756 [INFO] core.evaluator_v2: [h2o] hotpotqa (2샘플, budget=20%)
+2026-06-07 14:52:06,923 [INFO] __main__:   → score=11.54, mem_red=80.0%, ttft=1022.4ms
+2026-06-07 14:52:06,924 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 14:52:06,925 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-07 14:52:06,926 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 14:52:06,927 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 14:52:06,928 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 14:52:06,990 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:52:07,022 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 14:52:07,591 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-06-07 14:52:07,592 [INFO] core.evaluator_v2: [snapkv] hotpotqa (2샘플, budget=20%)
+2026-06-07 14:52:15,891 [INFO] __main__:   → score=50.00, mem_red=80.0%, ttft=1089.5ms
+2026-06-07 14:52:15,893 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 14:52:15,893 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-07 14:52:15,894 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 14:52:15,894 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 14:52:15,895 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 14:52:15,980 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:52:16,009 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 14:52:16,556 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-06-07 14:52:16,557 [INFO] core.evaluator_v2: [pyramidkv] hotpotqa (2샘플, budget=20%)
+2026-06-07 14:52:23,885 [INFO] __main__:   → score=50.00, mem_red=80.0%, ttft=1103.6ms
+2026-06-07 14:52:23,887 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 14:52:23,888 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-07 14:52:23,888 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 14:52:23,889 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 14:52:23,890 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 14:52:23,960 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:52:23,989 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 14:52:24,655 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-06-07 14:52:24,657 [INFO] core.evaluator_v2: [adakv] hotpotqa (2샘플, budget=20%)
+2026-06-07 14:52:34,324 [INFO] __main__:   → score=11.54, mem_red=80.0%, ttft=1043.0ms
+2026-06-07 14:52:34,326 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 14:52:34,327 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-07 14:52:34,328 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 14:52:34,329 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 14:52:34,330 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 14:52:34,403 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 14:52:34,435 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 14:52:35,069 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-06-07 14:52:35,070 [INFO] core.evaluator_v2: [ours] hotpotqa (2샘플, budget=20%)
+2026-06-07 14:52:49,523 [INFO] __main__:   → score=40.00, mem_red=80.0%, ttft=2075.2ms
+2026-06-07 14:52:49,535 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260607_145123.csv
+2026-06-07 14:52:49,545 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260607_145123.json
+2026-06-07 14:52:49,546 [INFO] __main__: Experiment 1 completed!

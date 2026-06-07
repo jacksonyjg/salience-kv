@@ -571,33 +571,11 @@ class OursHybrid(KVCacheMethod):
             return [max(int(w / total_w * total_budget), 4) for w in weights]
         
         else:  # "entropy" (기본값, 제안 방법)
-            entropies = []
-            for layer_idx in range(self.num_layers):
-                attn = attn_weights_list[layer_idx]
-                if attn is not None:
-                    h = compute_attn_entropy(attn).item()
-                    h = max(h, 1e-6)  # 수치 안정성
-                else:
-                    h = 1.0
-                entropies.append(h)
-            
-            entropy_tensor = torch.tensor(entropies, dtype=torch.float)
-            # NaN/Inf 방어
-            entropy_tensor = torch.nan_to_num(entropy_tensor, nan=1.0, posinf=1.0, neginf=0.0)
-            total = entropy_tensor.sum()
-            if total < 1e-9:
-                entropy_tensor = torch.ones_like(entropy_tensor)
-                total = entropy_tensor.sum()
-            weights = entropy_tensor / total
-            
-            budgets = []
-            for l in range(self.num_layers):
-                w = weights[l].item()
-                if w != w:  # NaN 체크
-                    w = 1.0 / self.num_layers
-                b = max(round(w * total_budget * self.num_layers), 4)
-                b = min(b, seq_len)
-                budgets.append(b)
+            # Transformers eager attention은 레이어별 다른 KV seq_len을 지원하지 않음
+            # → 모든 레이어 동일한 budget 사용 (H2O/SnapKV와 동일 기준)
+            # total_budget = seq_len * budget_ratio (레이어별 독립 예산)
+            # entropy는 _compute_hybrid_score의 토큰 선택 우선순위에 반영됨
+            budgets = [total_budget] * self.num_layers
             
             return budgets
     
