@@ -1,0 +1,92 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qasper"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 1101.5211157500744,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 832.5265869498253,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 823.7386224791408,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 830.9839265421033,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 850.4883116111159,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01667796812987
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 826.035731472075,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 885.0062247365713,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    }
+  ]
+}

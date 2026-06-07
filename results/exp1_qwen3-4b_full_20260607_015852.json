@@ -1,0 +1,140 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 50,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 0.0,
+        "qasper": 0.0,
+        "multifieldqa_en": 0.0,
+        "hotpotqa": 0.0,
+        "2wikimqa": 0.0,
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "narrativeqa": 0.0,
+        "qasper": 0.0,
+        "multifieldqa_en": 0.0,
+        "hotpotqa": 0.0,
+        "2wikimqa": 0.0,
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "narrativeqa": 0.0,
+        "qasper": 0.0,
+        "multifieldqa_en": 0.0,
+        "hotpotqa": 0.0,
+        "2wikimqa": 0.0,
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "narrativeqa": 0.0,
+        "qasper": 0.0,
+        "multifieldqa_en": 0.0,
+        "hotpotqa": 0.0,
+        "2wikimqa": 0.0,
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "narrativeqa": 0.0,
+        "qasper": 0.0,
+        "multifieldqa_en": 0.0,
+        "hotpotqa": 0.0,
+        "2wikimqa": 0.0,
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 0.0,
+        "qasper": 0.0,
+        "multifieldqa_en": 0.0,
+        "hotpotqa": 0.0,
+        "2wikimqa": 0.0,
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 0.0,
+        "qasper": 0.0,
+        "multifieldqa_en": 0.0,
+        "hotpotqa": 0.0,
+        "2wikimqa": 0.0,
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    }
+  ]
+}

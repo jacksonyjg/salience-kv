@@ -1,0 +1,130 @@
+2026-06-07 04:13:38,818 [INFO] __main__: Experiment 1: Main Results
+2026-06-07 04:13:38,819 [INFO] __main__:   Model: qwen3-4b
+2026-06-07 04:13:38,819 [INFO] __main__:   Mode: full
+2026-06-07 04:13:38,820 [INFO] __main__:   Budget: 20%
+2026-06-07 04:13:38,821 [INFO] __main__:   Tasks: ['qasper']
+2026-06-07 04:13:38,821 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-07 04:13:38,822 [INFO] __main__:   Samples/task: 2
+2026-06-07 04:13:38,823 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-07 04:13:38,823 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-07 04:13:38,936 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:13:38,939 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-07 04:13:38,948 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 04:13:39,039 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:13:39,047 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-07 04:13:39,117 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-07 04:13:39,159 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-07 04:13:39,980 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-07 04:13:39,985 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-07 04:13:40,020 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:13:40,026 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 04:14:01,528 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:01,535 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-07 04:14:01,644 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-07 04:14:01,683 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-07 04:14:01,711 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 04:14:01,713 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-07 04:14:01,714 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 04:14:01,716 [INFO] __main__: 
+  Task: qasper
+2026-06-07 04:14:01,718 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 04:14:01,756 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:01,790 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 04:14:02,347 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:02,383 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-07 04:14:02,422 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:02,458 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-07 04:14:02,911 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-06-07 04:14:02,913 [INFO] core.evaluator: Evaluating FullKV on qasper (2 samples, budget=20%)
+2026-06-07 04:14:04,679 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:05,739 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:05,740 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=1098.0ms
+2026-06-07 04:14:05,742 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 04:14:05,743 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-07 04:14:05,744 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 04:14:05,745 [INFO] __main__: 
+  Task: qasper
+2026-06-07 04:14:05,746 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 04:14:05,780 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:05,820 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 04:14:06,586 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-06-07 04:14:06,588 [INFO] core.evaluator: Evaluating StreamingLLM on qasper (2 samples, budget=20%)
+2026-06-07 04:14:07,799 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:08,965 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:08,968 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=829.1ms
+2026-06-07 04:14:08,970 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 04:14:08,971 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-07 04:14:08,972 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 04:14:08,974 [INFO] __main__: 
+  Task: qasper
+2026-06-07 04:14:08,975 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 04:14:09,018 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:09,081 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 04:14:09,923 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-06-07 04:14:09,925 [INFO] core.evaluator: Evaluating H2O on qasper (2 samples, budget=20%)
+2026-06-07 04:14:11,037 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:12,041 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:12,042 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=827.0ms
+2026-06-07 04:14:12,044 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 04:14:12,044 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-07 04:14:12,045 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 04:14:12,046 [INFO] __main__: 
+  Task: qasper
+2026-06-07 04:14:12,046 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 04:14:12,079 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:12,108 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 04:14:12,835 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-06-07 04:14:12,837 [INFO] core.evaluator: Evaluating SnapKV on qasper (2 samples, budget=20%)
+2026-06-07 04:14:13,835 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:14,833 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:14,834 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=823.2ms
+2026-06-07 04:14:14,836 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 04:14:14,836 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-07 04:14:14,837 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 04:14:14,838 [INFO] __main__: 
+  Task: qasper
+2026-06-07 04:14:14,838 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 04:14:14,872 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:14,901 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 04:14:15,637 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-06-07 04:14:15,639 [INFO] core.evaluator: Evaluating PyramidKV on qasper (2 samples, budget=20%)
+2026-06-07 04:14:16,669 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:17,721 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:17,723 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=857.3ms
+2026-06-07 04:14:17,724 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 04:14:17,725 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-07 04:14:17,726 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 04:14:17,727 [INFO] __main__: 
+  Task: qasper
+2026-06-07 04:14:17,728 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 04:14:17,764 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:17,796 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 04:14:18,548 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-06-07 04:14:18,550 [INFO] core.evaluator: Evaluating AdaKV on qasper (2 samples, budget=20%)
+2026-06-07 04:14:19,623 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:20,650 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:20,652 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=825.1ms
+2026-06-07 04:14:20,653 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 04:14:20,654 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-07 04:14:20,655 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 04:14:20,656 [INFO] __main__: 
+  Task: qasper
+2026-06-07 04:14:20,657 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 04:14:20,691 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 04:14:20,719 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 04:14:21,379 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-06-07 04:14:21,381 [INFO] core.evaluator: Evaluating OursHybrid on qasper (2 samples, budget=20%)
+2026-06-07 04:14:22,512 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:23,533 [ERROR] core.evaluator: generate() failed: Passing a tuple of `past_key_values` is not supported anymore. Please use a `Cache` instance.
+2026-06-07 04:14:23,535 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=888.1ms
+2026-06-07 04:14:23,545 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260607_041338.csv
+2026-06-07 04:14:23,554 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260607_041338.json
+2026-06-07 04:14:23,556 [INFO] __main__: Experiment 1 completed!

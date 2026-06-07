@@ -1,0 +1,19 @@
+# requirements.txt
+# KV Cache 실험 의존성
+# 실험계획서 §2.2 소프트웨어 환경 기준
+
+torch>=2.1.0
+transformers>=4.38.0
+datasets==2.21.0
+numpy>=1.24.0
+rouge-score>=0.1.2
+sentencepiece>=0.1.99
+protobuf>=3.20.0
+accelerate>=0.25.0
+einops>=0.7.0
+
+# 선택 (FlashAttention — GPU 호환 시)
+# flash-attn>=2.4.0
+
+# 개발 도구
+tqdm>=4.66.0

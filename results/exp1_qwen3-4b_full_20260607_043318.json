@@ -1,0 +1,140 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 5,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 1.6325632563256327,
+        "qasper": 7.348815138851552,
+        "multifieldqa_en": 21.67148706861527,
+        "hotpotqa": 0.909090909090909,
+        "2wikimqa": 6.966314731020613,
+        "gov_report": 8.693235982744762,
+        "qmsum": 7.73005546936996
+      },
+      "avg_score": 7.850223222288386,
+      "avg_ttft_ms": 1041.8027239034684,
+      "avg_throughput": 22.350205905767353,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "narrativeqa": 2.1514289715498385,
+        "qasper": 5.287935220230106,
+        "multifieldqa_en": 20.216337547164613,
+        "hotpotqa": 0.0,
+        "2wikimqa": 6.921163531709323,
+        "gov_report": 9.199115451392668,
+        "qmsum": 9.791394569916566
+      },
+      "avg_score": 7.65248218456616,
+      "avg_ttft_ms": 1023.5521287056878,
+      "avg_throughput": 27.40577211437278,
+      "avg_memory_reduction_pct": 80.01528016120304
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "narrativeqa": 2.1514289715498385,
+        "qasper": 5.287935220230106,
+        "multifieldqa_en": 20.216337547164613,
+        "hotpotqa": 0.0,
+        "2wikimqa": 6.921163531709323,
+        "gov_report": 9.199115451392668,
+        "qmsum": 9.791394569916566
+      },
+      "avg_score": 7.65248218456616,
+      "avg_ttft_ms": 1056.8616187061325,
+      "avg_throughput": 28.20083997007254,
+      "avg_memory_reduction_pct": 80.01528016120304
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "narrativeqa": 2.1514289715498385,
+        "qasper": 5.287935220230106,
+        "multifieldqa_en": 20.216337547164613,
+        "hotpotqa": 0.0,
+        "2wikimqa": 6.921163531709323,
+        "gov_report": 9.199115451392668,
+        "qmsum": 9.791394569916566
+      },
+      "avg_score": 7.65248218456616,
+      "avg_ttft_ms": 1022.7097254135941,
+      "avg_throughput": 27.7736164425793,
+      "avg_memory_reduction_pct": 80.01528016120304
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "narrativeqa": 1.345193648508839,
+        "qasper": 5.069930069930069,
+        "multifieldqa_en": 16.49155820738944,
+        "hotpotqa": 0.0,
+        "2wikimqa": 7.444659359552976,
+        "gov_report": 8.153094125434455,
+        "qmsum": 7.135795049945652
+      },
+      "avg_score": 6.520032922965918,
+      "avg_ttft_ms": 1026.9562963266383,
+      "avg_throughput": 27.737418444879697,
+      "avg_memory_reduction_pct": 80.0174989630658
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 2.1514289715498385,
+        "qasper": 5.287935220230106,
+        "multifieldqa_en": 20.216337547164613,
+        "hotpotqa": 0.0,
+        "2wikimqa": 6.921163531709323,
+        "gov_report": 9.199115451392668,
+        "qmsum": 9.791394569916566
+      },
+      "avg_score": 7.65248218456616,
+      "avg_ttft_ms": 1020.4930984354867,
+      "avg_throughput": 28.158116326386182,
+      "avg_memory_reduction_pct": 80.01528016120304
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 2.1514289715498385,
+        "qasper": 5.287935220230106,
+        "multifieldqa_en": 20.216337547164613,
+        "hotpotqa": 0.0,
+        "2wikimqa": 6.921163531709323,
+        "gov_report": 9.199115451392668,
+        "qmsum": 9.791394569916566
+      },
+      "avg_score": 7.65248218456616,
+      "avg_ttft_ms": 1040.4327901322267,
+      "avg_throughput": 27.92672842138221,
+      "avg_memory_reduction_pct": 80.01528016120304
+    }
+  ]
+}

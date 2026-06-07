@@ -1,0 +1,21 @@
+# configs/phi-3-mini.yaml
+# ========================
+# Phi-3-mini 교차 아키텍처 검증용 (실험 1-B)
+
+model: phi-3-mini
+
+# 현재: HuggingFace Hub 자동 다운로드
+model_source: hub
+model_id: microsoft/Phi-3-mini-128k-instruct
+
+# LOCAL: 로컬 경로로 전환 시 아래 두 줄로 교체
+# model_source: local
+# model_id: /workspace/models/Phi-3-mini-128k-instruct
+
+max_input_length: 31000
+
+# 교차 검증은 FullKV + AdaKV + Ours만 비교
+methods:
+  - fullkv
+  - adakv
+  - ours

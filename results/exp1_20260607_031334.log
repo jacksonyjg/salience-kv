@@ -1,0 +1,42 @@
+2026-06-07 03:13:34,287 [INFO] __main__: Experiment 1: Main Results
+2026-06-07 03:13:34,288 [INFO] __main__:   Model: qwen3-4b
+2026-06-07 03:13:34,288 [INFO] __main__:   Mode: full
+2026-06-07 03:13:34,289 [INFO] __main__:   Budget: 20%
+2026-06-07 03:13:34,289 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum']
+2026-06-07 03:13:34,289 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-07 03:13:34,290 [INFO] __main__:   Samples/task: 50
+2026-06-07 03:13:34,291 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-07 03:13:34,291 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-07 03:13:34,476 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 03:13:34,479 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-07 03:13:34,491 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 03:13:34,576 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 03:13:34,585 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-07 03:13:34,659 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-07 03:13:34,699 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-07 03:13:35,380 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-07 03:13:35,383 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-07 03:13:35,412 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 03:13:35,420 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 03:13:41,711 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 03:13:41,719 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-07 03:13:41,803 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-07 03:13:41,837 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-07 03:13:41,850 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 03:13:41,851 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-07 03:13:41,853 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 03:13:41,855 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 03:13:41,856 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 03:13:41,894 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 03:13:41,998 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 03:13:42,557 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 03:13:42,590 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-07 03:13:42,632 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 03:13:42,672 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-07 03:13:43,117 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-07 03:13:43,118 [INFO] core.evaluator: Evaluating FullKV on narrativeqa (50 samples, budget=20%)
+2026-06-07 03:14:50,506 [INFO] core.evaluator:   [10/50] avg_score=2.22
+2026-06-07 03:15:53,809 [INFO] core.evaluator:   [20/50] avg_score=2.94

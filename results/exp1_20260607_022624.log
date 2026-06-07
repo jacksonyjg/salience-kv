@@ -1,0 +1,44 @@
+2026-06-07 02:26:24,977 [INFO] __main__: Experiment 1: Main Results
+2026-06-07 02:26:24,979 [INFO] __main__:   Model: qwen3-4b
+2026-06-07 02:26:24,980 [INFO] __main__:   Mode: full
+2026-06-07 02:26:24,981 [INFO] __main__:   Budget: 20%
+2026-06-07 02:26:24,982 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum']
+2026-06-07 02:26:24,983 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-07 02:26:24,985 [INFO] __main__:   Samples/task: 50
+2026-06-07 02:26:24,986 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-07 02:26:24,987 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-07 02:26:25,106 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 02:26:25,119 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 02:26:25,207 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 02:26:25,210 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-07 02:26:25,218 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-07 02:26:25,285 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-07 02:26:25,326 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-07 02:26:25,992 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-07 02:26:25,995 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-07 02:26:26,082 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 02:26:26,092 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 02:26:32,229 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 02:26:32,240 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-07 02:26:32,298 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-07 02:26:32,324 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-07 02:26:32,329 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 02:26:32,330 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-07 02:26:32,331 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 02:26:32,331 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 02:26:32,332 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 02:26:32,362 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 02:26:32,392 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 02:26:33,051 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 02:26:33,085 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-07 02:26:33,120 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 02:26:33,204 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-07 02:26:33,524 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-07 02:26:33,526 [INFO] core.evaluator: Evaluating FullKV on narrativeqa (50 samples, budget=20%)
+2026-06-07 02:26:38,809 [WARNING] core.evaluator: output_attentions failed (CUDA out of memory. Tried to allocate 2.19 GiB. GPU 0 has a total capacity of 44.43 GiB of which 202.50 MiB is free. Process 18494 has 24.96 GiB memory in use. Including non-PyTorch memory, this process has 19.26 GiB memory in use. Of the allocated memory 18.83 GiB is allocated by PyTorch, and 120.62 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)), using hooks only
+2026-06-07 02:26:38,907 [WARNING] core.evaluator: Sample 0 failed: CUDA out of memory. Tried to allocate 2.19 GiB. GPU 0 has a total capacity of 44.43 GiB of which 2.11 GiB is free. Process 18494 has 24.96 GiB memory in use. Including non-PyTorch memory, this process has 17.35 GiB memory in use. Of the allocated memory 16.93 GiB is allocated by PyTorch, and 107.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-06-07 02:26:44,105 [WARNING] core.evaluator: output_attentions failed (CUDA out of memory. Tried to allocate 1.54 GiB. GPU 0 has a total capacity of 44.43 GiB of which 244.50 MiB is free. Process 18494 has 28.32 GiB memory in use. Including non-PyTorch memory, this process has 15.86 GiB memory in use. Of the allocated memory 15.47 GiB is allocated by PyTorch, and 83.47 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)), using hooks only
+2026-06-07 02:26:44,304 [WARNING] core.evaluator: Sample 1 failed: CUDA out of memory. Tried to allocate 1.54 GiB. GPU 0 has a total capacity of 44.43 GiB of which 1.51 GiB is free. Process 18494 has 28.32 GiB memory in use. Including non-PyTorch memory, this process has 14.59 GiB memory in use. Of the allocated memory 14.17 GiB is allocated by PyTorch, and 114.37 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

@@ -1,0 +1,600 @@
+2026-06-07 01:58:52,067 [INFO] __main__: Experiment 1: Main Results
+2026-06-07 01:58:52,069 [INFO] __main__:   Model: qwen3-4b
+2026-06-07 01:58:52,069 [INFO] __main__:   Mode: full
+2026-06-07 01:58:52,071 [INFO] __main__:   Budget: 20%
+2026-06-07 01:58:52,072 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum']
+2026-06-07 01:58:52,074 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-07 01:58:52,075 [INFO] __main__:   Samples/task: 50
+2026-06-07 01:58:52,076 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-07 01:58:52,077 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-07 01:58:52,211 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:58:52,222 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 01:58:52,339 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:58:52,341 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-07 01:58:52,349 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-07 01:58:52,457 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-07 01:58:52,503 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-07 01:58:53,202 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-07 01:58:53,211 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-07 01:58:53,248 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:58:53,263 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 01:59:08,341 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:08,351 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-07 01:59:08,419 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-07 01:59:08,445 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-07 01:59:08,459 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 01:59:08,459 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-07 01:59:08,461 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 01:59:08,462 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 01:59:08,462 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 01:59:08,463 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:08,498 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:08,539 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:08,563 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:08,640 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:08,718 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/LongBench.py "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:08,752 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/LongBench.py "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:08,775 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/LongBench.py "HTTP/1.1 200 OK"
+2026-06-07 01:59:08,828 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/LongBench.py "HTTP/1.1 200 OK"
+2026-06-07 01:59:08,860 [ERROR] core.dataset_loader: Failed to load narrativeqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:08,861 [ERROR] __main__:   Task narrativeqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:08,862 [INFO] __main__: 
+  Task: qasper
+2026-06-07 01:59:08,864 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 01:59:08,865 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:08,905 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:08,945 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:08,954 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:08,980 [ERROR] core.dataset_loader: Failed to load qasper: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:08,981 [ERROR] __main__:   Task qasper failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:08,983 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 01:59:08,984 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 01:59:08,986 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:09,024 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,061 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,069 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:09,094 [ERROR] core.dataset_loader: Failed to load multifieldqa_en: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,095 [ERROR] __main__:   Task multifieldqa_en failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,107 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 01:59:09,109 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 01:59:09,111 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:09,148 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,181 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,200 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:09,233 [ERROR] core.dataset_loader: Failed to load hotpotqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,235 [ERROR] __main__:   Task hotpotqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,236 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 01:59:09,237 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 01:59:09,239 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:09,283 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,335 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,344 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:09,365 [ERROR] core.dataset_loader: Failed to load 2wikimqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,366 [ERROR] __main__:   Task 2wikimqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,367 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 01:59:09,369 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 01:59:09,370 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:09,407 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,437 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,446 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:09,462 [ERROR] core.dataset_loader: Failed to load gov_report: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,463 [ERROR] __main__:   Task gov_report failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,464 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 01:59:09,464 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 01:59:09,465 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:09,505 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,538 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,544 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:09,560 [ERROR] core.dataset_loader: Failed to load qmsum: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,561 [ERROR] __main__:   Task qmsum failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,563 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 01:59:09,563 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-07 01:59:09,564 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 01:59:09,565 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 01:59:09,566 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 01:59:09,566 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:09,609 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,645 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,653 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:09,676 [ERROR] core.dataset_loader: Failed to load narrativeqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,677 [ERROR] __main__:   Task narrativeqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,679 [INFO] __main__: 
+  Task: qasper
+2026-06-07 01:59:09,679 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 01:59:09,681 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:09,815 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,849 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,859 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:09,885 [ERROR] core.dataset_loader: Failed to load qasper: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,886 [ERROR] __main__:   Task qasper failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:09,888 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 01:59:09,889 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 01:59:09,890 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:09,940 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,972 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:09,979 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,011 [ERROR] core.dataset_loader: Failed to load multifieldqa_en: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,012 [ERROR] __main__:   Task multifieldqa_en failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,013 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 01:59:10,014 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 01:59:10,016 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,052 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,081 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,089 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,121 [ERROR] core.dataset_loader: Failed to load hotpotqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,122 [ERROR] __main__:   Task hotpotqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,124 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 01:59:10,125 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 01:59:10,127 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,199 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,240 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,251 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,277 [ERROR] core.dataset_loader: Failed to load 2wikimqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,279 [ERROR] __main__:   Task 2wikimqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,279 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 01:59:10,280 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 01:59:10,281 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,313 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,346 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,354 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,372 [ERROR] core.dataset_loader: Failed to load gov_report: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,373 [ERROR] __main__:   Task gov_report failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,374 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 01:59:10,375 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 01:59:10,376 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,414 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,446 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,469 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,487 [ERROR] core.dataset_loader: Failed to load qmsum: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,487 [ERROR] __main__:   Task qmsum failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,488 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 01:59:10,489 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-07 01:59:10,491 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 01:59:10,491 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 01:59:10,492 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 01:59:10,493 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,544 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,577 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,587 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,614 [ERROR] core.dataset_loader: Failed to load narrativeqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,616 [ERROR] __main__:   Task narrativeqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,617 [INFO] __main__: 
+  Task: qasper
+2026-06-07 01:59:10,618 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 01:59:10,620 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,658 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,699 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,711 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,727 [ERROR] core.dataset_loader: Failed to load qasper: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,728 [ERROR] __main__:   Task qasper failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,729 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 01:59:10,731 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 01:59:10,732 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,770 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,805 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,814 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,835 [ERROR] core.dataset_loader: Failed to load multifieldqa_en: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,836 [ERROR] __main__:   Task multifieldqa_en failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,838 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 01:59:10,839 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 01:59:10,841 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,888 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,919 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:10,929 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:10,950 [ERROR] core.dataset_loader: Failed to load hotpotqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,951 [ERROR] __main__:   Task hotpotqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:10,952 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 01:59:10,954 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 01:59:10,956 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:10,994 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,038 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,047 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:11,066 [ERROR] core.dataset_loader: Failed to load 2wikimqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,068 [ERROR] __main__:   Task 2wikimqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,069 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 01:59:11,071 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 01:59:11,072 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:11,114 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,150 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,162 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:11,183 [ERROR] core.dataset_loader: Failed to load gov_report: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,185 [ERROR] __main__:   Task gov_report failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,186 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 01:59:11,188 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 01:59:11,189 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:11,223 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,255 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,264 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:11,292 [ERROR] core.dataset_loader: Failed to load qmsum: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,293 [ERROR] __main__:   Task qmsum failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,307 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 01:59:11,308 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-07 01:59:11,310 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 01:59:11,312 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 01:59:11,314 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 01:59:11,315 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:11,352 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,388 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,402 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:11,429 [ERROR] core.dataset_loader: Failed to load narrativeqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,430 [ERROR] __main__:   Task narrativeqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,431 [INFO] __main__: 
+  Task: qasper
+2026-06-07 01:59:11,432 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 01:59:11,433 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:11,479 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,521 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,534 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:11,554 [ERROR] core.dataset_loader: Failed to load qasper: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,556 [ERROR] __main__:   Task qasper failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,557 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 01:59:11,559 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 01:59:11,560 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:11,601 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,637 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,647 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:11,673 [ERROR] core.dataset_loader: Failed to load multifieldqa_en: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,676 [ERROR] __main__:   Task multifieldqa_en failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,677 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 01:59:11,679 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 01:59:11,680 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:11,724 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,758 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,766 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:11,791 [ERROR] core.dataset_loader: Failed to load hotpotqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,793 [ERROR] __main__:   Task hotpotqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,794 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 01:59:11,795 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 01:59:11,807 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:11,849 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,881 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:11,891 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:11,928 [ERROR] core.dataset_loader: Failed to load 2wikimqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,930 [ERROR] __main__:   Task 2wikimqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:11,932 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 01:59:11,934 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 01:59:11,935 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:11,971 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,007 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,025 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:12,051 [ERROR] core.dataset_loader: Failed to load gov_report: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,054 [ERROR] __main__:   Task gov_report failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,056 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 01:59:12,057 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 01:59:12,059 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:12,099 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,141 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,154 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:12,177 [ERROR] core.dataset_loader: Failed to load qmsum: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,178 [ERROR] __main__:   Task qmsum failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,179 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 01:59:12,179 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-07 01:59:12,181 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 01:59:12,182 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 01:59:12,182 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 01:59:12,183 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:12,227 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,296 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,316 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:12,345 [ERROR] core.dataset_loader: Failed to load narrativeqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,347 [ERROR] __main__:   Task narrativeqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,348 [INFO] __main__: 
+  Task: qasper
+2026-06-07 01:59:12,349 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 01:59:12,351 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:12,389 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,428 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,441 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:12,468 [ERROR] core.dataset_loader: Failed to load qasper: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,470 [ERROR] __main__:   Task qasper failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,471 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 01:59:12,473 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 01:59:12,475 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:12,515 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,551 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,564 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:12,595 [ERROR] core.dataset_loader: Failed to load multifieldqa_en: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,607 [ERROR] __main__:   Task multifieldqa_en failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,609 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 01:59:12,612 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 01:59:12,614 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:12,656 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,695 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,719 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:12,748 [ERROR] core.dataset_loader: Failed to load hotpotqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,749 [ERROR] __main__:   Task hotpotqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,751 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 01:59:12,752 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 01:59:12,753 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:12,868 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,907 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:12,918 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:12,949 [ERROR] core.dataset_loader: Failed to load 2wikimqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,951 [ERROR] __main__:   Task 2wikimqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:12,953 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 01:59:12,954 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 01:59:12,956 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:12,996 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,040 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,049 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:13,077 [ERROR] core.dataset_loader: Failed to load gov_report: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,078 [ERROR] __main__:   Task gov_report failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,079 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 01:59:13,081 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 01:59:13,082 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:13,123 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,161 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,171 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:13,209 [ERROR] core.dataset_loader: Failed to load qmsum: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,211 [ERROR] __main__:   Task qmsum failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,212 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 01:59:13,214 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-07 01:59:13,216 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 01:59:13,217 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 01:59:13,218 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 01:59:13,220 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:13,258 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,351 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,364 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:13,420 [ERROR] core.dataset_loader: Failed to load narrativeqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,421 [ERROR] __main__:   Task narrativeqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,423 [INFO] __main__: 
+  Task: qasper
+2026-06-07 01:59:13,424 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 01:59:13,426 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:13,469 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,506 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,516 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:13,548 [ERROR] core.dataset_loader: Failed to load qasper: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,549 [ERROR] __main__:   Task qasper failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,552 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 01:59:13,554 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 01:59:13,556 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:13,606 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,639 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,650 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:13,685 [ERROR] core.dataset_loader: Failed to load multifieldqa_en: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,687 [ERROR] __main__:   Task multifieldqa_en failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,689 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 01:59:13,690 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 01:59:13,691 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:13,746 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,784 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,794 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:13,840 [ERROR] core.dataset_loader: Failed to load hotpotqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,841 [ERROR] __main__:   Task hotpotqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,843 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 01:59:13,844 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 01:59:13,845 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:13,886 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,920 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:13,929 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:13,965 [ERROR] core.dataset_loader: Failed to load 2wikimqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,966 [ERROR] __main__:   Task 2wikimqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:13,968 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 01:59:13,969 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 01:59:13,971 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:14,023 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,052 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,062 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:14,092 [ERROR] core.dataset_loader: Failed to load gov_report: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,093 [ERROR] __main__:   Task gov_report failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,095 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 01:59:14,108 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 01:59:14,112 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:14,156 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,194 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,217 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:14,245 [ERROR] core.dataset_loader: Failed to load qmsum: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,247 [ERROR] __main__:   Task qmsum failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,249 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 01:59:14,251 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-07 01:59:14,252 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 01:59:14,254 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 01:59:14,255 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 01:59:14,256 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:14,307 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,403 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,414 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:14,446 [ERROR] core.dataset_loader: Failed to load narrativeqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,447 [ERROR] __main__:   Task narrativeqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,448 [INFO] __main__: 
+  Task: qasper
+2026-06-07 01:59:14,450 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 01:59:14,451 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:14,489 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,523 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,533 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:14,559 [ERROR] core.dataset_loader: Failed to load qasper: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,561 [ERROR] __main__:   Task qasper failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,562 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 01:59:14,564 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 01:59:14,565 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:14,602 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,651 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,660 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:14,688 [ERROR] core.dataset_loader: Failed to load multifieldqa_en: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,690 [ERROR] __main__:   Task multifieldqa_en failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,691 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 01:59:14,693 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 01:59:14,694 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:14,750 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,783 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,794 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:14,833 [ERROR] core.dataset_loader: Failed to load hotpotqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,834 [ERROR] __main__:   Task hotpotqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,835 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 01:59:14,837 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 01:59:14,838 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:14,883 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,932 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:14,944 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:14,974 [ERROR] core.dataset_loader: Failed to load 2wikimqa: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,975 [ERROR] __main__:   Task 2wikimqa failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:14,976 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 01:59:14,978 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 01:59:14,979 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:15,015 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:15,052 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:15,060 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:15,088 [ERROR] core.dataset_loader: Failed to load gov_report: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:15,090 [ERROR] __main__:   Task gov_report failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:15,092 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 01:59:15,093 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 01:59:15,094 [ERROR] datasets.load: `trust_remote_code` is not supported anymore.
+Please check that the Hugging Face dataset 'THUDM/LongBench' isn't based on a loading script and remove `trust_remote_code`.
+If the dataset is based on a loading script, please ask the dataset author to remove it and convert it to a standard format like Parquet.
+2026-06-07 01:59:15,145 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:15,180 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 01:59:15,188 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md "HTTP/1.1 200 OK"
+2026-06-07 01:59:15,226 [ERROR] core.dataset_loader: Failed to load qmsum: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:15,227 [ERROR] __main__:   Task qmsum failed: Dataset scripts are no longer supported, but found LongBench.py
+2026-06-07 01:59:15,247 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260607_015852.csv
+2026-06-07 01:59:15,263 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260607_015852.json
+2026-06-07 01:59:15,265 [INFO] __main__: Experiment 1 completed!

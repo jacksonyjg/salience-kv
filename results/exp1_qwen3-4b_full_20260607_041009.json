@@ -1,0 +1,92 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qasper"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 1044.8159081861377,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 825.5918174982071,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 834.1488875448704,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 825.0744435936213,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 842.2894151881337,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01667796812987
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 821.7489700764418,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 876.6836998984218,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 80.01515725653657
+    }
+  ]
+}
