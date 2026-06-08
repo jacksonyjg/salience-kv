@@ -168,7 +168,7 @@ class EvaluatorV2:
                     pad_token_id=self.tokenizer.pad_token_id,
                     eos_token_id=self.tokenizer.eos_token_id,
                 )
-            new_tokens = output[0, input_length:]
+            new_tokens = output[0, 1:] if compressed_cache is not None else output[0, input_length:]
         except Exception as e:
             logger.error(f"generate() failed: {e}")
             return {
