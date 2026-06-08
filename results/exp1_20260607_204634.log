@@ -1,0 +1,939 @@
+2026-06-07 20:46:34,056 [INFO] __main__: Experiment 1: Main Results
+2026-06-07 20:46:34,057 [INFO] __main__:   Model: qwen3-4b
+2026-06-07 20:46:34,057 [INFO] __main__:   Mode: full
+2026-06-07 20:46:34,058 [INFO] __main__:   Budget: 20%
+2026-06-07 20:46:34,058 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum']
+2026-06-07 20:46:34,059 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-07 20:46:34,059 [INFO] __main__:   Samples/task: 50
+2026-06-07 20:46:34,060 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-07 20:46:34,060 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-07 20:46:34,158 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:46:34,159 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-07 20:46:34,166 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 20:46:34,247 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:46:34,255 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-07 20:46:34,318 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-07 20:46:34,359 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-07 20:46:35,010 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-07 20:46:35,013 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-07 20:46:35,048 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:46:35,052 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-07 20:46:40,402 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:46:40,413 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-07 20:46:40,503 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-07 20:46:40,539 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-07 20:46:40,558 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 20:46:40,559 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-07 20:46:40,560 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 20:46:40,561 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 20:46:40,562 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 20:46:40,600 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:46:40,641 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 20:46:41,244 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:46:41,421 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-07 20:46:41,455 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:46:41,503 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-07 20:46:42,303 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-07 20:46:42,309 [INFO] core.evaluator_v2: [fullkv] narrativeqa (50샘플, budget=20%)
+2026-06-07 20:47:07,824 [INFO] core.evaluator_v2:   [5/50] avg=5.84
+2026-06-07 20:47:26,934 [INFO] core.evaluator_v2:   [10/50] avg=11.11
+2026-06-07 20:47:46,523 [INFO] core.evaluator_v2:   [15/50] avg=9.64
+2026-06-07 20:48:03,246 [INFO] core.evaluator_v2:   [20/50] avg=9.89
+2026-06-07 20:48:21,642 [INFO] core.evaluator_v2:   [25/50] avg=12.67
+2026-06-07 20:48:47,252 [INFO] core.evaluator_v2:   [30/50] avg=12.86
+2026-06-07 20:49:14,803 [INFO] core.evaluator_v2:   [35/50] avg=11.85
+2026-06-07 20:49:32,898 [INFO] core.evaluator_v2:   [40/50] avg=11.42
+2026-06-07 20:49:51,616 [INFO] core.evaluator_v2:   [45/50] avg=11.43
+2026-06-07 20:50:10,184 [INFO] core.evaluator_v2:   [50/50] avg=10.86
+2026-06-07 20:50:10,185 [INFO] __main__:   → score=10.86, mem_red=100.0%, ttft=664.3ms
+2026-06-07 20:50:10,185 [INFO] __main__: 
+  Task: qasper
+2026-06-07 20:50:10,186 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 20:50:10,266 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:50:10,296 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 20:50:10,987 [INFO] core.dataset_loader: Loaded 50 samples from qasper
+2026-06-07 20:50:10,988 [INFO] core.evaluator_v2: [fullkv] qasper (50샘플, budget=20%)
+2026-06-07 20:50:32,392 [INFO] core.evaluator_v2:   [5/50] avg=20.09
+2026-06-07 20:50:53,474 [INFO] core.evaluator_v2:   [10/50] avg=25.17
+2026-06-07 20:51:15,425 [INFO] core.evaluator_v2:   [15/50] avg=24.64
+2026-06-07 20:51:33,462 [INFO] core.evaluator_v2:   [20/50] avg=26.05
+2026-06-07 20:51:52,119 [INFO] core.evaluator_v2:   [25/50] avg=26.78
+2026-06-07 20:52:13,066 [INFO] core.evaluator_v2:   [30/50] avg=25.80
+2026-06-07 20:52:32,331 [INFO] core.evaluator_v2:   [35/50] avg=23.05
+2026-06-07 20:52:52,719 [INFO] core.evaluator_v2:   [40/50] avg=22.66
+2026-06-07 20:53:20,207 [INFO] core.evaluator_v2:   [45/50] avg=22.65
+2026-06-07 20:53:45,408 [INFO] core.evaluator_v2:   [50/50] avg=21.67
+2026-06-07 20:53:45,409 [INFO] __main__:   → score=21.67, mem_red=100.0%, ttft=566.6ms
+2026-06-07 20:53:45,409 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 20:53:45,409 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 20:53:45,481 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:53:45,511 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 20:53:46,299 [INFO] core.dataset_loader: Loaded 50 samples from multifieldqa_en
+2026-06-07 20:53:46,310 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (50샘플, budget=20%)
+2026-06-07 20:54:10,895 [INFO] core.evaluator_v2:   [5/50] avg=62.13
+2026-06-07 20:54:28,269 [INFO] core.evaluator_v2:   [10/50] avg=48.21
+2026-06-07 20:54:49,997 [INFO] core.evaluator_v2:   [15/50] avg=38.91
+2026-06-07 20:55:11,580 [INFO] core.evaluator_v2:   [20/50] avg=40.98
+2026-06-07 20:55:35,079 [INFO] core.evaluator_v2:   [25/50] avg=42.18
+2026-06-07 20:55:54,987 [INFO] core.evaluator_v2:   [30/50] avg=43.06
+2026-06-07 20:56:13,912 [INFO] core.evaluator_v2:   [35/50] avg=38.05
+2026-06-07 20:56:34,184 [INFO] core.evaluator_v2:   [40/50] avg=36.53
+2026-06-07 20:56:51,856 [INFO] core.evaluator_v2:   [45/50] avg=38.80
+2026-06-07 20:57:07,825 [INFO] core.evaluator_v2:   [50/50] avg=41.67
+2026-06-07 20:57:07,826 [INFO] __main__:   → score=41.67, mem_red=100.0%, ttft=707.8ms
+2026-06-07 20:57:07,826 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 20:57:07,827 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 20:57:07,897 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 20:57:07,934 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 20:57:08,881 [INFO] core.dataset_loader: Loaded 50 samples from hotpotqa
+2026-06-07 20:57:08,884 [INFO] core.evaluator_v2: [fullkv] hotpotqa (50샘플, budget=20%)
+2026-06-07 20:57:28,109 [INFO] core.evaluator_v2:   [5/50] avg=6.72
+2026-06-07 20:57:46,362 [INFO] core.evaluator_v2:   [10/50] avg=12.40
+2026-06-07 20:58:04,949 [INFO] core.evaluator_v2:   [15/50] avg=10.54
+2026-06-07 20:58:24,552 [INFO] core.evaluator_v2:   [20/50] avg=13.29
+2026-06-07 20:58:42,549 [INFO] core.evaluator_v2:   [25/50] avg=12.39
+2026-06-07 20:59:00,055 [INFO] core.evaluator_v2:   [30/50] avg=10.32
+2026-06-07 20:59:16,885 [INFO] core.evaluator_v2:   [35/50] avg=9.39
+2026-06-07 20:59:38,914 [INFO] core.evaluator_v2:   [40/50] avg=9.20
+2026-06-07 21:00:02,815 [INFO] core.evaluator_v2:   [45/50] avg=9.52
+2026-06-07 21:00:28,134 [INFO] core.evaluator_v2:   [50/50] avg=9.88
+2026-06-07 21:00:28,135 [INFO] __main__:   → score=9.88, mem_red=100.0%, ttft=632.4ms
+2026-06-07 21:00:28,136 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 21:00:28,138 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 21:00:28,210 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:00:28,241 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:00:29,196 [INFO] core.dataset_loader: Loaded 50 samples from 2wikimqa
+2026-06-07 21:00:29,207 [INFO] core.evaluator_v2: [fullkv] 2wikimqa (50샘플, budget=20%)
+2026-06-07 21:00:54,450 [INFO] core.evaluator_v2:   [5/50] avg=8.78
+2026-06-07 21:01:15,693 [INFO] core.evaluator_v2:   [10/50] avg=9.26
+2026-06-07 21:01:38,223 [INFO] core.evaluator_v2:   [15/50] avg=10.55
+2026-06-07 21:02:01,852 [INFO] core.evaluator_v2:   [20/50] avg=11.30
+2026-06-07 21:02:22,219 [INFO] core.evaluator_v2:   [25/50] avg=10.65
+2026-06-07 21:02:42,643 [INFO] core.evaluator_v2:   [30/50] avg=11.90
+2026-06-07 21:03:00,717 [INFO] core.evaluator_v2:   [35/50] avg=12.00
+2026-06-07 21:03:20,528 [INFO] core.evaluator_v2:   [40/50] avg=13.24
+2026-06-07 21:03:40,482 [INFO] core.evaluator_v2:   [45/50] avg=12.22
+2026-06-07 21:04:03,727 [INFO] core.evaluator_v2:   [50/50] avg=11.57
+2026-06-07 21:04:03,728 [INFO] __main__:   → score=11.57, mem_red=100.0%, ttft=643.1ms
+2026-06-07 21:04:03,728 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 21:04:03,729 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 21:04:03,806 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:04:03,843 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:04:04,904 [INFO] core.dataset_loader: Loaded 50 samples from gov_report
+2026-06-07 21:04:04,911 [INFO] core.evaluator_v2: [fullkv] gov_report (50샘플, budget=20%)
+2026-06-07 21:05:00,643 [INFO] core.evaluator_v2:   [5/50] avg=14.21
+2026-06-07 21:05:47,824 [INFO] core.evaluator_v2:   [10/50] avg=12.80
+2026-06-07 21:06:36,282 [INFO] core.evaluator_v2:   [15/50] avg=13.42
+2026-06-07 21:07:22,600 [INFO] core.evaluator_v2:   [20/50] avg=14.96
+2026-06-07 21:08:13,901 [INFO] core.evaluator_v2:   [25/50] avg=14.39
+2026-06-07 21:09:00,708 [INFO] core.evaluator_v2:   [30/50] avg=14.40
+2026-06-07 21:09:51,701 [INFO] core.evaluator_v2:   [35/50] avg=14.26
+2026-06-07 21:10:41,607 [INFO] core.evaluator_v2:   [40/50] avg=14.51
+2026-06-07 21:11:27,196 [INFO] core.evaluator_v2:   [45/50] avg=14.62
+2026-06-07 21:12:17,467 [INFO] core.evaluator_v2:   [50/50] avg=14.84
+2026-06-07 21:12:17,471 [INFO] __main__:   → score=14.84, mem_red=100.0%, ttft=492.7ms
+2026-06-07 21:12:17,472 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 21:12:17,473 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 21:12:17,557 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:12:17,592 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:12:18,566 [INFO] core.dataset_loader: Loaded 50 samples from qmsum
+2026-06-07 21:12:18,569 [INFO] core.evaluator_v2: [fullkv] qmsum (50샘플, budget=20%)
+2026-06-07 21:13:03,332 [INFO] core.evaluator_v2:   [5/50] avg=10.02
+2026-06-07 21:13:39,400 [INFO] core.evaluator_v2:   [10/50] avg=8.78
+2026-06-07 21:14:20,154 [INFO] core.evaluator_v2:   [15/50] avg=8.93
+2026-06-07 21:14:56,781 [INFO] core.evaluator_v2:   [20/50] avg=10.10
+2026-06-07 21:15:36,250 [INFO] core.evaluator_v2:   [25/50] avg=10.04
+2026-06-07 21:16:12,996 [INFO] core.evaluator_v2:   [30/50] avg=10.42
+2026-06-07 21:16:57,822 [INFO] core.evaluator_v2:   [35/50] avg=10.57
+2026-06-07 21:17:40,380 [INFO] core.evaluator_v2:   [40/50] avg=10.53
+2026-06-07 21:18:13,982 [INFO] core.evaluator_v2:   [45/50] avg=10.37
+2026-06-07 21:18:48,619 [INFO] core.evaluator_v2:   [50/50] avg=10.42
+2026-06-07 21:18:48,620 [INFO] __main__:   → score=10.42, mem_red=100.0%, ttft=532.9ms
+2026-06-07 21:18:48,621 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 21:18:48,623 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-07 21:18:48,623 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 21:18:48,625 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 21:18:48,626 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 21:18:48,699 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:18:48,737 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:18:49,862 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-07 21:18:49,865 [INFO] core.evaluator_v2: [streaming] narrativeqa (50샘플, budget=20%)
+2026-06-07 21:19:13,634 [INFO] core.evaluator_v2:   [5/50] avg=6.56
+2026-06-07 21:19:34,477 [INFO] core.evaluator_v2:   [10/50] avg=15.26
+2026-06-07 21:19:54,124 [INFO] core.evaluator_v2:   [15/50] avg=14.35
+2026-06-07 21:20:14,179 [INFO] core.evaluator_v2:   [20/50] avg=12.39
+2026-06-07 21:20:35,182 [INFO] core.evaluator_v2:   [25/50] avg=12.81
+2026-06-07 21:20:52,285 [INFO] core.evaluator_v2:   [30/50] avg=15.42
+2026-06-07 21:21:11,366 [INFO] core.evaluator_v2:   [35/50] avg=14.24
+2026-06-07 21:21:31,251 [INFO] core.evaluator_v2:   [40/50] avg=13.97
+2026-06-07 21:21:50,816 [INFO] core.evaluator_v2:   [45/50] avg=13.93
+2026-06-07 21:22:14,318 [INFO] core.evaluator_v2:   [50/50] avg=13.38
+2026-06-07 21:22:14,319 [INFO] __main__:   → score=13.38, mem_red=80.0%, ttft=1117.9ms
+2026-06-07 21:22:14,320 [INFO] __main__: 
+  Task: qasper
+2026-06-07 21:22:14,321 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 21:22:14,410 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:22:14,450 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:22:15,430 [INFO] core.dataset_loader: Loaded 50 samples from qasper
+2026-06-07 21:22:15,433 [INFO] core.evaluator_v2: [streaming] qasper (50샘플, budget=20%)
+2026-06-07 21:22:36,312 [INFO] core.evaluator_v2:   [5/50] avg=15.90
+2026-06-07 21:22:57,659 [INFO] core.evaluator_v2:   [10/50] avg=19.19
+2026-06-07 21:23:18,188 [INFO] core.evaluator_v2:   [15/50] avg=18.25
+2026-06-07 21:23:39,137 [INFO] core.evaluator_v2:   [20/50] avg=20.31
+2026-06-07 21:23:58,773 [INFO] core.evaluator_v2:   [25/50] avg=19.90
+2026-06-07 21:24:20,832 [INFO] core.evaluator_v2:   [30/50] avg=18.85
+2026-06-07 21:24:39,449 [INFO] core.evaluator_v2:   [35/50] avg=19.59
+2026-06-07 21:25:00,181 [INFO] core.evaluator_v2:   [40/50] avg=18.54
+2026-06-07 21:25:22,545 [INFO] core.evaluator_v2:   [45/50] avg=19.05
+2026-06-07 21:25:43,135 [INFO] core.evaluator_v2:   [50/50] avg=19.26
+2026-06-07 21:25:43,136 [INFO] __main__:   → score=19.26, mem_red=80.0%, ttft=995.4ms
+2026-06-07 21:25:43,137 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 21:25:43,137 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 21:25:43,206 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:25:43,362 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:25:44,187 [INFO] core.dataset_loader: Loaded 50 samples from multifieldqa_en
+2026-06-07 21:25:44,189 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (50샘플, budget=20%)
+2026-06-07 21:26:13,820 [INFO] core.evaluator_v2:   [5/50] avg=47.76
+2026-06-07 21:26:34,502 [INFO] core.evaluator_v2:   [10/50] avg=37.60
+2026-06-07 21:27:05,288 [INFO] core.evaluator_v2:   [15/50] avg=29.86
+2026-06-07 21:27:38,475 [INFO] core.evaluator_v2:   [20/50] avg=30.74
+2026-06-07 21:28:09,935 [INFO] core.evaluator_v2:   [25/50] avg=31.89
+2026-06-07 21:28:42,228 [INFO] core.evaluator_v2:   [30/50] avg=31.51
+2026-06-07 21:29:08,191 [INFO] core.evaluator_v2:   [35/50] avg=27.37
+2026-06-07 21:29:36,463 [INFO] core.evaluator_v2:   [40/50] avg=27.63
+2026-06-07 21:29:57,872 [INFO] core.evaluator_v2:   [45/50] avg=29.32
+2026-06-07 21:30:24,392 [INFO] core.evaluator_v2:   [50/50] avg=30.51
+2026-06-07 21:30:24,393 [INFO] __main__:   → score=30.51, mem_red=80.0%, ttft=1302.0ms
+2026-06-07 21:30:24,395 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 21:30:24,406 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 21:30:24,485 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:30:24,518 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:30:25,246 [INFO] core.dataset_loader: Loaded 50 samples from hotpotqa
+2026-06-07 21:30:25,247 [INFO] core.evaluator_v2: [streaming] hotpotqa (50샘플, budget=20%)
+2026-06-07 21:30:46,191 [INFO] core.evaluator_v2:   [5/50] avg=6.67
+2026-06-07 21:31:04,766 [INFO] core.evaluator_v2:   [10/50] avg=14.49
+2026-06-07 21:31:24,681 [INFO] core.evaluator_v2:   [15/50] avg=11.33
+2026-06-07 21:31:51,343 [INFO] core.evaluator_v2:   [20/50] avg=17.42
+2026-06-07 21:32:16,931 [INFO] core.evaluator_v2:   [25/50] avg=15.11
+2026-06-07 21:32:39,068 [INFO] core.evaluator_v2:   [30/50] avg=12.59
+2026-06-07 21:33:03,087 [INFO] core.evaluator_v2:   [35/50] avg=11.36
+2026-06-07 21:33:25,395 [INFO] core.evaluator_v2:   [40/50] avg=11.81
+2026-06-07 21:33:51,999 [INFO] core.evaluator_v2:   [45/50] avg=11.30
+2026-06-07 21:34:16,447 [INFO] core.evaluator_v2:   [50/50] avg=12.08
+2026-06-07 21:34:16,449 [INFO] __main__:   → score=12.08, mem_red=80.0%, ttft=1178.9ms
+2026-06-07 21:34:16,450 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 21:34:16,451 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 21:34:16,552 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:34:16,585 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:34:17,380 [INFO] core.dataset_loader: Loaded 50 samples from 2wikimqa
+2026-06-07 21:34:17,383 [INFO] core.evaluator_v2: [streaming] 2wikimqa (50샘플, budget=20%)
+2026-06-07 21:34:43,913 [INFO] core.evaluator_v2:   [5/50] avg=8.27
+2026-06-07 21:35:11,147 [INFO] core.evaluator_v2:   [10/50] avg=9.28
+2026-06-07 21:35:37,383 [INFO] core.evaluator_v2:   [15/50] avg=9.45
+2026-06-07 21:36:06,407 [INFO] core.evaluator_v2:   [20/50] avg=9.36
+2026-06-07 21:36:34,910 [INFO] core.evaluator_v2:   [25/50] avg=9.10
+2026-06-07 21:36:56,203 [INFO] core.evaluator_v2:   [30/50] avg=12.12
+2026-06-07 21:37:18,243 [INFO] core.evaluator_v2:   [35/50] avg=11.34
+2026-06-07 21:37:45,110 [INFO] core.evaluator_v2:   [40/50] avg=14.53
+2026-06-07 21:38:09,122 [INFO] core.evaluator_v2:   [45/50] avg=13.41
+2026-06-07 21:38:40,254 [INFO] core.evaluator_v2:   [50/50] avg=12.66
+2026-06-07 21:38:40,256 [INFO] __main__:   → score=12.66, mem_red=80.0%, ttft=1188.1ms
+2026-06-07 21:38:40,256 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 21:38:40,257 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 21:38:40,327 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:38:40,356 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:38:41,285 [INFO] core.dataset_loader: Loaded 50 samples from gov_report
+2026-06-07 21:38:41,288 [INFO] core.evaluator_v2: [streaming] gov_report (50샘플, budget=20%)
+2026-06-07 21:39:50,131 [INFO] core.evaluator_v2:   [5/50] avg=12.00
+2026-06-07 21:40:54,340 [INFO] core.evaluator_v2:   [10/50] avg=11.43
+2026-06-07 21:42:00,199 [INFO] core.evaluator_v2:   [15/50] avg=12.25
+2026-06-07 21:43:12,031 [INFO] core.evaluator_v2:   [20/50] avg=12.75
+2026-06-07 21:44:22,984 [INFO] core.evaluator_v2:   [25/50] avg=12.91
+2026-06-07 21:45:34,895 [INFO] core.evaluator_v2:   [30/50] avg=12.93
+2026-06-07 21:46:49,131 [INFO] core.evaluator_v2:   [35/50] avg=12.74
+2026-06-07 21:47:55,724 [INFO] core.evaluator_v2:   [40/50] avg=13.02
+2026-06-07 21:48:57,237 [INFO] core.evaluator_v2:   [45/50] avg=13.17
+2026-06-07 21:49:59,167 [INFO] core.evaluator_v2:   [50/50] avg=13.37
+2026-06-07 21:49:59,169 [INFO] __main__:   → score=13.37, mem_red=80.0%, ttft=946.4ms
+2026-06-07 21:49:59,169 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 21:49:59,169 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 21:49:59,239 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:49:59,269 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:50:00,152 [INFO] core.dataset_loader: Loaded 50 samples from qmsum
+2026-06-07 21:50:00,156 [INFO] core.evaluator_v2: [streaming] qmsum (50샘플, budget=20%)
+2026-06-07 21:50:45,444 [INFO] core.evaluator_v2:   [5/50] avg=9.52
+2026-06-07 21:51:38,718 [INFO] core.evaluator_v2:   [10/50] avg=8.55
+2026-06-07 21:52:18,213 [INFO] core.evaluator_v2:   [15/50] avg=8.64
+2026-06-07 21:53:14,581 [INFO] core.evaluator_v2:   [20/50] avg=8.92
+2026-06-07 21:54:03,927 [INFO] core.evaluator_v2:   [25/50] avg=8.87
+2026-06-07 21:54:55,495 [INFO] core.evaluator_v2:   [30/50] avg=9.40
+2026-06-07 21:55:50,997 [INFO] core.evaluator_v2:   [35/50] avg=9.37
+2026-06-07 21:56:39,244 [INFO] core.evaluator_v2:   [40/50] avg=9.46
+2026-06-07 21:57:31,168 [INFO] core.evaluator_v2:   [45/50] avg=9.40
+2026-06-07 21:58:26,774 [INFO] core.evaluator_v2:   [50/50] avg=9.21
+2026-06-07 21:58:26,777 [INFO] __main__:   → score=9.21, mem_red=80.0%, ttft=967.2ms
+2026-06-07 21:58:26,778 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 21:58:26,779 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-07 21:58:26,780 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 21:58:26,782 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 21:58:26,783 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 21:58:26,856 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 21:58:26,890 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 21:58:27,855 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-07 21:58:27,858 [INFO] core.evaluator_v2: [h2o] narrativeqa (50샘플, budget=20%)
+2026-06-07 21:58:56,060 [INFO] core.evaluator_v2:   [5/50] avg=5.90
+2026-06-07 21:59:19,805 [INFO] core.evaluator_v2:   [10/50] avg=14.09
+2026-06-07 21:59:48,496 [INFO] core.evaluator_v2:   [15/50] avg=11.53
+2026-06-07 22:00:22,035 [INFO] core.evaluator_v2:   [20/50] avg=11.42
+2026-06-07 22:00:46,504 [INFO] core.evaluator_v2:   [25/50] avg=14.30
+2026-06-07 22:01:10,487 [INFO] core.evaluator_v2:   [30/50] avg=15.13
+2026-06-07 22:01:37,111 [INFO] core.evaluator_v2:   [35/50] avg=13.76
+2026-06-07 22:01:58,046 [INFO] core.evaluator_v2:   [40/50] avg=12.86
+2026-06-07 22:02:21,552 [INFO] core.evaluator_v2:   [45/50] avg=13.25
+2026-06-07 22:02:49,626 [INFO] core.evaluator_v2:   [50/50] avg=12.36
+2026-06-07 22:02:49,628 [INFO] __main__:   → score=12.36, mem_red=80.0%, ttft=1461.5ms
+2026-06-07 22:02:49,629 [INFO] __main__: 
+  Task: qasper
+2026-06-07 22:02:49,630 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 22:02:49,718 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:02:49,748 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:02:50,774 [INFO] core.dataset_loader: Loaded 50 samples from qasper
+2026-06-07 22:02:50,777 [INFO] core.evaluator_v2: [h2o] qasper (50샘플, budget=20%)
+2026-06-07 22:03:13,670 [INFO] core.evaluator_v2:   [5/50] avg=25.86
+2026-06-07 22:03:40,157 [INFO] core.evaluator_v2:   [10/50] avg=24.77
+2026-06-07 22:04:07,170 [INFO] core.evaluator_v2:   [15/50] avg=24.06
+2026-06-07 22:04:27,777 [INFO] core.evaluator_v2:   [20/50] avg=26.05
+2026-06-07 22:04:50,241 [INFO] core.evaluator_v2:   [25/50] avg=26.20
+2026-06-07 22:05:15,165 [INFO] core.evaluator_v2:   [30/50] avg=24.53
+2026-06-07 22:05:37,402 [INFO] core.evaluator_v2:   [35/50] avg=22.92
+2026-06-07 22:06:02,310 [INFO] core.evaluator_v2:   [40/50] avg=22.66
+2026-06-07 22:06:32,586 [INFO] core.evaluator_v2:   [45/50] avg=22.09
+2026-06-07 22:07:02,014 [INFO] core.evaluator_v2:   [50/50] avg=21.36
+2026-06-07 22:07:02,015 [INFO] __main__:   → score=21.36, mem_red=80.0%, ttft=1290.6ms
+2026-06-07 22:07:02,016 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 22:07:02,017 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 22:07:02,089 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:07:02,222 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:07:03,065 [INFO] core.dataset_loader: Loaded 50 samples from multifieldqa_en
+2026-06-07 22:07:03,068 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (50샘플, budget=20%)
+2026-06-07 22:07:34,612 [INFO] core.evaluator_v2:   [5/50] avg=65.74
+2026-06-07 22:07:55,816 [INFO] core.evaluator_v2:   [10/50] avg=50.71
+2026-06-07 22:08:21,831 [INFO] core.evaluator_v2:   [15/50] avg=39.75
+2026-06-07 22:08:54,058 [INFO] core.evaluator_v2:   [20/50] avg=40.93
+2026-06-07 22:09:28,111 [INFO] core.evaluator_v2:   [25/50] avg=42.80
+2026-06-07 22:09:56,879 [INFO] core.evaluator_v2:   [30/50] avg=42.28
+2026-06-07 22:10:19,772 [INFO] core.evaluator_v2:   [35/50] avg=38.32
+2026-06-07 22:10:50,448 [INFO] core.evaluator_v2:   [40/50] avg=36.53
+2026-06-07 22:11:15,313 [INFO] core.evaluator_v2:   [45/50] avg=37.69
+2026-06-07 22:11:39,581 [INFO] core.evaluator_v2:   [50/50] avg=40.08
+2026-06-07 22:11:39,584 [INFO] __main__:   → score=40.08, mem_red=80.0%, ttft=1573.9ms
+2026-06-07 22:11:39,585 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 22:11:39,586 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 22:11:39,687 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:11:39,716 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:11:40,666 [INFO] core.dataset_loader: Loaded 50 samples from hotpotqa
+2026-06-07 22:11:40,668 [INFO] core.evaluator_v2: [h2o] hotpotqa (50샘플, budget=20%)
+2026-06-07 22:12:05,267 [INFO] core.evaluator_v2:   [5/50] avg=4.62
+2026-06-07 22:12:28,050 [INFO] core.evaluator_v2:   [10/50] avg=16.20
+2026-06-07 22:12:56,466 [INFO] core.evaluator_v2:   [15/50] avg=12.66
+2026-06-07 22:13:21,480 [INFO] core.evaluator_v2:   [20/50] avg=14.88
+2026-06-07 22:13:45,452 [INFO] core.evaluator_v2:   [25/50] avg=12.70
+2026-06-07 22:14:12,638 [INFO] core.evaluator_v2:   [30/50] avg=10.59
+2026-06-07 22:14:39,216 [INFO] core.evaluator_v2:   [35/50] avg=9.24
+2026-06-07 22:15:03,761 [INFO] core.evaluator_v2:   [40/50] avg=9.86
+2026-06-07 22:15:38,582 [INFO] core.evaluator_v2:   [45/50] avg=10.11
+2026-06-07 22:16:04,273 [INFO] core.evaluator_v2:   [50/50] avg=10.05
+2026-06-07 22:16:04,273 [INFO] __main__:   → score=10.05, mem_red=80.0%, ttft=1400.2ms
+2026-06-07 22:16:04,274 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 22:16:04,274 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 22:16:04,341 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:16:04,373 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:16:05,204 [INFO] core.dataset_loader: Loaded 50 samples from 2wikimqa
+2026-06-07 22:16:05,212 [INFO] core.evaluator_v2: [h2o] 2wikimqa (50샘플, budget=20%)
+2026-06-07 22:16:49,519 [INFO] core.evaluator_v2:   [5/50] avg=3.61
+2026-06-07 22:17:18,468 [INFO] core.evaluator_v2:   [10/50] avg=7.14
+2026-06-07 22:17:45,086 [INFO] core.evaluator_v2:   [15/50] avg=8.46
+2026-06-07 22:18:18,356 [INFO] core.evaluator_v2:   [20/50] avg=8.55
+2026-06-07 22:18:52,468 [INFO] core.evaluator_v2:   [25/50] avg=7.74
+2026-06-07 22:19:17,931 [INFO] core.evaluator_v2:   [30/50] avg=10.89
+2026-06-07 22:19:42,372 [INFO] core.evaluator_v2:   [35/50] avg=11.13
+2026-06-07 22:20:13,958 [INFO] core.evaluator_v2:   [40/50] avg=12.47
+2026-06-07 22:20:40,767 [INFO] core.evaluator_v2:   [45/50] avg=11.48
+2026-06-07 22:21:07,176 [INFO] core.evaluator_v2:   [50/50] avg=11.20
+2026-06-07 22:21:07,177 [INFO] __main__:   → score=11.20, mem_red=80.0%, ttft=1434.0ms
+2026-06-07 22:21:07,178 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 22:21:07,179 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 22:21:07,256 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:21:07,288 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:21:08,247 [INFO] core.dataset_loader: Loaded 50 samples from gov_report
+2026-06-07 22:21:08,249 [INFO] core.evaluator_v2: [h2o] gov_report (50샘플, budget=20%)
+2026-06-07 22:22:16,093 [INFO] core.evaluator_v2:   [5/50] avg=13.64
+2026-06-07 22:23:16,705 [INFO] core.evaluator_v2:   [10/50] avg=12.43
+2026-06-07 22:24:21,439 [INFO] core.evaluator_v2:   [15/50] avg=13.87
+2026-06-07 22:25:27,865 [INFO] core.evaluator_v2:   [20/50] avg=15.95
+2026-06-07 22:26:28,445 [INFO] core.evaluator_v2:   [25/50] avg=15.31
+2026-06-07 22:27:17,087 [INFO] core.evaluator_v2:   [30/50] avg=15.06
+2026-06-07 22:28:07,565 [INFO] core.evaluator_v2:   [35/50] avg=14.68
+2026-06-07 22:28:55,786 [INFO] core.evaluator_v2:   [40/50] avg=14.89
+2026-06-07 22:29:44,345 [INFO] core.evaluator_v2:   [45/50] avg=14.99
+2026-06-07 22:30:34,143 [INFO] core.evaluator_v2:   [50/50] avg=14.99
+2026-06-07 22:30:34,145 [INFO] __main__:   → score=14.99, mem_red=80.0%, ttft=1262.4ms
+2026-06-07 22:30:34,146 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 22:30:34,146 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 22:30:34,219 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:30:34,247 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:30:35,190 [INFO] core.dataset_loader: Loaded 50 samples from qmsum
+2026-06-07 22:30:35,192 [INFO] core.evaluator_v2: [h2o] qmsum (50샘플, budget=20%)
+2026-06-07 22:31:15,565 [INFO] core.evaluator_v2:   [5/50] avg=11.46
+2026-06-07 22:31:54,251 [INFO] core.evaluator_v2:   [10/50] avg=10.06
+2026-06-07 22:32:36,130 [INFO] core.evaluator_v2:   [15/50] avg=9.50
+2026-06-07 22:33:15,719 [INFO] core.evaluator_v2:   [20/50] avg=10.07
+2026-06-07 22:33:56,253 [INFO] core.evaluator_v2:   [25/50] avg=10.23
+2026-06-07 22:34:39,570 [INFO] core.evaluator_v2:   [30/50] avg=10.70
+2026-06-07 22:35:23,037 [INFO] core.evaluator_v2:   [35/50] avg=10.85
+2026-06-07 22:36:07,795 [INFO] core.evaluator_v2:   [40/50] avg=10.89
+2026-06-07 22:36:44,973 [INFO] core.evaluator_v2:   [45/50] avg=10.79
+2026-06-07 22:37:23,102 [INFO] core.evaluator_v2:   [50/50] avg=10.81
+2026-06-07 22:37:23,111 [INFO] __main__:   → score=10.81, mem_red=80.0%, ttft=1226.4ms
+2026-06-07 22:37:23,112 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 22:37:23,112 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-07 22:37:23,113 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 22:37:23,113 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 22:37:23,113 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 22:37:23,182 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:37:23,213 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:37:24,271 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-07 22:37:24,274 [INFO] core.evaluator_v2: [snapkv] narrativeqa (50샘플, budget=20%)
+2026-06-07 22:37:46,046 [INFO] core.evaluator_v2:   [5/50] avg=9.48
+2026-06-07 22:38:09,459 [INFO] core.evaluator_v2:   [10/50] avg=7.28
+2026-06-07 22:38:31,053 [INFO] core.evaluator_v2:   [15/50] avg=6.85
+2026-06-07 22:38:50,223 [INFO] core.evaluator_v2:   [20/50] avg=7.36
+2026-06-07 22:39:10,812 [INFO] core.evaluator_v2:   [25/50] avg=11.35
+2026-06-07 22:39:30,428 [INFO] core.evaluator_v2:   [30/50] avg=11.49
+2026-06-07 22:39:51,175 [INFO] core.evaluator_v2:   [35/50] avg=11.00
+2026-06-07 22:40:12,015 [INFO] core.evaluator_v2:   [40/50] avg=11.04
+2026-06-07 22:40:33,823 [INFO] core.evaluator_v2:   [45/50] avg=11.89
+2026-06-07 22:40:55,410 [INFO] core.evaluator_v2:   [50/50] avg=11.43
+2026-06-07 22:40:55,412 [INFO] __main__:   → score=11.43, mem_red=80.0%, ttft=1231.3ms
+2026-06-07 22:40:55,412 [INFO] __main__: 
+  Task: qasper
+2026-06-07 22:40:55,413 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 22:40:55,482 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:40:55,509 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:40:56,371 [INFO] core.dataset_loader: Loaded 50 samples from qasper
+2026-06-07 22:40:56,373 [INFO] core.evaluator_v2: [snapkv] qasper (50샘플, budget=20%)
+2026-06-07 22:41:16,444 [INFO] core.evaluator_v2:   [5/50] avg=23.44
+2026-06-07 22:41:36,436 [INFO] core.evaluator_v2:   [10/50] avg=25.32
+2026-06-07 22:41:59,381 [INFO] core.evaluator_v2:   [15/50] avg=22.67
+2026-06-07 22:42:18,124 [INFO] core.evaluator_v2:   [20/50] avg=24.21
+2026-06-07 22:42:38,664 [INFO] core.evaluator_v2:   [25/50] avg=24.23
+2026-06-07 22:42:58,969 [INFO] core.evaluator_v2:   [30/50] avg=22.95
+2026-06-07 22:43:18,071 [INFO] core.evaluator_v2:   [35/50] avg=21.21
+2026-06-07 22:43:39,314 [INFO] core.evaluator_v2:   [40/50] avg=19.98
+2026-06-07 22:44:03,726 [INFO] core.evaluator_v2:   [45/50] avg=20.18
+2026-06-07 22:44:24,499 [INFO] core.evaluator_v2:   [50/50] avg=20.89
+2026-06-07 22:44:24,508 [INFO] __main__:   → score=20.89, mem_red=80.0%, ttft=1102.6ms
+2026-06-07 22:44:24,509 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 22:44:24,510 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 22:44:24,581 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:44:24,612 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:44:25,468 [INFO] core.dataset_loader: Loaded 50 samples from multifieldqa_en
+2026-06-07 22:44:25,470 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (50샘플, budget=20%)
+2026-06-07 22:44:55,689 [INFO] core.evaluator_v2:   [5/50] avg=57.68
+2026-06-07 22:45:16,365 [INFO] core.evaluator_v2:   [10/50] avg=52.37
+2026-06-07 22:45:36,212 [INFO] core.evaluator_v2:   [15/50] avg=41.92
+2026-06-07 22:46:01,848 [INFO] core.evaluator_v2:   [20/50] avg=42.56
+2026-06-07 22:46:26,580 [INFO] core.evaluator_v2:   [25/50] avg=44.99
+2026-06-07 22:46:51,742 [INFO] core.evaluator_v2:   [30/50] avg=44.43
+2026-06-07 22:47:13,949 [INFO] core.evaluator_v2:   [35/50] avg=39.97
+2026-06-07 22:47:37,566 [INFO] core.evaluator_v2:   [40/50] avg=38.18
+2026-06-07 22:47:58,081 [INFO] core.evaluator_v2:   [45/50] avg=39.15
+2026-06-07 22:48:18,217 [INFO] core.evaluator_v2:   [50/50] avg=43.34
+2026-06-07 22:48:18,217 [INFO] __main__:   → score=43.34, mem_red=80.0%, ttft=1368.5ms
+2026-06-07 22:48:18,218 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 22:48:18,219 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 22:48:18,321 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:48:18,352 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:48:19,283 [INFO] core.dataset_loader: Loaded 50 samples from hotpotqa
+2026-06-07 22:48:19,285 [INFO] core.evaluator_v2: [snapkv] hotpotqa (50샘플, budget=20%)
+2026-06-07 22:48:38,830 [INFO] core.evaluator_v2:   [5/50] avg=40.00
+2026-06-07 22:48:56,887 [INFO] core.evaluator_v2:   [10/50] avg=36.02
+2026-06-07 22:49:16,783 [INFO] core.evaluator_v2:   [15/50] avg=30.68
+2026-06-07 22:49:36,591 [INFO] core.evaluator_v2:   [20/50] avg=34.68
+2026-06-07 22:49:57,721 [INFO] core.evaluator_v2:   [25/50] avg=29.21
+2026-06-07 22:50:19,023 [INFO] core.evaluator_v2:   [30/50] avg=24.34
+2026-06-07 22:50:38,519 [INFO] core.evaluator_v2:   [35/50] avg=21.44
+2026-06-07 22:50:57,817 [INFO] core.evaluator_v2:   [40/50] avg=22.21
+2026-06-07 22:51:19,967 [INFO] core.evaluator_v2:   [45/50] avg=20.79
+2026-06-07 22:51:40,319 [INFO] core.evaluator_v2:   [50/50] avg=20.23
+2026-06-07 22:51:40,320 [INFO] __main__:   → score=20.23, mem_red=80.0%, ttft=1242.8ms
+2026-06-07 22:51:40,321 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 22:51:40,322 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 22:51:40,398 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:51:40,442 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:51:41,326 [INFO] core.dataset_loader: Loaded 50 samples from 2wikimqa
+2026-06-07 22:51:41,328 [INFO] core.evaluator_v2: [snapkv] 2wikimqa (50샘플, budget=20%)
+2026-06-07 22:52:07,960 [INFO] core.evaluator_v2:   [5/50] avg=7.64
+2026-06-07 22:52:27,905 [INFO] core.evaluator_v2:   [10/50] avg=13.44
+2026-06-07 22:52:50,388 [INFO] core.evaluator_v2:   [15/50] avg=12.42
+2026-06-07 22:53:17,477 [INFO] core.evaluator_v2:   [20/50] avg=11.58
+2026-06-07 22:53:42,830 [INFO] core.evaluator_v2:   [25/50] avg=10.79
+2026-06-07 22:54:02,640 [INFO] core.evaluator_v2:   [30/50] avg=13.23
+2026-06-07 22:54:24,039 [INFO] core.evaluator_v2:   [35/50] avg=12.61
+2026-06-07 22:54:45,943 [INFO] core.evaluator_v2:   [40/50] avg=14.59
+2026-06-07 22:55:05,309 [INFO] core.evaluator_v2:   [45/50] avg=13.99
+2026-06-07 22:55:27,052 [INFO] core.evaluator_v2:   [50/50] avg=13.67
+2026-06-07 22:55:27,052 [INFO] __main__:   → score=13.67, mem_red=80.0%, ttft=1259.8ms
+2026-06-07 22:55:27,053 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 22:55:27,053 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 22:55:27,130 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 22:55:27,160 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 22:55:28,122 [INFO] core.dataset_loader: Loaded 50 samples from gov_report
+2026-06-07 22:55:28,124 [INFO] core.evaluator_v2: [snapkv] gov_report (50샘플, budget=20%)
+2026-06-07 22:56:20,216 [INFO] core.evaluator_v2:   [5/50] avg=13.59
+2026-06-07 22:57:03,832 [INFO] core.evaluator_v2:   [10/50] avg=12.99
+2026-06-07 22:57:50,158 [INFO] core.evaluator_v2:   [15/50] avg=13.88
+2026-06-07 22:58:41,208 [INFO] core.evaluator_v2:   [20/50] avg=16.06
+2026-06-07 22:59:36,184 [INFO] core.evaluator_v2:   [25/50] avg=15.71
+2026-06-07 23:00:26,697 [INFO] core.evaluator_v2:   [30/50] avg=15.48
+2026-06-07 23:01:20,951 [INFO] core.evaluator_v2:   [35/50] avg=15.23
+2026-06-07 23:02:13,815 [INFO] core.evaluator_v2:   [40/50] avg=15.53
+2026-06-07 23:02:58,781 [INFO] core.evaluator_v2:   [45/50] avg=15.59
+2026-06-07 23:03:56,895 [INFO] core.evaluator_v2:   [50/50] avg=15.71
+2026-06-07 23:03:56,911 [INFO] __main__:   → score=15.71, mem_red=80.0%, ttft=1018.9ms
+2026-06-07 23:03:56,912 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 23:03:56,913 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 23:03:57,017 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:03:57,049 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:03:58,020 [INFO] core.dataset_loader: Loaded 50 samples from qmsum
+2026-06-07 23:03:58,022 [INFO] core.evaluator_v2: [snapkv] qmsum (50샘플, budget=20%)
+2026-06-07 23:04:33,892 [INFO] core.evaluator_v2:   [5/50] avg=10.92
+2026-06-07 23:05:11,064 [INFO] core.evaluator_v2:   [10/50] avg=8.81
+2026-06-07 23:05:45,615 [INFO] core.evaluator_v2:   [15/50] avg=9.34
+2026-06-07 23:06:22,618 [INFO] core.evaluator_v2:   [20/50] avg=10.16
+2026-06-07 23:06:58,675 [INFO] core.evaluator_v2:   [25/50] avg=10.45
+2026-06-07 23:07:32,940 [INFO] core.evaluator_v2:   [30/50] avg=10.83
+2026-06-07 23:08:06,158 [INFO] core.evaluator_v2:   [35/50] avg=11.10
+2026-06-07 23:08:40,494 [INFO] core.evaluator_v2:   [40/50] avg=11.13
+2026-06-07 23:09:13,707 [INFO] core.evaluator_v2:   [45/50] avg=10.75
+2026-06-07 23:09:48,278 [INFO] core.evaluator_v2:   [50/50] avg=10.67
+2026-06-07 23:09:48,279 [INFO] __main__:   → score=10.67, mem_red=80.0%, ttft=1073.4ms
+2026-06-07 23:09:48,279 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 23:09:48,280 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-07 23:09:48,280 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 23:09:48,280 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 23:09:48,281 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 23:09:48,348 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:09:48,378 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:09:49,413 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-07 23:09:49,415 [INFO] core.evaluator_v2: [pyramidkv] narrativeqa (50샘플, budget=20%)
+2026-06-07 23:10:11,664 [INFO] core.evaluator_v2:   [5/50] avg=10.49
+2026-06-07 23:10:35,827 [INFO] core.evaluator_v2:   [10/50] avg=16.31
+2026-06-07 23:10:59,138 [INFO] core.evaluator_v2:   [15/50] avg=12.90
+2026-06-07 23:11:19,039 [INFO] core.evaluator_v2:   [20/50] avg=11.97
+2026-06-07 23:11:42,206 [INFO] core.evaluator_v2:   [25/50] avg=14.85
+2026-06-07 23:12:01,600 [INFO] core.evaluator_v2:   [30/50] avg=15.18
+2026-06-07 23:12:24,286 [INFO] core.evaluator_v2:   [35/50] avg=14.10
+2026-06-07 23:12:44,176 [INFO] core.evaluator_v2:   [40/50] avg=13.14
+2026-06-07 23:13:06,902 [INFO] core.evaluator_v2:   [45/50] avg=13.20
+2026-06-07 23:13:29,040 [INFO] core.evaluator_v2:   [50/50] avg=12.61
+2026-06-07 23:13:29,042 [INFO] __main__:   → score=12.61, mem_red=80.0%, ttft=1341.6ms
+2026-06-07 23:13:29,042 [INFO] __main__: 
+  Task: qasper
+2026-06-07 23:13:29,043 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 23:13:29,156 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:13:29,192 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:13:29,872 [INFO] core.dataset_loader: Loaded 50 samples from qasper
+2026-06-07 23:13:29,873 [INFO] core.evaluator_v2: [pyramidkv] qasper (50샘플, budget=20%)
+2026-06-07 23:13:51,893 [INFO] core.evaluator_v2:   [5/50] avg=22.64
+2026-06-07 23:14:12,703 [INFO] core.evaluator_v2:   [10/50] avg=25.58
+2026-06-07 23:14:37,359 [INFO] core.evaluator_v2:   [15/50] avg=23.35
+2026-06-07 23:14:56,719 [INFO] core.evaluator_v2:   [20/50] avg=25.07
+2026-06-07 23:15:21,261 [INFO] core.evaluator_v2:   [25/50] avg=24.66
+2026-06-07 23:15:40,615 [INFO] core.evaluator_v2:   [30/50] avg=24.26
+2026-06-07 23:16:03,022 [INFO] core.evaluator_v2:   [35/50] avg=22.78
+2026-06-07 23:16:24,934 [INFO] core.evaluator_v2:   [40/50] avg=22.12
+2026-06-07 23:16:51,402 [INFO] core.evaluator_v2:   [45/50] avg=22.53
+2026-06-07 23:17:13,169 [INFO] core.evaluator_v2:   [50/50] avg=23.13
+2026-06-07 23:17:13,169 [INFO] __main__:   → score=23.13, mem_red=80.0%, ttft=1220.1ms
+2026-06-07 23:17:13,170 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 23:17:13,170 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 23:17:13,240 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:17:13,270 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:17:14,095 [INFO] core.dataset_loader: Loaded 50 samples from multifieldqa_en
+2026-06-07 23:17:14,096 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (50샘플, budget=20%)
+2026-06-07 23:17:44,630 [INFO] core.evaluator_v2:   [5/50] avg=53.10
+2026-06-07 23:18:05,385 [INFO] core.evaluator_v2:   [10/50] avg=44.75
+2026-06-07 23:18:25,704 [INFO] core.evaluator_v2:   [15/50] avg=37.45
+2026-06-07 23:18:51,140 [INFO] core.evaluator_v2:   [20/50] avg=39.64
+2026-06-07 23:19:17,188 [INFO] core.evaluator_v2:   [25/50] avg=41.65
+2026-06-07 23:19:42,546 [INFO] core.evaluator_v2:   [30/50] avg=40.95
+2026-06-07 23:20:05,102 [INFO] core.evaluator_v2:   [35/50] avg=36.18
+2026-06-07 23:20:29,497 [INFO] core.evaluator_v2:   [40/50] avg=34.97
+2026-06-07 23:20:49,683 [INFO] core.evaluator_v2:   [45/50] avg=37.36
+2026-06-07 23:21:10,314 [INFO] core.evaluator_v2:   [50/50] avg=38.87
+2026-06-07 23:21:10,315 [INFO] __main__:   → score=38.87, mem_red=80.0%, ttft=1468.3ms
+2026-06-07 23:21:10,316 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 23:21:10,317 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 23:21:10,387 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:21:10,420 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:21:11,600 [INFO] core.dataset_loader: Loaded 50 samples from hotpotqa
+2026-06-07 23:21:11,609 [INFO] core.evaluator_v2: [pyramidkv] hotpotqa (50샘플, budget=20%)
+2026-06-07 23:21:31,588 [INFO] core.evaluator_v2:   [5/50] avg=40.00
+2026-06-07 23:21:49,871 [INFO] core.evaluator_v2:   [10/50] avg=36.02
+2026-06-07 23:22:10,373 [INFO] core.evaluator_v2:   [15/50] avg=30.68
+2026-06-07 23:22:29,765 [INFO] core.evaluator_v2:   [20/50] avg=36.34
+2026-06-07 23:22:51,389 [INFO] core.evaluator_v2:   [25/50] avg=30.54
+2026-06-07 23:23:13,498 [INFO] core.evaluator_v2:   [30/50] avg=25.45
+2026-06-07 23:23:33,479 [INFO] core.evaluator_v2:   [35/50] avg=22.39
+2026-06-07 23:23:52,650 [INFO] core.evaluator_v2:   [40/50] avg=23.03
+2026-06-07 23:24:14,932 [INFO] core.evaluator_v2:   [45/50] avg=21.55
+2026-06-07 23:24:35,909 [INFO] core.evaluator_v2:   [50/50] avg=20.67
+2026-06-07 23:24:35,910 [INFO] __main__:   → score=20.67, mem_red=80.0%, ttft=1348.8ms
+2026-06-07 23:24:35,910 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 23:24:35,911 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 23:24:35,992 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:24:36,023 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:24:36,941 [INFO] core.dataset_loader: Loaded 50 samples from 2wikimqa
+2026-06-07 23:24:36,942 [INFO] core.evaluator_v2: [pyramidkv] 2wikimqa (50샘플, budget=20%)
+2026-06-07 23:25:06,324 [INFO] core.evaluator_v2:   [5/50] avg=9.49
+2026-06-07 23:25:27,426 [INFO] core.evaluator_v2:   [10/50] avg=14.36
+2026-06-07 23:25:49,844 [INFO] core.evaluator_v2:   [15/50] avg=13.11
+2026-06-07 23:26:15,151 [INFO] core.evaluator_v2:   [20/50] avg=13.55
+2026-06-07 23:26:42,964 [INFO] core.evaluator_v2:   [25/50] avg=12.01
+2026-06-07 23:27:02,938 [INFO] core.evaluator_v2:   [30/50] avg=15.50
+2026-06-07 23:27:23,868 [INFO] core.evaluator_v2:   [35/50] avg=15.59
+2026-06-07 23:27:46,084 [INFO] core.evaluator_v2:   [40/50] avg=18.10
+2026-06-07 23:28:05,615 [INFO] core.evaluator_v2:   [45/50] avg=17.10
+2026-06-07 23:28:31,218 [INFO] core.evaluator_v2:   [50/50] avg=16.04
+2026-06-07 23:28:31,219 [INFO] __main__:   → score=16.04, mem_red=80.0%, ttft=1337.1ms
+2026-06-07 23:28:31,219 [INFO] __main__: 
+  Task: gov_report
+2026-06-07 23:28:31,219 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-07 23:28:31,287 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:28:31,315 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:28:32,301 [INFO] core.dataset_loader: Loaded 50 samples from gov_report
+2026-06-07 23:28:32,308 [INFO] core.evaluator_v2: [pyramidkv] gov_report (50샘플, budget=20%)
+2026-06-07 23:29:23,112 [INFO] core.evaluator_v2:   [5/50] avg=13.52
+2026-06-07 23:30:16,914 [INFO] core.evaluator_v2:   [10/50] avg=13.17
+2026-06-07 23:31:08,612 [INFO] core.evaluator_v2:   [15/50] avg=14.32
+2026-06-07 23:32:01,448 [INFO] core.evaluator_v2:   [20/50] avg=16.34
+2026-06-07 23:32:53,999 [INFO] core.evaluator_v2:   [25/50] avg=15.67
+2026-06-07 23:33:47,436 [INFO] core.evaluator_v2:   [30/50] avg=15.49
+2026-06-07 23:34:39,508 [INFO] core.evaluator_v2:   [35/50] avg=15.07
+2026-06-07 23:35:34,880 [INFO] core.evaluator_v2:   [40/50] avg=15.41
+2026-06-07 23:36:20,282 [INFO] core.evaluator_v2:   [45/50] avg=15.46
+2026-06-07 23:37:14,198 [INFO] core.evaluator_v2:   [50/50] avg=15.63
+2026-06-07 23:37:14,207 [INFO] __main__:   → score=15.63, mem_red=80.0%, ttft=1145.2ms
+2026-06-07 23:37:14,208 [INFO] __main__: 
+  Task: qmsum
+2026-06-07 23:37:14,208 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-07 23:37:14,292 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:37:14,322 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:37:15,258 [INFO] core.dataset_loader: Loaded 50 samples from qmsum
+2026-06-07 23:37:15,260 [INFO] core.evaluator_v2: [pyramidkv] qmsum (50샘플, budget=20%)
+2026-06-07 23:37:51,558 [INFO] core.evaluator_v2:   [5/50] avg=12.08
+2026-06-07 23:38:34,385 [INFO] core.evaluator_v2:   [10/50] avg=10.14
+2026-06-07 23:39:12,049 [INFO] core.evaluator_v2:   [15/50] avg=10.06
+2026-06-07 23:39:50,774 [INFO] core.evaluator_v2:   [20/50] avg=10.72
+2026-06-07 23:40:29,999 [INFO] core.evaluator_v2:   [25/50] avg=10.83
+2026-06-07 23:41:09,176 [INFO] core.evaluator_v2:   [30/50] avg=11.09
+2026-06-07 23:41:47,265 [INFO] core.evaluator_v2:   [35/50] avg=11.12
+2026-06-07 23:42:24,943 [INFO] core.evaluator_v2:   [40/50] avg=10.90
+2026-06-07 23:43:02,701 [INFO] core.evaluator_v2:   [45/50] avg=10.64
+2026-06-07 23:43:40,863 [INFO] core.evaluator_v2:   [50/50] avg=10.48
+2026-06-07 23:43:40,864 [INFO] __main__:   → score=10.48, mem_red=80.0%, ttft=1183.8ms
+2026-06-07 23:43:40,864 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-07 23:43:40,865 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-07 23:43:40,865 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-07 23:43:40,865 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-07 23:43:40,866 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-07 23:43:40,985 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:43:41,017 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:43:42,149 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-07 23:43:42,151 [INFO] core.evaluator_v2: [adakv] narrativeqa (50샘플, budget=20%)
+2026-06-07 23:44:05,877 [INFO] core.evaluator_v2:   [5/50] avg=5.90
+2026-06-07 23:44:27,193 [INFO] core.evaluator_v2:   [10/50] avg=14.09
+2026-06-07 23:44:51,646 [INFO] core.evaluator_v2:   [15/50] avg=11.53
+2026-06-07 23:45:19,217 [INFO] core.evaluator_v2:   [20/50] avg=11.42
+2026-06-07 23:45:42,027 [INFO] core.evaluator_v2:   [25/50] avg=14.30
+2026-06-07 23:46:03,033 [INFO] core.evaluator_v2:   [30/50] avg=15.13
+2026-06-07 23:46:26,862 [INFO] core.evaluator_v2:   [35/50] avg=13.76
+2026-06-07 23:46:47,075 [INFO] core.evaluator_v2:   [40/50] avg=12.86
+2026-06-07 23:47:09,754 [INFO] core.evaluator_v2:   [45/50] avg=13.25
+2026-06-07 23:47:34,744 [INFO] core.evaluator_v2:   [50/50] avg=12.36
+2026-06-07 23:47:34,745 [INFO] __main__:   → score=12.36, mem_red=80.0%, ttft=1356.0ms
+2026-06-07 23:47:34,746 [INFO] __main__: 
+  Task: qasper
+2026-06-07 23:47:34,747 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-07 23:47:34,818 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:47:34,849 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:47:35,883 [INFO] core.dataset_loader: Loaded 50 samples from qasper
+2026-06-07 23:47:35,885 [INFO] core.evaluator_v2: [adakv] qasper (50샘플, budget=20%)
+2026-06-07 23:47:55,689 [INFO] core.evaluator_v2:   [5/50] avg=25.86
+2026-06-07 23:48:18,028 [INFO] core.evaluator_v2:   [10/50] avg=24.77
+2026-06-07 23:48:41,454 [INFO] core.evaluator_v2:   [15/50] avg=24.06
+2026-06-07 23:49:02,539 [INFO] core.evaluator_v2:   [20/50] avg=26.05
+2026-06-07 23:49:24,295 [INFO] core.evaluator_v2:   [25/50] avg=26.20
+2026-06-07 23:49:48,086 [INFO] core.evaluator_v2:   [30/50] avg=24.53
+2026-06-07 23:50:09,352 [INFO] core.evaluator_v2:   [35/50] avg=22.92
+2026-06-07 23:50:30,990 [INFO] core.evaluator_v2:   [40/50] avg=22.66
+2026-06-07 23:50:56,713 [INFO] core.evaluator_v2:   [45/50] avg=22.09
+2026-06-07 23:51:22,738 [INFO] core.evaluator_v2:   [50/50] avg=21.36
+2026-06-07 23:51:22,739 [INFO] __main__:   → score=21.36, mem_red=80.0%, ttft=1212.4ms
+2026-06-07 23:51:22,739 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-07 23:51:22,743 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-07 23:51:22,820 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:51:22,852 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:51:23,652 [INFO] core.dataset_loader: Loaded 50 samples from multifieldqa_en
+2026-06-07 23:51:23,654 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (50샘플, budget=20%)
+2026-06-07 23:51:53,806 [INFO] core.evaluator_v2:   [5/50] avg=65.74
+2026-06-07 23:52:14,908 [INFO] core.evaluator_v2:   [10/50] avg=50.71
+2026-06-07 23:52:38,215 [INFO] core.evaluator_v2:   [15/50] avg=39.75
+2026-06-07 23:53:04,487 [INFO] core.evaluator_v2:   [20/50] avg=40.93
+2026-06-07 23:53:33,988 [INFO] core.evaluator_v2:   [25/50] avg=42.80
+2026-06-07 23:53:58,790 [INFO] core.evaluator_v2:   [30/50] avg=42.28
+2026-06-07 23:54:19,629 [INFO] core.evaluator_v2:   [35/50] avg=38.32
+2026-06-07 23:54:44,694 [INFO] core.evaluator_v2:   [40/50] avg=36.53
+2026-06-07 23:55:06,853 [INFO] core.evaluator_v2:   [45/50] avg=37.69
+2026-06-07 23:55:28,893 [INFO] core.evaluator_v2:   [50/50] avg=40.08
+2026-06-07 23:55:28,893 [INFO] __main__:   → score=40.08, mem_red=80.0%, ttft=1449.6ms
+2026-06-07 23:55:28,894 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-07 23:55:28,894 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-07 23:55:29,003 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:55:29,043 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:55:29,977 [INFO] core.dataset_loader: Loaded 50 samples from hotpotqa
+2026-06-07 23:55:29,979 [INFO] core.evaluator_v2: [adakv] hotpotqa (50샘플, budget=20%)
+2026-06-07 23:55:52,158 [INFO] core.evaluator_v2:   [5/50] avg=4.62
+2026-06-07 23:56:12,680 [INFO] core.evaluator_v2:   [10/50] avg=16.20
+2026-06-07 23:56:35,519 [INFO] core.evaluator_v2:   [15/50] avg=12.66
+2026-06-07 23:56:57,811 [INFO] core.evaluator_v2:   [20/50] avg=14.88
+2026-06-07 23:57:20,517 [INFO] core.evaluator_v2:   [25/50] avg=12.70
+2026-06-07 23:57:45,476 [INFO] core.evaluator_v2:   [30/50] avg=10.59
+2026-06-07 23:58:09,381 [INFO] core.evaluator_v2:   [35/50] avg=9.24
+2026-06-07 23:58:30,177 [INFO] core.evaluator_v2:   [40/50] avg=9.86
+2026-06-07 23:58:57,857 [INFO] core.evaluator_v2:   [45/50] avg=10.11
+2026-06-07 23:59:21,417 [INFO] core.evaluator_v2:   [50/50] avg=10.05
+2026-06-07 23:59:21,418 [INFO] __main__:   → score=10.05, mem_red=80.0%, ttft=1306.1ms
+2026-06-07 23:59:21,418 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-07 23:59:21,419 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-07 23:59:21,487 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-07 23:59:21,520 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-07 23:59:22,324 [INFO] core.dataset_loader: Loaded 50 samples from 2wikimqa
+2026-06-07 23:59:22,326 [INFO] core.evaluator_v2: [adakv] 2wikimqa (50샘플, budget=20%)
+2026-06-07 23:59:58,827 [INFO] core.evaluator_v2:   [5/50] avg=3.61
+2026-06-08 00:00:31,411 [INFO] core.evaluator_v2:   [10/50] avg=7.14
+2026-06-08 00:00:55,112 [INFO] core.evaluator_v2:   [15/50] avg=8.46
+2026-06-08 00:01:23,952 [INFO] core.evaluator_v2:   [20/50] avg=8.55
+2026-06-08 00:01:54,046 [INFO] core.evaluator_v2:   [25/50] avg=7.74
+2026-06-08 00:02:16,463 [INFO] core.evaluator_v2:   [30/50] avg=10.89
+2026-06-08 00:02:38,552 [INFO] core.evaluator_v2:   [35/50] avg=11.13
+2026-06-08 00:03:04,684 [INFO] core.evaluator_v2:   [40/50] avg=12.47
+2026-06-08 00:03:26,758 [INFO] core.evaluator_v2:   [45/50] avg=11.48
+2026-06-08 00:03:49,857 [INFO] core.evaluator_v2:   [50/50] avg=11.20
+2026-06-08 00:03:49,858 [INFO] __main__:   → score=11.20, mem_red=80.0%, ttft=1360.3ms
+2026-06-08 00:03:49,858 [INFO] __main__: 
+  Task: gov_report
+2026-06-08 00:03:49,859 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-08 00:03:49,968 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:03:49,996 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:03:50,999 [INFO] core.dataset_loader: Loaded 50 samples from gov_report
+2026-06-08 00:03:51,008 [INFO] core.evaluator_v2: [adakv] gov_report (50샘플, budget=20%)
+2026-06-08 00:04:43,466 [INFO] core.evaluator_v2:   [5/50] avg=13.64
+2026-06-08 00:05:31,294 [INFO] core.evaluator_v2:   [10/50] avg=12.43
+2026-06-08 00:06:24,622 [INFO] core.evaluator_v2:   [15/50] avg=13.87
+2026-06-08 00:07:17,102 [INFO] core.evaluator_v2:   [20/50] avg=15.95
+2026-06-08 00:08:06,956 [INFO] core.evaluator_v2:   [25/50] avg=15.31
+2026-06-08 00:08:54,145 [INFO] core.evaluator_v2:   [30/50] avg=15.06
+2026-06-08 00:09:45,073 [INFO] core.evaluator_v2:   [35/50] avg=14.68
+2026-06-08 00:10:33,799 [INFO] core.evaluator_v2:   [40/50] avg=14.89
+2026-06-08 00:11:22,559 [INFO] core.evaluator_v2:   [45/50] avg=14.99
+2026-06-08 00:12:11,123 [INFO] core.evaluator_v2:   [50/50] avg=14.99
+2026-06-08 00:12:11,125 [INFO] __main__:   → score=14.99, mem_red=80.0%, ttft=1131.9ms
+2026-06-08 00:12:11,125 [INFO] __main__: 
+  Task: qmsum
+2026-06-08 00:12:11,126 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-08 00:12:11,197 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:12:11,237 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:12:12,254 [INFO] core.dataset_loader: Loaded 50 samples from qmsum
+2026-06-08 00:12:12,256 [INFO] core.evaluator_v2: [adakv] qmsum (50샘플, budget=20%)
+2026-06-08 00:12:52,757 [INFO] core.evaluator_v2:   [5/50] avg=11.46
+2026-06-08 00:13:31,124 [INFO] core.evaluator_v2:   [10/50] avg=10.06
+2026-06-08 00:14:12,212 [INFO] core.evaluator_v2:   [15/50] avg=9.50
+2026-06-08 00:14:51,591 [INFO] core.evaluator_v2:   [20/50] avg=10.07
+2026-06-08 00:15:33,559 [INFO] core.evaluator_v2:   [25/50] avg=10.23
+2026-06-08 00:16:16,341 [INFO] core.evaluator_v2:   [30/50] avg=10.70
+2026-06-08 00:16:59,011 [INFO] core.evaluator_v2:   [35/50] avg=10.85
+2026-06-08 00:17:43,502 [INFO] core.evaluator_v2:   [40/50] avg=10.89
+2026-06-08 00:18:19,272 [INFO] core.evaluator_v2:   [45/50] avg=10.79
+2026-06-08 00:18:57,134 [INFO] core.evaluator_v2:   [50/50] avg=10.81
+2026-06-08 00:18:57,135 [INFO] __main__:   → score=10.81, mem_red=80.0%, ttft=1207.8ms
+2026-06-08 00:18:57,137 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-08 00:18:57,137 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-08 00:18:57,137 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-08 00:18:57,138 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-08 00:18:57,138 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-08 00:18:57,222 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:18:57,251 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:18:58,415 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-08 00:18:58,418 [INFO] core.evaluator_v2: [ours] narrativeqa (50샘플, budget=20%)
+2026-06-08 00:19:23,857 [INFO] core.evaluator_v2:   [5/50] avg=6.28
+2026-06-08 00:19:45,619 [INFO] core.evaluator_v2:   [10/50] avg=15.67
+2026-06-08 00:20:06,498 [INFO] core.evaluator_v2:   [15/50] avg=13.32
+2026-06-08 00:20:27,929 [INFO] core.evaluator_v2:   [20/50] avg=11.85
+2026-06-08 00:20:51,650 [INFO] core.evaluator_v2:   [25/50] avg=13.51
+2026-06-08 00:21:15,274 [INFO] core.evaluator_v2:   [30/50] avg=15.30
+2026-06-08 00:21:39,916 [INFO] core.evaluator_v2:   [35/50] avg=14.08
+2026-06-08 00:22:05,519 [INFO] core.evaluator_v2:   [40/50] avg=13.86
+2026-06-08 00:22:27,566 [INFO] core.evaluator_v2:   [45/50] avg=13.57
+2026-06-08 00:22:52,255 [INFO] core.evaluator_v2:   [50/50] avg=13.03
+2026-06-08 00:22:52,257 [INFO] __main__:   → score=13.03, mem_red=80.0%, ttft=1548.7ms
+2026-06-08 00:22:52,258 [INFO] __main__: 
+  Task: qasper
+2026-06-08 00:22:52,258 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-08 00:22:52,331 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:22:52,438 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:22:53,459 [INFO] core.dataset_loader: Loaded 50 samples from qasper
+2026-06-08 00:22:53,462 [INFO] core.evaluator_v2: [ours] qasper (50샘플, budget=20%)
+2026-06-08 00:23:15,309 [INFO] core.evaluator_v2:   [5/50] avg=22.82
+2026-06-08 00:23:38,491 [INFO] core.evaluator_v2:   [10/50] avg=24.09
+2026-06-08 00:24:07,593 [INFO] core.evaluator_v2:   [15/50] avg=21.79
+2026-06-08 00:24:30,412 [INFO] core.evaluator_v2:   [20/50] avg=22.90
+2026-06-08 00:24:52,353 [INFO] core.evaluator_v2:   [25/50] avg=21.97
+2026-06-08 00:25:14,279 [INFO] core.evaluator_v2:   [30/50] avg=21.14
+2026-06-08 00:25:38,001 [INFO] core.evaluator_v2:   [35/50] avg=21.63
+2026-06-08 00:26:03,198 [INFO] core.evaluator_v2:   [40/50] avg=20.75
+2026-06-08 00:26:32,706 [INFO] core.evaluator_v2:   [45/50] avg=22.71
+2026-06-08 00:26:57,032 [INFO] core.evaluator_v2:   [50/50] avg=22.61
+2026-06-08 00:26:57,033 [INFO] __main__:   → score=22.61, mem_red=80.0%, ttft=1460.6ms
+2026-06-08 00:26:57,034 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-08 00:26:57,035 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-08 00:26:57,118 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:26:57,147 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:26:58,106 [INFO] core.dataset_loader: Loaded 50 samples from multifieldqa_en
+2026-06-08 00:26:58,108 [INFO] core.evaluator_v2: [ours] multifieldqa_en (50샘플, budget=20%)
+2026-06-08 00:27:32,325 [INFO] core.evaluator_v2:   [5/50] avg=54.21
+2026-06-08 00:27:54,228 [INFO] core.evaluator_v2:   [10/50] avg=46.06
+2026-06-08 00:28:23,217 [INFO] core.evaluator_v2:   [15/50] avg=35.47
+2026-06-08 00:28:53,849 [INFO] core.evaluator_v2:   [20/50] avg=35.01
+2026-06-08 00:29:24,801 [INFO] core.evaluator_v2:   [25/50] avg=35.58
+2026-06-08 00:29:54,513 [INFO] core.evaluator_v2:   [30/50] avg=35.03
+2026-06-08 00:30:31,476 [INFO] core.evaluator_v2:   [35/50] avg=30.19
+2026-06-08 00:30:57,463 [INFO] core.evaluator_v2:   [40/50] avg=30.19
+2026-06-08 00:31:19,338 [INFO] core.evaluator_v2:   [45/50] avg=31.40
+2026-06-08 00:31:47,484 [INFO] core.evaluator_v2:   [50/50] avg=32.04
+2026-06-08 00:31:47,485 [INFO] __main__:   → score=32.04, mem_red=80.0%, ttft=1680.2ms
+2026-06-08 00:31:47,486 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-08 00:31:47,487 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-08 00:31:47,581 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:31:47,612 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:31:48,681 [INFO] core.dataset_loader: Loaded 50 samples from hotpotqa
+2026-06-08 00:31:48,684 [INFO] core.evaluator_v2: [ours] hotpotqa (50샘플, budget=20%)
+2026-06-08 00:32:13,236 [INFO] core.evaluator_v2:   [5/50] avg=16.00
+2026-06-08 00:32:36,347 [INFO] core.evaluator_v2:   [10/50] avg=19.75
+2026-06-08 00:33:00,533 [INFO] core.evaluator_v2:   [15/50] avg=14.83
+2026-06-08 00:33:24,078 [INFO] core.evaluator_v2:   [20/50] avg=21.71
+2026-06-08 00:33:49,020 [INFO] core.evaluator_v2:   [25/50] avg=20.02
+2026-06-08 00:34:13,903 [INFO] core.evaluator_v2:   [30/50] avg=16.68
+2026-06-08 00:34:38,433 [INFO] core.evaluator_v2:   [35/50] avg=14.87
+2026-06-08 00:35:02,340 [INFO] core.evaluator_v2:   [40/50] avg=15.11
+2026-06-08 00:35:29,415 [INFO] core.evaluator_v2:   [45/50] avg=14.14
+2026-06-08 00:35:56,488 [INFO] core.evaluator_v2:   [50/50] avg=14.72
+2026-06-08 00:35:56,489 [INFO] __main__:   → score=14.72, mem_red=80.0%, ttft=1608.5ms
+2026-06-08 00:35:56,490 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-08 00:35:56,491 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-08 00:35:56,563 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:35:56,597 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:35:57,455 [INFO] core.dataset_loader: Loaded 50 samples from 2wikimqa
+2026-06-08 00:35:57,457 [INFO] core.evaluator_v2: [ours] 2wikimqa (50샘플, budget=20%)
+2026-06-08 00:36:32,573 [INFO] core.evaluator_v2:   [5/50] avg=6.84
+2026-06-08 00:36:56,789 [INFO] core.evaluator_v2:   [10/50] avg=7.31
+2026-06-08 00:37:23,805 [INFO] core.evaluator_v2:   [15/50] avg=9.26
+2026-06-08 00:37:57,466 [INFO] core.evaluator_v2:   [20/50] avg=9.62
+2026-06-08 00:38:31,077 [INFO] core.evaluator_v2:   [25/50] avg=9.18
+2026-06-08 00:38:56,086 [INFO] core.evaluator_v2:   [30/50] avg=12.76
+2026-06-08 00:39:21,096 [INFO] core.evaluator_v2:   [35/50] avg=11.89
+2026-06-08 00:39:50,072 [INFO] core.evaluator_v2:   [40/50] avg=14.82
+2026-06-08 00:40:14,605 [INFO] core.evaluator_v2:   [45/50] avg=14.20
+2026-06-08 00:40:43,497 [INFO] core.evaluator_v2:   [50/50] avg=13.44
+2026-06-08 00:40:43,510 [INFO] __main__:   → score=13.44, mem_red=80.0%, ttft=1714.7ms
+2026-06-08 00:40:43,511 [INFO] __main__: 
+  Task: gov_report
+2026-06-08 00:40:43,512 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-08 00:40:43,588 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:40:43,619 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:40:44,747 [INFO] core.dataset_loader: Loaded 50 samples from gov_report
+2026-06-08 00:40:44,750 [INFO] core.evaluator_v2: [ours] gov_report (50샘플, budget=20%)
+2026-06-08 00:41:58,618 [INFO] core.evaluator_v2:   [5/50] avg=13.45
+2026-06-08 00:43:06,274 [INFO] core.evaluator_v2:   [10/50] avg=12.12
+2026-06-08 00:44:27,470 [INFO] core.evaluator_v2:   [15/50] avg=12.35
+2026-06-08 00:45:36,069 [INFO] core.evaluator_v2:   [20/50] avg=12.77
+2026-06-08 00:46:42,824 [INFO] core.evaluator_v2:   [25/50] avg=12.89
+2026-06-08 00:47:42,768 [INFO] core.evaluator_v2:   [30/50] avg=12.85
+2026-06-08 00:48:47,646 [INFO] core.evaluator_v2:   [35/50] avg=12.70
+2026-06-08 00:49:52,178 [INFO] core.evaluator_v2:   [40/50] avg=12.85
+2026-06-08 00:51:30,336 [INFO] core.evaluator_v2:   [45/50] avg=13.06
+2026-06-08 00:52:53,184 [INFO] core.evaluator_v2:   [50/50] avg=13.21
+2026-06-08 00:52:53,187 [INFO] __main__:   → score=13.21, mem_red=80.0%, ttft=1479.3ms
+2026-06-08 00:52:53,189 [INFO] __main__: 
+  Task: qmsum
+2026-06-08 00:52:53,190 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-08 00:52:53,324 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-08 00:52:53,363 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-08 00:52:54,462 [INFO] core.dataset_loader: Loaded 50 samples from qmsum
+2026-06-08 00:52:54,465 [INFO] core.evaluator_v2: [ours] qmsum (50샘플, budget=20%)
+2026-06-08 00:53:44,845 [INFO] core.evaluator_v2:   [5/50] avg=10.01
+2026-06-08 00:54:37,896 [INFO] core.evaluator_v2:   [10/50] avg=9.25
+2026-06-08 00:55:25,245 [INFO] core.evaluator_v2:   [15/50] avg=9.09
+2026-06-08 00:56:14,222 [INFO] core.evaluator_v2:   [20/50] avg=9.42
+2026-06-08 00:57:00,314 [INFO] core.evaluator_v2:   [25/50] avg=9.48
+2026-06-08 00:57:51,378 [INFO] core.evaluator_v2:   [30/50] avg=9.87
+2026-06-08 00:58:48,200 [INFO] core.evaluator_v2:   [35/50] avg=9.89
+2026-06-08 00:59:42,767 [INFO] core.evaluator_v2:   [40/50] avg=9.90
+2026-06-08 01:00:34,336 [INFO] core.evaluator_v2:   [45/50] avg=9.66
+2026-06-08 01:01:24,498 [INFO] core.evaluator_v2:   [50/50] avg=9.59
+2026-06-08 01:01:24,508 [INFO] __main__:   → score=9.59, mem_red=80.0%, ttft=1401.8ms

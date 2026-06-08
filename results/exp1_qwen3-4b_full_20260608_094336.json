@@ -1,0 +1,34 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "methods": [
+    "ours"
+  ],
+  "num_samples": 50,
+  "seed": 42,
+  "results": [
+    {
+      "method": "ours",
+      "task_scores": {
+        "multifieldqa_en": 31.493572926371534,
+        "hotpotqa": 14.426332526985746,
+        "2wikimqa": 13.395848609006505,
+        "gov_report": 13.243651711993834,
+        "qmsum": 9.689509026616623
+      },
+      "avg_score": 16.44978296019485,
+      "avg_ttft_ms": 3214.9293695050937,
+      "avg_throughput": 17.2119114541134,
+      "avg_memory_reduction_pct": 80.01421817754233
+    }
+  ]
+}
