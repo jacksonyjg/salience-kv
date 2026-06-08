@@ -1,13 +1,19 @@
 """
-core/evaluator_v2.py (new)
+core/evaluator_v2.py (v3)
 ===========================
 Hook Cache 방식 평가 엔진. Transformers 5.10.2 DynamicCache 구조 대응.
+
+변경사항 (v2 → v3):
+  - _collect_prefill_attn() 완전 제거 (output_attentions=True OOM 문제 해결)
+  - KV 복사 단계에서 set_prefill_keys() 호출로 대체
+    → 이미 GPU에 올라온 key tensor를 CPU로 옮겨 저장, 별도 forward 없음
+  - 코드 흐름: prefill → KV 복사 + key 저장 → 압축 → generate
 """
 
 import time
 import gc
 import logging
-from typing import Dict, List, Optional, Tuple, Any
+from typing import Dict, List, Optional
 
 import torch
 import numpy as np
@@ -35,46 +41,13 @@ class EvaluatorV2:
             torch.cuda.empty_cache()
 
     def _clean_prediction(self, text: str) -> str:
-        # </think> 있으면 그 이후만 사용
         if "</think>" in text:
-            parts = text.split("</think>")
-            text = parts[-1].strip()
-        # <think>만 있고 내용이 있으면 태그 제거 후 반환
+            text = text.split("</think>")[-1].strip()
         elif "<think>" in text:
             text = text.replace("<think>", "").replace("</think>", "").strip()
         return text.strip()
 
-    def _collect_prefill_attn(self, hook_cache, input_ids, attention_mask):
-        """forward hook으로 prefill attention 수집."""
-        if not isinstance(hook_cache, BaseHookCache):
-            return
-        hooks = []
-        def make_hook(idx):
-            def fn(module, inp, out):
-                if isinstance(out, tuple) and len(out) > 1 and out[1] is not None:
-                    hook_cache.set_prefill_attn(idx, out[1])
-            return fn
-        for i in range(self.cfg["num_layers"]):
-            try:
-                h = self.model.model.layers[i].self_attn.register_forward_hook(make_hook(i))
-                hooks.append(h)
-            except Exception:
-                pass
-        try:
-            with torch.no_grad():
-                self.model(
-                    input_ids=input_ids,
-                    attention_mask=attention_mask,
-                    use_cache=False,
-                    return_dict=True,
-                    output_attentions=False,
-                )
-        finally:
-            for h in hooks:
-                h.remove()
-
     def _kv_size_mb(self, cache) -> float:
-        """캐시 크기 MB 계산."""
         total = 0
         dtype = self.cfg.get("dtype", torch.float16)
         bytes_per = 2 if dtype == torch.float16 else 4
@@ -99,13 +72,9 @@ class EvaluatorV2:
         attention_mask = inputs["attention_mask"]
         input_length = input_ids.shape[1]
 
-        # Hook cache 생성
         hook_cache = make_hook_cache(method_name, budget_ratio, self.cfg)
 
         # ── Step 1: Prefill ──────────────────────────────────
-        # attention 수집 (BaseHookCache인 경우)
-        self._collect_prefill_attn(hook_cache, input_ids, attention_mask)
-
         prefill_start = time.perf_counter()
         with torch.no_grad():
             prefill_out = self.model(
@@ -118,42 +87,71 @@ class EvaluatorV2:
             prefill_kv = prefill_out.past_key_values
         prefill_time_ms = (time.perf_counter() - prefill_start) * 1000
 
-        # KV 크기 (압축 전)
         kv_before = self._kv_size_mb(prefill_kv) if measure_efficiency else 0.0
 
-        # ── Step 2: 압축 ──────────────────────────────────────
+        # ── Step 2: KV 복사 + key 저장 + 압축 ───────────────
         compress_start = time.perf_counter()
 
         if isinstance(hook_cache, BaseHookCache):
-            # prefill KV → hook_cache의 layers로 복사
             if hasattr(prefill_kv, 'layers'):
                 for i, layer in enumerate(prefill_kv.layers):
+                    # KV 복사
                     if i >= len(hook_cache.layers):
                         hook_cache.update(layer.keys, layer.values, i)
                     else:
                         hook_cache.layers[i].keys = layer.keys.clone()
                         hook_cache.layers[i].values = layer.values.clone()
+                    # key tensor 저장 (importance 계산용, CPU)
+                    hook_cache.set_prefill_keys(i, layer.keys)
+
+            # 원본 KV 즉시 해제
+            del prefill_kv
+            gc.collect()
+            torch.cuda.empty_cache()
 
             hook_cache.mark_prefill_done(input_length)
             hook_cache.apply_compression_all_layers()
             compressed_cache = hook_cache
         else:
             # FullKV: past_key_values 없이 generate (position 중복 방지)
+            del prefill_kv
+            gc.collect()
+            torch.cuda.empty_cache()
             compressed_cache = None
 
         compress_time_ms = (time.perf_counter() - compress_start) * 1000
 
-        # KV 크기 (압축 후)
-        kv_after = self._kv_size_mb(compressed_cache) if measure_efficiency else 0.0
+        kv_after = self._kv_size_mb(compressed_cache) if (measure_efficiency and compressed_cache is not None) else 0.0
         mem_red = (1 - kv_after / kv_before) * 100 if kv_before > 0 else 0.0
-
         # ── Step 3: Generate ──────────────────────────────────
         gen_start = time.perf_counter()
         try:
+            if compressed_cache is not None:
+                # 레이어별 seq_len 중 최솟값으로 모든 레이어 통일
+                min_len = min(
+                    layer.keys.shape[2]
+                    for layer in compressed_cache.layers
+                    if layer.keys is not None
+                )
+                for layer in compressed_cache.layers:
+                    if layer.keys is not None and layer.keys.shape[2] > min_len:
+                        layer.keys = layer.keys[:, :, :min_len, :]
+                        layer.values = layer.values[:, :, :min_len, :]
+                # past(min_len) + input 전체를 이어붙인 attention_mask
+                past_mask = torch.ones(
+                    1, min_len,
+                    dtype=attention_mask.dtype,
+                    device=attention_mask.device,
+                )
+                gen_attention_mask = torch.cat([past_mask, attention_mask], dim=1)
+                gen_input_ids = input_ids
+            else:
+                gen_attention_mask = attention_mask
+                gen_input_ids = input_ids
             with torch.no_grad():
                 output = self.model.generate(
-                    input_ids=input_ids,
-                    attention_mask=attention_mask,
+                    input_ids=gen_input_ids,
+                    attention_mask=gen_attention_mask,
                     past_key_values=compressed_cache,
                     max_new_tokens=sample["max_new_tokens"],
                     do_sample=False,
@@ -161,9 +159,6 @@ class EvaluatorV2:
                     top_p=None,
                     pad_token_id=self.tokenizer.pad_token_id,
                     eos_token_id=self.tokenizer.eos_token_id,
-                    # thinking 억제: /no_think 접미사 또는 토큰 억제
-                    # suppress_tokens 제거: thinking 억제 시 모델이 EOS 즉시 생성
-                    # thinking 내용은 _clean_prediction에서 후처리로 제거
                 )
             new_tokens = output[0, input_length:]
         except Exception as e:
