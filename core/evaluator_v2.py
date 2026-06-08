@@ -121,8 +121,16 @@ class EvaluatorV2:
 
         compress_time_ms = (time.perf_counter() - compress_start) * 1000
 
-        kv_after = self._kv_size_mb(compressed_cache) if (measure_efficiency and compressed_cache is not None) else 0.0
-        mem_red = (1 - kv_after / kv_before) * 100 if kv_before > 0 else 0.0
+        if not measure_efficiency:
+            kv_after = 0.0
+            mem_red = 0.0
+        elif compressed_cache is None:
+            # FullKV: 압축 없음 → mem_red=0%
+            kv_after = kv_before
+            mem_red = 0.0
+        else:
+            kv_after = self._kv_size_mb(compressed_cache)
+            mem_red = (1 - kv_after / kv_before) * 100 if kv_before > 0 else 0.0
         # ── Step 3: Generate ──────────────────────────────────
         gen_start = time.perf_counter()
         try:
