@@ -152,8 +152,9 @@ def load_longbench_task(
         
         # 컨텍스트 최대 길이 제한 (OOM 방지) - 단어 기준 8000개 = 약 8k 토큰
         words = context.split()
-        if len(words) > 2000:
-            context = " ".join(words[:2000])
+        if len(words) > 4000:
+            # head-tail 전략: 앞 3000 + 뒤 1000 단어 유지
+            context = " ".join(words[:3000]) + " ... " + " ".join(words[-1000:])
         
         # 질문 필드 처리
         if task_cfg["question_field"] is not None:

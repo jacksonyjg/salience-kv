@@ -15,6 +15,8 @@ import gc
 import logging
 from typing import Dict, List, Optional
 
+import os
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 import torch
 import numpy as np
 
@@ -85,6 +87,7 @@ class EvaluatorV2:
                 output_attentions=False,
             )
             prefill_kv = prefill_out.past_key_values
+            next_token = prefill_out.logits[:, -1, :].argmax(dim=-1, keepdim=True)
         prefill_time_ms = (time.perf_counter() - prefill_start) * 1000
 
         kv_before = self._kv_size_mb(prefill_kv) if measure_efficiency else 0.0
@@ -136,26 +139,26 @@ class EvaluatorV2:
         try:
             if compressed_cache is not None:
                 # 레이어별 seq_len 중 최솟값으로 모든 레이어 통일
-                min_len = min(
+                valid_lens = [
                     layer.keys.shape[2]
                     for layer in compressed_cache.layers
-                    if layer.keys is not None
-                )
+                    if layer.keys is not None and layer.keys.shape[2] > 0
+                ]
+                min_len = min(valid_lens) if valid_lens else 1
                 for layer in compressed_cache.layers:
                     if layer.keys is not None and layer.keys.shape[2] > min_len:
                         layer.keys = layer.keys[:, :, :min_len, :]
                         layer.values = layer.values[:, :, :min_len, :]
-                # past(min_len) + input 전체를 이어붙인 attention_mask
-                past_mask = torch.ones(
-                    1, min_len,
+                # next_token + cache_position 방식 (prefill 중복 없음, OOM 방지)
+                gen_input_ids = next_token
+                gen_attention_mask = torch.ones(
+                    1, min_len + 1,
                     dtype=attention_mask.dtype,
                     device=attention_mask.device,
                 )
-                gen_attention_mask = torch.cat([past_mask, attention_mask], dim=1)
-                gen_input_ids = input_ids
             else:
-                gen_attention_mask = attention_mask
                 gen_input_ids = input_ids
+                gen_attention_mask = attention_mask
             with torch.no_grad():
                 output = self.model.generate(
                     input_ids=gen_input_ids,
@@ -168,7 +171,11 @@ class EvaluatorV2:
                     pad_token_id=self.tokenizer.pad_token_id,
                     eos_token_id=self.tokenizer.eos_token_id,
                 )
-            new_tokens = output[0, 1:] if compressed_cache is not None else output[0, input_length:]
+            # compressed: next_token(1개) + generate 출력 이어붙임
+            if compressed_cache is not None:
+                new_tokens = torch.cat([next_token, output[:, 1:]], dim=1)[0]
+            else:
+                new_tokens = output[0, input_length:]
         except Exception as e:
             logger.error(f"generate() failed: {e}")
             return {
