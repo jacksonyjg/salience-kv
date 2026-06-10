@@ -149,20 +149,10 @@ class EvaluatorV2:
                     if layer.keys is not None and layer.keys.shape[2] > min_len:
                         layer.keys = layer.keys[:, :, :min_len, :]
                         layer.values = layer.values[:, :, :min_len, :]
-<<<<<<< Updated upstream
-                # next_token + cache_position 방식 (prefill 중복 없음, OOM 방지)
-                gen_input_ids = next_token
-                gen_attention_mask = torch.ones(
-                    1, min_len + 1,
-                    dtype=attention_mask.dtype,
-                    device=attention_mask.device,
-                )
-=======
                 # 선택된 실제 position 인덱스 사용
                 gen_input_ids = input_ids
                 sel_pos = compressed_cache._selected_positions[0]
                 if sel_pos is not None:
-                    # past KV의 실제 position 범위
                     past_max_pos = int(sel_pos.max().item()) + 1
                 else:
                     past_max_pos = min_len
@@ -176,36 +166,10 @@ class EvaluatorV2:
                     past_max_pos, past_max_pos + input_length,
                     dtype=torch.long, device=input_ids.device
                 )
->>>>>>> Stashed changes
             else:
                 gen_input_ids = input_ids
-<<<<<<< Updated upstream
                 gen_attention_mask = attention_mask
-=======
                 gen_cache_position = None
->>>>>>> Stashed changes
-            with torch.no_grad():
-                output = self.model.generate(
-                    input_ids=gen_input_ids,
-                    attention_mask=gen_attention_mask,
-                    past_key_values=compressed_cache,
-                    cache_position=gen_cache_position,
-                    max_new_tokens=sample["max_new_tokens"],
-                    do_sample=False,
-                    temperature=None,
-                    top_p=None,
-                    pad_token_id=self.tokenizer.pad_token_id,
-                    eos_token_id=self.tokenizer.eos_token_id,
-                )
-<<<<<<< Updated upstream
-            # compressed: next_token(1개) + generate 출력 이어붙임
-            if compressed_cache is not None:
-                new_tokens = torch.cat([next_token, output[:, 1:]], dim=1)[0]
-            else:
-                new_tokens = output[0, input_length:]
-=======
-            new_tokens = output[0, input_length:]
->>>>>>> Stashed changes
         except Exception as e:
             logger.error(f"generate() failed: {e}")
             return {
