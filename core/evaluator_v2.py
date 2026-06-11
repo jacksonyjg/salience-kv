@@ -15,6 +15,8 @@ import gc
 import logging
 from typing import Dict, List, Optional
 
+import os
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 import torch
 import numpy as np
 
@@ -146,16 +148,16 @@ class EvaluatorV2:
                         layer.keys = layer.keys[:, :, :min_len, :]
                         layer.values = layer.values[:, :, :min_len, :]
                 # past(min_len) + input 전체를 이어붙인 attention_mask
+                gen_input_ids = input_ids
                 past_mask = torch.ones(
                     1, min_len,
                     dtype=attention_mask.dtype,
                     device=attention_mask.device,
                 )
                 gen_attention_mask = torch.cat([past_mask, attention_mask], dim=1)
-                gen_input_ids = input_ids
             else:
-                gen_attention_mask = attention_mask
                 gen_input_ids = input_ids
+                gen_attention_mask = attention_mask
             with torch.no_grad():
                 output = self.model.generate(
                     input_ids=gen_input_ids,
@@ -168,7 +170,7 @@ class EvaluatorV2:
                     pad_token_id=self.tokenizer.pad_token_id,
                     eos_token_id=self.tokenizer.eos_token_id,
                 )
-            new_tokens = output[0, 1:] if compressed_cache is not None else output[0, input_length:]
+            new_tokens = output[0, input_length:]
         except Exception as e:
             logger.error(f"generate() failed: {e}")
             return {

@@ -64,6 +64,7 @@ class BaseHookCache(DynamicCache):
         self._prefill_keys: List[Optional[torch.Tensor]] = [None] * num_layers
         self._prefill_done = False
         self._prefill_seq_len = 0
+        self._selected_positions: List[Optional[torch.Tensor]] = [None] * num_layers
 
     def set_prefill_keys(self, layer_idx: int, key_states: torch.Tensor):
         """KV 복사 단계에서 key tensor 저장 (CPU로 이동, 메모리 절약)."""
@@ -80,9 +81,13 @@ class BaseHookCache(DynamicCache):
         for i in range(len(self.layers)):
             k, v = _get_layer_kv(self, i)
             if k.shape[2] > budget:
-                k_c, v_c = self._compress(k, v, i, budget)
+                k_c, v_c, idx = self._compress(k, v, i, budget)
                 _set_layer_kv(self, i, k_c, v_c)
-        # 압축 후 prefill_keys 메모리 해제
+                if i == 0:
+                    self._selected_positions[i] = idx
+            else:
+                if i == 0:
+                    self._selected_positions[i] = torch.arange(k.shape[2])
         self._prefill_keys = [None] * self.num_layers
 
     def _compress(self, key_states, value_states, layer_idx, budget):
@@ -109,12 +114,16 @@ class StreamingLLMCache(BaseHookCache):
         self.sink_size = sink_size
 
     def _compress(self, key_states, value_states, layer_idx, budget):
+        seq_len = key_states.shape[2]
         recent_size = max(budget - self.sink_size, 1)
         sink_k = key_states[:, :, :self.sink_size, :]
         sink_v = value_states[:, :, :self.sink_size, :]
         recent_k = key_states[:, :, -recent_size:, :]
         recent_v = value_states[:, :, -recent_size:, :]
-        return torch.cat([sink_k, recent_k], dim=2), torch.cat([sink_v, recent_v], dim=2)
+        sink_idx = torch.arange(self.sink_size)
+        recent_idx = torch.arange(seq_len - recent_size, seq_len)
+        indices = torch.cat([sink_idx, recent_idx])
+        return torch.cat([sink_k, recent_k], dim=2), torch.cat([sink_v, recent_v], dim=2), indices
 
 
 # ─────────────────────────────────────────────────────────────
@@ -138,7 +147,7 @@ class H2OCache(BaseHookCache):
         _, indices = torch.topk(score, k=min(budget, seq_len))
         indices, _ = indices.sort()
         indices = indices.to(key_states.device)
-        return key_states[:, :, indices, :], value_states[:, :, indices, :]
+        return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 
 # ─────────────────────────────────────────────────────────────
@@ -185,8 +194,9 @@ class SnapKVCache(BaseHookCache):
                 valid = indices[indices < self._prefill_seq_len]
                 indices = torch.cat([valid, new_tokens])
             indices = indices[:budget].to(key_states.device)
-            return key_states[:, :, indices, :], value_states[:, :, indices, :]
-        return key_states[:, :, -budget:, :], value_states[:, :, -budget:, :]
+            return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
+        fallback_idx = torch.arange(key_states.shape[2] - budget, key_states.shape[2])
+        return key_states[:, :, -budget:, :], value_states[:, :, -budget:, :], fallback_idx
 
 
 # ─────────────────────────────────────────────────────────────
@@ -214,8 +224,13 @@ class PyramidKVCache(BaseHookCache):
             seq_len = k.shape[2]
             budget = self._get_layer_budget(i, seq_len)
             if seq_len > budget:
-                k_c, v_c = self._compress(k, v, i, budget)
+                k_c, v_c, idx = self._compress(k, v, i, budget)
                 _set_layer_kv(self, i, k_c, v_c)
+                if i == 0:
+                    self._selected_positions[i] = idx
+            else:
+                if i == 0:
+                    self._selected_positions[i] = torch.arange(k.shape[2])
         self._prefill_keys = [None] * self.num_layers
 
     def _compress(self, key_states, value_states, layer_idx, budget):
@@ -236,7 +251,7 @@ class PyramidKVCache(BaseHookCache):
         else:
             idx = recent_idx
         idx = idx[:b].to(key_states.device)
-        return key_states[:, :, idx, :], value_states[:, :, idx, :]
+        return key_states[:, :, idx, :], value_states[:, :, idx, :], idx.cpu()
 
 
 # ─────────────────────────────────────────────────────────────
@@ -270,8 +285,13 @@ class AdaKVCache(BaseHookCache):
             seq_len = k.shape[2]
             b = min(budgets[i], seq_len)
             if seq_len > b:
-                k_c, v_c = self._compress(k, v, i, b)
+                k_c, v_c, idx = self._compress(k, v, i, b)
                 _set_layer_kv(self, i, k_c, v_c)
+                if i == 0:
+                    self._selected_positions[i] = idx
+            else:
+                if i == 0:
+                    self._selected_positions[i] = torch.arange(k.shape[2])
         self._prefill_keys = [None] * self.num_layers
 
     def _compress(self, key_states, value_states, layer_idx, budget):
@@ -282,7 +302,7 @@ class AdaKVCache(BaseHookCache):
         _, indices = torch.topk(score, k=min(budget, seq_len))
         indices, _ = indices.sort()
         indices = indices.to(key_states.device)
-        return key_states[:, :, indices, :], value_states[:, :, indices, :]
+        return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 
 # ─────────────────────────────────────────────────────────────
@@ -324,8 +344,10 @@ class OursHybridCache(BaseHookCache):
             k, v = _get_layer_kv(self, i)
             seq_len = k.shape[2]
             if seq_len > budget:
-                k_c, v_c = self._compress(k, v, i, budget)
+                k_c, v_c, idx = self._compress(k, v, i, budget)
                 _set_layer_kv(self, i, k_c, v_c)
+                if i == 0:
+                    self._selected_positions[i] = idx
         self._prefill_keys = [None] * self.num_layers
 
     def _compute_hybrid_score(self, key_states: torch.Tensor, layer_idx: int, seq_len: int) -> torch.Tensor:
@@ -380,7 +402,7 @@ class OursHybridCache(BaseHookCache):
         else:
             _, indices = torch.topk(scores, k=min(budget, seq_len))
             indices, _ = indices.sort()
-        return key_states[:, :, indices, :], value_states[:, :, indices, :]
+        return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 
 # ─────────────────────────────────────────────────────────────

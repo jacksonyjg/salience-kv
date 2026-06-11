@@ -133,7 +133,7 @@ def tokenize_prompt(
     prompt: str,
     tokenizer,
     model_key: str,
-    max_input_length: int = 31000,
+    max_input_length: int = 8192,
     device: str = "cuda",
 ) -> Dict[str, torch.Tensor]:
     """
