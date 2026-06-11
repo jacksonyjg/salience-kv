@@ -43,10 +43,14 @@ class EvaluatorV2:
             torch.cuda.empty_cache()
 
     def _clean_prediction(self, text: str) -> str:
+        import re
+        # <think>...</think> 블록 전체 제거
+        text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
+        # </think> 이후만 남기기 (블록이 잘린 경우)
         if "</think>" in text:
-            text = text.split("</think>")[-1].strip()
-        elif "<think>" in text:
-            text = text.replace("<think>", "").replace("</think>", "").strip()
+            text = text.split("</think>")[-1]
+        # 고아 <think> 태그 제거
+        text = text.replace("<think>", "").replace("</think>", "")
         return text.strip()
 
     def _kv_size_mb(self, cache) -> float:
@@ -167,6 +171,7 @@ class EvaluatorV2:
                     do_sample=False,
                     temperature=None,
                     top_p=None,
+                    top_k=None,
                     pad_token_id=self.tokenizer.pad_token_id,
                     eos_token_id=self.tokenizer.eos_token_id,
                 )

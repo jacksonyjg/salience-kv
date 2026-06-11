@@ -69,7 +69,7 @@ class BaseHookCache(DynamicCache):
     def set_prefill_keys(self, layer_idx: int, key_states: torch.Tensor):
         """KV 복사 단계에서 key tensor 저장 (CPU로 이동, 메모리 절약)."""
         if key_states is not None and layer_idx < self.num_layers:
-            self._prefill_keys[layer_idx] = key_states.detach().cpu()
+            self._prefill_keys[layer_idx] = key_states.detach()
 
     def mark_prefill_done(self, seq_len: int):
         self._prefill_done = True
@@ -348,17 +348,20 @@ class OursHybridCache(BaseHookCache):
                 _set_layer_kv(self, i, k_c, v_c)
                 if i == 0:
                     self._selected_positions[i] = idx
-        self._prefill_keys = [None] * self.num_layers
+        for i in range(self.num_layers):
+            self._prefill_keys[i] = None
+        torch.cuda.empty_cache()
 
     def _compute_hybrid_score(self, key_states: torch.Tensor, layer_idx: int, seq_len: int) -> torch.Tensor:
         device = key_states.device
         scores = torch.zeros(seq_len, device=device)
+        device = key_states.device
         pk = self._prefill_keys[layer_idx]
-        ref_k = pk if (pk is not None and pk.shape[2] == seq_len) else key_states.cpu()
+        ref_k = pk.to(device) if (pk is not None and pk.shape[2] == seq_len) else key_states
 
         # A: key norm (attention 근사)
         if self.use_attention:
-            a_score = _key_importance(ref_k).to(device)
+            a_score = _key_importance(ref_k)
             rng = a_score.max() - a_score.min()
             if rng > 1e-9:
                 a_score = (a_score - a_score.min()) / rng
@@ -384,7 +387,7 @@ class OursHybridCache(BaseHookCache):
             rng = sim.max() - sim.min()
             if rng > 1e-9:
                 sim = (sim - sim.min()) / rng
-            scores = scores + self.gamma * sim.to(device)
+            scores = scores + self.gamma * sim
 
         # P: 위치 감쇠
         if self.use_position:

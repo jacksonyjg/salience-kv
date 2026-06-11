@@ -109,7 +109,13 @@ def make_prompt(model_key: str, tokenizer, context: str, question: str, task_typ
                 tokenize=False,
                 add_generation_prompt=True,
             )
-        # Transformers 버전 호환: thinking 태그 강제 제거
+        # thinking 억제: 빈 think 블록으로 강제 종료
+        if "<think>" in prompt:
+            import re
+            prompt = re.sub(r'<think>.*?</think>', '', prompt, flags=re.DOTALL).strip()
+        # 프롬프트 끝에 빈 think 블록 추가 → 모델이 바로 답변 생성
+        if prompt.endswith('<|im_start|>assistant\n'):
+            prompt = prompt + '<think>\n</think>\n'
         return prompt
 
     elif fmt == "phi3_chat":

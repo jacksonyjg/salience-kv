@@ -1,0 +1,92 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qasper"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "qasper": 6.9034623912672695
+      },
+      "avg_score": 6.9034623912672695,
+      "avg_ttft_ms": 1413.392008840674,
+      "avg_throughput": 23.051964423702895,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "qasper": 15.0
+      },
+      "avg_score": 15.0,
+      "avg_ttft_ms": 1253.0683105414937,
+      "avg_throughput": 23.50286982343937,
+      "avg_memory_reduction_pct": 80.01577081371087
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "qasper": 3.821656050955414
+      },
+      "avg_score": 3.821656050955414,
+      "avg_ttft_ms": 1204.2215343972202,
+      "avg_throughput": 24.062981354641163,
+      "avg_memory_reduction_pct": 80.01577081371087
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "qasper": 2.3061104582843717
+      },
+      "avg_score": 2.3061104582843717,
+      "avg_ttft_ms": 1150.147490659947,
+      "avg_throughput": 23.25718129058215,
+      "avg_memory_reduction_pct": 80.0135804229177
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 1357.8204179853597,
+      "avg_throughput": 17.061737344777683,
+      "avg_memory_reduction_pct": 80.01577081371087
+    }
+  ]
+}
