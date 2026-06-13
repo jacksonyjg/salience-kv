@@ -201,10 +201,14 @@ class SnapKVCache(BaseHookCache):
             if seq_len > self._prefill_seq_len:
                 new_tokens = torch.arange(self._prefill_seq_len, seq_len, device=indices.device)
                 valid = indices[indices < self._prefill_seq_len]
+                # new_tokens(가장 최근, 항상 보존) 우선 확보 후 valid에서 나머지 채움
+                remaining = max(budget - new_tokens.shape[0], 0)
+                valid = valid[-remaining:] if remaining > 0 else valid[:0]
                 indices = torch.cat([valid, new_tokens])
-            indices = indices[:budget].to(key_states.device)
+            indices = indices[-budget:].to(key_states.device)
+            indices, _ = indices.sort()
             return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
-        fallback_idx = torch.arange(key_states.shape[2] - budget, key_states.shape[2])
+        fallback_idx = torch.arange(key_states.shape[2] - budget, key_states.shape[2], device=key_states.device)
         return key_states[:, :, -budget:, :], value_states[:, :, -budget:, :], fallback_idx
 
 
