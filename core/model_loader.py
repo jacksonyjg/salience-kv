@@ -113,9 +113,11 @@ def make_prompt(model_key: str, tokenizer, context: str, question: str, task_typ
         if "<think>" in prompt:
             import re
             prompt = re.sub(r'<think>.*?</think>', '', prompt, flags=re.DOTALL).strip()
-        # 프롬프트 끝에 빈 think 블록 추가 → 모델이 바로 답변 생성
-        if prompt.endswith('<|im_start|>assistant\n'):
-            prompt = prompt + '<think>\n</think>\n'
+        # 프롬프트 끝에 빈 think 블록 추가 (개행 유무 무관하게 처리)
+        if prompt.endswith('<|im_start|>assistant'):
+            prompt = prompt + '\n<think>\n\n</think>\n\n'
+        elif prompt.endswith('<|im_start|>assistant\n'):
+            prompt = prompt + '<think>\n\n</think>\n\n'
         return prompt
 
     elif fmt == "phi3_chat":
