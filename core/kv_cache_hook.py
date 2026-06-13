@@ -136,17 +136,25 @@ class H2OCache(BaseHookCache):
     원본 H2O는 누적 attention 사용하지만, key norm이 좋은 근사.
     """
     def _compress(self, key_states, value_states, layer_idx, budget):
+        device = key_states.device
         seq_len = key_states.shape[2]
         pk = self._prefill_keys[layer_idx]
+        ref_k = pk.to(device) if (pk is not None and pk.shape[2] == seq_len) else key_states
+        score = _key_importance(ref_k).to(device)
 
-        if pk is not None and pk.shape[2] == seq_len:
-            score = _key_importance(pk)
+        window = min(16, seq_len // 4, budget // 4) if budget > 4 else 0
+        window = max(window, 0)
+        if window > 0 and seq_len > window:
+            recent_idx = torch.arange(seq_len - window, seq_len, device=device)
+            prefix_budget = max(budget - window, 1)
+            prefix_len = seq_len - window
+            _, top_idx = torch.topk(score[:prefix_len], k=min(prefix_budget, prefix_len))
+            top_idx, _ = top_idx.sort()
+            indices = torch.cat([top_idx, recent_idx])
         else:
-            score = _key_importance(key_states.cpu())
+            _, indices = torch.topk(score, k=min(budget, seq_len))
+            indices, _ = indices.sort()
 
-        _, indices = torch.topk(score, k=min(budget, seq_len))
-        indices, _ = indices.sort()
-        indices = indices.to(key_states.device)
         return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 
