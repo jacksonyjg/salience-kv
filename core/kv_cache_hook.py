@@ -176,21 +176,22 @@ class SnapKVCache(BaseHookCache):
                 score.unsqueeze(0).unsqueeze(0),
                 kernel_size=self.kernel_size, stride=1, padding=self.kernel_size // 2,
             ).squeeze()
+        device = score.device
         recent_start = max(seq_len - self.window_size, 0)
         select_budget = max(budget - self.window_size, 1)
         if recent_start > 0:
             _, top_idx = torch.topk(score[:recent_start], k=min(select_budget, recent_start))
             top_idx, _ = top_idx.sort()
-            recent_idx = torch.arange(recent_start, seq_len)
+            recent_idx = torch.arange(recent_start, seq_len, device=device)
             return torch.cat([top_idx, recent_idx])
-        return torch.arange(seq_len)
+        return torch.arange(seq_len, device=device)
 
     def _compress(self, key_states, value_states, layer_idx, budget):
         seq_len = key_states.shape[2]
         indices = self._snap_indices[layer_idx]
         if indices is not None:
             if seq_len > self._prefill_seq_len:
-                new_tokens = torch.arange(self._prefill_seq_len, seq_len)
+                new_tokens = torch.arange(self._prefill_seq_len, seq_len, device=indices.device)
                 valid = indices[indices < self._prefill_seq_len]
                 indices = torch.cat([valid, new_tokens])
             indices = indices[:budget].to(key_states.device)
@@ -238,15 +239,17 @@ class PyramidKVCache(BaseHookCache):
         b = min(budget, seq_len)
         pk = self._prefill_keys[layer_idx]
 
-        score = _key_importance(pk if pk is not None and pk.shape[2] == seq_len
-                                else key_states.cpu())
+        device = key_states.device
+        ref_k = pk.to(device) if (pk is not None and pk.shape[2] == seq_len) else key_states
+        score = _key_importance(ref_k).to(device)
         # recency 보정: 최근 window는 무조건 유지
         w = min(32, seq_len // 4)
-        recent_idx = torch.arange(seq_len - w, seq_len)
+        recent_idx = torch.arange(seq_len - w, seq_len, device=device)
         prefix_b = max(b - w, 1)
         if seq_len - w > 0:
             _, top_idx = torch.topk(score[:seq_len - w], k=min(prefix_b, seq_len - w))
             top_idx, _ = top_idx.sort()
+            top_idx = top_idx.to(device)
             idx = torch.cat([top_idx, recent_idx])
         else:
             idx = recent_idx
