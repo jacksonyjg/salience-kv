@@ -45,52 +45,6 @@ def _key_importance(key_states: torch.Tensor) -> torch.Tensor:
     return score
 
 
-def _rotate_half(x: torch.Tensor) -> torch.Tensor:
-    """Qwen3/대부분 RoPE 모델 공통: 벡터를 절반으로 나눠 회전."""
-    x1 = x[..., : x.shape[-1] // 2]
-    x2 = x[..., x.shape[-1] // 2 :]
-    return torch.cat((-x2, x1), dim=-1)
-
-
-def _reindex_rope_keys(
-    key_states: torch.Tensor,
-    old_positions: torch.Tensor,
-    new_positions: torch.Tensor,
-    rotary_emb,
-) -> torch.Tensor:
-    """
-    압축으로 인해 흩어진 원본 RoPE position(old_positions)이 적용된 key_states를,
-    새로운 연속 position(new_positions, 보통 0..N-1)에 대응하는 RoPE로 재정렬한다.
-
-    원리: RoPE는 각도 회전이므로 결합 법칙이 성립한다.
-        k_new_pos = rotate(k_old_pos, delta) ,  delta = new_position - old_position
-    즉 원본 회전을 먼저 풀고 새 위치로 다시 감는 것과, delta만큼만 회전하는 것이 수학적으로 동일하다.
-    (단위 테스트로 allclose 검증됨, 오차 ~1e-6 수준)
-
-    key_states: [batch, heads, seq_len, head_dim]
-    old_positions, new_positions: [seq_len] (1D, 같은 길이, 같은 순서로 대응)
-    rotary_emb: model.model.rotary_emb 모듈 (forward(x, position_ids) -> cos, sin)
-    """
-    if rotary_emb is None or key_states is None:
-        return key_states
-    if old_positions.shape[0] != key_states.shape[2]:
-        # 길이가 안 맞으면 안전하게 재인덱싱 스킵 (원본 유지)
-        return key_states
-
-    device = key_states.device
-    old_positions = old_positions.to(device).long()
-    new_positions = new_positions.to(device).long()
-    delta = (new_positions - old_positions).unsqueeze(0)  # [1, seq_len]
-
-    # rotary_emb.forward(x, position_ids) 시그니처에 맞춰 dummy x 전달 (dtype/device 참조용)
-    cos_delta, sin_delta = rotary_emb(key_states, delta)  # [1, seq_len, head_dim] 형태
-    cos_delta = cos_delta.unsqueeze(1).to(key_states.dtype)  # [1, 1, seq_len, head_dim]
-    sin_delta = sin_delta.unsqueeze(1).to(key_states.dtype)
-
-    key_reindexed = key_states * cos_delta + _rotate_half(key_states) * sin_delta
-    return key_reindexed
-
-
 # ─────────────────────────────────────────────────────────────
 # Base Hook Cache
 # ─────────────────────────────────────────────────────────────
@@ -111,8 +65,6 @@ class BaseHookCache(DynamicCache):
         self._prefill_done = False
         self._prefill_seq_len = 0
         self._selected_positions: List[Optional[torch.Tensor]] = [None] * num_layers
-        # RoPE re-indexing: 압축 후 흩어진 원본 position을 0..N-1로 재정렬하기 위한 rotary embedding
-        self._rotary_emb = model_config.get("rotary_emb") if isinstance(model_config, dict) else None
 
     def set_prefill_keys(self, layer_idx: int, key_states: torch.Tensor):
         """KV 복사 단계에서 key tensor 저장 (CPU로 이동, 메모리 절약)."""
@@ -130,7 +82,6 @@ class BaseHookCache(DynamicCache):
             k, v = _get_layer_kv(self, i)
             if k.shape[2] > budget:
                 k_c, v_c, idx = self._compress(k, v, i, budget)
-                k_c = _reindex_rope_keys(k_c, idx, torch.arange(k_c.shape[2]), self._rotary_emb)
                 _set_layer_kv(self, i, k_c, v_c)
                 if i == 0:
                     self._selected_positions[i] = idx
@@ -250,14 +201,10 @@ class SnapKVCache(BaseHookCache):
             if seq_len > self._prefill_seq_len:
                 new_tokens = torch.arange(self._prefill_seq_len, seq_len, device=indices.device)
                 valid = indices[indices < self._prefill_seq_len]
-                # new_tokens(가장 최근, 항상 보존) 우선 확보 후 valid에서 나머지 채움
-                remaining = max(budget - new_tokens.shape[0], 0)
-                valid = valid[-remaining:] if remaining > 0 else valid[:0]
                 indices = torch.cat([valid, new_tokens])
-            indices = indices[-budget:].to(key_states.device)
-            indices, _ = indices.sort()
+            indices = indices[:budget].to(key_states.device)
             return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
-        fallback_idx = torch.arange(key_states.shape[2] - budget, key_states.shape[2], device=key_states.device)
+        fallback_idx = torch.arange(key_states.shape[2] - budget, key_states.shape[2])
         return key_states[:, :, -budget:, :], value_states[:, :, -budget:, :], fallback_idx
 
 
@@ -287,7 +234,6 @@ class PyramidKVCache(BaseHookCache):
             budget = self._get_layer_budget(i, seq_len)
             if seq_len > budget:
                 k_c, v_c, idx = self._compress(k, v, i, budget)
-                k_c = _reindex_rope_keys(k_c, idx, torch.arange(k_c.shape[2]), self._rotary_emb)
                 _set_layer_kv(self, i, k_c, v_c)
                 if i == 0:
                     self._selected_positions[i] = idx
@@ -342,17 +288,7 @@ class AdaKVCache(BaseHookCache):
             entropies.append(ent + 1e-9)
 
         ent_tensor = torch.tensor(entropies)
-        # entropy 절대값을 그대로 softmax에 넣으면, 레이어 간 entropy 차이가 작아도
-        # softmax의 지수적 증폭 특성 때문에 weight가 극단적으로 쏠려(예: 0.0001 vs 0.04,
-        # 400배 차이) 일부 레이어의 budget이 최저치(4)로 깔리는 문제가 있었다.
-        # (실측: entropy range 1.23~7.56 -> softmax weight range 0.0001~0.0404)
-        # 0-1 정규화 후 softmax하면 weight가 합리적인 범위로 펴진다 (실측: 0.011~0.031).
-        ent_min, ent_max = ent_tensor.min(), ent_tensor.max()
-        if (ent_max - ent_min) > 1e-6:
-            ent_normalized = (ent_tensor - ent_min) / (ent_max - ent_min)
-        else:
-            ent_normalized = torch.zeros_like(ent_tensor)
-        weights = torch.softmax(ent_normalized, dim=0)
+        weights = torch.softmax(ent_tensor, dim=0)
         budgets = [max(round(w.item() * total_budget), 4) for w in weights]
 
         for i in range(len(self.layers)):
@@ -361,7 +297,6 @@ class AdaKVCache(BaseHookCache):
             b = min(budgets[i], seq_len)
             if seq_len > b:
                 k_c, v_c, idx = self._compress(k, v, i, b)
-                k_c = _reindex_rope_keys(k_c, idx, torch.arange(k_c.shape[2]), self._rotary_emb)
                 _set_layer_kv(self, i, k_c, v_c)
                 if i == 0:
                     self._selected_positions[i] = idx
@@ -372,26 +307,12 @@ class AdaKVCache(BaseHookCache):
 
     def _compress(self, key_states, value_states, layer_idx, budget):
         seq_len = key_states.shape[2]
-        b = min(budget, seq_len)
         pk = self._prefill_keys[layer_idx]
         score = _key_importance(pk if pk is not None and pk.shape[2] == seq_len
                                 else key_states.cpu())
-        # recency 보정: 최근 window(질문이 포함된 prompt 끝부분)는 무조건 유지.
-        # 순수 importance top-k만 쓰면, generate()의 rollback 방식(마지막 토큰을 캐시에서
-        # 빼고 다시 넣는 방식)과 충돌해 prompt 끝부분(질문)이 캐시에서 사라지는 경우가
-        # 있었음 (실측: AdaKV 모든 레이어가 input_length-1 position을 누락).
-        w = min(32, seq_len // 4)
-        recent_idx = torch.arange(seq_len - w, seq_len, device=score.device)
-        prefix_b = max(b - w, 1)
-        if seq_len - w > 0:
-            _, top_idx = torch.topk(score[:seq_len - w], k=min(prefix_b, seq_len - w))
-            top_idx, _ = top_idx.sort()
-            top_idx = top_idx.to(key_states.device)
-            indices = torch.cat([top_idx, recent_idx.to(key_states.device)])
-        else:
-            indices = recent_idx.to(key_states.device)
-        indices = indices[:b]
+        _, indices = torch.topk(score, k=min(budget, seq_len))
         indices, _ = indices.sort()
+        indices = indices.to(key_states.device)
         return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 
@@ -435,7 +356,6 @@ class OursHybridCache(BaseHookCache):
             seq_len = k.shape[2]
             if seq_len > budget:
                 k_c, v_c, idx = self._compress(k, v, i, budget)
-                k_c = _reindex_rope_keys(k_c, idx, torch.arange(k_c.shape[2]), self._rotary_emb)
                 _set_layer_kv(self, i, k_c, v_c)
                 if i == 0:
                     self._selected_positions[i] = idx
