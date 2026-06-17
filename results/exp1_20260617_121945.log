@@ -1,0 +1,123 @@
+2026-06-17 12:19:45,117 [INFO] __main__: Experiment 1: Main Results
+2026-06-17 12:19:45,119 [INFO] __main__:   Model: qwen3-4b
+2026-06-17 12:19:45,120 [INFO] __main__:   Mode: full
+2026-06-17 12:19:45,121 [INFO] __main__:   Budget: 20%
+2026-06-17 12:19:45,122 [INFO] __main__:   Tasks: ['multifieldqa_en']
+2026-06-17 12:19:45,123 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-17 12:19:45,124 [INFO] __main__:   Samples/task: 1
+2026-06-17 12:19:45,126 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-17 12:19:45,127 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-17 12:19:45,313 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:19:45,316 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-17 12:19:45,323 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-17 12:19:45,399 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:19:45,413 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-17 12:19:45,509 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-17 12:19:45,546 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-17 12:19:46,784 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-17 12:19:46,787 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-17 12:19:46,841 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:19:46,849 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-17 12:19:53,366 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:19:53,373 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-17 12:19:53,471 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-17 12:19:53,521 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-17 12:19:53,538 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 12:19:53,539 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-17 12:19:53,540 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 12:19:53,543 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 12:19:53,545 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 12:19:53,585 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:19:53,621 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 12:19:54,225 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:19:54,262 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-17 12:19:54,293 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:19:54,334 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-17 12:19:54,742 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 12:19:54,745 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 12:19:58,792 [INFO] core.evaluator_v2: [fullkv] raw_new_tokens=[6025, 22818, 24521, 78, 518, 264, 7337, 6, 13169, 11, 126949, 339, 78, 32191, 806, 2618, 323, 806, 2997, 374, 9575, 311, 3271, 13, 1260, 2937, 8725, 504, 806, 14970, 13, 151645] prediction="After attacking Jacobo at a workers' strike, Ngotho loses his job and his family is forced to move. He later dies from his injuries."
+2026-06-17 12:19:58,795 [INFO] __main__:   → score=80.00, mem_red=0.0%, ttft=1331.8ms
+2026-06-17 12:19:58,808 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 12:19:58,809 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-17 12:19:58,810 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 12:19:58,812 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 12:19:58,812 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 12:19:58,851 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:19:58,880 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 12:19:59,741 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 12:19:59,743 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 12:20:04,260 [INFO] core.evaluator_v2: [streaming] raw_new_tokens=[6025, 22818, 24521, 78, 518, 264, 7337, 6, 13169, 11, 126949, 339, 78, 374, 13895, 504, 806, 2618, 13, 5301, 2997, 374, 9575, 311, 3271, 11, 323, 566, 32191, 806, 2639, 323, 10173, 304, 279, 3942, 13, 37174, 11, 126949] prediction="After attacking Jacobo at a workers' strike, Ngotho is fired from his job. His family is forced to move, and he loses his status and influence in the community. Eventually, Ngotho dies from his injuries after being brutally beaten by Mr. Howlands and his men following Jacobo's murder."
+2026-06-17 12:20:04,263 [INFO] __main__:   → score=50.79, mem_red=80.0%, ttft=675.8ms
+2026-06-17 12:20:04,264 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 12:20:04,266 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-17 12:20:04,268 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 12:20:04,269 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 12:20:04,270 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 12:20:04,350 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:20:04,380 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 12:20:05,228 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 12:20:05,230 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 12:20:12,323 [INFO] core.evaluator_v2: [h2o] raw_new_tokens=[45, 3346, 339, 78, 374, 13895, 323, 279, 2997, 374, 9575, 311, 3271, 13, 1260, 374, 2115, 19460, 13675, 323, 451, 73, 269, 40532, 594, 20208, 3802, 806, 6731, 13, 576, 2997, 374, 9575, 311, 3271, 311, 2441, 3772, 315] prediction="Ngotho is fired and the family is forced to move. He is left barely alive and Njoroge's brothers fund his education. The family is forced to move to another section of the country. Over the course of the book, his position as the central power of the family weakened, to the point where his self-realization that he has spent his whole life waiting for the prophecy (that proclaims the blacks will be returned their land) to come true rather than fighting for Kenyan independence, leads to his depression."
+2026-06-17 12:20:12,325 [INFO] __main__:   → score=18.95, mem_red=80.0%, ttft=750.9ms
+2026-06-17 12:20:12,326 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 12:20:12,327 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-17 12:20:12,328 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 12:20:12,329 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 12:20:12,330 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 12:20:12,406 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:20:12,442 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 12:20:13,234 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 12:20:13,235 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 12:20:14,720 [INFO] core.evaluator_v2: [snapkv] raw_new_tokens=[151645] prediction=''
+2026-06-17 12:20:14,722 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=1099.9ms
+2026-06-17 12:20:14,724 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 12:20:14,725 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-17 12:20:14,726 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 12:20:14,727 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 12:20:14,728 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 12:20:14,766 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:20:14,803 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 12:20:15,642 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 12:20:15,646 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 12:20:20,697 [INFO] core.evaluator_v2: [pyramidkv] raw_new_tokens=[6025, 126949, 339, 78, 8776, 24521, 78, 518, 264, 7337, 6, 13169, 11, 566, 374, 13895, 504, 806, 2309, 518, 4392, 13, 2585, 8166, 6, 8785, 13, 1096, 11508, 311, 279, 2997, 1660, 9575, 311, 3271, 311, 2441, 3772, 315] prediction="After Ngotho attacks Jacobo at a workers' strike, he is fired from his position at Mr. Howlands' farm. This leads to the family being forced to move to another section of the country. Ngotho's position as the central power of the family is weakened, leading to his depression and eventual suicide attempt."
+2026-06-17 12:20:20,710 [INFO] __main__:   → score=40.62, mem_red=80.0%, ttft=707.4ms
+2026-06-17 12:20:20,713 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 12:20:20,714 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-17 12:20:20,715 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 12:20:20,717 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 12:20:20,718 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 12:20:20,795 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:20:20,839 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 12:20:21,696 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 12:20:21,709 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 12:20:28,746 [INFO] core.evaluator_v2: [adakv] raw_new_tokens=[6025, 126949, 339, 78, 8776, 24521, 78, 518, 264, 7337, 6, 13169, 11, 566, 374, 13895, 504, 806, 2309, 13, 1096, 11508, 311, 279, 2997, 1660, 9575, 311, 3271, 311, 2441, 3772, 315, 279, 3146, 13, 6065, 279, 3308, 315] prediction="After Ngotho attacks Jacobo at a workers' strike, he is fired from his position. This leads to the family being forced to move to another section of the country. Over the course of the book, Ngotho's position as the central power of the family weakens, to the point where his self-realization that he has spent his whole life waiting for the prophecy (that proclaims the blacks will be returned their land) to come true rather than fighting for Kenyan independence leads to his depression."
+2026-06-17 12:20:28,748 [INFO] __main__:   → score=26.37, mem_red=80.0%, ttft=698.4ms
+2026-06-17 12:20:28,749 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 12:20:28,751 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-17 12:20:28,752 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 12:20:28,753 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 12:20:28,754 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 12:20:28,833 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 12:20:28,876 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 12:20:29,773 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 12:20:29,775 [INFO] core.evaluator_v2: [ours] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 12:20:36,226 [INFO] core.evaluator_v2: [ours] raw_new_tokens=[6025, 126949, 339, 78, 8776, 24521, 78, 518, 264, 7337, 6, 13169, 11, 566, 374, 13895, 504, 806, 2309, 323, 279, 2997, 374, 9575, 311, 3271, 311, 2441, 949, 315, 279, 3146, 13, 6065, 279, 3308, 315, 279, 2311, 11] prediction="After Ngotho attacks Jacobo at a workers' strike, he is fired from his position and the family is forced to move to another part of the country. Over the course of the book, Ngotho's position as the central power of the family weakens, to the point where his self-realization that he has spent his whole life waiting for the prophecy (that proclaims the blacks will be returned their land) to come true rather than fighting for Kenyan independence, leads to his depression."
+2026-06-17 12:20:36,230 [INFO] __main__:   → score=29.21, mem_red=80.0%, ttft=804.3ms
+2026-06-17 12:20:36,241 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260617_121945.csv
+2026-06-17 12:20:36,254 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260617_121945.json
+2026-06-17 12:20:36,255 [INFO] __main__: Experiment 1 completed!

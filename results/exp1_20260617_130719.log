@@ -1,0 +1,123 @@
+2026-06-17 13:07:19,362 [INFO] __main__: Experiment 1: Main Results
+2026-06-17 13:07:19,362 [INFO] __main__:   Model: qwen3-4b
+2026-06-17 13:07:19,363 [INFO] __main__:   Mode: full
+2026-06-17 13:07:19,363 [INFO] __main__:   Budget: 20%
+2026-06-17 13:07:19,364 [INFO] __main__:   Tasks: ['multifieldqa_en']
+2026-06-17 13:07:19,364 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-17 13:07:19,365 [INFO] __main__:   Samples/task: 1
+2026-06-17 13:07:19,365 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-17 13:07:19,366 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-17 13:07:19,505 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:19,509 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-17 13:07:19,516 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-17 13:07:19,573 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:19,579 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-17 13:07:19,662 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-17 13:07:19,701 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-17 13:07:20,785 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-17 13:07:20,788 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-17 13:07:20,820 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:20,826 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-17 13:07:25,703 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:25,711 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-17 13:07:25,771 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-17 13:07:25,792 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-17 13:07:25,817 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 13:07:25,818 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-17 13:07:25,818 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 13:07:25,819 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 13:07:25,820 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 13:07:25,853 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:25,885 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 13:07:26,552 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:26,583 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-17 13:07:26,618 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:26,662 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-17 13:07:26,929 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 13:07:26,930 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 13:07:30,307 [INFO] core.evaluator_v2: [fullkv] raw_new_tokens=[6025, 22818, 24521, 78, 518, 264, 7337, 6, 13169, 11, 126949, 339, 78, 32191, 806, 2618, 323, 806, 2997, 374, 9575, 311, 3271, 13, 1260, 2937, 8725, 504, 806, 14970, 13, 151645] prediction="After attacking Jacobo at a workers' strike, Ngotho loses his job and his family is forced to move. He later dies from his injuries."
+2026-06-17 13:07:30,310 [INFO] __main__:   → score=80.00, mem_red=0.0%, ttft=1196.4ms
+2026-06-17 13:07:30,311 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 13:07:30,312 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-17 13:07:30,313 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 13:07:30,314 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 13:07:30,315 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 13:07:30,349 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:30,549 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 13:07:31,322 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 13:07:31,324 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 13:07:33,021 [INFO] core.evaluator_v2: [streaming] raw_new_tokens=[6025, 22818, 24521, 78, 518, 264, 7337, 6, 13169, 11, 126949, 339, 78, 374, 7425, 13, 151645] prediction="After attacking Jacobo at a workers' strike, Ngotho is killed."
+2026-06-17 13:07:33,023 [INFO] __main__:   → score=61.54, mem_red=80.0%, ttft=654.9ms
+2026-06-17 13:07:33,023 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 13:07:33,024 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-17 13:07:33,028 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 13:07:33,029 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 13:07:33,029 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 13:07:33,060 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:33,091 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 13:07:33,768 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 13:07:33,769 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 13:07:57,893 [INFO] core.evaluator_v2: [h2o] raw_new_tokens=[20897, 1126, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895, 323, 374, 13895] prediction='Ngwo is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and is fired and'
+2026-06-17 13:07:57,896 [INFO] __main__:   → score=0.76, mem_red=80.0%, ttft=715.3ms
+2026-06-17 13:07:57,909 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 13:07:57,910 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-17 13:07:57,911 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 13:07:57,911 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 13:07:57,912 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 13:07:57,982 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:07:58,011 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 13:07:58,820 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 13:07:58,822 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 13:08:00,713 [INFO] core.evaluator_v2: [snapkv] raw_new_tokens=[6025, 22818, 24521, 78, 518, 264, 7337, 6, 13169, 11, 126949, 339, 78, 374, 13895, 323, 279, 2997, 3271, 13, 151645] prediction="After attacking Jacobo at a workers' strike, Ngotho is fired and the family move."
+2026-06-17 13:08:00,716 [INFO] __main__:   → score=75.86, mem_red=80.0%, ttft=667.0ms
+2026-06-17 13:08:00,717 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 13:08:00,718 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-17 13:08:00,721 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 13:08:00,722 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 13:08:00,723 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 13:08:00,754 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:08:00,785 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 13:08:01,671 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 13:08:01,673 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 13:08:02,928 [INFO] core.evaluator_v2: [pyramidkv] raw_new_tokens=[28715, 389, 279, 1467, 13, 151645] prediction='Based on the text.'
+2026-06-17 13:08:02,929 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=744.9ms
+2026-06-17 13:08:02,930 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 13:08:02,931 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-17 13:08:02,932 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 13:08:02,933 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 13:08:02,934 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 13:08:02,967 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:08:03,000 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 13:08:03,761 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 13:08:03,763 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 13:08:05,095 [INFO] core.evaluator_v2: [adakv] raw_new_tokens=[71703, 3118, 389, 279, 1467, 13, 151645] prediction='Assistant based on the text.'
+2026-06-17 13:08:05,108 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=711.7ms
+2026-06-17 13:08:05,109 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-17 13:08:05,110 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-17 13:08:05,111 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-17 13:08:05,112 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-17 13:08:05,113 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-17 13:08:05,149 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-17 13:08:05,178 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-17 13:08:05,931 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-17 13:08:05,933 [INFO] core.evaluator_v2: [ours] multifieldqa_en (1샘플, budget=20%)
+2026-06-17 13:08:28,564 [INFO] core.evaluator_v2: [ours] raw_new_tokens=[785, 11514, 40324, 279, 8225, 13566, 315, 36583, 5912, 13, 576, 3668, 11, 126949, 339, 84, 11, 374, 264, 36400, 879, 374, 13895, 504, 264, 8633, 13, 1260, 374, 264, 6981, 879, 374, 264, 36400, 13, 1260, 374, 264, 6981] prediction='The novel explores the negative aspects of colonial rule. The character, Ngothu, is a farmer who is fired from a factory. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer. He is a father who is a farmer'
+2026-06-17 13:08:28,567 [INFO] __main__:   → score=0.56, mem_red=80.0%, ttft=731.5ms
+2026-06-17 13:08:28,576 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260617_130719.csv
+2026-06-17 13:08:28,584 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260617_130719.json
+2026-06-17 13:08:28,584 [INFO] __main__: Experiment 1 completed!

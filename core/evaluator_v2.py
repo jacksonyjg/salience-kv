@@ -36,6 +36,13 @@ class EvaluatorV2:
         self.model_key = model_config["model_key"]
         torch.manual_seed(seed)
         np.random.seed(seed)
+        # RoPE re-indexing용: 압축 후 캐시의 토큰 position을 0..N-1로 재정렬하기 위해
+        # 모델의 rotary embedding(inv_freq)을 hook cache에 전달한다.
+        try:
+            self.cfg["rotary_emb"] = self.model.model.rotary_emb
+        except AttributeError:
+            logger.warning("model.model.rotary_emb 접근 실패 - RoPE re-indexing 비활성화됨")
+            self.cfg["rotary_emb"] = None
 
     def _clear_cache(self):
         gc.collect()
@@ -149,21 +156,49 @@ class EvaluatorV2:
                 )
                 for layer in compressed_cache.layers:
                     if layer.keys is not None and layer.keys.shape[2] > min_len:
-                        layer.keys = layer.keys[:, :, :min_len, :]
-                        layer.values = layer.values[:, :, :min_len, :]
-                # past(min_len) + input 전체를 이어붙인 attention_mask
-                gen_input_ids = input_ids
+                        # 앞부분(과거 컨텍스트)이 아니라 뒷부분(최근 토큰, 질문 포함)을
+                        # 유지해야 한다. 레이어별 budget이 다른 방법(PyramidKV, AdaKV,
+                        # OursHybrid)은 각 레이어의 idx가 이미 "질문이 포함된 마지막
+                        # window"를 보존하도록 정렬되어 있는데, 여기서 [:min_len]으로
+                        # 앞에서 자르면 그 보존된 마지막 부분이 잘려나가 질문이 캐시에서
+                        # 사라지는 문제가 있었다 (실측: PyramidKV/AdaKV 모든 레이어가
+                        # truncate 후 input_length-1 position을 누락 -> 반복루프/EOS).
+                        layer.keys = layer.keys[:, :, -min_len:, :]
+                        layer.values = layer.values[:, :, -min_len:, :]
+                # ── 캐시 1-토큰 롤백 ──────────────────────────────
+                # 압축된 캐시는 원본 시퀀스에서 sparse하게 선택된 토큰들이므로,
+                # "캐시 길이(min_len)만큼의 prefix가 이미 처리되었다"는 generate()의
+                # 기본 가정(_cache_dependant_input_preparation의 input_ids[:, cache_position]
+                # 슬라이싱)과 양립하지 않는다. input_ids 전체를 다시 넣으면 캐시에 없는
+                # 임의의 중간 구간이 입력되어 컨텍스트가 깨진다.
+                # 해결: 캐시의 마지막 1토큰을 롤백(제거)하고, 그 토큰을 input_ids로 다시
+                # 넣어 cache_position을 캐시 길이에 정확히 맞춰 첫 logit을 재계산한다.
+                # (transformers generate() 코드 주석에도 명시된 표준 패턴:
+                #  "we need to roll back the cache 1 token to recompute the logits
+                #   for the first token to be generated")
+                for layer in compressed_cache.layers:
+                    if layer.keys is not None and layer.keys.shape[2] > 0:
+                        layer.keys = layer.keys[:, :, :-1, :]
+                        layer.values = layer.values[:, :, :-1, :]
+                rollback_len = min_len - 1
+                gen_input_ids = input_ids[:, -1:]
                 past_mask = torch.ones(
-                    1, min_len,
+                    1, rollback_len,
                     dtype=attention_mask.dtype,
                     device=attention_mask.device,
                 )
-                gen_attention_mask = torch.cat([past_mask, attention_mask], dim=1)
+                gen_attention_mask = torch.cat(
+                    [past_mask, attention_mask[:, -1:]], dim=1
+                )
+                cache_position = torch.tensor(
+                    [rollback_len], device=gen_input_ids.device
+                )
             else:
                 gen_input_ids = input_ids
                 gen_attention_mask = attention_mask
+                cache_position = None
             with torch.no_grad():
-                output = self.model.generate(
+                gen_kwargs = dict(
                     input_ids=gen_input_ids,
                     attention_mask=gen_attention_mask,
                     past_key_values=compressed_cache,
@@ -175,7 +210,11 @@ class EvaluatorV2:
                     pad_token_id=self.tokenizer.pad_token_id,
                     eos_token_id=self.tokenizer.eos_token_id,
                 )
-            new_tokens = output[0, input_length:]
+                if cache_position is not None:
+                    gen_kwargs["cache_position"] = cache_position
+                output = self.model.generate(**gen_kwargs)
+            gen_prompt_len = gen_input_ids.shape[1]
+            new_tokens = output[0, gen_prompt_len:]
         except Exception as e:
             logger.error(f"generate() failed: {e}")
             return {
@@ -193,6 +232,7 @@ class EvaluatorV2:
             new_tokens, skip_special_tokens=True, clean_up_tokenization_spaces=False
         )
         prediction = self._clean_prediction(prediction)
+        logger.info(f"[{method_name}] raw_new_tokens={new_tokens.tolist()[:40]} prediction={prediction!r}")
         score = compute_score(prediction, sample["answers"], sample["metric"])
 
         return {
