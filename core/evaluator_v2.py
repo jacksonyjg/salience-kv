@@ -151,11 +151,37 @@ class EvaluatorV2:
                     device=attention_mask.device,
                 )
                 gen_attention_mask = torch.cat([past_mask, attention_mask], dim=1)
+
+                # SnapKV 전용: attention_mask를 실제 input_length 크기로 설정
+                # generate()는 attention_mask.shape[1]로 다음 토큰 position을 계산함.
+                # SnapKV sparse 캐시(cache_len=420)는 실제 2101토큰 중 선택된 것이므로
+                # attention_mask를 실제 input_length(2101)로 맞춰야 RoPE position 정확.
+                if method_name.lower() in ("snapkv",):
+                    gen_input_ids = input_ids[:, -1:]
+                    gen_attention_mask = torch.ones(
+                        1, input_length,
+                        dtype=attention_mask.dtype,
+                        device=attention_mask.device,
+                    )
+                    gen_cache_position = torch.tensor(
+                        [input_length - 1], device=gen_input_ids.device
+                    )
+                    # 캐시 마지막 1토큰 롤백
+                    for layer in compressed_cache.layers:
+                        if layer.keys is not None and layer.keys.shape[2] > 1:
+                            layer.keys = layer.keys[:, :, :-1, :]
+                            layer.values = layer.values[:, :, :-1, :]
+                    gen_position_ids = None
+                else:
+                    gen_cache_position = None
+                    gen_position_ids = None
             else:
                 gen_input_ids = input_ids
                 gen_attention_mask = attention_mask
+                gen_position_ids = None
+                gen_cache_position = None
             with torch.no_grad():
-                output = self.model.generate(
+                gen_kwargs = dict(
                     input_ids=gen_input_ids,
                     attention_mask=gen_attention_mask,
                     past_key_values=compressed_cache,
@@ -167,7 +193,14 @@ class EvaluatorV2:
                     pad_token_id=self.tokenizer.pad_token_id,
                     eos_token_id=self.tokenizer.eos_token_id,
                 )
-            new_tokens = output[0, input_length:]
+                if gen_position_ids is not None:
+                    gen_kwargs["position_ids"] = gen_position_ids
+                if gen_cache_position is not None:
+                    gen_kwargs["cache_position"] = gen_cache_position
+                output = self.model.generate(**gen_kwargs)
+            # SnapKV는 gen_input_ids가 1토큰이므로 gen_prompt_len 기준으로 슬라이싱
+            gen_prompt_len = gen_input_ids.shape[1]
+            new_tokens = output[0, gen_prompt_len:]
         except Exception as e:
             logger.error(f"generate() failed: {e}")
             return {
