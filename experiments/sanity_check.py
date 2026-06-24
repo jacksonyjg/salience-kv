@@ -67,7 +67,12 @@ def test_model_loading(model_key: str):
     
     # Qwen3 특수 검증
     if model_key == "qwen3-4b":
-        assert "<think>" not in prompt, "Qwen3 thinking mode should be disabled!"
+        # <think>\n\n</think> 빈 블록은 thinking 억제용으로 허용
+        # 실제 thinking content가 있는 경우(<think>실제내용</think>)만 금지
+        import re
+        thinking_blocks = re.findall(r'<think>(.*?)</think>', prompt, re.DOTALL)
+        has_thinking_content = any(b.strip() for b in thinking_blocks)
+        assert not has_thinking_content, "Qwen3 thinking mode should be disabled!"
         assert "<|im_start|>" in prompt or "user" in prompt.lower(), \
             "Qwen3 chat template not applied"
     
