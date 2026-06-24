@@ -227,13 +227,19 @@ class PyramidKVCache(BaseHookCache):
         return max(int(ratios[layer_idx].item() * seq_len), 4)
 
     def apply_compression_all_layers(self):
-        """레이어별 다른 budget 적용."""
+        """레이어별 다른 budget 적용. 모든 레이어 동일 길이(min_budget) 보장."""
+        budgets = []
+        for i in range(len(self.layers)):
+            k, _ = _get_layer_kv(self, i)
+            budgets.append(self._get_layer_budget(i, k.shape[2]))
+        avg_budget = max(round(sum(budgets) / len(budgets)), 4)
+
         for i in range(len(self.layers)):
             k, v = _get_layer_kv(self, i)
             seq_len = k.shape[2]
-            budget = self._get_layer_budget(i, seq_len)
-            if seq_len > budget:
-                k_c, v_c, idx = self._compress(k, v, i, budget)
+            b = min(avg_budget, seq_len)
+            if seq_len > b:
+                k_c, v_c, idx = self._compress(k, v, i, b)
                 _set_layer_kv(self, i, k_c, v_c)
                 if i == 0:
                     self._selected_positions[i] = idx
@@ -288,13 +294,21 @@ class AdaKVCache(BaseHookCache):
             entropies.append(ent + 1e-9)
 
         ent_tensor = torch.tensor(entropies)
-        weights = torch.softmax(ent_tensor, dim=0)
+        ent_min, ent_max = ent_tensor.min(), ent_tensor.max()
+        if (ent_max - ent_min) > 1e-9:
+            ent_normalized = (ent_tensor - ent_min) / (ent_max - ent_min)
+        else:
+            ent_normalized = torch.ones_like(ent_tensor)
+        weights = torch.softmax(ent_normalized, dim=0)
         budgets = [max(round(w.item() * total_budget), 4) for w in weights]
 
+        # 모든 레이어가 동일한 길이를 가져야 generate()가 올바르게 동작
+        # avg_budget으로 통일 (min_budget은 너무 작아서 budget 낭비 발생)
+        avg_budget = max(round(sum(budgets) / len(budgets)), 4)
         for i in range(len(self.layers)):
             k, v = _get_layer_kv(self, i)
             seq_len = k.shape[2]
-            b = min(budgets[i], seq_len)
+            b = min(avg_budget, seq_len)
             if seq_len > b:
                 k_c, v_c, idx = self._compress(k, v, i, b)
                 _set_layer_kv(self, i, k_c, v_c)
@@ -307,12 +321,22 @@ class AdaKVCache(BaseHookCache):
 
     def _compress(self, key_states, value_states, layer_idx, budget):
         seq_len = key_states.shape[2]
+        device = key_states.device
         pk = self._prefill_keys[layer_idx]
-        score = _key_importance(pk if pk is not None and pk.shape[2] == seq_len
-                                else key_states.cpu())
-        _, indices = torch.topk(score, k=min(budget, seq_len))
-        indices, _ = indices.sort()
-        indices = indices.to(key_states.device)
+        score = _key_importance(pk.to(device) if pk is not None and pk.shape[2] == seq_len
+                                else key_states)
+        w = min(32, seq_len // 4, budget // 2)
+        w = max(w, 0)
+        if w > 0 and seq_len > w:
+            recent_idx = torch.arange(seq_len - w, seq_len, device=device)
+            prefix_b = max(budget - w, 1)
+            _, top_idx = torch.topk(score[:seq_len - w], k=min(prefix_b, seq_len - w))
+            top_idx, _ = top_idx.sort()
+            indices = torch.cat([top_idx, recent_idx])
+        else:
+            _, indices = torch.topk(score, k=min(budget, seq_len))
+            indices, _ = indices.sort()
+        indices = indices.to(device)
         return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 
@@ -410,12 +434,22 @@ class OursHybridCache(BaseHookCache):
 
     def _compress(self, key_states, value_states, layer_idx, budget):
         seq_len = key_states.shape[2]
+        device = key_states.device
         scores = self._compute_hybrid_score(key_states, layer_idx, seq_len)
-        if scores.sum() == 0:
-            indices = torch.arange(seq_len - budget, seq_len, device=key_states.device)
+        w = min(32, seq_len // 4, budget // 2)
+        w = max(w, 0)
+        if w > 0 and seq_len > w:
+            recent_idx = torch.arange(seq_len - w, seq_len, device=device)
+            prefix_b = max(budget - w, 1)
+            _, top_idx = torch.topk(scores[:seq_len - w], k=min(prefix_b, seq_len - w))
+            top_idx, _ = top_idx.sort()
+            indices = torch.cat([top_idx, recent_idx])
         else:
-            _, indices = torch.topk(scores, k=min(budget, seq_len))
-            indices, _ = indices.sort()
+            if scores.sum() == 0:
+                indices = torch.arange(seq_len - budget, seq_len, device=device)
+            else:
+                _, indices = torch.topk(scores, k=min(budget, seq_len))
+                indices, _ = indices.sort()
         return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 

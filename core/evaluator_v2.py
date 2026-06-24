@@ -142,19 +142,11 @@ class EvaluatorV2:
         try:
             if compressed_cache is not None:
                 # 레이어별 seq_len 중 최솟값으로 모든 레이어 통일
-                min_len = min(
-                    layer.keys.shape[2]
-                    for layer in compressed_cache.layers
-                    if layer.keys is not None
-                )
-                for layer in compressed_cache.layers:
-                    if layer.keys is not None and layer.keys.shape[2] > min_len:
-                        layer.keys = layer.keys[:, :, :min_len, :]
-                        layer.values = layer.values[:, :, :min_len, :]
-                # past(min_len) + input 전체를 이어붙인 attention_mask
+                # 모든 레이어가 apply_compression에서 이미 동일 길이로 통일됨
+                cache_len = compressed_cache.layers[0].keys.shape[2]
                 gen_input_ids = input_ids
                 past_mask = torch.ones(
-                    1, min_len,
+                    1, cache_len,
                     dtype=attention_mask.dtype,
                     device=attention_mask.device,
                 )
@@ -193,6 +185,7 @@ class EvaluatorV2:
             new_tokens, skip_special_tokens=True, clean_up_tokenization_spaces=False
         )
         prediction = self._clean_prediction(prediction)
+        logger.info(f"[{method_name}] pred={prediction[:120]!r}")
         score = compute_score(prediction, sample["answers"], sample["metric"])
 
         return {

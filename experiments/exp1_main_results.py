@@ -83,6 +83,7 @@ def run_method_on_all_tasks(
     budget_ratio: float,
     num_samples: int,
     seed: int,
+    preloaded_data: Dict = None,
 ) -> Dict:
     """단일 메서드를 모든 태스크에서 평가."""
     logger.info(f"\n{'─'*60}")
@@ -98,7 +99,10 @@ def run_method_on_all_tasks(
         logger.info(f"\n  Task: {task_name}")
         
         try:
-            samples = load_longbench_task(task_name, num_samples=num_samples, seed=seed)
+            if preloaded_data and task_name in preloaded_data:
+                samples = preloaded_data[task_name]
+            else:
+                samples = load_longbench_task(task_name, num_samples=num_samples, seed=seed)
             result = evaluator.evaluate_task(
                 samples=samples,
                 method_name=method_name,
@@ -167,6 +171,16 @@ def main():
         seed=args.seed,
     )
     
+    # 모든 태스크 데이터 사전 로딩 (메서드마다 반복 다운로드 방지)
+    logger.info("사전 데이터 로딩 중...")
+    preloaded_data = {}
+    for task_name in tasks:
+        preloaded_data[task_name] = load_longbench_task(
+            task_name, num_samples=args.num_samples, seed=args.seed
+        )
+        logger.info(f"  ✓ {task_name}: {len(preloaded_data[task_name])}샘플 로드 완료")
+    logger.info("모든 태스크 데이터 로딩 완료!")
+
     # 각 메서드 평가
     all_results = []
     table_rows = []
@@ -179,6 +193,7 @@ def main():
             budget_ratio=args.budget,
             num_samples=args.num_samples,
             seed=args.seed,
+            preloaded_data=preloaded_data,
         )
         all_results.append(result)
         
