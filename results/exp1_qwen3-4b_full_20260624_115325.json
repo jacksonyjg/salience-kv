@@ -1,0 +1,92 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qasper"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 1,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "qasper": 19.277108433734938
+      },
+      "avg_score": 19.277108433734938,
+      "avg_ttft_ms": 4815.077423407086,
+      "avg_throughput": 7.0999385694192965,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 4284.36195420727,
+      "avg_throughput": 10.014529130108325,
+      "avg_memory_reduction_pct": 80.02496878901373
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "qasper": 1.1049723756906076
+      },
+      "avg_score": 1.1049723756906076,
+      "avg_ttft_ms": 4494.004003619921,
+      "avg_throughput": 10.32575358358744,
+      "avg_memory_reduction_pct": 80.02496878901373
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 4559.8803058346675,
+      "avg_throughput": 9.848361826707208,
+      "avg_memory_reduction_pct": 80.02496878901373
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "qasper": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 0.0,
+      "avg_throughput": 0.0,
+      "avg_memory_reduction_pct": 0.0
+    }
+  ]
+}

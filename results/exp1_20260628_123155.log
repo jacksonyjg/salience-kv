@@ -1,0 +1,137 @@
+2026-06-28 12:31:55,332 [INFO] __main__: Experiment 1: Main Results
+2026-06-28 12:31:55,333 [INFO] __main__:   Model: qwen3-4b
+2026-06-28 12:31:55,334 [INFO] __main__:   Mode: full
+2026-06-28 12:31:55,335 [INFO] __main__:   Budget: 20%
+2026-06-28 12:31:55,337 [INFO] __main__:   Tasks: ['qasper']
+2026-06-28 12:31:55,338 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-28 12:31:55,339 [INFO] __main__:   Samples/task: 5
+2026-06-28 12:31:55,340 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-28 12:31:55,340 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-28 12:31:55,471 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 12:31:55,473 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 12:31:55,481 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 12:31:55,585 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 12:31:55,595 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 12:31:55,706 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 12:31:55,758 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 12:31:57,413 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-28 12:31:57,417 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-28 12:31:57,451 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 12:31:57,458 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 12:32:09,452 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 12:32:09,458 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-28 12:32:09,560 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-28 12:32:09,592 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-28 12:32:09,624 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-28 12:32:09,625 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-28 12:32:09,661 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 12:32:09,716 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 12:32:10,287 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 12:32:10,317 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-28 12:32:10,352 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 12:32:10,387 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-28 12:32:10,817 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-06-28 12:32:10,823 [INFO] __main__:   ✓ qasper: 5샘플 로드 완료
+2026-06-28 12:32:10,825 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-28 12:32:10,827 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 12:32:10,828 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-28 12:32:10,829 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 12:32:10,830 [INFO] __main__: 
+  Task: qasper
+2026-06-28 12:32:10,832 [INFO] core.evaluator_v2: [fullkv] qasper (5샘플, budget=20%)
+2026-06-28 12:32:22,530 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-06-28 12:32:30,700 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-06-28 12:32:37,981 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 12:32:44,632 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-06-28 12:32:55,894 [INFO] core.evaluator_v2: [fullkv] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-06-28 12:32:55,896 [INFO] core.evaluator_v2:   [5/5] avg=15.08
+2026-06-28 12:32:55,912 [INFO] __main__:   → score=15.08, mem_red=0.0%, ttft=3492.4ms
+2026-06-28 12:32:55,914 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 12:32:55,915 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-28 12:32:55,917 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 12:32:55,918 [INFO] __main__: 
+  Task: qasper
+2026-06-28 12:32:55,919 [INFO] core.evaluator_v2: [streaming] qasper (5샘플, budget=20%)
+2026-06-28 12:33:02,130 [INFO] core.evaluator_v2: [streaming] pred='The proposed strategies show that KG-A2C-chained is significantly more sample efficient and converges faster, while both'
+2026-06-28 12:33:05,109 [INFO] core.evaluator_v2: [streaming] pred='The encoder is a character-based encoder-decoder model.'
+2026-06-28 12:33:10,654 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 12:33:14,209 [INFO] core.evaluator_v2: [streaming] pred='NeuronBlocks includes modules such as CNN, BiLSTM, Attention, and BERT-based models. It also supports knowledge distilla'
+2026-06-28 12:33:22,908 [INFO] core.evaluator_v2: [streaming] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-06-28 12:33:22,913 [INFO] core.evaluator_v2:   [5/5] avg=6.30
+2026-06-28 12:33:22,914 [INFO] __main__:   → score=6.30, mem_red=80.0%, ttft=1871.4ms
+2026-06-28 12:33:22,915 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 12:33:22,916 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-28 12:33:22,917 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 12:33:22,918 [INFO] __main__: 
+  Task: qasper
+2026-06-28 12:33:22,919 [INFO] core.evaluator_v2: [h2o] qasper (5샘플, budget=20%)
+2026-06-28 12:33:38,873 [INFO] core.evaluator_v2: [h2o] pred='The proposed strategies, when applied, show that the knowledge graph is a critical component in the decision-making proc'
+2026-06-28 12:34:06,648 [INFO] core.evaluator_v2: [h2o] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-28 12:34:11,611 [INFO] core.evaluator_v2: [h2o] pred='The text does not provide the size of the Augmented LibriSpeech dataset.'
+2026-06-28 12:34:21,722 [INFO] core.evaluator_v2: [h2o] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network Layers, Loss Function, Metric, Mod'
+2026-06-28 12:34:28,748 [INFO] core.evaluator_v2: [h2o] pred='The LSTM models compared are the 6-layer and 9-layer models.'
+2026-06-28 12:34:28,750 [INFO] core.evaluator_v2:   [5/5] avg=7.85
+2026-06-28 12:34:28,752 [INFO] __main__:   → score=7.85, mem_red=80.0%, ttft=2320.2ms
+2026-06-28 12:34:28,753 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 12:34:28,754 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-28 12:34:28,755 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 12:34:28,756 [INFO] __main__: 
+  Task: qasper
+2026-06-28 12:34:28,758 [INFO] core.evaluator_v2: [snapkv] qasper (5샘플, budget=20%)
+2026-06-28 12:34:48,668 [INFO] core.evaluator_v2: [snapkv] pred='The results from these proposed strategies are that both agents successfully pass the bottleneck corresponding to enteri'
+2026-06-28 12:34:54,533 [INFO] core.evaluator_v2: [snapkv] pred='The encoder is a character-based encoder-decoder model.'
+2026-06-28 12:35:01,662 [INFO] core.evaluator_v2: [snapkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 12:35:06,780 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-28 12:35:38,648 [INFO] core.evaluator_v2: [snapkv] pred='The EMA model is also updated additionally, but not broadcasting it. The model is trained with CE. For each layer-wise t'
+2026-06-28 12:35:38,650 [INFO] core.evaluator_v2:   [5/5] avg=1.64
+2026-06-28 12:35:38,651 [INFO] __main__:   → score=1.64, mem_red=80.0%, ttft=2745.6ms
+2026-06-28 12:35:38,652 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 12:35:38,655 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-28 12:35:38,657 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 12:35:38,658 [INFO] __main__: 
+  Task: qasper
+2026-06-28 12:35:38,659 [INFO] core.evaluator_v2: [pyramidkv] qasper (5샘플, budget=20%)
+2026-06-28 12:35:54,532 [INFO] core.evaluator_v2: [pyramidkv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-28 12:36:16,236 [INFO] core.evaluator_v2: [pyramidkv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-28 12:36:19,736 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 12:36:39,695 [INFO] core.evaluator_v2: [pyramidkv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-06-28 12:37:11,945 [INFO] core.evaluator_v2: [pyramidkv] pred='The LSTM models compared in the text are the 6-layer and 9-layer models. The 6-layer model is initialized with Xavier in'
+2026-06-28 12:37:11,948 [INFO] core.evaluator_v2:   [5/5] avg=3.29
+2026-06-28 12:37:11,948 [INFO] __main__:   → score=3.29, mem_red=80.0%, ttft=2379.0ms
+2026-06-28 12:37:11,949 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 12:37:11,949 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-28 12:37:11,950 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 12:37:11,950 [INFO] __main__: 
+  Task: qasper
+2026-06-28 12:37:11,951 [INFO] core.evaluator_v2: [adakv] qasper (5샘플, budget=20%)
+2026-06-28 12:37:25,242 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-28 12:37:51,279 [INFO] core.evaluator_v2: [adakv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-28 12:37:55,031 [INFO] core.evaluator_v2: [adakv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 12:38:19,434 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-06-28 12:38:44,687 [INFO] core.evaluator_v2: [adakv] pred='The LSTM models compared in the text are the 6-layer and 9-layer models. The 6-layer model is initialized with Xavier in'
+2026-06-28 12:38:44,688 [INFO] core.evaluator_v2:   [5/5] avg=3.29
+2026-06-28 12:38:44,689 [INFO] __main__:   → score=3.29, mem_red=80.0%, ttft=1718.0ms
+2026-06-28 12:38:44,689 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 12:38:44,690 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-28 12:38:44,690 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 12:38:44,690 [INFO] __main__: 
+  Task: qasper
+2026-06-28 12:38:44,691 [INFO] core.evaluator_v2: [ours] qasper (5샘플, budget=20%)
+2026-06-28 12:39:00,552 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-06-28 12:39:08,208 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, which is extended with a wide context window and with mu'
+2026-06-28 12:39:17,576 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 12:39:23,102 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n- Word/Character embedding\n- CNN/LSTM\n- CRF (Conditional Ra'
+2026-06-28 12:39:33,920 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared in the text are: \n\n1. Very deep unidirectional LSTM (initialized with Xavier initialization)\n2.'
+2026-06-28 12:39:33,923 [INFO] core.evaluator_v2:   [5/5] avg=14.32
+2026-06-28 12:39:33,923 [INFO] __main__:   → score=14.32, mem_red=80.0%, ttft=2863.9ms
+2026-06-28 12:39:33,937 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260628_123155.csv
+2026-06-28 12:39:33,947 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260628_123155.json
+2026-06-28 12:39:33,948 [INFO] __main__: Experiment 1 completed!

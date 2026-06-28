@@ -1,0 +1,108 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "gov_report",
+    "qmsum",
+    "2wikimqa"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 1,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "gov_report": 19.90811638591118,
+        "qmsum": 6.25,
+        "2wikimqa": 0.0
+      },
+      "avg_score": 8.71937212863706,
+      "avg_ttft_ms": 3471.4152183748233,
+      "avg_throughput": 13.66730099417611,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "gov_report": 21.093750000000004,
+        "qmsum": 5.839416058394161,
+        "2wikimqa": 0.0
+      },
+      "avg_score": 8.977722019464721,
+      "avg_ttft_ms": 3229.2449604937283,
+      "avg_throughput": 16.440467414461065,
+      "avg_memory_reduction_pct": 80.00693698024345
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "gov_report": 24.970828471411902,
+        "qmsum": 3.488372093023256,
+        "2wikimqa": 0.0
+      },
+      "avg_score": 9.486400188145053,
+      "avg_ttft_ms": 3565.327940667307,
+      "avg_throughput": 14.960742321426828,
+      "avg_memory_reduction_pct": 80.00693698024345
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "gov_report": 20.947630922693264,
+        "qmsum": 8.0,
+        "2wikimqa": 0.0
+      },
+      "avg_score": 9.649210307564422,
+      "avg_ttft_ms": 3393.4346161999965,
+      "avg_throughput": 17.241919938348655,
+      "avg_memory_reduction_pct": 80.00693698024345
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "gov_report": 20.422535211267608,
+        "qmsum": 3.7209302325581386,
+        "2wikimqa": 0.0
+      },
+      "avg_score": 8.047821814608582,
+      "avg_ttft_ms": 3285.3597221068753,
+      "avg_throughput": 16.852016933574994,
+      "avg_memory_reduction_pct": 80.00693698024345
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "gov_report": 20.422535211267608,
+        "qmsum": 3.7209302325581386,
+        "2wikimqa": 0.0
+      },
+      "avg_score": 8.047821814608582,
+      "avg_ttft_ms": 3237.4079484746085,
+      "avg_throughput": 16.796145188689632,
+      "avg_memory_reduction_pct": 80.00693698024345
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "gov_report": 17.381228273464657,
+        "qmsum": 7.2727272727272725,
+        "2wikimqa": 0.0
+      },
+      "avg_score": 8.217985182063977,
+      "avg_ttft_ms": 3579.6592316375722,
+      "avg_throughput": 15.037060134121909,
+      "avg_memory_reduction_pct": 80.00693698024345
+    }
+  ]
+}

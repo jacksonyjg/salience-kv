@@ -1,0 +1,501 @@
+2026-06-24 12:56:55,919 [INFO] __main__: Experiment 1: Main Results
+2026-06-24 12:56:55,920 [INFO] __main__:   Model: qwen3-4b
+2026-06-24 12:56:55,921 [INFO] __main__:   Mode: full
+2026-06-24 12:56:55,921 [INFO] __main__:   Budget: 20%
+2026-06-24 12:56:55,922 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum']
+2026-06-24 12:56:55,922 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-24 12:56:55,923 [INFO] __main__:   Samples/task: 1
+2026-06-24 12:56:55,923 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-24 12:56:55,924 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-24 12:56:56,050 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:56:56,052 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 12:56:56,058 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 12:56:56,144 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:56:56,150 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 12:56:56,243 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 12:56:56,281 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 12:56:57,343 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-24 12:56:57,345 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-24 12:56:57,378 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:56:57,383 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 12:57:05,502 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:05,518 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-24 12:57:05,601 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-24 12:57:05,646 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-24 12:57:05,660 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:57:05,661 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-24 12:57:05,662 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:57:05,663 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 12:57:05,664 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-24 12:57:05,702 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:05,740 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:57:06,348 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:06,508 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-24 12:57:06,556 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:06,594 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-24 12:57:06,951 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-06-24 12:57:06,953 [INFO] core.evaluator_v2: [fullkv] narrativeqa (1샘플, budget=20%)
+2026-06-24 12:57:14,987 [INFO] core.evaluator_v2: [fullkv] pred='Daisy encountered Jim in Maitland.'
+2026-06-24 12:57:14,988 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=4366.5ms
+2026-06-24 12:57:14,989 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:57:14,989 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:57:15,073 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:15,101 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:57:15,807 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:57:15,809 [INFO] core.evaluator_v2: [fullkv] qasper (1샘플, budget=20%)
+2026-06-24 12:57:23,027 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-06-24 12:57:23,029 [INFO] __main__:   → score=19.28, mem_red=0.0%, ttft=1274.3ms
+2026-06-24 12:57:23,029 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:57:23,029 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:57:23,099 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:23,217 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:57:23,888 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:57:23,889 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:57:26,607 [INFO] core.evaluator_v2: [fullkv] pred="After attacking Jacobo at a workers' strike, Ngotho loses his job and his family is forced to move. He later dies from h"
+2026-06-24 12:57:26,612 [INFO] __main__:   → score=80.00, mem_red=0.0%, ttft=650.3ms
+2026-06-24 12:57:26,613 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 12:57:26,614 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-24 12:57:26,647 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:26,678 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:57:27,329 [INFO] core.dataset_loader: Loaded 1 samples from hotpotqa
+2026-06-24 12:57:27,331 [INFO] core.evaluator_v2: [fullkv] hotpotqa (1샘플, budget=20%)
+2026-06-24 12:57:34,776 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-06-24 12:57:34,778 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=4449.9ms
+2026-06-24 12:57:34,778 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 12:57:34,778 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-24 12:57:34,847 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:34,881 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:57:35,685 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-24 12:57:35,687 [INFO] core.evaluator_v2: [fullkv] 2wikimqa (1샘플, budget=20%)
+2026-06-24 12:57:45,048 [INFO] core.evaluator_v2: [fullkv] pred='Elmer Bäck was born in Finland.'
+2026-06-24 12:57:45,050 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=4738.5ms
+2026-06-24 12:57:45,050 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 12:57:45,051 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-24 12:57:45,153 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:45,272 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:57:46,168 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-24 12:57:46,170 [INFO] core.evaluator_v2: [fullkv] gov_report (1샘플, budget=20%)
+2026-06-24 12:57:59,284 [INFO] core.evaluator_v2: [fullkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-06-24 12:57:59,300 [INFO] __main__:   → score=19.91, mem_red=0.0%, ttft=2284.7ms
+2026-06-24 12:57:59,312 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 12:57:59,314 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-24 12:57:59,389 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:57:59,423 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:58:00,178 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-24 12:58:00,178 [INFO] core.evaluator_v2: [fullkv] qmsum (1샘플, budget=20%)
+2026-06-24 12:58:12,324 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-06-24 12:58:12,325 [INFO] __main__:   → score=6.25, mem_red=0.0%, ttft=2918.9ms
+2026-06-24 12:58:12,326 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:58:12,327 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-24 12:58:12,327 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:58:12,328 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 12:58:12,328 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-24 12:58:12,409 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:58:12,457 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:58:13,143 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-06-24 12:58:13,144 [INFO] core.evaluator_v2: [streaming] narrativeqa (1샘플, budget=20%)
+2026-06-24 12:58:20,565 [INFO] core.evaluator_v2: [streaming] pred='The text does not specify the name of the town where Daisy encountered Jim.'
+2026-06-24 12:58:20,567 [INFO] __main__:   → score=13.33, mem_red=80.0%, ttft=3918.1ms
+2026-06-24 12:58:20,567 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:58:20,567 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:58:20,635 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:58:20,884 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:58:21,517 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:58:21,518 [INFO] core.evaluator_v2: [streaming] qasper (1샘플, budget=20%)
+2026-06-24 12:58:26,524 [INFO] core.evaluator_v2: [streaming] pred='The proposed strategies show that KG-A2C-chained is significantly more sample efficient and converges faster, while both'
+2026-06-24 12:58:26,525 [INFO] __main__:   → score=20.41, mem_red=80.0%, ttft=1400.4ms
+2026-06-24 12:58:26,526 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:58:26,527 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:58:26,596 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:58:26,637 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:58:27,238 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:58:27,239 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:58:30,183 [INFO] core.evaluator_v2: [streaming] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned. His family is forced to move, and he is "
+2026-06-24 12:58:30,185 [INFO] __main__:   → score=66.67, mem_red=80.0%, ttft=653.8ms
+2026-06-24 12:58:30,186 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 12:58:30,186 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-24 12:58:30,220 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:58:30,311 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:58:30,949 [INFO] core.dataset_loader: Loaded 1 samples from hotpotqa
+2026-06-24 12:58:30,950 [INFO] core.evaluator_v2: [streaming] hotpotqa (1샘플, budget=20%)
+2026-06-24 12:58:37,417 [INFO] core.evaluator_v2: [streaming] pred='Audra McDonald.'
+2026-06-24 12:58:37,418 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4043.6ms
+2026-06-24 12:58:37,419 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 12:58:37,419 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-24 12:58:37,492 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:58:37,523 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:58:38,467 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-24 12:58:38,469 [INFO] core.evaluator_v2: [streaming] 2wikimqa (1샘플, budget=20%)
+2026-06-24 12:58:47,662 [INFO] core.evaluator_v2: [streaming] pred='The director of the film *Eisenstein in Guanajuato* is Peter Greenaway, who was born in London, England.'
+2026-06-24 12:58:47,663 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4407.4ms
+2026-06-24 12:58:47,664 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 12:58:47,665 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-24 12:58:47,745 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:58:47,782 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:58:48,359 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-24 12:58:48,360 [INFO] core.evaluator_v2: [streaming] gov_report (1샘플, budget=20%)
+2026-06-24 12:59:07,190 [INFO] core.evaluator_v2: [streaming] pred='The National Science Foundation (NSF) has recognized the need to strategically manage its use of rotating researchers (r'
+2026-06-24 12:59:07,216 [INFO] __main__:   → score=21.09, mem_red=80.0%, ttft=2266.7ms
+2026-06-24 12:59:07,217 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 12:59:07,217 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-24 12:59:07,319 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:59:07,472 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:59:08,171 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-24 12:59:08,173 [INFO] core.evaluator_v2: [streaming] qmsum (1샘플, budget=20%)
+2026-06-24 12:59:19,686 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-24 12:59:19,688 [INFO] __main__:   → score=5.84, mem_red=80.0%, ttft=2968.9ms
+2026-06-24 12:59:19,688 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:59:19,688 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-24 12:59:19,689 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:59:19,689 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 12:59:19,689 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-24 12:59:19,770 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:59:19,800 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:59:20,500 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-06-24 12:59:20,515 [INFO] core.evaluator_v2: [h2o] narrativeqa (1샘플, budget=20%)
+2026-06-24 12:59:27,749 [INFO] core.evaluator_v2: [h2o] pred='Daisy encountered Jim in the town of "Cincinnati."'
+2026-06-24 12:59:27,750 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=3823.2ms
+2026-06-24 12:59:27,751 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:59:27,751 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:59:27,811 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:59:27,842 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:59:28,488 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:59:28,490 [INFO] core.evaluator_v2: [h2o] qasper (1샘플, budget=20%)
+2026-06-24 12:59:37,462 [INFO] core.evaluator_v2: [h2o] pred='The proposed strategies, when applied, show that the knowledge graph is a critical component in the decision-making proc'
+2026-06-24 12:59:37,464 [INFO] __main__:   → score=8.20, mem_red=80.0%, ttft=1239.0ms
+2026-06-24 12:59:37,465 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:59:37,466 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:59:37,544 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:59:37,611 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:59:38,434 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:59:38,435 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:59:45,722 [INFO] core.evaluator_v2: [h2o] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-24 12:59:45,723 [INFO] __main__:   → score=15.62, mem_red=80.0%, ttft=648.5ms
+2026-06-24 12:59:45,724 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 12:59:45,724 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-24 12:59:45,795 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:59:45,838 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:59:46,424 [INFO] core.dataset_loader: Loaded 1 samples from hotpotqa
+2026-06-24 12:59:46,427 [INFO] core.evaluator_v2: [h2o] hotpotqa (1샘플, budget=20%)
+2026-06-24 12:59:53,035 [INFO] core.evaluator_v2: [h2o] pred='Brian Stokes Mitchell.'
+2026-06-24 12:59:53,037 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4158.7ms
+2026-06-24 12:59:53,037 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 12:59:53,038 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-24 12:59:53,109 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:59:53,138 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:59:53,883 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-24 12:59:53,884 [INFO] core.evaluator_v2: [h2o] 2wikimqa (1샘플, budget=20%)
+2026-06-24 13:00:02,099 [INFO] core.evaluator_v2: [h2o] pred='Finland.'
+2026-06-24 13:00:02,111 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=5173.7ms
+2026-06-24 13:00:02,112 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 13:00:02,113 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-24 13:00:02,224 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:00:02,489 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:00:03,085 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-24 13:00:03,086 [INFO] core.evaluator_v2: [h2o] gov_report (1샘플, budget=20%)
+2026-06-24 13:00:28,315 [INFO] core.evaluator_v2: [h2o] pred='The National Science Foundation (NSF) has implemented a cost-management strategy for its Independent Research and Develo'
+2026-06-24 13:00:28,355 [INFO] __main__:   → score=24.97, mem_red=80.0%, ttft=2637.4ms
+2026-06-24 13:00:28,356 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 13:00:28,356 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-24 13:00:28,430 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:00:28,468 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:00:29,087 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-24 13:00:29,088 [INFO] core.evaluator_v2: [h2o] qmsum (1샘플, budget=20%)
+2026-06-24 13:00:42,427 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-24 13:00:42,429 [INFO] __main__:   → score=3.49, mem_red=80.0%, ttft=2926.4ms
+2026-06-24 13:00:42,430 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:00:42,431 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-24 13:00:42,432 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:00:42,433 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 13:00:42,434 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-24 13:00:42,573 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:00:42,651 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:00:43,322 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-06-24 13:00:43,323 [INFO] core.evaluator_v2: [snapkv] narrativeqa (1샘플, budget=20%)
+2026-06-24 13:00:50,922 [INFO] core.evaluator_v2: [snapkv] pred='Daisy encountered Jim in the town of Clark.'
+2026-06-24 13:00:50,924 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4315.2ms
+2026-06-24 13:00:50,925 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:00:50,926 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 13:00:50,997 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:00:51,043 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:00:51,778 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 13:00:51,780 [INFO] core.evaluator_v2: [snapkv] qasper (1샘플, budget=20%)
+2026-06-24 13:01:09,070 [INFO] core.evaluator_v2: [snapkv] pred='The results from these proposed strategies are that both agents successfully pass the bottleneck corresponding to enteri'
+2026-06-24 13:01:09,073 [INFO] __main__:   → score=4.91, mem_red=80.0%, ttft=1175.4ms
+2026-06-24 13:01:09,073 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 13:01:09,074 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 13:01:09,155 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:01:09,184 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:01:09,949 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 13:01:09,951 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 13:01:11,344 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-24 13:01:11,346 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=1062.5ms
+2026-06-24 13:01:11,347 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 13:01:11,348 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-24 13:01:11,382 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:01:11,412 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:01:12,073 [INFO] core.dataset_loader: Loaded 1 samples from hotpotqa
+2026-06-24 13:01:12,074 [INFO] core.evaluator_v2: [snapkv] hotpotqa (1샘플, budget=20%)
+2026-06-24 13:01:18,719 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell.'
+2026-06-24 13:01:18,721 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4120.2ms
+2026-06-24 13:01:18,721 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 13:01:18,722 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-24 13:01:18,792 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:01:18,820 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:01:19,434 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-24 13:01:19,435 [INFO] core.evaluator_v2: [snapkv] 2wikimqa (1샘플, budget=20%)
+2026-06-24 13:01:29,569 [INFO] core.evaluator_v2: [snapkv] pred='Brian Kennedy (1941–2006) was an Irish-born art museum director. He was the director of the Peabody Essex Museum in Sale'
+2026-06-24 13:01:29,572 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4393.4ms
+2026-06-24 13:01:29,572 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 13:01:29,573 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-24 13:01:29,668 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:01:30,056 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:01:30,740 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-24 13:01:30,742 [INFO] core.evaluator_v2: [snapkv] gov_report (1샘플, budget=20%)
+2026-06-24 13:01:51,699 [INFO] core.evaluator_v2: [snapkv] pred="**Summary of the Report on the National Science Foundation's (NSF) Rotator Programs and Workforce Strategy**\n\nThe Nation"
+2026-06-24 13:01:51,744 [INFO] __main__:   → score=20.95, mem_red=80.0%, ttft=2254.7ms
+2026-06-24 13:01:51,745 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 13:01:51,745 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-24 13:01:51,820 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:01:52,327 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:01:53,029 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-24 13:01:53,031 [INFO] core.evaluator_v2: [snapkv] qmsum (1샘플, budget=20%)
+2026-06-24 13:02:05,394 [INFO] core.evaluator_v2: [snapkv] pred='The project team is discussing the design of a new remote control. The goal is to create a product that is sleek, stylis'
+2026-06-24 13:02:05,395 [INFO] __main__:   → score=8.00, mem_red=80.0%, ttft=2991.7ms
+2026-06-24 13:02:05,430 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:02:05,432 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-24 13:02:05,434 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:02:05,435 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 13:02:05,436 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-24 13:02:05,541 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:02:05,612 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:02:06,445 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-06-24 13:02:06,446 [INFO] core.evaluator_v2: [pyramidkv] narrativeqa (1샘플, budget=20%)
+2026-06-24 13:02:34,621 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not explicitly mention which town Daisy encountered Jim in. The story is told from the perspective of Dais'
+2026-06-24 13:02:34,623 [INFO] __main__:   → score=1.64, mem_red=80.0%, ttft=3597.6ms
+2026-06-24 13:02:34,624 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:02:34,624 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 13:02:34,700 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:02:34,746 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:02:35,455 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 13:02:35,456 [INFO] core.evaluator_v2: [pyramidkv] qasper (1샘플, budget=20%)
+2026-06-24 13:02:46,829 [INFO] core.evaluator_v2: [pyramidkv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-24 13:02:46,831 [INFO] __main__:   → score=11.61, mem_red=80.0%, ttft=1178.1ms
+2026-06-24 13:02:46,831 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 13:02:46,831 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 13:02:46,938 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:02:46,969 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:02:47,684 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 13:02:47,685 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 13:03:09,401 [INFO] core.evaluator_v2: [pyramidkv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-24 13:03:09,419 [INFO] __main__:   → score=8.90, mem_red=80.0%, ttft=651.6ms
+2026-06-24 13:03:09,419 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 13:03:09,420 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-24 13:03:09,502 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:03:09,542 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:03:10,262 [INFO] core.dataset_loader: Loaded 1 samples from hotpotqa
+2026-06-24 13:03:10,264 [INFO] core.evaluator_v2: [pyramidkv] hotpotqa (1샘플, budget=20%)
+2026-06-24 13:03:16,762 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Stokes Mitchell.'
+2026-06-24 13:03:16,763 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4063.4ms
+2026-06-24 13:03:16,764 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 13:03:16,765 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-24 13:03:16,844 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:03:16,961 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:03:17,648 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-24 13:03:17,649 [INFO] core.evaluator_v2: [pyramidkv] 2wikimqa (1샘플, budget=20%)
+2026-06-24 13:03:26,454 [INFO] core.evaluator_v2: [pyramidkv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-24 13:03:26,456 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4516.0ms
+2026-06-24 13:03:26,456 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 13:03:26,457 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-24 13:03:26,557 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:03:26,594 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:03:27,356 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-24 13:03:27,358 [INFO] core.evaluator_v2: [pyramidkv] gov_report (1샘플, budget=20%)
+2026-06-24 13:03:51,526 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-24 13:03:51,559 [INFO] __main__:   → score=20.42, mem_red=80.0%, ttft=2239.2ms
+2026-06-24 13:03:51,560 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 13:03:51,560 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-24 13:03:51,637 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:03:52,252 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:03:52,949 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-24 13:03:52,950 [INFO] core.evaluator_v2: [pyramidkv] qmsum (1샘플, budget=20%)
+2026-06-24 13:04:08,830 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-24 13:04:08,832 [INFO] __main__:   → score=3.72, mem_red=80.0%, ttft=3042.1ms
+2026-06-24 13:04:08,833 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:04:08,834 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-24 13:04:08,834 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:04:08,835 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 13:04:08,836 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-24 13:04:08,913 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:04:08,945 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:04:09,743 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-06-24 13:04:09,744 [INFO] core.evaluator_v2: [adakv] narrativeqa (1샘플, budget=20%)
+2026-06-24 13:04:37,954 [INFO] core.evaluator_v2: [adakv] pred='The text does not explicitly mention which town Daisy encountered Jim in. The story is told from the perspective of Dais'
+2026-06-24 13:04:37,956 [INFO] __main__:   → score=1.64, mem_red=80.0%, ttft=3611.5ms
+2026-06-24 13:04:37,957 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:04:37,958 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 13:04:38,040 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:04:38,070 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:04:38,778 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 13:04:38,779 [INFO] core.evaluator_v2: [adakv] qasper (1샘플, budget=20%)
+2026-06-24 13:04:50,273 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-24 13:04:50,274 [INFO] __main__:   → score=11.61, mem_red=80.0%, ttft=1188.1ms
+2026-06-24 13:04:50,275 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 13:04:50,276 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 13:04:50,368 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:04:50,430 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:04:51,131 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 13:04:51,132 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 13:05:11,707 [INFO] core.evaluator_v2: [adakv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-24 13:05:11,715 [INFO] __main__:   → score=8.90, mem_red=80.0%, ttft=650.2ms
+2026-06-24 13:05:11,716 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 13:05:11,717 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-24 13:05:12,413 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:05:12,579 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:05:13,250 [INFO] core.dataset_loader: Loaded 1 samples from hotpotqa
+2026-06-24 13:05:13,252 [INFO] core.evaluator_v2: [adakv] hotpotqa (1샘플, budget=20%)
+2026-06-24 13:05:19,761 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell.'
+2026-06-24 13:05:19,762 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4080.6ms
+2026-06-24 13:05:19,763 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 13:05:19,764 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-24 13:05:19,894 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:05:19,924 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:05:20,690 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-24 13:05:20,692 [INFO] core.evaluator_v2: [adakv] 2wikimqa (1샘플, budget=20%)
+2026-06-24 13:05:29,512 [INFO] core.evaluator_v2: [adakv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-24 13:05:29,515 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4401.1ms
+2026-06-24 13:05:29,516 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 13:05:29,516 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-24 13:05:29,587 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:05:29,832 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:05:30,530 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-24 13:05:30,531 [INFO] core.evaluator_v2: [adakv] gov_report (1샘플, budget=20%)
+2026-06-24 13:05:54,908 [INFO] core.evaluator_v2: [adakv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-24 13:05:54,945 [INFO] __main__:   → score=20.42, mem_red=80.0%, ttft=2258.7ms
+2026-06-24 13:05:54,946 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 13:05:54,946 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-24 13:05:55,025 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:05:55,054 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:05:55,737 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-24 13:05:55,738 [INFO] core.evaluator_v2: [adakv] qmsum (1샘플, budget=20%)
+2026-06-24 13:06:12,220 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-24 13:06:12,223 [INFO] __main__:   → score=3.72, mem_red=80.0%, ttft=2921.1ms
+2026-06-24 13:06:12,224 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:06:12,225 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-24 13:06:12,226 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:06:12,227 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 13:06:12,228 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-24 13:06:12,309 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:06:12,340 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:06:13,503 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-06-24 13:06:13,511 [INFO] core.evaluator_v2: [ours] narrativeqa (1샘플, budget=20%)
+2026-06-24 13:06:21,724 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of "Daisy" (a reference to the flower "Daisy" and the town "Daisy" in the text).'
+2026-06-24 13:06:21,725 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=3860.0ms
+2026-06-24 13:06:21,726 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:06:21,727 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 13:06:21,799 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:06:21,856 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:06:22,701 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 13:06:22,728 [INFO] core.evaluator_v2: [ours] qasper (1샘플, budget=20%)
+2026-06-24 13:06:29,251 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-06-24 13:06:29,253 [INFO] __main__:   → score=29.85, mem_red=80.0%, ttft=1227.5ms
+2026-06-24 13:06:29,253 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 13:06:29,254 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 13:06:29,334 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:06:29,371 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:06:30,129 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 13:06:30,130 [INFO] core.evaluator_v2: [ours] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 13:06:37,533 [INFO] core.evaluator_v2: [ours] pred="After he attacks Jacobo at a workers' strike, Ngotho is fired and the family is forced to move to another section of the"
+2026-06-24 13:06:37,535 [INFO] __main__:   → score=20.16, mem_red=80.0%, ttft=687.1ms
+2026-06-24 13:06:37,536 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 13:06:37,537 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-24 13:06:37,609 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:06:37,641 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:06:38,334 [INFO] core.dataset_loader: Loaded 1 samples from hotpotqa
+2026-06-24 13:06:38,336 [INFO] core.evaluator_v2: [ours] hotpotqa (1샘플, budget=20%)
+2026-06-24 13:06:45,021 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-24 13:06:45,023 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4159.8ms
+2026-06-24 13:06:45,023 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 13:06:45,024 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-24 13:06:45,102 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:06:45,140 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:06:45,852 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-24 13:06:45,854 [INFO] core.evaluator_v2: [ours] 2wikimqa (1샘플, budget=20%)
+2026-06-24 13:06:54,106 [INFO] core.evaluator_v2: [ours] pred='Finland.'
+2026-06-24 13:06:54,127 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=5154.3ms
+2026-06-24 13:06:54,129 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 13:06:54,131 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-24 13:06:54,215 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:06:54,292 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:06:55,076 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-24 13:06:55,078 [INFO] core.evaluator_v2: [ours] gov_report (1샘플, budget=20%)
+2026-06-24 13:07:19,365 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has implemented a workforce strategy that balances the use of rotating (IPA) and V'
+2026-06-24 13:07:19,400 [INFO] __main__:   → score=17.38, mem_red=80.0%, ttft=2294.1ms
+2026-06-24 13:07:19,414 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 13:07:19,416 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-24 13:07:19,498 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:07:19,541 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:07:20,364 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-24 13:07:20,365 [INFO] core.evaluator_v2: [ours] qmsum (1샘플, budget=20%)
+2026-06-24 13:07:33,514 [INFO] core.evaluator_v2: [ours] pred='Summary: The team is working on a new remote control device. The goal is to create a sleek, stylish, and functional remo'
+2026-06-24 13:07:33,528 [INFO] __main__:   → score=7.27, mem_red=80.0%, ttft=3107.8ms
+2026-06-24 13:07:33,545 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260624_125655.csv
+2026-06-24 13:07:33,557 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260624_125655.json
+2026-06-24 13:07:33,558 [INFO] __main__: Experiment 1 completed!

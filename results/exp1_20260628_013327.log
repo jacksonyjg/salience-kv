@@ -1,0 +1,102 @@
+2026-06-28 01:33:27,269 [INFO] __main__: Experiment 1: Main Results
+2026-06-28 01:33:27,269 [INFO] __main__:   Model: qwen3-4b
+2026-06-28 01:33:27,270 [INFO] __main__:   Mode: full
+2026-06-28 01:33:27,271 [INFO] __main__:   Budget: 20%
+2026-06-28 01:33:27,271 [INFO] __main__:   Tasks: ['2wikimqa']
+2026-06-28 01:33:27,272 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-28 01:33:27,273 [INFO] __main__:   Samples/task: 1
+2026-06-28 01:33:27,273 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-28 01:33:27,274 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-28 01:33:27,447 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:33:27,450 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 01:33:27,457 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 01:33:27,553 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:33:27,561 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 01:33:27,676 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 01:33:27,719 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 01:33:29,100 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-28 01:33:29,109 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-28 01:33:29,146 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:33:29,152 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 01:33:37,706 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:33:37,713 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-28 01:33:37,802 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-28 01:33:37,838 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-28 01:33:37,852 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-28 01:33:37,853 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-28 01:33:37,889 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:33:37,920 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:33:38,480 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:33:38,509 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-28 01:33:38,549 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:33:38,586 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-28 01:33:38,983 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-28 01:33:38,985 [INFO] __main__:   ✓ 2wikimqa: 1샘플 로드 완료
+2026-06-28 01:33:38,986 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-28 01:33:38,987 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:33:38,988 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-28 01:33:38,989 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:33:38,990 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:33:38,991 [INFO] core.evaluator_v2: [fullkv] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:33:48,827 [INFO] core.evaluator_v2: [fullkv] pred='Elmer Bäck was born in Finland.'
+2026-06-28 01:33:48,828 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=5210.2ms
+2026-06-28 01:33:48,829 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:33:48,830 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-28 01:33:48,831 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:33:48,832 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:33:48,833 [INFO] core.evaluator_v2: [streaming] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:33:58,250 [INFO] core.evaluator_v2: [streaming] pred='The director of the film *Eisenstein in Guanajuato* is Peter Greenaway, who was born in London, England.'
+2026-06-28 01:33:58,252 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4462.4ms
+2026-06-28 01:33:58,253 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:33:58,254 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-28 01:33:58,255 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:33:58,256 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:33:58,257 [INFO] core.evaluator_v2: [h2o] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:34:06,416 [INFO] core.evaluator_v2: [h2o] pred='Finland.'
+2026-06-28 01:34:06,417 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=5178.5ms
+2026-06-28 01:34:06,418 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:34:06,419 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-28 01:34:06,419 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:34:06,420 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:34:06,421 [INFO] core.evaluator_v2: [snapkv] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:34:16,668 [INFO] core.evaluator_v2: [snapkv] pred='Brian Kennedy (1941–2006) was an Irish-born art museum director. He was the director of the Peabody Essex Museum in Sale'
+2026-06-28 01:34:16,669 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4420.4ms
+2026-06-28 01:34:16,670 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:34:16,671 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-28 01:34:16,672 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:34:16,672 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:34:16,672 [INFO] core.evaluator_v2: [pyramidkv] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:34:25,567 [INFO] core.evaluator_v2: [pyramidkv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-28 01:34:25,569 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4573.2ms
+2026-06-28 01:34:25,569 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:34:25,570 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-28 01:34:25,571 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:34:25,572 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:34:25,573 [INFO] core.evaluator_v2: [adakv] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:34:34,633 [INFO] core.evaluator_v2: [adakv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-28 01:34:34,635 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4589.1ms
+2026-06-28 01:34:34,636 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:34:34,636 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-28 01:34:34,637 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:34:34,637 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:34:34,637 [INFO] core.evaluator_v2: [ours] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:34:42,760 [INFO] core.evaluator_v2: [ours] pred='Finland.'
+2026-06-28 01:34:42,761 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=5146.3ms
+2026-06-28 01:34:42,769 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260628_013327.csv
+2026-06-28 01:34:42,781 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260628_013327.json
+2026-06-28 01:34:42,782 [INFO] __main__: Experiment 1 completed!

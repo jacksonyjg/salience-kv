@@ -1,0 +1,102 @@
+2026-06-28 00:58:16,564 [INFO] __main__: Experiment 1: Main Results
+2026-06-28 00:58:16,565 [INFO] __main__:   Model: qwen3-4b
+2026-06-28 00:58:16,566 [INFO] __main__:   Mode: full
+2026-06-28 00:58:16,567 [INFO] __main__:   Budget: 20%
+2026-06-28 00:58:16,568 [INFO] __main__:   Tasks: ['gov_report']
+2026-06-28 00:58:16,569 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-28 00:58:16,569 [INFO] __main__:   Samples/task: 1
+2026-06-28 00:58:16,569 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-28 00:58:16,570 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-28 00:58:16,664 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 00:58:16,666 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 00:58:16,672 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 00:58:16,762 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 00:58:16,770 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 00:58:16,882 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 00:58:16,928 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 00:58:17,874 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-28 00:58:17,876 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-28 00:58:17,911 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 00:58:17,920 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 00:58:24,782 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 00:58:24,793 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-28 00:58:24,901 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-28 00:58:24,942 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-28 00:58:24,955 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-28 00:58:24,957 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-28 00:58:24,993 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 00:58:25,027 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 00:58:25,577 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 00:58:25,610 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-28 00:58:25,652 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 00:58:25,690 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-28 00:58:26,093 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-28 00:58:26,095 [INFO] __main__:   ✓ gov_report: 1샘플 로드 완료
+2026-06-28 00:58:26,115 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-28 00:58:26,117 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 00:58:26,119 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-28 00:58:26,120 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 00:58:26,121 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 00:58:26,123 [INFO] core.evaluator_v2: [fullkv] gov_report (1샘플, budget=20%)
+2026-06-28 00:58:39,534 [INFO] core.evaluator_v2: [fullkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-06-28 00:58:39,549 [INFO] __main__:   → score=19.91, mem_red=0.0%, ttft=2788.2ms
+2026-06-28 00:58:39,550 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 00:58:39,551 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-28 00:58:39,552 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 00:58:39,553 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 00:58:39,553 [INFO] core.evaluator_v2: [streaming] gov_report (1샘플, budget=20%)
+2026-06-28 00:58:58,075 [INFO] core.evaluator_v2: [streaming] pred='The National Science Foundation (NSF) has recognized the need to strategically manage its use of rotating researchers (r'
+2026-06-28 00:58:58,100 [INFO] __main__:   → score=21.09, mem_red=80.0%, ttft=2238.5ms
+2026-06-28 00:58:58,114 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 00:58:58,115 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-28 00:58:58,116 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 00:58:58,117 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 00:58:58,117 [INFO] core.evaluator_v2: [h2o] gov_report (1샘플, budget=20%)
+2026-06-28 00:59:22,040 [INFO] core.evaluator_v2: [h2o] pred='The National Science Foundation (NSF) has implemented a cost-management strategy for its Independent Research and Develo'
+2026-06-28 00:59:22,073 [INFO] __main__:   → score=24.97, mem_red=80.0%, ttft=2389.5ms
+2026-06-28 00:59:22,074 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 00:59:22,074 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-28 00:59:22,075 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 00:59:22,075 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 00:59:22,076 [INFO] core.evaluator_v2: [snapkv] gov_report (1샘플, budget=20%)
+2026-06-28 00:59:24,844 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-28 00:59:24,846 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2386.7ms
+2026-06-28 00:59:24,846 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 00:59:24,847 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-28 00:59:24,847 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 00:59:24,848 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 00:59:24,848 [INFO] core.evaluator_v2: [pyramidkv] gov_report (1샘플, budget=20%)
+2026-06-28 00:59:48,568 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-28 00:59:48,601 [INFO] __main__:   → score=20.42, mem_red=80.0%, ttft=2359.0ms
+2026-06-28 00:59:48,611 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 00:59:48,613 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-28 00:59:48,614 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 00:59:48,615 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 00:59:48,616 [INFO] core.evaluator_v2: [adakv] gov_report (1샘플, budget=20%)
+2026-06-28 01:00:12,602 [INFO] core.evaluator_v2: [adakv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-28 01:00:12,642 [INFO] __main__:   → score=20.42, mem_red=80.0%, ttft=2281.5ms
+2026-06-28 01:00:12,643 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:00:12,644 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-28 01:00:12,644 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:00:12,644 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:00:12,645 [INFO] core.evaluator_v2: [ours] gov_report (1샘플, budget=20%)
+2026-06-28 01:00:37,182 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has implemented a workforce strategy that balances the use of rotating (IPA) and V'
+2026-06-28 01:00:37,216 [INFO] __main__:   → score=17.38, mem_red=80.0%, ttft=2386.9ms
+2026-06-28 01:00:37,227 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260628_005816.csv
+2026-06-28 01:00:37,234 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260628_005816.json
+2026-06-28 01:00:37,235 [INFO] __main__: Experiment 1 completed!

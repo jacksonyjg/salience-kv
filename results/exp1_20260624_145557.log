@@ -1,0 +1,342 @@
+2026-06-24 14:55:57,638 [INFO] __main__: Experiment 1: Main Results
+2026-06-24 14:55:57,639 [INFO] __main__:   Model: qwen3-4b
+2026-06-24 14:55:57,640 [INFO] __main__:   Mode: full
+2026-06-24 14:55:57,641 [INFO] __main__:   Budget: 20%
+2026-06-24 14:55:57,642 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum']
+2026-06-24 14:55:57,642 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-24 14:55:57,643 [INFO] __main__:   Samples/task: 1
+2026-06-24 14:55:57,644 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-24 14:55:57,644 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-24 14:55:57,750 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:55:57,752 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 14:55:57,758 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:55:57,839 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:55:57,846 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:55:57,921 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 14:55:57,965 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 14:55:58,960 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-24 14:55:58,962 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-24 14:55:58,995 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:55:59,011 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:56:07,429 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:07,437 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:56:07,527 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-24 14:56:07,558 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-24 14:56:07,572 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-24 14:56:07,573 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-24 14:56:07,608 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:07,652 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:56:08,240 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:08,292 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-24 14:56:08,326 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:08,361 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-24 14:56:08,727 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-06-24 14:56:08,729 [INFO] __main__:   ✓ narrativeqa: 1샘플 로드 완료
+2026-06-24 14:56:08,730 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 14:56:08,763 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:08,795 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:56:09,665 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 14:56:09,667 [INFO] __main__:   ✓ qasper: 1샘플 로드 완료
+2026-06-24 14:56:09,668 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 14:56:09,704 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:09,736 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:56:10,499 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 14:56:10,506 [INFO] __main__:   ✓ multifieldqa_en: 1샘플 로드 완료
+2026-06-24 14:56:10,508 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-24 14:56:10,555 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:10,590 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:56:11,447 [INFO] core.dataset_loader: Loaded 1 samples from hotpotqa
+2026-06-24 14:56:11,449 [INFO] __main__:   ✓ hotpotqa: 1샘플 로드 완료
+2026-06-24 14:56:11,450 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-24 14:56:11,483 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:11,605 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:56:12,475 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-24 14:56:12,477 [INFO] __main__:   ✓ 2wikimqa: 1샘플 로드 완료
+2026-06-24 14:56:12,477 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-24 14:56:12,514 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:12,545 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:56:13,385 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-24 14:56:13,387 [INFO] __main__:   ✓ gov_report: 1샘플 로드 완료
+2026-06-24 14:56:13,389 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-24 14:56:13,421 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:56:13,452 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:56:14,215 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-24 14:56:14,217 [INFO] __main__:   ✓ qmsum: 1샘플 로드 완료
+2026-06-24 14:56:14,218 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-24 14:56:14,219 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:56:14,219 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-24 14:56:14,220 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:56:14,221 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 14:56:14,222 [INFO] core.evaluator_v2: [fullkv] narrativeqa (1샘플, budget=20%)
+2026-06-24 14:56:22,357 [INFO] core.evaluator_v2: [fullkv] pred='Daisy encountered Jim in Maitland.'
+2026-06-24 14:56:22,358 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=4488.9ms
+2026-06-24 14:56:22,359 [INFO] __main__: 
+  Task: qasper
+2026-06-24 14:56:22,359 [INFO] core.evaluator_v2: [fullkv] qasper (1샘플, budget=20%)
+2026-06-24 14:56:29,257 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-06-24 14:56:29,260 [INFO] __main__:   → score=19.28, mem_red=0.0%, ttft=1190.9ms
+2026-06-24 14:56:29,261 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:56:29,262 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:56:31,910 [INFO] core.evaluator_v2: [fullkv] pred="After attacking Jacobo at a workers' strike, Ngotho loses his job and his family is forced to move. He later dies from h"
+2026-06-24 14:56:31,911 [INFO] __main__:   → score=80.00, mem_red=0.0%, ttft=646.8ms
+2026-06-24 14:56:31,912 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 14:56:31,913 [INFO] core.evaluator_v2: [fullkv] hotpotqa (1샘플, budget=20%)
+2026-06-24 14:56:39,035 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-06-24 14:56:39,036 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=4200.0ms
+2026-06-24 14:56:39,037 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 14:56:39,037 [INFO] core.evaluator_v2: [fullkv] 2wikimqa (1샘플, budget=20%)
+2026-06-24 14:56:48,154 [INFO] core.evaluator_v2: [fullkv] pred='Elmer Bäck was born in Finland.'
+2026-06-24 14:56:48,155 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=4583.6ms
+2026-06-24 14:56:48,156 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 14:56:48,157 [INFO] core.evaluator_v2: [fullkv] gov_report (1샘플, budget=20%)
+2026-06-24 14:57:01,165 [INFO] core.evaluator_v2: [fullkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-06-24 14:57:01,181 [INFO] __main__:   → score=19.91, mem_red=0.0%, ttft=2349.6ms
+2026-06-24 14:57:01,181 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 14:57:01,182 [INFO] core.evaluator_v2: [fullkv] qmsum (1샘플, budget=20%)
+2026-06-24 14:57:13,269 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-06-24 14:57:13,270 [INFO] __main__:   → score=6.25, mem_red=0.0%, ttft=2917.5ms
+2026-06-24 14:57:13,271 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:57:13,271 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-24 14:57:13,272 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:57:13,272 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 14:57:13,272 [INFO] core.evaluator_v2: [streaming] narrativeqa (1샘플, budget=20%)
+2026-06-24 14:57:20,550 [INFO] core.evaluator_v2: [streaming] pred='The text does not specify the name of the town where Daisy encountered Jim.'
+2026-06-24 14:57:20,551 [INFO] __main__:   → score=13.33, mem_red=80.0%, ttft=3721.7ms
+2026-06-24 14:57:20,552 [INFO] __main__: 
+  Task: qasper
+2026-06-24 14:57:20,552 [INFO] core.evaluator_v2: [streaming] qasper (1샘플, budget=20%)
+2026-06-24 14:57:24,975 [INFO] core.evaluator_v2: [streaming] pred='The proposed strategies show that KG-A2C-chained is significantly more sample efficient and converges faster, while both'
+2026-06-24 14:57:24,977 [INFO] __main__:   → score=20.41, mem_red=80.0%, ttft=1177.0ms
+2026-06-24 14:57:24,977 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:57:24,978 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:57:27,526 [INFO] core.evaluator_v2: [streaming] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned. His family is forced to move, and he is "
+2026-06-24 14:57:27,527 [INFO] __main__:   → score=66.67, mem_red=80.0%, ttft=644.8ms
+2026-06-24 14:57:27,527 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 14:57:27,527 [INFO] core.evaluator_v2: [streaming] hotpotqa (1샘플, budget=20%)
+2026-06-24 14:57:34,029 [INFO] core.evaluator_v2: [streaming] pred='Audra McDonald.'
+2026-06-24 14:57:34,031 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4082.6ms
+2026-06-24 14:57:34,032 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 14:57:34,034 [INFO] core.evaluator_v2: [streaming] 2wikimqa (1샘플, budget=20%)
+2026-06-24 14:57:43,123 [INFO] core.evaluator_v2: [streaming] pred='The director of the film *Eisenstein in Guanajuato* is Peter Greenaway, who was born in London, England.'
+2026-06-24 14:57:43,124 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4357.9ms
+2026-06-24 14:57:43,125 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 14:57:43,125 [INFO] core.evaluator_v2: [streaming] gov_report (1샘플, budget=20%)
+2026-06-24 14:58:01,823 [INFO] core.evaluator_v2: [streaming] pred='The National Science Foundation (NSF) has recognized the need to strategically manage its use of rotating researchers (r'
+2026-06-24 14:58:01,848 [INFO] __main__:   → score=21.09, mem_red=80.0%, ttft=2231.5ms
+2026-06-24 14:58:01,848 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 14:58:01,849 [INFO] core.evaluator_v2: [streaming] qmsum (1샘플, budget=20%)
+2026-06-24 14:58:13,131 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-24 14:58:13,133 [INFO] __main__:   → score=5.84, mem_red=80.0%, ttft=2907.2ms
+2026-06-24 14:58:13,133 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:58:13,134 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-24 14:58:13,134 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:58:13,134 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 14:58:13,135 [INFO] core.evaluator_v2: [h2o] narrativeqa (1샘플, budget=20%)
+2026-06-24 14:58:20,421 [INFO] core.evaluator_v2: [h2o] pred='Daisy encountered Jim in the town of "Cincinnati."'
+2026-06-24 14:58:20,422 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=3943.2ms
+2026-06-24 14:58:20,422 [INFO] __main__: 
+  Task: qasper
+2026-06-24 14:58:20,423 [INFO] core.evaluator_v2: [h2o] qasper (1샘플, budget=20%)
+2026-06-24 14:58:28,429 [INFO] core.evaluator_v2: [h2o] pred='The proposed strategies, when applied, show that the knowledge graph is a critical component in the decision-making proc'
+2026-06-24 14:58:28,430 [INFO] __main__:   → score=8.20, mem_red=80.0%, ttft=1173.1ms
+2026-06-24 14:58:28,431 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:58:28,431 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:58:35,186 [INFO] core.evaluator_v2: [h2o] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-24 14:58:35,187 [INFO] __main__:   → score=15.62, mem_red=80.0%, ttft=641.5ms
+2026-06-24 14:58:35,188 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 14:58:35,188 [INFO] core.evaluator_v2: [h2o] hotpotqa (1샘플, budget=20%)
+2026-06-24 14:58:41,716 [INFO] core.evaluator_v2: [h2o] pred='Brian Stokes Mitchell.'
+2026-06-24 14:58:41,717 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4044.9ms
+2026-06-24 14:58:41,717 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 14:58:41,717 [INFO] core.evaluator_v2: [h2o] 2wikimqa (1샘플, budget=20%)
+2026-06-24 14:58:49,703 [INFO] core.evaluator_v2: [h2o] pred='Finland.'
+2026-06-24 14:58:49,711 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=5008.5ms
+2026-06-24 14:58:49,711 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 14:58:49,713 [INFO] core.evaluator_v2: [h2o] gov_report (1샘플, budget=20%)
+2026-06-24 14:59:13,801 [INFO] core.evaluator_v2: [h2o] pred='The National Science Foundation (NSF) has implemented a cost-management strategy for its Independent Research and Develo'
+2026-06-24 14:59:13,839 [INFO] __main__:   → score=24.97, mem_red=80.0%, ttft=2239.6ms
+2026-06-24 14:59:13,839 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 14:59:13,840 [INFO] core.evaluator_v2: [h2o] qmsum (1샘플, budget=20%)
+2026-06-24 14:59:27,704 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-24 14:59:27,715 [INFO] __main__:   → score=3.49, mem_red=80.0%, ttft=3151.8ms
+2026-06-24 14:59:27,716 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:59:27,716 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-24 14:59:27,717 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:59:27,717 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 14:59:27,717 [INFO] core.evaluator_v2: [snapkv] narrativeqa (1샘플, budget=20%)
+2026-06-24 14:59:32,265 [INFO] core.evaluator_v2: [snapkv] pred='Based on the text:\n\nAnswer concently based on the text.'
+2026-06-24 14:59:32,266 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=3581.3ms
+2026-06-24 14:59:32,267 [INFO] __main__: 
+  Task: qasper
+2026-06-24 14:59:32,267 [INFO] core.evaluator_v2: [snapkv] qasper (1샘플, budget=20%)
+2026-06-24 14:59:51,901 [INFO] core.evaluator_v2: [snapkv] pred='The proposed strategies result in following key insights: \n\n************************************************************'
+2026-06-24 14:59:51,908 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=1173.6ms
+2026-06-24 14:59:51,909 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:59:51,910 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:59:53,372 [INFO] core.evaluator_v2: [snapkv] pred='After attacking Jacobo, Ngotho is fired and the family are forced to move.'
+2026-06-24 14:59:53,373 [INFO] __main__:   → score=68.97, mem_red=80.0%, ttft=638.1ms
+2026-06-24 14:59:53,373 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 14:59:53,374 [INFO] core.evaluator_v2: [snapkv] hotpotqa (1샘플, budget=20%)
+2026-06-24 14:59:57,330 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell'
+2026-06-24 14:59:57,331 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=3616.9ms
+2026-06-24 14:59:57,332 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 14:59:57,332 [INFO] core.evaluator_v2: [snapkv] 2wikimqa (1샘플, budget=20%)
+2026-06-24 15:00:04,169 [INFO] core.evaluator_v2: [snapkv] pred='Born in Finland.'
+2026-06-24 15:00:04,171 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=6418.8ms
+2026-06-24 15:00:04,173 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 15:00:04,174 [INFO] core.evaluator_v2: [snapkv] gov_report (1샘플, budget=20%)
+2026-06-24 15:00:07,089 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-24 15:00:07,091 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2507.6ms
+2026-06-24 15:00:07,091 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 15:00:07,094 [INFO] core.evaluator_v2: [snapkv] qmsum (1샘플, budget=20%)
+2026-06-24 15:00:30,169 [INFO] core.evaluator_v2: [snapkv] pred='Assistant assistant assistant assistant assistant assistant assistant assistant assistant assistant assistant assistant '
+2026-06-24 15:00:30,172 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=3883.5ms
+2026-06-24 15:00:30,173 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 15:00:30,173 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-24 15:00:30,174 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 15:00:30,174 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 15:00:30,175 [INFO] core.evaluator_v2: [pyramidkv] narrativeqa (1샘플, budget=20%)
+2026-06-24 15:00:57,992 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not explicitly mention which town Daisy encountered Jim in. The story is told from the perspective of Dais'
+2026-06-24 15:00:57,994 [INFO] __main__:   → score=1.64, mem_red=80.0%, ttft=3653.4ms
+2026-06-24 15:00:57,995 [INFO] __main__: 
+  Task: qasper
+2026-06-24 15:00:58,013 [INFO] core.evaluator_v2: [pyramidkv] qasper (1샘플, budget=20%)
+2026-06-24 15:01:08,863 [INFO] core.evaluator_v2: [pyramidkv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-24 15:01:08,864 [INFO] __main__:   → score=11.61, mem_red=80.0%, ttft=1172.7ms
+2026-06-24 15:01:08,864 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 15:01:08,864 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 15:01:28,265 [INFO] core.evaluator_v2: [pyramidkv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-24 15:01:28,267 [INFO] __main__:   → score=8.90, mem_red=80.0%, ttft=639.7ms
+2026-06-24 15:01:28,267 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 15:01:28,268 [INFO] core.evaluator_v2: [pyramidkv] hotpotqa (1샘플, budget=20%)
+2026-06-24 15:01:34,830 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Stokes Mitchell.'
+2026-06-24 15:01:34,840 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4066.2ms
+2026-06-24 15:01:34,843 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 15:01:34,844 [INFO] core.evaluator_v2: [pyramidkv] 2wikimqa (1샘플, budget=20%)
+2026-06-24 15:01:43,978 [INFO] core.evaluator_v2: [pyramidkv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-24 15:01:43,980 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4818.6ms
+2026-06-24 15:01:43,980 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 15:01:43,981 [INFO] core.evaluator_v2: [pyramidkv] gov_report (1샘플, budget=20%)
+2026-06-24 15:02:08,109 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-24 15:02:08,148 [INFO] __main__:   → score=20.42, mem_red=80.0%, ttft=2327.3ms
+2026-06-24 15:02:08,149 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 15:02:08,149 [INFO] core.evaluator_v2: [pyramidkv] qmsum (1샘플, budget=20%)
+2026-06-24 15:02:24,075 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-24 15:02:24,077 [INFO] __main__:   → score=3.72, mem_red=80.0%, ttft=3019.3ms
+2026-06-24 15:02:24,077 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 15:02:24,078 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-24 15:02:24,079 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 15:02:24,079 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 15:02:24,080 [INFO] core.evaluator_v2: [adakv] narrativeqa (1샘플, budget=20%)
+2026-06-24 15:02:52,107 [INFO] core.evaluator_v2: [adakv] pred='The text does not explicitly mention which town Daisy encountered Jim in. The story is told from the perspective of Dais'
+2026-06-24 15:02:52,111 [INFO] __main__:   → score=1.64, mem_red=80.0%, ttft=3603.8ms
+2026-06-24 15:02:52,112 [INFO] __main__: 
+  Task: qasper
+2026-06-24 15:02:52,113 [INFO] core.evaluator_v2: [adakv] qasper (1샘플, budget=20%)
+2026-06-24 15:03:02,907 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-24 15:03:02,922 [INFO] __main__:   → score=11.61, mem_red=80.0%, ttft=1177.0ms
+2026-06-24 15:03:02,923 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 15:03:02,925 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 15:03:22,195 [INFO] core.evaluator_v2: [adakv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-24 15:03:22,245 [INFO] __main__:   → score=8.90, mem_red=80.0%, ttft=644.4ms
+2026-06-24 15:03:22,246 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 15:03:22,247 [INFO] core.evaluator_v2: [adakv] hotpotqa (1샘플, budget=20%)
+2026-06-24 15:03:28,694 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell.'
+2026-06-24 15:03:28,695 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4077.2ms
+2026-06-24 15:03:28,695 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 15:03:28,712 [INFO] core.evaluator_v2: [adakv] 2wikimqa (1샘플, budget=20%)
+2026-06-24 15:03:37,499 [INFO] core.evaluator_v2: [adakv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-24 15:03:37,509 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4567.8ms
+2026-06-24 15:03:37,510 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 15:03:37,511 [INFO] core.evaluator_v2: [adakv] gov_report (1샘플, budget=20%)
+2026-06-24 15:04:01,587 [INFO] core.evaluator_v2: [adakv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-24 15:04:01,620 [INFO] __main__:   → score=20.42, mem_red=80.0%, ttft=2325.8ms
+2026-06-24 15:04:01,621 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 15:04:01,621 [INFO] core.evaluator_v2: [adakv] qmsum (1샘플, budget=20%)
+2026-06-24 15:04:17,417 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-24 15:04:17,419 [INFO] __main__:   → score=3.72, mem_red=80.0%, ttft=2983.7ms
+2026-06-24 15:04:17,419 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 15:04:17,420 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-24 15:04:17,420 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 15:04:17,421 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-24 15:04:17,421 [INFO] core.evaluator_v2: [ours] narrativeqa (1샘플, budget=20%)
+2026-06-24 15:04:25,625 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of "Daisy" (a reference to the flower "Daisy" and the town "Daisy" in the text).'
+2026-06-24 15:04:25,626 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=3904.1ms
+2026-06-24 15:04:25,627 [INFO] __main__: 
+  Task: qasper
+2026-06-24 15:04:25,627 [INFO] core.evaluator_v2: [ours] qasper (1샘플, budget=20%)
+2026-06-24 15:04:31,532 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-06-24 15:04:31,533 [INFO] __main__:   → score=29.85, mem_red=80.0%, ttft=1215.3ms
+2026-06-24 15:04:31,533 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 15:04:31,534 [INFO] core.evaluator_v2: [ours] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 15:04:38,892 [INFO] core.evaluator_v2: [ours] pred="After he attacks Jacobo at a workers' strike, Ngotho is fired and the family is forced to move to another section of the"
+2026-06-24 15:04:38,893 [INFO] __main__:   → score=20.16, mem_red=80.0%, ttft=841.1ms
+2026-06-24 15:04:38,894 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-24 15:04:38,894 [INFO] core.evaluator_v2: [ours] hotpotqa (1샘플, budget=20%)
+2026-06-24 15:04:45,379 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-24 15:04:45,380 [INFO] __main__:   → score=100.00, mem_red=80.0%, ttft=4107.2ms
+2026-06-24 15:04:45,381 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-24 15:04:45,381 [INFO] core.evaluator_v2: [ours] 2wikimqa (1샘플, budget=20%)
+2026-06-24 15:04:53,473 [INFO] core.evaluator_v2: [ours] pred='Finland.'
+2026-06-24 15:04:53,474 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=5133.6ms
+2026-06-24 15:04:53,475 [INFO] __main__: 
+  Task: gov_report
+2026-06-24 15:04:53,476 [INFO] core.evaluator_v2: [ours] gov_report (1샘플, budget=20%)
+2026-06-24 15:05:17,666 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has implemented a workforce strategy that balances the use of rotating (IPA) and V'
+2026-06-24 15:05:17,700 [INFO] __main__:   → score=17.38, mem_red=80.0%, ttft=2308.1ms
+2026-06-24 15:05:17,709 [INFO] __main__: 
+  Task: qmsum
+2026-06-24 15:05:17,710 [INFO] core.evaluator_v2: [ours] qmsum (1샘플, budget=20%)
+2026-06-24 15:05:30,640 [INFO] core.evaluator_v2: [ours] pred='Summary: The team is working on a new remote control device. The goal is to create a sleek, stylish, and functional remo'
+2026-06-24 15:05:30,642 [INFO] __main__:   → score=7.27, mem_red=80.0%, ttft=2969.6ms
+2026-06-24 15:05:30,653 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260624_145557.csv
+2026-06-24 15:05:30,665 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260624_145557.json
+2026-06-24 15:05:30,666 [INFO] __main__: Experiment 1 completed!

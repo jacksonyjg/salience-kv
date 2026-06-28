@@ -1,0 +1,108 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 50,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 14.78455345585351,
+        "qasper": 24.69048772154084,
+        "multifieldqa_en": 46.01883072855988
+      },
+      "avg_score": 28.49795730198474,
+      "avg_ttft_ms": 3536.4633963495453,
+      "avg_throughput": 9.279770804214758,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "narrativeqa": 12.926761375191877,
+        "qasper": 15.86413575410168,
+        "multifieldqa_en": 31.463598313165996
+      },
+      "avg_score": 20.084831814153183,
+      "avg_ttft_ms": 3652.323022514794,
+      "avg_throughput": 9.635046248047269,
+      "avg_memory_reduction_pct": 80.00850018725568
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "narrativeqa": 13.564170069628346,
+        "qasper": 18.653783248806732,
+        "multifieldqa_en": 24.10831568352211
+      },
+      "avg_score": 18.775423000652395,
+      "avg_ttft_ms": 2983.558740769636,
+      "avg_throughput": 11.115939313874954,
+      "avg_memory_reduction_pct": 80.00850018725568
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "narrativeqa": 9.401419767615797,
+        "qasper": 11.163682344343185,
+        "multifieldqa_en": 19.001718510509143
+      },
+      "avg_score": 13.188940207489376,
+      "avg_ttft_ms": 3214.9873829495828,
+      "avg_throughput": 9.874516783671169,
+      "avg_memory_reduction_pct": 80.00850018725568
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "narrativeqa": 12.164166923500453,
+        "qasper": 20.290019700615677,
+        "multifieldqa_en": 26.435912854518055
+      },
+      "avg_score": 19.630033159544727,
+      "avg_ttft_ms": 2971.257286414911,
+      "avg_throughput": 10.98340218607143,
+      "avg_memory_reduction_pct": 80.01064916506074
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 12.08713579162705,
+        "qasper": 20.06973572495645,
+        "multifieldqa_en": 26.698072356933938
+      },
+      "avg_score": 19.61831462450581,
+      "avg_ttft_ms": 2986.866775873327,
+      "avg_throughput": 11.848420722130243,
+      "avg_memory_reduction_pct": 80.00850018725568
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 13.39927984912809,
+        "qasper": 13.852645868469445,
+        "multifieldqa_en": 27.22026675186013
+      },
+      "avg_score": 18.15739748981922,
+      "avg_ttft_ms": 2934.077111053077,
+      "avg_throughput": 13.358297471524201,
+      "avg_memory_reduction_pct": 80.00850018725568
+    }
+  ]
+}

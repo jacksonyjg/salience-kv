@@ -1,0 +1,8 @@
+Method,qasper,Avg,Mem_Reduction_%,TTFT_ms,Throughput_tps
+FULLKV,19.3,19.3,0.0,4815.1,7.1
+STREAMING,0.0,0.0,80.0,4284.4,10.0
+H2O,1.1,1.1,80.0,4494.0,10.3
+SNAPKV,0.0,0.0,80.0,4559.9,9.8
+PYRAMIDKV,0.0,0.0,0.0,0.0,0.0
+ADAKV,0.0,0.0,0.0,0.0,0.0
+OURS,0.0,0.0,0.0,0.0,0.0

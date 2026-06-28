@@ -1,0 +1,92 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "multifieldqa_en"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 1,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "multifieldqa_en": 80.0
+      },
+      "avg_score": 80.0,
+      "avg_ttft_ms": 1387.5264996895567,
+      "avg_throughput": 13.329204370582875,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "multifieldqa_en": 66.66666666666666
+      },
+      "avg_score": 66.66666666666666,
+      "avg_ttft_ms": 661.7611557141774,
+      "avg_throughput": 15.158988229742494,
+      "avg_memory_reduction_pct": 80.00951927653497
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "multifieldqa_en": 15.625
+      },
+      "avg_score": 15.625,
+      "avg_ttft_ms": 742.6638833817935,
+      "avg_throughput": 23.874120265581038,
+      "avg_memory_reduction_pct": 80.00951927653497
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "multifieldqa_en": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 1058.8014423847198,
+      "avg_throughput": 2.2038254596352878,
+      "avg_memory_reduction_pct": 80.00951927653497
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "multifieldqa_en": 8.902077151335313
+      },
+      "avg_score": 8.902077151335313,
+      "avg_ttft_ms": 644.9673552524473,
+      "avg_throughput": 25.35615934698419,
+      "avg_memory_reduction_pct": 80.00951927653497
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "multifieldqa_en": 8.902077151335313
+      },
+      "avg_score": 8.902077151335313,
+      "avg_ttft_ms": 656.1852800914494,
+      "avg_throughput": 26.11540658825905,
+      "avg_memory_reduction_pct": 80.00951927653497
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "multifieldqa_en": 20.155038759689926
+      },
+      "avg_score": 20.155038759689926,
+      "avg_ttft_ms": 698.1559379708877,
+      "avg_throughput": 23.640173139180696,
+      "avg_memory_reduction_pct": 80.00951927653497
+    }
+  ]
+}

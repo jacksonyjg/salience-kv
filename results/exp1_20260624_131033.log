@@ -1,0 +1,102 @@
+2026-06-24 13:10:33,973 [INFO] __main__: Experiment 1: Main Results
+2026-06-24 13:10:33,973 [INFO] __main__:   Model: qwen3-4b
+2026-06-24 13:10:33,974 [INFO] __main__:   Mode: full
+2026-06-24 13:10:33,974 [INFO] __main__:   Budget: 20%
+2026-06-24 13:10:33,974 [INFO] __main__:   Tasks: ['qasper']
+2026-06-24 13:10:33,975 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-24 13:10:33,975 [INFO] __main__:   Samples/task: 1
+2026-06-24 13:10:33,975 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-24 13:10:33,976 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-24 13:10:34,076 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:10:34,081 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 13:10:34,161 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:10:34,162 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 13:10:34,168 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 13:10:34,227 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 13:10:34,332 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 13:10:35,349 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-24 13:10:35,351 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-24 13:10:35,380 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:10:35,385 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 13:11:02,795 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:11:02,813 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-24 13:11:02,906 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-24 13:11:02,937 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-24 13:11:02,957 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-24 13:11:02,958 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 13:11:02,994 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:11:03,025 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 13:11:03,623 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:11:03,653 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-24 13:11:03,687 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 13:11:03,735 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-24 13:11:04,080 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 13:11:04,082 [INFO] __main__:   ✓ qasper: 1샘플 로드 완료
+2026-06-24 13:11:04,083 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-24 13:11:04,084 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:11:04,085 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-24 13:11:04,086 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:11:04,087 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:11:04,088 [INFO] core.evaluator_v2: [fullkv] qasper (1샘플, budget=20%)
+2026-06-24 13:11:11,583 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-06-24 13:11:11,585 [INFO] __main__:   → score=19.28, mem_red=0.0%, ttft=1558.8ms
+2026-06-24 13:11:11,585 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:11:11,586 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-24 13:11:11,586 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:11:11,587 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:11:11,588 [INFO] core.evaluator_v2: [streaming] qasper (1샘플, budget=20%)
+2026-06-24 13:11:16,017 [INFO] core.evaluator_v2: [streaming] pred='The proposed strategies show that KG-A2C-chained is significantly more sample efficient and converges faster, while both'
+2026-06-24 13:11:16,018 [INFO] __main__:   → score=20.41, mem_red=80.0%, ttft=1352.7ms
+2026-06-24 13:11:16,019 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:11:16,019 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-24 13:11:16,023 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:11:16,024 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:11:16,025 [INFO] core.evaluator_v2: [h2o] qasper (1샘플, budget=20%)
+2026-06-24 13:11:23,855 [INFO] core.evaluator_v2: [h2o] pred='The proposed strategies, when applied, show that the knowledge graph is a critical component in the decision-making proc'
+2026-06-24 13:11:23,857 [INFO] __main__:   → score=8.20, mem_red=80.0%, ttft=1208.2ms
+2026-06-24 13:11:23,858 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:11:23,858 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-24 13:11:23,859 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:11:23,859 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:11:23,860 [INFO] core.evaluator_v2: [snapkv] qasper (1샘플, budget=20%)
+2026-06-24 13:11:39,835 [INFO] core.evaluator_v2: [snapkv] pred='The results from these proposed strategies are that both agents successfully pass the bottleneck corresponding to enteri'
+2026-06-24 13:11:39,837 [INFO] __main__:   → score=4.91, mem_red=80.0%, ttft=1167.7ms
+2026-06-24 13:11:39,838 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:11:39,838 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-24 13:11:39,839 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:11:39,839 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:11:39,839 [INFO] core.evaluator_v2: [pyramidkv] qasper (1샘플, budget=20%)
+2026-06-24 13:11:50,368 [INFO] core.evaluator_v2: [pyramidkv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-24 13:11:50,369 [INFO] __main__:   → score=11.61, mem_red=80.0%, ttft=1163.8ms
+2026-06-24 13:11:50,370 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:11:50,370 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-24 13:11:50,371 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:11:50,371 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:11:50,371 [INFO] core.evaluator_v2: [adakv] qasper (1샘플, budget=20%)
+2026-06-24 13:12:00,994 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-24 13:12:00,995 [INFO] __main__:   → score=11.61, mem_red=80.0%, ttft=1231.8ms
+2026-06-24 13:12:00,995 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 13:12:01,008 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-24 13:12:01,009 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 13:12:01,010 [INFO] __main__: 
+  Task: qasper
+2026-06-24 13:12:01,010 [INFO] core.evaluator_v2: [ours] qasper (1샘플, budget=20%)
+2026-06-24 13:12:06,571 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-06-24 13:12:06,572 [INFO] __main__:   → score=29.85, mem_red=80.0%, ttft=1223.3ms
+2026-06-24 13:12:06,579 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260624_131033.csv
+2026-06-24 13:12:06,587 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260624_131033.json
+2026-06-24 13:12:06,588 [INFO] __main__: Experiment 1 completed!

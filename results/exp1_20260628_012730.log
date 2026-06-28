@@ -1,0 +1,182 @@
+2026-06-28 01:27:30,211 [INFO] __main__: Experiment 1: Main Results
+2026-06-28 01:27:30,212 [INFO] __main__:   Model: qwen3-4b
+2026-06-28 01:27:30,212 [INFO] __main__:   Mode: full
+2026-06-28 01:27:30,213 [INFO] __main__:   Budget: 20%
+2026-06-28 01:27:30,213 [INFO] __main__:   Tasks: ['gov_report', 'qmsum', '2wikimqa']
+2026-06-28 01:27:30,214 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-28 01:27:30,214 [INFO] __main__:   Samples/task: 1
+2026-06-28 01:27:30,215 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-28 01:27:30,216 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-28 01:27:30,326 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:30,333 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 01:27:30,399 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:30,415 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 01:27:30,480 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 01:27:30,537 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 01:27:31,576 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-28 01:27:31,579 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-28 01:27:31,613 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:31,619 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 01:27:39,871 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:39,873 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 01:27:39,880 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-28 01:27:39,980 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-28 01:27:40,030 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-28 01:27:40,044 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-28 01:27:40,045 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-28 01:27:40,081 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:40,354 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:27:40,954 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:41,002 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-28 01:27:41,045 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:41,083 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-28 01:27:41,461 [INFO] core.dataset_loader: Loaded 1 samples from gov_report
+2026-06-28 01:27:41,463 [INFO] __main__:   ✓ gov_report: 1샘플 로드 완료
+2026-06-28 01:27:41,464 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-28 01:27:41,503 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:41,539 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:27:42,492 [INFO] core.dataset_loader: Loaded 1 samples from qmsum
+2026-06-28 01:27:42,494 [INFO] __main__:   ✓ qmsum: 1샘플 로드 완료
+2026-06-28 01:27:42,495 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-28 01:27:42,542 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:27:42,573 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:27:43,352 [INFO] core.dataset_loader: Loaded 1 samples from 2wikimqa
+2026-06-28 01:27:43,354 [INFO] __main__:   ✓ 2wikimqa: 1샘플 로드 완료
+2026-06-28 01:27:43,355 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-28 01:27:43,356 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:27:43,357 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-28 01:27:43,358 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:27:43,359 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:27:43,360 [INFO] core.evaluator_v2: [fullkv] gov_report (1샘플, budget=20%)
+2026-06-28 01:27:56,656 [INFO] core.evaluator_v2: [fullkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-06-28 01:27:56,671 [INFO] __main__:   → score=19.91, mem_red=0.0%, ttft=2796.0ms
+2026-06-28 01:27:56,672 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:27:56,672 [INFO] core.evaluator_v2: [fullkv] qmsum (1샘플, budget=20%)
+2026-06-28 01:28:09,148 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-06-28 01:28:09,151 [INFO] __main__:   → score=6.25, mem_red=0.0%, ttft=2992.6ms
+2026-06-28 01:28:09,152 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:28:09,153 [INFO] core.evaluator_v2: [fullkv] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:28:18,200 [INFO] core.evaluator_v2: [fullkv] pred='Elmer Bäck was born in Finland.'
+2026-06-28 01:28:18,206 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=4625.6ms
+2026-06-28 01:28:18,207 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:28:18,208 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-28 01:28:18,209 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:28:18,210 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:28:18,211 [INFO] core.evaluator_v2: [streaming] gov_report (1샘플, budget=20%)
+2026-06-28 01:28:36,922 [INFO] core.evaluator_v2: [streaming] pred='The National Science Foundation (NSF) has recognized the need to strategically manage its use of rotating researchers (r'
+2026-06-28 01:28:36,947 [INFO] __main__:   → score=21.09, mem_red=80.0%, ttft=2242.9ms
+2026-06-28 01:28:36,948 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:28:36,948 [INFO] core.evaluator_v2: [streaming] qmsum (1샘플, budget=20%)
+2026-06-28 01:28:48,526 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-28 01:28:48,528 [INFO] __main__:   → score=5.84, mem_red=80.0%, ttft=3059.3ms
+2026-06-28 01:28:48,528 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:28:48,529 [INFO] core.evaluator_v2: [streaming] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:28:57,641 [INFO] core.evaluator_v2: [streaming] pred='The director of the film *Eisenstein in Guanajuato* is Peter Greenaway, who was born in London, England.'
+2026-06-28 01:28:57,642 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4385.5ms
+2026-06-28 01:28:57,643 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:28:57,644 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-28 01:28:57,645 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:28:57,646 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:28:57,647 [INFO] core.evaluator_v2: [h2o] gov_report (1샘플, budget=20%)
+2026-06-28 01:29:21,859 [INFO] core.evaluator_v2: [h2o] pred='The National Science Foundation (NSF) has implemented a cost-management strategy for its Independent Research and Develo'
+2026-06-28 01:29:21,893 [INFO] __main__:   → score=24.97, mem_red=80.0%, ttft=2416.8ms
+2026-06-28 01:29:21,894 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:29:21,894 [INFO] core.evaluator_v2: [h2o] qmsum (1샘플, budget=20%)
+2026-06-28 01:29:35,621 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-28 01:29:35,623 [INFO] __main__:   → score=3.49, mem_red=80.0%, ttft=3076.7ms
+2026-06-28 01:29:35,623 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:29:35,624 [INFO] core.evaluator_v2: [h2o] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:29:43,824 [INFO] core.evaluator_v2: [h2o] pred='Finland.'
+2026-06-28 01:29:43,825 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=5202.5ms
+2026-06-28 01:29:43,826 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:29:43,827 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-28 01:29:43,828 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:29:43,829 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:29:43,830 [INFO] core.evaluator_v2: [snapkv] gov_report (1샘플, budget=20%)
+2026-06-28 01:30:04,695 [INFO] core.evaluator_v2: [snapkv] pred="**Summary of the Report on the National Science Foundation's (NSF) Rotator Programs and Workforce Strategy**\n\nThe Nation"
+2026-06-28 01:30:04,747 [INFO] __main__:   → score=20.95, mem_red=80.0%, ttft=2383.9ms
+2026-06-28 01:30:04,747 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:30:04,748 [INFO] core.evaluator_v2: [snapkv] qmsum (1샘플, budget=20%)
+2026-06-28 01:30:18,278 [INFO] core.evaluator_v2: [snapkv] pred='The project team is discussing the design of a new remote control. The goal is to create a product that is sleek, stylis'
+2026-06-28 01:30:18,280 [INFO] __main__:   → score=8.00, mem_red=80.0%, ttft=3332.5ms
+2026-06-28 01:30:18,281 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:30:18,282 [INFO] core.evaluator_v2: [snapkv] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:30:28,396 [INFO] core.evaluator_v2: [snapkv] pred='Brian Kennedy (1941–2006) was an Irish-born art museum director. He was the director of the Peabody Essex Museum in Sale'
+2026-06-28 01:30:28,408 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4463.9ms
+2026-06-28 01:30:28,409 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:30:28,410 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-28 01:30:28,411 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:30:28,412 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:30:28,413 [INFO] core.evaluator_v2: [pyramidkv] gov_report (1샘플, budget=20%)
+2026-06-28 01:30:52,453 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-28 01:30:52,486 [INFO] __main__:   → score=20.42, mem_red=80.0%, ttft=2307.8ms
+2026-06-28 01:30:52,487 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:30:52,488 [INFO] core.evaluator_v2: [pyramidkv] qmsum (1샘플, budget=20%)
+2026-06-28 01:31:08,360 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-28 01:31:08,362 [INFO] __main__:   → score=3.72, mem_red=80.0%, ttft=3085.9ms
+2026-06-28 01:31:08,363 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:31:08,363 [INFO] core.evaluator_v2: [pyramidkv] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:31:17,039 [INFO] core.evaluator_v2: [pyramidkv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-28 01:31:17,041 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4462.3ms
+2026-06-28 01:31:17,041 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:31:17,042 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-28 01:31:17,042 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:31:17,043 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:31:17,043 [INFO] core.evaluator_v2: [adakv] gov_report (1샘플, budget=20%)
+2026-06-28 01:31:41,068 [INFO] core.evaluator_v2: [adakv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-28 01:31:41,109 [INFO] __main__:   → score=20.42, mem_red=80.0%, ttft=2281.0ms
+2026-06-28 01:31:41,110 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:31:41,111 [INFO] core.evaluator_v2: [adakv] qmsum (1샘플, budget=20%)
+2026-06-28 01:31:57,067 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-28 01:31:57,069 [INFO] __main__:   → score=3.72, mem_red=80.0%, ttft=2951.5ms
+2026-06-28 01:31:57,071 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:31:57,072 [INFO] core.evaluator_v2: [adakv] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:32:05,756 [INFO] core.evaluator_v2: [adakv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-28 01:32:05,757 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4479.7ms
+2026-06-28 01:32:05,757 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:32:05,758 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-28 01:32:05,758 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:32:05,759 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:32:05,759 [INFO] core.evaluator_v2: [ours] gov_report (1샘플, budget=20%)
+2026-06-28 01:32:29,872 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has implemented a workforce strategy that balances the use of rotating (IPA) and V'
+2026-06-28 01:32:29,906 [INFO] __main__:   → score=17.38, mem_red=80.0%, ttft=2389.6ms
+2026-06-28 01:32:29,907 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:32:29,908 [INFO] core.evaluator_v2: [ours] qmsum (1샘플, budget=20%)
+2026-06-28 01:32:43,213 [INFO] core.evaluator_v2: [ours] pred='Summary: The team is working on a new remote control device. The goal is to create a sleek, stylish, and functional remo'
+2026-06-28 01:32:43,215 [INFO] __main__:   → score=7.27, mem_red=80.0%, ttft=3058.5ms
+2026-06-28 01:32:43,216 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:32:43,217 [INFO] core.evaluator_v2: [ours] 2wikimqa (1샘플, budget=20%)
+2026-06-28 01:32:51,507 [INFO] core.evaluator_v2: [ours] pred='Finland.'
+2026-06-28 01:32:51,508 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=5290.9ms
+2026-06-28 01:32:51,531 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260628_012730.csv
+2026-06-28 01:32:51,540 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260628_012730.json
+2026-06-28 01:32:51,541 [INFO] __main__: Experiment 1 completed!

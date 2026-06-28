@@ -1,0 +1,119 @@
+2026-06-24 11:53:25,835 [INFO] __main__: Experiment 1: Main Results
+2026-06-24 11:53:25,836 [INFO] __main__:   Model: qwen3-4b
+2026-06-24 11:53:25,836 [INFO] __main__:   Mode: full
+2026-06-24 11:53:25,837 [INFO] __main__:   Budget: 20%
+2026-06-24 11:53:25,837 [INFO] __main__:   Tasks: ['qasper']
+2026-06-24 11:53:25,838 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-24 11:53:25,839 [INFO] __main__:   Samples/task: 1
+2026-06-24 11:53:25,839 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-24 11:53:25,841 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-24 11:53:25,968 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:53:25,970 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 11:53:25,975 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 11:53:26,192 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:53:26,197 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 11:53:26,298 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 11:53:26,357 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 11:53:27,389 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-24 11:53:27,392 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-24 11:53:27,445 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:53:27,449 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 11:53:49,604 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:53:49,625 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-24 11:53:49,695 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-24 11:53:49,748 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-24 11:53:49,758 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 11:53:49,759 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-24 11:53:49,763 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 11:53:49,764 [INFO] __main__: 
+  Task: qasper
+2026-06-24 11:53:49,765 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 11:53:49,797 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:53:50,125 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 11:53:50,706 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:53:50,754 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-24 11:53:50,788 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:53:50,825 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-24 11:53:51,160 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 11:53:51,161 [INFO] core.evaluator_v2: [fullkv] qasper (1샘플, budget=20%)
+2026-06-24 11:54:12,411 [INFO] __main__:   → score=19.28, mem_red=0.0%, ttft=4815.1ms
+2026-06-24 11:54:12,435 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 11:54:12,436 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-24 11:54:12,438 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 11:54:12,438 [INFO] __main__: 
+  Task: qasper
+2026-06-24 11:54:12,439 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 11:54:12,593 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:54:12,631 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 11:54:13,483 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 11:54:13,485 [INFO] core.evaluator_v2: [streaming] qasper (1샘플, budget=20%)
+2026-06-24 11:55:09,143 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4284.4ms
+2026-06-24 11:55:09,145 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 11:55:09,146 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-24 11:55:09,146 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 11:55:09,146 [INFO] __main__: 
+  Task: qasper
+2026-06-24 11:55:09,147 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 11:55:09,230 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:55:09,259 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 11:55:09,901 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 11:55:09,918 [INFO] core.evaluator_v2: [h2o] qasper (1샘플, budget=20%)
+2026-06-24 11:56:04,249 [INFO] __main__:   → score=1.10, mem_red=80.0%, ttft=4494.0ms
+2026-06-24 11:56:04,251 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 11:56:04,253 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-24 11:56:04,253 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 11:56:04,254 [INFO] __main__: 
+  Task: qasper
+2026-06-24 11:56:04,254 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 11:56:04,338 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:56:04,367 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 11:56:04,921 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 11:56:04,921 [INFO] core.evaluator_v2: [snapkv] qasper (1샘플, budget=20%)
+2026-06-24 11:57:01,608 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=4559.9ms
+2026-06-24 11:57:01,624 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 11:57:01,624 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-24 11:57:01,626 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 11:57:01,626 [INFO] __main__: 
+  Task: qasper
+2026-06-24 11:57:01,627 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 11:57:01,704 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:57:01,750 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 11:57:02,471 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 11:57:02,472 [INFO] core.evaluator_v2: [pyramidkv] qasper (1샘플, budget=20%)
+2026-06-24 11:57:02,728 [WARNING] core.evaluator_v2: Sample 0 failed: CUDA out of memory. Tried to allocate 628.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 123.88 MiB is free. Process 4247 has 8.90 GiB memory in use. Process 5720 has 16.26 GiB memory in use. Process 5853 has 9.29 GiB memory in use. Including non-PyTorch memory, this process has 9.83 GiB memory in use. Of the allocated memory 9.47 GiB is allocated by PyTorch, and 43.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-06-24 11:57:02,730 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=0.0ms
+2026-06-24 11:57:02,731 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 11:57:02,732 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-24 11:57:02,732 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 11:57:02,733 [INFO] __main__: 
+  Task: qasper
+2026-06-24 11:57:02,733 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 11:57:02,768 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:57:02,796 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 11:57:03,464 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 11:57:03,466 [INFO] core.evaluator_v2: [adakv] qasper (1샘플, budget=20%)
+2026-06-24 11:57:03,768 [WARNING] core.evaluator_v2: Sample 0 failed: CUDA out of memory. Tried to allocate 628.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 347.88 MiB is free. Process 4247 has 8.90 GiB memory in use. Process 5720 has 16.26 GiB memory in use. Process 5853 has 9.07 GiB memory in use. Including non-PyTorch memory, this process has 9.83 GiB memory in use. Of the allocated memory 9.47 GiB is allocated by PyTorch, and 43.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-06-24 11:57:03,769 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=0.0ms
+2026-06-24 11:57:03,769 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 11:57:03,771 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-24 11:57:03,771 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 11:57:03,771 [INFO] __main__: 
+  Task: qasper
+2026-06-24 11:57:03,772 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 11:57:03,802 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 11:57:03,937 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 11:57:04,654 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 11:57:04,655 [INFO] core.evaluator_v2: [ours] qasper (1샘플, budget=20%)
+2026-06-24 11:57:04,955 [WARNING] core.evaluator_v2: Sample 0 failed: CUDA out of memory. Tried to allocate 628.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 577.88 MiB is free. Process 4247 has 8.90 GiB memory in use. Process 5720 has 16.26 GiB memory in use. Process 5853 has 8.84 GiB memory in use. Including non-PyTorch memory, this process has 9.83 GiB memory in use. Of the allocated memory 9.47 GiB is allocated by PyTorch, and 43.80 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-06-24 11:57:04,956 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=0.0ms
+2026-06-24 11:57:04,965 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260624_115325.csv
+2026-06-24 11:57:04,973 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260624_115325.json
+2026-06-24 11:57:04,973 [INFO] __main__: Experiment 1 completed!

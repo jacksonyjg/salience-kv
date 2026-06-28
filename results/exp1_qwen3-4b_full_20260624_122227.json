@@ -1,0 +1,92 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qasper"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 1,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "qasper": 19.277108433734938
+      },
+      "avg_score": 19.277108433734938,
+      "avg_ttft_ms": 1557.155588593591,
+      "avg_throughput": 20.72253151946333,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "qasper": 20.40816326530612
+      },
+      "avg_score": 20.40816326530612,
+      "avg_ttft_ms": 1224.6824265125074,
+      "avg_throughput": 16.845594250556527,
+      "avg_memory_reduction_pct": 80.02496878901373
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "qasper": 8.196721311475411
+      },
+      "avg_score": 8.196721311475411,
+      "avg_ttft_ms": 1224.5412561099363,
+      "avg_throughput": 23.283215971828646,
+      "avg_memory_reduction_pct": 80.02496878901373
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "qasper": 4.912280701754385
+      },
+      "avg_score": 4.912280701754385,
+      "avg_ttft_ms": 1174.3131892409983,
+      "avg_throughput": 26.17273591633832,
+      "avg_memory_reduction_pct": 80.02496878901373
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "qasper": 21.81818181818182
+      },
+      "avg_score": 21.81818181818182,
+      "avg_ttft_ms": 1189.940005030534,
+      "avg_throughput": 18.296582055337947,
+      "avg_memory_reduction_pct": 80.01543209876543
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "qasper": 9.090909090909092
+      },
+      "avg_score": 9.090909090909092,
+      "avg_ttft_ms": 1191.8621755787171,
+      "avg_throughput": 22.77607927607409,
+      "avg_memory_reduction_pct": 80.02410181717298
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "qasper": 29.850746268656714
+      },
+      "avg_score": 29.850746268656714,
+      "avg_ttft_ms": 1225.2199293332214,
+      "avg_throughput": 22.538022751956465,
+      "avg_memory_reduction_pct": 80.02496878901373
+    }
+  ]
+}

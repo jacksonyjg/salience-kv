@@ -1,0 +1,7 @@
+nohup: ignoring input
+usage: run_all_experiments.py [-h] [--model {qwen3-4b,phi-3-mini,gemma-2-2b}]
+                              [--quick] [--num_samples NUM_SAMPLES]
+                              [--budget BUDGET]
+                              [--experiments EXPERIMENTS [EXPERIMENTS ...]]
+                              [--skip_sanity]
+run_all_experiments.py: error: unrecognized arguments: --methods fullkv streaming h2o snapkv pyramidkv adakv ours --tasks qasper

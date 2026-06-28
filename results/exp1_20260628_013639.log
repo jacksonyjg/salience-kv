@@ -1,0 +1,594 @@
+2026-06-28 01:36:39,170 [INFO] __main__: Experiment 1: Main Results
+2026-06-28 01:36:39,172 [INFO] __main__:   Model: qwen3-4b
+2026-06-28 01:36:39,173 [INFO] __main__:   Mode: full
+2026-06-28 01:36:39,174 [INFO] __main__:   Budget: 20%
+2026-06-28 01:36:39,175 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum']
+2026-06-28 01:36:39,176 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-28 01:36:39,177 [INFO] __main__:   Samples/task: 5
+2026-06-28 01:36:39,178 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-28 01:36:39,179 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-28 01:36:39,325 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:39,337 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 01:36:39,468 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:39,471 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-28 01:36:39,479 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-28 01:36:39,586 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-28 01:36:39,643 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-28 01:36:41,112 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-28 01:36:41,116 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-28 01:36:41,150 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:41,157 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-28 01:36:50,290 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:50,297 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-28 01:36:50,401 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-28 01:36:50,445 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-28 01:36:50,458 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-28 01:36:50,459 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-28 01:36:50,496 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:50,559 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:36:51,123 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:51,176 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-28 01:36:51,209 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:51,246 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-28 01:36:51,582 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-06-28 01:36:51,584 [INFO] __main__:   ✓ narrativeqa: 5샘플 로드 완료
+2026-06-28 01:36:51,585 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-28 01:36:51,620 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:51,816 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:36:52,562 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-06-28 01:36:52,564 [INFO] __main__:   ✓ qasper: 5샘플 로드 완료
+2026-06-28 01:36:52,566 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-28 01:36:52,604 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:52,639 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:36:53,340 [INFO] core.dataset_loader: Loaded 5 samples from multifieldqa_en
+2026-06-28 01:36:53,342 [INFO] __main__:   ✓ multifieldqa_en: 5샘플 로드 완료
+2026-06-28 01:36:53,343 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-28 01:36:53,380 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:53,409 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:36:54,029 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-06-28 01:36:54,030 [INFO] __main__:   ✓ hotpotqa: 5샘플 로드 완료
+2026-06-28 01:36:54,031 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-28 01:36:54,065 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:54,098 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:36:54,687 [INFO] core.dataset_loader: Loaded 5 samples from 2wikimqa
+2026-06-28 01:36:54,689 [INFO] __main__:   ✓ 2wikimqa: 5샘플 로드 완료
+2026-06-28 01:36:54,689 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-28 01:36:54,732 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:54,958 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:36:55,660 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-06-28 01:36:55,662 [INFO] __main__:   ✓ gov_report: 5샘플 로드 완료
+2026-06-28 01:36:55,663 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-28 01:36:55,698 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-28 01:36:55,740 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-28 01:36:56,387 [INFO] core.dataset_loader: Loaded 5 samples from qmsum
+2026-06-28 01:36:56,389 [INFO] __main__:   ✓ qmsum: 5샘플 로드 완료
+2026-06-28 01:36:56,391 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-28 01:36:56,392 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:36:56,392 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-28 01:36:56,393 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:36:56,393 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-28 01:36:56,394 [INFO] core.evaluator_v2: [fullkv] narrativeqa (5샘플, budget=20%)
+2026-06-28 01:37:11,649 [INFO] core.evaluator_v2: [fullkv] pred='Daisy encountered Jim in Maitland.'
+2026-06-28 01:37:29,799 [INFO] core.evaluator_v2: [fullkv] pred='Socrates ultimately decides it is unjust to escape because he believes that the laws of Athens are a social contract to '
+2026-06-28 01:37:48,684 [INFO] core.evaluator_v2: [fullkv] pred='The story is set in the medieval period, specifically in the castle of Drachenhausen and the surrounding areas, includin'
+2026-06-28 01:38:05,098 [INFO] core.evaluator_v2: [fullkv] pred='Baron Conrad did not kill anyone; however, he was killed by one-eyed Hans. The text states that one-eyed Hans brought ba'
+2026-06-28 01:38:20,904 [INFO] core.evaluator_v2: [fullkv] pred='Vigo the Carpathian.'
+2026-06-28 01:38:20,909 [INFO] core.evaluator_v2:   [5/5] avg=15.92
+2026-06-28 01:38:20,910 [INFO] __main__:   → score=15.92, mem_red=0.0%, ttft=6552.7ms
+2026-06-28 01:38:20,910 [INFO] __main__: 
+  Task: qasper
+2026-06-28 01:38:20,911 [INFO] core.evaluator_v2: [fullkv] qasper (5샘플, budget=20%)
+2026-06-28 01:38:33,931 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-06-28 01:38:39,470 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-06-28 01:38:46,941 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 01:38:54,569 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-06-28 01:39:07,393 [INFO] core.evaluator_v2: [fullkv] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-06-28 01:39:07,394 [INFO] core.evaluator_v2:   [5/5] avg=15.08
+2026-06-28 01:39:07,394 [INFO] __main__:   → score=15.08, mem_red=0.0%, ttft=3062.9ms
+2026-06-28 01:39:07,395 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-28 01:39:07,407 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (5샘플, budget=20%)
+2026-06-28 01:39:12,305 [INFO] core.evaluator_v2: [fullkv] pred="After attacking Jacobo at a workers' strike, Ngotho loses his job and his family is forced to move. He later dies from h"
+2026-06-28 01:39:25,997 [INFO] core.evaluator_v2: [fullkv] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the mitigation technique work'
+2026-06-28 01:39:26,530 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-28 01:39:46,865 [INFO] core.evaluator_v2: [fullkv] pred='The generative interactive model used in the method is called the Coupled GDBN (C-GDBN).'
+2026-06-28 01:40:06,032 [INFO] core.evaluator_v2: [fullkv] pred="The purpose of an ICD (Implantable Cardioverter Defibrillator) is to monitor the heart's rhythm and deliver electrical s"
+2026-06-28 01:40:21,346 [INFO] core.evaluator_v2: [fullkv] pred='The normalized least mean square (NLMS) algorithm is engaged in the PLMS-PPIC method.'
+2026-06-28 01:40:21,348 [INFO] core.evaluator_v2:   [5/5] avg=59.96
+2026-06-28 01:40:21,348 [INFO] __main__:   → score=59.96, mem_red=0.0%, ttft=6353.9ms
+2026-06-28 01:40:21,349 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-28 01:40:21,349 [INFO] core.evaluator_v2: [fullkv] hotpotqa (5샘플, budget=20%)
+2026-06-28 01:40:35,672 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-06-28 01:40:51,566 [INFO] core.evaluator_v2: [fullkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-06-28 01:41:05,511 [INFO] core.evaluator_v2: [fullkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-28 01:41:27,692 [INFO] core.evaluator_v2: [fullkv] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-06-28 01:41:42,582 [INFO] core.evaluator_v2: [fullkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-06-28 01:41:42,584 [INFO] core.evaluator_v2:   [5/5] avg=2.50
+2026-06-28 01:41:42,584 [INFO] __main__:   → score=2.50, mem_red=0.0%, ttft=7976.4ms
+2026-06-28 01:41:42,585 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:41:42,586 [INFO] core.evaluator_v2: [fullkv] 2wikimqa (5샘플, budget=20%)
+2026-06-28 01:42:00,710 [INFO] core.evaluator_v2: [fullkv] pred='Elmer Bäck was born in Finland.'
+2026-06-28 01:42:14,154 [INFO] core.evaluator_v2: [fullkv] pred='"Jugband Blues" came out first. It was released in 1968 by Pink Floyd, while "Joel the Lump of Coal" was released in 201'
+2026-06-28 01:42:34,301 [INFO] core.evaluator_v2: [fullkv] pred='True To The Navy. The director of True To The Navy, Frank Tuttle, died in 1963, while the director of No Trees In The St'
+2026-06-28 01:42:54,886 [INFO] core.evaluator_v2: [fullkv] pred="The place of death of Agnes of Hohenstaufen's husband, Henry V, Count Palatine of the Rhine, was Brunswick Cathedral. He"
+2026-06-28 01:43:20,641 [INFO] core.evaluator_v2: [fullkv] pred='According to the text, Paul De Scherff was born on 14 July 1820. The text does not provide the birth date of Lyudmyla Ol'
+2026-06-28 01:43:20,643 [INFO] core.evaluator_v2:   [5/5] avg=11.08
+2026-06-28 01:43:20,644 [INFO] __main__:   → score=11.08, mem_red=0.0%, ttft=7410.0ms
+2026-06-28 01:43:20,645 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:43:20,645 [INFO] core.evaluator_v2: [fullkv] gov_report (5샘플, budget=20%)
+2026-06-28 01:43:47,304 [INFO] core.evaluator_v2: [fullkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-06-28 01:44:14,909 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the challenges and efforts in managing federal IT systems and cybersecurity. Despite a $96 billion'
+2026-06-28 01:44:48,916 [INFO] core.evaluator_v2: [fullkv] pred="**Summary:**\n\nThis report examines China's actions in the South China Sea (SCS) and East China Sea (ECS), focusing on th"
+2026-06-28 01:45:26,906 [INFO] core.evaluator_v2: [fullkv] pred='The Clean Water Act (CWA) and the Safe Drinking Water Act (SDWA) established federal programs to support wastewater and '
+2026-06-28 01:45:55,408 [INFO] core.evaluator_v2: [fullkv] pred='The Department of Homeland Security (DHS) has faced significant internal control and financial management system deficie'
+2026-06-28 01:45:55,430 [INFO] core.evaluator_v2:   [5/5] avg=16.41
+2026-06-28 01:45:55,431 [INFO] __main__:   → score=16.41, mem_red=0.0%, ttft=5609.5ms
+2026-06-28 01:45:55,432 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:45:55,432 [INFO] core.evaluator_v2: [fullkv] qmsum (5샘플, budget=20%)
+2026-06-28 01:46:20,578 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-06-28 01:46:54,191 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript between a Project Manager, User Interface specialist, Industrial Designer, and Mark'
+2026-06-28 01:47:11,822 [INFO] core.evaluator_v2: [fullkv] pred='The meeting discusses progress on the SmartKom project, focusing on advancements in speech synthesis and dialogue manage'
+2026-06-28 01:47:35,878 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting discussing the design and development of a new remote control device, featurin'
+2026-06-28 01:48:06,032 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a conceptual design meeting for a remote control device. Key points include:\n\n- **Energy'
+2026-06-28 01:48:06,034 [INFO] core.evaluator_v2:   [5/5] avg=9.83
+2026-06-28 01:48:06,035 [INFO] __main__:   → score=9.83, mem_red=0.0%, ttft=5679.3ms
+2026-06-28 01:48:06,035 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:48:06,036 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-28 01:48:06,036 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:48:06,037 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-28 01:48:06,037 [INFO] core.evaluator_v2: [streaming] narrativeqa (5샘플, budget=20%)
+2026-06-28 01:48:20,353 [INFO] core.evaluator_v2: [streaming] pred='The text does not specify the name of the town where Daisy encountered Jim.'
+2026-06-28 01:48:36,737 [INFO] core.evaluator_v2: [streaming] pred='Socrates decides it is unjust to escape because he believes in upholding the laws of the state, even in old age. He argu'
+2026-06-28 01:48:52,492 [INFO] core.evaluator_v2: [streaming] pred='The story is set in a medieval European castle, specifically Drachenhausen, which was once the stronghold of a robber ba'
+2026-06-28 01:49:04,438 [INFO] core.evaluator_v2: [streaming] pred='Baron Conrad did not kill anyone. The text does not mention him killing anyone.'
+2026-06-28 01:49:22,176 [INFO] core.evaluator_v2: [streaming] pred='A ghostly figure with an uncanny resemblance to the Ghostbusters (Venkman, Stantz, Spengler, and Winston) emerged from a'
+2026-06-28 01:49:22,178 [INFO] core.evaluator_v2:   [5/5] avg=8.16
+2026-06-28 01:49:22,179 [INFO] __main__:   → score=8.16, mem_red=80.0%, ttft=6338.4ms
+2026-06-28 01:49:22,179 [INFO] __main__: 
+  Task: qasper
+2026-06-28 01:49:22,180 [INFO] core.evaluator_v2: [streaming] qasper (5샘플, budget=20%)
+2026-06-28 01:49:30,485 [INFO] core.evaluator_v2: [streaming] pred='The proposed strategies show that KG-A2C-chained is significantly more sample efficient and converges faster, while both'
+2026-06-28 01:49:35,645 [INFO] core.evaluator_v2: [streaming] pred='The encoder is a character-based encoder-decoder model.'
+2026-06-28 01:49:42,308 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 01:49:46,810 [INFO] core.evaluator_v2: [streaming] pred='NeuronBlocks includes modules such as CNN, BiLSTM, Attention, and BERT-based models. It also supports knowledge distilla'
+2026-06-28 01:49:58,392 [INFO] core.evaluator_v2: [streaming] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-06-28 01:49:58,394 [INFO] core.evaluator_v2:   [5/5] avg=6.30
+2026-06-28 01:49:58,395 [INFO] __main__:   → score=6.30, mem_red=80.0%, ttft=2969.0ms
+2026-06-28 01:49:58,411 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-28 01:49:58,413 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (5샘플, budget=20%)
+2026-06-28 01:50:02,822 [INFO] core.evaluator_v2: [streaming] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned. His family is forced to move, and he is "
+2026-06-28 01:50:19,601 [INFO] core.evaluator_v2: [streaming] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text discusses the use of denoisers in the con'
+2026-06-28 01:50:20,165 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-28 01:50:45,588 [INFO] core.evaluator_v2: [streaming] pred='The generative interactive model used in the method is the **C-GDBN** (Coupled Generative Discriminative Bayesian Networ'
+2026-06-28 01:51:02,841 [INFO] core.evaluator_v2: [streaming] pred='The text provided does not explicitly mention the purpose of an ICD (Implantable Cardioverter Defibrillator). However, b'
+2026-06-28 01:51:17,159 [INFO] core.evaluator_v2: [streaming] pred='The PLMS-PPIC method engages the **Normalized Least Mean Squares (NLMS)** algorithm.'
+2026-06-28 01:51:17,161 [INFO] core.evaluator_v2:   [5/5] avg=51.02
+2026-06-28 01:51:17,162 [INFO] __main__:   → score=51.02, mem_red=80.0%, ttft=7088.3ms
+2026-06-28 01:51:17,163 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-28 01:51:17,163 [INFO] core.evaluator_v2: [streaming] hotpotqa (5샘플, budget=20%)
+2026-06-28 01:51:30,824 [INFO] core.evaluator_v2: [streaming] pred='Audra McDonald.'
+2026-06-28 01:51:42,488 [INFO] core.evaluator_v2: [streaming] pred='Ribosomes.'
+2026-06-28 01:51:55,149 [INFO] core.evaluator_v2: [streaming] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-28 01:52:13,994 [INFO] core.evaluator_v2: [streaming] pred='YIVO.'
+2026-06-28 01:52:27,119 [INFO] core.evaluator_v2: [streaming] pred='Alfred A. Marcus worked as a consultant for the Nuclear Regulatory Commission.'
+2026-06-28 01:52:27,120 [INFO] core.evaluator_v2:   [5/5] avg=40.00
+2026-06-28 01:52:27,121 [INFO] __main__:   → score=40.00, mem_red=80.0%, ttft=8259.4ms
+2026-06-28 01:52:27,122 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 01:52:27,122 [INFO] core.evaluator_v2: [streaming] 2wikimqa (5샘플, budget=20%)
+2026-06-28 01:52:45,394 [INFO] core.evaluator_v2: [streaming] pred='The director of the film *Eisenstein in Guanajuato* is Peter Greenaway, who was born in London, England.'
+2026-06-28 01:52:57,187 [INFO] core.evaluator_v2: [streaming] pred='"Jugband Blues" came out first. It was released in 1925, while "Joel the Lump of Coal" was released in 2013.'
+2026-06-28 01:53:13,534 [INFO] core.evaluator_v2: [streaming] pred='No Trees in the Street. J. Lee Thompson died in 2002, while True to the Navy was directed in 1958.'
+2026-06-28 01:53:31,261 [INFO] core.evaluator_v2: [streaming] pred="The place of death of Agnes of Hohenstaufen's husband, Henry V, Holy Roman Emperor, was Waiblingen."
+2026-06-28 01:53:48,277 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention Lyudmyla Olyanovska, so it is not possible to determine who was born later between Paul De Sch'
+2026-06-28 01:53:48,278 [INFO] core.evaluator_v2:   [5/5] avg=13.75
+2026-06-28 01:53:48,279 [INFO] __main__:   → score=13.75, mem_red=80.0%, ttft=7560.9ms
+2026-06-28 01:53:48,280 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 01:53:48,280 [INFO] core.evaluator_v2: [streaming] gov_report (5샘플, budget=20%)
+2026-06-28 01:54:26,917 [INFO] core.evaluator_v2: [streaming] pred='The National Science Foundation (NSF) has recognized the need to strategically manage its use of rotating researchers (r'
+2026-06-28 01:55:09,945 [INFO] core.evaluator_v2: [streaming] pred='The Federal Information Security Management Act (FISMA) requires federal agencies to implement and maintain effective in'
+2026-06-28 01:55:58,987 [INFO] core.evaluator_v2: [streaming] pred='The provided text is a collection of articles, analyses, and commentary from various sources, primarily from the *Nation'
+2026-06-28 01:56:54,621 [INFO] core.evaluator_v2: [streaming] pred='The 2018–2020 federal budget for the Environmental Protection Agency (EPA) included significant funding for water infras'
+2026-06-28 01:57:45,052 [INFO] core.evaluator_v2: [streaming] pred='The Department of Homeland Security (DHS) conducted an audit of the TRIO project, which involves the U.S. Coast Guard (C'
+2026-06-28 01:57:45,089 [INFO] core.evaluator_v2:   [5/5] avg=16.43
+2026-06-28 01:57:45,090 [INFO] __main__:   → score=16.43, mem_red=80.0%, ttft=5445.8ms
+2026-06-28 01:57:45,091 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 01:57:45,091 [INFO] core.evaluator_v2: [streaming] qmsum (5샘플, budget=20%)
+2026-06-28 01:58:08,011 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-28 01:58:27,968 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new product, focusing on user interface and user experience. They are considering'
+2026-06-28 01:58:46,813 [INFO] core.evaluator_v2: [streaming] pred='The meeting is scheduled to discuss the next steps for the project, with a focus on refining the structure and addressin'
+2026-06-28 01:59:03,708 [INFO] core.evaluator_v2: [streaming] pred='The meeting concluded with a celebration, as the team felt they had successfully completed their project. The discussion'
+2026-06-28 01:59:30,605 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a remote control device, focusing on two key aspects: the material (titanium or spo'
+2026-06-28 01:59:30,615 [INFO] core.evaluator_v2:   [5/5] avg=9.31
+2026-06-28 01:59:30,616 [INFO] __main__:   → score=9.31, mem_red=80.0%, ttft=5604.0ms
+2026-06-28 01:59:30,616 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 01:59:30,617 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-28 01:59:30,618 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 01:59:30,618 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-28 01:59:30,619 [INFO] core.evaluator_v2: [h2o] narrativeqa (5샘플, budget=20%)
+2026-06-28 01:59:45,153 [INFO] core.evaluator_v2: [h2o] pred='Daisy encountered Jim in the town of "Cincinnati."'
+2026-06-28 02:00:00,360 [INFO] core.evaluator_v2: [h2o] pred='Socrates ultimately decides it is unjust to escape because he believes in the principles of justice and the laws, and he'
+2026-06-28 02:00:36,139 [INFO] core.evaluator_v2: [h2o] pred='The setting of the story is the medieval castle of Drachenhausen, which is described as a place of ruin and decay, with '
+2026-06-28 02:00:47,751 [INFO] core.evaluator_v2: [h2o] pred='Baron Conrad was killed by Baron Henry of Roderburg of Trutz-Drachen.'
+2026-06-28 02:00:59,987 [ERROR] core.evaluator_v2: generate() failed: CUDA out of memory. Tried to allocate 1.99 GiB. GPU 0 has a total capacity of 44.42 GiB of which 1.97 GiB is free. Process 17000 has 24.87 GiB memory in use. Including non-PyTorch memory, this process has 17.56 GiB memory in use. Of the allocated memory 17.05 GiB is allocated by PyTorch, and 198.93 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2026-06-28 02:00:59,989 [INFO] core.evaluator_v2:   [5/5] avg=6.04
+2026-06-28 02:00:59,990 [INFO] __main__:   → score=6.04, mem_red=80.0%, ttft=4986.9ms
+2026-06-28 02:00:59,991 [INFO] __main__: 
+  Task: qasper
+2026-06-28 02:00:59,992 [INFO] core.evaluator_v2: [h2o] qasper (5샘플, budget=20%)
+2026-06-28 02:01:16,317 [INFO] core.evaluator_v2: [h2o] pred='The proposed strategies, when applied, show that the knowledge graph is a critical component in the decision-making proc'
+2026-06-28 02:01:55,290 [INFO] core.evaluator_v2: [h2o] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-28 02:02:02,170 [INFO] core.evaluator_v2: [h2o] pred='The text does not provide the size of the Augmented LibriSpeech dataset.'
+2026-06-28 02:02:15,851 [INFO] core.evaluator_v2: [h2o] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network Layers, Loss Function, Metric, Mod'
+2026-06-28 02:02:27,580 [INFO] core.evaluator_v2: [h2o] pred='The LSTM models compared are the 6-layer and 9-layer models.'
+2026-06-28 02:02:27,583 [INFO] core.evaluator_v2:   [5/5] avg=7.85
+2026-06-28 02:02:27,583 [INFO] __main__:   → score=7.85, mem_red=80.0%, ttft=3120.1ms
+2026-06-28 02:02:27,584 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-28 02:02:27,584 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (5샘플, budget=20%)
+2026-06-28 02:02:39,895 [INFO] core.evaluator_v2: [h2o] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-28 02:03:32,935 [INFO] core.evaluator_v2: [h2o] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text indicates that the denoiser can be applie'
+2026-06-28 02:03:33,565 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-28 02:03:54,388 [INFO] core.evaluator_v2: [h2o] pred='The generative interactive model used in the method is the Coupled GDBN (C-GDBN).'
+2026-06-28 02:04:11,573 [INFO] core.evaluator_v2: [h2o] pred='The purpose of an ICD (Implantable Cardioverter Defibrillator) is to monitor and treat life-threatening heart rhythms, s'
+2026-06-28 02:04:29,331 [INFO] core.evaluator_v2: [h2o] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-28 02:04:29,333 [INFO] core.evaluator_v2:   [5/5] avg=29.35
+2026-06-28 02:04:29,334 [INFO] __main__:   → score=29.35, mem_red=80.0%, ttft=6335.8ms
+2026-06-28 02:04:29,335 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-28 02:04:29,336 [INFO] core.evaluator_v2: [h2o] hotpotqa (5샘플, budget=20%)
+2026-06-28 02:04:44,364 [INFO] core.evaluator_v2: [h2o] pred='Brian Stokes Mitchell.'
+2026-06-28 02:04:57,955 [INFO] core.evaluator_v2: [h2o] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-06-28 02:05:21,235 [INFO] core.evaluator_v2: [h2o] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-28 02:05:41,186 [INFO] core.evaluator_v2: [h2o] pred='YIVO.'
+2026-06-28 02:05:57,308 [INFO] core.evaluator_v2: [h2o] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-06-28 02:05:57,313 [INFO] core.evaluator_v2:   [5/5] avg=40.00
+2026-06-28 02:05:57,314 [INFO] __main__:   → score=40.00, mem_red=80.0%, ttft=9195.1ms
+2026-06-28 02:05:57,314 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 02:05:57,315 [INFO] core.evaluator_v2: [h2o] 2wikimqa (5샘플, budget=20%)
+2026-06-28 02:06:13,076 [INFO] core.evaluator_v2: [h2o] pred='Finland.'
+2026-06-28 02:06:22,703 [INFO] core.evaluator_v2: [h2o] pred='Jugband Blues.'
+2026-06-28 02:06:36,952 [INFO] core.evaluator_v2: [h2o] pred='True to the Navy.'
+2026-06-28 02:06:56,034 [INFO] core.evaluator_v2: [h2o] pred="Agnes of Hohenstaufen's husband was Henry V, Holy Roman Emperor. He died in 1127, and his place of death was in the town"
+2026-06-28 02:07:17,953 [INFO] core.evaluator_v2: [h2o] pred='Paul De Scherff was born in 1848, and Lyudmyla Olyanovska was born in 1923. Therefore, Lyudmyla Olyanovska was born late'
+2026-06-28 02:07:17,955 [INFO] core.evaluator_v2:   [5/5] avg=23.64
+2026-06-28 02:07:17,955 [INFO] __main__:   → score=23.64, mem_red=80.0%, ttft=8796.6ms
+2026-06-28 02:07:17,956 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 02:07:17,957 [INFO] core.evaluator_v2: [h2o] gov_report (5샘플, budget=20%)
+2026-06-28 02:08:07,479 [INFO] core.evaluator_v2: [h2o] pred='The National Science Foundation (NSF) has implemented a cost-management strategy for its Independent Research and Develo'
+2026-06-28 02:09:00,470 [INFO] core.evaluator_v2: [h2o] pred='The Federal Information Security Management Act (FISMA) is a federal law that requires federal agencies to develop, impl'
+2026-06-28 02:09:26,446 [INFO] core.evaluator_v2: [h2o] pred="The United States and its allies face a critical challenge in the South China Sea, where China's maritime assertiveness "
+2026-06-28 02:10:22,579 [INFO] core.evaluator_v2: [h2o] pred='The Clean Water SRF and Drinking Water SRF programs were funded at the same levels as FY2017, with the same amounts appr'
+2026-06-28 02:10:49,483 [INFO] core.evaluator_v2: [h2o] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-06-28 02:10:49,500 [INFO] core.evaluator_v2:   [5/5] avg=15.81
+2026-06-28 02:10:49,509 [INFO] __main__:   → score=15.81, mem_red=80.0%, ttft=5684.1ms
+2026-06-28 02:10:49,510 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 02:10:49,511 [INFO] core.evaluator_v2: [h2o] qmsum (5샘플, budget=20%)
+2026-06-28 02:11:17,465 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-28 02:11:49,765 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-28 02:12:40,983 [INFO] core.evaluator_v2: [h2o] pred='The meeting is about to start, and the group is discussing the upcoming project. The goal is to create a proposal that i'
+2026-06-28 02:13:34,375 [INFO] core.evaluator_v2: [h2o] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-28 02:14:26,456 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-28 02:14:26,460 [INFO] core.evaluator_v2:   [5/5] avg=5.45
+2026-06-28 02:14:26,462 [INFO] __main__:   → score=5.45, mem_red=80.0%, ttft=5570.5ms
+2026-06-28 02:14:26,463 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 02:14:26,464 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-28 02:14:26,465 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 02:14:26,466 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-28 02:14:26,467 [INFO] core.evaluator_v2: [snapkv] narrativeqa (5샘플, budget=20%)
+2026-06-28 02:14:40,836 [INFO] core.evaluator_v2: [snapkv] pred='Daisy encountered Jim in the town of Clark.'
+2026-06-28 02:15:31,325 [INFO] core.evaluator_v2: [snapkv] pred='Socrates ultimately decides it is unjust to escape because he believes in the justice of the laws and the rights of the '
+2026-06-28 02:16:24,970 [INFO] core.evaluator_v2: [snapkv] pred='The setting of the story is the medieval castle of Drachenhausen, with its bleak, gray, and chill surroundings, and the '
+2026-06-28 02:16:35,157 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-28 02:16:52,038 [INFO] core.evaluator_v2: [snapkv] pred="The ghost that emerged from a painting at Dana's workplace was Vigo."
+2026-06-28 02:16:52,041 [INFO] core.evaluator_v2:   [5/5] avg=4.15
+2026-06-28 02:16:52,042 [INFO] __main__:   → score=4.15, mem_red=80.0%, ttft=7331.9ms
+2026-06-28 02:16:52,043 [INFO] __main__: 
+  Task: qasper
+2026-06-28 02:16:52,043 [INFO] core.evaluator_v2: [snapkv] qasper (5샘플, budget=20%)
+2026-06-28 02:17:24,170 [INFO] core.evaluator_v2: [snapkv] pred='The results from these proposed strategies are that both agents successfully pass the bottleneck corresponding to enteri'
+2026-06-28 02:17:29,124 [INFO] core.evaluator_v2: [snapkv] pred='The encoder is a character-based encoder-decoder model.'
+2026-06-28 02:17:36,109 [INFO] core.evaluator_v2: [snapkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 02:17:39,533 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-28 02:18:27,856 [INFO] core.evaluator_v2: [snapkv] pred='The EMA model is also updated additionally, but not broadcasting it. The model is trained with CE. For each layer-wise t'
+2026-06-28 02:18:27,859 [INFO] core.evaluator_v2:   [5/5] avg=1.64
+2026-06-28 02:18:27,860 [INFO] __main__:   → score=1.64, mem_red=80.0%, ttft=2919.1ms
+2026-06-28 02:18:27,862 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-28 02:18:27,863 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (5샘플, budget=20%)
+2026-06-28 02:18:40,920 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-28 02:18:57,058 [INFO] core.evaluator_v2: [snapkv] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise.'
+2026-06-28 02:18:57,746 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-28 02:19:17,967 [INFO] core.evaluator_v2: [snapkv] pred='Coupled GDBN (C-GDBN)'
+2026-06-28 02:20:11,803 [INFO] core.evaluator_v2: [snapkv] pred='The purpose of an ICD (Implastic Cardiac Defibrillator) is to treat and prevent the formation of blood clots by blocking'
+2026-06-28 02:20:25,470 [INFO] core.evaluator_v2: [snapkv] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-28 02:20:25,472 [INFO] core.evaluator_v2:   [5/5] avg=20.24
+2026-06-28 02:20:25,472 [INFO] __main__:   → score=20.24, mem_red=80.0%, ttft=8241.6ms
+2026-06-28 02:20:25,473 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-28 02:20:25,474 [INFO] core.evaluator_v2: [snapkv] hotpotqa (5샘플, budget=20%)
+2026-06-28 02:20:39,082 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell.'
+2026-06-28 02:20:51,148 [INFO] core.evaluator_v2: [snapkv] pred='Ribosomes'
+2026-06-28 02:21:08,861 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-28 02:21:41,395 [INFO] core.evaluator_v2: [snapkv] pred='Based on the text, Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-06-28 02:21:55,707 [INFO] core.evaluator_v2: [snapkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-06-28 02:21:55,710 [INFO] core.evaluator_v2:   [5/5] avg=42.11
+2026-06-28 02:21:55,711 [INFO] __main__:   → score=42.11, mem_red=80.0%, ttft=10903.3ms
+2026-06-28 02:21:55,712 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 02:21:55,712 [INFO] core.evaluator_v2: [snapkv] 2wikimqa (5샘플, budget=20%)
+2026-06-28 02:22:16,473 [INFO] core.evaluator_v2: [snapkv] pred='Brian Kennedy (1941–2006) was an Irish-born art museum director. He was the director of the Peabody Essex Museum in Sale'
+2026-06-28 02:22:30,457 [INFO] core.evaluator_v2: [snapkv] pred='The song "Jugband Blues" came out first. It was released on the band\'s second album, "A Saucer of Slang," in 1968. The s'
+2026-06-28 02:22:46,104 [INFO] core.evaluator_v2: [snapkv] pred='No Trees In The Street.'
+2026-06-28 02:23:02,894 [INFO] core.evaluator_v2: [snapkv] pred="The place of death of Agnes of Hohenstaufen's husband was Waiblingen."
+2026-06-28 02:23:26,154 [INFO] core.evaluator_v2: [snapkv] pred="Paul De Scherff was born in 1873, while Lyudmyla Olyanovska's birth year is not mentioned in the text. Since the text on"
+2026-06-28 02:23:26,158 [INFO] core.evaluator_v2:   [5/5] avg=22.75
+2026-06-28 02:23:26,159 [INFO] __main__:   → score=22.75, mem_red=80.0%, ttft=7939.8ms
+2026-06-28 02:23:26,159 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 02:23:26,160 [INFO] core.evaluator_v2: [snapkv] gov_report (5샘플, budget=20%)
+2026-06-28 02:24:15,026 [INFO] core.evaluator_v2: [snapkv] pred="**Summary of the Report on the National Science Foundation's (NSF) Rotator Programs and Workforce Strategy**\n\nThe Nation"
+2026-06-28 02:25:06,954 [INFO] core.evaluator_v2: [snapkv] pred='The Federal Information Security Management Act (FISMA) requires that federal agencies develop, document, and implement '
+2026-06-28 02:25:54,051 [INFO] core.evaluator_v2: [snapkv] pred="The South China Sea (SCS) is a critical region for global trade, with over 30% of the world's maritime trade passing thr"
+2026-06-28 02:26:51,500 [INFO] core.evaluator_v2: [snapkv] pred="The Trump Administration's FY2020 budget request proposed $6.07 billion overall for EPA. The request included $1.120 bil"
+2026-06-28 02:27:00,833 [INFO] core.evaluator_v2: [snapkv] pred='Summary:'
+2026-06-28 02:27:00,837 [INFO] core.evaluator_v2:   [5/5] avg=14.41
+2026-06-28 02:27:00,838 [INFO] __main__:   → score=14.41, mem_red=80.0%, ttft=6381.9ms
+2026-06-28 02:27:00,839 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 02:27:00,839 [INFO] core.evaluator_v2: [snapkv] qmsum (5샘플, budget=20%)
+2026-06-28 02:27:26,215 [INFO] core.evaluator_v2: [snapkv] pred='The project team is discussing the design of a new remote control. The goal is to create a product that is sleek, stylis'
+2026-06-28 02:27:59,450 [INFO] core.evaluator_v2: [snapkv] pred='The discussion revolves around the design and development of a new product, focusing on the user interface and project m'
+2026-06-28 02:28:18,670 [INFO] core.evaluator_v2: [snapkv] pred='The meeting is about to start, and the group is discussing the next steps for their project. They are planning to flip i'
+2026-06-28 02:29:10,905 [INFO] core.evaluator_v2: [snapkv] pred="I've done a lot of work on this, but I'm not sure what the actual meaning of the project is. It's just a way to make a l"
+2026-06-28 02:29:34,639 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the text is as follows:\n\nThe text is a conversation between a Project Manager and an Industrial Designer,'
+2026-06-28 02:29:34,644 [INFO] core.evaluator_v2:   [5/5] avg=8.74
+2026-06-28 02:29:34,644 [INFO] __main__:   → score=8.74, mem_red=80.0%, ttft=5672.5ms
+2026-06-28 02:29:34,645 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 02:29:34,646 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-28 02:29:34,647 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 02:29:34,647 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-28 02:29:34,648 [INFO] core.evaluator_v2: [pyramidkv] narrativeqa (5샘플, budget=20%)
+2026-06-28 02:30:31,659 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not explicitly mention which town Daisy encountered Jim in. The story is told from the perspective of Dais'
+2026-06-28 02:30:48,562 [INFO] core.evaluator_v2: [pyramidkv] pred='Socrates ultimately decides it is unjust to escape because he believes in the principles of justice and the laws, and he'
+2026-06-28 02:31:04,951 [INFO] core.evaluator_v2: [pyramidkv] pred='The story is set in a medieval castle, specifically in the castle of Drachenhausen, which is described as having a great'
+2026-06-28 02:31:16,041 [INFO] core.evaluator_v2: [pyramidkv] pred='Baron Conrad killed his son, Baron Otto.'
+2026-06-28 02:31:34,702 [INFO] core.evaluator_v2: [pyramidkv] pred="A ghost emerged from a painting at Dana's workplace, which was a beautiful painting in the high-Renaissance style depict"
+2026-06-28 02:31:34,707 [INFO] core.evaluator_v2:   [5/5] avg=7.41
+2026-06-28 02:31:34,708 [INFO] __main__:   → score=7.41, mem_red=80.0%, ttft=6298.4ms
+2026-06-28 02:31:34,708 [INFO] __main__: 
+  Task: qasper
+2026-06-28 02:31:34,709 [INFO] core.evaluator_v2: [pyramidkv] qasper (5샘플, budget=20%)
+2026-06-28 02:31:55,846 [INFO] core.evaluator_v2: [pyramidkv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-28 02:32:36,681 [INFO] core.evaluator_v2: [pyramidkv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-28 02:32:43,334 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 02:33:20,311 [INFO] core.evaluator_v2: [pyramidkv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-06-28 02:34:07,996 [INFO] core.evaluator_v2: [pyramidkv] pred='The LSTM models compared in the text are the 6-layer and 9-layer models. The 6-layer model is initialized with Xavier in'
+2026-06-28 02:34:08,013 [INFO] core.evaluator_v2:   [5/5] avg=3.29
+2026-06-28 02:34:08,014 [INFO] __main__:   → score=3.29, mem_red=80.0%, ttft=3360.9ms
+2026-06-28 02:34:08,014 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-28 02:34:08,014 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (5샘플, budget=20%)
+2026-06-28 02:34:44,450 [INFO] core.evaluator_v2: [pyramidkv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-28 02:35:02,987 [INFO] core.evaluator_v2: [pyramidkv] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text indicates that the denoiser can be applie'
+2026-06-28 02:35:03,494 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-28 02:35:27,999 [INFO] core.evaluator_v2: [pyramidkv] pred='The generative interactive model used in the method is called the "Coupled GDBN (C-GDBN)" with an "Interactive Matrix (I'
+2026-06-28 02:35:43,650 [INFO] core.evaluator_v2: [pyramidkv] pred='An ICD (Implantable Cardioverter Defibrillator) is a device implanted in the chest to monitor and correct abnormal heart'
+2026-06-28 02:35:57,267 [INFO] core.evaluator_v2: [pyramidkv] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-28 02:35:57,268 [INFO] core.evaluator_v2:   [5/5] avg=28.67
+2026-06-28 02:35:57,269 [INFO] __main__:   → score=28.67, mem_red=80.0%, ttft=6721.8ms
+2026-06-28 02:35:57,269 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-28 02:35:57,270 [INFO] core.evaluator_v2: [pyramidkv] hotpotqa (5샘플, budget=20%)
+2026-06-28 02:36:10,625 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Stokes Mitchell.'
+2026-06-28 02:36:23,270 [INFO] core.evaluator_v2: [pyramidkv] pred='Ribosomes.'
+2026-06-28 02:36:35,983 [INFO] core.evaluator_v2: [pyramidkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-28 02:36:55,023 [INFO] core.evaluator_v2: [pyramidkv] pred='YIVO.'
+2026-06-28 02:37:07,161 [INFO] core.evaluator_v2: [pyramidkv] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-06-28 02:37:07,164 [INFO] core.evaluator_v2:   [5/5] avg=60.00
+2026-06-28 02:37:07,164 [INFO] __main__:   → score=60.00, mem_red=80.0%, ttft=8410.2ms
+2026-06-28 02:37:07,165 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 02:37:07,166 [INFO] core.evaluator_v2: [pyramidkv] 2wikimqa (5샘플, budget=20%)
+2026-06-28 02:37:25,167 [INFO] core.evaluator_v2: [pyramidkv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-28 02:37:40,541 [INFO] core.evaluator_v2: [pyramidkv] pred='"Joel the Lump of Coal" was released on December 1, 2014. "Jugband Blues" was released on October 23, 1973. Therefore, "'
+2026-06-28 02:37:55,149 [INFO] core.evaluator_v2: [pyramidkv] pred='No Trees in the Street.'
+2026-06-28 02:38:12,243 [INFO] core.evaluator_v2: [pyramidkv] pred="The place of death of Agnes of Hohenstaufen's husband was in 1190."
+2026-06-28 02:38:30,367 [INFO] core.evaluator_v2: [pyramidkv] pred='Paul De Scherff was born in 1848, and Lyudmyla Olyanovska was born in 1973. Therefore, Lyudmyla Olyanovska was born late'
+2026-06-28 02:38:30,369 [INFO] core.evaluator_v2:   [5/5] avg=26.71
+2026-06-28 02:38:30,370 [INFO] __main__:   → score=26.71, mem_red=80.0%, ttft=7871.6ms
+2026-06-28 02:38:30,371 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 02:38:30,372 [INFO] core.evaluator_v2: [pyramidkv] gov_report (5샘플, budget=20%)
+2026-06-28 02:39:20,703 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-28 02:40:14,163 [INFO] core.evaluator_v2: [pyramidkv] pred='The Federal Information Security Management Act (FISMA) is a federal law that requires federal agencies to develop, impl'
+2026-06-28 02:40:39,288 [INFO] core.evaluator_v2: [pyramidkv] pred="The United States must take a stronger and more consistent approach to countering China's maritime aggression in the Sou"
+2026-06-28 02:41:35,084 [INFO] core.evaluator_v2: [pyramidkv] pred='The Clean Water SRF and Drinking Water SRF programs were funded at the same levels as FY2017, with the same amounts appr'
+2026-06-28 02:42:02,423 [INFO] core.evaluator_v2: [pyramidkv] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-06-28 02:42:02,440 [INFO] core.evaluator_v2:   [5/5] avg=15.76
+2026-06-28 02:42:02,441 [INFO] __main__:   → score=15.76, mem_red=80.0%, ttft=5842.8ms
+2026-06-28 02:42:02,442 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 02:42:02,442 [INFO] core.evaluator_v2: [pyramidkv] qmsum (5샘플, budget=20%)
+2026-06-28 02:42:35,039 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-28 02:42:58,178 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-28 02:43:47,233 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting is about the project, and the group is discussing the next steps. The professor, Professor C, is discussing '
+2026-06-28 02:44:38,701 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-28 02:45:32,826 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-28 02:45:32,830 [INFO] core.evaluator_v2:   [5/5] avg=6.19
+2026-06-28 02:45:32,832 [INFO] __main__:   → score=6.19, mem_red=80.0%, ttft=5799.7ms
+2026-06-28 02:45:32,833 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 02:45:32,834 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-28 02:45:32,835 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 02:45:32,836 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-28 02:45:32,837 [INFO] core.evaluator_v2: [adakv] narrativeqa (5샘플, budget=20%)
+2026-06-28 02:46:30,352 [INFO] core.evaluator_v2: [adakv] pred='The text does not explicitly mention which town Daisy encountered Jim in. The story is told from the perspective of Dais'
+2026-06-28 02:46:47,037 [INFO] core.evaluator_v2: [adakv] pred='Socrates ultimately decides it is unjust to escape because he believes in the principles of justice and the laws, and he'
+2026-06-28 02:47:03,949 [INFO] core.evaluator_v2: [adakv] pred='The story is set in a medieval castle, specifically in the castle of Drachenhausen, which is described as having a great'
+2026-06-28 02:47:14,891 [INFO] core.evaluator_v2: [adakv] pred='Baron Conrad killed his son, Baron Otto.'
+2026-06-28 02:47:33,818 [INFO] core.evaluator_v2: [adakv] pred="A ghost emerged from a painting at Dana's workplace, which was a beautiful painting in the high-Renaissance style depict"
+2026-06-28 02:47:33,820 [INFO] core.evaluator_v2:   [5/5] avg=7.41
+2026-06-28 02:47:33,821 [INFO] __main__:   → score=7.41, mem_red=80.0%, ttft=6307.4ms
+2026-06-28 02:47:33,821 [INFO] __main__: 
+  Task: qasper
+2026-06-28 02:47:33,822 [INFO] core.evaluator_v2: [adakv] qasper (5샘플, budget=20%)
+2026-06-28 02:47:55,036 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-28 02:48:34,627 [INFO] core.evaluator_v2: [adakv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-28 02:48:41,758 [INFO] core.evaluator_v2: [adakv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 02:49:18,095 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-06-28 02:50:09,672 [INFO] core.evaluator_v2: [adakv] pred='The LSTM models compared in the text are the 6-layer and 9-layer models. The 6-layer model is initialized with Xavier in'
+2026-06-28 02:50:09,675 [INFO] core.evaluator_v2:   [5/5] avg=3.29
+2026-06-28 02:50:09,676 [INFO] __main__:   → score=3.29, mem_red=80.0%, ttft=3071.1ms
+2026-06-28 02:50:09,676 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-28 02:50:09,677 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (5샘플, budget=20%)
+2026-06-28 02:50:45,118 [INFO] core.evaluator_v2: [adakv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-28 02:51:03,474 [INFO] core.evaluator_v2: [adakv] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text indicates that the denoiser can be applie'
+2026-06-28 02:51:04,060 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-28 02:51:27,435 [INFO] core.evaluator_v2: [adakv] pred='The generative interactive model used in the method is called the "Coupled GDBN (C-GDBN)" with an "Interactive Matrix (I'
+2026-06-28 02:51:42,991 [INFO] core.evaluator_v2: [adakv] pred='An ICD (Implantable Cardioverter Defibrillator) is a device implanted in the chest to monitor and correct abnormal heart'
+2026-06-28 02:51:56,539 [INFO] core.evaluator_v2: [adakv] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-28 02:51:56,541 [INFO] core.evaluator_v2:   [5/5] avg=28.67
+2026-06-28 02:51:56,542 [INFO] __main__:   → score=28.67, mem_red=80.0%, ttft=6696.3ms
+2026-06-28 02:51:56,543 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-28 02:51:56,544 [INFO] core.evaluator_v2: [adakv] hotpotqa (5샘플, budget=20%)
+2026-06-28 02:52:09,668 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell.'
+2026-06-28 02:52:22,464 [INFO] core.evaluator_v2: [adakv] pred='Ribosomes.'
+2026-06-28 02:52:35,034 [INFO] core.evaluator_v2: [adakv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-28 02:52:54,126 [INFO] core.evaluator_v2: [adakv] pred='YIVO.'
+2026-06-28 02:53:07,685 [INFO] core.evaluator_v2: [adakv] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-06-28 02:53:07,687 [INFO] core.evaluator_v2:   [5/5] avg=60.00
+2026-06-28 02:53:07,689 [INFO] __main__:   → score=60.00, mem_red=80.0%, ttft=8624.4ms
+2026-06-28 02:53:07,690 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 02:53:07,691 [INFO] core.evaluator_v2: [adakv] 2wikimqa (5샘플, budget=20%)
+2026-06-28 02:53:25,629 [INFO] core.evaluator_v2: [adakv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-28 02:53:39,543 [INFO] core.evaluator_v2: [adakv] pred='"Jugband Blues" came out first. It was released on the English psychedelic rock band Pink Floyd\'s second album, "Saucer '
+2026-06-28 02:53:53,971 [INFO] core.evaluator_v2: [adakv] pred='No Trees in the Street.'
+2026-06-28 02:54:11,088 [INFO] core.evaluator_v2: [adakv] pred="The place of death of Agnes of Hohenstaufen's husband was in 1190."
+2026-06-28 02:54:27,649 [INFO] core.evaluator_v2: [adakv] pred='Paul De Scherff was born in 1848, and Lyudmyla Olyanovska was born in 1973. Therefore, Lyudmyla Olyanovska was born late'
+2026-06-28 02:54:27,652 [INFO] core.evaluator_v2:   [5/5] avg=25.92
+2026-06-28 02:54:27,652 [INFO] __main__:   → score=25.92, mem_red=80.0%, ttft=7843.4ms
+2026-06-28 02:54:27,653 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 02:54:27,653 [INFO] core.evaluator_v2: [adakv] gov_report (5샘플, budget=20%)
+2026-06-28 02:55:18,074 [INFO] core.evaluator_v2: [adakv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-28 02:56:09,735 [INFO] core.evaluator_v2: [adakv] pred='The Federal Information Security Management Act (FISMA) is a federal law that requires federal agencies to develop, impl'
+2026-06-28 02:56:35,195 [INFO] core.evaluator_v2: [adakv] pred="The United States must take a stronger and more consistent approach to countering China's maritime aggression in the Sou"
+2026-06-28 02:57:31,841 [INFO] core.evaluator_v2: [adakv] pred='The Clean Water SRF and Drinking Water SRF programs were funded at the same levels as FY2017, with the same amounts appr'
+2026-06-28 02:57:59,138 [INFO] core.evaluator_v2: [adakv] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-06-28 02:57:59,159 [INFO] core.evaluator_v2:   [5/5] avg=15.76
+2026-06-28 02:57:59,159 [INFO] __main__:   → score=15.76, mem_red=80.0%, ttft=5999.9ms
+2026-06-28 02:57:59,160 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 02:57:59,161 [INFO] core.evaluator_v2: [adakv] qmsum (5샘플, budget=20%)
+2026-06-28 02:58:32,649 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-28 02:59:15,325 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-28 03:00:17,775 [INFO] core.evaluator_v2: [adakv] pred='The meeting is about the project, and the group is discussing the next steps. The professor, Professor C, is discussing '
+2026-06-28 03:01:07,239 [INFO] core.evaluator_v2: [adakv] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-28 03:02:02,199 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-28 03:02:02,216 [INFO] core.evaluator_v2:   [5/5] avg=6.19
+2026-06-28 03:02:02,216 [INFO] __main__:   → score=6.19, mem_red=80.0%, ttft=8812.5ms
+2026-06-28 03:02:02,217 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-28 03:02:02,217 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-28 03:02:02,218 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-28 03:02:02,218 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-28 03:02:02,218 [INFO] core.evaluator_v2: [ours] narrativeqa (5샘플, budget=20%)
+2026-06-28 03:02:18,050 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of "Daisy" (a reference to the flower "Daisy" and the town "Daisy" in the text).'
+2026-06-28 03:02:33,755 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in the importance of agreements and covenants mad'
+2026-06-28 03:02:50,047 [INFO] core.evaluator_v2: [ours] pred='The story is set in a medieval European kingdom, likely in a castle or castle region, with elements of feudal society, n'
+2026-06-28 03:02:59,539 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad of Roderburg.'
+2026-06-28 03:03:14,045 [INFO] core.evaluator_v2: [ours] pred="A ghostly figure of four angels emerged from a painting at Dana's workplace."
+2026-06-28 03:03:14,048 [INFO] core.evaluator_v2:   [5/5] avg=9.74
+2026-06-28 03:03:14,048 [INFO] __main__:   → score=9.74, mem_red=80.0%, ttft=6173.3ms
+2026-06-28 03:03:14,049 [INFO] __main__: 
+  Task: qasper
+2026-06-28 03:03:14,049 [INFO] core.evaluator_v2: [ours] qasper (5샘플, budget=20%)
+2026-06-28 03:03:25,645 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-06-28 03:03:40,969 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, which is extended with a wide context window and with mu'
+2026-06-28 03:03:57,357 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-28 03:04:02,003 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n- Word/Character embedding\n- CNN/LSTM\n- CRF (Conditional Ra'
+2026-06-28 03:04:17,872 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared in the text are: \n\n1. Very deep unidirectional LSTM (initialized with Xavier initialization)\n2.'
+2026-06-28 03:04:17,874 [INFO] core.evaluator_v2:   [5/5] avg=14.32
+2026-06-28 03:04:17,874 [INFO] __main__:   → score=14.32, mem_red=80.0%, ttft=4261.1ms
+2026-06-28 03:04:17,875 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-28 03:04:17,875 [INFO] core.evaluator_v2: [ours] multifieldqa_en (5샘플, budget=20%)
+2026-06-28 03:04:35,093 [INFO] core.evaluator_v2: [ours] pred="After he attacks Jacobo at a workers' strike, Ngotho is fired and the family is forced to move to another section of the"
+2026-06-28 03:04:47,142 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise.'
+2026-06-28 03:04:48,217 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-28 03:05:07,690 [INFO] core.evaluator_v2: [ours] pred='The generative interactive model used in the method is called the Coupled-GDBN (C-GDBN).'
+2026-06-28 03:05:24,740 [INFO] core.evaluator_v2: [ours] pred='An ICD (Implantable Cardioverter Defibrillator) is a device used to monitor and treat heart rhythms, particularly to det'
+2026-06-28 03:05:39,128 [INFO] core.evaluator_v2: [ours] pred='The algorithm engaged in the PLMS-PPIC method is the NLMS (Normalized Least Mean Squares) algorithm.'
+2026-06-28 03:05:39,130 [INFO] core.evaluator_v2:   [5/5] avg=45.82
+2026-06-28 03:05:39,130 [INFO] __main__:   → score=45.82, mem_red=80.0%, ttft=6348.1ms
+2026-06-28 03:05:39,131 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-28 03:05:39,131 [INFO] core.evaluator_v2: [ours] hotpotqa (5샘플, budget=20%)
+2026-06-28 03:05:52,194 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-28 03:06:09,003 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-06-28 03:06:22,119 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-28 03:06:40,972 [INFO] core.evaluator_v2: [ours] pred='Arnrich.'
+2026-06-28 03:06:54,783 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the **Southern Company**.'
+2026-06-28 03:06:54,785 [INFO] core.evaluator_v2:   [5/5] avg=40.00
+2026-06-28 03:06:54,786 [INFO] __main__:   → score=40.00, mem_red=80.0%, ttft=9206.1ms
+2026-06-28 03:06:54,786 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-28 03:06:54,787 [INFO] core.evaluator_v2: [ours] 2wikimqa (5샘플, budget=20%)
+2026-06-28 03:07:11,100 [INFO] core.evaluator_v2: [ours] pred='Finland.'
+2026-06-28 03:07:21,864 [INFO] core.evaluator_v2: [ours] pred='Joel The Lump Of Coal came out first.'
+2026-06-28 03:07:36,888 [INFO] core.evaluator_v2: [ours] pred='No Trees in the Street.'
+2026-06-28 03:07:53,451 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband, Henry V, was in 1125, when he died childless, leaving Agnes and h"
+2026-06-28 03:08:28,013 [INFO] core.evaluator_v2: [ours] pred="Paul De Scherff was born in 1873, and Lyudmyla Olyanovska's birth year is not mentioned in the text. Therefore, based on"
+2026-06-28 03:08:28,016 [INFO] core.evaluator_v2:   [5/5] avg=21.29
+2026-06-28 03:08:28,017 [INFO] __main__:   → score=21.29, mem_red=80.0%, ttft=10907.8ms
+2026-06-28 03:08:28,018 [INFO] __main__: 
+  Task: gov_report
+2026-06-28 03:08:28,018 [INFO] core.evaluator_v2: [ours] gov_report (5샘플, budget=20%)
+2026-06-28 03:09:35,867 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has implemented a workforce strategy that balances the use of rotating (IPA) and V'
+2026-06-28 03:10:24,057 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) of 2002, as amended by the Federal Information Security Manageme'
+2026-06-28 03:10:48,513 [INFO] core.evaluator_v2: [ours] pred="The article discusses the United States' response to China's maritime aggression in the South China Sea, emphasizing the"
+2026-06-28 03:11:44,644 [INFO] core.evaluator_v2: [ours] pred='The final full-year appropriations for the EPA were enacted as part of the Consolidated Appropriations Act, FY2019 (P.L.'
+2026-06-28 03:12:13,320 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and its TRIO components—the U.S. Coast Guard (Coast Guard), Transportation Sec'
+2026-06-28 03:12:13,341 [INFO] core.evaluator_v2:   [5/5] avg=14.39
+2026-06-28 03:12:13,342 [INFO] __main__:   → score=14.39, mem_red=80.0%, ttft=5900.9ms
+2026-06-28 03:12:13,342 [INFO] __main__: 
+  Task: qmsum
+2026-06-28 03:12:13,343 [INFO] core.evaluator_v2: [ours] qmsum (5샘플, budget=20%)
+2026-06-28 03:12:34,026 [INFO] core.evaluator_v2: [ours] pred='Summary: The team is working on a new remote control device. The goal is to create a sleek, stylish, and functional remo'
+2026-06-28 03:13:01,410 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the design and development of a new mobile device, focusing on the user interface, indust'
+2026-06-28 03:13:26,955 [INFO] core.evaluator_v2: [ours] pred='The project is being developed with the goal of creating a system that can be used for various purposes. The team is wor'
+2026-06-28 03:13:38,734 [INFO] core.evaluator_v2: [ours] pred='The meeting was focused on evaluating a new product, with the goal of understanding its features and how it fits into th'
+2026-06-28 03:14:18,096 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and marketing of a new remote control device. The key points and decisions made during'
+2026-06-28 03:14:18,112 [INFO] core.evaluator_v2:   [5/5] avg=6.99
+2026-06-28 03:14:18,113 [INFO] __main__:   → score=6.99, mem_red=80.0%, ttft=5030.0ms
+2026-06-28 03:14:18,125 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260628_013639.csv
+2026-06-28 03:14:18,136 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260628_013639.json
+2026-06-28 03:14:18,137 [INFO] __main__: Experiment 1 completed!

@@ -1,0 +1,123 @@
+2026-06-24 12:09:34,447 [INFO] __main__: Experiment 1: Main Results
+2026-06-24 12:09:34,448 [INFO] __main__:   Model: qwen3-4b
+2026-06-24 12:09:34,448 [INFO] __main__:   Mode: full
+2026-06-24 12:09:34,449 [INFO] __main__:   Budget: 20%
+2026-06-24 12:09:34,450 [INFO] __main__:   Tasks: ['qasper']
+2026-06-24 12:09:34,451 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-24 12:09:34,452 [INFO] __main__:   Samples/task: 1
+2026-06-24 12:09:34,452 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-24 12:09:34,452 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-24 12:09:34,615 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:09:34,619 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 12:09:34,631 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 12:09:34,700 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:09:34,723 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 12:09:34,796 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 12:09:34,863 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 12:09:35,884 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-24 12:09:35,886 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-24 12:09:35,915 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:09:35,926 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 12:09:52,335 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:09:52,343 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-24 12:09:52,479 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-24 12:09:52,541 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-24 12:09:52,556 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:09:52,557 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-24 12:09:52,559 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:09:52,560 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:09:52,562 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:09:52,599 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:09:52,648 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:09:53,215 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:09:53,252 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-24 12:09:53,301 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:09:53,347 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-24 12:09:53,859 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:09:53,861 [INFO] core.evaluator_v2: [fullkv] qasper (1샘플, budget=20%)
+2026-06-24 12:10:01,566 [INFO] core.evaluator_v2: [fullkv] prediction='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (K' answers=['Reward of 11.8 for the A2C-chained model, 41.8 for the KG-A2C-chained model, 40 for A2C-Explore and 44 for KG-A2C-Explore.', 'KG-A2C-chained and KG-A2C-Explore both pass the bottleneck of a score of 40']
+2026-06-24 12:10:01,568 [INFO] __main__:   → score=19.28, mem_red=0.0%, ttft=1671.5ms
+2026-06-24 12:10:01,568 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:10:01,569 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-24 12:10:01,569 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:10:01,571 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:10:01,571 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:10:01,649 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:10:01,678 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:10:02,397 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:10:02,416 [INFO] core.evaluator_v2: [streaming] qasper (1샘플, budget=20%)
+2026-06-24 12:10:22,069 [INFO] core.evaluator_v2: [streaming] prediction='The two different rooms. The cell is a room is the same. The cell is the same. The cell is the same.' answers=['Reward of 11.8 for the A2C-chained model, 41.8 for the KG-A2C-chained model, 40 for A2C-Explore and 44 for KG-A2C-Explore.', 'KG-A2C-chained and KG-A2C-Explore both pass the bottleneck of a score of 40']
+2026-06-24 12:10:22,071 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=1160.2ms
+2026-06-24 12:10:22,072 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:10:22,072 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-24 12:10:22,073 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:10:22,073 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:10:22,074 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:10:22,134 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:10:22,161 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:10:22,840 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:10:22,841 [INFO] core.evaluator_v2: [h2o] qasper (1샘플, budget=20%)
+2026-06-24 12:10:42,955 [INFO] core.evaluator_v2: [h2o] prediction='1. The knowledge. The knowledge. The knowledge. The knowledge. The knowledge. and the. The knowledge' answers=['Reward of 11.8 for the A2C-chained model, 41.8 for the KG-A2C-chained model, 40 for A2C-Explore and 44 for KG-A2C-Explore.', 'KG-A2C-chained and KG-A2C-Explore both pass the bottleneck of a score of 40']
+2026-06-24 12:10:42,958 [INFO] __main__:   → score=1.10, mem_red=80.0%, ttft=1213.8ms
+2026-06-24 12:10:42,958 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:10:42,959 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-24 12:10:42,959 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:10:42,959 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:10:42,960 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:10:43,026 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:10:43,055 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:10:43,984 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:10:43,985 [INFO] core.evaluator_v2: [snapkv] qasper (1샘플, budget=20%)
+2026-06-24 12:11:03,665 [INFO] core.evaluator_v2: [snapkv] prediction='1. The following results from the text. The agent. The agent. The agent. The agent. The agent. The a' answers=['Reward of 11.8 for the A2C-chained model, 41.8 for the KG-A2C-chained model, 40 for A2C-Explore and 44 for KG-A2C-Explore.', 'KG-A2C-chained and KG-A2C-Explore both pass the bottleneck of a score of 40']
+2026-06-24 12:11:03,668 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=1167.7ms
+2026-06-24 12:11:03,668 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:11:03,668 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-24 12:11:03,669 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:11:03,669 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:11:03,670 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:11:03,737 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:11:03,766 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:11:04,454 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:11:04,455 [INFO] core.evaluator_v2: [pyramidkv] qasper (1샘플, budget=20%)
+2026-06-24 12:11:24,351 [INFO] core.evaluator_v2: [pyramidkv] prediction='The results show that the text and the text. The text and the text. The text and the text. The text ' answers=['Reward of 11.8 for the A2C-chained model, 41.8 for the KG-A2C-chained model, 40 for A2C-Explore and 44 for KG-A2C-Explore.', 'KG-A2C-chained and KG-A2C-Explore both pass the bottleneck of a score of 40']
+2026-06-24 12:11:24,353 [INFO] __main__:   → score=0.75, mem_red=80.0%, ttft=1181.6ms
+2026-06-24 12:11:24,354 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:11:24,354 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-24 12:11:24,355 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:11:24,356 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:11:24,356 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:11:24,468 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:11:24,497 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:11:25,188 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:11:25,190 [INFO] core.evaluator_v2: [adakv] qasper (1샘플, budget=20%)
+2026-06-24 12:11:45,245 [INFO] core.evaluator_v2: [adakv] prediction='the\n the the the the text that the text that the text that the text that the text that the text that' answers=['Reward of 11.8 for the A2C-chained model, 41.8 for the KG-A2C-chained model, 40 for A2C-Explore and 44 for KG-A2C-Explore.', 'KG-A2C-chained and KG-A2C-Explore both pass the bottleneck of a score of 40']
+2026-06-24 12:11:45,247 [INFO] __main__:   → score=0.00, mem_red=92.0%, ttft=1187.3ms
+2026-06-24 12:11:45,248 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:11:45,248 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-24 12:11:45,248 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:11:45,249 [INFO] __main__: 
+  Task: qasper
+2026-06-24 12:11:45,249 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-24 12:11:45,309 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:11:45,348 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:11:46,073 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-24 12:11:46,074 [INFO] core.evaluator_v2: [ours] qasper (1샘플, budget=20%)
+2026-06-24 12:12:06,793 [INFO] core.evaluator_v2: [ours] prediction='The the the bottleneck in the bottleneck in the bottleneck in the bottleneck in the bottleneck in th' answers=['Reward of 11.8 for the A2C-chained model, 41.8 for the KG-A2C-chained model, 40 for A2C-Explore and 44 for KG-A2C-Explore.', 'KG-A2C-chained and KG-A2C-Explore both pass the bottleneck of a score of 40']
+2026-06-24 12:12:06,795 [INFO] __main__:   → score=0.57, mem_red=92.0%, ttft=1519.6ms
+2026-06-24 12:12:06,832 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260624_120934.csv
+2026-06-24 12:12:06,843 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260624_120934.json
+2026-06-24 12:12:06,844 [INFO] __main__: Experiment 1 completed!

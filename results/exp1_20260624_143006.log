@@ -1,0 +1,102 @@
+2026-06-24 14:30:06,176 [INFO] __main__: Experiment 1: Main Results
+2026-06-24 14:30:06,177 [INFO] __main__:   Model: qwen3-4b
+2026-06-24 14:30:06,178 [INFO] __main__:   Mode: full
+2026-06-24 14:30:06,179 [INFO] __main__:   Budget: 20%
+2026-06-24 14:30:06,180 [INFO] __main__:   Tasks: ['multifieldqa_en']
+2026-06-24 14:30:06,180 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-24 14:30:06,181 [INFO] __main__:   Samples/task: 1
+2026-06-24 14:30:06,182 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-24 14:30:06,183 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-24 14:30:06,297 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:30:06,312 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 14:30:06,320 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:30:06,399 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:30:06,418 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:30:06,503 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 14:30:06,552 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 14:30:07,663 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-24 14:30:07,666 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-24 14:30:07,701 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:30:07,716 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:30:15,728 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:30:15,736 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:30:15,825 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-24 14:30:15,862 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-24 14:30:15,876 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-24 14:30:15,877 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 14:30:15,912 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:30:15,943 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:30:16,606 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:30:16,644 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-24 14:30:16,681 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:30:16,717 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-24 14:30:17,124 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 14:30:17,126 [INFO] __main__:   ✓ multifieldqa_en: 1샘플 로드 완료
+2026-06-24 14:30:17,127 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-24 14:30:17,128 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:30:17,129 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-24 14:30:17,131 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:30:17,133 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:30:17,134 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:30:20,735 [INFO] core.evaluator_v2: [fullkv] pred="After attacking Jacobo at a workers' strike, Ngotho loses his job and his family is forced to move. He later dies from h"
+2026-06-24 14:30:20,736 [INFO] __main__:   → score=80.00, mem_red=0.0%, ttft=1413.4ms
+2026-06-24 14:30:20,737 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:30:20,737 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-24 14:30:20,738 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:30:20,738 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:30:20,738 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:30:23,260 [INFO] core.evaluator_v2: [streaming] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned. His family is forced to move, and he is "
+2026-06-24 14:30:23,261 [INFO] __main__:   → score=66.67, mem_red=80.0%, ttft=640.3ms
+2026-06-24 14:30:23,262 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:30:23,262 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-24 14:30:23,263 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:30:23,263 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:30:23,263 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:30:29,962 [INFO] core.evaluator_v2: [h2o] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-24 14:30:29,963 [INFO] __main__:   → score=15.62, mem_red=80.0%, ttft=677.4ms
+2026-06-24 14:30:29,964 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:30:29,965 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-24 14:30:29,966 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:30:29,967 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:30:29,968 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:30:30,856 [ERROR] core.evaluator_v2: generate() failed: index -1 is out of bounds for dimension 0 with size 0
+2026-06-24 14:30:30,857 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=0.0ms
+2026-06-24 14:30:30,858 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:30:30,860 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-24 14:30:30,861 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:30:30,862 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:30:30,863 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:30:49,963 [INFO] core.evaluator_v2: [pyramidkv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-24 14:30:49,965 [INFO] __main__:   → score=8.90, mem_red=80.0%, ttft=636.8ms
+2026-06-24 14:30:49,966 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:30:49,967 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-24 14:30:49,968 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:30:49,969 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:30:49,969 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:31:09,086 [INFO] core.evaluator_v2: [adakv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-24 14:31:09,088 [INFO] __main__:   → score=8.90, mem_red=80.0%, ttft=654.7ms
+2026-06-24 14:31:09,088 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:31:09,089 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-24 14:31:09,089 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:31:09,089 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:31:09,090 [INFO] core.evaluator_v2: [ours] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:31:15,965 [INFO] core.evaluator_v2: [ours] pred="After he attacks Jacobo at a workers' strike, Ngotho is fired and the family is forced to move to another section of the"
+2026-06-24 14:31:15,966 [INFO] __main__:   → score=20.16, mem_red=80.0%, ttft=681.5ms
+2026-06-24 14:31:15,975 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260624_143006.csv
+2026-06-24 14:31:15,982 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260624_143006.json
+2026-06-24 14:31:15,983 [INFO] __main__: Experiment 1 completed!

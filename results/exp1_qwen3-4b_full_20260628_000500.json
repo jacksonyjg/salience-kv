@@ -1,0 +1,140 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 5,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 15.92188017212843,
+        "qasper": 15.077643908969211,
+        "multifieldqa_en": 59.96242850396179,
+        "hotpotqa": 2.5,
+        "2wikimqa": 11.076923076923077,
+        "gov_report": 16.41307600716225,
+        "qmsum": 9.828190433569906
+      },
+      "avg_score": 18.68287744324495,
+      "avg_ttft_ms": 3057.951282924324,
+      "avg_throughput": 12.58399094989618,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "narrativeqa": 8.15686274509804,
+        "qasper": 6.303854875283446,
+        "multifieldqa_en": 51.01946013810421,
+        "hotpotqa": 40.0,
+        "2wikimqa": 13.748917748917748,
+        "gov_report": 16.43101989197736,
+        "qmsum": 9.310815909233378
+      },
+      "avg_score": 20.71013304408774,
+      "avg_ttft_ms": 3039.043539676413,
+      "avg_throughput": 13.038478666310953,
+      "avg_memory_reduction_pct": 80.0086692524636
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "narrativeqa": 6.0398860398860394,
+        "qasper": 7.849870578084557,
+        "multifieldqa_en": 29.345481736858936,
+        "hotpotqa": 40.0,
+        "2wikimqa": 23.636363636363637,
+        "gov_report": 15.805255069097488,
+        "qmsum": 5.451156432726852
+      },
+      "avg_score": 18.30400192757393,
+      "avg_ttft_ms": 3049.1720770268344,
+      "avg_throughput": 14.444702384809139,
+      "avg_memory_reduction_pct": 80.0086692524636
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "narrativeqa": 5.161290322580644,
+        "qasper": 12.444444444444445,
+        "multifieldqa_en": 35.402117622507426,
+        "hotpotqa": 60.0,
+        "2wikimqa": 0.39603960396039606,
+        "gov_report": 0.7431583413567454,
+        "qmsum": 0.7748184019370459
+      },
+      "avg_score": 16.417409819540957,
+      "avg_ttft_ms": 2932.7307762186256,
+      "avg_throughput": 28.278702870488363,
+      "avg_memory_reduction_pct": 80.0086692524636
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "narrativeqa": 7.410574205094754,
+        "qasper": 3.2942025207485863,
+        "multifieldqa_en": 28.671758130120402,
+        "hotpotqa": 60.0,
+        "2wikimqa": 26.713286713286713,
+        "gov_report": 15.761105776614915,
+        "qmsum": 6.1907984856516265
+      },
+      "avg_score": 21.148817975931,
+      "avg_ttft_ms": 3067.869283767849,
+      "avg_throughput": 15.322692866792911,
+      "avg_memory_reduction_pct": 80.00926511124507
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 7.410574205094754,
+        "qasper": 3.2942025207485863,
+        "multifieldqa_en": 28.671758130120402,
+        "hotpotqa": 60.0,
+        "2wikimqa": 25.92207792207792,
+        "gov_report": 15.761105776614915,
+        "qmsum": 6.1907984856516265
+      },
+      "avg_score": 21.03578814861546,
+      "avg_ttft_ms": 3055.661780112409,
+      "avg_throughput": 15.344066579797488,
+      "avg_memory_reduction_pct": 80.0086692524636
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 9.743589743589743,
+        "qasper": 14.316013915385478,
+        "multifieldqa_en": 45.823460582126664,
+        "hotpotqa": 40.0,
+        "2wikimqa": 21.29032258064516,
+        "gov_report": 14.387626546847676,
+        "qmsum": 6.987519136102376
+      },
+      "avg_score": 21.792647500671016,
+      "avg_ttft_ms": 3151.5526822298193,
+      "avg_throughput": 13.076510947910808,
+      "avg_memory_reduction_pct": 80.0086692524636
+    }
+  ]
+}

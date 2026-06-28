@@ -1,0 +1,92 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "gov_report"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 1,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "gov_report": 19.90811638591118
+      },
+      "avg_score": 19.90811638591118,
+      "avg_ttft_ms": 2914.8213979614047,
+      "avg_throughput": 21.019404633586824,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "gov_report": 21.093750000000004
+      },
+      "avg_score": 21.093750000000004,
+      "avg_ttft_ms": 2386.0648373845993,
+      "avg_throughput": 23.62004502487271,
+      "avg_memory_reduction_pct": 80.01179245283019
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "gov_report": 24.970828471411902
+      },
+      "avg_score": 24.970828471411902,
+      "avg_ttft_ms": 2291.04614048083,
+      "avg_throughput": 23.913139911584523,
+      "avg_memory_reduction_pct": 80.01179245283019
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "gov_report": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 2404.401649720967,
+      "avg_throughput": 25.3032131331027,
+      "avg_memory_reduction_pct": 80.01179245283019
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "gov_report": 20.422535211267608
+      },
+      "avg_score": 20.422535211267608,
+      "avg_ttft_ms": 2283.0979432237655,
+      "avg_throughput": 24.143458356770385,
+      "avg_memory_reduction_pct": 80.01179245283019
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "gov_report": 20.422535211267608
+      },
+      "avg_score": 20.422535211267608,
+      "avg_ttft_ms": 2340.4065833256027,
+      "avg_throughput": 24.14418976388139,
+      "avg_memory_reduction_pct": 80.01179245283019
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "gov_report": 17.381228273464657
+      },
+      "avg_score": 17.381228273464657,
+      "avg_ttft_ms": 2377.0532767812256,
+      "avg_throughput": 24.058348942327168,
+      "avg_memory_reduction_pct": 80.01179245283019
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+2026-06-24 12:51:20,954 [INFO] __main__: Experiment 1: Main Results
+2026-06-24 12:51:20,955 [INFO] __main__:   Model: qwen3-4b
+2026-06-24 12:51:20,956 [INFO] __main__:   Mode: full
+2026-06-24 12:51:20,956 [INFO] __main__:   Budget: 20%
+2026-06-24 12:51:20,958 [INFO] __main__:   Tasks: ['multifieldqa_en']
+2026-06-24 12:51:20,958 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-24 12:51:20,959 [INFO] __main__:   Samples/task: 1
+2026-06-24 12:51:20,959 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-24 12:51:20,960 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-24 12:51:21,075 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:21,082 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 12:51:21,180 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:21,189 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 12:51:21,276 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 12:51:21,321 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 12:51:22,377 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-24 12:51:22,380 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-24 12:51:22,414 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:22,419 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 12:51:29,837 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:29,840 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 12:51:29,848 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-24 12:51:29,922 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-24 12:51:29,952 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-24 12:51:29,964 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:51:29,966 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-24 12:51:29,966 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:51:29,967 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:51:29,968 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:51:30,001 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:30,038 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:51:30,665 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:30,696 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-24 12:51:30,738 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:30,773 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-24 12:51:31,044 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:51:31,046 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:51:35,019 [INFO] core.evaluator_v2: [fullkv] pred="After attacking Jacobo at a workers' strike, Ngotho loses his job and his family is forced to move. He later dies from h"
+2026-06-24 12:51:35,021 [INFO] __main__:   → score=80.00, mem_red=0.0%, ttft=1389.9ms
+2026-06-24 12:51:35,023 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:51:35,024 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-24 12:51:35,025 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:51:35,026 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:51:35,028 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:51:35,063 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:35,092 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:51:35,862 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:51:35,863 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:51:39,098 [INFO] core.evaluator_v2: [streaming] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned. His family is forced to move, and he is "
+2026-06-24 12:51:39,111 [INFO] __main__:   → score=66.67, mem_red=80.0%, ttft=675.2ms
+2026-06-24 12:51:39,112 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:51:39,113 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-24 12:51:39,115 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:51:39,116 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:51:39,117 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:51:39,153 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:39,183 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:51:39,948 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:51:39,949 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:51:47,296 [INFO] core.evaluator_v2: [h2o] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-24 12:51:47,307 [INFO] __main__:   → score=15.62, mem_red=80.0%, ttft=744.3ms
+2026-06-24 12:51:47,308 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:51:47,309 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-24 12:51:47,311 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:51:47,312 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:51:47,313 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:51:47,388 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:47,519 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:51:48,238 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:51:48,238 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:51:49,604 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-24 12:51:49,609 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=1059.2ms
+2026-06-24 12:51:49,610 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:51:49,611 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-24 12:51:49,613 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:51:49,613 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:51:49,614 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:51:49,648 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:51:49,676 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:51:50,391 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:51:50,392 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:52:10,497 [INFO] core.evaluator_v2: [pyramidkv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired from his job and is forced to move to a new school. His br"
+2026-06-24 12:52:10,512 [INFO] __main__:   → score=6.99, mem_red=90.0%, ttft=639.0ms
+2026-06-24 12:52:10,514 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:52:10,514 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-24 12:52:10,515 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:52:10,515 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:52:10,516 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:52:10,598 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:52:10,681 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:52:11,432 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:52:11,433 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:52:31,973 [INFO] core.evaluator_v2: [adakv] pred='Njoroge is the first prime minister of Kenya. He is the first to be in the world. He is the first to be in the world. He'
+2026-06-24 12:52:31,975 [INFO] __main__:   → score=1.07, mem_red=91.9%, ttft=721.8ms
+2026-06-24 12:52:31,976 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 12:52:31,977 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-24 12:52:31,979 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 12:52:31,980 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 12:52:31,982 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 12:52:32,090 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 12:52:32,315 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 12:52:32,937 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 12:52:32,938 [INFO] core.evaluator_v2: [ours] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 12:52:40,178 [INFO] core.evaluator_v2: [ours] pred="After he attacks Jacobo at a workers' strike, Ngotho is fired and the family is forced to move to another section of the"
+2026-06-24 12:52:40,179 [INFO] __main__:   → score=20.16, mem_red=80.0%, ttft=684.3ms
+2026-06-24 12:52:40,194 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260624_125120.csv
+2026-06-24 12:52:40,219 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260624_125120.json
+2026-06-24 12:52:40,220 [INFO] __main__: Experiment 1 completed!

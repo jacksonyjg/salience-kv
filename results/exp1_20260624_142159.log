@@ -1,0 +1,102 @@
+2026-06-24 14:21:59,349 [INFO] __main__: Experiment 1: Main Results
+2026-06-24 14:21:59,349 [INFO] __main__:   Model: qwen3-4b
+2026-06-24 14:21:59,349 [INFO] __main__:   Mode: full
+2026-06-24 14:21:59,350 [INFO] __main__:   Budget: 20%
+2026-06-24 14:21:59,351 [INFO] __main__:   Tasks: ['multifieldqa_en']
+2026-06-24 14:21:59,351 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-24 14:21:59,351 [INFO] __main__:   Samples/task: 1
+2026-06-24 14:21:59,352 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-24 14:21:59,352 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-24 14:21:59,459 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:21:59,461 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-24 14:21:59,468 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:21:59,549 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:21:59,556 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:21:59,626 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-24 14:21:59,666 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-24 14:22:00,654 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-24 14:22:00,656 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-24 14:22:00,691 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:22:00,696 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-24 14:22:08,696 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:22:08,721 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-24 14:22:08,817 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-24 14:22:08,849 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-24 14:22:08,862 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-24 14:22:08,863 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-24 14:22:08,901 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:22:08,971 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-24 14:22:09,611 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:22:09,643 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-24 14:22:09,678 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-24 14:22:09,751 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-24 14:22:10,160 [INFO] core.dataset_loader: Loaded 1 samples from multifieldqa_en
+2026-06-24 14:22:10,162 [INFO] __main__:   ✓ multifieldqa_en: 1샘플 로드 완료
+2026-06-24 14:22:10,163 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-24 14:22:10,164 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:22:10,165 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-24 14:22:10,167 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:22:10,168 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:22:10,169 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:22:11,531 [ERROR] core.evaluator_v2: generate() failed: name 'gen_position_ids' is not defined
+2026-06-24 14:22:11,533 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=0.0ms
+2026-06-24 14:22:11,534 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:22:11,534 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-24 14:22:11,535 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:22:11,537 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:22:11,538 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:22:12,360 [ERROR] core.evaluator_v2: generate() failed: name 'gen_position_ids' is not defined
+2026-06-24 14:22:12,362 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=0.0ms
+2026-06-24 14:22:12,363 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:22:12,363 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-24 14:22:12,364 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:22:12,365 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:22:12,366 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:22:13,185 [ERROR] core.evaluator_v2: generate() failed: name 'gen_position_ids' is not defined
+2026-06-24 14:22:13,187 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=0.0ms
+2026-06-24 14:22:13,188 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:22:13,189 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-24 14:22:13,191 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:22:13,192 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:22:13,194 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:22:13,968 [ERROR] core.evaluator_v2: generate() failed: name 'gen_position_ids' is not defined
+2026-06-24 14:22:13,970 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=0.0ms
+2026-06-24 14:22:13,971 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:22:13,972 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-24 14:22:13,974 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:22:13,975 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:22:13,976 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:22:14,759 [ERROR] core.evaluator_v2: generate() failed: name 'gen_position_ids' is not defined
+2026-06-24 14:22:14,761 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=0.0ms
+2026-06-24 14:22:14,762 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:22:14,763 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-24 14:22:14,764 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:22:14,765 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:22:14,766 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:22:15,557 [ERROR] core.evaluator_v2: generate() failed: name 'gen_position_ids' is not defined
+2026-06-24 14:22:15,558 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=0.0ms
+2026-06-24 14:22:15,558 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-24 14:22:15,559 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-24 14:22:15,559 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-24 14:22:15,560 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-24 14:22:15,560 [INFO] core.evaluator_v2: [ours] multifieldqa_en (1샘플, budget=20%)
+2026-06-24 14:22:16,521 [ERROR] core.evaluator_v2: generate() failed: name 'gen_position_ids' is not defined
+2026-06-24 14:22:16,522 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=0.0ms
+2026-06-24 14:22:16,533 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260624_142159.csv
+2026-06-24 14:22:16,541 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260624_142159.json
+2026-06-24 14:22:16,542 [INFO] __main__: Experiment 1 completed!
