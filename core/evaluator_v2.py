@@ -156,22 +156,8 @@ class EvaluatorV2:
                 # generate()는 attention_mask.shape[1]로 다음 토큰 position을 계산함.
                 # SnapKV sparse 캐시(cache_len=420)는 실제 2101토큰 중 선택된 것이므로
                 # attention_mask를 실제 input_length(2101)로 맞춰야 RoPE position 정확.
-                if method_name.lower() in ("snapkv",):
-                    gen_input_ids = input_ids[:, -1:]
-                    gen_attention_mask = torch.ones(
-                        1, input_length,
-                        dtype=attention_mask.dtype,
-                        device=attention_mask.device,
-                    )
-                    gen_cache_position = torch.tensor(
-                        [input_length - 1], device=gen_input_ids.device
-                    )
-                    # 캐시 마지막 1토큰 롤백
-                    for layer in compressed_cache.layers:
-                        if layer.keys is not None and layer.keys.shape[2] > 1:
-                            layer.keys = layer.keys[:, :, :-1, :]
-                            layer.values = layer.values[:, :, :-1, :]
-                    gen_position_ids = None
+                if False:  # SnapKV 전용 분기 제거 - 다른 메서드와 동일하게 처리
+                    pass
                 else:
                     gen_cache_position = None
                     gen_position_ids = None
