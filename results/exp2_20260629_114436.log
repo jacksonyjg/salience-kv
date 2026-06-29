@@ -1,0 +1,435 @@
+2026-06-29 11:44:36,843 [INFO] __main__: Experiment 2: Ablation - Hybrid Score Components
+2026-06-29 11:44:36,844 [INFO] __main__:   Model: qwen3-4b | Budget: 20%
+2026-06-29 11:44:36,845 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-29 11:44:36,948 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:44:36,949 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-29 11:44:36,955 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 11:44:37,021 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:44:37,034 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-29 11:44:37,099 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-29 11:44:37,153 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-29 11:44:38,293 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-29 11:44:38,296 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-29 11:44:38,358 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:44:38,364 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 11:44:55,887 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:44:55,893 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-29 11:44:55,978 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-29 11:44:55,996 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-29 11:44:56,032 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 11:44:56,033 [INFO] __main__: Condition: Full (All 4 signals)
+2026-06-29 11:44:56,034 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-29 11:44:56,081 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:44:56,328 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:44:56,949 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:44:56,980 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-29 11:44:57,011 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:44:57,051 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-29 11:44:57,376 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-06-29 11:45:08,089 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of "Daisy" (a reference to the flower "Daisy" and the town "Daisy" in the text).'
+2026-06-29 11:45:17,110 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in the importance of agreements and covenants mad'
+2026-06-29 11:45:25,490 [INFO] core.evaluator_v2: [ours] pred='The story is set in a medieval European kingdom, likely in a castle or castle region, with elements of feudal society, n'
+2026-06-29 11:45:31,026 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad of Roderburg.'
+2026-06-29 11:45:38,942 [INFO] core.evaluator_v2: [ours] pred="A ghostly figure of four angels emerged from a painting at Dana's workplace."
+2026-06-29 11:45:38,944 [INFO] __main__:   [5/5] narrativeqa avg=9.74
+2026-06-29 11:45:38,944 [INFO] __main__:   narrativeqa: 9.74
+2026-06-29 11:45:38,945 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 11:45:39,016 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:45:39,045 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:45:39,715 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-06-29 11:45:45,672 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-06-29 11:45:49,694 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, which is extended with a wide context window and with mu'
+2026-06-29 11:45:53,094 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 11:45:58,023 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n- Word/Character embedding\n- CNN/LSTM\n- CRF (Conditional Ra'
+2026-06-29 11:46:07,457 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared in the text are: \n\n1. Very deep unidirectional LSTM (initialized with Xavier initialization)\n2.'
+2026-06-29 11:46:07,458 [INFO] __main__:   [5/5] qasper avg=14.32
+2026-06-29 11:46:07,459 [INFO] __main__:   qasper: 14.32
+2026-06-29 11:46:07,459 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-29 11:46:07,537 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:46:07,567 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:46:08,383 [INFO] core.dataset_loader: Loaded 5 samples from multifieldqa_en
+2026-06-29 11:46:15,906 [INFO] core.evaluator_v2: [ours] pred="After he attacks Jacobo at a workers' strike, Ngotho is fired and the family is forced to move to another section of the"
+2026-06-29 11:46:21,733 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise.'
+2026-06-29 11:46:22,308 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 11:46:32,876 [INFO] core.evaluator_v2: [ours] pred='The generative interactive model used in the method is called the Coupled-GDBN (C-GDBN).'
+2026-06-29 11:46:41,353 [INFO] core.evaluator_v2: [ours] pred='An ICD (Implantable Cardioverter Defibrillator) is a device used to monitor and treat heart rhythms, particularly to det'
+2026-06-29 11:46:49,000 [INFO] core.evaluator_v2: [ours] pred='The algorithm engaged in the PLMS-PPIC method is the NLMS (Normalized Least Mean Squares) algorithm.'
+2026-06-29 11:46:49,017 [INFO] __main__:   [5/5] multifieldqa_en avg=45.82
+2026-06-29 11:46:49,018 [INFO] __main__:   multifieldqa_en: 45.82
+2026-06-29 11:46:49,019 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-29 11:46:49,095 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:46:49,148 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:46:49,996 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-06-29 11:46:57,168 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-29 11:47:03,667 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-06-29 11:47:10,085 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 11:47:19,563 [INFO] core.evaluator_v2: [ours] pred='Arnrich.'
+2026-06-29 11:47:26,476 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the **Southern Company**.'
+2026-06-29 11:47:26,477 [INFO] __main__:   [5/5] hotpotqa avg=40.00
+2026-06-29 11:47:26,478 [INFO] __main__:   hotpotqa: 40.00
+2026-06-29 11:47:26,478 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-29 11:47:26,546 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:47:26,576 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:47:27,284 [INFO] core.dataset_loader: Loaded 5 samples from 2wikimqa
+2026-06-29 11:47:35,515 [INFO] core.evaluator_v2: [ours] pred='Finland.'
+2026-06-29 11:47:40,471 [INFO] core.evaluator_v2: [ours] pred='Joel The Lump Of Coal came out first.'
+2026-06-29 11:47:47,817 [INFO] core.evaluator_v2: [ours] pred='No Trees in the Street.'
+2026-06-29 11:47:57,913 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband, Henry V, was in 1125, when he died childless, leaving Agnes and h"
+2026-06-29 11:48:06,848 [INFO] core.evaluator_v2: [ours] pred="Paul De Scherff was born in 1873, and Lyudmyla Olyanovska's birth year is not mentioned in the text. Therefore, based on"
+2026-06-29 11:48:06,849 [INFO] __main__:   [5/5] 2wikimqa avg=21.29
+2026-06-29 11:48:06,850 [INFO] __main__:   2wikimqa: 21.29
+2026-06-29 11:48:06,850 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-29 11:48:06,921 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:48:07,040 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:48:07,925 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-06-29 11:48:32,498 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has implemented a workforce strategy that balances the use of rotating (IPA) and V'
+2026-06-29 11:48:56,650 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) of 2002, as amended by the Federal Information Security Manageme'
+2026-06-29 11:49:08,757 [INFO] core.evaluator_v2: [ours] pred="The article discusses the United States' response to China's maritime aggression in the South China Sea, emphasizing the"
+2026-06-29 11:49:35,943 [INFO] core.evaluator_v2: [ours] pred='The final full-year appropriations for the EPA were enacted as part of the Consolidated Appropriations Act, FY2019 (P.L.'
+2026-06-29 11:49:49,020 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and its TRIO components—the U.S. Coast Guard (Coast Guard), Transportation Sec'
+2026-06-29 11:49:49,045 [INFO] __main__:   [5/5] gov_report avg=14.39
+2026-06-29 11:49:49,046 [INFO] __main__:   gov_report: 14.39
+2026-06-29 11:49:49,046 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-29 11:49:49,143 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:49:49,171 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:49:49,976 [INFO] core.dataset_loader: Loaded 5 samples from qmsum
+2026-06-29 11:50:02,987 [INFO] core.evaluator_v2: [ours] pred='Summary: The team is working on a new remote control device. The goal is to create a sleek, stylish, and functional remo'
+2026-06-29 11:50:21,028 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the design and development of a new mobile device, focusing on the user interface, indust'
+2026-06-29 11:50:44,573 [INFO] core.evaluator_v2: [ours] pred='The project is being developed with the goal of creating a system that can be used for various purposes. The team is wor'
+2026-06-29 11:50:56,651 [INFO] core.evaluator_v2: [ours] pred='The meeting was focused on evaluating a new product, with the goal of understanding its features and how it fits into th'
+2026-06-29 11:51:23,274 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and marketing of a new remote control device. The key points and decisions made during'
+2026-06-29 11:51:23,276 [INFO] __main__:   [5/5] qmsum avg=6.99
+2026-06-29 11:51:23,277 [INFO] __main__:   qmsum: 6.99
+2026-06-29 11:51:23,277 [INFO] __main__:   → Avg=21.79, Δ=+0.00
+2026-06-29 11:51:23,278 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 11:51:23,278 [INFO] __main__: Condition: w/o Attention
+2026-06-29 11:51:23,279 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-29 11:51:23,390 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:53:03,511 [WARNING] datasets.load: Using the latest cached version of the module from /workspace/.cache/huggingface/modules/datasets_modules/datasets/THUDM--LongBench/4a916a4bde5c3481ac49b84d5dde69a9d2eefcd67f884ef65b3d97ee7cc91f3e (last modified on Sun Jun  7 02:08:41 2026) since it couldn't be found locally at THUDM/LongBench, or remotely on the Hugging Face Hub.
+2026-06-29 11:53:03,660 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-06-29 11:53:32,076 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of the. (To) 1. (To) 2. (To) 3. (To) 4. (To) 5. (To) 6. (To) 7. (To) 8. (To) 9. (To) 1'
+2026-06-29 11:53:47,317 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in the justice of the laws and the covenants he m'
+2026-06-29 11:54:03,853 [INFO] core.evaluator_v2: [ours] pred='The setting of the story is a medieval castle in the village of Drachenhausen, which was once the home of a robber baron'
+2026-06-29 11:54:14,131 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad killed the Baron of Roderburg, Henry of Roderburg.'
+2026-06-29 11:54:23,188 [INFO] core.evaluator_v2: [ours] pred="The ghost that emerged from a painting at Dana's workplace was a Renaissance-style painting depicting four archangels ho"
+2026-06-29 11:54:23,190 [INFO] __main__:   [5/5] narrativeqa avg=4.85
+2026-06-29 11:54:23,192 [INFO] __main__:   narrativeqa: 4.85
+2026-06-29 11:54:23,193 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 11:54:23,280 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:54:23,310 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:54:24,060 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-06-29 11:54:33,685 [INFO] core.evaluator_v2: [ours] pred='The results from the proposed strategies show that agents using knowledge graphs (KG-A2C) and advanced exploration metho'
+2026-06-29 11:54:38,259 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based architecture.'
+2026-06-29 11:54:42,168 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the Augmented LibriSpeech dataset.'
+2026-06-29 11:54:48,240 [INFO] core.evaluator_v2: [ours] pred='The neural network modules included in NeuronBlocks are:\n- Word/character embedding\n- CNN/LSTM\n- Attention\n- Block Zoo\n-'
+2026-06-29 11:55:13,860 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared with are: 1) EMA model, 2) 6-layers LSTM model, 3) 9-layers LSTM model, 4) 2-layers LSTM model,'
+2026-06-29 11:55:13,863 [INFO] __main__:   [5/5] qasper avg=6.05
+2026-06-29 11:55:13,865 [INFO] __main__:   qasper: 6.05
+2026-06-29 11:55:13,866 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-29 11:55:13,952 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:55:14,015 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:55:14,769 [INFO] core.dataset_loader: Loaded 5 samples from multifieldqa_en
+2026-06-29 11:55:24,835 [INFO] core.evaluator_v2: [ours] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book his posi'
+2026-06-29 11:55:53,841 [INFO] core.evaluator_v2: [ours] pred='Based on the text, the answer is: Yes, the denoiser can be applied to circuits with non-Clifford noise. The text explici'
+2026-06-29 11:55:54,942 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 11:56:11,285 [INFO] core.evaluator_v2: [ours] pred='The generative interactive model used in the method is called the C-GDBN (Coupled Generalized Dynamic Bayesian Network).'
+2026-06-29 11:56:23,942 [INFO] core.evaluator_v2: [ours] pred='The purpose of an ICD (Implantable Cardioverter Defibrillator) is to monitor and treat heart rhythm issues, such as arrh'
+2026-06-29 11:56:33,425 [INFO] core.evaluator_v2: [ours] pred='The algorithm engaged in the PLMS-PPIC method is the adaptive multistage structure with a set of NLMS (Normalized Least '
+2026-06-29 11:56:33,426 [INFO] __main__:   [5/5] multifieldqa_en avg=36.77
+2026-06-29 11:56:33,427 [INFO] __main__:   multifieldqa_en: 36.77
+2026-06-29 11:56:33,428 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-29 11:56:33,749 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:56:33,777 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:56:34,574 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-06-29 11:56:41,751 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-29 11:57:09,091 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome. The riboso'
+2026-06-29 11:57:17,523 [INFO] core.evaluator_v2: [ours] pred='Based on the text, Sarah Price and Rob Schneider are both **actors**.'
+2026-06-29 11:57:27,426 [INFO] core.evaluator_v2: [ours] pred=''
+2026-06-29 11:57:54,512 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the **Southern** (or **Southern** in the **Southern** or **Southern** or **S'
+2026-06-29 11:57:54,514 [INFO] __main__:   [5/5] hotpotqa avg=20.00
+2026-06-29 11:57:54,515 [INFO] __main__:   hotpotqa: 20.00
+2026-06-29 11:57:54,516 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-29 11:57:54,587 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:57:54,618 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:57:55,267 [INFO] core.dataset_loader: Loaded 5 samples from 2wikimqa
+2026-06-29 11:58:04,077 [INFO] core.evaluator_v2: [ours] pred='The director of film Eisenstein In Guanajuato was born in Finland.'
+2026-06-29 11:58:09,502 [INFO] core.evaluator_v2: [ours] pred='"Joel The Lump Of Coal" came out first, followed by "Jugband Blues".'
+2026-06-29 11:58:16,818 [INFO] core.evaluator_v2: [ours] pred='No Trees In The Street.'
+2026-06-29 11:58:47,930 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband was in the 12th century, well after the fire of 1292.  It was move"
+2026-06-29 11:58:56,733 [INFO] core.evaluator_v2: [ours] pred='Based on the text, Paul De Scherff was born later than Lyudmyla Olyanovska.'
+2026-06-29 11:58:56,735 [INFO] __main__:   [5/5] 2wikimqa avg=31.87
+2026-06-29 11:58:56,735 [INFO] __main__:   2wikimqa: 31.87
+2026-06-29 11:58:56,736 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-29 11:58:56,807 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:58:56,840 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:58:57,565 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-06-29 11:59:15,228 [INFO] core.evaluator_v2: [ours] pred='The NSF Director of Human Resource Management should complete the development of an agency-wide workforce strategy for b'
+2026-06-29 11:59:41,396 [INFO] core.evaluator_v2: [ours] pred='The Office of Management and Budget (OMB) has issued an annual report to Congress on the implementation of the Federal I'
+2026-06-29 12:00:08,131 [INFO] core.evaluator_v2: [ours] pred='The United States and the Philippines are facing a growing maritime aggression from China in the South China Sea. This a'
+2026-06-29 12:00:19,765 [INFO] core.evaluator_v2: [ours] pred=''
+2026-06-29 12:00:44,824 [INFO] core.evaluator_v2: [ours] pred='**Summary of Key Findings and Recommendations:**\n\n**1. Risk Management and AOA (Analysis of Alternatives) Process:**\n- T'
+2026-06-29 12:00:44,864 [INFO] __main__:   [5/5] gov_report avg=11.91
+2026-06-29 12:00:44,864 [INFO] __main__:   gov_report: 11.91
+2026-06-29 12:00:44,865 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-29 12:00:44,935 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:00:44,965 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:00:45,631 [INFO] core.dataset_loader: Loaded 5 samples from qmsum
+2026-06-29 12:01:11,784 [INFO] core.evaluator_v2: [ours] pred='The project team is working on a remote control that is sleek, stylish, and functional. The team is considering features'
+2026-06-29 12:01:39,671 [INFO] core.evaluator_v2: [ours] pred='The team is working on a new product, which is a combination of a pistol and a LCD display. The product is designed to b'
+2026-06-29 12:01:49,227 [INFO] core.evaluator_v2: [ours] pred='The summary of the text is as follows:\n\nThe text is a meeting between various professors and students, discussing differ'
+2026-06-29 12:02:15,259 [INFO] core.evaluator_v2: [ours] pred='The meeting was largely about the **** and **** of the ****. The **** was discussed in detail, with the **** being a ***'
+2026-06-29 12:02:45,041 [INFO] core.evaluator_v2: [ours] pred='The team is exploring two options for a remote control shape: a titanium panel with a rubber body or a spongy rubber pan'
+2026-06-29 12:02:45,044 [INFO] __main__:   [5/5] qmsum avg=6.40
+2026-06-29 12:02:45,045 [INFO] __main__:   qmsum: 6.40
+2026-06-29 12:02:45,045 [INFO] __main__:   → Avg=16.86, Δ=-4.93
+2026-06-29 12:02:45,046 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 12:02:45,047 [INFO] __main__: Condition: w/o Semantic
+2026-06-29 12:02:45,047 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-29 12:02:45,134 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:02:45,164 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:02:45,933 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-06-29 12:02:56,929 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of "The Mule-Bone."'
+2026-06-29 12:03:04,504 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in the integrity of his agreements and the laws o'
+2026-06-29 12:03:29,686 [INFO] core.evaluator_v2: [ours] pred='The story is set in a medieval European setting, primarily in the castle of Drachenhausen, which is a castle in the regi'
+2026-06-29 12:03:35,256 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad killed his son, Baron Otto.'
+2026-06-29 12:03:43,438 [INFO] core.evaluator_v2: [ours] pred="A ghostly figure of four angels hovering protectively over a cherubic baby emerged from a painting at Dana's workplace."
+2026-06-29 12:03:43,439 [INFO] __main__:   [5/5] narrativeqa avg=7.89
+2026-06-29 12:03:43,440 [INFO] __main__:   narrativeqa: 7.89
+2026-06-29 12:03:43,441 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 12:03:43,513 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:03:43,708 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:03:44,276 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-06-29 12:04:06,733 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both successfully pass the bottleneck (enter the cellar and '
+2026-06-29 12:04:28,913 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, with a wide context window and a multi-task learning app'
+2026-06-29 12:04:32,321 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 12:04:56,588 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: Word/Character Embedding, CNN/LSTM, and Attention based mode'
+2026-06-29 12:05:02,397 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared in the text are: 6-layers and 9-layers sMBR models.'
+2026-06-29 12:05:02,407 [INFO] __main__:   [5/5] qasper avg=10.75
+2026-06-29 12:05:02,408 [INFO] __main__:   qasper: 10.75
+2026-06-29 12:05:02,409 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-29 12:05:02,480 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:05:02,511 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:05:03,243 [INFO] core.dataset_loader: Loaded 5 samples from multifieldqa_en
+2026-06-29 12:05:11,219 [INFO] core.evaluator_v2: [ours] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-29 12:05:16,835 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise.'
+2026-06-29 12:05:17,447 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 12:05:28,231 [INFO] core.evaluator_v2: [ours] pred='The generative interactive model used in the method is called the **C-GDBN (Coupled Graphical Dynamic Bayesian Network)*'
+2026-06-29 12:05:36,482 [INFO] core.evaluator_v2: [ours] pred='An ICD (Implantable Cardioverter Defibrillator) is a device used to monitor and treat heart rhythms, particularly to det'
+2026-06-29 12:05:43,796 [INFO] core.evaluator_v2: [ours] pred='The algorithm engaged in the PLMS-PPIC method is the NLMS (Normalized Least Mean Squares) algorithm.'
+2026-06-29 12:05:43,807 [INFO] __main__:   [5/5] multifieldqa_en avg=48.39
+2026-06-29 12:05:43,809 [INFO] __main__:   multifieldqa_en: 48.39
+2026-06-29 12:05:43,809 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-29 12:05:43,877 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:05:43,931 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:05:44,669 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-06-29 12:05:53,416 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-29 12:05:59,762 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-06-29 12:06:07,752 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 12:06:17,260 [INFO] core.evaluator_v2: [ours] pred='YIVO.'
+2026-06-29 12:06:24,558 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the **North American Company**.'
+2026-06-29 12:06:24,560 [INFO] __main__:   [5/5] hotpotqa avg=60.00
+2026-06-29 12:06:24,562 [INFO] __main__:   hotpotqa: 60.00
+2026-06-29 12:06:24,562 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-29 12:06:24,670 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:06:24,703 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:06:25,521 [INFO] core.dataset_loader: Loaded 5 samples from 2wikimqa
+2026-06-29 12:06:38,571 [INFO] core.evaluator_v2: [ours] pred='The director of the film "Eisenstein in Guanajuato" is Peter Greenaway, who was born in England.'
+2026-06-29 12:06:43,441 [INFO] core.evaluator_v2: [ours] pred='Jugband Blues.'
+2026-06-29 12:06:50,705 [INFO] core.evaluator_v2: [ours] pred='No Trees in the Street.'
+2026-06-29 12:06:59,394 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband was Reinhardsbrunn monastery."
+2026-06-29 12:07:08,162 [INFO] core.evaluator_v2: [ours] pred="Paul De Scherff was born in 1873, and Lyudmyla Olyanovska's birth year is not mentioned in the text. Therefore, based on"
+2026-06-29 12:07:08,163 [INFO] __main__:   [5/5] 2wikimqa avg=41.29
+2026-06-29 12:07:08,164 [INFO] __main__:   2wikimqa: 41.29
+2026-06-29 12:07:08,165 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-29 12:07:08,249 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:07:08,278 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:07:08,921 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-06-29 12:07:34,409 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has adopted a cost-management strategy to balance the use of rotators (research an'
+2026-06-29 12:08:01,433 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) of 2002 requires that federal agencies develop, document, and im'
+2026-06-29 12:08:13,618 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive analysis of the United States' strategic response to China's growing influence in "
+2026-06-29 12:08:29,969 [INFO] core.evaluator_v2: [ours] pred="The Trump Administration's FY2020 budget request proposed $6.07 billion overall for EPA. The request included $1.120 bil"
+2026-06-29 12:08:42,663 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-06-29 12:08:42,681 [INFO] __main__:   [5/5] gov_report avg=13.03
+2026-06-29 12:08:42,682 [INFO] __main__:   gov_report: 13.03
+2026-06-29 12:08:42,683 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-29 12:08:42,753 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:08:42,815 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:08:43,673 [INFO] core.dataset_loader: Loaded 5 samples from qmsum
+2026-06-29 12:09:08,394 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-29 12:09:19,170 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the design and development of a new device, focusing on the integration of a touchscreen '
+2026-06-29 12:09:43,353 [INFO] core.evaluator_v2: [ours] pred='The meeting is about the project, and the team is working on it. The goal is to finish the project, and the team is work'
+2026-06-29 12:09:53,931 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the project, with a focus on the user interface and the industrial design of a produc'
+2026-06-29 12:10:20,717 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 12:10:20,721 [INFO] __main__:   [5/5] qmsum avg=8.56
+2026-06-29 12:10:20,722 [INFO] __main__:   qmsum: 8.56
+2026-06-29 12:10:20,723 [INFO] __main__:   → Avg=27.13, Δ=+5.34
+2026-06-29 12:10:20,723 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 12:10:20,724 [INFO] __main__: Condition: w/o Entropy
+2026-06-29 12:10:20,725 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-29 12:10:20,847 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:10:20,885 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:10:21,827 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-06-29 12:10:28,747 [INFO] core.evaluator_v2: [ours] pred=''
+2026-06-29 12:10:38,069 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in the importance of upholding the laws and agree'
+2026-06-29 12:10:47,441 [INFO] core.evaluator_v2: [ours] pred='The story is set in a medieval European kingdom, likely in a castle or castle region, with elements of feudalism and nob'
+2026-06-29 12:10:53,121 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad killed his son, Baron Otto.'
+2026-06-29 12:11:00,887 [INFO] core.evaluator_v2: [ours] pred="A ghost named Vigo emerged from a painting at Dana's workplace."
+2026-06-29 12:11:00,889 [INFO] __main__:   [5/5] narrativeqa avg=10.61
+2026-06-29 12:11:00,890 [INFO] __main__:   narrativeqa: 10.61
+2026-06-29 12:11:00,891 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 12:11:00,965 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:11:00,996 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:11:01,812 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-06-29 12:11:09,739 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies, in the context of the knowledge graph, have the following results:\n\n1. **KG-A2C-Chained** (with'
+2026-06-29 12:11:30,339 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder model with a wide context window, encoding the entire available contex'
+2026-06-29 12:11:33,818 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 12:11:53,848 [INFO] core.evaluator_v2: [ours] pred='The neural network modules included in NeuronBlocks are as follows:\n\n- **Embedding** (for text and classification)\n- **A'
+2026-06-29 12:12:18,593 [INFO] core.evaluator_v2: [ours] pred='The EMA model is also updated, but not broadcasting it. Results in order to evaluate our system, several sets of experim'
+2026-06-29 12:12:18,595 [INFO] __main__:   [5/5] qasper avg=4.82
+2026-06-29 12:12:18,595 [INFO] __main__:   qasper: 4.82
+2026-06-29 12:12:18,607 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-29 12:12:18,693 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:12:18,724 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:12:19,359 [INFO] core.dataset_loader: Loaded 5 samples from multifieldqa_en
+2026-06-29 12:12:23,022 [INFO] core.evaluator_v2: [ours] pred='The answer to the question based on the text is: Ngotho is fired and the family is forced to move to another section of '
+2026-06-29 12:12:32,102 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text indicates that the denoiser is capable of'
+2026-06-29 12:12:32,564 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 12:12:43,275 [INFO] core.evaluator_v2: [ours] pred='The generative interactive model used in the method is called the "C-GDBN" (Coupled Graphical Dynamic Bayesian Network).'
+2026-06-29 12:12:51,994 [INFO] core.evaluator_v2: [ours] pred='The purpose of an ICD (Implantable Cardiodefibrillator) is to monitor and treat life-threatening heart rhythms, such as '
+2026-06-29 12:12:59,572 [INFO] core.evaluator_v2: [ours] pred='The algorithm engaged in the PLMS-PPIC method is the \\textbf{Parallel Normalized Least Mean Squares (PNLMS)} algorithm.'
+2026-06-29 12:12:59,573 [INFO] __main__:   [5/5] multifieldqa_en avg=39.45
+2026-06-29 12:12:59,573 [INFO] __main__:   multifieldqa_en: 39.45
+2026-06-29 12:12:59,574 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-29 12:12:59,651 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:12:59,681 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:13:00,466 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-06-29 12:13:07,322 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-29 12:13:14,404 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-06-29 12:13:20,879 [INFO] core.evaluator_v2: [ours] pred='Based on the text, Sarah Price and Rob Schneider are both actors.'
+2026-06-29 12:13:30,476 [INFO] core.evaluator_v2: [ours] pred='YIVO.'
+2026-06-29 12:13:37,371 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-06-29 12:13:37,372 [INFO] __main__:   [5/5] hotpotqa avg=40.00
+2026-06-29 12:13:37,373 [INFO] __main__:   hotpotqa: 40.00
+2026-06-29 12:13:37,374 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-29 12:13:37,448 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:13:37,478 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:13:38,204 [INFO] core.dataset_loader: Loaded 5 samples from 2wikimqa
+2026-06-29 12:13:46,140 [INFO] core.evaluator_v2: [ours] pred=''
+2026-06-29 12:13:51,035 [INFO] core.evaluator_v2: [ours] pred='The song "Jugband Blues" came out first.'
+2026-06-29 12:13:58,399 [INFO] core.evaluator_v2: [ours] pred='No Trees in the Street.'
+2026-06-29 12:14:08,651 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband was in 1125, when her brother, Henry V, Holy Roman Emperor, died c"
+2026-06-29 12:14:17,344 [INFO] core.evaluator_v2: [ours] pred="Paul De Scherff was born in 1873, while Lyudmyla Olyanovska's birth year is not mentioned in the text. Therefore, based "
+2026-06-29 12:14:17,345 [INFO] __main__:   [5/5] 2wikimqa avg=31.33
+2026-06-29 12:14:17,346 [INFO] __main__:   2wikimqa: 31.33
+2026-06-29 12:14:17,347 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-29 12:14:17,429 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:14:17,458 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:14:18,151 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-06-29 12:14:42,715 [INFO] core.evaluator_v2: [ours] pred='**Summary of the GAO Report on the National Science Foundation (NSF) and Its Rotator Programs**\n\nThe **National Science '
+2026-06-29 12:15:07,597 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) requires federal agencies to develop, document, and implement an'
+2026-06-29 12:15:34,579 [INFO] core.evaluator_v2: [ours] pred="The provided text is a detailed and comprehensive analysis of the United States' response to China's maritime activities"
+2026-06-29 12:16:01,581 [INFO] core.evaluator_v2: [ours] pred='The final full-year appropriations for the Environmental Protection Agency (EPA) were enacted as part of the Consolidate'
+2026-06-29 12:16:22,263 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has implemented a risk management strategy that includes the use of a risk reg'
+2026-06-29 12:16:22,306 [INFO] __main__:   [5/5] gov_report avg=16.11
+2026-06-29 12:16:22,307 [INFO] __main__:   gov_report: 16.11
+2026-06-29 12:16:22,309 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-29 12:16:22,387 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:16:22,416 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:16:23,197 [INFO] core.dataset_loader: Loaded 5 samples from qmsum
+2026-06-29 12:16:44,306 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design of a new remote control device. The goal is to create a product that is sleek, stylish'
+2026-06-29 12:17:09,285 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the design and development of a new device, likely a smartphone or similar electronic gad'
+2026-06-29 12:17:21,912 [INFO] core.evaluator_v2: [ours] pred='The meeting is about discussing and planning the next steps for a project, with the goal of completing it by the end of '
+2026-06-29 12:17:38,289 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the project, with various participants sharing their thoughts and ideas. The key poin'
+2026-06-29 12:18:04,681 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and marketing of a new remote control device. The key points discussed are:\n\n1. **Desi'
+2026-06-29 12:18:04,684 [INFO] __main__:   [5/5] qmsum avg=7.87
+2026-06-29 12:18:04,685 [INFO] __main__:   qmsum: 7.87
+2026-06-29 12:18:04,686 [INFO] __main__:   → Avg=21.46, Δ=-0.33
+2026-06-29 12:18:04,687 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 12:18:04,687 [INFO] __main__: Condition: w/o Position
+2026-06-29 12:18:04,688 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-29 12:18:04,791 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:18:04,830 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:18:05,716 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-06-29 12:18:13,325 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of Daisy.'
+2026-06-29 12:18:37,726 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in the principles of justice and the laws of the '
+2026-06-29 12:19:02,655 [INFO] core.evaluator_v2: [ours] pred='The story is set in a medieval European castle, specifically in the region of Drachenhausen, which is described as a pla'
+2026-06-29 12:19:08,494 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad killed Baron Otto.'
+2026-06-29 12:19:16,510 [INFO] core.evaluator_v2: [ours] pred="A ghostly figure, resembling a cherubic baby, emerged from a painting at Dana's workplace."
+2026-06-29 12:19:16,512 [INFO] __main__:   [5/5] narrativeqa avg=6.23
+2026-06-29 12:19:16,513 [INFO] __main__:   narrativeqa: 6.23
+2026-06-29 12:19:16,513 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 12:19:16,593 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:19:16,623 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:19:17,433 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-06-29 12:19:25,100 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies, when applied to the text, result in the following:\n\n- The knowledge graph (KG) is critical for '
+2026-06-29 12:19:46,839 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture with a wide context window, which is encoded with a chara'
+2026-06-29 12:19:50,247 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 12:19:53,886 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: Word/Character Embedding, CNN/LSTM, and CRF. The results sug'
+2026-06-29 12:20:00,491 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared with in the text are: 1) the 6-layer LSTM model, 2) the 9-layer LSTM model, and 3) the 2-layer '
+2026-06-29 12:20:00,493 [INFO] __main__:   [5/5] qasper avg=11.83
+2026-06-29 12:20:00,493 [INFO] __main__:   qasper: 11.83
+2026-06-29 12:20:00,494 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-29 12:20:00,589 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:20:00,619 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:20:01,314 [INFO] core.dataset_loader: Loaded 5 samples from multifieldqa_en
+2026-06-29 12:20:09,227 [INFO] core.evaluator_v2: [ours] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-29 12:20:14,764 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise.'
+2026-06-29 12:20:15,277 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 12:20:25,614 [INFO] core.evaluator_v2: [ours] pred='The generative interactive model used in the method is the Coupled GDBN (C-GDBN).'
+2026-06-29 12:20:34,327 [INFO] core.evaluator_v2: [ours] pred='An ICD (Implantable Cardioverter Defibrillator) is a device implanted in the heart to monitor and treat life-threatening'
+2026-06-29 12:20:41,400 [INFO] core.evaluator_v2: [ours] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-29 12:20:41,407 [INFO] __main__:   [5/5] multifieldqa_en avg=39.60
+2026-06-29 12:20:41,408 [INFO] __main__:   multifieldqa_en: 39.60
+2026-06-29 12:20:41,408 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-29 12:20:41,487 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:20:41,516 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:20:42,286 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-06-29 12:20:49,219 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-29 12:20:55,614 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-06-29 12:21:02,045 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 12:21:11,674 [INFO] core.evaluator_v2: [ours] pred='The organization is YIVO.'
+2026-06-29 12:21:18,515 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-06-29 12:21:18,517 [INFO] __main__:   [5/5] hotpotqa avg=50.00
+2026-06-29 12:21:18,517 [INFO] __main__:   hotpotqa: 50.00
+2026-06-29 12:21:18,518 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-29 12:21:18,616 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:21:18,672 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:21:19,504 [INFO] core.dataset_loader: Loaded 5 samples from 2wikimqa
+2026-06-29 12:21:28,673 [INFO] core.evaluator_v2: [ours] pred='The director of the film "Eisenstein in Guanajuato" is Peter Greenaway, who was born in London, England.'
+2026-06-29 12:21:35,384 [INFO] core.evaluator_v2: [ours] pred='"Jugband Blues" by Pink Floyd was released in 1973, while "Joel the Lump of Coal" by The Killers was released in 2014. T'
+2026-06-29 12:21:42,762 [INFO] core.evaluator_v2: [ours] pred='No Trees in the Street.'
+2026-06-29 12:21:53,725 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband was in 1127, when Agnes' second son, Konrad III, was elected as th"
+2026-06-29 12:22:01,238 [INFO] core.evaluator_v2: [ours] pred='Paul De Scherff was born later than Lyudmyla Olyanovska.'
+2026-06-29 12:22:01,240 [INFO] __main__:   [5/5] 2wikimqa avg=30.13
+2026-06-29 12:22:01,241 [INFO] __main__:   2wikimqa: 30.13
+2026-06-29 12:22:01,242 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-29 12:22:01,313 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:22:01,342 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:22:02,139 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-06-29 12:22:26,558 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Report:**\n\nThe National Science Foundation (NSF) has implemented a cost-management strategy for its Ind'
+2026-06-29 12:22:51,574 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) was enacted in 1996 to provide a framework for the federal gover'
+2026-06-29 12:23:04,020 [INFO] core.evaluator_v2: [ours] pred="The United States and its allies must take a stronger and more coordinated approach to counter China's growing influence"
+2026-06-29 12:23:31,230 [INFO] core.evaluator_v2: [ours] pred='The Clean Water SRF and Drinking Water SRF programs were authorized in the Water Infrastructure Improvements for the Nat'
+2026-06-29 12:23:43,192 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and the Transportation Security Administration (TSA) conducted alternatives an'
+2026-06-29 12:23:43,209 [INFO] __main__:   [5/5] gov_report avg=16.17
+2026-06-29 12:23:43,210 [INFO] __main__:   gov_report: 16.17
+2026-06-29 12:23:43,211 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-29 12:23:43,279 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 12:23:43,310 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 12:23:43,981 [INFO] core.dataset_loader: Loaded 5 samples from qmsum
+2026-06-29 12:23:57,148 [INFO] core.evaluator_v2: [ours] pred='The project team is working on a new remote control device that should be sleek, stylish, and functional. The goal is to'
+2026-06-29 12:24:15,852 [INFO] core.evaluator_v2: [ours] pred='The project is about designing a new product, the "L_C_D_" (likely a typo or misinterpretation of "LCD" or "LCD screen")'
+2026-06-29 12:24:44,117 [INFO] core.evaluator_v2: [ours] pred='The summary of the text is as follows:\n\nThe text discusses a project that has been underway for the last decade, with th'
+2026-06-29 12:25:09,588 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-29 12:25:22,615 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the design and marketing of a remote control device, focusing on two key options: a titan'
+2026-06-29 12:25:22,617 [INFO] __main__:   [5/5] qmsum avg=6.00
+2026-06-29 12:25:22,618 [INFO] __main__:   qmsum: 6.00
+2026-06-29 12:25:22,618 [INFO] __main__:   → Avg=22.84, Δ=+1.06
+2026-06-29 12:25:22,632 [INFO] core.results_manager: Results saved to results/exp2_score_ablation_qwen3-4b_20260629_114436.csv
+2026-06-29 12:25:22,643 [INFO] core.results_manager: JSON saved to results/exp2_score_ablation_qwen3-4b_20260629_114436.json
+2026-06-29 12:25:22,644 [INFO] __main__: Experiment 2 completed!

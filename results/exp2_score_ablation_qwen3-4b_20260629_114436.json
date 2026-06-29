@@ -1,0 +1,76 @@
+{
+  "model": "qwen3-4b",
+  "budget": 0.2,
+  "results": [
+    {
+      "condition": "Full (All 4 signals)",
+      "task_scores": {
+        "narrativeqa": 9.7,
+        "qasper": 14.3,
+        "multifieldqa_en": 45.8,
+        "hotpotqa": 40.0,
+        "2wikimqa": 21.3,
+        "gov_report": 14.4,
+        "qmsum": 7.0
+      },
+      "avg": 21.785714285714285,
+      "delta": 0.0
+    },
+    {
+      "condition": "w/o Attention",
+      "task_scores": {
+        "narrativeqa": 4.9,
+        "qasper": 6.1,
+        "multifieldqa_en": 36.8,
+        "hotpotqa": 20.0,
+        "2wikimqa": 31.9,
+        "gov_report": 11.9,
+        "qmsum": 6.4
+      },
+      "avg": 16.857142857142858,
+      "delta": -4.928571428571427
+    },
+    {
+      "condition": "w/o Semantic",
+      "task_scores": {
+        "narrativeqa": 7.9,
+        "qasper": 10.7,
+        "multifieldqa_en": 48.4,
+        "hotpotqa": 60.0,
+        "2wikimqa": 41.3,
+        "gov_report": 13.0,
+        "qmsum": 8.6
+      },
+      "avg": 27.12857142857143,
+      "delta": 5.342857142857145
+    },
+    {
+      "condition": "w/o Entropy",
+      "task_scores": {
+        "narrativeqa": 10.6,
+        "qasper": 4.8,
+        "multifieldqa_en": 39.5,
+        "hotpotqa": 40.0,
+        "2wikimqa": 31.3,
+        "gov_report": 16.1,
+        "qmsum": 7.9
+      },
+      "avg": 21.457142857142856,
+      "delta": -0.3285714285714292
+    },
+    {
+      "condition": "w/o Position",
+      "task_scores": {
+        "narrativeqa": 6.2,
+        "qasper": 11.8,
+        "multifieldqa_en": 39.6,
+        "hotpotqa": 50.0,
+        "2wikimqa": 30.1,
+        "gov_report": 16.2,
+        "qmsum": 6.0
+      },
+      "avg": 22.842857142857145,
+      "delta": 1.0571428571428605
+    }
+  ]
+}

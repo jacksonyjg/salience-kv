@@ -1,0 +1,46 @@
+{
+  "model": "qwen3-4b",
+  "budget": 0.2,
+  "results": [
+    {
+      "condition": "Full (All 4 signals)",
+      "task_scores": {
+        "qasper": 17.0
+      },
+      "avg": 17.0,
+      "delta": 0.0
+    },
+    {
+      "condition": "w/o Attention",
+      "task_scores": {
+        "qasper": 11.2
+      },
+      "avg": 11.2,
+      "delta": -5.800000000000001
+    },
+    {
+      "condition": "w/o Semantic",
+      "task_scores": {
+        "qasper": 33.3
+      },
+      "avg": 33.3,
+      "delta": 16.299999999999997
+    },
+    {
+      "condition": "w/o Entropy",
+      "task_scores": {
+        "qasper": 5.4
+      },
+      "avg": 5.4,
+      "delta": -11.6
+    },
+    {
+      "condition": "w/o Position",
+      "task_scores": {
+        "qasper": 23.5
+      },
+      "avg": 23.5,
+      "delta": 6.5
+    }
+  ]
+}

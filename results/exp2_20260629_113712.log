@@ -1,0 +1,75 @@
+2026-06-29 11:37:12,772 [INFO] __main__: Experiment 2: Ablation - Hybrid Score Components
+2026-06-29 11:37:12,773 [INFO] __main__:   Model: qwen3-4b | Budget: 20%
+2026-06-29 11:37:12,774 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-29 11:37:12,938 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:12,947 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 11:37:13,064 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:13,071 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-29 11:37:13,171 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-29 11:37:13,213 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-29 11:37:14,379 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-29 11:37:14,382 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-29 11:37:14,412 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:14,415 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-29 11:37:14,421 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 11:37:31,233 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:31,244 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-29 11:37:31,325 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-29 11:37:31,377 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-29 11:37:31,393 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 11:37:31,395 [INFO] __main__: Condition: Full (All 4 signals)
+2026-06-29 11:37:31,395 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 11:37:31,449 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:31,481 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:37:32,023 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:32,057 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-29 11:37:32,093 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:32,129 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-29 11:37:32,476 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-29 11:37:39,632 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-06-29 11:37:39,636 [INFO] __main__:   qasper: 29.85
+2026-06-29 11:37:39,637 [INFO] __main__:   → Avg=29.90, Δ=+0.00
+2026-06-29 11:37:39,638 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 11:37:39,638 [INFO] __main__: Condition: w/o Attention
+2026-06-29 11:37:39,639 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 11:37:39,709 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:39,742 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:37:40,439 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-29 11:37:48,146 [INFO] core.evaluator_v2: [ours] pred='The results from the proposed strategies show that agents using knowledge graphs (KG-A2C) and advanced exploration metho'
+2026-06-29 11:37:48,152 [INFO] __main__:   qasper: 12.12
+2026-06-29 11:37:48,153 [INFO] __main__:   → Avg=12.10, Δ=-17.80
+2026-06-29 11:37:48,153 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 11:37:48,154 [INFO] __main__: Condition: w/o Semantic
+2026-06-29 11:37:48,154 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 11:37:48,225 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:37:48,259 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:37:48,938 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-29 11:38:11,358 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both successfully pass the bottleneck (enter the cellar and '
+2026-06-29 11:38:11,359 [INFO] __main__:   qasper: 33.33
+2026-06-29 11:38:11,360 [INFO] __main__:   → Avg=33.30, Δ=+3.40
+2026-06-29 11:38:11,360 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 11:38:11,361 [INFO] __main__: Condition: w/o Entropy
+2026-06-29 11:38:11,362 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 11:38:11,435 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:38:11,464 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:38:12,127 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-29 11:38:20,168 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies, in the context of the knowledge graph, have the following results:\n\n1. **KG-A2C-Chained** (with'
+2026-06-29 11:38:20,170 [INFO] __main__:   qasper: 17.78
+2026-06-29 11:38:20,171 [INFO] __main__:   → Avg=17.80, Δ=-12.10
+2026-06-29 11:38:20,171 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 11:38:20,171 [INFO] __main__: Condition: w/o Position
+2026-06-29 11:38:20,172 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 11:38:20,244 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 11:38:20,271 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 11:38:20,949 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-06-29 11:38:28,707 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies, when applied to the text, result in the following:\n\n- The knowledge graph (KG) is critical for '
+2026-06-29 11:38:28,713 [INFO] __main__:   qasper: 19.51
+2026-06-29 11:38:28,714 [INFO] __main__:   → Avg=19.50, Δ=-10.40
+2026-06-29 11:38:28,722 [INFO] core.results_manager: Results saved to results/exp2_score_ablation_qwen3-4b_20260629_113712.csv
+2026-06-29 11:38:28,742 [INFO] core.results_manager: JSON saved to results/exp2_score_ablation_qwen3-4b_20260629_113712.json
+2026-06-29 11:38:28,742 [INFO] __main__: Experiment 2 completed!
