@@ -65,7 +65,7 @@ class EvaluatorV2:
                     total += layer.values.numel() * bytes_per
         return total / (1024 * 1024)
 
-    def evaluate_sample(self, sample, method_name, budget_ratio, measure_efficiency=True):
+    def evaluate_sample(self, sample, method_name, budget_ratio, measure_efficiency=True, method_kwargs=None):
         self._clear_cache()
 
         prompt = make_prompt(
@@ -78,7 +78,7 @@ class EvaluatorV2:
         attention_mask = inputs["attention_mask"]
         input_length = input_ids.shape[1]
 
-        hook_cache = make_hook_cache(method_name, budget_ratio, self.cfg)
+        hook_cache = make_hook_cache(method_name, budget_ratio, self.cfg, **(method_kwargs or {}))
 
         # ── Step 1: Prefill ──────────────────────────────────
         prefill_start = time.perf_counter()
