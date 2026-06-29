@@ -1,0 +1,100 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "gov_report",
+    "qmsum"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 50,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "gov_report": 16.08769230801105,
+        "qmsum": 9.790549943347253
+      },
+      "avg_score": 12.93912112567915,
+      "avg_ttft_ms": 2805.2850784810707,
+      "avg_throughput": 19.739279660924815,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "gov_report": 15.775620292564353,
+        "qmsum": 9.568537568586292
+      },
+      "avg_score": 12.672078930575323,
+      "avg_ttft_ms": 2822.31410365378,
+      "avg_throughput": 21.202306754715405,
+      "avg_memory_reduction_pct": 80.00688733599472
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "gov_report": 16.192454982309272,
+        "qmsum": 7.602441313463142
+      },
+      "avg_score": 11.897448147886207,
+      "avg_ttft_ms": 2798.339926711795,
+      "avg_throughput": 22.341445612744593,
+      "avg_memory_reduction_pct": 80.00688733599472
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "gov_report": 14.097888778152857,
+        "qmsum": 6.642835197745779
+      },
+      "avg_score": 10.370361987949318,
+      "avg_ttft_ms": 2901.284293082865,
+      "avg_throughput": 20.1273329121273,
+      "avg_memory_reduction_pct": 80.00688733599472
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "gov_report": 16.404282120998218,
+        "qmsum": 7.948300840830267
+      },
+      "avg_score": 12.176291480914243,
+      "avg_ttft_ms": 2809.1136417804228,
+      "avg_throughput": 22.205175156795697,
+      "avg_memory_reduction_pct": 80.00985035593305
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "gov_report": 16.16962743651463,
+        "qmsum": 7.947802405755491
+      },
+      "avg_score": 12.05871492113506,
+      "avg_ttft_ms": 2806.6153069037528,
+      "avg_throughput": 22.11212498303164,
+      "avg_memory_reduction_pct": 80.00688733599472
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "gov_report": 15.507999534321684,
+        "qmsum": 7.841169101856877
+      },
+      "avg_score": 11.67458431808928,
+      "avg_ttft_ms": 2835.2804352581584,
+      "avg_throughput": 21.876066587603816,
+      "avg_memory_reduction_pct": 80.00688733599472
+    }
+  ]
+}

@@ -1,0 +1,1456 @@
+2026-06-29 13:02:02,081 [INFO] __main__: Experiment 1: Main Results
+2026-06-29 13:02:02,083 [INFO] __main__:   Model: qwen3-4b
+2026-06-29 13:02:02,083 [INFO] __main__:   Mode: full
+2026-06-29 13:02:02,084 [INFO] __main__:   Budget: 20%
+2026-06-29 13:02:02,084 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en']
+2026-06-29 13:02:02,085 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-29 13:02:02,086 [INFO] __main__:   Samples/task: 50
+2026-06-29 13:02:02,086 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-29 13:02:02,087 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-29 13:02:02,259 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:02,270 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 13:02:02,379 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:02,384 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-29 13:02:02,514 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-29 13:02:02,597 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-29 13:02:03,959 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-29 13:02:03,961 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-29 13:02:03,996 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:04,059 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-29 13:02:04,072 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 13:02:30,683 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:30,688 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-29 13:02:30,870 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-29 13:02:30,890 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-29 13:02:30,929 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-29 13:02:30,931 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-06-29 13:02:30,969 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:31,004 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 13:02:31,664 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:31,697 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-29 13:02:31,787 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:31,824 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-29 13:02:32,675 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-06-29 13:02:32,679 [INFO] __main__:   ✓ narrativeqa: 50샘플 로드 완료
+2026-06-29 13:02:32,680 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-06-29 13:02:32,720 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:32,771 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 13:02:33,705 [INFO] core.dataset_loader: Loaded 50 samples from qasper
+2026-06-29 13:02:33,745 [INFO] __main__:   ✓ qasper: 50샘플 로드 완료
+2026-06-29 13:02:33,753 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-06-29 13:02:33,803 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 13:02:33,952 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 13:02:35,014 [INFO] core.dataset_loader: Loaded 50 samples from multifieldqa_en
+2026-06-29 13:02:35,027 [INFO] __main__:   ✓ multifieldqa_en: 50샘플 로드 완료
+2026-06-29 13:02:35,032 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-29 13:02:35,035 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 13:02:35,036 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-29 13:02:35,036 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 13:02:35,046 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-29 13:02:35,047 [INFO] core.evaluator_v2: [fullkv] narrativeqa (50샘플, budget=20%)
+2026-06-29 13:02:43,346 [INFO] core.evaluator_v2: [fullkv] pred='Daisy encountered Jim in Maitland.'
+2026-06-29 13:02:52,855 [INFO] core.evaluator_v2: [fullkv] pred='Socrates ultimately decides it is unjust to escape because he believes that the laws of Athens are a social contract to '
+2026-06-29 13:03:02,547 [INFO] core.evaluator_v2: [fullkv] pred='The story is set in the medieval period, specifically in the castle of Drachenhausen and the surrounding areas, includin'
+2026-06-29 13:03:11,009 [INFO] core.evaluator_v2: [fullkv] pred='Baron Conrad did not kill anyone; however, he was killed by one-eyed Hans. The text states that one-eyed Hans brought ba'
+2026-06-29 13:03:19,789 [INFO] core.evaluator_v2: [fullkv] pred='Vigo the Carpathian.'
+2026-06-29 13:03:19,874 [INFO] core.evaluator_v2:   [5/50] avg=15.92
+2026-06-29 13:03:28,690 [INFO] core.evaluator_v2: [fullkv] pred="Dana Barrett is the first person that falls under Vigo's spell."
+2026-06-29 13:03:29,395 [WARNING] core.model_loader: Input length 8721 > max 8192, truncating...
+2026-06-29 13:03:40,372 [INFO] core.evaluator_v2: [fullkv] pred="Clifford's profession is a security guard."
+2026-06-29 13:03:47,612 [INFO] core.evaluator_v2: [fullkv] pred="Mr. and Mrs. Vervelle live at Ville d'Avray."
+2026-06-29 13:03:54,502 [INFO] core.evaluator_v2: [fullkv] pred='The Witch threw the coffin into a ditch.'
+2026-06-29 13:04:03,643 [INFO] core.evaluator_v2: [fullkv] pred='Frank Saltram is a writer and speaker, known for his extraordinary mind and captivating talk. He is described as having '
+2026-06-29 13:04:03,658 [INFO] core.evaluator_v2:   [10/50] avg=17.61
+2026-06-29 13:04:11,286 [INFO] core.evaluator_v2: [fullkv] pred='Mortimer Tregennis was once estranged from his siblings due to disagreements over the division of money from their tin-m'
+2026-06-29 13:04:20,169 [INFO] core.evaluator_v2: [fullkv] pred="The unique aspect of the phonetic spelling of the 'future' article is that it is written in a way that reflects the phon"
+2026-06-29 13:04:29,109 [INFO] core.evaluator_v2: [fullkv] pred='In the text, Death is disguised as a man in black.'
+2026-06-29 13:04:35,499 [INFO] core.evaluator_v2: [fullkv] pred="Lady Coxon is Ruth Anvoy's mother."
+2026-06-29 13:04:41,164 [INFO] core.evaluator_v2: [fullkv] pred='Rogers learned his battle knowledge during the Second War of Independence.'
+2026-06-29 13:04:41,172 [INFO] core.evaluator_v2:   [15/50] avg=17.22
+2026-06-29 13:04:46,589 [INFO] core.evaluator_v2: [fullkv] pred='Anthony Rogers was working for the American Radioactive Gas Corporation in 1927.'
+2026-06-29 13:04:52,447 [INFO] core.evaluator_v2: [fullkv] pred='Miss Violet Ray realizes that none of the boarders like each other.'
+2026-06-29 13:04:59,859 [INFO] core.evaluator_v2: [fullkv] pred='Holmes and Dr. Watson are in Cornwall because they are investigating the mysterious "Cornish Horror," a supernatural eve'
+2026-06-29 13:05:10,279 [INFO] core.evaluator_v2: [fullkv] pred='The hidden message Reiko finds within the video is the curse that tells the viewer they will die one week after watching'
+2026-06-29 13:05:19,450 [INFO] core.evaluator_v2: [fullkv] pred='Some important themes mentioned in this story include the contrast between good and evil, the power of love and gentlene'
+2026-06-29 13:05:19,453 [INFO] core.evaluator_v2:   [20/50] avg=15.34
+2026-06-29 13:05:30,379 [INFO] core.evaluator_v2: [fullkv] pred='The teenagers were discussing a cursed videotape that features a woman who warns viewers that they will die one week aft'
+2026-06-29 13:05:42,588 [INFO] core.evaluator_v2: [fullkv] pred='Bill worked in a Chicago mill.'
+2026-06-29 13:05:48,587 [INFO] core.evaluator_v2: [fullkv] pred="Two people fainted after seeing Brenda's dead body: the doctor and the vicar."
+2026-06-29 13:05:55,198 [INFO] core.evaluator_v2: [fullkv] pred='Otto is known for his pure, simple wisdom and his silver hand.'
+2026-06-29 13:06:02,984 [INFO] core.evaluator_v2: [fullkv] pred='Leon focuses on describing his experiences and observations in Paris, his progress in learning French, and his impressio'
+2026-06-29 13:06:02,985 [INFO] core.evaluator_v2:   [25/50] avg=17.80
+2026-06-29 13:06:10,996 [INFO] core.evaluator_v2: [fullkv] pred='The owner of the manor in the story is Madame de Merret, who is the late wife of the Count de Merret. After her death, t'
+2026-06-29 13:06:20,000 [INFO] core.evaluator_v2: [fullkv] pred="Reiko's job is not mentioned in the text."
+2026-06-29 13:06:26,272 [INFO] core.evaluator_v2: [fullkv] pred='Holmes observes that the fire in the fireplace had burned out hours before the tragedy occurred.'
+2026-06-29 13:06:32,882 [INFO] core.evaluator_v2: [fullkv] pred='Socrates compares citizens and the law to a parent and child. He argues that the laws have raised and educated him, and '
+2026-06-29 13:06:42,149 [INFO] core.evaluator_v2: [fullkv] pred='La Grande Breteche is a once-grand estate in Vendome that has fallen into disrepair and is surrounded by overgrown veget'
+2026-06-29 13:06:42,151 [INFO] core.evaluator_v2:   [30/50] avg=17.23
+2026-06-29 13:06:51,550 [INFO] core.evaluator_v2: [fullkv] pred='Reiko discovers that making a copy of the tape and showing it to someone else within a week saves viewers of the tape fr'
+2026-06-29 13:06:59,815 [INFO] core.evaluator_v2: [fullkv] pred='The text does not explicitly mention the name of Grassou\'s wife. However, it refers to "his wife" in several instances a'
+2026-06-29 13:07:07,130 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention anyone defending Lazarus during his murder trial. Therefore, the answer is that there is no in'
+2026-06-29 13:07:23,360 [INFO] core.evaluator_v2: [fullkv] pred='Tomoko is frightened by the story about the cursed videotape and watches a strange video with her friends. After watchin'
+2026-06-29 13:07:31,022 [INFO] core.evaluator_v2: [fullkv] pred='The Witch wanted the lying scribe to reveal his own lies.'
+2026-06-29 13:07:31,027 [INFO] core.evaluator_v2:   [35/50] avg=17.34
+2026-06-29 13:07:39,054 [INFO] core.evaluator_v2: [fullkv] pred="Oscar is Dana's baby."
+2026-06-29 13:07:47,264 [INFO] core.evaluator_v2: [fullkv] pred="Shortly after Otto returns to his father's castle, he is found by the Emperor, who hears of his plight and decides to in"
+2026-06-29 13:07:54,107 [INFO] core.evaluator_v2: [fullkv] pred="T.K. Nupton thought that Enoch Soames was a figment of the author's brain."
+2026-06-29 13:08:06,157 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention that the wealthy farmer (Chuck) marries anyone. Therefore, the answer is that there is no info'
+2026-06-29 13:08:14,552 [INFO] core.evaluator_v2: [fullkv] pred="The art-dealer, Elie Magus, describes Grassou's skill level to Virginie's father as being on par with renowned artists s"
+2026-06-29 13:08:14,557 [INFO] core.evaluator_v2:   [40/50] avg=16.11
+2026-06-29 13:08:22,699 [INFO] core.evaluator_v2: [fullkv] pred='The Witch was able to perceive the naked beauty of the soul in all human forms, seeing beyond their outward appearances '
+2026-06-29 13:08:29,019 [INFO] core.evaluator_v2: [fullkv] pred='When Mary was younger, her mother filled her free time by reading to her and teaching her to read.'
+2026-06-29 13:08:35,229 [INFO] core.evaluator_v2: [fullkv] pred="The purpose of Crito's visit was to persuade Socrates to escape from prison and avoid his death sentence."
+2026-06-29 13:08:45,299 [INFO] core.evaluator_v2: [fullkv] pred="The description of the teens' faces when they died was that their faces were pale and their eyes were filled with a mani"
+2026-06-29 13:08:57,763 [INFO] core.evaluator_v2: [fullkv] pred='Bill was shot by Benson. After a confrontation, Benson shoots Bill down, and Bill turns to surprise Benson, but Benson s'
+2026-06-29 13:08:57,765 [INFO] core.evaluator_v2:   [45/50] avg=15.76
+2026-06-29 13:09:05,070 [INFO] core.evaluator_v2: [fullkv] pred='Gravener wants Ruth to use the money from The Coxon Fund to help Mr. Saltram, specifically to provide him with a public '
+2026-06-29 13:09:05,558 [WARNING] core.model_loader: Input length 8722 > max 8192, truncating...
+2026-06-29 13:09:16,372 [INFO] core.evaluator_v2: [fullkv] pred="The text does not mention where Alabama's son is born."
+2026-06-29 13:09:24,701 [INFO] core.evaluator_v2: [fullkv] pred="The text does not explicitly state Ruth Anvoy's nationality. However, it mentions that she is from Wimbledon and that sh"
+2026-06-29 13:09:36,902 [INFO] core.evaluator_v2: [fullkv] pred='Bill leaves Chicago with Steve.'
+2026-06-29 13:09:43,952 [INFO] core.evaluator_v2: [fullkv] pred="The housekeeper's feet got wet because Holmes stumbled over the watering-pot, upset its contents, and deluged both his f"
+2026-06-29 13:09:43,954 [INFO] core.evaluator_v2:   [50/50] avg=14.78
+2026-06-29 13:09:43,955 [INFO] __main__:   → score=14.78, mem_red=0.0%, ttft=3516.5ms
+2026-06-29 13:09:43,957 [INFO] __main__: 
+  Task: qasper
+2026-06-29 13:09:43,957 [INFO] core.evaluator_v2: [fullkv] qasper (50샘플, budget=20%)
+2026-06-29 13:09:51,049 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-06-29 13:09:54,175 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-06-29 13:09:57,869 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 13:10:02,949 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-06-29 13:10:09,184 [INFO] core.evaluator_v2: [fullkv] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-06-29 13:10:09,185 [INFO] core.evaluator_v2:   [5/50] avg=15.08
+2026-06-29 13:10:17,159 [INFO] core.evaluator_v2: [fullkv] pred='The datasets used for evaluation are CNN/DailyMail, New York Times Annotated Corpus (NYT), and XSum.'
+2026-06-29 13:10:24,844 [INFO] core.evaluator_v2: [fullkv] pred='The text compares RoBERT (RNN) and ToBERT (Transformer) and finds that ToBERT outperforms RoBERT on the Fisher and 20new'
+2026-06-29 13:10:32,724 [INFO] core.evaluator_v2: [fullkv] pred='The ancient Chinese dataset comes from 1.7K bilingual ancient-modern Chinese articles collected from the internet, prima'
+2026-06-29 13:10:41,728 [INFO] core.evaluator_v2: [fullkv] pred='The baselines used for evaluation are: Pointer-Gen, Pointer-Gen+RL-ROUGE, Pointer-Gen+RL-SEN, and Pointer-Gen+ARL-SEN.'
+2026-06-29 13:10:47,554 [INFO] core.evaluator_v2: [fullkv] pred='The Twitter dataset consists of 1,873 Twitter conversation threads, roughly 14,000 tweets.'
+2026-06-29 13:10:47,555 [INFO] core.evaluator_v2:   [10/50] avg=31.67
+2026-06-29 13:10:53,035 [INFO] core.evaluator_v2: [fullkv] pred='The text indicates that the multitask learning approach improved the state-of-the-art performance, but it does not speci'
+2026-06-29 13:11:00,051 [INFO] core.evaluator_v2: [fullkv] pred='The metrics used to establish that the chatbot becomes more knowledgeable and better at learning and conversation are Co'
+2026-06-29 13:11:09,450 [INFO] core.evaluator_v2: [fullkv] pred='The combination of rewards for reinforcement learning includes an irony reward, which is the difference between the iron'
+2026-06-29 13:11:18,119 [INFO] core.evaluator_v2: [fullkv] pred='The attention module is pretrained on the MT (machine translation) dataset.'
+2026-06-29 13:11:26,303 [INFO] core.evaluator_v2: [fullkv] pred='The text does not specify the exact size of the dataset, but it mentions that the OurNepali dataset is divided into thre'
+2026-06-29 13:11:26,327 [INFO] core.evaluator_v2:   [15/50] avg=28.45
+2026-06-29 13:11:33,010 [INFO] core.evaluator_v2: [fullkv] pred='They evaluate on the Wall Street Journal (WSJ) portion of the Penn Treebank.'
+2026-06-29 13:11:41,725 [INFO] core.evaluator_v2: [fullkv] pred='The model is compared to previous methods such as term frequency models, rule-based pattern matching, and machine learni'
+2026-06-29 13:11:45,633 [INFO] core.evaluator_v2: [fullkv] pred='The Nguni languages (Zulu, Xhosa, Ndebele, and Sswahili) and the Sotho languages (Nso, Sotho, and Tswana) are similar to'
+2026-06-29 13:11:49,116 [INFO] core.evaluator_v2: [fullkv] pred='The 7 Indian languages they experiment with are Kannada, Hindi, Telugu, Malayalam, Bengali, and English.'
+2026-06-29 13:11:52,989 [INFO] core.evaluator_v2: [fullkv] pred='In addition to hashtag prediction, the authors test their method on Named Entity Recognition (NER), POS tagging, text cl'
+2026-06-29 13:11:52,990 [INFO] core.evaluator_v2:   [20/50] avg=31.80
+2026-06-29 13:11:58,042 [INFO] core.evaluator_v2: [fullkv] pred='The tagging scheme employed is a sequence labeling approach with three tags: one indicating the word appears before the '
+2026-06-29 13:12:03,617 [INFO] core.evaluator_v2: [fullkv] pred='The text considers text categorization and sentiment classification as NLP tasks.'
+2026-06-29 13:12:13,910 [INFO] core.evaluator_v2: [fullkv] pred='The NCEL approach is highly effective, consistently outperforming various baselines with a favorable generalization abil'
+2026-06-29 13:12:19,166 [INFO] core.evaluator_v2: [fullkv] pred='The methods considered to find examples of biases and unwarranted inferences include manually inspecting images and thei'
+2026-06-29 13:12:22,411 [INFO] core.evaluator_v2: [fullkv] pred='The corpus consists of 53 documents.'
+2026-06-29 13:12:22,438 [INFO] core.evaluator_v2:   [25/50] avg=30.79
+2026-06-29 13:12:28,690 [INFO] core.evaluator_v2: [fullkv] pred='An individual model consists of a Bayesian model for each language.'
+2026-06-29 13:12:38,719 [INFO] core.evaluator_v2: [fullkv] pred='The text mentions that stylistic patterns are used as one of the features in sarcasm detection, but it does not specify '
+2026-06-29 13:12:45,932 [INFO] core.evaluator_v2: [fullkv] pred='The highest MRR score achieved was 0.6103 in one of the test batches for the Factoid Question Answering task.'
+2026-06-29 13:12:50,232 [INFO] core.evaluator_v2: [fullkv] pred='The subjects were presented with prompts corresponding to 7 phonemic/syllabic categories and 4 words (pat, pot, knew, an'
+2026-06-29 13:12:55,587 [INFO] core.evaluator_v2: [fullkv] pred='The dataset is annotated by classifying each tweet as "no evidence of depression" or "evidence of depression." If a twee'
+2026-06-29 13:12:55,589 [INFO] core.evaluator_v2:   [30/50] avg=29.89
+2026-06-29 13:13:00,740 [INFO] core.evaluator_v2: [fullkv] pred='They match words by translating the source language words into the assisting language (English) using a bilingual dictio'
+2026-06-29 13:13:11,546 [INFO] core.evaluator_v2: [fullkv] pred='The text mentions experiments on three datasets: FSD (social media), Twitter (social media), and Google (news articles).'
+2026-06-29 13:13:15,184 [INFO] core.evaluator_v2: [fullkv] pred='The pretrained word embeddings used are GloVe (200-dimensional embeddings trained on 2 billion tweets), Edinburgh embedd'
+2026-06-29 13:13:22,482 [INFO] core.evaluator_v2: [fullkv] pred='The text does not explicitly mention the use of pretrained embeddings. It discusses the use of bidirectional GRU cells f'
+2026-06-29 13:13:30,828 [INFO] core.evaluator_v2: [fullkv] pred='The ensemble method works by gradually adding models to the ensemble. It starts with the best performing model based on '
+2026-06-29 13:13:30,831 [INFO] core.evaluator_v2:   [35/50] avg=26.50
+2026-06-29 13:13:33,760 [INFO] core.evaluator_v2: [fullkv] pred='Yes, they use attention. The text mentions the attention function is used to compute the similarity score between passag'
+2026-06-29 13:13:38,667 [INFO] core.evaluator_v2: [fullkv] pred='The text mentions two types of language model architectures: a bidirectional language model used to augment the sequence'
+2026-06-29 13:13:47,725 [INFO] core.evaluator_v2: [fullkv] pred="No, they do not report results only on English data. The text mentions using Roget's Thesaurus, which is a general Engli"
+2026-06-29 13:13:54,969 [INFO] core.evaluator_v2: [fullkv] pred='The clinical datasets used in the paper are MEDDOCAN and NUBes-PHI.'
+2026-06-29 13:13:59,613 [INFO] core.evaluator_v2: [fullkv] pred='No, the dataset for sentiment analysis is not balanced. The text mentions that the dataset contains more than twice as m'
+2026-06-29 13:13:59,616 [INFO] core.evaluator_v2:   [40/50] avg=25.68
+2026-06-29 13:14:06,290 [INFO] core.evaluator_v2: [fullkv] pred='Yes, it is possible to convert cloze-style questions to naturally-looking questions. The text mentions that cloze questi'
+2026-06-29 13:14:18,542 [INFO] core.evaluator_v2: [fullkv] pred='The tasks used for evaluation are neural machine translation on four datasets: IWSLT 2017 German → English, KFTT Japanes'
+2026-06-29 13:14:27,779 [INFO] core.evaluator_v2: [fullkv] pred='The text proposes using "context tweets" as additional features, which are the tweets that a given tweet is responding t'
+2026-06-29 13:14:33,892 [INFO] core.evaluator_v2: [fullkv] pred='The text mentions that the dataset consists of 22,880 users.'
+2026-06-29 13:14:38,265 [INFO] core.evaluator_v2: [fullkv] pred='The text mentions that the proposed approach was tested on standard benchmarks for English and Chinese, but it does not '
+2026-06-29 13:14:38,267 [INFO] core.evaluator_v2:   [45/50] avg=25.85
+2026-06-29 13:14:45,967 [INFO] core.evaluator_v2: [fullkv] pred='The text mentions that two methods are used for RQE: a deep learning model based on neural networks (specifically, a mod'
+2026-06-29 13:14:54,282 [INFO] core.evaluator_v2: [fullkv] pred='The paper studies English. The text mentions "social media," "news data," and "articles tagged as propaganda," which are'
+2026-06-29 13:15:00,816 [INFO] core.evaluator_v2: [fullkv] pred='The proposed approach using KL divergence as an energy function outperforms other word sense disambiguation (WSD) approa'
+2026-06-29 13:15:09,434 [INFO] core.evaluator_v2: [fullkv] pred='The ML methods aim to identify argument components such as claims, premises, backings, warrants, qualifiers, and rebutta'
+2026-06-29 13:15:19,604 [INFO] core.evaluator_v2: [fullkv] pred='The text indicates that expert annotations are generally higher quality than lay annotations. It shows that expert annot'
+2026-06-29 13:15:19,642 [INFO] core.evaluator_v2:   [50/50] avg=24.69
+2026-06-29 13:15:19,650 [INFO] __main__:   → score=24.69, mem_red=0.0%, ttft=2295.7ms
+2026-06-29 13:15:19,651 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-29 13:15:19,662 [INFO] core.evaluator_v2: [fullkv] multifieldqa_en (50샘플, budget=20%)
+2026-06-29 13:15:22,671 [INFO] core.evaluator_v2: [fullkv] pred="After attacking Jacobo at a workers' strike, Ngotho loses his job and his family is forced to move. He later dies from h"
+2026-06-29 13:15:29,958 [INFO] core.evaluator_v2: [fullkv] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the mitigation technique work'
+2026-06-29 13:15:30,519 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 13:15:42,051 [INFO] core.evaluator_v2: [fullkv] pred='The generative interactive model used in the method is called the Coupled GDBN (C-GDBN).'
+2026-06-29 13:15:51,156 [INFO] core.evaluator_v2: [fullkv] pred="The purpose of an ICD (Implantable Cardioverter Defibrillator) is to monitor the heart's rhythm and deliver electrical s"
+2026-06-29 13:15:58,974 [INFO] core.evaluator_v2: [fullkv] pred='The normalized least mean square (NLMS) algorithm is engaged in the PLMS-PPIC method.'
+2026-06-29 13:15:58,975 [INFO] core.evaluator_v2:   [5/50] avg=59.96
+2026-06-29 13:16:02,275 [INFO] core.evaluator_v2: [fullkv] pred='In 2009, Brooksley Born received the John F. Kennedy Profiles in Courage Award.'
+2026-06-29 13:16:10,185 [INFO] core.evaluator_v2: [fullkv] pred='A media application determines the context of an event using a content-recognition module or algorithm, which may employ'
+2026-06-29 13:16:17,361 [INFO] core.evaluator_v2: [fullkv] pred='The sticking points in the political showdown over the budget are the amount of spending to cut and the specific policie'
+2026-06-29 13:16:20,955 [INFO] core.evaluator_v2: [fullkv] pred='The county seat of McPherson County is McPherson.'
+2026-06-29 13:16:32,530 [INFO] core.evaluator_v2: [fullkv] pred='The new Iraqi Body Count organization provides cover for the war and allows supporters of the illegal war to point to it'
+2026-06-29 13:16:32,532 [INFO] core.evaluator_v2:   [10/50] avg=54.77
+2026-06-29 13:16:44,512 [INFO] core.evaluator_v2: [fullkv] pred='Accounting for path preference leads to a more steady decrease in belief entropy over the goal distribution, allowing th'
+2026-06-29 13:16:53,943 [INFO] core.evaluator_v2: [fullkv] pred='It is important for the sides of the fuselage to be sloped (tumbled home) because this creates a conical shape when the '
+2026-06-29 13:17:04,103 [INFO] core.evaluator_v2: [fullkv] pred='The court in In re Ferguson concluded that the claims did not meet the transformation prong of the Bilski test because t'
+2026-06-29 13:17:08,057 [INFO] core.evaluator_v2: [fullkv] pred='KSTP-FM 102.1 was on the air from 1946 to 1952, which is 6 years.'
+2026-06-29 13:17:16,959 [INFO] core.evaluator_v2: [fullkv] pred='Thalassemias are classified based on the globin chain that is affected, resulting in either alpha thalassemia or beta th'
+2026-06-29 13:17:16,960 [INFO] core.evaluator_v2:   [15/50] avg=44.21
+2026-06-29 13:17:24,277 [INFO] core.evaluator_v2: [fullkv] pred='The transition probability of the environment affects the learning rate in the static agent such that the learning rate '
+2026-06-29 13:17:36,155 [INFO] core.evaluator_v2: [fullkv] pred='The experimental techniques used to study the quantum dot structures in this research were low-temperature scanning tunn'
+2026-06-29 13:17:39,165 [INFO] core.evaluator_v2: [fullkv] pred='Margaret Way was born in Brisbane and died in Cleveland, Queensland, Australia.'
+2026-06-29 13:17:51,647 [INFO] core.evaluator_v2: [fullkv] pred='The two ground states observed for indeno[1,2-a]fluorene on NaCl surfaces are an open-shell π-diradical state and a clos'
+2026-06-29 13:18:05,250 [INFO] core.evaluator_v2: [fullkv] pred='The scoring engine generates a stream of content for the channel by querying new content items based on the channel cate'
+2026-06-29 13:18:05,252 [INFO] core.evaluator_v2:   [20/50] avg=45.89
+2026-06-29 13:18:07,376 [WARNING] core.model_loader: Input length 9212 > max 8192, truncating...
+2026-06-29 13:18:29,533 [INFO] core.evaluator_v2: [fullkv] pred='The stability condition for a solution $ u $ of the equation $ -\\Delta u = f(u) $ in $ \\mathbb{R}^N $ is that the second'
+2026-06-29 13:18:33,404 [INFO] core.evaluator_v2: [fullkv] pred='McPherson County is located in the U.S. state of Kansas.'
+2026-06-29 13:18:42,517 [INFO] core.evaluator_v2: [fullkv] pred='The main focus of the research paper is to study the nuclear liquid-gas transition in the strong coupling regime of latt'
+2026-06-29 13:18:54,925 [INFO] core.evaluator_v2: [fullkv] pred='The security parameter for the AES-256 block cipher is 172.'
+2026-06-29 13:18:57,269 [INFO] core.evaluator_v2: [fullkv] pred='The most active fan club is the South West Ultras fan club.'
+2026-06-29 13:18:57,271 [INFO] core.evaluator_v2:   [25/50] avg=46.04
+2026-06-29 13:18:59,406 [INFO] core.evaluator_v2: [fullkv] pred='Margaret Way wrote more than 120 novels.'
+2026-06-29 13:19:07,688 [INFO] core.evaluator_v2: [fullkv] pred='The significance of the interlayer Berry connection polarizability lies in its role as the geometric origin of the cross'
+2026-06-29 13:19:21,336 [INFO] core.evaluator_v2: [fullkv] pred='Wearable sensors are now capable of estimating physical activity levels and physiological outcomes of older adults. Thes'
+2026-06-29 13:19:28,954 [INFO] core.evaluator_v2: [fullkv] pred='One of Kam W. Leong\'s publications in Journal of Controlled Release is "Gene transfer to hemophilia A mice via oral deli'
+2026-06-29 13:19:40,987 [INFO] core.evaluator_v2: [fullkv] pred='The symptoms of vitamin K deficiency include anemia, bruising, nosebleeds, bleeding of the gums in both sexes, and heavy'
+2026-06-29 13:19:40,990 [INFO] core.evaluator_v2:   [30/50] avg=47.92
+2026-06-29 13:19:50,043 [INFO] core.evaluator_v2: [fullkv] pred="The text does not explicitly mention restrictions on the use of Broadjam's servers. However, it does state that users mu"
+2026-06-29 13:19:55,410 [INFO] core.evaluator_v2: [fullkv] pred='The 2017 general election was held on 23 September.'
+2026-06-29 13:20:00,196 [INFO] core.evaluator_v2: [fullkv] pred='21 massive star-forming regions were studied.'
+2026-06-29 13:20:05,864 [INFO] core.evaluator_v2: [fullkv] pred='Simon English became the leader of the National Party in October 2001.'
+2026-06-29 13:20:14,646 [INFO] core.evaluator_v2: [fullkv] pred="Governor Rick Scott cited privacy concerns, expressed skepticism about the monitoring program's effectiveness, and raise"
+2026-06-29 13:20:14,657 [INFO] core.evaluator_v2:   [35/50] avg=45.00
+2026-06-29 13:20:22,618 [INFO] core.evaluator_v2: [fullkv] pred='The SI unit of power is the watt (W).'
+2026-06-29 13:20:30,311 [INFO] core.evaluator_v2: [fullkv] pred='Craig wants to find his own place because he needs to balance the costs of living with the financial responsibilities he'
+2026-06-29 13:20:37,230 [INFO] core.evaluator_v2: [fullkv] pred='The decision to base the water rates on usage reflected a commitment to fairness, ensuring that individuals pay for the '
+2026-06-29 13:20:41,084 [INFO] core.evaluator_v2: [fullkv] pred='McPherson County was established as a county in 1870.'
+2026-06-29 13:20:42,181 [WARNING] core.model_loader: Input length 8396 > max 8192, truncating...
+2026-06-29 13:21:00,119 [INFO] core.evaluator_v2: [fullkv] pred='The proximity of superconductivity can suppress the Kondo effect if the superconducting energy gap $2\\Delta$ becomes lar'
+2026-06-29 13:21:00,123 [INFO] core.evaluator_v2:   [40/50] avg=42.79
+2026-06-29 13:21:05,815 [INFO] core.evaluator_v2: [fullkv] pred='Peter Denning is the program chair of this conference.'
+2026-06-29 13:21:12,335 [INFO] core.evaluator_v2: [fullkv] pred='At dawn or dusk, the high resolution of what we focus on becomes a bit less, allowing what is off to the left or right t'
+2026-06-29 13:21:19,118 [INFO] core.evaluator_v2: [fullkv] pred='The Director of Town and Country Planning is responsible for carrying out the functions assigned under the act.'
+2026-06-29 13:21:34,374 [INFO] core.evaluator_v2: [fullkv] pred='Potential applications of ferromagnetic semiconductors include spin injection into non-magnetic semiconductors and elect'
+2026-06-29 13:21:45,539 [INFO] core.evaluator_v2: [fullkv] pred='The recommended daily intake of vitamin K for adult women and men is 90 μg and 120 μg, respectively.'
+2026-06-29 13:21:45,542 [INFO] core.evaluator_v2:   [45/50] avg=44.34
+2026-06-29 13:21:59,211 [INFO] core.evaluator_v2: [fullkv] pred='Yes, DUO contains more instances per image than COCO. The text states that DUO has an average of 9.57 instances per imag'
+2026-06-29 13:22:10,830 [INFO] core.evaluator_v2: [fullkv] pred='The population of McPherson County according to the 2020 census was 30,223.'
+2026-06-29 13:22:17,719 [INFO] core.evaluator_v2: [fullkv] pred='The paper was published on 7 March 2023.'
+2026-06-29 13:22:21,018 [INFO] core.evaluator_v2: [fullkv] pred="The first white settlement in McPherson County was Fuller's Ranch."
+2026-06-29 13:22:27,603 [INFO] core.evaluator_v2: [fullkv] pred='The factors that control the reliance of artificial organisms on plasticity are the distance between environments (d_e),'
+2026-06-29 13:22:27,625 [INFO] core.evaluator_v2:   [50/50] avg=46.02
+2026-06-29 13:22:27,633 [INFO] __main__:   → score=46.02, mem_red=0.0%, ttft=3260.8ms
+2026-06-29 13:22:27,637 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 13:22:27,640 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-29 13:22:27,640 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 13:22:27,643 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-29 13:22:27,643 [INFO] core.evaluator_v2: [streaming] narrativeqa (50샘플, budget=20%)
+2026-06-29 13:22:35,047 [INFO] core.evaluator_v2: [streaming] pred='The text does not specify the name of the town where Daisy encountered Jim.'
+2026-06-29 13:22:43,768 [INFO] core.evaluator_v2: [streaming] pred='Socrates decides it is unjust to escape because he believes in upholding the laws of the state, even in old age. He argu'
+2026-06-29 13:22:51,460 [INFO] core.evaluator_v2: [streaming] pred='The story is set in a medieval European castle, specifically Drachenhausen, which was once the stronghold of a robber ba'
+2026-06-29 13:22:57,110 [INFO] core.evaluator_v2: [streaming] pred='Baron Conrad did not kill anyone. The text does not mention him killing anyone.'
+2026-06-29 13:23:05,703 [INFO] core.evaluator_v2: [streaming] pred='A ghostly figure with an uncanny resemblance to the Ghostbusters (Venkman, Stantz, Spengler, and Winston) emerged from a'
+2026-06-29 13:23:05,720 [INFO] core.evaluator_v2:   [5/50] avg=8.16
+2026-06-29 13:23:13,621 [INFO] core.evaluator_v2: [streaming] pred="The first person that falls under Vigo's spell is Dana."
+2026-06-29 13:23:14,225 [WARNING] core.model_loader: Input length 8721 > max 8192, truncating...
+2026-06-29 13:23:23,923 [INFO] core.evaluator_v2: [streaming] pred="Clifford's profession is a police officer."
+2026-06-29 13:23:33,717 [INFO] core.evaluator_v2: [streaming] pred='The text does not explicitly state where Mr. and Mrs. Vervelle live. However, it mentions that they have a "dot" (a dowr'
+2026-06-29 13:23:41,015 [INFO] core.evaluator_v2: [streaming] pred='The Witch threw the coffin into a ditch.'
+2026-06-29 13:23:47,548 [INFO] core.evaluator_v2: [streaming] pred='Frank Saltram is a writer.'
+2026-06-29 13:23:47,550 [INFO] core.evaluator_v2:   [10/50] avg=7.98
+2026-06-29 13:23:54,097 [INFO] core.evaluator_v2: [streaming] pred='Mortimer Trefinnis was estranged from his siblings due to financial motives. He believed that if his family members were'
+2026-06-29 13:24:04,095 [INFO] core.evaluator_v2: [streaming] pred='The unique aspect of the phonetic spelling in the "future" article is that it is not explicitly mentioned or discussed i'
+2026-06-29 13:24:11,974 [INFO] core.evaluator_v2: [streaming] pred='Death is disguised as a severe master inviting them to dance.'
+2026-06-29 13:24:17,410 [INFO] core.evaluator_v2: [streaming] pred="Lady Coxon is Ruth Anvoy's mother."
+2026-06-29 13:24:22,996 [INFO] core.evaluator_v2: [streaming] pred='The war in which Rogers learned his battle knowledge was the battle against the Sinsing Gang.'
+2026-06-29 13:24:23,013 [INFO] core.evaluator_v2:   [15/50] avg=10.68
+2026-06-29 13:24:29,765 [INFO] core.evaluator_v2: [streaming] pred='Anthony Rogers was working for a company that conducted military operations, specifically involving the use of explosive'
+2026-06-29 13:24:34,586 [INFO] core.evaluator_v2: [streaming] pred='The young lady from New York.'
+2026-06-29 13:24:41,741 [INFO] core.evaluator_v2: [streaming] pred='Holmes and Dr. Watson are in Cornwall because they are investigating a mysterious death and a series of strange events t'
+2026-06-29 13:24:49,982 [INFO] core.evaluator_v2: [streaming] pred='The hidden message Reiko finds within the video is that copying the tape and showing it to someone else breaks the curse'
+2026-06-29 13:24:55,706 [INFO] core.evaluator_v2: [streaming] pred='Justice, redemption, and the power of forgiveness.'
+2026-06-29 13:24:55,713 [INFO] core.evaluator_v2:   [20/50] avg=8.86
+2026-06-29 13:25:04,330 [INFO] core.evaluator_v2: [streaming] pred='The teenagers were discussing a cursed videotape that can cause death if not properly handled, and the spread of the cur'
+2026-06-29 13:25:15,186 [INFO] core.evaluator_v2: [streaming] pred='Bill worked in a textile factory in Chicago.'
+2026-06-29 13:25:21,091 [INFO] core.evaluator_v2: [streaming] pred="One person, Dr. Sterndale, fainted after seeing Brenda's dead body."
+2026-06-29 13:25:28,638 [INFO] core.evaluator_v2: [streaming] pred='Otto is known for his pure, simple wisdom and his silver hand.'
+2026-06-29 13:25:36,519 [INFO] core.evaluator_v2: [streaming] pred='Leon focuses on the decline and characteristics of the English-speaking family, particularly the American population, an'
+2026-06-29 13:25:36,522 [INFO] core.evaluator_v2:   [25/50] avg=11.24
+2026-06-29 13:25:41,420 [INFO] core.evaluator_v2: [streaming] pred='Monsieur de Merret.'
+2026-06-29 13:25:50,372 [INFO] core.evaluator_v2: [streaming] pred="Reiko's job is not mentioned in the text."
+2026-06-29 13:25:57,658 [INFO] core.evaluator_v2: [streaming] pred='Holmes observes the remains of powder on the shield in the fireplace.'
+2026-06-29 13:26:04,130 [INFO] core.evaluator_v2: [streaming] pred='Socrates compares citizens and the law to a family, where the citizens are the children and the law is the parent. He ar'
+2026-06-29 13:26:12,402 [INFO] core.evaluator_v2: [streaming] pred="La Grande Breteche is a fictional town in Honore de Balzac's novel *La Grande Breteche*, where the story revolves around"
+2026-06-29 13:26:12,433 [INFO] core.evaluator_v2:   [30/50] avg=14.96
+2026-06-29 13:26:21,009 [INFO] core.evaluator_v2: [streaming] pred='Reiko discovers that copying the tape and showing it to someone else within a week breaks the curse, saving viewers from'
+2026-06-29 13:26:26,610 [INFO] core.evaluator_v2: [streaming] pred='Madame Vervelle.'
+2026-06-29 13:26:32,282 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention Lazarus or a murder trial. Therefore, there is no answer based on the provided text.'
+2026-06-29 13:26:41,177 [INFO] core.evaluator_v2: [streaming] pred='Tomoko is not directly mentioned in the text, but the story focuses on Asakawa and her interactions with the cursed vide'
+2026-06-29 13:26:48,031 [INFO] core.evaluator_v2: [streaming] pred='The Witch wanted the priests to reveal their own lies.'
+2026-06-29 13:26:48,033 [INFO] core.evaluator_v2:   [35/50] avg=14.49
+2026-06-29 13:26:57,641 [INFO] core.evaluator_v2: [streaming] pred="Oscar is Dana's baby."
+2026-06-29 13:27:03,765 [INFO] core.evaluator_v2: [streaming] pred="The Emperor decides to right Otto's wrongs by punishing the Roderburgs and taking Otto under his protection."
+2026-06-29 13:27:10,111 [INFO] core.evaluator_v2: [streaming] pred="T.K. Nupton thought that Soames was a figment of the narrator's brain."
+2026-06-29 13:27:19,720 [INFO] core.evaluator_v2: [streaming] pred='The text does not explicitly mention who the wealthy farmer marries.'
+2026-06-29 13:27:32,419 [INFO] core.evaluator_v2: [streaming] pred="The art-dealer, Virginie's father, describes Grassou's skill level as being on par with famous artists like Rubens, Remb"
+2026-06-29 13:27:32,422 [INFO] core.evaluator_v2:   [40/50] avg=13.83
+2026-06-29 13:27:41,879 [INFO] core.evaluator_v2: [streaming] pred='The Witch was able to perceive the inner forms and souls of mankind, seeing beyond their outward appearances to the deli'
+2026-06-29 13:27:47,057 [INFO] core.evaluator_v2: [streaming] pred='Her mother filled her free time with reading and writing letters.'
+2026-06-29 13:27:53,226 [INFO] core.evaluator_v2: [streaming] pred="Crito's purpose was to persuade Socrates to escape from prison and avoid death, arguing that doing so would be just and "
+2026-06-29 13:28:03,680 [INFO] core.evaluator_v2: [streaming] pred="The description of the teens' faces when they died is not explicitly provided in the text. However, it is implied that t"
+2026-06-29 13:28:13,808 [INFO] core.evaluator_v2: [streaming] pred='Bill died by being shot.'
+2026-06-29 13:28:13,813 [INFO] core.evaluator_v2:   [45/50] avg=13.82
+2026-06-29 13:28:20,241 [INFO] core.evaluator_v2: [streaming] pred='Gravener wants Ruth to give up her idea of marrying him, which is implied by the sealed letter he is supposed to deliver'
+2026-06-29 13:28:21,411 [WARNING] core.model_loader: Input length 8722 > max 8192, truncating...
+2026-06-29 13:28:34,219 [INFO] core.evaluator_v2: [streaming] pred="The text does not mention where Alabama's son is born."
+2026-06-29 13:28:41,738 [INFO] core.evaluator_v2: [streaming] pred='The text does not explicitly state Ruth Anvoy\'s nationality. However, the mention of "a meddlesome American" suggests th'
+2026-06-29 13:28:52,471 [INFO] core.evaluator_v2: [streaming] pred='Ursula leaves Chicago with him.'
+2026-06-29 13:29:00,452 [INFO] core.evaluator_v2: [streaming] pred="The housekeeper's feet got wet during Holmes' visit because she had been in the garden, where she had been watering the "
+2026-06-29 13:29:00,454 [INFO] core.evaluator_v2:   [50/50] avg=12.93
+2026-06-29 13:29:00,456 [INFO] __main__:   → score=12.93, mem_red=80.0%, ttft=3571.0ms
+2026-06-29 13:29:00,456 [INFO] __main__: 
+  Task: qasper
+2026-06-29 13:29:00,457 [INFO] core.evaluator_v2: [streaming] qasper (50샘플, budget=20%)
+2026-06-29 13:29:06,749 [INFO] core.evaluator_v2: [streaming] pred='The proposed strategies show that KG-A2C-chained is significantly more sample efficient and converges faster, while both'
+2026-06-29 13:29:09,578 [INFO] core.evaluator_v2: [streaming] pred='The encoder is a character-based encoder-decoder model.'
+2026-06-29 13:29:13,095 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 13:29:15,867 [INFO] core.evaluator_v2: [streaming] pred='NeuronBlocks includes modules such as CNN, BiLSTM, Attention, and BERT-based models. It also supports knowledge distilla'
+2026-06-29 13:29:21,529 [INFO] core.evaluator_v2: [streaming] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-06-29 13:29:21,531 [INFO] core.evaluator_v2:   [5/50] avg=6.30
+2026-06-29 13:29:28,444 [INFO] core.evaluator_v2: [streaming] pred='The datasets used for evaluation are CNN/DailyMail, NYT, and XSum.'
+2026-06-29 13:29:32,773 [INFO] core.evaluator_v2: [streaming] pred='The transformer layer (ToBERT) outperforms the RNN layer (RoBERT) in terms of performance on the Fisher dataset, as show'
+2026-06-29 13:29:40,097 [INFO] core.evaluator_v2: [streaming] pred='The ancient Chinese dataset is derived from the augmented and unaugmented parallel corpus, which includes both the origi'
+2026-06-29 13:29:47,809 [INFO] core.evaluator_v2: [streaming] pred='The baselines used for evaluation are Pointer-Gen, Pointer-Gen+RL-SEN, and Pointer-Gen+ARL-SEN.'
+2026-06-29 13:29:53,086 [INFO] core.evaluator_v2: [streaming] pred='The Twitter dataset contains 34.5% negative comments and 42.5% positive comments.'
+2026-06-29 13:29:53,088 [INFO] core.evaluator_v2:   [10/50] avg=13.03
+2026-06-29 13:29:58,894 [INFO] core.evaluator_v2: [streaming] pred='The text does not specify the exact amount of improvement, but it states that the neural network architecture using mult'
+2026-06-29 13:30:09,244 [INFO] core.evaluator_v2: [streaming] pred='The metrics used to establish that this makes chatbots more knowledgeable and better at learning and conversation are th'
+2026-06-29 13:30:18,038 [INFO] core.evaluator_v2: [streaming] pred='The combination of rewards for reinforcement learning includes: (1) rewards for content preservation, (2) rewards for st'
+2026-06-29 13:30:25,887 [INFO] core.evaluator_v2: [streaming] pred='The attention module is pretrained on the MT (Machine Translation) data.'
+2026-06-29 13:30:32,594 [INFO] core.evaluator_v2: [streaming] pred='The size of the dataset is not explicitly mentioned in the text. However, it is noted that the "OurNepali dataset" is al'
+2026-06-29 13:30:32,614 [INFO] core.evaluator_v2:   [15/50] avg=15.49
+2026-06-29 13:30:39,183 [INFO] core.evaluator_v2: [streaming] pred='The text evaluates on the WSJ dataset.'
+2026-06-29 13:30:46,560 [INFO] core.evaluator_v2: [streaming] pred='The model is compared to previous methods such as the Li and Roth model, the CNN sentence classifier of Kim, and baselin'
+2026-06-29 13:30:49,039 [INFO] core.evaluator_v2: [streaming] pred='The text mentions that the South African languages are similar to each other.'
+2026-06-29 13:30:53,063 [INFO] core.evaluator_v2: [streaming] pred='The 7 Indian languages are not explicitly mentioned in the text. However, it is stated that the audio data was collected'
+2026-06-29 13:30:57,285 [INFO] core.evaluator_v2: [streaming] pred='They test their method on tasks such as evaluating performance on posts containing rare words (RW) and frequent words (F'
+2026-06-29 13:30:57,290 [INFO] core.evaluator_v2:   [20/50] avg=16.06
+2026-06-29 13:31:01,666 [INFO] core.evaluator_v2: [streaming] pred='The tagging scheme employed is a novel scheme designed to incorporate the constraint that each text in the corpora conta'
+2026-06-29 13:31:06,941 [INFO] core.evaluator_v2: [streaming] pred='The text considers NLP tasks such as text classification, clustering, and topic modeling.'
+2026-06-29 13:31:15,647 [INFO] core.evaluator_v2: [streaming] pred='The NCEL approach is highly effective, outperforming state-of-the-art collective methods across five different datasets,'
+2026-06-29 13:31:21,380 [INFO] core.evaluator_v2: [streaming] pred='The methods considered to find examples of biases and unwarranted inferences include manual detection through analyzing '
+2026-06-29 13:31:24,661 [INFO] core.evaluator_v2: [streaming] pred='The corpus contains 1,000 case reports.'
+2026-06-29 13:31:24,663 [INFO] core.evaluator_v2:   [25/50] avg=16.93
+2026-06-29 13:31:32,206 [INFO] core.evaluator_v2: [streaming] pred='An individual model consists of a Bayesian model of semantic role induction (SRI) that uses cross-lingual latent variabl'
+2026-06-29 13:31:38,935 [INFO] core.evaluator_v2: [streaming] pred='The text mentions that stylistic features are obtained through the use of gaze-based features and complex features deriv'
+2026-06-29 13:31:44,924 [INFO] core.evaluator_v2: [streaming] pred='The highest MRR score was 32.5%.'
+2026-06-29 13:31:48,219 [INFO] core.evaluator_v2: [streaming] pred='The data presented to the subjects to elicit event-related responses was speech imagery EEG data.'
+2026-06-29 13:31:53,596 [INFO] core.evaluator_v2: [streaming] pred='The dataset is annotated to determine whether a tweet contains no evidence of depression (n=6,829 tweets) or evidence of'
+2026-06-29 13:31:53,640 [INFO] core.evaluator_v2:   [30/50] avg=16.68
+2026-06-29 13:31:56,767 [INFO] core.evaluator_v2: [streaming] pred='They match words by translating each word in the source language into English using a bilingual dictionary (Google Trans'
+2026-06-29 13:32:03,441 [INFO] core.evaluator_v2: [streaming] pred='Yes, the text reports results on English data, specifically on three datasets: FSD (social media), Twitter (social media'
+2026-06-29 13:32:07,176 [INFO] core.evaluator_v2: [streaming] pred='The text mentions the use of NRC Hashtag Sentiment Lexicon and Emoji embeddings.'
+2026-06-29 13:32:14,922 [INFO] core.evaluator_v2: [streaming] pred="The text does not explicitly mention the use of pretrained embeddings. It focuses on the model's architecture, attention"
+2026-06-29 13:32:22,025 [INFO] core.evaluator_v2: [streaming] pred='The ensemble method works by averaging the predictions from multiple single models. The best-performing model is selecte'
+2026-06-29 13:32:22,043 [INFO] core.evaluator_v2:   [35/50] avg=15.49
+2026-06-29 13:32:24,200 [INFO] core.evaluator_v2: [streaming] pred='Yes, they use attention.'
+2026-06-29 13:32:27,926 [INFO] core.evaluator_v2: [streaming] pred='The text mentions the use of a Big Transformer model and a sequence-to-sequence model with encoder and decoder component'
+2026-06-29 13:32:34,659 [INFO] core.evaluator_v2: [streaming] pred='No, they do not report results only on English data. The text mentions that the approach was tested on a variety of lang'
+2026-06-29 13:32:41,509 [INFO] core.evaluator_v2: [streaming] pred='The clinical datasets used in the paper are the MEDDOCAN 2019 shared task dataset and a novel Spanish clinical reports d'
+2026-06-29 13:32:46,487 [INFO] core.evaluator_v2: [streaming] pred='No, the dataset for sentiment analysis is not balanced. The text indicates that the number of correctly predicted sentim'
+2026-06-29 13:32:46,490 [INFO] core.evaluator_v2:   [40/50] avg=15.62
+2026-06-29 13:32:53,017 [INFO] core.evaluator_v2: [streaming] pred='Yes, it is possible to convert cloze-style questions to naturally-looking questions. The text indicates that cloze-style'
+2026-06-29 13:33:01,977 [INFO] core.evaluator_v2: [streaming] pred='The tasks used for evaluation are the softmax and sparsemax functions.'
+2026-06-29 13:33:07,758 [INFO] core.evaluator_v2: [streaming] pred='The text proposes using context tweets, which are tweets that provide additional context to the original tweet, to impro'
+2026-06-29 13:33:13,351 [INFO] core.evaluator_v2: [streaming] pred='The text mentions an annotated dataset of over 20,000 blog users.'
+2026-06-29 13:33:16,640 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention any specific Chinese datasets used.'
+2026-06-29 13:33:16,641 [INFO] core.evaluator_v2:   [45/50] avg=15.02
+2026-06-29 13:33:25,779 [INFO] core.evaluator_v2: [streaming] pred='The text discusses the use of machine learning and deep learning methods for Recognizing Question Entailment (RQE) in th'
+2026-06-29 13:33:31,239 [INFO] core.evaluator_v2: [streaming] pred='The paper studies English.'
+2026-06-29 13:33:36,067 [INFO] core.evaluator_v2: [streaming] pred='The proposed approach, GM$\\_$KL, outperforms other word sense disambiguation (WSD) methods employing word embeddings on '
+2026-06-29 13:33:42,408 [INFO] core.evaluator_v2: [streaming] pred='The ML methods aim to identify argument components such as claims, premises, and backing.'
+2026-06-29 13:33:50,076 [INFO] core.evaluator_v2: [streaming] pred='The resulting annotated data from experts is higher in quality than that from the crowd, but the exact difference is not'
+2026-06-29 13:33:50,086 [INFO] core.evaluator_v2:   [50/50] avg=15.86
+2026-06-29 13:33:50,088 [INFO] __main__:   → score=15.86, mem_red=80.0%, ttft=2331.1ms
+2026-06-29 13:33:50,089 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-29 13:33:50,090 [INFO] core.evaluator_v2: [streaming] multifieldqa_en (50샘플, budget=20%)
+2026-06-29 13:33:52,977 [INFO] core.evaluator_v2: [streaming] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned. His family is forced to move, and he is "
+2026-06-29 13:34:01,022 [INFO] core.evaluator_v2: [streaming] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text discusses the use of denoisers in the con'
+2026-06-29 13:34:01,608 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 13:34:12,184 [INFO] core.evaluator_v2: [streaming] pred='The generative interactive model used in the method is the **C-GDBN** (Coupled Generative Discriminative Bayesian Networ'
+2026-06-29 13:34:20,900 [INFO] core.evaluator_v2: [streaming] pred='The text provided does not explicitly mention the purpose of an ICD (Implantable Cardioverter Defibrillator). However, b'
+2026-06-29 13:34:28,140 [INFO] core.evaluator_v2: [streaming] pred='The PLMS-PPIC method engages the **Normalized Least Mean Squares (NLMS)** algorithm.'
+2026-06-29 13:34:28,143 [INFO] core.evaluator_v2:   [5/50] avg=51.02
+2026-06-29 13:34:31,067 [INFO] core.evaluator_v2: [streaming] pred='In 2009, Brooksley Born received the Profiles in Courage Award.'
+2026-06-29 13:34:37,894 [INFO] core.evaluator_v2: [streaming] pred='A media application determines the context of an event by receiving user input, which may include specific information, '
+2026-06-29 13:34:44,918 [INFO] core.evaluator_v2: [streaming] pred='The sticking point in the political showdown over the budget is the proposed cuts to programs that support the poor, inc'
+2026-06-29 13:34:47,784 [INFO] core.evaluator_v2: [streaming] pred='Lindsborg.'
+2026-06-29 13:34:54,139 [INFO] core.evaluator_v2: [streaming] pred='The new Iraqi Body Count organization provides cover for the war and allows supporters of the illegal war to point to it'
+2026-06-29 13:34:54,141 [INFO] core.evaluator_v2:   [10/50] avg=44.69
+2026-06-29 13:35:00,916 [INFO] core.evaluator_v2: [streaming] pred="Accounting for path preference in the robot's belief update leads to a more stable decrease in belief entropy, allowing "
+2026-06-29 13:35:09,802 [INFO] core.evaluator_v2: [streaming] pred='It is important for the sides of the fuselage to be sloped (tumbled home) to ensure proper fit and function of the canop'
+2026-06-29 13:35:18,093 [INFO] core.evaluator_v2: [streaming] pred='The court in *In re Ferguson* concluded that the transformation prong of the Bilski test is not applicable to the claime'
+2026-06-29 13:35:21,290 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention the duration KSTP-FM 102.1 has been on the air.'
+2026-06-29 13:35:30,770 [INFO] core.evaluator_v2: [streaming] pred='Thalassemias are classified based on the type of globin chain affected (alpha or beta) and the genetic inheritance patte'
+2026-06-29 13:35:30,771 [INFO] core.evaluator_v2:   [15/50] avg=33.73
+2026-06-29 13:35:39,322 [INFO] core.evaluator_v2: [streaming] pred='The transition probability of the environment affects the learning rate in the static agent by influencing the rate at w'
+2026-06-29 13:35:50,733 [INFO] core.evaluator_v2: [streaming] pred='The experimental techniques used to study the quantum dot structures in this research include low-temperature scanning t'
+2026-06-29 13:35:53,243 [INFO] core.evaluator_v2: [streaming] pred='Margaret Way was born in Australia and died in Australia.'
+2026-06-29 13:36:03,840 [INFO] core.evaluator_v2: [streaming] pred='The two ground states observed for indeno[1,2-a]fluorene on NaCl surfaces are the neutral state and the anionic state.'
+2026-06-29 13:36:11,579 [INFO] core.evaluator_v2: [streaming] pred='The scoring engine generates a stream of content for the channel by categorizing new content items based on historical t'
+2026-06-29 13:36:11,581 [INFO] core.evaluator_v2:   [20/50] avg=33.56
+2026-06-29 13:36:11,972 [WARNING] core.model_loader: Input length 9212 > max 8192, truncating...
+2026-06-29 13:36:33,232 [INFO] core.evaluator_v2: [streaming] pred='The stability conditions for a solution of $-\\Delta u = f(u)$ are determined by the requirement that the solution satisf'
+2026-06-29 13:36:36,647 [INFO] core.evaluator_v2: [streaming] pred='McPherson County is located in the state of Kansas.'
+2026-06-29 13:36:45,242 [INFO] core.evaluator_v2: [streaming] pred='The main focus of the research paper is to study the nuclear transition and nuclear interactions in the context of latti'
+2026-06-29 13:36:56,556 [INFO] core.evaluator_v2: [streaming] pred='The security parameter for the AES-256 block cipher is 128.'
+2026-06-29 13:36:58,549 [INFO] core.evaluator_v2: [streaming] pred='The most active fan club is the South West Fans Club.'
+2026-06-29 13:36:58,555 [INFO] core.evaluator_v2:   [25/50] avg=33.58
+2026-06-29 13:37:00,828 [INFO] core.evaluator_v2: [streaming] pred='Based on the text, Margaret Way wrote **over 200 novels**.'
+2026-06-29 13:37:07,516 [INFO] core.evaluator_v2: [streaming] pred='The interlayer Berry connection polarizability is significant because it governs the geometric origin of the Hall effect'
+2026-06-29 13:37:15,474 [INFO] core.evaluator_v2: [streaming] pred='Wearable and ambient sensors.'
+2026-06-29 13:37:22,718 [INFO] core.evaluator_v2: [streaming] pred='Chitosan-DNA nanoparticles delivered by intrabiliary infusion enhance liver-targeted gene delivery, International Journa'
+2026-06-29 13:37:34,071 [INFO] core.evaluator_v2: [streaming] pred='The symptoms of vitamin K deficiency include bleeding tendencies, such as nosebleeds, blood in the urine or stool, and e'
+2026-06-29 13:37:34,072 [INFO] core.evaluator_v2:   [30/50] avg=35.04
+2026-06-29 13:37:40,178 [INFO] core.evaluator_v2: [streaming] pred="The text does not explicitly mention restrictions on the use of Broadjam's servers."
+2026-06-29 13:37:45,093 [INFO] core.evaluator_v2: [streaming] pred='The 2017 general election was held on 19 October 2017.'
+2026-06-29 13:37:52,933 [INFO] core.evaluator_v2: [streaming] pred='The text mentions "the strong molecular line emission, its high central gas temperatures and the observed outflow-disk s'
+2026-06-29 13:37:58,103 [INFO] core.evaluator_v2: [streaming] pred='Simon English became the leader of the National Party on 24 October 2017.'
+2026-06-29 13:38:06,083 [INFO] core.evaluator_v2: [streaming] pred="Governor Rick Scott cited privacy concerns, expressed skepticism about the monitoring program's effectiveness, and raise"
+2026-06-29 13:38:06,084 [INFO] core.evaluator_v2:   [35/50] avg=31.69
+2026-06-29 13:38:11,653 [INFO] core.evaluator_v2: [streaming] pred='The SI unit of power is the watt (W).'
+2026-06-29 13:38:17,734 [INFO] core.evaluator_v2: [streaming] pred='Craig wants to find his own place because he is struggling to calm down and is causing a lot of disruption in the househ'
+2026-06-29 13:38:24,919 [INFO] core.evaluator_v2: [streaming] pred='The decision to base water rates on usage reflected a desire for fairness, as it was argued that people who use more wat'
+2026-06-29 13:38:28,112 [INFO] core.evaluator_v2: [streaming] pred='McPherson County was established as a county in 1867.'
+2026-06-29 13:38:28,470 [WARNING] core.model_loader: Input length 8396 > max 8192, truncating...
+2026-06-29 13:38:41,648 [INFO] core.evaluator_v2: [streaming] pred='The proximity of superconductivity can significantly alter the Kondo effect, leading to a reduction in the Kondo tempera'
+2026-06-29 13:38:41,649 [INFO] core.evaluator_v2:   [40/50] avg=31.24
+2026-06-29 13:38:48,350 [INFO] core.evaluator_v2: [streaming] pred='The program chair of the conference is not explicitly mentioned in the provided text. However, the text mentions "Jim Wa'
+2026-06-29 13:38:53,350 [INFO] core.evaluator_v2: [streaming] pred='At dawn or dusk, the high resolution of what we focus on decreases.'
+2026-06-29 13:38:59,018 [INFO] core.evaluator_v2: [streaming] pred='The Director is responsible for carrying out the functions assigned under the act.'
+2026-06-29 13:39:11,803 [INFO] core.evaluator_v2: [streaming] pred='Potential applications of ferromagnetic semiconductors include spintronics, magnetic sensors, and quantum computing devi'
+2026-06-29 13:39:23,927 [INFO] core.evaluator_v2: [streaming] pred='The recommended daily intake of vitamin K for adult women and men is not explicitly stated in the provided text. However'
+2026-06-29 13:39:23,929 [INFO] core.evaluator_v2:   [45/50] avg=30.42
+2026-06-29 13:39:34,885 [INFO] core.evaluator_v2: [streaming] pred='Yes, DUO contains more instances per image than COCO.'
+2026-06-29 13:39:38,763 [INFO] core.evaluator_v2: [streaming] pred='The population of McPherson County according to the 2020 census was 18,666.'
+2026-06-29 13:39:42,132 [INFO] core.evaluator_v2: [streaming] pred='The paper was published in 2021.'
+2026-06-29 13:39:45,073 [INFO] core.evaluator_v2: [streaming] pred='The first white settlement in McPherson County was **Lindsborg**.'
+2026-06-29 13:39:52,998 [INFO] core.evaluator_v2: [streaming] pred='The reliance of artificial organisms on plasticity is controlled by factors such as environmental variability, the relia'
+2026-06-29 13:39:53,020 [INFO] core.evaluator_v2:   [50/50] avg=31.46
+2026-06-29 13:39:53,023 [INFO] __main__:   → score=31.46, mem_red=80.0%, ttft=2947.9ms
+2026-06-29 13:39:53,025 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 13:39:53,026 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-29 13:39:53,027 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 13:39:53,027 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-29 13:39:53,028 [INFO] core.evaluator_v2: [h2o] narrativeqa (50샘플, budget=20%)
+2026-06-29 13:40:00,016 [INFO] core.evaluator_v2: [h2o] pred='Daisy encountered Jim in the town of "Cincinnati."'
+2026-06-29 13:40:07,766 [INFO] core.evaluator_v2: [h2o] pred='Socrates ultimately decides it is unjust to escape because he believes in the principles of justice and the laws, and he'
+2026-06-29 13:40:24,103 [INFO] core.evaluator_v2: [h2o] pred='The setting of the story is the medieval castle of Drachenhausen, which is described as a place of ruin and decay, with '
+2026-06-29 13:40:30,034 [INFO] core.evaluator_v2: [h2o] pred='Baron Conrad was killed by Baron Henry of Roderburg of Trutz-Drachen.'
+2026-06-29 13:40:40,576 [INFO] core.evaluator_v2: [h2o] pred="The ghost that emerged from a painting at Dana's workplace was a beautiful painting in the high-Renaissance style depict"
+2026-06-29 13:40:40,578 [INFO] core.evaluator_v2:   [5/50] avg=6.04
+2026-06-29 13:40:47,932 [INFO] core.evaluator_v2: [h2o] pred='Dana.'
+2026-06-29 13:40:48,483 [WARNING] core.model_loader: Input length 8721 > max 8192, truncating...
+2026-06-29 13:40:58,138 [INFO] core.evaluator_v2: [h2o] pred="Clifford's profession is a cop."
+2026-06-29 13:41:04,454 [INFO] core.evaluator_v2: [h2o] pred='Mr. and Mrs. Vervelle live in Paris.'
+2026-06-29 13:41:10,367 [INFO] core.evaluator_v2: [h2o] pred='The body.'
+2026-06-29 13:41:15,579 [INFO] core.evaluator_v2: [h2o] pred='Frank Saltram is a writer.'
+2026-06-29 13:41:15,582 [INFO] core.evaluator_v2:   [10/50] avg=4.84
+2026-06-29 13:41:22,492 [INFO] core.evaluator_v2: [h2o] pred='Mortimer Tregennis was once estranged from his siblings due to his involvement in a criminal act, which was the murder o'
+2026-06-29 13:41:32,295 [INFO] core.evaluator_v2: [h2o] pred='The unique aspect of the phonetic spelling of the "future" article is that it is not explicitly stated in the text. Howe'
+2026-06-29 13:41:38,604 [INFO] core.evaluator_v2: [h2o] pred='Death is disguised as a star.'
+2026-06-29 13:41:44,056 [INFO] core.evaluator_v2: [h2o] pred='Lady Coxon is the wife of Mr. Saltram.'
+2026-06-29 13:41:49,048 [INFO] core.evaluator_v2: [h2o] pred='The war in which Rogers learned his battle knowledge was the "Second War."'
+2026-06-29 13:41:49,059 [INFO] core.evaluator_v2:   [15/50] avg=8.84
+2026-06-29 13:41:53,845 [INFO] core.evaluator_v2: [h2o] pred='Anthony Rogers was working for the American Gas Corporation in 1927.'
+2026-06-29 13:42:00,262 [INFO] core.evaluator_v2: [h2o] pred='The boarder who realizes that none of the boarders like each other is the young woman from New England. She is described'
+2026-06-29 13:42:05,741 [INFO] core.evaluator_v2: [h2o] pred='Holmes and Dr. Watson are in Cornwall to investigate the mysterious death of Mrs. Porter, a local housekeeper, and to so'
+2026-06-29 13:42:15,030 [INFO] core.evaluator_v2: [h2o] pred='The hidden message Reiko finds within the video is that the curse can be broken by making a copy of the video and showin'
+2026-06-29 13:42:21,511 [INFO] core.evaluator_v2: [h2o] pred='- Justice and redemption\n- The power of mercy and forgiveness\n- The importance of family and loyalty\n- The value of wisd'
+2026-06-29 13:42:21,524 [INFO] core.evaluator_v2:   [20/50] avg=8.70
+2026-06-29 13:42:30,705 [INFO] core.evaluator_v2: [h2o] pred='The teenagers were discussing a cursed videotape that could cause death if watched. They were discussing the ritual of m'
+2026-06-29 13:42:41,403 [INFO] core.evaluator_v2: [h2o] pred='Bill worked in a mill.'
+2026-06-29 13:42:47,310 [INFO] core.evaluator_v2: [h2o] pred='1. The vicar, Mr. Tregennis, and his sister, Brenda, were the only ones who fainted.'
+2026-06-29 13:42:53,509 [INFO] core.evaluator_v2: [h2o] pred='Otto is known for his wisdom and the pure, simple teachings he received from the monks of the White Cross on the hill.'
+2026-06-29 13:43:00,285 [INFO] core.evaluator_v2: [h2o] pred='Leon focuses on the characteristics and behaviors of Americans, particularly their cultural and social traits, as well a'
+2026-06-29 13:43:00,287 [INFO] core.evaluator_v2:   [25/50] avg=12.05
+2026-06-29 13:43:05,679 [INFO] core.evaluator_v2: [h2o] pred='The owner of the manor in the story is Madame de Merret.'
+2026-06-29 13:43:13,116 [INFO] core.evaluator_v2: [h2o] pred='Reiko is a nurse.'
+2026-06-29 13:43:18,111 [INFO] core.evaluator_v2: [h2o] pred='Holmes observes a burning candle in the fireplace.'
+2026-06-29 13:43:23,486 [INFO] core.evaluator_v2: [h2o] pred='Socrates compares citizens and the law to a city and its laws, where the citizens are the people and the laws are the ru'
+2026-06-29 13:43:32,321 [INFO] core.evaluator_v2: [h2o] pred='La Grande Breteche is a novel by Honore de Balzac, which is part of the "Human Comedy" series. It is a story about the l'
+2026-06-29 13:43:32,323 [INFO] core.evaluator_v2:   [30/50] avg=16.15
+2026-06-29 13:43:41,836 [INFO] core.evaluator_v2: [h2o] pred='Reiko discovers that making a copy of the videotape and showing it to someone else within a week saves viewers from thei'
+2026-06-29 13:43:47,454 [INFO] core.evaluator_v2: [h2o] pred='"Madame Vervelle."'
+2026-06-29 13:43:54,711 [INFO] core.evaluator_v2: [h2o] pred='The text does not mention anyone defending Lazarus during his murder trial. The story focuses on Doctor Nordenfeld and h'
+2026-06-29 13:44:02,626 [INFO] core.evaluator_v2: [h2o] pred='Tomoko watches a video that contains a cursed message, which leads to her death. She is infected by the curse and eventu'
+2026-06-29 13:44:08,916 [INFO] core.evaluator_v2: [h2o] pred='Venus.'
+2026-06-29 13:44:08,919 [INFO] core.evaluator_v2:   [35/50] avg=15.52
+2026-06-29 13:44:15,775 [INFO] core.evaluator_v2: [h2o] pred="Oscar is Dana's baby."
+2026-06-29 13:44:22,510 [INFO] core.evaluator_v2: [h2o] pred='The Baron Conrad is found on a litter, severely injured and with a great red stain on his body. The Baroness is shocked '
+2026-06-29 13:44:28,763 [INFO] core.evaluator_v2: [h2o] pred="T.K. Nupton thought that Soames' existence was a figment of the author's imagination."
+2026-06-29 13:44:38,246 [INFO] core.evaluator_v2: [h2o] pred='The wealthy farmer, Bill, marries Abby.'
+2026-06-29 13:44:45,034 [INFO] core.evaluator_v2: [h2o] pred='The art-dealer describes Grassou\'s skill level to Virginie\'s father as "a great painter."'
+2026-06-29 13:44:45,046 [INFO] core.evaluator_v2:   [40/50] avg=15.27
+2026-06-29 13:45:12,144 [INFO] core.evaluator_v2: [h2o] pred='The Witch was able to perceive the inner beauty and soul of mankind, seeing beyond their physical appearances and into t'
+2026-06-29 13:45:17,439 [INFO] core.evaluator_v2: [h2o] pred="Mary's mother filled her free time by reading to her."
+2026-06-29 13:45:23,372 [INFO] core.evaluator_v2: [h2o] pred="Crito's visit was to persuade Socrates to escape from prison, in order to avoid the wrath of the laws and to preserve hi"
+2026-06-29 13:45:31,660 [INFO] core.evaluator_v2: [h2o] pred='The teens\' faces were described as having a "single EYE burns with manic, unbridled hatred" and "a grimace as he SCREAMS'
+2026-06-29 13:45:41,943 [INFO] core.evaluator_v2: [h2o] pred='Bill dies from a gunshot wound to the chest.'
+2026-06-29 13:45:41,954 [INFO] core.evaluator_v2:   [45/50] avg=14.41
+2026-06-29 13:45:47,579 [INFO] core.evaluator_v2: [h2o] pred='Gravener wants Ruth to read the letter.'
+2026-06-29 13:45:47,958 [WARNING] core.model_loader: Input length 8722 > max 8192, truncating...
+2026-06-29 13:45:57,558 [INFO] core.evaluator_v2: [h2o] pred="Alabama's son is born in Beverly Hills."
+2026-06-29 13:46:02,496 [INFO] core.evaluator_v2: [h2o] pred='British.'
+2026-06-29 13:46:12,883 [INFO] core.evaluator_v2: [h2o] pred='Ursula.'
+2026-06-29 13:46:19,321 [INFO] core.evaluator_v2: [h2o] pred="The housekeeper's feet got wet during Holmes' visit because he stumbled over the watering-pot, upset its contents, and t"
+2026-06-29 13:46:19,325 [INFO] core.evaluator_v2:   [50/50] avg=13.56
+2026-06-29 13:46:19,325 [INFO] __main__:   → score=13.56, mem_red=80.0%, ttft=3402.5ms
+2026-06-29 13:46:19,326 [INFO] __main__: 
+  Task: qasper
+2026-06-29 13:46:19,327 [INFO] core.evaluator_v2: [h2o] qasper (50샘플, budget=20%)
+2026-06-29 13:46:27,328 [INFO] core.evaluator_v2: [h2o] pred='The proposed strategies, when applied, show that the knowledge graph is a critical component in the decision-making proc'
+2026-06-29 13:46:47,742 [INFO] core.evaluator_v2: [h2o] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-29 13:46:51,073 [INFO] core.evaluator_v2: [h2o] pred='The text does not provide the size of the Augmented LibriSpeech dataset.'
+2026-06-29 13:46:58,436 [INFO] core.evaluator_v2: [h2o] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network Layers, Loss Function, Metric, Mod'
+2026-06-29 13:47:03,953 [INFO] core.evaluator_v2: [h2o] pred='The LSTM models compared are the 6-layer and 9-layer models.'
+2026-06-29 13:47:03,955 [INFO] core.evaluator_v2:   [5/50] avg=7.85
+2026-06-29 13:47:10,833 [INFO] core.evaluator_v2: [h2o] pred='The datasets used for evaluation are CNN/DailyMail, NYT, and XSum.'
+2026-06-29 13:47:14,775 [INFO] core.evaluator_v2: [h2o] pred='The RNN layer works better in this scenario. The text suggests that the RNN layer is more effective in this context.'
+2026-06-29 13:47:20,599 [INFO] core.evaluator_v2: [h2o] pred='The ancient Chinese dataset is derived from an external ancient corpus containing 134 million tokens.'
+2026-06-29 13:47:28,468 [INFO] core.evaluator_v2: [h2o] pred='Pointer-Gen, Pointer-Gen+RL-ROUGE, Pointer-Gen+RL-SEN, and Pointer-Gen+ARL-SEN.'
+2026-06-29 13:47:33,017 [INFO] core.evaluator_v2: [h2o] pred='1,833 Twitter conversation threads.'
+2026-06-29 13:47:33,032 [INFO] core.evaluator_v2:   [10/50] avg=20.44
+2026-06-29 13:47:41,806 [INFO] core.evaluator_v2: [h2o] pred='The text does not provide a specific percentage or amount of improvement. It only mentions that the best performance is '
+2026-06-29 13:48:07,303 [INFO] core.evaluator_v2: [h2o] pred='The metrics used to establish that this makes chatbots more knowledgeable and better at learning and conversation are th'
+2026-06-29 13:48:13,568 [INFO] core.evaluator_v2: [h2o] pred='The combination of rewards for reinforcement learning is the harmonic mean of irony reward and sentiment reward.'
+2026-06-29 13:48:21,054 [INFO] core.evaluator_v2: [h2o] pred='The attention module is pretrained on the MT dataset.'
+2026-06-29 13:48:26,370 [INFO] core.evaluator_v2: [h2o] pred='The size of the dataset is not explicitly stated in the text. However, it is mentioned that the OurNepali dataset is alm'
+2026-06-29 13:48:26,376 [INFO] core.evaluator_v2:   [15/50] avg=19.44
+2026-06-29 13:48:33,543 [INFO] core.evaluator_v2: [h2o] pred='The Wall Street Journal (WSJ) and the Penn Treebank (PTB).'
+2026-06-29 13:48:40,151 [INFO] core.evaluator_v2: [h2o] pred='The model is compared to term frequency methods and learned classifiers.'
+2026-06-29 13:48:42,986 [INFO] core.evaluator_v2: [h2o] pred='The text mentions that the Nguni languages and the Sotho languages are similar to each other.'
+2026-06-29 13:48:46,180 [INFO] core.evaluator_v2: [h2o] pred='The 7 Indian languages are Kannada, Malayalam, Odia, Tamil, Telugu, and Hindi.'
+2026-06-29 13:48:50,525 [INFO] core.evaluator_v2: [h2o] pred='The text does not explicitly mention other tasks that were tested. The focus is on the hashtag prediction task and the c'
+2026-06-29 13:48:50,554 [INFO] core.evaluator_v2:   [20/50] avg=25.19
+2026-06-29 13:48:59,204 [INFO] core.evaluator_v2: [h2o] pred='The tagging scheme employed is a novel tagging scheme that incorporates the constraint that each text in our corpora con'
+2026-06-29 13:49:06,442 [INFO] core.evaluator_v2: [h2o] pred='The text considers the task of text classification, specifically the task of classifying documents into one of two class'
+2026-06-29 13:49:32,494 [INFO] core.evaluator_v2: [h2o] pred='The effectiveness of the NCEL approach is demonstrated through its ability to handle complex tasks with high time comple'
+2026-06-29 13:49:37,689 [INFO] core.evaluator_v2: [h2o] pred='The text does not explicitly mention which methods are considered to find examples of biases and unwarranted inferences.'
+2026-06-29 13:49:48,160 [INFO] core.evaluator_v2: [h2o] pred='The corpus consists of 53 documents, which contain an average of 156 sentences, with a total of 156 sentences. The corpu'
+2026-06-29 13:49:48,168 [INFO] core.evaluator_v2:   [25/50] avg=21.65
+2026-06-29 13:49:54,641 [INFO] core.evaluator_v2: [h2o] pred='The individual model consists of the Bayesian model for semantic role induction (SRI) that uses crosslingual latent vari'
+2026-06-29 13:50:19,441 [INFO] core.evaluator_v2: [h2o] pred='The text provides the following stylistic features: \n\n1. Lexical features: \n   - 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. '
+2026-06-29 13:50:25,174 [INFO] core.evaluator_v2: [h2o] pred='48%'
+2026-06-29 13:50:46,593 [INFO] core.evaluator_v2: [h2o] pred='The dataset presented to the subjects was a multimodal dataset, which included stimulus information, which was to be pro'
+2026-06-29 13:50:55,208 [INFO] core.evaluator_v2: [h2o] pred='The dataset is annotated with 1) no evidence of depression (n=6,829 tweets) and 2) evidence of depression (n=2,644 tweet'
+2026-06-29 13:50:55,223 [INFO] core.evaluator_v2:   [30/50] avg=19.67
+2026-06-29 13:50:59,019 [INFO] core.evaluator_v2: [h2o] pred='The text does not explicitly describe how words are matched before reordering. It focuses on the impact of word order di'
+2026-06-29 13:51:08,422 [INFO] core.evaluator_v2: [h2o] pred='No, the text does not report results only on English data. The text mentions experiments on three datasets: FSD (social '
+2026-06-29 13:51:28,446 [INFO] core.evaluator_v2: [h2o] pred='The text mentions the use of GloVe embeddings and Edinburgh embeddings. The final feature vector is a combination of wor'
+2026-06-29 13:51:33,961 [INFO] core.evaluator_v2: [h2o] pred='No, the text does not mention the use of pretrained embeddings.'
+2026-06-29 13:51:41,552 [INFO] core.evaluator_v2: [h2o] pred='The ensemble method used is a greedy approach where the best-performing model is initially selected. Then, in each step,'
+2026-06-29 13:51:41,556 [INFO] core.evaluator_v2:   [35/50] avg=16.92
+2026-06-29 13:52:02,024 [INFO] core.evaluator_v2: [h2o] pred='Yes, the model uses attention. The memory generation layer uses attention to fuse passages and questions, and the span d'
+2026-06-29 13:52:22,610 [INFO] core.evaluator_v2: [h2o] pred='The language model architectures used are the transformer model with the sequence to sequence architecture and the abstr'
+2026-06-29 13:52:30,899 [INFO] core.evaluator_v2: [h2o] pred='No, the text does not restrict the analysis to English data. The analysis is conducted across multiple languages, as evi'
+2026-06-29 13:52:37,170 [INFO] core.evaluator_v2: [h2o] pred='The clinical datasets used in the paper are NUBes-PHI and MEDDOCAN.'
+2026-06-29 13:52:43,793 [INFO] core.evaluator_v2: [h2o] pred='No. The dataset of 1,000 randomly selected tweets contains more than twice as many tweets about Trump than about the oth'
+2026-06-29 13:52:43,796 [INFO] core.evaluator_v2:   [40/50] avg=15.87
+2026-06-29 13:52:54,259 [INFO] core.evaluator_v2: [h2o] pred='Yes, it is possible to convert cloze-style questions into naturally-looking questions. The text discusses the process of'
+2026-06-29 13:53:09,694 [INFO] core.evaluator_v2: [h2o] pred='The text evaluates the proposed model on four machine translation tasks. The evaluation is done using the standard metri'
+2026-06-29 13:53:18,147 [INFO] core.evaluator_v2: [h2o] pred='The additional features and context proposed in the text are:\n\n1. Context tweets (to be used in classification and predi'
+2026-06-29 13:53:23,141 [INFO] core.evaluator_v2: [h2o] pred='20,000'
+2026-06-29 13:53:26,529 [INFO] core.evaluator_v2: [h2o] pred='The text does not explicitly mention which Chinese datasets were used.'
+2026-06-29 13:53:26,530 [INFO] core.evaluator_v2:   [45/50] avg=16.75
+2026-06-29 13:53:32,190 [INFO] core.evaluator_v2: [h2o] pred='Logistic Regression and Neural Networks.'
+2026-06-29 13:53:38,382 [INFO] core.evaluator_v2: [h2o] pred='The paper studies English.'
+2026-06-29 13:53:59,793 [INFO] core.evaluator_v2: [h2o] pred='The proposed approach, which uses a KL divergence based energy function for learning multi-sense word embeddings distrib'
+2026-06-29 13:54:06,127 [INFO] core.evaluator_v2: [h2o] pred='The ML methods aim to identify argument components such as claims, premises, and objections.'
+2026-06-29 13:54:14,200 [INFO] core.evaluator_v2: [h2o] pred='The resulting annotated data is higher quality when expert annotations are used for the most difficult instances. The mo'
+2026-06-29 13:54:14,231 [INFO] core.evaluator_v2:   [50/50] avg=18.65
+2026-06-29 13:54:14,234 [INFO] __main__:   → score=18.65, mem_red=80.0%, ttft=2241.5ms
+2026-06-29 13:54:14,235 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-29 13:54:14,237 [INFO] core.evaluator_v2: [h2o] multifieldqa_en (50샘플, budget=20%)
+2026-06-29 13:54:21,423 [INFO] core.evaluator_v2: [h2o] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-29 13:54:46,716 [INFO] core.evaluator_v2: [h2o] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text indicates that the denoiser can be applie'
+2026-06-29 13:54:47,377 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 13:54:57,624 [INFO] core.evaluator_v2: [h2o] pred='The generative interactive model used in the method is the Coupled GDBN (C-GDBN).'
+2026-06-29 13:55:06,788 [INFO] core.evaluator_v2: [h2o] pred='The purpose of an ICD (Implantable Cardioverter Defibrillator) is to monitor and treat life-threatening heart rhythms, s'
+2026-06-29 13:55:13,773 [INFO] core.evaluator_v2: [h2o] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-29 13:55:13,775 [INFO] core.evaluator_v2:   [5/50] avg=29.35
+2026-06-29 13:55:18,012 [INFO] core.evaluator_v2: [h2o] pred='In 2009, Brooksley Born was awarded the John F. Kennedy Profiles in Courage Award for her "political courage she demonst'
+2026-06-29 13:55:42,966 [INFO] core.evaluator_v2: [h2o] pred='A media application determines the context of an event by using content recognition to identify and extract relevant inf'
+2026-06-29 13:56:07,526 [INFO] core.evaluator_v2: [h2o] pred='The sticking point in the political showdown over the budget is the disagreement over spending cuts, with some members o'
+2026-06-29 13:56:10,686 [INFO] core.evaluator_v2: [h2o] pred='The county seat of McPherson County is McPherson.'
+2026-06-29 13:56:17,310 [INFO] core.evaluator_v2: [h2o] pred='The new Iraqi Body Count organization provides cover for the war and allows supporters of the illegal war to point to it'
+2026-06-29 13:56:17,313 [INFO] core.evaluator_v2:   [10/50] avg=29.78
+2026-06-29 13:56:24,003 [INFO] core.evaluator_v2: [h2o] pred="Accounting for path preference in the robot's model reduces the belief entropy over the goal distribution, leading to mo"
+2026-06-29 13:56:30,687 [INFO] core.evaluator_v2: [h2o] pred='It is important for the sides of the fuselage to be sloped (tumbled home) to ensure proper clearance and fit for the can'
+2026-06-29 13:56:40,570 [INFO] core.evaluator_v2: [h2o] pred='The court in In re Ferguson concluded that the transformation prong of the Bilski test was not satisfied. The court held'
+2026-06-29 13:56:43,961 [INFO] core.evaluator_v2: [h2o] pred='The text does not provide a specific number of years that KSTP-FM 102.1 has been on the air.'
+2026-06-29 13:56:51,836 [INFO] core.evaluator_v2: [h2o] pred='Thalassemias are classified based on the chain of hemoglobin affected, primarily α-thalassemia and β-thalassemia.'
+2026-06-29 13:56:51,854 [INFO] core.evaluator_v2:   [15/50] avg=24.18
+2026-06-29 13:57:01,193 [INFO] core.evaluator_v2: [h2o] pred='The transition probability of the environment affects the learning rate in the static agent by determining the rate at w'
+2026-06-29 13:57:12,887 [INFO] core.evaluator_v2: [h2o] pred='The experimental techniques used to study the quantum dot structures in this research were low-temperature scanning tunn'
+2026-06-29 13:57:15,216 [INFO] core.evaluator_v2: [h2o] pred=''
+2026-06-29 13:57:26,416 [INFO] core.evaluator_v2: [h2o] pred='The two ground states observed for indeno[1,2-a]fluorene on NaCl surfaces are: 1) an open-shell electronic configuration'
+2026-06-29 13:57:35,564 [INFO] core.evaluator_v2: [h2o] pred='The scoring engine generates a stream of content for the channel by analyzing and categorizing new content items based o'
+2026-06-29 13:57:35,565 [INFO] core.evaluator_v2:   [20/50] avg=22.08
+2026-06-29 13:57:36,112 [WARNING] core.model_loader: Input length 9212 > max 8192, truncating...
+2026-06-29 13:57:51,581 [INFO] core.evaluator_v2: [h2o] pred='The stability conditions for a solution of $-\\Delta u = f(u)$ are that the solution must be stable under small perturbat'
+2026-06-29 13:57:54,933 [INFO] core.evaluator_v2: [h2o] pred='McPherson County is located in the state of Kansas.'
+2026-06-29 13:58:03,914 [INFO] core.evaluator_v2: [h2o] pred='The main focus of the research paper is to study the strong coupling limit of lattice QCD, with an emphasis on the nucle'
+2026-06-29 13:58:15,122 [INFO] core.evaluator_v2: [h2o] pred='The security parameter for the AES-256 block cipher is 172.'
+2026-06-29 13:58:17,568 [INFO] core.evaluator_v2: [h2o] pred='South West Ultras fan club.'
+2026-06-29 13:58:17,570 [INFO] core.evaluator_v2:   [25/50] avg=26.96
+2026-06-29 13:58:37,272 [INFO] core.evaluator_v2: [h2o] pred='1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. '
+2026-06-29 13:58:45,527 [INFO] core.evaluator_v2: [h2o] pred='The interlayer Berry connection polarizability is significant in the context of the crossed nonlinear dynamical intrinsi'
+2026-06-29 13:58:55,041 [INFO] core.evaluator_v2: [h2o] pred='Wearable and ambient sensors, such as electrodermal activity (EDA) and heart rate variability (HRV) sensors, are now cap'
+2026-06-29 13:59:03,775 [INFO] core.evaluator_v2: [h2o] pred='Chew, S. Y. and Hufnagel, T. C. and Lim, C. T. and Leong, K. W., Mechanical properties of single electrospun drug-encaps'
+2026-06-29 13:59:14,888 [INFO] core.evaluator_v2: [h2o] pred='Symptoms of vitamin K deficiency include coagulation disorders, such as bleeding tendencies, and an increased risk of bl'
+2026-06-29 13:59:14,893 [INFO] core.evaluator_v2:   [30/50] avg=25.43
+2026-06-29 13:59:21,308 [INFO] core.evaluator_v2: [h2o] pred="The text does not explicitly mention restrictions on the use of Broadjam's servers. It focuses on payment terms, subscri"
+2026-06-29 13:59:26,420 [INFO] core.evaluator_v2: [h2o] pred='The 2017 general election was held on 23 September 2017.'
+2026-06-29 13:59:30,632 [INFO] core.evaluator_v2: [h2o] pred='21 massive star-forming regions were studied.'
+2026-06-29 13:59:35,712 [INFO] core.evaluator_v2: [h2o] pred='Simon English became the leader of the National Party on 24 October 2017.'
+2026-06-29 13:59:43,979 [INFO] core.evaluator_v2: [h2o] pred="Governor Rick Scott cited privacy concerns, expressed skepticism about the monitoring program's effectiveness, and raise"
+2026-06-29 13:59:43,980 [INFO] core.evaluator_v2:   [35/50] avg=25.27
+2026-06-29 13:59:49,458 [INFO] core.evaluator_v2: [h2o] pred='The SI unit of power is the watt (W).'
+2026-06-29 14:00:12,529 [INFO] core.evaluator_v2: [h2o] pred='Craig wants to find his own place because he is not getting the attention he needs from his parents. He is not being lis'
+2026-06-29 14:00:27,391 [INFO] core.evaluator_v2: [h2o] pred='The decision to base the water rates on usage reflected a fair and equitable approach to housing development, where the '
+2026-06-29 14:00:48,744 [INFO] core.evaluator_v2: [h2o] pred='The text does not explicitly state when McPherson County was established as a county. The text provides information abou'
+2026-06-29 14:00:49,035 [WARNING] core.model_loader: Input length 8396 > max 8192, truncating...
+2026-06-29 14:01:01,201 [INFO] core.evaluator_v2: [h2o] pred='The proximity of superconductivity significantly reduces the Kondo temperature $T_K$, leading to a decrease in the secon'
+2026-06-29 14:01:01,226 [INFO] core.evaluator_v2:   [40/50] avg=23.01
+2026-06-29 14:01:05,950 [INFO] core.evaluator_v2: [h2o] pred='Peter.'
+2026-06-29 14:01:10,912 [INFO] core.evaluator_v2: [h2o] pred='The high resolution of what we focus on at dawn or dusk is diminished.'
+2026-06-29 14:01:16,436 [INFO] core.evaluator_v2: [h2o] pred='The Director.'
+2026-06-29 14:01:27,606 [INFO] core.evaluator_v2: [h2o] pred='Ferromagnetic semiconductors have potential applications in spintronics and magnetic memory devices.'
+2026-06-29 14:01:37,478 [INFO] core.evaluator_v2: [h2o] pred='The recommended daily intake of vitamin K for adult women and men is 120 micrograms (mcg).'
+2026-06-29 14:01:37,481 [INFO] core.evaluator_v2:   [45/50] avg=23.79
+2026-06-29 14:01:48,711 [INFO] core.evaluator_v2: [h2o] pred='No, DUO does not contain more instances per image than COCO.'
+2026-06-29 14:01:52,640 [INFO] core.evaluator_v2: [h2o] pred='The population of McPherson County according to the 2020 census was 2000.'
+2026-06-29 14:01:56,105 [INFO] core.evaluator_v2: [h2o] pred='The paper was published in 2023.'
+2026-06-29 14:02:17,729 [INFO] core.evaluator_v2: [h2o] pred='First white settlement in McPherson County: 1867.  The first white settlement in McPherson County was 1867.  The first w'
+2026-06-29 14:02:27,041 [INFO] core.evaluator_v2: [h2o] pred='The factors that control the reliance of artificial organisms on plasticity are the environmental variability, the relia'
+2026-06-29 14:02:27,043 [INFO] core.evaluator_v2:   [50/50] avg=24.11
+2026-06-29 14:02:27,043 [INFO] __main__:   → score=24.11, mem_red=80.0%, ttft=3009.7ms
+2026-06-29 14:02:27,044 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 14:02:27,045 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-29 14:02:27,045 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 14:02:27,047 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-29 14:02:27,047 [INFO] core.evaluator_v2: [snapkv] narrativeqa (50샘플, budget=20%)
+2026-06-29 14:02:34,182 [INFO] core.evaluator_v2: [snapkv] pred='Daisy encountered Jim in the town of Clark.'
+2026-06-29 14:02:58,728 [INFO] core.evaluator_v2: [snapkv] pred='Socrates ultimately decides it is unjust to escape because he believes in the justice of the laws and the rights of the '
+2026-06-29 14:03:23,691 [INFO] core.evaluator_v2: [snapkv] pred='The setting of the story is the medieval castle of Drachenhausen, with its bleak, gray, and chill surroundings, and the '
+2026-06-29 14:03:28,895 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:03:36,619 [INFO] core.evaluator_v2: [snapkv] pred="The ghost that emerged from a painting at Dana's workplace was Vigo."
+2026-06-29 14:03:36,622 [INFO] core.evaluator_v2:   [5/50] avg=4.15
+2026-06-29 14:03:44,338 [INFO] core.evaluator_v2: [snapkv] pred='Dana.'
+2026-06-29 14:03:44,933 [WARNING] core.model_loader: Input length 8721 > max 8192, truncating...
+2026-06-29 14:03:54,607 [INFO] core.evaluator_v2: [snapkv] pred="Clifford's profession is a police officer."
+2026-06-29 14:04:07,913 [INFO] core.evaluator_v2: [snapkv] pred='Mr. and Mrs. Vervelle live in the city of Paris, where they are famed for their collection of paintings. The two of them'
+2026-06-29 14:04:23,966 [INFO] core.evaluator_v2: [snapkv] pred='Answer: The Witch threw the coffin (of her deceased body) into a ditch.'
+2026-06-29 14:04:29,322 [INFO] core.evaluator_v2: [snapkv] pred='Frank Saltram is a writer.'
+2026-06-29 14:04:29,324 [INFO] core.evaluator_v2:   [10/50] avg=4.20
+2026-06-29 14:04:53,872 [INFO] core.evaluator_v2: [snapkv] pred='Mortimer Trefinnis was once estranged from his siblings because of a conflict in which he was involved. The text explain'
+2026-06-29 14:05:01,821 [INFO] core.evaluator_v2: [snapkv] pred='The unique aspect of the phonetic spelling of the "future" article that discussed Beerbohm\'s story is that it is spelled'
+2026-06-29 14:05:08,198 [INFO] core.evaluator_v2: [snapkv] pred='Death is disguised as a painter.'
+2026-06-29 14:05:13,725 [INFO] core.evaluator_v2: [snapkv] pred='Lady Coxon is the wife of Mr. Saltram.'
+2026-06-29 14:05:19,164 [INFO] core.evaluator_v2: [snapkv] pred='Rogers learned his battle knowledge during the Second War of Independence.'
+2026-06-29 14:05:19,165 [INFO] core.evaluator_v2:   [15/50] avg=7.14
+2026-06-29 14:05:25,076 [INFO] core.evaluator_v2: [snapkv] pred='Anthony Rogers was working for the American Radio Gas Corporation.'
+2026-06-29 14:05:29,657 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:05:56,196 [INFO] core.evaluator_v2: [snapkv] pred='Holmes and Dr. Watson are in Cornwall to investigate a mysterious and tragic event that has been described in the text. '
+2026-06-29 14:06:04,976 [INFO] core.evaluator_v2: [snapkv] pred='Reiko finds the hidden message that the video is a cursed tape, and that copying it and showing it to someone else is th'
+2026-06-29 14:06:30,061 [INFO] core.evaluator_v2: [snapkv] pred='The story contains themes of the one, the, and the, and the, and the, and the, and the, and the, and the, and the, and t'
+2026-06-29 14:06:30,064 [INFO] core.evaluator_v2:   [20/50] avg=6.40
+2026-06-29 14:06:39,224 [INFO] core.evaluator_v2: [snapkv] pred='The teenagers were discussing a video.'
+2026-06-29 14:06:50,020 [INFO] core.evaluator_v2: [snapkv] pred='Bill worked in a Chicago mill.'
+2026-06-29 14:07:14,707 [INFO] core.evaluator_v2: [snapkv] pred='Answer: 2 people fainted after seeing Brenda\'s dead body. "I saw him, and I saw him, and I saw him, and I saw him, and I'
+2026-06-29 14:07:21,392 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:07:49,597 [INFO] core.evaluator_v2: [snapkv] pred='Leon focuses on the language and the culture of the Americans, and he is fascinated by the American variety of the langu'
+2026-06-29 14:07:49,633 [INFO] core.evaluator_v2:   [25/50] avg=8.36
+2026-06-29 14:07:54,901 [INFO] core.evaluator_v2: [snapkv] pred='The owner of the manor in the story is Madame de Merret.'
+2026-06-29 14:08:04,839 [INFO] core.evaluator_v2: [snapkv] pred="Reiko's job is not explicitly stated in the text, but based on the context provided, it can be inferred that Reiko is in"
+2026-06-29 14:08:11,144 [INFO] core.evaluator_v2: [snapkv] pred="The fireplace was not the focus of Holmes' observations. The text does not describe what Holmes observed in the fireplac"
+2026-06-29 14:08:35,044 [INFO] core.evaluator_v2: [snapkv] pred='Socrates compares citizens and the law to a ship and a sailor, who are not always able to navigate the best course of ac'
+2026-06-29 14:09:00,494 [INFO] core.evaluator_v2: [snapkv] pred='La Grande Breteche is a little domain, held in the same country, and held in the same country, and held in the same coun'
+2026-06-29 14:09:00,496 [INFO] core.evaluator_v2:   [30/50] avg=9.76
+2026-06-29 14:09:10,157 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:09:15,687 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:09:21,600 [INFO] core.evaluator_v2: [snapkv] pred='The text does not mention a character named Lazarus or a murder trial. Therefore, there is no character in the text who '
+2026-06-29 14:09:50,289 [INFO] core.evaluator_v2: [snapkv] pred='Tomoko is taken to the kitchen, where she pours a glass of water and sits down. She looks at the phone, then at the glas'
+2026-06-29 14:09:57,037 [INFO] core.evaluator_v2: [snapkv] pred='The Witch wanted the priests to reveal their own lies.'
+2026-06-29 14:09:57,038 [INFO] core.evaluator_v2:   [35/50] avg=8.41
+2026-06-29 14:10:03,696 [INFO] core.evaluator_v2: [snapkv] pred="Oscar is Dana's baby."
+2026-06-29 14:10:08,945 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:10:22,150 [INFO] core.evaluator_v2: [snapkv] pred="T.K. Nupton thought that Soames' existence was a figment of the author's imagination. The text suggests that Nupton's bo"
+2026-06-29 14:10:31,606 [INFO] core.evaluator_v2: [snapkv] pred='The wealthy farmer, Benson, marries Abby.'
+2026-06-29 14:10:40,736 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:10:40,739 [INFO] core.evaluator_v2:   [40/50] avg=8.30
+2026-06-29 14:10:49,553 [INFO] core.evaluator_v2: [snapkv] pred='The Witch was able to perceive the inner beauty and soul of mankind, seeing beyond their physical appearances to the nak'
+2026-06-29 14:10:55,267 [INFO] core.evaluator_v2: [snapkv] pred='When Mary was younger, her mother filled her free time with reading and, in the, with the help of the text.'
+2026-06-29 14:11:00,969 [INFO] core.evaluator_v2: [snapkv] pred="Answer: The purpose of Crito's visit was to assist him in escaping from prison, and to persuade him to do so."
+2026-06-29 14:11:11,035 [INFO] core.evaluator_v2: [snapkv] pred='The teens faces when they died were described as having a "single EYE burns with manic, unbridled hatred" and "a grimace'
+2026-06-29 14:11:21,314 [INFO] core.evaluator_v2: [snapkv] pred='Bill was shot by Benson.'
+2026-06-29 14:11:21,316 [INFO] core.evaluator_v2:   [45/50] avg=9.71
+2026-06-29 14:11:27,052 [INFO] core.evaluator_v2: [snapkv] pred='Gravener wants Ruth to read the letter.'
+2026-06-29 14:11:27,591 [WARNING] core.model_loader: Input length 8722 > max 8192, truncating...
+2026-06-29 14:11:37,265 [INFO] core.evaluator_v2: [snapkv] pred="Alabama's son is born in the United States."
+2026-06-29 14:11:45,533 [INFO] core.evaluator_v2: [snapkv] pred="The text does not explicitly state Ruth Anvoy's nationality. However, the context and the names of the characters sugges"
+2026-06-29 14:11:58,078 [INFO] core.evaluator_v2: [snapkv] pred='Ursula leaves Chicago with George, the pilot.'
+2026-06-29 14:12:04,283 [INFO] core.evaluator_v2: [snapkv] pred="The housekeeper's feet got wet during Holmes' visit because of the gravel upon the window-sill, which was the starting-p"
+2026-06-29 14:12:04,285 [INFO] core.evaluator_v2:   [50/50] avg=9.40
+2026-06-29 14:12:04,287 [INFO] __main__:   → score=9.40, mem_red=80.0%, ttft=3954.7ms
+2026-06-29 14:12:04,287 [INFO] __main__: 
+  Task: qasper
+2026-06-29 14:12:04,288 [INFO] core.evaluator_v2: [snapkv] qasper (50샘플, budget=20%)
+2026-06-29 14:12:23,421 [INFO] core.evaluator_v2: [snapkv] pred='The results from these proposed strategies are that both agents successfully pass the bottleneck corresponding to enteri'
+2026-06-29 14:12:26,005 [INFO] core.evaluator_v2: [snapkv] pred='The encoder is a character-based encoder-decoder model.'
+2026-06-29 14:12:29,613 [INFO] core.evaluator_v2: [snapkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 14:12:31,501 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:12:57,565 [INFO] core.evaluator_v2: [snapkv] pred='The EMA model is also updated additionally, but not broadcasting it. The model is trained with CE. For each layer-wise t'
+2026-06-29 14:12:57,568 [INFO] core.evaluator_v2:   [5/50] avg=1.64
+2026-06-29 14:13:05,285 [INFO] core.evaluator_v2: [snapkv] pred='The datasets used for evaluation are the CNN/DailyMail news articles and highlights, the New York Times (NYT) articles a'
+2026-06-29 14:13:08,500 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:13:17,020 [INFO] core.evaluator_v2: [snapkv] pred='The ancient Chinese dataset comes from the internet, where we collected an external ancient corpus containing 134M token'
+2026-06-29 14:13:26,884 [INFO] core.evaluator_v2: [snapkv] pred='The baselines used for evaluation are Pointer-Gen, Pointer-Gen+RL-ROUGE, Pointer-Gen+RL-SEN, and Pointer-Gen+ARL-SEN.'
+2026-06-29 14:13:50,984 [INFO] core.evaluator_v2: [snapkv] pred='The Twitter dataset is crawled from a social media platform, and the data includes 1,000 Twitter threads. The dataset is'
+2026-06-29 14:13:50,990 [INFO] core.evaluator_v2:   [10/50] avg=10.58
+2026-06-29 14:13:53,990 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:14:03,701 [INFO] core.evaluator_v2: [snapkv] pred='The text establishes that the metrics used to evaluate the effectiveness of the chatbots (LiLi) in terms of knowledge ac'
+2026-06-29 14:14:09,986 [INFO] core.evaluator_v2: [snapkv] pred='The combination of rewards for reinforcement learning is the harmonic mean of irony reward and sentiment reward.'
+2026-06-29 14:14:19,136 [INFO] core.evaluator_v2: [snapkv] pred='The attention module is pretrained on the MT (Machine Translation) task.'
+2026-06-29 14:14:23,508 [INFO] core.evaluator_v2: [snapkv] pred='The size of the dataset is 30.'
+2026-06-29 14:14:23,557 [INFO] core.evaluator_v2:   [15/50] avg=15.04
+2026-06-29 14:14:28,826 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:14:35,461 [INFO] core.evaluator_v2: [snapkv] pred='The model is compared to term frequency methods and learned classifiers.'
+2026-06-29 14:14:40,182 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:14:46,185 [INFO] core.evaluator_v2: [snapkv] pred='The 7 Indian languages they experiment with are: Hindi, Bengali, Tamil, Telugu, Kannada, and Malayalam.'
+2026-06-29 14:14:57,381 [INFO] core.evaluator_v2: [snapkv] pred='The text mentions that the authors tested their method on **other tasks**, including **character-level text generation**'
+2026-06-29 14:14:57,385 [INFO] core.evaluator_v2:   [20/50] avg=14.78
+2026-06-29 14:15:20,964 [INFO] core.evaluator_v2: [snapkv] pred='The text describes a tagging scheme that is employed in the context of pun detection and location tasks. The tagging sch'
+2026-06-29 14:15:47,545 [INFO] core.evaluator_v2: [snapkv] pred='The NLP tasks they consider are: (a) Class distribution, (b) LDA, (c) KL divergence, (d) Maximum entropy, (e) Unbalanced'
+2026-06-29 14:15:53,427 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:16:17,426 [INFO] core.evaluator_v2: [snapkv] pred='The text considers the following methods to find examples of biases and unwarranted inferences:\n\n1. **Manual detection o'
+2026-06-29 14:16:32,204 [INFO] core.evaluator_v2: [snapkv] pred='The corpus consists of 53 documents, which are annotated with medical entities. The corpus is the first of its kind and '
+2026-06-29 14:16:32,240 [INFO] core.evaluator_v2:   [25/50] avg=12.38
+2026-06-29 14:16:42,259 [INFO] core.evaluator_v2: [snapkv] pred='An individual model consists of a Bayesian model for semantic role induction (SRI) that uses cross-lingual latent variab'
+2026-06-29 14:17:07,269 [INFO] core.evaluator_v2: [snapkv] pred='The text mentions that the following stylistic features are obtained:\n\n- Distant\n- Sarcasm\n- Non-sarcasm\n- Sarcasm\n- Non'
+2026-06-29 14:17:12,679 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:17:34,091 [INFO] core.evaluator_v2: [snapkv] pred='The data presented to the subjects to elicit event-related responses was multimodal speech and articulated facial data. '
+2026-06-29 14:17:56,039 [INFO] core.evaluator_v2: [snapkv] pred='The dataset is annotated with 7 feature groups, each of which is a set of potentially informative features for classifyi'
+2026-06-29 14:17:56,043 [INFO] core.evaluator_v2:   [30/50] avg=11.47
+2026-06-29 14:18:19,439 [INFO] core.evaluator_v2: [snapkv] pred='The text describes a process of reordering English sentences to match the word order of Indian languages. The process is'
+2026-06-29 14:18:26,719 [INFO] core.evaluator_v2: [snapkv] pred='Yes, the text reports results on English data, specifically the FSD (social media) and Twitter datasets, which are Engli'
+2026-06-29 14:18:28,543 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:18:55,145 [INFO] core.evaluator_v2: [snapkv] pred='Yes, they use pretrained embeddings. The text mentions using a bidirectional GRU cell as the function INLINEFORM0 for co'
+2026-06-29 14:19:01,536 [INFO] core.evaluator_v2: [snapkv] pred='The ensemble method works by averaging the predictions from the constituent single models. These single models were sele'
+2026-06-29 14:19:01,539 [INFO] core.evaluator_v2:   [35/50] avg=10.77
+2026-06-29 14:19:03,719 [INFO] core.evaluator_v2: [snapkv] pred='Yes, they use attention.'
+2026-06-29 14:19:05,564 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:19:11,448 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:19:18,919 [INFO] core.evaluator_v2: [snapkv] pred='The clinical datasets used in the paper are NUBes-PHI and MEDDOCAN. NUBes-PHI is a corpus of real medical reports writte'
+2026-06-29 14:19:21,015 [INFO] core.evaluator_v2: [snapkv] pred='Yes, the datasets for sentiment analysis are balanced.'
+2026-06-29 14:19:21,018 [INFO] core.evaluator_v2:   [40/50] avg=10.75
+2026-06-29 14:19:25,630 [INFO] core.evaluator_v2: [snapkv] pred='Based on the text, it is possible to convert a cloze-style questions to a naturally-looking questions. The text provides'
+2026-06-29 14:19:55,187 [INFO] core.evaluator_v2: [snapkv] pred='The text describes four machine translation tasks, which are used for evaluation of the adaptively sparse Transformer mo'
+2026-06-29 14:20:01,397 [INFO] core.evaluator_v2: [snapkv] pred='The text proposes the use of **context tweets** and **character-level features** as additional features and context in t'
+2026-06-29 14:20:10,053 [INFO] core.evaluator_v2: [snapkv] pred='The text mentions an annotated dataset of over 20,000 blog users. Therefore, the number of users they look at is 20,000.'
+2026-06-29 14:20:33,821 [INFO] core.evaluator_v2: [snapkv] pred='The text does not mention any specific Chinese datasets. The text discusses various datasets and models, but it does not'
+2026-06-29 14:20:33,825 [INFO] core.evaluator_v2:   [45/50] avg=10.10
+2026-06-29 14:20:40,014 [INFO] core.evaluator_v2: [snapkv] pred='Logistic Regression and a Deep Learning Model are used for RQE.'
+2026-06-29 14:20:45,629 [INFO] core.evaluator_v2: [snapkv] pred='The paper is written in English.'
+2026-06-29 14:20:48,376 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:20:54,807 [INFO] core.evaluator_v2: [snapkv] pred='The ML methods aim to identify argument components such as claims, premises, and objections.'
+2026-06-29 14:21:06,592 [INFO] core.evaluator_v2: [snapkv] pred='The resulting annotated data is higher quality when difficult instances are routed to experts for annotation. This is ev'
+2026-06-29 14:21:06,594 [INFO] core.evaluator_v2:   [50/50] avg=11.16
+2026-06-29 14:21:06,595 [INFO] __main__:   → score=11.16, mem_red=80.0%, ttft=2608.5ms
+2026-06-29 14:21:06,613 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-29 14:21:06,615 [INFO] core.evaluator_v2: [snapkv] multifieldqa_en (50샘플, budget=20%)
+2026-06-29 14:21:08,241 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:21:14,075 [INFO] core.evaluator_v2: [snapkv] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise.'
+2026-06-29 14:21:14,664 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 14:21:27,034 [INFO] core.evaluator_v2: [snapkv] pred='Coupled GDBN (C-GDBN)'
+2026-06-29 14:21:56,622 [INFO] core.evaluator_v2: [snapkv] pred='The purpose of an ICD (Implastic Cardiac Defibrillator) is to treat and prevent the formation of blood clots by blocking'
+2026-06-29 14:22:07,870 [INFO] core.evaluator_v2: [snapkv] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-29 14:22:07,872 [INFO] core.evaluator_v2:   [5/50] avg=20.24
+2026-06-29 14:22:10,555 [INFO] core.evaluator_v2: [snapkv] pred='The Profiles in Courage Award.'
+2026-06-29 14:22:15,574 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:22:42,123 [INFO] core.evaluator_v2: [snapkv] pred='The sticking point in the political showdown over the budget is the amount of spending to cut. The political showdown ov'
+2026-06-29 14:23:07,751 [INFO] core.evaluator_v2: [snapkv] pred='The county seat of McPherson County is **McPherson**.\n\nMcPherson is the largest city in McPherson County and is also the'
+2026-06-29 14:23:15,435 [INFO] core.evaluator_v2: [snapkv] pred='The new Iraqi Body Count organization provides cover for the war and allows supporters of the illegal war to point to it'
+2026-06-29 14:23:15,438 [INFO] core.evaluator_v2:   [10/50] avg=22.76
+2026-06-29 14:23:42,141 [INFO] core.evaluator_v2: [snapkv] pred="The effect of accounting for path preference on the robot's belief update is that it reduces the entropy of the robot's "
+2026-06-29 14:24:10,256 [INFO] core.evaluator_v2: [snapkv] pred='The sides of the fuselage are sloped (tumbled home) to form a conical section when the fuselage is bent and sloped. This'
+2026-06-29 14:24:22,346 [INFO] core.evaluator_v2: [snapkv] pred='The court in *In re Ferguson* concluded that the transformation prong of the Bilski test was not satisfied, as the claim'
+2026-06-29 14:24:27,211 [INFO] core.evaluator_v2: [snapkv] pred='Answer: 1980.'
+2026-06-29 14:24:35,761 [INFO] core.evaluator_v2: [snapkv] pred='Thalassemias are classified into two major categories: α-thalassemia and β-thalassemia, based on the defective synthesis'
+2026-06-29 14:24:35,764 [INFO] core.evaluator_v2:   [15/50] avg=17.58
+2026-06-29 14:24:44,847 [INFO] core.evaluator_v2: [snapkv] pred='The transition probability of the environment affects the learning rate in the static agent by influencing the rate at w'
+2026-06-29 14:24:57,026 [INFO] core.evaluator_v2: [snapkv] pred='The experimental techniques used to study the quantum dot structures in this research are low-temperature scanning tunne'
+2026-06-29 14:25:00,179 [INFO] core.evaluator_v2: [snapkv] pred='Based on the text, the answer is:\n\nMargaret Way was born in Australia and died in Australia.'
+2026-06-29 14:25:09,582 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:25:17,100 [INFO] core.evaluator_v2: [snapkv] pred='The scoring engine generates a stream of content for the channel by identifying and scoring new content items based on u'
+2026-06-29 14:25:17,113 [INFO] core.evaluator_v2:   [20/50] avg=19.50
+2026-06-29 14:25:17,683 [WARNING] core.model_loader: Input length 9212 > max 8192, truncating...
+2026-06-29 14:25:52,223 [INFO] core.evaluator_v2: [snapkv] pred='\\textbf{Proof of Theorem \\ref{main_non_exist}.}   We suppose that $ u $ is a stable sub-solution of $(G)$ with $ u(x) \\g'
+2026-06-29 14:25:56,260 [INFO] core.evaluator_v2: [snapkv] pred='The text states that McPherson County is located in the state of Kansas.\n\nAnswer: McPherson County is located in the sta'
+2026-06-29 14:26:08,897 [INFO] core.evaluator_v2: [snapkv] pred='The main focus of the research paper is to study the strong coupling limit of lattice QCD, with a particular emphasis on'
+2026-06-29 14:26:19,429 [INFO] core.evaluator_v2: [snapkv] pred='128'
+2026-06-29 14:26:21,469 [INFO] core.evaluator_v2: [snapkv] pred='The most active fan club is the **Banants** fan club.'
+2026-06-29 14:26:21,471 [INFO] core.evaluator_v2:   [25/50] avg=19.31
+2026-06-29 14:26:23,516 [INFO] core.evaluator_v2: [snapkv] pred='Answer: 1981 (1981)'
+2026-06-29 14:26:31,518 [INFO] core.evaluator_v2: [snapkv] pred='The interlayer Berry connection polarizability is significant because it provides the geometric origin of the crossed no'
+2026-06-29 14:27:01,993 [INFO] core.evaluator_v2: [snapkv] pred='The text describes that wearable sensors, specifically physical sensors (ACC) and physiological sensors (EDA and HRV), a'
+2026-06-29 14:27:08,326 [INFO] core.evaluator_v2: [snapkv] pred='Answer: One of Kam W. Leong\'s publications in Journal of Controlled Release is "Gene transfer to hepatocytes using a pol'
+2026-06-29 14:27:17,637 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:27:17,639 [INFO] core.evaluator_v2:   [30/50] avg=17.70
+2026-06-29 14:27:25,548 [INFO] core.evaluator_v2: [snapkv] pred="The text does not explicitly mention any restrictions on the use of Broadjam's servers. However, it does mention that Br"
+2026-06-29 14:27:30,527 [INFO] core.evaluator_v2: [snapkv] pred='The 2017 general election was held on 23 September 2017.'
+2026-06-29 14:27:52,931 [INFO] core.evaluator_v2: [snapkv] pred='The text states that 2005, 349, and 198, and 198, and 198, and 198, and 198, and 198, and 198, and 198, and 198, and 198'
+2026-06-29 14:27:58,042 [INFO] core.evaluator_v2: [snapkv] pred='Simon English became the leader of the National Party on 24 October 2017.'
+2026-06-29 14:28:05,888 [INFO] core.evaluator_v2: [snapkv] pred="Governor Rick Scott cited privacy concerns, expressed skepticism about the monitoring program's effectiveness, and raise"
+2026-06-29 14:28:05,890 [INFO] core.evaluator_v2:   [35/50] avg=17.69
+2026-06-29 14:28:10,982 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:28:34,057 [INFO] core.evaluator_v2: [snapkv] pred='Craig wants to find his own place because he is currently living with his parents and he is not yet accepted as a indepe'
+2026-06-29 14:28:40,356 [INFO] core.evaluator_v2: [snapkv] pred='The decision to base the water rates on usage reflected a desire for fairness in how water is billed and how costs are s'
+2026-06-29 14:29:01,942 [INFO] core.evaluator_v2: [snapkv] pred='Answer: McPherson County was established as a county in 1867.\n\nThe text says: "Pioneer Life and Lore of McPherson County'
+2026-06-29 14:29:02,226 [WARNING] core.model_loader: Input length 8396 > max 8192, truncating...
+2026-06-29 14:29:18,559 [INFO] core.evaluator_v2: [snapkv] pred='The proximity of superconductivity significantly reduces the Kondo temperature $T^*$, which is a measure of the scale at'
+2026-06-29 14:29:18,562 [INFO] core.evaluator_v2:   [40/50] avg=15.98
+2026-06-29 14:29:23,404 [INFO] core.evaluator_v2: [snapkv] pred='Peter.'
+2026-06-29 14:29:48,951 [INFO] core.evaluator_v2: [snapkv] pred='At dawn or dusk, the high resolution of what we focus on diminishes. This is because the brain models everything, but no'
+2026-06-29 14:29:54,212 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 14:30:07,073 [INFO] core.evaluator_v2: [snapkv] pred='Ferromagnetic semiconductors have potential applications in spintronics, magnetic memory devices, and high-temperature e'
+2026-06-29 14:30:18,750 [INFO] core.evaluator_v2: [snapkv] pred='The recommended daily intake of vitamin K for adult women and men is 1200 micrograms.'
+2026-06-29 14:30:19,992 [INFO] core.evaluator_v2:   [45/50] avg=16.94
+2026-06-29 14:30:31,412 [INFO] core.evaluator_v2: [snapkv] pred='Yes, DUO contains more instances per image than COCO.'
+2026-06-29 14:30:35,374 [INFO] core.evaluator_v2: [snapkv] pred='The population of McPherson County according to the 2020 census was 11,205.'
+2026-06-29 14:30:38,827 [INFO] core.evaluator_v2: [snapkv] pred='The paper was published in 2022.'
+2026-06-29 14:30:42,258 [INFO] core.evaluator_v2: [snapkv] pred='The first white settlement in McPherson County was **"Filler\'s Ranch"**.\n\n**Answer:** Filler\'s Ranch.'
+2026-06-29 14:31:06,151 [INFO] core.evaluator_v2: [snapkv] pred='The factors that control the reliance of artificial organisms on plasticity are the environmental fluctuation and the un'
+2026-06-29 14:31:06,155 [INFO] core.evaluator_v2:   [50/50] avg=19.00
+2026-06-29 14:31:06,156 [INFO] __main__:   → score=19.00, mem_red=80.0%, ttft=3352.0ms
+2026-06-29 14:31:06,157 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 14:31:06,158 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-29 14:31:06,159 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 14:31:06,160 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-29 14:31:06,161 [INFO] core.evaluator_v2: [pyramidkv] narrativeqa (50샘플, budget=20%)
+2026-06-29 14:31:34,484 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not explicitly mention which town Daisy encountered Jim in. The story is told from the perspective of Dais'
+2026-06-29 14:31:42,641 [INFO] core.evaluator_v2: [pyramidkv] pred='Socrates ultimately decides it is unjust to escape because he believes in the principles of justice and the laws, and he'
+2026-06-29 14:31:50,958 [INFO] core.evaluator_v2: [pyramidkv] pred='The story is set in a medieval castle, specifically in the castle of Drachenhausen, which is described as having a great'
+2026-06-29 14:31:56,630 [INFO] core.evaluator_v2: [pyramidkv] pred='Baron Conrad killed his son, Baron Otto.'
+2026-06-29 14:32:06,151 [INFO] core.evaluator_v2: [pyramidkv] pred="A ghost emerged from a painting at Dana's workplace, which was a beautiful painting in the high-Renaissance style depict"
+2026-06-29 14:32:06,152 [INFO] core.evaluator_v2:   [5/50] avg=7.41
+2026-06-29 14:32:13,500 [INFO] core.evaluator_v2: [pyramidkv] pred='Dana.'
+2026-06-29 14:32:14,037 [WARNING] core.model_loader: Input length 8721 > max 8192, truncating...
+2026-06-29 14:32:24,093 [INFO] core.evaluator_v2: [pyramidkv] pred="Clifford's profession is that of a **cop** (law enforcement officer)."
+2026-06-29 14:32:30,470 [INFO] core.evaluator_v2: [pyramidkv] pred='The Vervelles live in the town of Paris.'
+2026-06-29 14:32:36,914 [INFO] core.evaluator_v2: [pyramidkv] pred='The Witch threw the coffin (with its last cradle) into a ditch.'
+2026-06-29 14:32:42,902 [INFO] core.evaluator_v2: [pyramidkv] pred='Frank Saltram is a writer and a poet. He is known for his literary works and his ability to express complex ideas and em'
+2026-06-29 14:32:42,945 [INFO] core.evaluator_v2:   [10/50] avg=8.39
+2026-06-29 14:33:06,906 [INFO] core.evaluator_v2: [pyramidkv] pred='The text states that Mortimer Trefinnis was once estranged from his siblings due to the "fear of the unknown" and the "f'
+2026-06-29 14:33:32,104 [INFO] core.evaluator_v2: [pyramidkv] pred='The unique aspect of the phonetic spelling of the "future" article that discussed Beerbohm\'s story is that it is not a s'
+2026-06-29 14:33:38,166 [INFO] core.evaluator_v2: [pyramidkv] pred='A painter.'
+2026-06-29 14:33:43,604 [INFO] core.evaluator_v2: [pyramidkv] pred='Lady Coxon is the wife of Mr. Saltram.'
+2026-06-29 14:34:07,385 [INFO] core.evaluator_v2: [pyramidkv] pred='The war in which Rogers learned his battle knowledge was the Second War of Independence, which was fought between the Un'
+2026-06-29 14:34:07,387 [INFO] core.evaluator_v2:   [15/50] avg=9.25
+2026-06-29 14:34:12,114 [INFO] core.evaluator_v2: [pyramidkv] pred='Anthony Rogers was working for the American Gas Corporation in 1927.'
+2026-06-29 14:34:16,822 [INFO] core.evaluator_v2: [pyramidkv] pred='The young lady from New York.'
+2026-06-29 14:34:22,263 [INFO] core.evaluator_v2: [pyramidkv] pred="The adventure of the Devil's Foot, by Arthur Conan Doyle\n\nQuestion: Why are Holmes and Dr. Watson in Cornwall?\n\nAnswer c"
+2026-06-29 14:34:32,063 [INFO] core.evaluator_v2: [pyramidkv] pred='The hidden message Reiko finds within the video is that the curse can be broken by copying the video and showing it to s'
+2026-06-29 14:34:44,749 [INFO] core.evaluator_v2: [pyramidkv] pred="1. **Justice and Redemption**: The story centers on the quest for justice, as seen in the Emperor's decision to protect "
+2026-06-29 14:34:44,752 [INFO] core.evaluator_v2:   [20/50] avg=8.49
+2026-06-29 14:34:53,726 [INFO] core.evaluator_v2: [pyramidkv] pred='The teenagers were discussing a cursed videotape that has the power to kill the viewer. They were discussing the effects'
+2026-06-29 14:35:04,312 [INFO] core.evaluator_v2: [pyramidkv] pred='Bill worked in a mill.'
+2026-06-29 14:35:28,503 [INFO] core.evaluator_v2: [pyramidkv] pred="1. The doctor. 2. The vicar. 3. The clergyman. 4. The vicar's wife. 5. The vicar's son. 6. The vicar's daughter. 7. The "
+2026-06-29 14:35:34,098 [INFO] core.evaluator_v2: [pyramidkv] pred='Otto is known for his pure, simple wisdom and the silver hand.'
+2026-06-29 14:35:40,759 [INFO] core.evaluator_v2: [pyramidkv] pred='Leon focuses on the observation and analysis of American and French characters, highlighting their cultural and social t'
+2026-06-29 14:35:40,761 [INFO] core.evaluator_v2:   [25/50] avg=12.64
+2026-06-29 14:35:45,881 [INFO] core.evaluator_v2: [pyramidkv] pred='The owner of the manor in the story is Madame de Merret.'
+2026-06-29 14:35:55,348 [INFO] core.evaluator_v2: [pyramidkv] pred="Reiko's job is not explicitly mentioned in the text provided. The narrative focuses on Asakawa and her interactions with"
+2026-06-29 14:36:00,380 [INFO] core.evaluator_v2: [pyramidkv] pred='Holmes observes a burning candle in the fireplace.'
+2026-06-29 14:36:08,416 [INFO] core.evaluator_v2: [pyramidkv] pred='Socrates compares citizens and the law to a **city and its laws**, where the **city** (society) is governed by **laws** '
+2026-06-29 14:36:16,217 [INFO] core.evaluator_v2: [pyramidkv] pred='La Grande Breteche is a fictional place in the story, which is a metaphor for a life of luxury and indulgence. It is a p'
+2026-06-29 14:36:16,237 [INFO] core.evaluator_v2:   [30/50] avg=14.27
+2026-06-29 14:36:25,910 [INFO] core.evaluator_v2: [pyramidkv] pred='Reiko discovers that making a copy of the videotape and showing it to someone else within a week saves viewers of the ta'
+2026-06-29 14:36:31,649 [INFO] core.evaluator_v2: [pyramidkv] pred='Madame de Fougeres.'
+2026-06-29 14:36:37,413 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not mention Lazarus or a murder trial, so there is no answer to the question based on the provided text.'
+2026-06-29 14:36:48,945 [INFO] core.evaluator_v2: [pyramidkv] pred='Tomoko is involved in a supernatural curse that affects her and others. She and her friend Yoichi are victims of a curse'
+2026-06-29 14:36:55,612 [INFO] core.evaluator_v2: [pyramidkv] pred='The Witch wanted to have reveal their own lies.'
+2026-06-29 14:36:55,613 [INFO] core.evaluator_v2:   [35/50] avg=13.66
+2026-06-29 14:37:02,283 [INFO] core.evaluator_v2: [pyramidkv] pred="Oscar is Dana's baby."
+2026-06-29 14:37:09,516 [INFO] core.evaluator_v2: [pyramidkv] pred='The Baroness is found with a great red stain on her body, and she is in a state of shock and distress. The Emperor is in'
+2026-06-29 14:37:15,940 [INFO] core.evaluator_v2: [pyramidkv] pred="T.K. Nupton thought that Soames was a figment of the author's brain."
+2026-06-29 14:37:25,398 [INFO] core.evaluator_v2: [pyramidkv] pred='The wealthy farmer, Mr. Murphy, marries Abby.'
+2026-06-29 14:37:32,127 [INFO] core.evaluator_v2: [pyramidkv] pred='The art-dealer describes Grassou\'s skill level to Virginie\'s father as "a few sous in his pocket."'
+2026-06-29 14:37:32,128 [INFO] core.evaluator_v2:   [40/50] avg=13.61
+2026-06-29 14:37:42,555 [INFO] core.evaluator_v2: [pyramidkv] pred='The Witch was able to perceive the inner beauty and soul of mankind, as well as the fleeting and transient nature of hum'
+2026-06-29 14:37:47,761 [INFO] core.evaluator_v2: [pyramidkv] pred="Mary's mother filled her free time by reading to her."
+2026-06-29 14:37:53,755 [INFO] core.evaluator_v2: [pyramidkv] pred="Crito's visit was to persuade Socrates to escape from prison, in order to avoid the death penalty and to preserve his li"
+2026-06-29 14:38:03,813 [INFO] core.evaluator_v2: [pyramidkv] pred='The description of the teens\' faces when they died was characterized by a "single EYE burns with manic, unbridled hatred'
+2026-06-29 14:38:14,048 [INFO] core.evaluator_v2: [pyramidkv] pred='Bill dies from a gunshot wound to the chest.'
+2026-06-29 14:38:14,050 [INFO] core.evaluator_v2:   [45/50] avg=12.98
+2026-06-29 14:38:19,581 [INFO] core.evaluator_v2: [pyramidkv] pred='Gravener wants Ruth to destroy the letter.'
+2026-06-29 14:38:20,124 [WARNING] core.model_loader: Input length 8722 > max 8192, truncating...
+2026-06-29 14:38:29,792 [INFO] core.evaluator_v2: [pyramidkv] pred="Alabama's son is born in the United States."
+2026-06-29 14:38:36,571 [INFO] core.evaluator_v2: [pyramidkv] pred="The text does not explicitly state Ruth Anvoy's nationality. However, based on the context and the names mentioned, it i"
+2026-06-29 14:38:47,168 [INFO] core.evaluator_v2: [pyramidkv] pred='Ursula leaves Chicago with George, the pilot.'
+2026-06-29 14:39:11,435 [INFO] core.evaluator_v2: [pyramidkv] pred='The housekeeper\'s feet got wet during Holmes\' visit because of the "devil\'s foot" powder, which was used to kill the sis'
+2026-06-29 14:39:11,437 [INFO] core.evaluator_v2:   [50/50] avg=12.16
+2026-06-29 14:39:11,437 [INFO] __main__:   → score=12.16, mem_red=80.0%, ttft=3358.9ms
+2026-06-29 14:39:11,438 [INFO] __main__: 
+  Task: qasper
+2026-06-29 14:39:11,438 [INFO] core.evaluator_v2: [pyramidkv] qasper (50샘플, budget=20%)
+2026-06-29 14:39:22,494 [INFO] core.evaluator_v2: [pyramidkv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-29 14:39:43,213 [INFO] core.evaluator_v2: [pyramidkv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-29 14:39:46,534 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 14:40:06,945 [INFO] core.evaluator_v2: [pyramidkv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-06-29 14:40:31,624 [INFO] core.evaluator_v2: [pyramidkv] pred='The LSTM models compared in the text are the 6-layer and 9-layer models. The 6-layer model is initialized with Xavier in'
+2026-06-29 14:40:31,625 [INFO] core.evaluator_v2:   [5/50] avg=3.29
+2026-06-29 14:40:38,442 [INFO] core.evaluator_v2: [pyramidkv] pred='The datasets used for evaluation are CNN/DailyMail, NYT, and XSum.'
+2026-06-29 14:40:42,151 [INFO] core.evaluator_v2: [pyramidkv] pred='The transformer layer works better than the RNN layer in this context.'
+2026-06-29 14:40:47,841 [INFO] core.evaluator_v2: [pyramidkv] pred='The ancient Chinese dataset is derived from an external ancient corpus containing 134M tokens.'
+2026-06-29 14:40:55,663 [INFO] core.evaluator_v2: [pyramidkv] pred='Pointer-Gen, Pointer-Gen+RL-ROUGE, Pointer-Gen+RL-SEN, and Pointer-Gen+ARL-SEN.'
+2026-06-29 14:41:00,316 [INFO] core.evaluator_v2: [pyramidkv] pred='The Twitter dataset contains 1,433 conversation threads.'
+2026-06-29 14:41:00,317 [INFO] core.evaluator_v2:   [10/50] avg=19.73
+2026-06-29 14:41:10,629 [INFO] core.evaluator_v2: [pyramidkv] pred='The performance of the models was improved by using multitask learning, which jointly learned the tasks of ternary and f'
+2026-06-29 14:41:21,620 [INFO] core.evaluator_v2: [pyramidkv] pred='The metrics used to establish that this makes chatbots more knowledgeable and better at learning and conversation are th'
+2026-06-29 14:41:27,623 [INFO] core.evaluator_v2: [pyramidkv] pred='The combination of rewards for reinforcement learning is the harmonic mean of irony reward and sentiment reward.'
+2026-06-29 14:41:35,142 [INFO] core.evaluator_v2: [pyramidkv] pred='The attention module is pretrained on the MT dataset.'
+2026-06-29 14:41:40,953 [INFO] core.evaluator_v2: [pyramidkv] pred='The size of the dataset is not explicitly stated in the text, but it is mentioned that the OurNepali dataset is almost t'
+2026-06-29 14:41:40,955 [INFO] core.evaluator_v2:   [15/50] avg=19.71
+2026-06-29 14:41:46,764 [INFO] core.evaluator_v2: [pyramidkv] pred='The Wall Street Journal (WSJ) and the Penn Treebank (PTB).'
+2026-06-29 14:41:55,689 [INFO] core.evaluator_v2: [pyramidkv] pred='The model is compared to previous methods such as term frequency (TF), inverse document frequency (IDF), and the baselin'
+2026-06-29 14:41:58,388 [INFO] core.evaluator_v2: [pyramidkv] pred='The languages that are similar to each other are the Nguni languages and the Sotho languages.'
+2026-06-29 14:42:01,902 [INFO] core.evaluator_v2: [pyramidkv] pred='The 7 Indian languages that they experiment with are: Kannada, Malayalam, Odia, Tamil, Telugu, and Hindi.'
+2026-06-29 14:42:05,140 [INFO] core.evaluator_v2: [pyramidkv] pred='The text also tests the method on tasks such as predicting hashtags for social media posts.'
+2026-06-29 14:42:05,141 [INFO] core.evaluator_v2:   [20/50] avg=24.52
+2026-06-29 14:42:08,486 [INFO] core.evaluator_v2: [pyramidkv] pred='The tagging scheme employed is the INLINEFORM0 tagging scheme.'
+2026-06-29 14:42:16,272 [INFO] core.evaluator_v2: [pyramidkv] pred='The text considers the problem of text classification, specifically the task of classifying documents into predefined ca'
+2026-06-29 14:42:42,179 [INFO] core.evaluator_v2: [pyramidkv] pred='The NCEL approach is effective in the context of entity linking, as it is end-to-end trainable and applies GCN on subgra'
+2026-06-29 14:42:49,118 [INFO] core.evaluator_v2: [pyramidkv] pred='The text considers the following methods to find examples of biases and unwarranted inferences:\n\n1. Manual detection of '
+2026-06-29 14:43:09,985 [INFO] core.evaluator_v2: [pyramidkv] pred='The corpus consists of 53 documents, which contain a total of 156 sentences, on average. The corpus is 156 sentences lon'
+2026-06-29 14:43:09,986 [INFO] core.evaluator_v2:   [25/50] avg=22.44
+2026-06-29 14:43:25,110 [INFO] core.evaluator_v2: [pyramidkv] pred='An individual model consists of a Bayesian model for semantic role induction (SRI) that uses crosslingual latent variabl'
+2026-06-29 14:43:31,824 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not explicitly mention or describe specific stylistic features that are obtained. It focuses on the cognit'
+2026-06-29 14:43:37,283 [INFO] core.evaluator_v2: [pyramidkv] pred='75%'
+2026-06-29 14:43:58,459 [INFO] core.evaluator_v2: [pyramidkv] pred='The data presented to the subjects to elicit event-related responses was the EEG data, which was processed and analyzed '
+2026-06-29 14:44:07,148 [INFO] core.evaluator_v2: [pyramidkv] pred='The dataset is annotated with 1) no evidence of depression (n=6,829 tweets) or 2) evidence of depression (n=2,644 tweets'
+2026-06-29 14:44:07,150 [INFO] core.evaluator_v2:   [30/50] avg=19.70
+2026-06-29 14:44:13,254 [INFO] core.evaluator_v2: [pyramidkv] pred='To match words before reordering them, the English sentences are pre-ordered to match the word order of the source langu'
+2026-06-29 14:44:38,926 [INFO] core.evaluator_v2: [pyramidkv] pred='No, the text does not report results only on English data. The text discusses datasets from social media (Twitter) and n'
+2026-06-29 14:44:40,879 [INFO] core.evaluator_v2: [pyramidkv] pred='GloVe, Edinburgh, and Emoji embeddings.'
+2026-06-29 14:44:46,346 [INFO] core.evaluator_v2: [pyramidkv] pred='No, the text does not mention the use of pretrained embeddings.'
+2026-06-29 14:44:53,350 [INFO] core.evaluator_v2: [pyramidkv] pred='The ensemble method works by averaging the predictions from the constituent single models. The ensemble is formed by gra'
+2026-06-29 14:44:53,351 [INFO] core.evaluator_v2:   [35/50] avg=19.60
+2026-06-29 14:44:55,324 [INFO] core.evaluator_v2: [pyramidkv] pred='Yes, they use attention.'
+2026-06-29 14:44:58,093 [INFO] core.evaluator_v2: [pyramidkv] pred='The language model architectures used are: 2016, 2016, and 2016.'
+2026-06-29 14:45:06,777 [INFO] core.evaluator_v2: [pyramidkv] pred="No, they do not report results only on English data. The text discusses concept word-groups derived from Roget's Thesaur"
+2026-06-29 14:45:13,604 [INFO] core.evaluator_v2: [pyramidkv] pred='The clinical datasets used in the paper are NUBes-PHI and MEDDOCAN.'
+2026-06-29 14:45:21,850 [INFO] core.evaluator_v2: [pyramidkv] pred='No, the datasets for sentiment analysis are not balanced. The text indicates that the groundtruth labels contain 210 pos'
+2026-06-29 14:45:21,852 [INFO] core.evaluator_v2:   [40/50] avg=19.54
+2026-06-29 14:45:43,277 [INFO] core.evaluator_v2: [pyramidkv] pred='Yes, it is possible to convert cloze-style questions into naturally-looking questions. The text discusses the process of'
+2026-06-29 14:46:12,431 [INFO] core.evaluator_v2: [pyramidkv] pred='The text evaluates the adapt sparse Transformers on four machine translation tasks. The specific tasks are not named, bu'
+2026-06-29 14:46:33,094 [INFO] core.evaluator_v2: [pyramidkv] pred='The additional features and context proposed in the text are:\n\n1. **Context Tweets**: The use of context tweets (i.e., t'
+2026-06-29 14:46:38,131 [INFO] core.evaluator_v2: [pyramidkv] pred='20,000'
+2026-06-29 14:46:42,980 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not explicitly mention which Chinese datasets were used. It focuses on grammar induction with compound PCF'
+2026-06-29 14:46:42,982 [INFO] core.evaluator_v2:   [45/50] avg=20.08
+2026-06-29 14:46:51,897 [INFO] core.evaluator_v2: [pyramidkv] pred='The text discusses the use of machine learning and deep learning methods for Recognizing Question Entailment (RQE) in th'
+2026-06-29 14:46:57,348 [INFO] core.evaluator_v2: [pyramidkv] pred='The paper studies English.'
+2026-06-29 14:47:18,677 [INFO] core.evaluator_v2: [pyramidkv] pred='This approach is compared to other WSD approaches employing word embeddings. The proposed GM$\\_$KL approach is compared '
+2026-06-29 14:47:25,321 [INFO] core.evaluator_v2: [pyramidkv] pred='The ML methods aim to identify argument components such as claims, premises, and objections (rebuttal or undercut).'
+2026-06-29 14:47:34,624 [INFO] core.evaluator_v2: [pyramidkv] pred='The resulting annotated data is higher quality when expert annotations are used for the most difficult instances. The mo'
+2026-06-29 14:47:34,625 [INFO] core.evaluator_v2:   [50/50] avg=20.29
+2026-06-29 14:47:34,626 [INFO] __main__:   → score=20.29, mem_red=80.0%, ttft=2177.9ms
+2026-06-29 14:47:34,626 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-29 14:47:34,627 [INFO] core.evaluator_v2: [pyramidkv] multifieldqa_en (50샘플, budget=20%)
+2026-06-29 14:47:54,586 [INFO] core.evaluator_v2: [pyramidkv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-29 14:48:03,541 [INFO] core.evaluator_v2: [pyramidkv] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text indicates that the denoiser can be applie'
+2026-06-29 14:48:03,995 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 14:48:15,432 [INFO] core.evaluator_v2: [pyramidkv] pred='The generative interactive model used in the method is called the "Coupled GDBN (C-GDBN)" with an "Interactive Matrix (I'
+2026-06-29 14:48:23,259 [INFO] core.evaluator_v2: [pyramidkv] pred='An ICD (Implantable Cardioverter Defibrillator) is a device implanted in the chest to monitor and correct abnormal heart'
+2026-06-29 14:48:30,152 [INFO] core.evaluator_v2: [pyramidkv] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-29 14:48:30,155 [INFO] core.evaluator_v2:   [5/50] avg=28.67
+2026-06-29 14:48:33,391 [INFO] core.evaluator_v2: [pyramidkv] pred='In 2009, Brooksley Born was awarded the John F. Kennedy Profiles in Courage Award.'
+2026-06-29 14:48:56,478 [INFO] core.evaluator_v2: [pyramidkv] pred='A media application determines the context of an event by using content recognition file (e.g., data structure 500 (FIG.'
+2026-06-29 14:49:03,761 [INFO] core.evaluator_v2: [pyramidkv] pred='The sticking point in the political showdown over the budget is the policy and spending cuts that are being proposed. Th'
+2026-06-29 14:49:25,004 [INFO] core.evaluator_v2: [pyramidkv] pred='McPherson County, Kansas, is the county seat of McPherson County, Kansas. The county seat is the city that is the admini'
+2026-06-29 14:49:31,437 [INFO] core.evaluator_v2: [pyramidkv] pred='The new Iraqi Body Count organization provides cover for the war and allows supporters of the illegal war to point to it'
+2026-06-29 14:49:31,438 [INFO] core.evaluator_v2:   [10/50] avg=32.62
+2026-06-29 14:49:39,116 [INFO] core.evaluator_v2: [pyramidkv] pred="Accounting for path preference in the robot's belief update process leads to a more stable and accurate prediction of th"
+2026-06-29 14:49:50,190 [INFO] core.evaluator_v2: [pyramidkv] pred='The sides of the fuselage are sloped (tumbled home) to create a conical shape when the fuselage is bent into a box. This'
+2026-06-29 14:50:00,125 [INFO] core.evaluator_v2: [pyramidkv] pred='The court in In re Ferguson concluded that the claimed process involved graphically displaying variations of data from a'
+2026-06-29 14:50:03,079 [INFO] core.evaluator_v2: [pyramidkv] pred='1928-1980.'
+2026-06-29 14:50:12,111 [INFO] core.evaluator_v2: [pyramidkv] pred='Thalassemias are classified based on the polypeptide chains of hemoglobin that are impaired in synthesis. The two major '
+2026-06-29 14:50:12,113 [INFO] core.evaluator_v2:   [15/50] avg=24.87
+2026-06-29 14:50:27,867 [INFO] core.evaluator_v2: [pyramidkv] pred='The transition probability of the environment affects the learning rate in the static agent by influencing the learning '
+2026-06-29 14:50:40,995 [INFO] core.evaluator_v2: [pyramidkv] pred='The experimental techniques used to study the quantum dot structures in this research were low-temperature scanning tunn'
+2026-06-29 14:50:43,106 [INFO] core.evaluator_v2: [pyramidkv] pred=''
+2026-06-29 14:50:55,158 [INFO] core.evaluator_v2: [pyramidkv] pred='The two ground states observed for indeno[1,2-a]fluorene on NaCl surfaces are:\n\n1. Open-shell state (5OS)\n2. Closed-shel'
+2026-06-29 14:51:03,715 [INFO] core.evaluator_v2: [pyramidkv] pred='The scoring engine generates a stream of content for the channel by categorizing new content items and using historical '
+2026-06-29 14:51:03,716 [INFO] core.evaluator_v2:   [20/50] avg=21.89
+2026-06-29 14:51:04,165 [WARNING] core.model_loader: Input length 9212 > max 8192, truncating...
+2026-06-29 14:51:38,498 [INFO] core.evaluator_v2: [pyramidkv] pred='The stability conditions for a solution of $-\\Delta u = f(u)$ are that the solution is stable if and only if the functio'
+2026-06-29 14:51:59,708 [INFO] core.evaluator_v2: [pyramidkv] pred='The text provides the following information:\n\nMcPherson County is located in the state of Kansas.  The county is named a'
+2026-06-29 14:52:09,407 [INFO] core.evaluator_v2: [pyramidkv] pred='The main focus of the research paper is to study the strong coupling limit of lattice QCD, with a particular emphasis on'
+2026-06-29 14:52:20,658 [INFO] core.evaluator_v2: [pyramidkv] pred='The security parameter for the AES-256 block cipher is 139.'
+2026-06-29 14:52:22,488 [INFO] core.evaluator_v2: [pyramidkv] pred='South West Ultras fan club.'
+2026-06-29 14:52:22,489 [INFO] core.evaluator_v2:   [25/50] avg=22.20
+2026-06-29 14:52:24,251 [INFO] core.evaluator_v2: [pyramidkv] pred='1978'
+2026-06-29 14:52:32,433 [INFO] core.evaluator_v2: [pyramidkv] pred='The interlayer Berry connection polarizability is significant in the context of the crossed nonlinear dynamical intrinsi'
+2026-06-29 14:52:41,633 [INFO] core.evaluator_v2: [pyramidkv] pred='Wearable and ambient sensors, such as accelerometers and heart rate variability (HRV) sensors, are now capable of estima'
+2026-06-29 14:52:50,007 [INFO] core.evaluator_v2: [pyramidkv] pred='Chew, S. Y. and Hufnagel, T. C. and Lim, C. T. and Leong, K. W., Mechanical properties of single electrospun drug-encaps'
+2026-06-29 14:53:01,241 [INFO] core.evaluator_v2: [pyramidkv] pred='Symptoms of vitamin K deficiency include coagulation disorders, such as bleeding tendencies, and may lead to impaired bl'
+2026-06-29 14:53:01,245 [INFO] core.evaluator_v2:   [30/50] avg=21.19
+2026-06-29 14:53:07,629 [INFO] core.evaluator_v2: [pyramidkv] pred="The text does not explicitly mention restrictions on the use of Broadjam's servers. It focuses on payment policies, bill"
+2026-06-29 14:53:12,724 [INFO] core.evaluator_v2: [pyramidkv] pred='The 2017 general election was held on 23 September 2017.'
+2026-06-29 14:53:16,503 [INFO] core.evaluator_v2: [pyramidkv] pred='21'
+2026-06-29 14:53:21,434 [INFO] core.evaluator_v2: [pyramidkv] pred='Simon English became the leader of the National Party in 2017.'
+2026-06-29 14:53:29,362 [INFO] core.evaluator_v2: [pyramidkv] pred="Governor Rick Scott cited privacy concerns, expressed skepticism about the monitoring program's effectiveness, and raise"
+2026-06-29 14:53:29,363 [INFO] core.evaluator_v2:   [35/50] avg=23.35
+2026-06-29 14:53:34,868 [INFO] core.evaluator_v2: [pyramidkv] pred='The SI unit of power is the watt (W).'
+2026-06-29 14:53:58,061 [INFO] core.evaluator_v2: [pyramidkv] pred='Craig wants to find his own place because he is not staying with the family. The text mentions that Craig is a child who'
+2026-06-29 14:54:08,188 [INFO] core.evaluator_v2: [pyramidkv] pred='The decision to base the water rates on usage reflected a fair and equitable approach to housing development, where the '
+2026-06-29 14:54:11,038 [INFO] core.evaluator_v2: [pyramidkv] pred='The answer is 1867.'
+2026-06-29 14:54:11,292 [WARNING] core.model_loader: Input length 8396 > max 8192, truncating...
+2026-06-29 14:54:26,045 [INFO] core.evaluator_v2: [pyramidkv] pred='The proximity of superconductivity significantly affects the Kondo effect by decreasing the second stage Kondo temperatu'
+2026-06-29 14:54:26,047 [INFO] core.evaluator_v2:   [40/50] avg=21.51
+2026-06-29 14:54:30,812 [INFO] core.evaluator_v2: [pyramidkv] pred='Peter Denning.'
+2026-06-29 14:54:35,885 [INFO] core.evaluator_v2: [pyramidkv] pred='The high resolution of what we focus on at dawn or dusk is diminished.'
+2026-06-29 14:54:41,574 [INFO] core.evaluator_v2: [pyramidkv] pred='The Director is responsible for carrying out the functions assigned under the act.'
+2026-06-29 14:54:54,109 [INFO] core.evaluator_v2: [pyramidkv] pred='Ferromagnetic semiconductors have potential applications in spintronics, magnetic memory devices, and high-temperature m'
+2026-06-29 14:55:04,124 [INFO] core.evaluator_v2: [pyramidkv] pred='The recommended daily intake of vitamin K for adult women and men is 120 micrograms (mcg) for both genders.'
+2026-06-29 14:55:04,127 [INFO] core.evaluator_v2:   [45/50] avg=24.61
+2026-06-29 14:55:15,063 [INFO] core.evaluator_v2: [pyramidkv] pred='Yes, DUO contains more instances per image than COCO.'
+2026-06-29 14:55:36,578 [INFO] core.evaluator_v2: [pyramidkv] pred='2020 census\nMcPherson County population was 2020.  The census of 2020 in McPherson County was 2020.  The census of 2020 '
+2026-06-29 14:55:40,242 [INFO] core.evaluator_v2: [pyramidkv] pred='The paper was published in 2023.'
+2026-06-29 14:55:43,672 [INFO] core.evaluator_v2: [pyramidkv] pred='The first white settlement in McPherson County was **Ferrell Ranch**, established in 1867.'
+2026-06-29 14:56:00,415 [INFO] core.evaluator_v2: [pyramidkv] pred='The reliance of artificial organisms on plasticity is controlled by the following factors:\n\n1. Environmental fluctuation'
+2026-06-29 14:56:00,417 [INFO] core.evaluator_v2:   [50/50] avg=26.44
+2026-06-29 14:56:00,418 [INFO] __main__:   → score=26.44, mem_red=80.0%, ttft=2946.8ms
+2026-06-29 14:56:00,419 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 14:56:00,419 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-29 14:56:00,420 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 14:56:00,421 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-29 14:56:00,421 [INFO] core.evaluator_v2: [adakv] narrativeqa (50샘플, budget=20%)
+2026-06-29 14:56:28,429 [INFO] core.evaluator_v2: [adakv] pred='The text does not explicitly mention which town Daisy encountered Jim in. The story is told from the perspective of Dais'
+2026-06-29 14:56:36,676 [INFO] core.evaluator_v2: [adakv] pred='Socrates ultimately decides it is unjust to escape because he believes in the principles of justice and the laws, and he'
+2026-06-29 14:56:45,096 [INFO] core.evaluator_v2: [adakv] pred='The story is set in a medieval castle, specifically in the castle of Drachenhausen, which is described as having a great'
+2026-06-29 14:56:50,566 [INFO] core.evaluator_v2: [adakv] pred='Baron Conrad killed his son, Baron Otto.'
+2026-06-29 14:57:00,209 [INFO] core.evaluator_v2: [adakv] pred="A ghost emerged from a painting at Dana's workplace, which was a beautiful painting in the high-Renaissance style depict"
+2026-06-29 14:57:00,212 [INFO] core.evaluator_v2:   [5/50] avg=7.41
+2026-06-29 14:57:07,536 [INFO] core.evaluator_v2: [adakv] pred='Dana.'
+2026-06-29 14:57:08,115 [WARNING] core.model_loader: Input length 8721 > max 8192, truncating...
+2026-06-29 14:57:18,091 [INFO] core.evaluator_v2: [adakv] pred="Clifford's profession is that of a **cop** (law enforcement officer)."
+2026-06-29 14:57:24,492 [INFO] core.evaluator_v2: [adakv] pred='The Vervelles live in the town of Paris.'
+2026-06-29 14:57:31,029 [INFO] core.evaluator_v2: [adakv] pred='The Witch threw the coffin (with its last cradle) into a ditch.'
+2026-06-29 14:57:37,114 [INFO] core.evaluator_v2: [adakv] pred='Frank Saltram is a writer and a poet. He is known for his literary works and his ability to express complex ideas and em'
+2026-06-29 14:57:37,115 [INFO] core.evaluator_v2:   [10/50] avg=8.39
+2026-06-29 14:57:44,436 [INFO] core.evaluator_v2: [adakv] pred="Mortimer Trefinnis was once estranged from his siblings due to his involvement in a criminal act. He used the devil's-fo"
+2026-06-29 14:58:09,822 [INFO] core.evaluator_v2: [adakv] pred='The unique aspect of the phonetic spelling of the "future" article that discussed Beerbohm\'s story is that it is not a s'
+2026-06-29 14:58:16,190 [INFO] core.evaluator_v2: [adakv] pred='Death is disguised as a painter.'
+2026-06-29 14:58:21,654 [INFO] core.evaluator_v2: [adakv] pred='Lady Coxon is the wife of Mr. Saltram.'
+2026-06-29 14:58:45,847 [INFO] core.evaluator_v2: [adakv] pred='The war in which Rogers learned his battle knowledge was the Second War of Independence, which was fought between the Un'
+2026-06-29 14:58:45,849 [INFO] core.evaluator_v2:   [15/50] avg=9.93
+2026-06-29 14:58:50,622 [INFO] core.evaluator_v2: [adakv] pred='Anthony Rogers was working for the American Gas Corporation in 1927.'
+2026-06-29 14:58:55,443 [INFO] core.evaluator_v2: [adakv] pred='The young lady from New York.'
+2026-06-29 14:59:01,131 [INFO] core.evaluator_v2: [adakv] pred="The adventure of the Devil's Foot, by Arthur Conan Doyle\n\nQuestion: Why are Holmes and Dr. Watson in Cornwall?\n\nAnswer c"
+2026-06-29 14:59:11,058 [INFO] core.evaluator_v2: [adakv] pred='The hidden message Reiko finds within the video is that the curse can be broken by copying the video and showing it to s'
+2026-06-29 14:59:25,428 [INFO] core.evaluator_v2: [adakv] pred="1. **Justice and Redemption**: The story explores themes of justice, as seen in the Emperor's decision to protect the Ba"
+2026-06-29 14:59:25,431 [INFO] core.evaluator_v2:   [20/50] avg=8.98
+2026-06-29 14:59:36,022 [INFO] core.evaluator_v2: [adakv] pred='The teenagers were discussing a cursed videotape that has the power to kill the viewer if watched. The video is said to '
+2026-06-29 14:59:46,710 [INFO] core.evaluator_v2: [adakv] pred='Bill worked in a mill.'
+2026-06-29 15:00:10,999 [INFO] core.evaluator_v2: [adakv] pred="1. The doctor. 2. The vicar. 3. The clergyman. 4. The vicar's wife. 5. The vicar's son. 6. The vicar's daughter. 7. The "
+2026-06-29 15:00:17,208 [INFO] core.evaluator_v2: [adakv] pred='Otto is known for his pure, simple wisdom and his silver-hand, which is a symbol of his integrity and the teachings of t'
+2026-06-29 15:00:24,367 [INFO] core.evaluator_v2: [adakv] pred='Leon focuses on the history of mankind and the arrival of a nation at an ultimate stage of evolution, emphasizing the ph'
+2026-06-29 15:00:24,368 [INFO] core.evaluator_v2:   [25/50] avg=12.49
+2026-06-29 15:00:29,603 [INFO] core.evaluator_v2: [adakv] pred='The owner of the manor in the story is Madame de Merret.'
+2026-06-29 15:00:39,132 [INFO] core.evaluator_v2: [adakv] pred="Reiko's job is not explicitly mentioned in the text provided. The narrative focuses on Asakawa and her interactions with"
+2026-06-29 15:00:44,186 [INFO] core.evaluator_v2: [adakv] pred='Holmes observes a burning candle in the fireplace.'
+2026-06-29 15:00:52,211 [INFO] core.evaluator_v2: [adakv] pred='Socrates compares citizens and the law to a **city and its laws**, where the **city** (society) is governed by **laws** '
+2026-06-29 15:01:00,073 [INFO] core.evaluator_v2: [adakv] pred='La Grande Breteche is a fictional place in the story, which is a metaphor for a life of luxury and indulgence. It is a p'
+2026-06-29 15:01:00,076 [INFO] core.evaluator_v2:   [30/50] avg=14.14
+2026-06-29 15:01:09,664 [INFO] core.evaluator_v2: [adakv] pred='Reiko discovers that making a copy of the videotape and showing it to someone else within a week saves viewers of the ta'
+2026-06-29 15:01:15,312 [INFO] core.evaluator_v2: [adakv] pred='Madame de Fougeres.'
+2026-06-29 15:01:20,933 [INFO] core.evaluator_v2: [adakv] pred='The text does not mention Lazarus or a murder trial, so there is no answer to the question based on the provided text.'
+2026-06-29 15:01:32,545 [INFO] core.evaluator_v2: [adakv] pred='Tomoko is involved in a supernatural curse that affects her and others. She and her friend Yoichi are victims of a curse'
+2026-06-29 15:01:39,130 [INFO] core.evaluator_v2: [adakv] pred='The Witch wanted to have reveal their own lies.'
+2026-06-29 15:01:39,132 [INFO] core.evaluator_v2:   [35/50] avg=13.55
+2026-06-29 15:01:45,987 [INFO] core.evaluator_v2: [adakv] pred="Oscar is Dana's baby."
+2026-06-29 15:01:53,034 [INFO] core.evaluator_v2: [adakv] pred='The Baroness is found with a great red stain on her body, and she is in a state of shock and distress. The Emperor is in'
+2026-06-29 15:01:59,238 [INFO] core.evaluator_v2: [adakv] pred="T.K. Nupton thought that Soames was a figment of the author's brain."
+2026-06-29 15:02:08,568 [INFO] core.evaluator_v2: [adakv] pred='The wealthy farmer, Mr. Murphy, marries Abby.'
+2026-06-29 15:02:15,329 [INFO] core.evaluator_v2: [adakv] pred='The art-dealer describes Grassou\'s skill level to Virginie\'s father as "a few sous in his pocket."'
+2026-06-29 15:02:15,330 [INFO] core.evaluator_v2:   [40/50] avg=13.51
+2026-06-29 15:02:25,708 [INFO] core.evaluator_v2: [adakv] pred='The Witch was able to perceive the inner beauty and soul of mankind, as well as the fleeting and transient nature of hum'
+2026-06-29 15:02:30,638 [INFO] core.evaluator_v2: [adakv] pred="Mary's mother filled her free time by reading to her."
+2026-06-29 15:02:36,667 [INFO] core.evaluator_v2: [adakv] pred="Crito's visit was to persuade Socrates to escape from prison, in order to avoid the death penalty and to preserve his li"
+2026-06-29 15:02:46,646 [INFO] core.evaluator_v2: [adakv] pred='The description of the teens\' faces when they died was characterized by a "single EYE burns with manic, unbridled hatred'
+2026-06-29 15:02:56,900 [INFO] core.evaluator_v2: [adakv] pred='Bill dies from a gunshot wound to the chest.'
+2026-06-29 15:02:56,912 [INFO] core.evaluator_v2:   [45/50] avg=12.89
+2026-06-29 15:03:02,609 [INFO] core.evaluator_v2: [adakv] pred='Gravener wants Ruth to destroy the letter.'
+2026-06-29 15:03:03,063 [WARNING] core.model_loader: Input length 8722 > max 8192, truncating...
+2026-06-29 15:03:12,753 [INFO] core.evaluator_v2: [adakv] pred="Alabama's son is born in the United States."
+2026-06-29 15:03:19,727 [INFO] core.evaluator_v2: [adakv] pred="The text does not explicitly state Ruth Anvoy's nationality. However, based on the context and the names mentioned, it i"
+2026-06-29 15:03:30,562 [INFO] core.evaluator_v2: [adakv] pred='Ursula leaves Chicago with George, the pilot.'
+2026-06-29 15:03:54,899 [INFO] core.evaluator_v2: [adakv] pred='The housekeeper\'s feet got wet during Holmes\' visit because of the "devil\'s foot" powder, which was used to kill the sis'
+2026-06-29 15:03:54,932 [INFO] core.evaluator_v2:   [50/50] avg=12.09
+2026-06-29 15:03:54,939 [INFO] __main__:   → score=12.09, mem_red=80.0%, ttft=3365.1ms
+2026-06-29 15:03:54,943 [INFO] __main__: 
+  Task: qasper
+2026-06-29 15:03:54,944 [INFO] core.evaluator_v2: [adakv] qasper (50샘플, budget=20%)
+2026-06-29 15:04:05,666 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-06-29 15:04:25,943 [INFO] core.evaluator_v2: [adakv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-06-29 15:04:29,331 [INFO] core.evaluator_v2: [adakv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 15:04:48,967 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-06-29 15:05:13,659 [INFO] core.evaluator_v2: [adakv] pred='The LSTM models compared in the text are the 6-layer and 9-layer models. The 6-layer model is initialized with Xavier in'
+2026-06-29 15:05:13,661 [INFO] core.evaluator_v2:   [5/50] avg=3.29
+2026-06-29 15:05:20,502 [INFO] core.evaluator_v2: [adakv] pred='The datasets used for evaluation are CNN/DailyMail, NYT, and XSum.'
+2026-06-29 15:05:24,096 [INFO] core.evaluator_v2: [adakv] pred='The transformer layer works better than the RNN layer in this context.'
+2026-06-29 15:05:29,784 [INFO] core.evaluator_v2: [adakv] pred='The ancient Chinese dataset is derived from an external ancient corpus containing 134M tokens.'
+2026-06-29 15:05:37,692 [INFO] core.evaluator_v2: [adakv] pred='Pointer-Gen, Pointer-Gen+RL-ROUGE, Pointer-Gen+RL-SEN, and Pointer-Gen+ARL-SEN.'
+2026-06-29 15:05:42,371 [INFO] core.evaluator_v2: [adakv] pred='The Twitter dataset contains 1,433 conversation threads.'
+2026-06-29 15:05:42,372 [INFO] core.evaluator_v2:   [10/50] avg=19.73
+2026-06-29 15:05:52,583 [INFO] core.evaluator_v2: [adakv] pred='The performance of the models was improved by using multitask learning, which jointly learned the tasks of ternary and f'
+2026-06-29 15:06:03,594 [INFO] core.evaluator_v2: [adakv] pred='The metrics used to establish that this makes chatbots more knowledgeable and better at learning and conversation are th'
+2026-06-29 15:06:09,602 [INFO] core.evaluator_v2: [adakv] pred='The combination of rewards for reinforcement learning is the harmonic mean of irony reward and sentiment reward.'
+2026-06-29 15:06:17,255 [INFO] core.evaluator_v2: [adakv] pred='The attention module is pretrained on the MT dataset.'
+2026-06-29 15:06:23,239 [INFO] core.evaluator_v2: [adakv] pred='The size of the dataset is not explicitly stated in the text, but it is mentioned that the OurNepali dataset is almost t'
+2026-06-29 15:06:23,241 [INFO] core.evaluator_v2:   [15/50] avg=19.71
+2026-06-29 15:06:29,101 [INFO] core.evaluator_v2: [adakv] pred='The Wall Street Journal (WSJ) and the Penn Treebank (PTB).'
+2026-06-29 15:06:36,875 [INFO] core.evaluator_v2: [adakv] pred='The model is compared to previous methods such as term frequency (TF), inverse document frequency (IDF), and the BERT-QC'
+2026-06-29 15:06:39,708 [INFO] core.evaluator_v2: [adakv] pred='The languages that are similar to each other are the Nguni languages and the Sotho languages.'
+2026-06-29 15:06:43,068 [INFO] core.evaluator_v2: [adakv] pred='The 7 Indian languages that they experiment with are: Kannada, Malayalam, Odia, Tamil, Telugu, and Hindi.'
+2026-06-29 15:06:46,339 [INFO] core.evaluator_v2: [adakv] pred='The text also tests the method on tasks such as predicting hashtags for social media posts.'
+2026-06-29 15:06:46,341 [INFO] core.evaluator_v2:   [20/50] avg=24.46
+2026-06-29 15:06:49,688 [INFO] core.evaluator_v2: [adakv] pred='The tagging scheme employed is the INLINEFORM0 tagging scheme.'
+2026-06-29 15:06:57,722 [INFO] core.evaluator_v2: [adakv] pred='The text considers the problem of text classification, specifically the task of classifying documents into predefined ca'
+2026-06-29 15:07:23,799 [INFO] core.evaluator_v2: [adakv] pred='The NCEL approach is effective in the context of entity linking, as it is end-to-end trainable and applies GCN on subgra'
+2026-06-29 15:07:31,300 [INFO] core.evaluator_v2: [adakv] pred='The text considers the following methods to find examples of biases and unwarranted inferences:\n\n1. Manual detection of '
+2026-06-29 15:07:52,818 [INFO] core.evaluator_v2: [adakv] pred='The corpus consists of 53 documents, which contain a total of 156 sentences, on average. The corpus is 156 sentences lon'
+2026-06-29 15:07:52,820 [INFO] core.evaluator_v2:   [25/50] avg=22.40
+2026-06-29 15:08:07,800 [INFO] core.evaluator_v2: [adakv] pred='An individual model consists of a Bayesian model for semantic role induction (SRI) that uses crosslingual latent variabl'
+2026-06-29 15:08:14,564 [INFO] core.evaluator_v2: [adakv] pred='The text does not explicitly mention or describe specific stylistic features that are obtained. It focuses on the cognit'
+2026-06-29 15:08:20,270 [INFO] core.evaluator_v2: [adakv] pred='75%'
+2026-06-29 15:08:41,107 [INFO] core.evaluator_v2: [adakv] pred='The data presented to the subjects to elicit event-related responses was the EEG data, which was processed and analyzed '
+2026-06-29 15:08:49,804 [INFO] core.evaluator_v2: [adakv] pred='The dataset is annotated with 1) no evidence of depression (n=6,829 tweets) or 2) evidence of depression (n=2,644 tweets'
+2026-06-29 15:08:49,812 [INFO] core.evaluator_v2:   [30/50] avg=19.66
+2026-06-29 15:08:55,772 [INFO] core.evaluator_v2: [adakv] pred='To match words before reordering them, the English sentences are pre-ordered to match the word order of the source langu'
+2026-06-29 15:09:03,999 [INFO] core.evaluator_v2: [adakv] pred='No, they do not report results only on English data. The text mentions datasets from social media (FSD and Twitter) and '
+2026-06-29 15:09:08,024 [INFO] core.evaluator_v2: [adakv] pred='GloVe, Edinburgh, and Emoji embeddings.'
+2026-06-29 15:09:13,481 [INFO] core.evaluator_v2: [adakv] pred='No, the text does not mention the use of pretrained embeddings.'
+2026-06-29 15:09:20,551 [INFO] core.evaluator_v2: [adakv] pred='The ensemble method works by averaging the predictions from the constituent single models. The ensemble is formed by gra'
+2026-06-29 15:09:20,552 [INFO] core.evaluator_v2:   [35/50] avg=19.57
+2026-06-29 15:09:22,538 [INFO] core.evaluator_v2: [adakv] pred='Yes, they use attention.'
+2026-06-29 15:09:25,461 [INFO] core.evaluator_v2: [adakv] pred='The language model architectures used are: 2016, 2016, and 2016.'
+2026-06-29 15:09:34,285 [INFO] core.evaluator_v2: [adakv] pred="No, they do not report results only on English data. The text discusses concept word-groups derived from Roget's Thesaur"
+2026-06-29 15:09:40,747 [INFO] core.evaluator_v2: [adakv] pred='The clinical datasets used in the paper are NUBes-PHI and MEDDOCAN.'
+2026-06-29 15:09:49,101 [INFO] core.evaluator_v2: [adakv] pred='No, the datasets for sentiment analysis are not balanced. The text indicates that the groundtruth labels contain 210 pos'
+2026-06-29 15:09:49,112 [INFO] core.evaluator_v2:   [40/50] avg=19.51
+2026-06-29 15:10:10,663 [INFO] core.evaluator_v2: [adakv] pred='Yes, it is possible to convert cloze-style questions into naturally-looking questions. The text discusses the process of'
+2026-06-29 15:10:40,535 [INFO] core.evaluator_v2: [adakv] pred='The text evaluates the adapt sparse Transformers on four machine translation tasks. The specific tasks are not named, bu'
+2026-06-29 15:11:01,463 [INFO] core.evaluator_v2: [adakv] pred='The additional features and context proposed in the text are:\n\n1. **Context Tweets**: The use of context tweets (i.e., t'
+2026-06-29 15:11:06,645 [INFO] core.evaluator_v2: [adakv] pred='20,000'
+2026-06-29 15:11:11,435 [INFO] core.evaluator_v2: [adakv] pred='The text does not explicitly mention which Chinese datasets were used. It focuses on grammar induction with compound PCF'
+2026-06-29 15:11:11,437 [INFO] core.evaluator_v2:   [45/50] avg=20.06
+2026-06-29 15:11:20,406 [INFO] core.evaluator_v2: [adakv] pred='The text discusses the use of machine learning and deep learning methods for Recognizing Question Entailment (RQE) in th'
+2026-06-29 15:11:26,076 [INFO] core.evaluator_v2: [adakv] pred='The paper studies the English language.'
+2026-06-29 15:11:48,165 [INFO] core.evaluator_v2: [adakv] pred='This approach is compared to other WSD approaches employing word embeddings. The proposed GM$\\_$KL approach is compared '
+2026-06-29 15:11:54,714 [INFO] core.evaluator_v2: [adakv] pred='The ML methods aim to identify argument components such as claims, premises, and objections (rebuttal or undercut).'
+2026-06-29 15:12:03,893 [INFO] core.evaluator_v2: [adakv] pred='The resulting annotated data is higher quality when expert annotations are used for the most difficult instances. The mo'
+2026-06-29 15:12:03,895 [INFO] core.evaluator_v2:   [50/50] avg=20.07
+2026-06-29 15:12:03,911 [INFO] __main__:   → score=20.07, mem_red=80.0%, ttft=2191.7ms
+2026-06-29 15:12:03,916 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-29 15:12:03,917 [INFO] core.evaluator_v2: [adakv] multifieldqa_en (50샘플, budget=20%)
+2026-06-29 15:12:24,702 [INFO] core.evaluator_v2: [adakv] pred="After Ngotho attacks Jacobo at a workers' strike, he is fired and the family is forced to move. Ngotho loses his job and"
+2026-06-29 15:12:33,668 [INFO] core.evaluator_v2: [adakv] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text indicates that the denoiser can be applie'
+2026-06-29 15:12:34,201 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 15:12:45,637 [INFO] core.evaluator_v2: [adakv] pred='The generative interactive model used in the method is called the "Coupled GDBN (C-GDBN)" with an "Interactive Matrix (I'
+2026-06-29 15:12:53,542 [INFO] core.evaluator_v2: [adakv] pred='An ICD (Implantable Cardioverter Defibrillator) is a device implanted in the chest to monitor and correct abnormal heart'
+2026-06-29 15:13:00,376 [INFO] core.evaluator_v2: [adakv] pred='The NLMS algorithm is engaged in the PLMS-PPIC method.'
+2026-06-29 15:13:00,378 [INFO] core.evaluator_v2:   [5/50] avg=28.67
+2026-06-29 15:13:03,436 [INFO] core.evaluator_v2: [adakv] pred='In 2009, Brooksley Born was awarded the John F. Kennedy Profiles in Courage Award.'
+2026-06-29 15:13:26,294 [INFO] core.evaluator_v2: [adakv] pred='A media application determines the context of an event by using content recognition file (e.g., data structure 500 (FIG.'
+2026-06-29 15:13:33,512 [INFO] core.evaluator_v2: [adakv] pred='The sticking point in the political showdown over the budget is the policy and spending cuts that are being proposed. Th'
+2026-06-29 15:13:55,098 [INFO] core.evaluator_v2: [adakv] pred='McPherson County, Kansas, is the county seat of McPherson County, Kansas. The county seat is the city that is the admini'
+2026-06-29 15:14:01,469 [INFO] core.evaluator_v2: [adakv] pred='The new Iraqi Body Count organization provides cover for the war and allows supporters of the illegal war to point to it'
+2026-06-29 15:14:01,471 [INFO] core.evaluator_v2:   [10/50] avg=32.62
+2026-06-29 15:14:09,336 [INFO] core.evaluator_v2: [adakv] pred="Accounting for path preference in the robot's belief update process leads to a more stable and accurate prediction of th"
+2026-06-29 15:14:20,503 [INFO] core.evaluator_v2: [adakv] pred='The sides of the fuselage are sloped (tumbled home) to create a conical shape when the fuselage is bent into a box. This'
+2026-06-29 15:14:30,494 [INFO] core.evaluator_v2: [adakv] pred='The court in In re Ferguson concluded that the claimed process involved graphically displaying variations of data from a'
+2026-06-29 15:14:33,142 [INFO] core.evaluator_v2: [adakv] pred='1928-1980.'
+2026-06-29 15:14:42,997 [INFO] core.evaluator_v2: [adakv] pred='Thalassemias are classified based on the chain of hemoglobin that is impaired. The two major categories are α-thalassemi'
+2026-06-29 15:14:43,029 [INFO] core.evaluator_v2:   [15/50] avg=25.57
+2026-06-29 15:14:58,800 [INFO] core.evaluator_v2: [adakv] pred='The transition probability of the environment affects the learning rate in the static agent by influencing the learning '
+2026-06-29 15:15:13,097 [INFO] core.evaluator_v2: [adakv] pred='The experimental techniques used to study the quantum dot structures in this research were low-temperature scanning tunn'
+2026-06-29 15:15:15,855 [INFO] core.evaluator_v2: [adakv] pred=''
+2026-06-29 15:15:27,128 [INFO] core.evaluator_v2: [adakv] pred='The two ground states observed for indeno[1,2-a]fluorene on NaCl surfaces are:\n\n1. Open-shell state (open-shell electron'
+2026-06-29 15:15:35,645 [INFO] core.evaluator_v2: [adakv] pred='The scoring engine generates a stream of content for the channel by categorizing new content items and using historical '
+2026-06-29 15:15:35,647 [INFO] core.evaluator_v2:   [20/50] avg=22.52
+2026-06-29 15:15:36,112 [WARNING] core.model_loader: Input length 9212 > max 8192, truncating...
+2026-06-29 15:16:10,776 [INFO] core.evaluator_v2: [adakv] pred='The stability conditions for a solution of $-\\Delta u = f(u)$ are that the solution is stable if and only if the functio'
+2026-06-29 15:16:32,541 [INFO] core.evaluator_v2: [adakv] pred='The text provides the following information:\n\nMcPherson County is located in the state of Kansas.  The county is named a'
+2026-06-29 15:16:42,545 [INFO] core.evaluator_v2: [adakv] pred='The main focus of the research paper is to study the strong coupling limit of lattice QCD, with a particular emphasis on'
+2026-06-29 15:16:53,948 [INFO] core.evaluator_v2: [adakv] pred='The security parameter for the AES-256 block cipher is 139.'
+2026-06-29 15:16:55,879 [INFO] core.evaluator_v2: [adakv] pred='South West Ultras fan club.'
+2026-06-29 15:16:55,881 [INFO] core.evaluator_v2:   [25/50] avg=22.73
+2026-06-29 15:16:57,731 [INFO] core.evaluator_v2: [adakv] pred='1978'
+2026-06-29 15:17:06,090 [INFO] core.evaluator_v2: [adakv] pred='The interlayer Berry connection polarizability is significant in the context of the crossed nonlinear dynamical intrinsi'
+2026-06-29 15:17:15,479 [INFO] core.evaluator_v2: [adakv] pred='Wearable and ambient sensors, such as accelerometers and heart rate variability (HRV) sensors, are now capable of estima'
+2026-06-29 15:17:23,869 [INFO] core.evaluator_v2: [adakv] pred='Chew, S. Y. and Hufnagel, T. C. and Lim, C. T. and Leong, K. W., Mechanical properties of single electrospun drug-encaps'
+2026-06-29 15:17:35,047 [INFO] core.evaluator_v2: [adakv] pred='Symptoms of vitamin K deficiency include coagulation disorders, such as bleeding tendencies, and may lead to impaired bl'
+2026-06-29 15:17:35,048 [INFO] core.evaluator_v2:   [30/50] avg=21.62
+2026-06-29 15:17:41,495 [INFO] core.evaluator_v2: [adakv] pred="The text does not explicitly mention restrictions on the use of Broadjam's servers. It focuses on payment policies, bill"
+2026-06-29 15:17:46,426 [INFO] core.evaluator_v2: [adakv] pred='The 2017 general election was held on 23 September 2017.'
+2026-06-29 15:17:50,287 [INFO] core.evaluator_v2: [adakv] pred='21'
+2026-06-29 15:17:55,375 [INFO] core.evaluator_v2: [adakv] pred='Simon English became the leader of the National Party in 2017.'
+2026-06-29 15:18:03,354 [INFO] core.evaluator_v2: [adakv] pred="Governor Rick Scott cited privacy concerns, expressed skepticism about the monitoring program's effectiveness, and raise"
+2026-06-29 15:18:03,356 [INFO] core.evaluator_v2:   [35/50] avg=23.72
+2026-06-29 15:18:08,834 [INFO] core.evaluator_v2: [adakv] pred='The SI unit of power is the watt (W).'
+2026-06-29 15:18:32,151 [INFO] core.evaluator_v2: [adakv] pred='Craig wants to find his own place because he is not staying with the family. The text mentions that Craig is a child who'
+2026-06-29 15:18:42,446 [INFO] core.evaluator_v2: [adakv] pred='The decision to base the water rates on usage reflected a fair and equitable approach to housing development, where the '
+2026-06-29 15:18:45,458 [INFO] core.evaluator_v2: [adakv] pred='The answer is 1867.'
+2026-06-29 15:18:45,817 [WARNING] core.model_loader: Input length 8396 > max 8192, truncating...
+2026-06-29 15:19:00,610 [INFO] core.evaluator_v2: [adakv] pred='The proximity of superconductivity significantly affects the Kondo effect by decreasing the second stage Kondo temperatu'
+2026-06-29 15:19:00,624 [INFO] core.evaluator_v2:   [40/50] avg=21.84
+2026-06-29 15:19:05,369 [INFO] core.evaluator_v2: [adakv] pred='Peter Denning.'
+2026-06-29 15:19:10,508 [INFO] core.evaluator_v2: [adakv] pred='The high resolution of what we focus on at dawn or dusk is diminished.'
+2026-06-29 15:19:16,247 [INFO] core.evaluator_v2: [adakv] pred='The Director is responsible for carrying out the functions assigned under the act.'
+2026-06-29 15:19:28,716 [INFO] core.evaluator_v2: [adakv] pred='Ferromagnetic semiconductors have potential applications in spintronics, magnetic memory devices, and high-temperature m'
+2026-06-29 15:19:38,793 [INFO] core.evaluator_v2: [adakv] pred='The recommended daily intake of vitamin K for adult women and men is 120 micrograms (mcg) for both genders.'
+2026-06-29 15:19:38,855 [INFO] core.evaluator_v2:   [45/50] avg=24.91
+2026-06-29 15:19:49,715 [INFO] core.evaluator_v2: [adakv] pred='Yes, DUO contains more instances per image than COCO.'
+2026-06-29 15:20:12,489 [INFO] core.evaluator_v2: [adakv] pred='2020 census\nMcPherson County population was 2020.  The census of 2020 in McPherson County was 2020.  The census of 2020 '
+2026-06-29 15:20:15,916 [INFO] core.evaluator_v2: [adakv] pred='The paper was published in 2023.'
+2026-06-29 15:20:19,194 [INFO] core.evaluator_v2: [adakv] pred='The first white settlement in McPherson County was **Ferrell Ranch**, established in 1867.'
+2026-06-29 15:20:35,738 [INFO] core.evaluator_v2: [adakv] pred='The reliance of artificial organisms on plasticity is controlled by the following factors:\n\n1. Environmental fluctuation'
+2026-06-29 15:20:35,757 [INFO] core.evaluator_v2:   [50/50] avg=26.70
+2026-06-29 15:20:35,761 [INFO] __main__:   → score=26.70, mem_red=80.0%, ttft=2968.9ms
+2026-06-29 15:20:35,762 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 15:20:35,762 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-29 15:20:35,763 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 15:20:35,764 [INFO] __main__: 
+  Task: narrativeqa
+2026-06-29 15:20:35,766 [INFO] core.evaluator_v2: [ours] narrativeqa (50샘플, budget=20%)
+2026-06-29 15:20:43,111 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of "The Mule-Bone."'
+2026-06-29 15:20:50,456 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in the integrity of his agreements and the laws o'
+2026-06-29 15:21:15,344 [INFO] core.evaluator_v2: [ours] pred='The story is set in a medieval European setting, primarily in the castle of Drachenhausen, which is a castle in the regi'
+2026-06-29 15:21:20,921 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad killed his son, Baron Otto.'
+2026-06-29 15:21:29,031 [INFO] core.evaluator_v2: [ours] pred="A ghostly figure of four angels hovering protectively over a cherubic baby emerged from a painting at Dana's workplace."
+2026-06-29 15:21:29,033 [INFO] core.evaluator_v2:   [5/50] avg=7.89
+2026-06-29 15:21:36,401 [INFO] core.evaluator_v2: [ours] pred='Dana.'
+2026-06-29 15:21:37,043 [WARNING] core.model_loader: Input length 8721 > max 8192, truncating...
+2026-06-29 15:21:46,359 [INFO] core.evaluator_v2: [ours] pred='Actor.'
+2026-06-29 15:21:52,849 [INFO] core.evaluator_v2: [ours] pred='The Vervelles live at the Vervelle Gallery.'
+2026-06-29 15:21:58,905 [INFO] core.evaluator_v2: [ours] pred='The coffin.'
+2026-06-29 15:22:07,769 [INFO] core.evaluator_v2: [ours] pred='Frank Saltram is a writer and poet, as evidenced by his work with the Coxon Fund and his ability to produce and publish '
+2026-06-29 15:22:07,771 [INFO] core.evaluator_v2:   [10/50] avg=14.45
+2026-06-29 15:22:14,557 [INFO] core.evaluator_v2: [ours] pred="Mortimer Trefinnis was once estranged from his siblings due to a financial motive. He believed that by using the devil's"
+2026-06-29 15:22:23,745 [INFO] core.evaluator_v2: [ours] pred='The unique phonetic spelling of the "future" article that discussed Beerbohm\'s story is that it is not actually a future'
+2026-06-29 15:22:30,358 [INFO] core.evaluator_v2: [ours] pred='Death is disguised as the severe master, who invites them to dance.'
+2026-06-29 15:22:35,833 [INFO] core.evaluator_v2: [ours] pred='Lady Coxon is the wife of Mr. Saltram.'
+2026-06-29 15:22:42,363 [INFO] core.evaluator_v2: [ours] pred='The war in which Rogers learned his battle knowledge was the **Battle of the Bulge**, which took place in December 1944 '
+2026-06-29 15:22:42,369 [INFO] core.evaluator_v2:   [15/50] avg=14.66
+2026-06-29 15:22:49,983 [INFO] core.evaluator_v2: [ours] pred='Anthony Rogers was working for a company that produced and sold radioactive materials, specifically radium and its compo'
+2026-06-29 15:22:54,707 [INFO] core.evaluator_v2: [ours] pred='The young lady from New York.'
+2026-06-29 15:23:00,491 [INFO] core.evaluator_v2: [ours] pred='Holmes and Dr. Watson are in Cornwall to investigate the mysterious death of Mrs. Porter, a local resident, and to solve'
+2026-06-29 15:23:10,224 [INFO] core.evaluator_v2: [ours] pred='The hidden message Reiko finds within the video is that the curse is broken by copying the video and showing it to someo'
+2026-06-29 15:23:19,135 [INFO] core.evaluator_v2: [ours] pred='1. Justice and mercy\n2. The importance of family and loyalty\n3. The power of wisdom and kindness\n4. The consequences of '
+2026-06-29 15:23:19,139 [INFO] core.evaluator_v2:   [20/50] avg=11.71
+2026-06-29 15:23:26,580 [INFO] core.evaluator_v2: [ours] pred='A cursed videotape.'
+2026-06-29 15:23:37,553 [INFO] core.evaluator_v2: [ours] pred='Bill worked as a waiter in a textile factory in Chicago.'
+2026-06-29 15:23:43,237 [INFO] core.evaluator_v2: [ours] pred="One person, Dr. Sterndale, fainted after seeing Brenda's dead body."
+2026-06-29 15:23:50,136 [INFO] core.evaluator_v2: [ours] pred='Otto is known for his wisdom and simple teachings, which he learned from the old monks of the White Cross on the hill. H'
+2026-06-29 15:23:56,917 [INFO] core.evaluator_v2: [ours] pred='Leon focuses on the history of mankind and the evolution of nations, particularly the decline and decadence of the Anglo'
+2026-06-29 15:23:56,948 [INFO] core.evaluator_v2:   [25/50] avg=12.46
+2026-06-29 15:24:02,313 [INFO] core.evaluator_v2: [ours] pred='The owner of the manor in the story is Monsieur de Merret.'
+2026-06-29 15:24:12,242 [INFO] core.evaluator_v2: [ours] pred="Reiko's job is not explicitly mentioned in the text provided. The narrative focuses on Asakawa's experiences and interac"
+2026-06-29 15:24:17,316 [INFO] core.evaluator_v2: [ours] pred='Holmes observes the remains of powder on the shield.'
+2026-06-29 15:24:23,623 [INFO] core.evaluator_v2: [ours] pred='Socrates compares citizens and the law to a city and its laws, where citizens are bound by the laws of the city, and the'
+2026-06-29 15:24:30,081 [INFO] core.evaluator_v2: [ours] pred='La Grande Breteche is a fictional place and a character in the story by Honore de Balzac. It is not a real place or a re'
+2026-06-29 15:24:30,129 [INFO] core.evaluator_v2:   [30/50] avg=13.52
+2026-06-29 15:24:38,533 [INFO] core.evaluator_v2: [ours] pred='Reiko discovers that copying the tape and showing it to someone else breaks the curse, saving viewers from their imminen'
+2026-06-29 15:24:44,232 [INFO] core.evaluator_v2: [ours] pred='Madame Vervelle.'
+2026-06-29 15:24:49,647 [INFO] core.evaluator_v2: [ours] pred='The text does not mention Lazarus or a murder trial, so there is no answer to this question based on the provided text.'
+2026-06-29 15:24:58,011 [INFO] core.evaluator_v2: [ours] pred='Tomoko is found dead in the apartment, having been killed by the curse from the videotape. She is found by Asakawa, who '
+2026-06-29 15:25:04,583 [INFO] core.evaluator_v2: [ours] pred='The Witch wanted to have reveal their own lies.'
+2026-06-29 15:25:04,584 [INFO] core.evaluator_v2:   [35/50] avg=13.20
+2026-06-29 15:25:11,437 [INFO] core.evaluator_v2: [ours] pred="Oscar is Dana's baby."
+2026-06-29 15:25:18,845 [INFO] core.evaluator_v2: [ours] pred='The Emperor announces that the estates of the Roderburgs shall be held in trust for Otto until he comes of age, and that'
+2026-06-29 15:25:25,214 [INFO] core.evaluator_v2: [ours] pred="T.K. Nupton thought that Enoch Soames was a figment of the author's brain."
+2026-06-29 15:25:34,690 [INFO] core.evaluator_v2: [ours] pred='The wealthy farmer, Chuck, marries Abby.'
+2026-06-29 15:25:52,608 [INFO] core.evaluator_v2: [ours] pred='The art-dealer, Elie Magus, describes Grassou\'s skill level to Virginie\'s father as follows: "You bought your pictures f'
+2026-06-29 15:25:52,642 [INFO] core.evaluator_v2:   [40/50] avg=13.24
+2026-06-29 15:26:02,521 [INFO] core.evaluator_v2: [ours] pred='The Witch was able to perceive the inner beauty and soul of mankind, as well as their hidden qualities and true nature. '
+2026-06-29 15:26:07,725 [INFO] core.evaluator_v2: [ours] pred='When Mary was younger, her mother filled her free time by reading to her.'
+2026-06-29 15:26:32,406 [INFO] core.evaluator_v2: [ours] pred="Crito's purpose was to persuade Socrates to escape the city and flee to a neighboring city, such as Thebes or Megara, wh"
+2026-06-29 15:26:40,621 [INFO] core.evaluator_v2: [ours] pred="The description of the teens' faces when they died was that their fingers were bloodied, and their faces were twisted in"
+2026-06-29 15:26:50,892 [INFO] core.evaluator_v2: [ours] pred='Bill died from a gunshot wound to the chest.'
+2026-06-29 15:26:50,893 [INFO] core.evaluator_v2:   [45/50] avg=12.39
+2026-06-29 15:26:56,523 [INFO] core.evaluator_v2: [ours] pred='Gravener wants Ruth to destroy the letter.'
+2026-06-29 15:26:56,910 [WARNING] core.model_loader: Input length 8722 > max 8192, truncating...
+2026-06-29 15:27:07,002 [INFO] core.evaluator_v2: [ours] pred="The text does not provide any information about where Alabama's son is born."
+2026-06-29 15:27:13,374 [INFO] core.evaluator_v2: [ours] pred='The text does not explicitly state Ruth Anvoy\'s nationality. However, based on the context and the mention of "American"'
+2026-06-29 15:27:24,093 [INFO] core.evaluator_v2: [ours] pred='Ursula leaves Chicago with him.'
+2026-06-29 15:27:30,345 [INFO] core.evaluator_v2: [ours] pred="The housekeeper's feet got wet during Holmes' visit because she was washing the dishes. This is mentioned in the text wh"
+2026-06-29 15:27:30,347 [INFO] core.evaluator_v2:   [50/50] avg=11.90
+2026-06-29 15:27:30,349 [INFO] __main__:   → score=11.90, mem_red=80.0%, ttft=3424.7ms
+2026-06-29 15:27:30,350 [INFO] __main__: 
+  Task: qasper
+2026-06-29 15:27:30,351 [INFO] core.evaluator_v2: [ours] qasper (50샘플, budget=20%)
+2026-06-29 15:27:51,917 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both successfully pass the bottleneck (enter the cellar and '
+2026-06-29 15:28:13,143 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, with a wide context window and a multi-task learning app'
+2026-06-29 15:28:16,553 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-06-29 15:28:37,247 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: Word/Character Embedding, CNN/LSTM, and Attention based mode'
+2026-06-29 15:28:43,086 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared in the text are: 6-layers and 9-layers sMBR models.'
+2026-06-29 15:28:43,087 [INFO] core.evaluator_v2:   [5/50] avg=10.75
+2026-06-29 15:28:50,097 [INFO] core.evaluator_v2: [ours] pred='The datasets used for evaluation are the CNN/DailyMail, the NYT, and the XSum datasets.'
+2026-06-29 15:28:56,198 [INFO] core.evaluator_v2: [ours] pred='The RNN layer (RoBERT) works better than the Transformer layer (ToBERT) in this study. ToBERT outperformed RoBERT in all'
+2026-06-29 15:29:05,718 [INFO] core.evaluator_v2: [ours] pred='The ancient Chinese dataset is derived from an external ancient corpus, which contains 134 million tokens. This corpus i'
+2026-06-29 15:29:13,976 [INFO] core.evaluator_v2: [ours] pred='Pointer-Gen, Pointer-Gen+RL-ROUGE, Pointer-Gen+RL-SEN, and Pointer-Gen+ARL-SEN are the baselines used for evaluation.'
+2026-06-29 15:29:18,838 [INFO] core.evaluator_v2: [ours] pred='The Twitter dataset contains 1,873 posts and comments.'
+2026-06-29 15:29:18,841 [INFO] core.evaluator_v2:   [10/50] avg=16.69
+2026-06-29 15:29:40,809 [INFO] core.evaluator_v2: [ours] pred='The performance of the models for the different data representations is illustrated in Table TABREF9. The upper part of '
+2026-06-29 15:29:48,060 [INFO] core.evaluator_v2: [ours] pred='The metrics used to establish that this makes chatbots more knowledgeable and better at learning and conversation are th'
+2026-06-29 15:29:54,103 [INFO] core.evaluator_v2: [ours] pred='The combination of rewards for reinforcement learning is the harmonic mean of irony accuracy and sentiment preservation.'
+2026-06-29 15:30:01,783 [INFO] core.evaluator_v2: [ours] pred='The attention module is pretrained on the MT (Machine Translation) data.'
+2026-06-29 15:30:11,659 [INFO] core.evaluator_v2: [ours] pred='The size of the dataset is not explicitly stated in the text, but it is mentioned that the "OurNepali" dataset is "almos'
+2026-06-29 15:30:11,661 [INFO] core.evaluator_v2:   [15/50] avg=20.11
+2026-06-29 15:30:19,055 [INFO] core.evaluator_v2: [ours] pred='The datasets evaluated are the WSJ (Word Sentence Journal) and the fastText embeddings. The WSJ is used for the POS tagg'
+2026-06-29 15:30:26,359 [INFO] core.evaluator_v2: [ours] pred='The model is compared to previous methods such as the CNN sentence classifier of Kim BIBREF28 and the baseline (Li and R'
+2026-06-29 15:30:47,355 [INFO] core.evaluator_v2: [ours] pred='The languages that are described as being similar to each other are the following: the languages that are described as b'
+2026-06-29 15:30:50,725 [INFO] core.evaluator_v2: [ours] pred='The 7 Indian languages they experiment with are: Hindi, Tamil, Telugu, Malayalam, Kannada, and Bengali.'
+2026-06-29 15:30:55,324 [INFO] core.evaluator_v2: [ours] pred='They test their method on tasks such as predicting hashtags for a held-out test set of posts, and evaluating the perform'
+2026-06-29 15:30:55,325 [INFO] core.evaluator_v2:   [20/50] avg=19.50
+2026-06-29 15:31:00,178 [INFO] core.evaluator_v2: [ours] pred='The tagging scheme employed is a novel tagging scheme that incorporates the constraint that each text in our corpora con'
+2026-06-29 15:31:08,050 [INFO] core.evaluator_v2: [ours] pred='The text discusses the use of KL divergence and maximum entropy in the context of NLP tasks, specifically in the context'
+2026-06-29 15:31:34,176 [INFO] core.evaluator_v2: [ours] pred='The NCEL approach is effective in the context of the problem, as it outperforms the state-of-the-art collective methods '
+2026-06-29 15:31:39,856 [INFO] core.evaluator_v2: [ours] pred='The methods considered to find examples of biases and unwarranted inferences are: 1) manually categorizing each of the b'
+2026-06-29 15:31:42,869 [INFO] core.evaluator_v2: [ours] pred='The corpus is 53 documents.'
+2026-06-29 15:31:42,870 [INFO] core.evaluator_v2:   [25/50] avg=18.13
+2026-06-29 15:31:50,506 [INFO] core.evaluator_v2: [ours] pred='An individual model consists of a Bayesian model for semantic role induction (SRI) that uses cross-lingual latent variab'
+2026-06-29 15:31:58,587 [INFO] core.evaluator_v2: [ours] pred='The text discusses the use of gaze features and linguistic features for sarcasm detection. It mentions that the gaze fea'
+2026-06-29 15:32:04,174 [INFO] core.evaluator_v2: [ours] pred='3.0'
+2026-06-29 15:32:25,941 [INFO] core.evaluator_v2: [ours] pred='The data presented to the subjects to elicit event-related responses was the EEG (electroencephalogram) data. The study '
+2026-06-29 15:32:34,868 [INFO] core.evaluator_v2: [ours] pred='The dataset is annotated to determine whether a tweet contains no evidence of depression (n=6,829 tweets) or evidence of'
+2026-06-29 15:32:34,871 [INFO] core.evaluator_v2:   [30/50] avg=16.60
+2026-06-29 15:32:41,225 [INFO] core.evaluator_v2: [ours] pred='To match words before reordering them, the English sentences are processed through a bilingual dictionary (Google Transl'
+2026-06-29 15:32:47,565 [INFO] core.evaluator_v2: [ours] pred='No, they do not. The text is written in English, but the results are reported on English data.'
+2026-06-29 15:32:49,679 [INFO] core.evaluator_v2: [ours] pred='The pretrained word embeddings used are: GloVe and Edinburgh embeddings.'
+2026-06-29 15:32:55,544 [INFO] core.evaluator_v2: [ours] pred="Yes, the text mentions the use of pretrained embeddings, specifically in the context of the model's architecture and tra"
+2026-06-29 15:33:03,778 [INFO] core.evaluator_v2: [ours] pred='The ensemble method is formed by averaging the predictions from the constituent single models. These single models were '
+2026-06-29 15:33:03,779 [INFO] core.evaluator_v2:   [35/50] avg=16.50
+2026-06-29 15:33:05,812 [INFO] core.evaluator_v2: [ours] pred='Yes, they use attention.'
+2026-06-29 15:33:26,522 [INFO] core.evaluator_v2: [ours] pred='The language model architectures used are: 160K bitext setup, 2016, 2016, 2016, 2016, 2016, 2016, 2016, 2016, 2016, 2016'
+2026-06-29 15:33:33,223 [INFO] core.evaluator_v2: [ours] pred='No, they do not report results only on English data. The text discusses the application of the proposed approach to a va'
+2026-06-29 15:33:40,063 [INFO] core.evaluator_v2: [ours] pred='The clinical datasets used in the paper are the MEDDOCAN 2019 shared task dataset and a novel Spanish clinical reports d'
+2026-06-29 15:33:53,834 [INFO] core.evaluator_v2: [ours] pred='Based on the text, the datasets for sentiment analysis are not balanced. The text provides a three-class (positive, neut'
+2026-06-29 15:33:53,836 [INFO] core.evaluator_v2:   [40/50] avg=16.01
+2026-06-29 15:33:59,261 [INFO] core.evaluator_v2: [ours] pred='Yes, it is possible to convert a cloze-style question to a naturally-looking question. The text discusses the process of'
+2026-06-29 15:34:09,327 [INFO] core.evaluator_v2: [ours] pred='The text does not explicitly mention specific tasks used for evaluation. It focuses on the mathematical properties and p'
+2026-06-29 15:34:30,746 [INFO] core.evaluator_v2: [ours] pred='Additional features and context proposed in the text include:\n\n1. **Context Tweets**: The use of context tweets (which c'
+2026-06-29 15:34:36,306 [INFO] core.evaluator_v2: [ours] pred='The text mentions an annotated dataset of over 20,000 blog users.'
+2026-06-29 15:34:42,131 [INFO] core.evaluator_v2: [ours] pred='The text does not explicitly mention any specific Chinese datasets used in the research. However, it references the PTB '
+2026-06-29 15:34:42,132 [INFO] core.evaluator_v2:   [45/50] avg=15.07
+2026-06-29 15:34:53,377 [INFO] core.evaluator_v2: [ours] pred='The text discusses the use of machine learning and deep learning methods for Recognizing Question Entailment (RQE) in th'
+2026-06-29 15:34:59,472 [INFO] core.evaluator_v2: [ours] pred='The paper studies the natural language of propaganda, specifically focusing on the analysis of propagandistic fragments '
+2026-06-29 15:35:03,664 [INFO] core.evaluator_v2: [ours] pred='This approach compares to other WSD approaches by using a Gaussian mixture model with KL divergence as the energy functi'
+2026-06-29 15:35:10,027 [INFO] core.evaluator_v2: [ours] pred='The ML methods aim to identify argument components such as claims, premises, and objections.'
+2026-06-29 15:35:35,766 [INFO] core.evaluator_v2: [ours] pred='The resulting annotated data is higher quality when expert annotations are used, with a bigger difference between the ex'
+2026-06-29 15:35:35,768 [INFO] core.evaluator_v2:   [50/50] avg=14.46
+2026-06-29 15:35:35,768 [INFO] __main__:   → score=14.46, mem_red=80.0%, ttft=2194.4ms
+2026-06-29 15:35:35,769 [INFO] __main__: 
+  Task: multifieldqa_en
+2026-06-29 15:35:35,769 [INFO] core.evaluator_v2: [ours] multifieldqa_en (50샘플, budget=20%)
+2026-06-29 15:35:43,423 [INFO] core.evaluator_v2: [ours] pred='Ngotho is fired and the family is forced to move to another section of the country. Over the course of the book, his pos'
+2026-06-29 15:35:49,005 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise.'
+2026-06-29 15:35:49,525 [WARNING] core.model_loader: Input length 11011 > max 8192, truncating...
+2026-06-29 15:36:00,033 [INFO] core.evaluator_v2: [ours] pred='The generative interactive model used in the method is called the **C-GDBN (Coupled Graphical Dynamic Bayesian Network)*'
+2026-06-29 15:36:08,174 [INFO] core.evaluator_v2: [ours] pred='An ICD (Implantable Cardioverter Defibrillator) is a device used to monitor and treat heart rhythms, particularly to det'
+2026-06-29 15:36:15,426 [INFO] core.evaluator_v2: [ours] pred='The algorithm engaged in the PLMS-PPIC method is the NLMS (Normalized Least Mean Squares) algorithm.'
+2026-06-29 15:36:15,428 [INFO] core.evaluator_v2:   [5/50] avg=48.39
+2026-06-29 15:36:18,930 [INFO] core.evaluator_v2: [ours] pred='In 2009, Brooksley Born was awarded the John F. Kennedy Profiles in Courage Award for her courage in sounding early warn'
+2026-06-29 15:36:29,421 [INFO] core.evaluator_v2: [ours] pred='A media application determines the context of an event by analyzing and/or automatically generating supplemental informa'
+2026-06-29 15:36:54,055 [INFO] core.evaluator_v2: [ours] pred='The sticking point in the political showdown over the budget is the proposed cuts to food stamps, foreign aid, and presc'
+2026-06-29 15:36:57,225 [INFO] core.evaluator_v2: [ours] pred='The county seat of McPherson County is **McPherson**.'
+2026-06-29 15:37:03,553 [INFO] core.evaluator_v2: [ours] pred='The new Iraqi Body Count organization provides cover for the war and allows supporters of the illegal war to point to it'
+2026-06-29 15:37:03,554 [INFO] core.evaluator_v2:   [10/50] avg=39.95
+2026-06-29 15:37:10,560 [INFO] core.evaluator_v2: [ours] pred="Accounting for path preference in the robot's belief update leads to a more steady decrease in entropy over the goal dis"
+2026-06-29 15:37:35,245 [INFO] core.evaluator_v2: [ours] pred='The sides of the fuselage are important to be sloped (tumbled home) to ensure proper clearance and functionality of the '
+2026-06-29 15:37:45,478 [INFO] core.evaluator_v2: [ours] pred='The court in *In re Ferguson* concluded that the transformation prong of the Bilski test required that the claimed proce'
+2026-06-29 15:38:07,410 [INFO] core.evaluator_v2: [ours] pred='The text does not provide a specific number of years that KSTP-FM 102.1 has been on the air.  The text only mentions tha'
+2026-06-29 15:38:18,218 [INFO] core.evaluator_v2: [ours] pred='Thalassemias are classified based on the chain of globin involved in hemoglobin synthesis. The two major categories are '
+2026-06-29 15:38:18,220 [INFO] core.evaluator_v2:   [15/50] avg=29.59
+2026-06-29 15:38:30,610 [INFO] core.evaluator_v2: [ours] pred='The transition probability of the environment affects the learning rate in the static agent by influencing the rate at w'
+2026-06-29 15:38:42,067 [INFO] core.evaluator_v2: [ours] pred='The experimental techniques used to study the quantum dot structures in this research were low-temperature scanning tunn'
+2026-06-29 15:38:44,924 [INFO] core.evaluator_v2: [ours] pred='The text does not provide specific information about where Margaret Way was born or where she died.'
+2026-06-29 15:38:55,511 [INFO] core.evaluator_v2: [ours] pred='The two ground states observed for indeno[1,2-a]fluorene on NaCl surfaces are the open-shell and closed-shell states.'
+2026-06-29 15:39:03,887 [INFO] core.evaluator_v2: [ours] pred='The scoring engine generates a stream of content for the channel by accessing and categorizing new content items from he'
+2026-06-29 15:39:03,889 [INFO] core.evaluator_v2:   [20/50] avg=27.92
+2026-06-29 15:39:04,469 [WARNING] core.model_loader: Input length 9212 > max 8192, truncating...
+2026-06-29 15:39:25,802 [INFO] core.evaluator_v2: [ours] pred='The stability conditions for a solution of $-\\Delta u = f(u)$ are that the solution must be stable, meaning that the sol'
+2026-06-29 15:39:29,068 [INFO] core.evaluator_v2: [ours] pred='McPherson County is located in Kansas.'
+2026-06-29 15:39:54,669 [INFO] core.evaluator_v2: [ours] pred='The main focus of the research paper is to study the strong coupling limit in lattice QCD, and to study the sign problem'
+2026-06-29 15:40:06,134 [INFO] core.evaluator_v2: [ours] pred='The security parameter for the AES-256 block cipher is 172.'
+2026-06-29 15:40:08,215 [INFO] core.evaluator_v2: [ours] pred='The most active fan club is the South West Ultras fan club.'
+2026-06-29 15:40:08,217 [INFO] core.evaluator_v2:   [25/50] avg=29.28
+2026-06-29 15:40:09,972 [INFO] core.evaluator_v2: [ours] pred='1980'
+2026-06-29 15:40:16,540 [INFO] core.evaluator_v2: [ours] pred='The interlayer Berry connection polarizability is significant for the geometric origin of the crossed nonlinear dynamica'
+2026-06-29 15:40:26,083 [INFO] core.evaluator_v2: [ours] pred='Wearable and ambient sensors, including electrodermal activity (EDA) and heart rate variability (HRV) sensors, are now c'
+2026-06-29 15:40:34,455 [INFO] core.evaluator_v2: [ours] pred='Chew, S. Y. and Hufnagel, T. C. and Lim, C. T. and Leong, K. W., Mechanical properties of single electrospun drug-encaps'
+2026-06-29 15:40:46,869 [INFO] core.evaluator_v2: [ours] pred='Symptoms of vitamin K deficiency include coagulation disorders, such as bleeding tendencies, and impaired bone health. I'
+2026-06-29 15:40:46,871 [INFO] core.evaluator_v2:   [30/50] avg=27.45
+2026-06-29 15:40:58,655 [INFO] core.evaluator_v2: [ours] pred="The text does not explicitly mention any restrictions on the use of Broadjam's servers. However, it does mention that us"
+2026-06-29 15:41:03,718 [INFO] core.evaluator_v2: [ours] pred='The 2017 general election was held on 13 June 2017.'
+2026-06-29 15:41:08,536 [INFO] core.evaluator_v2: [ours] pred='The text mentions "how many massive star-forming regions were studied" and provides the answer as 18089.'
+2026-06-29 15:41:13,682 [INFO] core.evaluator_v2: [ours] pred='Simon English became the leader of the National Party on 24 October 2017.'
+2026-06-29 15:41:21,271 [INFO] core.evaluator_v2: [ours] pred='Governor Rick Scott cited privacy concerns, skepticism about the effectiveness of the monitoring program, and the potent'
+2026-06-29 15:41:21,272 [INFO] core.evaluator_v2:   [35/50] avg=25.07
+2026-06-29 15:41:26,932 [INFO] core.evaluator_v2: [ours] pred='The SI unit of power is the watt (W).'
+2026-06-29 15:41:32,833 [INFO] core.evaluator_v2: [ours] pred='Craig wants to find his own place because he is literally sobbing and wailing very loudly, which is very upsetting to ev'
+2026-06-29 15:41:40,556 [INFO] core.evaluator_v2: [ours] pred='The decision to base the water rates on usage reflected a fairness-based approach to water pricing, where users who cons'
+2026-06-29 15:41:44,010 [INFO] core.evaluator_v2: [ours] pred='The text states that McPherson County was established as a county in 1867.'
+2026-06-29 15:41:44,277 [WARNING] core.model_loader: Input length 8396 > max 8192, truncating...
+2026-06-29 15:42:18,785 [INFO] core.evaluator_v2: [ours] pred='The proximity of superconductivity to the Kondo effect is a key factor in the behavior of the system. The proximity of s'
+2026-06-29 15:42:18,788 [INFO] core.evaluator_v2:   [40/50] avg=24.73
+2026-06-29 15:42:23,550 [INFO] core.evaluator_v2: [ours] pred='Peter.'
+2026-06-29 15:42:30,608 [INFO] core.evaluator_v2: [ours] pred="At dawn or dusk, the high resolution of what we focus on decreases. This is because the brain's ability to focus and pro"
+2026-06-29 15:42:36,528 [INFO] core.evaluator_v2: [ours] pred='The Director is responsible for carrying out the functions assigned under the act.'
+2026-06-29 15:42:49,429 [INFO] core.evaluator_v2: [ours] pred='Ferromagnetic semiconductors have potential applications in spintronics, magnetic memory devices, and high-density data '
+2026-06-29 15:43:01,221 [INFO] core.evaluator_v2: [ours] pred='The recommended daily intake of vitamin K for adult women and men is not explicitly stated in the provided text. However'
+2026-06-29 15:43:01,223 [INFO] core.evaluator_v2:   [45/50] avg=26.03
+2026-06-29 15:43:12,184 [INFO] core.evaluator_v2: [ours] pred='Yes, DUO contains more instances per image than COCO.'
+2026-06-29 15:43:16,107 [INFO] core.evaluator_v2: [ours] pred='The population of McPherson County according to the 2020 census was 41,138.'
+2026-06-29 15:43:19,678 [INFO] core.evaluator_v2: [ours] pred='The paper was published in 2023.'
+2026-06-29 15:43:22,259 [INFO] core.evaluator_v2: [ours] pred='Conway'
+2026-06-29 15:43:30,230 [INFO] core.evaluator_v2: [ours] pred='The factors that control the reliance of artificial organisms on plasticity are: 1) the diversity of the environment, 2)'
+2026-06-29 15:43:30,232 [INFO] core.evaluator_v2:   [50/50] avg=26.65
+2026-06-29 15:43:30,234 [INFO] __main__:   → score=26.65, mem_red=80.0%, ttft=2976.9ms
+2026-06-29 15:43:30,251 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260629_130202.csv
+2026-06-29 15:43:30,263 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260629_130202.json
+2026-06-29 15:43:30,265 [INFO] __main__: Experiment 1 completed!

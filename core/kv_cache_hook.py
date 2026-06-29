@@ -412,17 +412,10 @@ class OursHybridCache(BaseHookCache):
                 head_var = (head_var - head_var.min()) / rng
             scores = scores + self.beta * head_var
 
-        # Sem: prefill 평균 키와의 cosine similarity
-        # 평균 키 = 전체 문맥의 대표 벡터 (쿼리 근사)
+        # Sem: 비활성화 (실험 결과 해로운 것으로 판명, 2026-06-29)
+        # mean_key/last_key 모두 Qwen3 프롬프트 구조상 쿼리 근사 불가
         if self.use_semantic:
-            k_cpu = ref_k.float().squeeze(0)  # [heads, seq_len, head_dim]
-            mean_k = k_cpu.mean(dim=1, keepdim=True)  # [heads, 1, head_dim] — 평균 키
-            sim = F.cosine_similarity(k_cpu, mean_k, dim=-1).mean(dim=0)  # [seq_len]
-            del k_cpu, mean_k
-            rng = sim.max() - sim.min()
-            if rng > 1e-9:
-                sim = (sim - sim.min()) / rng
-            scores = scores + self.gamma * sim
+            pass  # γ=0 효과
 
         # P: 위치 감쇠
         if self.use_position:

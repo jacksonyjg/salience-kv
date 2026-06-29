@@ -1,0 +1,968 @@
+2026-06-29 17:09:47,018 [INFO] __main__: Experiment 1: Main Results
+2026-06-29 17:09:47,019 [INFO] __main__:   Model: qwen3-4b
+2026-06-29 17:09:47,019 [INFO] __main__:   Mode: full
+2026-06-29 17:09:47,019 [INFO] __main__:   Budget: 20%
+2026-06-29 17:09:47,020 [INFO] __main__:   Tasks: ['gov_report', 'qmsum']
+2026-06-29 17:09:47,020 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-29 17:09:47,021 [INFO] __main__:   Samples/task: 50
+2026-06-29 17:09:47,021 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-29 17:09:47,022 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-29 17:09:47,133 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 17:09:47,140 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 17:09:47,192 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 17:09:47,193 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-29 17:09:47,199 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-29 17:09:47,262 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-29 17:09:47,309 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-29 17:09:48,443 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-29 17:09:48,444 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-29 17:09:48,476 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 17:09:48,480 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 17:10:14,207 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 17:10:14,218 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-29 17:10:14,296 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-29 17:10:14,339 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-29 17:10:14,356 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-29 17:10:14,357 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-06-29 17:10:14,393 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 17:10:14,428 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 17:10:15,001 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 17:10:15,039 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-29 17:10:15,075 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 17:10:15,109 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-29 17:10:15,574 [INFO] core.dataset_loader: Loaded 50 samples from gov_report
+2026-06-29 17:10:15,576 [INFO] __main__:   ✓ gov_report: 50샘플 로드 완료
+2026-06-29 17:10:15,576 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-06-29 17:10:16,560 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 17:10:16,589 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 17:10:17,546 [INFO] core.dataset_loader: Loaded 50 samples from qmsum
+2026-06-29 17:10:17,549 [INFO] __main__:   ✓ qmsum: 50샘플 로드 완료
+2026-06-29 17:10:17,551 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-29 17:10:17,553 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 17:10:17,554 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-29 17:10:17,556 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 17:10:17,558 [INFO] __main__: 
+  Task: gov_report
+2026-06-29 17:10:17,560 [INFO] core.evaluator_v2: [fullkv] gov_report (50샘플, budget=20%)
+2026-06-29 17:10:31,031 [INFO] core.evaluator_v2: [fullkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-06-29 17:10:44,503 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the challenges and efforts in managing federal IT systems and cybersecurity. Despite a $96 billion'
+2026-06-29 17:11:01,489 [INFO] core.evaluator_v2: [fullkv] pred="**Summary:**\n\nThis report examines China's actions in the South China Sea (SCS) and East China Sea (ECS), focusing on th"
+2026-06-29 17:11:19,922 [INFO] core.evaluator_v2: [fullkv] pred='The Clean Water Act (CWA) and the Safe Drinking Water Act (SDWA) established federal programs to support wastewater and '
+2026-06-29 17:11:34,061 [INFO] core.evaluator_v2: [fullkv] pred='The Department of Homeland Security (DHS) has faced significant internal control and financial management system deficie'
+2026-06-29 17:11:34,083 [INFO] core.evaluator_v2:   [5/50] avg=16.41
+2026-06-29 17:11:48,393 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the ongoing challenges federal agencies face with cybersecurity incidents, highlighting the signif'
+2026-06-29 17:11:59,447 [INFO] core.evaluator_v2: [fullkv] pred='The Small Business Act of 1953 established the Small Business Administration (SBA) to promote small businesses and ensur'
+2026-06-29 17:12:12,786 [INFO] core.evaluator_v2: [fullkv] pred='The Department of Defense (DOD) uses "other transaction" (OT) authorities to conduct research, develop prototypes, and c'
+2026-06-29 17:12:26,298 [INFO] core.evaluator_v2: [fullkv] pred='The document discusses the evolving role of cash in the payment system, highlighting the increasing adoption of electron'
+2026-06-29 17:12:42,028 [INFO] core.evaluator_v2: [fullkv] pred='The Department of Homeland Security (DHS) has established comprehensive policies and processes to manage its major acqui'
+2026-06-29 17:12:42,046 [INFO] core.evaluator_v2:   [10/50] avg=14.80
+2026-06-29 17:12:57,509 [INFO] core.evaluator_v2: [fullkv] pred='This report provides a detailed analysis of the Department of Homeland Security (DHS) appropriations for FY2019, compari'
+2026-06-29 17:13:09,835 [INFO] core.evaluator_v2: [fullkv] pred='The U.S. federal government owns about 640 million acres, mostly in the western states, managed by four agencies: NPS, F'
+2026-06-29 17:13:21,358 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the financial and operational aspects of the Black Lung Disability Trust Fund. It details the bene'
+2026-06-29 17:13:35,705 [INFO] core.evaluator_v2: [fullkv] pred='The document provides an overview of U.S. foreign aid, its role in foreign policy, and its evolution over time. It outli'
+2026-06-29 17:13:56,584 [INFO] core.evaluator_v2: [fullkv] pred='The document provides an overview of coal mining in the United States, focusing on the regulatory framework established '
+2026-06-29 17:13:56,606 [INFO] core.evaluator_v2:   [15/50] avg=15.02
+2026-06-29 17:14:06,032 [INFO] core.evaluator_v2: [fullkv] pred="The Public Safety Officers' Benefits (PSOB) and Educational Assistance (PSOEA) programs provide financial support to the"
+2026-06-29 17:14:12,469 [INFO] core.evaluator_v2: [fullkv] pred="The document outlines the FBI's challenges with its Hoover Building headquarters since 2011, including security concerns"
+2026-06-29 17:14:23,317 [INFO] core.evaluator_v2: [fullkv] pred='The document discusses challenges faced by the Department of Veterans Affairs (VA) in aligning its medical facilities an'
+2026-06-29 17:14:47,987 [INFO] core.evaluator_v2: [fullkv] pred='The document provides an overview of the FY2019 budget request and appropriations for the International Trade Administra'
+2026-06-29 17:15:00,064 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the federal Black Lung Program, which provides benefits to coal miners and their survivors affecte'
+2026-06-29 17:15:00,076 [INFO] core.evaluator_v2:   [20/50] avg=15.86
+2026-06-29 17:15:18,321 [INFO] core.evaluator_v2: [fullkv] pred="The document discusses the technology sector's significant employment hubs and the employment of technology workers acro"
+2026-06-29 17:15:36,844 [INFO] core.evaluator_v2: [fullkv] pred='The document provides an overview of the current U.S. federal framework for Internet privacy, highlighting the lack of c'
+2026-06-29 17:15:53,343 [INFO] core.evaluator_v2: [fullkv] pred='**Summary:**\n\nOver the past 30 years, there has been a shift from defined benefit (DB) to defined contribution (DC) reti'
+2026-06-29 17:16:07,100 [INFO] core.evaluator_v2: [fullkv] pred='The Social Security Administration (SSA) is responsible for administering three major programs: Old-Age and Survivors In'
+2026-06-29 17:16:24,355 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the financial challenges facing the RHB Fund, which supports postal retiree health benefits under '
+2026-06-29 17:16:24,378 [INFO] core.evaluator_v2:   [25/50] avg=15.94
+2026-06-29 17:16:38,176 [INFO] core.evaluator_v2: [fullkv] pred='The 116th Congress may address various housing-related issues, including housing finance, assistance programs, and tax p'
+2026-06-29 17:16:50,333 [INFO] core.evaluator_v2: [fullkv] pred='The National Popular Vote (NPV) initiative, established in 2006, seeks to achieve direct popular election of the Preside'
+2026-06-29 17:17:06,749 [INFO] core.evaluator_v2: [fullkv] pred='The Energy and Water Development appropriations bill includes funding for various federal agencies, including the U.S. A'
+2026-06-29 17:17:19,356 [INFO] core.evaluator_v2: [fullkv] pred='The federal government manages hundreds of thousands of buildings costing billions annually. To improve efficiency and r'
+2026-06-29 17:17:32,700 [INFO] core.evaluator_v2: [fullkv] pred='The National Cemeteries Act of 1973 established the modern veterans’ cemetery system, managed by the VA’s National Cemet'
+2026-06-29 17:17:32,717 [INFO] core.evaluator_v2:   [30/50] avg=15.90
+2026-06-29 17:17:47,563 [INFO] core.evaluator_v2: [fullkv] pred='The document discusses the critical role of banking in the U.S. economy, highlighting both its potential benefits and ri'
+2026-06-29 17:17:59,684 [INFO] core.evaluator_v2: [fullkv] pred='**Summary:**\n\nThe U.S. global defense posture is a critical component of U.S. defense strategy, encompassing forces, foo'
+2026-06-29 17:18:17,173 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the Lobbying Disclosure Act (LDA) requirements for lobbyists in the U.S. Congress, detailing regis'
+2026-06-29 17:18:37,793 [INFO] core.evaluator_v2: [fullkv] pred='**Summary:**\n\nPuerto Rico, a U.S. territory with approximately 3.3 million residents, is subject to federal laws but has'
+2026-06-29 17:18:53,254 [INFO] core.evaluator_v2: [fullkv] pred='The document discusses the increasing congressional interest in improving small business access to capital, driven by co'
+2026-06-29 17:18:53,272 [INFO] core.evaluator_v2:   [35/50] avg=15.60
+2026-06-29 17:19:09,735 [INFO] core.evaluator_v2: [fullkv] pred='WMATA, established in 1967 through an interstate compact, operates a regional transit system in the National Capital reg'
+2026-06-29 17:19:22,347 [INFO] core.evaluator_v2: [fullkv] pred='The minority leader of the U.S. House of Representatives serves as the head of the "loyal opposition," tasked with repre'
+2026-06-29 17:19:41,500 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the eligibility criteria for institutions of higher education (IHEs) to participate in Title IV st'
+2026-06-29 17:19:57,919 [INFO] core.evaluator_v2: [fullkv] pred='The Secret Service is responsible for protecting the President, Vice President, their families, and national leaders, as'
+2026-06-29 17:20:08,452 [INFO] core.evaluator_v2: [fullkv] pred='The document discusses the understanding and regulation of low-dose radiation exposure in the United States. It explains'
+2026-06-29 17:20:08,465 [INFO] core.evaluator_v2:   [40/50] avg=15.77
+2026-06-29 17:20:23,019 [INFO] core.evaluator_v2: [fullkv] pred='**Summary:**\n\nNeonatal Abstinence Syndrome (NAS) is a condition in infants caused by prenatal opioid exposure. Prenatal '
+2026-06-29 17:20:37,733 [INFO] core.evaluator_v2: [fullkv] pred='The document provides an overview of the Aegis Ballistic Missile Defense (BMD) program, managed by the Missile Defense A'
+2026-06-29 17:20:51,256 [INFO] core.evaluator_v2: [fullkv] pred='**Summary:**\n\nCross-border data flows are vital to global trade, enabling digital commerce, innovation, and economic gro'
+2026-06-29 17:21:04,462 [INFO] core.evaluator_v2: [fullkv] pred='This document provides a detailed chronology of official responses to military sexual assault incidents from 2013 to 201'
+2026-06-29 17:21:17,919 [INFO] core.evaluator_v2: [fullkv] pred='The document discusses the importance of reliable cost estimates for the 2020 Census, emphasizing that they are essentia'
+2026-06-29 17:21:17,937 [INFO] core.evaluator_v2:   [45/50] avg=15.87
+2026-06-29 17:21:35,167 [INFO] core.evaluator_v2: [fullkv] pred='**Summary:**\n\nThe document outlines the growing recognition of climate change as a significant driver of migration, with'
+2026-06-29 17:21:45,752 [INFO] core.evaluator_v2: [fullkv] pred="The document discusses USPS's growing reliance on competitive products, which now account for 28% of its revenue. These "
+2026-06-29 17:22:01,494 [INFO] core.evaluator_v2: [fullkv] pred='**Summary:**\n\nSince 1993, USAID has provided over $5 billion in bilateral assistance to the Palestinians in the West Ban'
+2026-06-29 17:22:14,396 [INFO] core.evaluator_v2: [fullkv] pred='This document outlines how federal agencies acquire and manage heavy equipment, detailing the use of leases versus purch'
+2026-06-29 17:22:30,253 [INFO] core.evaluator_v2: [fullkv] pred="The U.S. has been involved in Afghanistan since 2001, focusing on building the country's security and governance to prev"
+2026-06-29 17:22:30,266 [INFO] core.evaluator_v2:   [50/50] avg=16.09
+2026-06-29 17:22:30,268 [INFO] __main__:   → score=16.09, mem_red=0.0%, ttft=2719.5ms
+2026-06-29 17:22:30,268 [INFO] __main__: 
+  Task: qmsum
+2026-06-29 17:22:30,269 [INFO] core.evaluator_v2: [fullkv] qmsum (50샘플, budget=20%)
+2026-06-29 17:22:42,440 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-06-29 17:22:58,607 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript between a Project Manager, User Interface specialist, Industrial Designer, and Mark'
+2026-06-29 17:23:07,709 [INFO] core.evaluator_v2: [fullkv] pred='The meeting discusses progress on the SmartKom project, focusing on advancements in speech synthesis and dialogue manage'
+2026-06-29 17:23:19,268 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting discussing the design and development of a new remote control device, featurin'
+2026-06-29 17:23:34,279 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a conceptual design meeting for a remote control device. Key points include:\n\n- **Energy'
+2026-06-29 17:23:34,282 [INFO] core.evaluator_v2:   [5/50] avg=9.83
+2026-06-29 17:23:48,388 [INFO] core.evaluator_v2: [fullkv] pred='The document is a conversation among researchers discussing their recent experiments in speech recognition, focusing on '
+2026-06-29 17:23:58,572 [INFO] core.evaluator_v2: [fullkv] pred='The document is a conversation among graduate students and a professor discussing a research project called "Meeting Rec'
+2026-06-29 17:24:11,424 [INFO] core.evaluator_v2: [fullkv] pred="The Welsh Government's childcare offer, introduced through a pilot program, is being rolled out gradually to learn lesso"
+2026-06-29 17:24:22,734 [INFO] core.evaluator_v2: [fullkv] pred='The meeting discusses the status of transcription work, with Jane not attending. IBM has sent the tape for transcription'
+2026-06-29 17:24:34,264 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a kick-off meeting for the design of a new remote control. The project manager, Christa '
+2026-06-29 17:24:34,267 [INFO] core.evaluator_v2:   [10/50] avg=8.56
+2026-06-29 17:24:47,418 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript discussing a speech recognition project. Key points include:\n\n- **Microphone Setup*'
+2026-06-29 17:25:00,199 [INFO] core.evaluator_v2: [fullkv] pred="The Welsh Government's childcare offer, introduced through a pilot program, is being rolled out gradually to learn lesso"
+2026-06-29 17:25:11,150 [INFO] core.evaluator_v2: [fullkv] pred='The Children, Young People and Education Committee held a virtual meeting to discuss the impact of the coronavirus pande'
+2026-06-29 17:25:23,066 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript where the team reviews the design of a new remote control shaped like a banana. Key'
+2026-06-29 17:25:36,497 [INFO] core.evaluator_v2: [fullkv] pred='The project team is preparing for a meeting to discuss the design of a remote control. The Industrial Designer presented'
+2026-06-29 17:25:36,509 [INFO] core.evaluator_v2:   [15/50] avg=9.03
+2026-06-29 17:25:50,892 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting between a Project Manager, Marketing, User Interface, and Industrial Designer '
+2026-06-29 17:26:02,650 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a kick-off meeting for the design of a new remote control. The project manager, Christa '
+2026-06-29 17:26:15,660 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript discussing a speech recognition project. Key points include:\n\n- **Microphone Setup*'
+2026-06-29 17:26:33,005 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting between a Project Manager, Industrial Designer, User Interface specialist, and'
+2026-06-29 17:26:46,002 [INFO] core.evaluator_v2: [fullkv] pred="The Welsh Government's childcare offer, introduced through a pilot program, is being rolled out gradually to learn lesso"
+2026-06-29 17:26:46,013 [INFO] core.evaluator_v2:   [20/50] avg=9.70
+2026-06-29 17:27:02,144 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a detail design meeting for a new remote control device. The team, including the Project'
+2026-06-29 17:27:13,589 [INFO] core.evaluator_v2: [fullkv] pred='The 12th meeting of the House of Commons Special Committee on the COVID-19 Pandemic was held as a hybrid meeting, with s'
+2026-06-29 17:27:27,417 [INFO] core.evaluator_v2: [fullkv] pred='The document is a conversation among researchers discussing their recent experiments in speech recognition, focusing on '
+2026-06-29 17:27:39,238 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting discussing the design and development of a new remote control device, featurin'
+2026-06-29 17:27:51,910 [INFO] core.evaluator_v2: [fullkv] pred='The document is a conversation among a Project Manager, User Interface designer, Industrial Designer, and Marketing repr'
+2026-06-29 17:27:51,915 [INFO] core.evaluator_v2:   [25/50] avg=9.65
+2026-06-29 17:28:05,124 [INFO] core.evaluator_v2: [fullkv] pred='The project team discussed the design of a new television remote control. Key points include:\n\n- The remote must be tele'
+2026-06-29 17:28:21,171 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a detail design meeting for a new remote control device. The team, including the Project'
+2026-06-29 17:28:31,642 [INFO] core.evaluator_v2: [fullkv] pred='The document is a conversation among graduate students and a professor discussing a research project called "Meeting Rec'
+2026-06-29 17:28:44,461 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a functional design meeting where the project team discusses the design and requirements'
+2026-06-29 17:28:56,177 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a kick-off meeting for the design of a new remote control. The project manager, Christa '
+2026-06-29 17:28:56,180 [INFO] core.evaluator_v2:   [30/50] avg=9.97
+2026-06-29 17:29:12,628 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript between a Project Manager, User Interface specialist, Industrial Designer, and Mark'
+2026-06-29 17:29:28,723 [INFO] core.evaluator_v2: [fullkv] pred='The Special Committee on the COVID-19 Pandemic held its seventh meeting, where members presented petitions and questione'
+2026-06-29 17:29:40,252 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting between team members discussing the design and requirements for a new remote c'
+2026-06-29 17:29:51,154 [INFO] core.evaluator_v2: [fullkv] pred='The Children, Young People and Education Committee held a virtual meeting to discuss the impact of the coronavirus pande'
+2026-06-29 17:30:03,367 [INFO] core.evaluator_v2: [fullkv] pred='The document is a conversation among researchers discussing ongoing projects and challenges in speech processing. Key po'
+2026-06-29 17:30:03,369 [INFO] core.evaluator_v2:   [35/50] avg=10.01
+2026-06-29 17:30:21,304 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a detail design meeting for a new remote control device. The team, including the Project'
+2026-06-29 17:30:37,641 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a detail design meeting for a new remote control device. The team, including the Project'
+2026-06-29 17:30:53,643 [INFO] core.evaluator_v2: [fullkv] pred='The Special Committee on the COVID-19 Pandemic held its seventh meeting, where members presented petitions and questione'
+2026-06-29 17:31:05,612 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript where the team reviews the design of a new remote control shaped like a banana. Key'
+2026-06-29 17:31:21,918 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript between a Project Manager, User Interface specialist, Industrial Designer, and Mark'
+2026-06-29 17:31:21,924 [INFO] core.evaluator_v2:   [40/50] avg=10.11
+2026-06-29 17:31:37,084 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a conceptual design meeting for a remote control device. Key points include:\n\n- **Energy'
+2026-06-29 17:31:48,241 [INFO] core.evaluator_v2: [fullkv] pred='The Children, Young People and Education Committee held a virtual meeting to discuss the impact of the coronavirus pande'
+2026-06-29 17:32:05,489 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting between a Project Manager, Industrial Designer, User Interface specialist, and'
+2026-06-29 17:32:23,449 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a functional design meeting between a Project Manager, Marketing expert (Sammy Benjo), a'
+2026-06-29 17:32:35,725 [INFO] core.evaluator_v2: [fullkv] pred='The document is a conversation among researchers discussing ongoing projects and challenges in speech processing. Key po'
+2026-06-29 17:32:35,727 [INFO] core.evaluator_v2:   [45/50] avg=9.92
+2026-06-29 17:32:49,349 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting among a Project Manager, Marketing, Industrial Designer, and User Interface De'
+2026-06-29 17:33:02,991 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting among a Project Manager, Marketing, Industrial Designer, and User Interface De'
+2026-06-29 17:33:15,340 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-06-29 17:33:32,818 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a meeting between a Project Manager, Industrial Designer, User Interface specialist, and'
+2026-06-29 17:33:43,761 [INFO] core.evaluator_v2: [fullkv] pred='The Children, Young People and Education Committee held a virtual meeting to discuss the impact of the coronavirus pande'
+2026-06-29 17:33:43,764 [INFO] core.evaluator_v2:   [50/50] avg=9.79
+2026-06-29 17:33:43,765 [INFO] __main__:   → score=9.79, mem_red=0.0%, ttft=2891.1ms
+2026-06-29 17:33:43,765 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 17:33:43,766 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-29 17:33:43,766 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 17:33:43,767 [INFO] __main__: 
+  Task: gov_report
+2026-06-29 17:33:43,767 [INFO] core.evaluator_v2: [streaming] gov_report (50샘플, budget=20%)
+2026-06-29 17:34:02,338 [INFO] core.evaluator_v2: [streaming] pred='The National Science Foundation (NSF) has recognized the need to strategically manage its use of rotating researchers (r'
+2026-06-29 17:34:23,034 [INFO] core.evaluator_v2: [streaming] pred='The Federal Information Security Management Act (FISMA) requires federal agencies to implement and maintain effective in'
+2026-06-29 17:34:47,808 [INFO] core.evaluator_v2: [streaming] pred='The provided text is a collection of articles, analyses, and commentary from various sources, primarily from the *Nation'
+2026-06-29 17:35:14,660 [INFO] core.evaluator_v2: [streaming] pred='The 2018–2020 federal budget for the Environmental Protection Agency (EPA) included significant funding for water infras'
+2026-06-29 17:35:38,774 [INFO] core.evaluator_v2: [streaming] pred='The Department of Homeland Security (DHS) conducted an audit of the TRIO project, which involves the U.S. Coast Guard (C'
+2026-06-29 17:35:38,812 [INFO] core.evaluator_v2:   [5/50] avg=16.43
+2026-06-29 17:36:02,934 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThis report evaluates the effectiveness of federal agencies in implementing cybersecurity measures, partic'
+2026-06-29 17:36:24,439 [INFO] core.evaluator_v2: [streaming] pred='The Small Business Administration (SBA) has issued a comprehensive set of guidelines and requirements for small business'
+2026-06-29 17:36:35,159 [INFO] core.evaluator_v2: [streaming] pred='The summary of the provided text is as follows:\n\nThis text outlines the regulations and procedures for the use of non-tr'
+2026-06-29 17:36:51,906 [INFO] core.evaluator_v2: [streaming] pred='Cash remains a significant part of the global payment system, but its dominance is gradually being challenged by the ris'
+2026-06-29 17:37:17,560 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) has made progress in managing its major acquisition programs, bu'
+2026-06-29 17:37:17,595 [INFO] core.evaluator_v2:   [10/50] avg=15.12
+2026-06-29 17:37:39,318 [INFO] core.evaluator_v2: [streaming] pred='The Department of Homeland Security (DHS) is a federal agency that oversees a wide range of security and immigration-rel'
+2026-06-29 17:37:57,243 [INFO] core.evaluator_v2: [streaming] pred='The Bureau of Land Management (BLM) has broad authority to manage and dispose of federal lands in the United States. Thi'
+2026-06-29 17:38:19,859 [INFO] core.evaluator_v2: [streaming] pred='The Black Lung Disability Trust Fund (Trust Fund) faces significant financial challenges in balancing its revenues and e'
+2026-06-29 17:38:46,035 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThe United States provides significant foreign assistance, including economic, security, and humanitarian '
+2026-06-29 17:39:10,752 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThe U.S. Office of Surface Mining Reclamation and Enforcement (OSMRE) oversees the reclamation of coal min'
+2026-06-29 17:39:10,783 [INFO] core.evaluator_v2:   [15/50] avg=15.63
+2026-06-29 17:39:32,359 [INFO] core.evaluator_v2: [streaming] pred="The **Public Safety Officers' Benefits Act (PSOEA)** provides financial assistance to eligible public safety officers an"
+2026-06-29 17:39:45,056 [INFO] core.evaluator_v2: [streaming] pred='The GAO report outlines various funding mechanisms and budgetary strategies to support federal real property needs, emph'
+2026-06-29 17:39:55,474 [INFO] core.evaluator_v2: [streaming] pred='The GAO report highlights key challenges in the implementation of the BRAC 2005 process, which involved the consolidatio'
+2026-06-29 17:40:21,830 [INFO] core.evaluator_v2: [streaming] pred='The Consolidated Appropriations Act of 2019 (P.L. 116-6) provided funding for various U.S. trade and economic programs, '
+2026-06-29 17:40:46,542 [INFO] core.evaluator_v2: [streaming] pred='The Black Lung Benefits Act (BLBA) provides financial support to eligible coal miners and their survivors who have been '
+2026-06-29 17:40:46,564 [INFO] core.evaluator_v2:   [20/50] avg=15.62
+2026-06-29 17:41:11,769 [INFO] core.evaluator_v2: [streaming] pred='This report examines the representation of racial and ethnic groups among individuals with bachelor’s or master’s degree'
+2026-06-29 17:41:35,865 [INFO] core.evaluator_v2: [streaming] pred='**Summary of the Report on Internet Privacy and Data Security:**\n\nThe report highlights the growing importance of Intern'
+2026-06-29 17:42:02,363 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThis report examines the factors that lead individuals to access retirement savings early and explores pot'
+2026-06-29 17:42:24,103 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThe Government Accountability Office (GAO) evaluated the management of information technology (IT) at the '
+2026-06-29 17:42:48,338 [INFO] core.evaluator_v2: [streaming] pred='The GAO report provides a comprehensive overview of potential policy approaches to address the financial sustainability '
+2026-06-29 17:42:48,378 [INFO] core.evaluator_v2:   [25/50] avg=15.96
+2026-06-29 17:43:13,661 [INFO] core.evaluator_v2: [streaming] pred='The document discusses the **tax treatment of canceled mortgage debt** and **mortgage insurance premiums** in the United'
+2026-06-29 17:43:35,388 [INFO] core.evaluator_v2: [streaming] pred='The National Popular Vote (NPV) initiative is a proposal to ensure that the president of the United States is elected by'
+2026-06-29 17:43:56,951 [INFO] core.evaluator_v2: [streaming] pred='The Energy and Water Development Appropriations Bill for Fiscal Year 2020 outlines funding for various federal agencies '
+2026-06-29 17:44:15,385 [INFO] core.evaluator_v2: [streaming] pred='The Office of Management and Budget (OMB) and the General Services Administration (GSA) have implemented the Real Proper'
+2026-06-29 17:44:36,534 [INFO] core.evaluator_v2: [streaming] pred='The U.S. Department of Veterans Affairs (VA) has been working to improve access to burial options for veterans, with a g'
+2026-06-29 17:44:36,560 [INFO] core.evaluator_v2:   [30/50] avg=15.79
+2026-06-29 17:44:56,499 [INFO] core.evaluator_v2: [streaming] pred='The financial sector is undergoing significant transformation due to the rise of fintech, which offers innovative soluti'
+2026-06-29 17:45:18,449 [INFO] core.evaluator_v2: [streaming] pred='The Department of Defense (DOD) has partially concurred with the recommendations in the report regarding the planning an'
+2026-06-29 17:45:43,880 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThis report examines the compliance of lobbyists with the **Lobbying Disclosure Act (LDA)**, specifically '
+2026-06-29 17:46:09,020 [INFO] core.evaluator_v2: [streaming] pred='**Summary of the GAO Report on Puerto Rico’s Financial Condition and Debt Levels**\n\nThe U.S. Government Accountability O'
+2026-06-29 17:46:35,580 [INFO] core.evaluator_v2: [streaming] pred='The Small Business Lending Fund (SBLF) was established under the Small Business Jobs Act of 2010 (P.L. 111-240) to provi'
+2026-06-29 17:46:35,613 [INFO] core.evaluator_v2:   [35/50] avg=15.62
+2026-06-29 17:46:49,727 [INFO] core.evaluator_v2: [streaming] pred="WMATA's capital planning and budgeting processes were reviewed to assess their effectiveness in identifying and prioriti"
+2026-06-29 17:47:11,530 [INFO] core.evaluator_v2: [streaming] pred='The minority leader in the U.S. House of Representatives plays a critical role in representing the interests of their pa'
+2026-06-29 17:47:36,129 [INFO] core.evaluator_v2: [streaming] pred='The document outlines the requirements and regulations related to Title IV of the Higher Education Act (HEA), focusing o'
+2026-06-29 17:47:58,768 [INFO] core.evaluator_v2: [streaming] pred='The Department of Homeland Security (DHS) and the Secret Service have implemented a comprehensive Information Integratio'
+2026-06-29 17:48:07,376 [INFO] core.evaluator_v2: [streaming] pred='The report highlights the need for interagency collaboration to address research priorities related to the health effect'
+2026-06-29 17:48:07,386 [INFO] core.evaluator_v2:   [40/50] avg=15.66
+2026-06-29 17:48:34,476 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThe document provides a comprehensive overview of **neonatal abstinence syndrome (NAS)**, a condition that'
+2026-06-29 17:49:01,690 [INFO] core.evaluator_v2: [streaming] pred='The Aegis Ballistic Missile Defense (BMD) system has demonstrated capability to intercept non-separating, simple-separat'
+2026-06-29 17:49:25,897 [INFO] core.evaluator_v2: [streaming] pred='The balance between data flows and privacy protection is critical for maintaining trust in the digital environment and a'
+2026-06-29 17:49:54,464 [INFO] core.evaluator_v2: [streaming] pred='The provided text is a list of legislative reports and bills related to the **U.S. Department of Defense**, **National D'
+2026-06-29 17:50:19,102 [INFO] core.evaluator_v2: [streaming] pred="The Bureau's cost estimate process was reviewed to ensure it meets the standards outlined in the Cost Estimating and Ass"
+2026-06-29 17:50:19,134 [INFO] core.evaluator_v2:   [45/50] avg=15.57
+2026-06-29 17:50:33,562 [INFO] core.evaluator_v2: [streaming] pred="The U.S. Department of Treasury's Climate Change Adaptation (LDCF) initiative aims to support climate resilience in eigh"
+2026-06-29 17:50:46,414 [INFO] core.evaluator_v2: [streaming] pred='The U.S. Postal Service (USPS) faces challenges in accurately scanning competitive products, which are critical to its e'
+2026-06-29 17:51:08,275 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nGAO reviewed the treatment, handling, and use of funds provided through the ESF for assistance to the West'
+2026-06-29 17:51:33,608 [INFO] core.evaluator_v2: [streaming] pred='**Summary of the Audit of the Short-Term Rental Program for Heavy Equipment**\n\nThis audit evaluated how three selected f'
+2026-06-29 17:51:59,481 [INFO] core.evaluator_v2: [streaming] pred='The U.S. Department of Defense (DOD) has procured and maintained a variety of equipment for the Afghan National Security'
+2026-06-29 17:51:59,505 [INFO] core.evaluator_v2:   [50/50] avg=15.78
+2026-06-29 17:51:59,510 [INFO] __main__:   → score=15.78, mem_red=80.0%, ttft=2670.7ms
+2026-06-29 17:51:59,516 [INFO] __main__: 
+  Task: qmsum
+2026-06-29 17:51:59,517 [INFO] core.evaluator_v2: [streaming] qmsum (50샘플, budget=20%)
+2026-06-29 17:52:11,157 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-29 17:52:21,113 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new product, focusing on user interface and user experience. They are considering'
+2026-06-29 17:52:30,658 [INFO] core.evaluator_v2: [streaming] pred='The meeting is scheduled to discuss the next steps for the project, with a focus on refining the structure and addressin'
+2026-06-29 17:52:39,193 [INFO] core.evaluator_v2: [streaming] pred='The meeting concluded with a celebration, as the team felt they had successfully completed their project. The discussion'
+2026-06-29 17:52:52,716 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a remote control device, focusing on two key aspects: the material (titanium or spo'
+2026-06-29 17:52:52,718 [INFO] core.evaluator_v2:   [5/50] avg=9.31
+2026-06-29 17:53:09,085 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed various aspects of a research project involving neural networks, data processing, and computationa'
+2026-06-29 17:53:16,926 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed the development of a navigation system that can take users to their intended destination rather th'
+2026-06-29 17:53:38,174 [INFO] core.evaluator_v2: [streaming] pred='The Welsh Government has announced a new childcare offer aimed at supporting families, particularly those on lower incom'
+2026-06-29 17:53:48,613 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed the training of a neural network for speech recognition, focusing on the number of hidden units an'
+2026-06-29 17:53:59,722 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed the design of a universal remote control that allows users to change channels, adjust volume, and '
+2026-06-29 17:53:59,723 [INFO] core.evaluator_v2:   [10/50] avg=7.94
+2026-06-29 17:54:09,619 [INFO] core.evaluator_v2: [streaming] pred='The meeting is focused on discussing the development of a global encoding standard for audio processing, with a particul'
+2026-06-29 17:54:31,011 [INFO] core.evaluator_v2: [streaming] pred='The Welsh Government has announced a new childcare offer aimed at supporting families, particularly those on lower incom'
+2026-06-29 17:54:45,933 [INFO] core.evaluator_v2: [streaming] pred='The committee met to discuss the impact of the pandemic on children and young people, focusing on the support systems in'
+2026-06-29 17:54:56,770 [INFO] core.evaluator_v2: [streaming] pred='The team concluded their meeting with a positive assessment of the project, noting that it was well within budget and th'
+2026-06-29 17:55:11,887 [INFO] core.evaluator_v2: [streaming] pred='The team has finalized the design concept for a new product, incorporating the following key features:\n\n- **Power Source'
+2026-06-29 17:55:11,890 [INFO] core.evaluator_v2:   [15/50] avg=8.22
+2026-06-29 17:55:24,404 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed the development of a universal remote control for a new television and DVD player. The team aimed '
+2026-06-29 17:55:35,584 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed the design of a universal remote control that allows users to change channels, adjust volume, and '
+2026-06-29 17:55:45,508 [INFO] core.evaluator_v2: [streaming] pred='The meeting is focused on discussing the development of a global encoding standard for audio processing, with a particul'
+2026-06-29 17:56:01,667 [INFO] core.evaluator_v2: [streaming] pred='The conversation revolves around a team working on a project, with members discussing various aspects of their work, inc'
+2026-06-29 17:56:23,254 [INFO] core.evaluator_v2: [streaming] pred='The Welsh Government has announced a new childcare offer aimed at supporting families, particularly those on lower incom'
+2026-06-29 17:56:23,259 [INFO] core.evaluator_v2:   [20/50] avg=8.95
+2026-06-29 17:56:34,687 [INFO] core.evaluator_v2: [streaming] pred='The meeting concluded with a positive evaluation of the project, highlighting strong teamwork, creative ideas, and effec'
+2026-06-29 17:56:41,683 [INFO] core.evaluator_v2: [streaming] pred='The committee meeting adjourned. The Acting Chair (Mr. Bruce Stanton) thanked the members for their efforts in getting t'
+2026-06-29 17:56:57,970 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed various aspects of a research project involving neural networks, data processing, and computationa'
+2026-06-29 17:57:06,509 [INFO] core.evaluator_v2: [streaming] pred='The meeting concluded with a celebration, as the team felt they had successfully completed their project. The discussion'
+2026-06-29 17:57:16,326 [INFO] core.evaluator_v2: [streaming] pred='The project team has decided to modify the product design to reduce costs and improve usability. The final design will f'
+2026-06-29 17:57:16,329 [INFO] core.evaluator_v2:   [25/50] avg=9.31
+2026-06-29 17:57:31,322 [INFO] core.evaluator_v2: [streaming] pred='The team discussed the design of a new remote control device, focusing on user interface and experience. Key points incl'
+2026-06-29 17:57:42,560 [INFO] core.evaluator_v2: [streaming] pred='The meeting concluded with a positive evaluation of the project, highlighting strong teamwork, creative ideas, and effec'
+2026-06-29 17:57:50,606 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed the development of a navigation system that can take users to their intended destination rather th'
+2026-06-29 17:58:01,976 [INFO] core.evaluator_v2: [streaming] pred="The meeting concluded with a discussion on the project's user interface and design requirements. Key points included:\n\n-"
+2026-06-29 17:58:13,040 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed the design of a universal remote control that allows users to change channels, adjust volume, and '
+2026-06-29 17:58:13,044 [INFO] core.evaluator_v2:   [30/50] avg=9.36
+2026-06-29 17:58:22,915 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new product, focusing on user interface and user experience. They are considering'
+2026-06-29 17:58:33,514 [INFO] core.evaluator_v2: [streaming] pred='The government is facing criticism over its handling of the national debt, with concerns raised about the accuracy of fi'
+2026-06-29 17:58:45,155 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed various aspects of user interface design for a remote control device, focusing on the placement an'
+2026-06-29 17:59:00,118 [INFO] core.evaluator_v2: [streaming] pred='The committee met to discuss the impact of the pandemic on children and young people, focusing on the support systems in'
+2026-06-29 17:59:14,733 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed various topics related to machine learning and signal processing, including:\n\n1. **Model Simplific'
+2026-06-29 17:59:14,735 [INFO] core.evaluator_v2:   [35/50] avg=9.32
+2026-06-29 17:59:26,095 [INFO] core.evaluator_v2: [streaming] pred='The meeting concluded with a positive evaluation of the project, highlighting strong teamwork, creative ideas, and effec'
+2026-06-29 17:59:37,569 [INFO] core.evaluator_v2: [streaming] pred='The meeting concluded with a positive evaluation of the project, highlighting strong teamwork, creative ideas, and effec'
+2026-06-29 17:59:48,356 [INFO] core.evaluator_v2: [streaming] pred='The government is facing criticism over its handling of the national debt, with concerns raised about the accuracy of fi'
+2026-06-29 17:59:59,099 [INFO] core.evaluator_v2: [streaming] pred='The team concluded their meeting with a positive assessment of the project, noting that it was well within budget and th'
+2026-06-29 18:00:16,113 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new product, focusing on user interface and user experience. They are considering'
+2026-06-29 18:00:16,118 [INFO] core.evaluator_v2:   [40/50] avg=9.69
+2026-06-29 18:00:29,962 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a remote control device, focusing on two key aspects: the material (titanium or spo'
+2026-06-29 18:00:44,935 [INFO] core.evaluator_v2: [streaming] pred='The committee met to discuss the impact of the pandemic on children and young people, focusing on the support systems in'
+2026-06-29 18:01:01,070 [INFO] core.evaluator_v2: [streaming] pred='The conversation revolves around a team working on a project, with members discussing various aspects of their work, inc'
+2026-06-29 18:01:11,112 [INFO] core.evaluator_v2: [streaming] pred='The meeting concluded with a lunch break, followed by a thirty-minute individual work session. The team will reconvene f'
+2026-06-29 18:01:25,320 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed various topics related to machine learning and signal processing, including:\n\n1. **Model Simplific'
+2026-06-29 18:01:25,322 [INFO] core.evaluator_v2:   [45/50] avg=9.40
+2026-06-29 18:01:37,142 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new remote control device that includes a feature to help users locate their remo'
+2026-06-29 18:01:49,100 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new remote control device that includes a feature to help users locate their remo'
+2026-06-29 18:02:00,517 [INFO] core.evaluator_v2: [streaming] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-29 18:02:16,712 [INFO] core.evaluator_v2: [streaming] pred='The conversation revolves around a team working on a project, with members discussing various aspects of their work, inc'
+2026-06-29 18:02:31,714 [INFO] core.evaluator_v2: [streaming] pred='The committee met to discuss the impact of the pandemic on children and young people, focusing on the support systems in'
+2026-06-29 18:02:31,718 [INFO] core.evaluator_v2:   [50/50] avg=9.57
+2026-06-29 18:02:31,719 [INFO] __main__:   → score=9.57, mem_red=80.0%, ttft=2973.9ms
+2026-06-29 18:02:31,719 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 18:02:31,720 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-29 18:02:31,720 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 18:02:31,721 [INFO] __main__: 
+  Task: gov_report
+2026-06-29 18:02:31,722 [INFO] core.evaluator_v2: [h2o] gov_report (50샘플, budget=20%)
+2026-06-29 18:02:56,164 [INFO] core.evaluator_v2: [h2o] pred='The National Science Foundation (NSF) has implemented a cost-management strategy for its Independent Research and Develo'
+2026-06-29 18:03:20,946 [INFO] core.evaluator_v2: [h2o] pred='The Federal Information Security Management Act (FISMA) is a federal law that requires federal agencies to develop, impl'
+2026-06-29 18:03:33,767 [INFO] core.evaluator_v2: [h2o] pred="The United States and its allies face a critical challenge in the South China Sea, where China's maritime assertiveness "
+2026-06-29 18:04:00,590 [INFO] core.evaluator_v2: [h2o] pred='The Clean Water SRF and Drinking Water SRF programs were funded at the same levels as FY2017, with the same amounts appr'
+2026-06-29 18:04:13,163 [INFO] core.evaluator_v2: [h2o] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-06-29 18:04:13,184 [INFO] core.evaluator_v2:   [5/50] avg=15.81
+2026-06-29 18:04:34,001 [INFO] core.evaluator_v2: [h2o] pred='The National Institute of Standards and Technology (NIST) established the cybersecurity framework to provide guidance fo'
+2026-06-29 18:04:58,403 [INFO] core.evaluator_v2: [h2o] pred='The Small Business Act (1978) and the Small Business Act (1982) are federal laws that provide small businesses with the '
+2026-06-29 18:05:20,953 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nThe text outlines the requirements and procedures for the use of "other'
+2026-06-29 18:05:32,746 [INFO] core.evaluator_v2: [h2o] pred='The document discusses the decline of cash as a payment system and the rise of electronic payment methods, using Sweden '
+2026-06-29 18:05:58,250 [INFO] core.evaluator_v2: [h2o] pred='The Department of Homeland Security (DHS) has implemented a comprehensive acquisition management and resource allocation'
+2026-06-29 18:05:58,286 [INFO] core.evaluator_v2:   [10/50] avg=15.60
+2026-06-29 18:06:24,853 [INFO] core.evaluator_v2: [h2o] pred='The Department of Homeland Security (DHS) is a federal agency that is responsible for the security of the United States.'
+2026-06-29 18:06:39,541 [INFO] core.evaluator_v2: [h2o] pred='The Bureau of Land Management (BLM) has broad authority to acquire and dispose of federal lands, primarily under the Fed'
+2026-06-29 18:07:04,365 [INFO] core.evaluator_v2: [h2o] pred='The Black Lung Disability Trust Fund (Trust Fund) is a federal program that provides benefits to coal miners who have be'
+2026-06-29 18:07:30,464 [INFO] core.evaluator_v2: [h2o] pred='The United States provides foreign assistance to countries around the world, with the goal of promoting economic develop'
+2026-06-29 18:07:54,916 [INFO] core.evaluator_v2: [h2o] pred='The Office of Surface Mining Reclamation and Enforcement (OSMRE) has issued a report on the oversight of financial assur'
+2026-06-29 18:07:54,946 [INFO] core.evaluator_v2:   [15/50] avg=16.61
+2026-06-29 18:08:16,029 [INFO] core.evaluator_v2: [h2o] pred="The PSOB (Public Safety Officers' Benefits) and PSOEA (Public Safety Officers' Educational Assistance) programs are desi"
+2026-06-29 18:08:36,493 [INFO] core.evaluator_v2: [h2o] pred='The U.S. federal government has a 2014 report that outlines selected funding mechanisms and considerations for each mech'
+2026-06-29 18:08:41,380 [INFO] core.evaluator_v2: [h2o] pred='The document is a work of the United States government and is not subject to copyright protection in the United States. '
+2026-06-29 18:09:08,461 [INFO] core.evaluator_v2: [h2o] pred='The 2019 Congressional Budget and Appropriations Process for the U.S. International Trade Commission (ITC) and the U.S. '
+2026-06-29 18:09:33,223 [INFO] core.evaluator_v2: [h2o] pred='The Black Lung Benefits Act (BLBA) of 1981, as amended by the Black Lung Benefits Amendments of 1981, provides for the p'
+2026-06-29 18:09:33,248 [INFO] core.evaluator_v2:   [20/50] avg=15.82
+2026-06-29 18:09:58,698 [INFO] core.evaluator_v2: [h2o] pred='The analysis of technology workforce representation in the United States, focusing on the technology sector and leading '
+2026-06-29 18:10:18,582 [INFO] core.evaluator_v2: [h2o] pred='The Federal Trade Commission (FTC) has issued a report on the Internet privacy and data security issues that have arisen'
+2026-06-29 18:10:35,371 [INFO] core.evaluator_v2: [h2o] pred='The report provides an analysis of the factors leading to early withdrawals from retirement savings, including the impac'
+2026-06-29 18:10:52,296 [INFO] core.evaluator_v2: [h2o] pred='The Office of Management and Budget (OMB) has issued a guidance document that outlines the roles and responsibilities of'
+2026-06-29 18:11:17,222 [INFO] core.evaluator_v2: [h2o] pred='The U.S. Postal Service (USPS) has provided a detailed response to the Government Accountability Office (GAO) regarding '
+2026-06-29 18:11:17,264 [INFO] core.evaluator_v2:   [25/50] avg=15.69
+2026-06-29 18:11:42,444 [INFO] core.evaluator_v2: [h2o] pred='The Tax Exclusion for Canceled Mortgage Debt Income (RL34212) and the Deduction for Mortgage Insurance Premiums (P.L. 10'
+2026-06-29 18:12:07,012 [INFO] core.evaluator_v2: [h2o] pred='The National Popular Vote (NPV) initiative is a proposal to reform the presidential election process by ensuring that th'
+2026-06-29 18:12:35,043 [INFO] core.evaluator_v2: [h2o] pred='The Energy and Water Development Appropriations Bill for FY2020 includes several key components and funding allocations '
+2026-06-29 18:12:57,287 [INFO] core.evaluator_v2: [h2o] pred='The Office of Management and Budget (OMB) and the Department of Housing and Urban Development (HUD) have issued a final '
+2026-06-29 18:13:23,108 [INFO] core.evaluator_v2: [h2o] pred='The Government Accountability Office (GAO) has issued a report to the Department of Veterans Affairs (VA) regarding the '
+2026-06-29 18:13:23,141 [INFO] core.evaluator_v2:   [30/50] avg=15.75
+2026-06-29 18:13:38,672 [INFO] core.evaluator_v2: [h2o] pred='The Volcker Rule, as proposed, aims to address the risks associated with proprietary trading by banks, particularly in t'
+2026-06-29 18:14:02,738 [INFO] core.evaluator_v2: [h2o] pred='**Summary of the Report on the European Reassurance Initiative (ERI) and Defense Department (DOD) Funding and Planning**'
+2026-06-29 18:14:14,742 [INFO] core.evaluator_v2: [h2o] pred='The U.S. Attorney’s Office for the District of Columbia (USAO) is responsible for enforcing the Lobbying Disclosure Act '
+2026-06-29 18:14:39,861 [INFO] core.evaluator_v2: [h2o] pred='The report provides an analysis of the factors that contributed to Puerto Rico’s financial condition and levels of debt,'
+2026-06-29 18:14:58,501 [INFO] core.evaluator_v2: [h2o] pred='The Small Business Lending Fund (SBLF) was established under the Small Business Jobs Act of 2010 (P.L. 111-240) to provi'
+2026-06-29 18:14:58,537 [INFO] core.evaluator_v2:   [35/50] avg=15.66
+2026-06-29 18:15:25,216 [INFO] core.evaluator_v2: [h2o] pred="**Summary of the Report on WMATA's Capital Planning and Maintenance Programs**\n\nThis report evaluates the capital planni"
+2026-06-29 18:15:49,445 [INFO] core.evaluator_v2: [h2o] pred='The minority leader in the House of Representatives is a key strategist and leader of the Democratic party. Their role i'
+2026-06-29 18:16:14,145 [INFO] core.evaluator_v2: [h2o] pred='The report provides a comprehensive overview of the Title IV (Federal Student Aid) eligibility criteria for postsecondar'
+2026-06-29 18:16:30,622 [INFO] core.evaluator_v2: [h2o] pred='The Secret Service’s Information Integration and Technology Transformation (IITT) investment, which includes two program'
+2026-06-29 18:16:51,103 [INFO] core.evaluator_v2: [h2o] pred='The summary of the document is as follows:\n\nThe document discusses the role of the U.S. government in the development of'
+2026-06-29 18:16:51,140 [INFO] core.evaluator_v2:   [40/50] avg=15.84
+2026-06-29 18:17:15,385 [INFO] core.evaluator_v2: [h2o] pred="The report provides an overview of the federal government's efforts to address the opioid epidemic, with a focus on neon"
+2026-06-29 18:17:42,618 [INFO] core.evaluator_v2: [h2o] pred="The Aegis Ballistic Missile Defense (BMD) system is a critical component of the United States' missile defense strategy,"
+2026-06-29 18:18:06,568 [INFO] core.evaluator_v2: [h2o] pred='The United States, Japan, Mexico, Canada, South Korea, Singapore, Taiwan, and Australia are members of the APEC CBPR. Th'
+2026-06-29 18:18:34,428 [INFO] core.evaluator_v2: [h2o] pred="The U.S. Congress has passed numerous National Defense Authorization Acts (NDAA) to authorize the Department of Defense'"
+2026-06-29 18:18:58,666 [INFO] core.evaluator_v2: [h2o] pred='The Bureau of the Census, in its 2020 Census cost estimate, has been criticized for not adequately accounting for risk a'
+2026-06-29 18:18:58,694 [INFO] core.evaluator_v2:   [45/50] avg=15.75
+2026-06-29 18:19:24,966 [INFO] core.evaluator_v2: [h2o] pred='The United States has implemented a comprehensive climate change adaptation strategy through the Global Climate Change I'
+2026-06-29 18:19:48,640 [INFO] core.evaluator_v2: [h2o] pred='The U.S. Postal Service (USPS) has implemented a new internal control framework to improve the design, implementation, a'
+2026-06-29 18:20:10,457 [INFO] core.evaluator_v2: [h2o] pred='The report is available at no charge on the GAO website at http://www.gao.gov. If you or your staff have any questions a'
+2026-06-29 18:20:22,403 [INFO] core.evaluator_v2: [h2o] pred='This report provides an overview of the Federal Acquisition Regulation (FAR), Office of Management Budget (OMB) A-94, an'
+2026-06-29 18:20:48,354 [INFO] core.evaluator_v2: [h2o] pred='The United States has purchased a number of key ANDSF equipment, such as MD-530 helicopters, Mobile Strike Force Vehicle'
+2026-06-29 18:20:48,384 [INFO] core.evaluator_v2:   [50/50] avg=16.19
+2026-06-29 18:20:48,385 [INFO] __main__:   → score=16.19, mem_red=80.0%, ttft=2675.1ms
+2026-06-29 18:20:48,389 [INFO] __main__: 
+  Task: qmsum
+2026-06-29 18:20:48,390 [INFO] core.evaluator_v2: [h2o] qmsum (50샘플, budget=20%)
+2026-06-29 18:21:01,677 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-29 18:21:16,976 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 18:21:40,574 [INFO] core.evaluator_v2: [h2o] pred='The meeting is about to start, and the group is discussing the upcoming project. The goal is to create a proposal that i'
+2026-06-29 18:22:05,856 [INFO] core.evaluator_v2: [h2o] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-29 18:22:32,364 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 18:22:32,368 [INFO] core.evaluator_v2:   [5/50] avg=5.45
+2026-06-29 18:22:43,421 [INFO] core.evaluator_v2: [h2o] pred='The speaker is discussing a research project involving neural networks and signal processing, specifically focusing on a'
+2026-06-29 18:22:53,044 [INFO] core.evaluator_v2: [h2o] pred='The summary of the text is as follows: \n\nThe text is a conversation between a group of people, including a professor, a '
+2026-06-29 18:23:06,934 [INFO] core.evaluator_v2: [h2o] pred='The Welsh Government has launched a new childcare offer, which is a £4.50 per week contribution to the childcare costs o'
+2026-06-29 18:23:25,970 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the training of a neural network model, specifically the number of hidden units and the d'
+2026-06-29 18:23:44,197 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the design and functionality of a universal remote control that can perform multiple acti'
+2026-06-29 18:23:44,214 [INFO] core.evaluator_v2:   [10/50] avg=5.38
+2026-06-29 18:24:05,846 [INFO] core.evaluator_v2: [h2o] pred='The speaker is discussing a project related to speech recognition and echo cancellation, and is explaining the structure'
+2026-06-29 18:24:19,794 [INFO] core.evaluator_v2: [h2o] pred='The Welsh Government has launched a new childcare offer, which is a £4.50 per week contribution to the childcare costs o'
+2026-06-29 18:24:44,208 [INFO] core.evaluator_v2: [h2o] pred='The National Assembly for Wales has been working to support key workers and vulnerable children during the pandemic, wit'
+2026-06-29 18:24:57,020 [INFO] core.evaluator_v2: [h2o] pred='The meeting was focused on the development of a remote control device, with a particular emphasis on the user interface '
+2026-06-29 18:25:14,553 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design and features of a new product, focusing on the user interface and overall design. Key '
+2026-06-29 18:25:14,557 [INFO] core.evaluator_v2:   [15/50] avg=5.85
+2026-06-29 18:25:42,040 [INFO] core.evaluator_v2: [h2o] pred='The meeting between the Project Manager, Industrial Designer, and User Interface (UI) Designer focused on the developmen'
+2026-06-29 18:26:00,248 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the design and functionality of a universal remote control that can perform multiple acti'
+2026-06-29 18:26:22,067 [INFO] core.evaluator_v2: [h2o] pred='The speaker is discussing a project related to speech recognition and echo cancellation, and is explaining the structure'
+2026-06-29 18:26:48,439 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing a project, with roles and responsibilities assigned to each member. The **Industrial Designer** i'
+2026-06-29 18:27:02,408 [INFO] core.evaluator_v2: [h2o] pred='The Welsh Government has launched a new childcare offer, which is a £4.50 per week contribution to the childcare costs o'
+2026-06-29 18:27:02,416 [INFO] core.evaluator_v2:   [20/50] avg=6.62
+2026-06-29 18:27:22,575 [INFO] core.evaluator_v2: [h2o] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 18:27:32,705 [INFO] core.evaluator_v2: [h2o] pred='The document is a detailed report on the efforts of the Canadian government to respond to the pandemic, with a focus on '
+2026-06-29 18:27:43,848 [INFO] core.evaluator_v2: [h2o] pred='The speaker is discussing a research project involving neural networks and signal processing, specifically focusing on a'
+2026-06-29 18:28:09,186 [INFO] core.evaluator_v2: [h2o] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-29 18:28:17,543 [INFO] core.evaluator_v2: [h2o] pred='The project was successfully completed with the help of the team. The industrial designer and project manager worked tog'
+2026-06-29 18:28:17,545 [INFO] core.evaluator_v2:   [25/50] avg=7.09
+2026-06-29 18:28:41,423 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design and features of a new remote control device, focusing on the user interface and market'
+2026-06-29 18:29:01,672 [INFO] core.evaluator_v2: [h2o] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 18:29:11,481 [INFO] core.evaluator_v2: [h2o] pred='The summary of the text is as follows: \n\nThe text is a conversation between a group of people, including a professor, a '
+2026-06-29 18:29:25,801 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design and implementation of a remote control device for a new product, focusing on the user '
+2026-06-29 18:29:43,985 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the design and functionality of a universal remote control that can perform multiple acti'
+2026-06-29 18:29:43,991 [INFO] core.evaluator_v2:   [30/50] avg=7.56
+2026-06-29 18:29:59,269 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 18:30:20,389 [INFO] core.evaluator_v2: [h2o] pred="The Government of Canada's national debt is a complex issue, and the Minister of Finance, Bill Morneau, has been asked a"
+2026-06-29 18:30:45,957 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the design and functionality of a remote control interface for a television, focusing on '
+2026-06-29 18:31:10,335 [INFO] core.evaluator_v2: [h2o] pred='The National Assembly for Wales has been working to support key workers and vulnerable children during the pandemic, wit'
+2026-06-29 18:31:28,711 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the development and optimization of speech recognition systems, particularly focusing on '
+2026-06-29 18:31:28,714 [INFO] core.evaluator_v2:   [35/50] avg=7.48
+2026-06-29 18:31:48,780 [INFO] core.evaluator_v2: [h2o] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 18:32:09,072 [INFO] core.evaluator_v2: [h2o] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 18:32:28,000 [INFO] core.evaluator_v2: [h2o] pred="The Government of Canada's national debt is a complex issue, and the Minister of Finance, Bill Morneau, has been asked a"
+2026-06-29 18:32:40,994 [INFO] core.evaluator_v2: [h2o] pred='The meeting was focused on the development of a remote control device, with a particular emphasis on the user interface '
+2026-06-29 18:32:56,360 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 18:32:56,364 [INFO] core.evaluator_v2:   [40/50] avg=7.87
+2026-06-29 18:33:22,756 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 18:33:46,866 [INFO] core.evaluator_v2: [h2o] pred='The National Assembly for Wales has been working to support key workers and vulnerable children during the pandemic, wit'
+2026-06-29 18:34:13,325 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing a project, with roles and responsibilities assigned to each member. The **Industrial Designer** i'
+2026-06-29 18:34:23,973 [INFO] core.evaluator_v2: [h2o] pred='The team is planning to take a lunch break and then return to work for thirty minutes of individual work. They will meet'
+2026-06-29 18:34:42,152 [INFO] core.evaluator_v2: [h2o] pred='The discussion revolves around the development and optimization of speech recognition systems, particularly focusing on '
+2026-06-29 18:34:42,155 [INFO] core.evaluator_v2:   [45/50] avg=7.65
+2026-06-29 18:35:07,765 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design and marketing of a new remote control device that comes with a television. They are co'
+2026-06-29 18:35:33,434 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design and marketing of a new remote control device that comes with a television. They are co'
+2026-06-29 18:35:46,940 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-29 18:36:13,418 [INFO] core.evaluator_v2: [h2o] pred='The team is discussing a project, with roles and responsibilities assigned to each member. The **Industrial Designer** i'
+2026-06-29 18:36:37,606 [INFO] core.evaluator_v2: [h2o] pred='The National Assembly for Wales has been working to support key workers and vulnerable children during the pandemic, wit'
+2026-06-29 18:36:37,616 [INFO] core.evaluator_v2:   [50/50] avg=7.60
+2026-06-29 18:36:37,617 [INFO] __main__:   → score=7.60, mem_red=80.0%, ttft=2921.6ms
+2026-06-29 18:36:37,617 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 18:36:37,618 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-29 18:36:37,619 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 18:36:37,619 [INFO] __main__: 
+  Task: gov_report
+2026-06-29 18:36:37,620 [INFO] core.evaluator_v2: [snapkv] gov_report (50샘플, budget=20%)
+2026-06-29 18:36:58,481 [INFO] core.evaluator_v2: [snapkv] pred="**Summary of the Report on the National Science Foundation's (NSF) Rotator Programs and Workforce Strategy**\n\nThe Nation"
+2026-06-29 18:37:23,229 [INFO] core.evaluator_v2: [snapkv] pred='The Federal Information Security Management Act (FISMA) requires that federal agencies develop, document, and implement '
+2026-06-29 18:37:45,761 [INFO] core.evaluator_v2: [snapkv] pred="The South China Sea (SCS) is a critical region for global trade, with over 30% of the world's maritime trade passing thr"
+2026-06-29 18:38:12,693 [INFO] core.evaluator_v2: [snapkv] pred="The Trump Administration's FY2020 budget request proposed $6.07 billion overall for EPA. The request included $1.120 bil"
+2026-06-29 18:38:17,361 [INFO] core.evaluator_v2: [snapkv] pred='Summary:'
+2026-06-29 18:38:17,365 [INFO] core.evaluator_v2:   [5/50] avg=14.41
+2026-06-29 18:38:41,729 [INFO] core.evaluator_v2: [snapkv] pred='The Federal Cybersecurity Enhancement Act of 2015, which requires federal agencies to implement cybersecurity capabiliti'
+2026-06-29 18:39:05,657 [INFO] core.evaluator_v2: [snapkv] pred="The SBA has 49 procurement center representatives (PCRs) located in the SBA's six Area Offices. PCRs are required to com"
+2026-06-29 18:39:29,238 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the provided text is as follows:\n\nThe text outlines the requirements and procedures for the use of "other'
+2026-06-29 18:39:53,811 [INFO] core.evaluator_v2: [snapkv] pred='The most recent summary of the case studies of Sweden and Kenya is as follows:\n\nSweden has experienced a rapid and subst'
+2026-06-29 18:40:19,502 [INFO] core.evaluator_v2: [snapkv] pred='**Summary of the Department of Homeland Security (DHS) Acquisition Management and Resource Allocation Review**\n\nThe Depa'
+2026-06-29 18:40:19,543 [INFO] core.evaluator_v2:   [10/50] avg=14.74
+2026-06-29 18:40:46,115 [INFO] core.evaluator_v2: [snapkv] pred='The Budget Enforcement Act of 1990 defines discretionary appropriations as budget authority and resulting outlays provid'
+2026-06-29 18:41:11,242 [INFO] core.evaluator_v2: [snapkv] pred='The National Wildlife Refuge System (NWRS) is a federal agency that manages and protects wildlife habitats across the Un'
+2026-06-29 18:41:33,072 [INFO] core.evaluator_v2: [snapkv] pred='The Black Lung Disability Trust Fund (Trust Fund) is a federal program that provides financial assistance to coal miners'
+2026-06-29 18:41:50,925 [INFO] core.evaluator_v2: [snapkv] pred='The United States has a long-standing tradition of providing foreign assistance to support global development, security,'
+2026-06-29 18:42:15,426 [INFO] core.evaluator_v2: [snapkv] pred='The Office of Surface Mining Reclamation and Enforcement (OSMRE) has issued a notice to the Pennsylvania regulatory auth'
+2026-06-29 18:42:15,455 [INFO] core.evaluator_v2:   [15/50] avg=14.42
+2026-06-29 18:42:29,270 [INFO] core.evaluator_v2: [snapkv] pred="The Public Safety Officers' Benefits Improvement Act of 2017 (P.L. 115-36) provides for the payment of PSOB death and di"
+2026-06-29 18:42:31,304 [INFO] core.evaluator_v2: [snapkv] pred='Summary:'
+2026-06-29 18:42:33,714 [INFO] core.evaluator_v2: [snapkv] pred='Summary:'
+2026-06-29 18:42:48,771 [INFO] core.evaluator_v2: [snapkv] pred='The House and Senate committees reported their respective bills for FY2019. The House committee-reported bill did not in'
+2026-06-29 18:43:13,400 [INFO] core.evaluator_v2: [snapkv] pred='The Black Lung Benefits Act (BLBA) of 1981, as amended by the Affordable Care Act (ACA) in 2010, provides for the paymen'
+2026-06-29 18:43:13,434 [INFO] core.evaluator_v2:   [20/50] avg=13.44
+2026-06-29 18:43:21,534 [INFO] core.evaluator_v2: [snapkv] pred='The following is a summary of the 2014 EEOC and OFCCP data analysis, which was conducted by the National Center for Educ'
+2026-06-29 18:43:45,496 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the report is as follows:\n\nThe report was prepared by the Office of the Director of the Federal Trade Com'
+2026-06-29 18:43:51,598 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 18:44:15,032 [INFO] core.evaluator_v2: [snapkv] pred='The Office of Management and Budget (OMB) has issued guidance to federal agencies on the management of software licenses'
+2026-06-29 18:44:40,261 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the report is as follows: The report discusses the potential policy approaches for postal retiree health '
+2026-06-29 18:44:40,296 [INFO] core.evaluator_v2:   [25/50] avg=12.76
+2026-06-29 18:45:05,532 [INFO] core.evaluator_v2: [snapkv] pred='The provision for the exclusion of canceled mortgage debt income from taxation was originally enacted to help distressed'
+2026-06-29 18:45:33,116 [INFO] core.evaluator_v2: [snapkv] pred='The National Popular Vote (NPV) initiative is a political and legal effort to achieve direct election of the President a'
+2026-06-29 18:46:01,357 [INFO] core.evaluator_v2: [snapkv] pred='The FY2020 budget request for the U.S. Department of Energy (DOE) includes a wide range of funding requests for various '
+2026-06-29 18:46:26,431 [INFO] core.evaluator_v2: [snapkv] pred='The Office of Management and Budget (OMB) and the General Services Administration (GSA) have issued a report on the Spac'
+2026-06-29 18:46:52,061 [INFO] core.evaluator_v2: [snapkv] pred='The Secretary of Veterans Affairs (SVA) and the Under Secretary for Memorial Affairs (USM) have agreed to the recommenda'
+2026-06-29 18:46:52,090 [INFO] core.evaluator_v2:   [30/50] avg=13.24
+2026-06-29 18:47:15,768 [INFO] core.evaluator_v2: [snapkv] pred='The Volcker Rule, established under the Dodd-Frank Act, aims to prevent banks from engaging in proprietary trading and t'
+2026-06-29 18:47:39,929 [INFO] core.evaluator_v2: [snapkv] pred='**Summary of the Report on the European Reassurance Initiative (ERI) and Defense Posture Planning**\n\n**Background and Pu'
+2026-06-29 18:48:05,459 [INFO] core.evaluator_v2: [snapkv] pred='**Summary:**\n\nThis audit evaluates the compliance of lobbying firms and individual lobbyists with the **Lobbying Disclos'
+2026-06-29 18:48:30,564 [INFO] core.evaluator_v2: [snapkv] pred="**Summary:**\n\nThis report provides an analysis of the factors that contributed to Puerto Rico's financial condition and "
+2026-06-29 18:48:45,079 [INFO] core.evaluator_v2: [snapkv] pred='The Small Business Lending Fund (SBLF) was established under the Small Business Jobs Act of 2010 (P.L. 111-240) to provi'
+2026-06-29 18:48:45,096 [INFO] core.evaluator_v2:   [35/50] avg=13.56
+2026-06-29 18:48:56,428 [INFO] core.evaluator_v2: [snapkv] pred='WMATA has implemented a new capital planning process to address the weaknesses it identified in its previous capital pla'
+2026-06-29 18:49:20,747 [INFO] core.evaluator_v2: [snapkv] pred="The minority leader is a key strategist in developing and promoting the party's agenda and in outlining ways to respond "
+2026-06-29 18:49:45,312 [INFO] core.evaluator_v2: [snapkv] pred='**Summary of Key Points from the Report:**\n\n1. **Title IV Eligibility and Gainful Employment:**\n   - Institutions offeri'
+2026-06-29 18:50:10,010 [INFO] core.evaluator_v2: [snapkv] pred='The Secret Service and the Department of Homeland Security (DHS) have implemented a comprehensive IT acquisition and man'
+2026-06-29 18:50:12,158 [INFO] core.evaluator_v2: [snapkv] pred='Summary:'
+2026-06-29 18:50:12,159 [INFO] core.evaluator_v2:   [40/50] avg=13.64
+2026-06-29 18:50:39,357 [INFO] core.evaluator_v2: [snapkv] pred='The U.S. Department of Health and Human Services (HHS) has published several guidance and educational resources related '
+2026-06-29 18:51:06,465 [INFO] core.evaluator_v2: [snapkv] pred='The Aegis BMD (Ballistic Missile Defense) system has demonstrated a high level of success in intercepting ballistic miss'
+2026-06-29 18:51:11,354 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 18:51:34,934 [INFO] core.evaluator_v2: [snapkv] pred='The U.S. Congress, through various committees and legislative actions, has repeatedly authorized and funded the Departme'
+2026-06-29 18:51:59,020 [INFO] core.evaluator_v2: [snapkv] pred='The Bureau’s cost estimate guidance is not reliable. The cost estimate guidance is not reliable because it does not full'
+2026-06-29 18:51:59,051 [INFO] core.evaluator_v2:   [45/50] avg=13.41
+2026-06-29 18:52:25,117 [INFO] core.evaluator_v2: [snapkv] pred="The United States Department of State's Bureau of Oceans and International Environmental and Scientific Affairs (State/O"
+2026-06-29 18:52:48,839 [INFO] core.evaluator_v2: [snapkv] pred='The USPS OIG recently determined that instances of missed and inaccurate scans for competitive products were a result of'
+2026-06-29 18:53:10,818 [INFO] core.evaluator_v2: [snapkv] pred='**Summary:**\n\nThe United States Agency for International Development (USAID) conducted a performance audit of the West B'
+2026-06-29 18:53:35,248 [INFO] core.evaluator_v2: [snapkv] pred='**Summary:**\n\nThe Air Force, FWS, and NPS officials were interviewed to understand how the three selected federal agenci'
+2026-06-29 18:53:48,377 [INFO] core.evaluator_v2: [snapkv] pred='The GAO report number cited in DOD’s letter refers to a draft of the sensitive version of this report, which we issued o'
+2026-06-29 18:53:48,388 [INFO] core.evaluator_v2:   [50/50] avg=14.10
+2026-06-29 18:53:48,389 [INFO] __main__:   → score=14.10, mem_red=80.0%, ttft=2802.9ms
+2026-06-29 18:53:48,389 [INFO] __main__: 
+  Task: qmsum
+2026-06-29 18:53:48,390 [INFO] core.evaluator_v2: [snapkv] qmsum (50샘플, budget=20%)
+2026-06-29 18:54:00,786 [INFO] core.evaluator_v2: [snapkv] pred='The project team is discussing the design of a new remote control. The goal is to create a product that is sleek, stylis'
+2026-06-29 18:54:16,940 [INFO] core.evaluator_v2: [snapkv] pred='The discussion revolves around the design and development of a new product, focusing on the user interface and project m'
+2026-06-29 18:54:26,192 [INFO] core.evaluator_v2: [snapkv] pred='The meeting is about to start, and the group is discussing the next steps for their project. They are planning to flip i'
+2026-06-29 18:54:51,560 [INFO] core.evaluator_v2: [snapkv] pred="I've done a lot of work on this, but I'm not sure what the actual meaning of the project is. It's just a way to make a l"
+2026-06-29 18:55:03,467 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the text is as follows:\n\nThe text is a conversation between a Project Manager and an Industrial Designer,'
+2026-06-29 18:55:03,469 [INFO] core.evaluator_v2:   [5/50] avg=8.74
+2026-06-29 18:55:13,543 [INFO] core.evaluator_v2: [snapkv] pred='This is a summary of a conversation between a professor and students discussing a research project on neural networks an'
+2026-06-29 18:55:37,326 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the text is that it is a clever and clever way to get the reader to think about the problem. The text is '
+2026-06-29 18:56:02,051 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the meeting is as follows:\n\nThe committee met for the first time on 16 May 2024, with the aim of discussi'
+2026-06-29 18:56:26,549 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the conversation between the speaker and the professor, who are discussing the PhD and the graduate stude'
+2026-06-29 18:56:31,797 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 18:56:31,812 [INFO] core.evaluator_v2:   [10/50] avg=5.48
+2026-06-29 18:56:42,016 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the text is as follows: The text is a conversation between several individuals, including Grad E, Postdoc'
+2026-06-29 18:57:06,707 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the meeting is as follows:\n\nThe committee met for the first time on 16 May 2024, with the aim of discussi'
+2026-06-29 18:57:30,600 [INFO] core.evaluator_v2: [snapkv] pred="I've been trying to get the most out of the information I've been given, but I'm not sure what I'm trying to do here. So"
+2026-06-29 18:57:40,470 [INFO] core.evaluator_v2: [snapkv] pred='The meeting was about the project, and the team discussed various aspects of the project, including the user interface, '
+2026-06-29 18:57:57,591 [INFO] core.evaluator_v2: [snapkv] pred='The project manager is discussing the design of a new product, which is a combination of a simple battery, an advanced c'
+2026-06-29 18:57:57,595 [INFO] core.evaluator_v2:   [15/50] avg=6.19
+2026-06-29 18:58:17,400 [INFO] core.evaluator_v2: [snapkv] pred='The meeting discussed the development of a universal remote control for a television and DVD player, with the goal of ma'
+2026-06-29 18:58:22,560 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 18:58:32,748 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the text is as follows: The text is a conversation between several individuals, including Grad E, Postdoc'
+2026-06-29 18:58:53,024 [INFO] core.evaluator_v2: [snapkv] pred='The meeting was about the **Project Manager** and the **Industrial Designer**, with the **User Interface** and **Marketi'
+2026-06-29 18:59:17,565 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the meeting is as follows:\n\nThe committee met for the first time on 16 May 2024, with the aim of discussi'
+2026-06-29 18:59:17,570 [INFO] core.evaluator_v2:   [20/50] avg=6.64
+2026-06-29 18:59:34,021 [INFO] core.evaluator_v2: [snapkv] pred="The meeting was focused on evaluating the project and discussing the team's performance, leadership, and creative ideas."
+2026-06-29 18:59:40,014 [INFO] core.evaluator_v2: [snapkv] pred='The committee has adjourned for the day. The meeting is now officially closed.'
+2026-06-29 18:59:49,938 [INFO] core.evaluator_v2: [snapkv] pred='This is a summary of a conversation between a professor and students discussing a research project on neural networks an'
+2026-06-29 19:00:15,034 [INFO] core.evaluator_v2: [snapkv] pred="I've done a lot of work on this, but I'm not sure what the actual meaning of the project is. It's just a way to make a l"
+2026-06-29 19:00:26,625 [INFO] core.evaluator_v2: [snapkv] pred='The team presented a new product called "Disfmarker" which is a battery-powered, wireless, and touch-sensitive industria'
+2026-06-29 19:00:26,628 [INFO] core.evaluator_v2:   [25/50] avg=6.68
+2026-06-29 19:00:45,679 [INFO] core.evaluator_v2: [snapkv] pred='The team is discussing the design of a remote control device, focusing on the user interface and features that would mak'
+2026-06-29 19:01:02,733 [INFO] core.evaluator_v2: [snapkv] pred="The meeting was focused on evaluating the project and discussing the team's performance, leadership, and creative ideas."
+2026-06-29 19:01:26,261 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the text is that it is a clever and clever way to get the reader to think about the problem. The text is '
+2026-06-29 19:01:38,475 [INFO] core.evaluator_v2: [snapkv] pred='The user interface is a complex system that requires the integration of various components, including the remote control'
+2026-06-29 19:01:43,672 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 19:01:43,673 [INFO] core.evaluator_v2:   [30/50] avg=6.55
+2026-06-29 19:01:59,773 [INFO] core.evaluator_v2: [snapkv] pred='The discussion revolves around the design and development of a new product, focusing on the user interface and project m'
+2026-06-29 19:02:24,353 [INFO] core.evaluator_v2: [snapkv] pred='The Government of Canada has a total national debt of $1 trillion. This is the largest debt in the world. The Government'
+2026-06-29 19:02:34,358 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the text is as follows:\n\nThe text is a conversation between several individuals, including a Project Mana'
+2026-06-29 19:02:58,425 [INFO] core.evaluator_v2: [snapkv] pred="I've been trying to get the most out of the information I've been given, but I'm not sure what I'm trying to do here. So"
+2026-06-29 19:03:24,184 [INFO] core.evaluator_v2: [snapkv] pred='The meeting was not about the limitation, so. PhD B: Mm - hmm. Professor A: Uh. Grad E: Okay. Professor A: Oh you {disfm'
+2026-06-29 19:03:24,187 [INFO] core.evaluator_v2:   [35/50] avg=6.68
+2026-06-29 19:03:40,689 [INFO] core.evaluator_v2: [snapkv] pred="The meeting was focused on evaluating the project and discussing the team's performance, leadership, and creative ideas."
+2026-06-29 19:03:57,363 [INFO] core.evaluator_v2: [snapkv] pred="The meeting was focused on evaluating the project and discussing the team's performance, leadership, and creative ideas."
+2026-06-29 19:04:22,092 [INFO] core.evaluator_v2: [snapkv] pred='The Government of Canada has a total national debt of $1 trillion. This is the largest debt in the world. The Government'
+2026-06-29 19:04:32,042 [INFO] core.evaluator_v2: [snapkv] pred='The meeting was about the project, and the team discussed various aspects of the project, including the user interface, '
+2026-06-29 19:04:48,164 [INFO] core.evaluator_v2: [snapkv] pred='The discussion revolves around the design and development of a new product, focusing on the user interface and project m'
+2026-06-29 19:04:48,169 [INFO] core.evaluator_v2:   [40/50] avg=7.09
+2026-06-29 19:05:00,044 [INFO] core.evaluator_v2: [snapkv] pred='The summary of the text is as follows:\n\nThe text is a conversation between a Project Manager and an Industrial Designer,'
+2026-06-29 19:05:24,032 [INFO] core.evaluator_v2: [snapkv] pred="I've been trying to get the most out of the information I've been given, but I'm not sure what I'm trying to do here. So"
+2026-06-29 19:05:44,273 [INFO] core.evaluator_v2: [snapkv] pred='The meeting was about the **Project Manager** and the **Industrial Designer**, with the **User Interface** and **Marketi'
+2026-06-29 19:06:10,625 [INFO] core.evaluator_v2: [snapkv] pred='The project manager is a person who is responsible for the project. The industrial designer is a person who is responsib'
+2026-06-29 19:06:36,450 [INFO] core.evaluator_v2: [snapkv] pred='The meeting was not about the limitation, so. PhD B: Mm - hmm. Professor A: Uh. Grad E: Okay. Professor A: Oh you {disfm'
+2026-06-29 19:06:36,453 [INFO] core.evaluator_v2:   [45/50] avg=6.85
+2026-06-29 19:07:01,992 [INFO] core.evaluator_v2: [snapkv] pred='The project manager is a person who is responsible for the project. The industrial designer is a person who is responsib'
+2026-06-29 19:07:27,547 [INFO] core.evaluator_v2: [snapkv] pred='The project manager is a person who is responsible for the project. The industrial designer is a person who is responsib'
+2026-06-29 19:07:39,777 [INFO] core.evaluator_v2: [snapkv] pred='The project team is discussing the design of a new remote control. The goal is to create a product that is sleek, stylis'
+2026-06-29 19:08:00,013 [INFO] core.evaluator_v2: [snapkv] pred='The meeting was about the **Project Manager** and the **Industrial Designer**, with the **User Interface** and **Marketi'
+2026-06-29 19:08:24,036 [INFO] core.evaluator_v2: [snapkv] pred="I've been trying to get the most out of the information I've been given, but I'm not sure what I'm trying to do here. So"
+2026-06-29 19:08:24,042 [INFO] core.evaluator_v2:   [50/50] avg=6.64
+2026-06-29 19:08:24,043 [INFO] __main__:   → score=6.64, mem_red=80.0%, ttft=2999.7ms
+2026-06-29 19:08:24,043 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 19:08:24,044 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-29 19:08:24,044 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 19:08:24,044 [INFO] __main__: 
+  Task: gov_report
+2026-06-29 19:08:24,045 [INFO] core.evaluator_v2: [pyramidkv] gov_report (50샘플, budget=20%)
+2026-06-29 19:08:47,831 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-29 19:09:12,558 [INFO] core.evaluator_v2: [pyramidkv] pred='The Federal Information Security Management Act (FISMA) is a federal law that requires federal agencies to develop, impl'
+2026-06-29 19:09:24,894 [INFO] core.evaluator_v2: [pyramidkv] pred="The United States must take a stronger and more consistent approach to countering China's maritime aggression in the Sou"
+2026-06-29 19:09:51,803 [INFO] core.evaluator_v2: [pyramidkv] pred='The Clean Water SRF and Drinking Water SRF programs were funded at the same levels as FY2017, with the same amounts appr'
+2026-06-29 19:10:04,452 [INFO] core.evaluator_v2: [pyramidkv] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-06-29 19:10:04,471 [INFO] core.evaluator_v2:   [5/50] avg=15.76
+2026-06-29 19:10:25,283 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Institute of Standards and Technology (NIST) established the cybersecurity framework to provide guidance fo'
+2026-06-29 19:10:49,259 [INFO] core.evaluator_v2: [pyramidkv] pred='The Small Business Act (1978) and the Small Business Act (1982) are federal laws that provide small businesses with the '
+2026-06-29 19:11:11,235 [INFO] core.evaluator_v2: [pyramidkv] pred='The summary of the provided text is as follows:\n\nThe text outlines the requirements and procedures for the use of "other'
+2026-06-29 19:11:23,627 [INFO] core.evaluator_v2: [pyramidkv] pred='The document provides a detailed analysis of the decline of cash as a payment system and the rise of electronic payment '
+2026-06-29 19:11:49,298 [INFO] core.evaluator_v2: [pyramidkv] pred='The Department of Homeland Security (DHS) has implemented a comprehensive acquisition management system that includes re'
+2026-06-29 19:11:49,351 [INFO] core.evaluator_v2:   [10/50] avg=15.73
+2026-06-29 19:12:15,889 [INFO] core.evaluator_v2: [pyramidkv] pred='The Department of Homeland Security (DHS) is a federal agency that is responsible for the security of the United States.'
+2026-06-29 19:12:35,928 [INFO] core.evaluator_v2: [pyramidkv] pred='The Bureau of Land Management (BLM) has broad authority to acquire and dispose of federal lands, primarily under the Fed'
+2026-06-29 19:13:01,996 [INFO] core.evaluator_v2: [pyramidkv] pred='The Black Lung Disability Trust Fund (Trust Fund) is a federal program that provides benefits to coal miners who have be'
+2026-06-29 19:13:28,141 [INFO] core.evaluator_v2: [pyramidkv] pred='The United States provides foreign assistance to countries around the world, with a focus on economic development, secur'
+2026-06-29 19:13:52,602 [INFO] core.evaluator_v2: [pyramidkv] pred='The Office of Surface Mining Reclamation and Enforcement (OSMRE) has issued a report on the financial assurance requirem'
+2026-06-29 19:13:52,638 [INFO] core.evaluator_v2:   [15/50] avg=16.19
+2026-06-29 19:14:13,776 [INFO] core.evaluator_v2: [pyramidkv] pred="The Public Safety Officers' Benefits Improvement Act of 2017 (P.L. 115-36) provides for the payment of PSOEA benefits to"
+2026-06-29 19:14:34,228 [INFO] core.evaluator_v2: [pyramidkv] pred='**Summary of the GSA Swap Exchange Process and Funding Mechanisms**\n\nThe U.S. federal government, through the General Se'
+2026-06-29 19:14:39,510 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a work of the United States government and is not subject to copyright protection in the United States. '
+2026-06-29 19:15:06,884 [INFO] core.evaluator_v2: [pyramidkv] pred='The 2019 budget for the U.S. International Trade Commission (ITC) and the U.S. Trade Representative (USTR) included seve'
+2026-06-29 19:15:32,630 [INFO] core.evaluator_v2: [pyramidkv] pred='The Black Lung Benefits Act (BLBA) of 1981, as amended by the Black Lung Benefits Amendments of 1981, provides for the p'
+2026-06-29 19:15:32,657 [INFO] core.evaluator_v2:   [20/50] avg=15.74
+2026-06-29 19:15:58,010 [INFO] core.evaluator_v2: [pyramidkv] pred='The analysis of technology workforce data from 2014 reveals significant disparities in representation across racial and '
+2026-06-29 19:16:20,959 [INFO] core.evaluator_v2: [pyramidkv] pred='The Federal Trade Commission (FTC) has issued a report on the Internet privacy and data security landscape in the United'
+2026-06-29 19:16:36,116 [INFO] core.evaluator_v2: [pyramidkv] pred='The report provides an analysis of the factors leading to early withdrawals from retirement savings, including the impac'
+2026-06-29 19:16:59,766 [INFO] core.evaluator_v2: [pyramidkv] pred='The Office of Management and Budget (OMB) has issued a guidance document that outlines the roles and responsibilities of'
+2026-06-29 19:17:24,624 [INFO] core.evaluator_v2: [pyramidkv] pred='The U.S. Postal Service (USPS) has provided a detailed response to the Government Accountability Office (GAO) report on '
+2026-06-29 19:17:24,665 [INFO] core.evaluator_v2:   [25/50] avg=16.23
+2026-06-29 19:17:49,859 [INFO] core.evaluator_v2: [pyramidkv] pred='The Tax Exclusion for Canceled Mortgage Debt Income (RL34212) and the Deduction for Mortgage Insurance Premiums (RL34212'
+2026-06-29 19:18:13,054 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Popular Vote (NPV) initiative is a proposal to reform the presidential election process by establishing a s'
+2026-06-29 19:18:41,234 [INFO] core.evaluator_v2: [pyramidkv] pred='The Energy and Water Development Appropriations Bill for FY2020 includes several key components and funding allocations '
+2026-06-29 19:19:06,392 [INFO] core.evaluator_v2: [pyramidkv] pred='The Office of Management and Budget (OMB) and the Department of Housing and Urban Development (HUD) have issued a final '
+2026-06-29 19:19:32,213 [INFO] core.evaluator_v2: [pyramidkv] pred='The Government Accountability Office (GAO) has issued a report to the Department of Veterans Affairs (VA) regarding the '
+2026-06-29 19:19:32,241 [INFO] core.evaluator_v2:   [30/50] avg=16.19
+2026-06-29 19:19:45,663 [INFO] core.evaluator_v2: [pyramidkv] pred='The Volcker Rule, introduced as part of the Dodd-Frank Act, aims to prevent banks from engaging in proprietary trading a'
+2026-06-29 19:20:09,946 [INFO] core.evaluator_v2: [pyramidkv] pred='The U.S. European Command (EUCOM) and the Department of Defense (DOD) have been tasked with planning and executing postu'
+2026-06-29 19:20:35,847 [INFO] core.evaluator_v2: [pyramidkv] pred='The U.S. Attorney’s Office for the District of Columbia (USAO) conducted a performance audit of the Federal Election Com'
+2026-06-29 19:20:48,751 [INFO] core.evaluator_v2: [pyramidkv] pred='The report provides an analysis of the factors that contributed to Puerto Rico’s financial condition and levels of debt,'
+2026-06-29 19:21:15,068 [INFO] core.evaluator_v2: [pyramidkv] pred='The Small Business Lending Fund (SBLF) was established under the Small Business Jobs Act of 2010 (P.L. 111-240) to provi'
+2026-06-29 19:21:15,104 [INFO] core.evaluator_v2:   [35/50] avg=15.99
+2026-06-29 19:21:40,826 [INFO] core.evaluator_v2: [pyramidkv] pred='**Summary of the Report:**\n\nThe report evaluates the capital planning and expenditure processes of the Metropolitan Wash'
+2026-06-29 19:22:04,915 [INFO] core.evaluator_v2: [pyramidkv] pred='The minority leader in the House of Representatives is a key strategist and leader of the Democratic party. They are res'
+2026-06-29 19:22:29,661 [INFO] core.evaluator_v2: [pyramidkv] pred='The report provides a comprehensive overview of the Title IV (Federal Student Aid) eligibility criteria for postsecondar'
+2026-06-29 19:22:45,634 [INFO] core.evaluator_v2: [pyramidkv] pred='The Secret Service’s Information Integration and Technology Transformation (IITT) investment, which includes two program'
+2026-06-29 19:23:04,435 [INFO] core.evaluator_v2: [pyramidkv] pred='The 2016 report of DOE’s Biological and Environmental Research Advisory Committee provided information about research ne'
+2026-06-29 19:23:04,462 [INFO] core.evaluator_v2:   [40/50] avg=16.10
+2026-06-29 19:23:20,262 [INFO] core.evaluator_v2: [pyramidkv] pred='The report provides an overview of the management of neonatal abstinence syndrome (NAS) in infants exposed to opioids in'
+2026-06-29 19:23:47,376 [INFO] core.evaluator_v2: [pyramidkv] pred="The Aegis Ballistic Missile Defense (BMD) system is a critical component of the United States' missile defense strategy,"
+2026-06-29 19:24:11,436 [INFO] core.evaluator_v2: [pyramidkv] pred='The United States, Japan, Mexico, Canada, South Korea, Singapore, Taiwan, and Australia are members of the APEC CBPR. Th'
+2026-06-29 19:24:31,813 [INFO] core.evaluator_v2: [pyramidkv] pred='The U.S. Congress, through various committees and subcommittees, has been involved in the national defense authorization'
+2026-06-29 19:24:56,083 [INFO] core.evaluator_v2: [pyramidkv] pred='The Bureau of the Census, in its 2020 Census cost estimate, has been criticized for not adequately accounting for risk a'
+2026-06-29 19:24:56,118 [INFO] core.evaluator_v2:   [45/50] avg=16.03
+2026-06-29 19:25:22,648 [INFO] core.evaluator_v2: [pyramidkv] pred='The United States government has implemented a series of climate change adaptation and resilience strategies, supported '
+2026-06-29 19:25:46,452 [INFO] core.evaluator_v2: [pyramidkv] pred='The U.S. Postal Service (USPS) has implemented a new scanning process for competitive products, which includes the use o'
+2026-06-29 19:26:08,405 [INFO] core.evaluator_v2: [pyramidkv] pred='The summary of the report is as follows:\n\nThe report examines the status of ESF assistance and projects provided to the '
+2026-06-29 19:26:33,756 [INFO] core.evaluator_v2: [pyramidkv] pred='The United States Government Accountability Office (GAO) conducted a performance audit of the Federal Aviation Administr'
+2026-06-29 19:26:59,665 [INFO] core.evaluator_v2: [pyramidkv] pred='The United States has purchased a number of key ANDSF equipment, including MD-530 helicopters, Mobile Strike Force Vehic'
+2026-06-29 19:26:59,686 [INFO] core.evaluator_v2:   [50/50] avg=16.40
+2026-06-29 19:26:59,687 [INFO] __main__:   → score=16.40, mem_red=80.0%, ttft=2692.6ms
+2026-06-29 19:26:59,688 [INFO] __main__: 
+  Task: qmsum
+2026-06-29 19:26:59,688 [INFO] core.evaluator_v2: [pyramidkv] qmsum (50샘플, budget=20%)
+2026-06-29 19:27:15,405 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-29 19:27:26,354 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 19:27:49,789 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting is about the project, and the group is discussing the next steps. The professor, Professor C, is discussing '
+2026-06-29 19:28:14,956 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-29 19:28:41,487 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 19:28:41,490 [INFO] core.evaluator_v2:   [5/50] avg=6.19
+2026-06-29 19:29:06,102 [INFO] core.evaluator_v2: [pyramidkv] pred='The speaker is discussing a research project involving neural networks and signal processing, specifically focusing on a'
+2026-06-29 19:29:15,076 [INFO] core.evaluator_v2: [pyramidkv] pred='The article discusses the development of a new navigation system, which is designed to be more intuitive and user-friend'
+2026-06-29 19:29:39,599 [INFO] core.evaluator_v2: [pyramidkv] pred='The Welsh Government has announced a new childcare offer, which is a £4.50 per hour rate, with the aim of providing affo'
+2026-06-29 19:29:59,020 [INFO] core.evaluator_v2: [pyramidkv] pred='The conversation between the participants (grad students and professors) is about the training of a neural network model'
+2026-06-29 19:30:12,439 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the design and functionality of a universal remote control that can handle multiple actio'
+2026-06-29 19:30:12,441 [INFO] core.evaluator_v2:   [10/50] avg=6.20
+2026-06-29 19:30:37,127 [INFO] core.evaluator_v2: [pyramidkv] pred='The speaker is discussing a project related to speech recognition and signal processing, specifically focusing on the de'
+2026-06-29 19:31:01,850 [INFO] core.evaluator_v2: [pyramidkv] pred='The Welsh Government has announced a new childcare offer, which is a £4.50 per hour rate, with the aim of providing affo'
+2026-06-29 19:31:25,966 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Assembly for Wales has, in the first instance, the capacity to provide support for key workers and vulnerab'
+2026-06-29 19:31:38,075 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting focused on the development of a remote control device, with a particular emphasis on the user interface and '
+2026-06-29 19:31:49,780 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design and features of a new product, focusing on the user interface, battery, and voice reco'
+2026-06-29 19:31:49,784 [INFO] core.evaluator_v2:   [15/50] avg=6.75
+2026-06-29 19:32:17,498 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting between the Project Manager, Marketing, and Industrial Designer focused on the design and marketing of a uni'
+2026-06-29 19:32:29,140 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the design and functionality of a universal remote control that can handle multiple actio'
+2026-06-29 19:32:53,713 [INFO] core.evaluator_v2: [pyramidkv] pred='The speaker is discussing a project related to speech recognition and signal processing, specifically focusing on the de'
+2026-06-29 19:33:20,103 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the development and presentation of a new product, focusing on the **User Interface (UI)**, **Pro'
+2026-06-29 19:33:44,952 [INFO] core.evaluator_v2: [pyramidkv] pred='The Welsh Government has announced a new childcare offer, which is a £4.50 per hour rate, with the aim of providing affo'
+2026-06-29 19:33:44,958 [INFO] core.evaluator_v2:   [20/50] avg=7.26
+2026-06-29 19:34:07,818 [INFO] core.evaluator_v2: [pyramidkv] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 19:34:32,866 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a summary of the parliamentary session on May 30, 2020, in which the following key points were discussed'
+2026-06-29 19:34:57,276 [INFO] core.evaluator_v2: [pyramidkv] pred='The speaker is discussing a research project involving neural networks and signal processing, specifically focusing on a'
+2026-06-29 19:35:22,527 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-29 19:35:31,036 [INFO] core.evaluator_v2: [pyramidkv] pred='The project manager, industrial designer, and marketing team have successfully completed the project. The industrial des'
+2026-06-29 19:35:31,041 [INFO] core.evaluator_v2:   [25/50] avg=7.04
+2026-06-29 19:35:50,419 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design and features of a new remote control device, focusing on the user interface and functi'
+2026-06-29 19:36:13,326 [INFO] core.evaluator_v2: [pyramidkv] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 19:36:22,349 [INFO] core.evaluator_v2: [pyramidkv] pred='The article discusses the development of a new navigation system, which is designed to be more intuitive and user-friend'
+2026-06-29 19:36:34,093 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design and implementation of a remote control device for a new product, focusing on user inte'
+2026-06-29 19:36:45,956 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the design and functionality of a universal remote control that can handle multiple actio'
+2026-06-29 19:36:45,960 [INFO] core.evaluator_v2:   [30/50] avg=7.96
+2026-06-29 19:36:56,936 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 19:37:06,678 [INFO] core.evaluator_v2: [pyramidkv] pred="The Government of Canada's national debt is a complex issue, but the key point is that the government is taking a proact"
+2026-06-29 19:37:18,422 [INFO] core.evaluator_v2: [pyramidkv] pred='The summary of the conversation between the participants is as follows:\n\nThe conversation revolves around the design and'
+2026-06-29 19:37:43,109 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Assembly for Wales has, in the first instance, the capacity to provide support for key workers and vulnerab'
+2026-06-29 19:38:01,565 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the development and optimization of speech recognition systems, particularly focusing on '
+2026-06-29 19:38:01,569 [INFO] core.evaluator_v2:   [35/50] avg=8.05
+2026-06-29 19:38:24,579 [INFO] core.evaluator_v2: [pyramidkv] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 19:38:47,692 [INFO] core.evaluator_v2: [pyramidkv] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 19:38:57,589 [INFO] core.evaluator_v2: [pyramidkv] pred="The Government of Canada's national debt is a complex issue, but the key point is that the government is taking a proact"
+2026-06-29 19:39:10,079 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting focused on the development of a remote control device, with a particular emphasis on the user interface and '
+2026-06-29 19:39:21,141 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 19:39:21,146 [INFO] core.evaluator_v2:   [40/50] avg=8.45
+2026-06-29 19:39:47,892 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 19:40:11,927 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Assembly for Wales has, in the first instance, the capacity to provide support for key workers and vulnerab'
+2026-06-29 19:40:38,478 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the development and presentation of a new product, focusing on the **User Interface (UI)**, **Pro'
+2026-06-29 19:41:04,902 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is going to lunch. Marketing: Mm, great. Project Manager: Mm, okay. Then we will work again for thirty minutes '
+2026-06-29 19:41:23,563 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion revolves around the development and optimization of speech recognition systems, particularly focusing on '
+2026-06-29 19:41:23,566 [INFO] core.evaluator_v2:   [45/50] avg=7.90
+2026-06-29 19:41:37,627 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the development of a new remote control device that comes with a television, featuring a small, l'
+2026-06-29 19:41:51,610 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the development of a new remote control device that comes with a television, featuring a small, l'
+2026-06-29 19:42:07,493 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-29 19:42:34,583 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is discussing the development and presentation of a new product, focusing on the **User Interface (UI)**, **Pro'
+2026-06-29 19:42:59,402 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Assembly for Wales has, in the first instance, the capacity to provide support for key workers and vulnerab'
+2026-06-29 19:42:59,414 [INFO] core.evaluator_v2:   [50/50] avg=7.95
+2026-06-29 19:42:59,415 [INFO] __main__:   → score=7.95, mem_red=80.0%, ttft=2925.6ms
+2026-06-29 19:42:59,415 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 19:42:59,416 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-29 19:42:59,417 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 19:42:59,417 [INFO] __main__: 
+  Task: gov_report
+2026-06-29 19:42:59,418 [INFO] core.evaluator_v2: [adakv] gov_report (50샘플, budget=20%)
+2026-06-29 19:43:23,688 [INFO] core.evaluator_v2: [adakv] pred='The National Science Foundation (NSF) has implemented a cost-management strategy to balance the use of rotators with its'
+2026-06-29 19:43:50,194 [INFO] core.evaluator_v2: [adakv] pred='The Federal Information Security Management Act (FISMA) is a federal law that requires federal agencies to develop, impl'
+2026-06-29 19:44:03,203 [INFO] core.evaluator_v2: [adakv] pred="The United States must take a stronger and more consistent approach to countering China's maritime aggression in the Sou"
+2026-06-29 19:44:30,167 [INFO] core.evaluator_v2: [adakv] pred='The Clean Water SRF and Drinking Water SRF programs were funded at the same levels as FY2017, with the same amounts appr'
+2026-06-29 19:44:42,940 [INFO] core.evaluator_v2: [adakv] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-06-29 19:44:42,958 [INFO] core.evaluator_v2:   [5/50] avg=15.76
+2026-06-29 19:45:07,018 [INFO] core.evaluator_v2: [adakv] pred='The National Institute of Standards and Technology (NIST) established the cybersecurity framework to provide guidance fo'
+2026-06-29 19:45:33,186 [INFO] core.evaluator_v2: [adakv] pred='The Small Business Act (1978) and the Small Business Act (1982) are federal laws that provide small businesses with the '
+2026-06-29 19:45:55,501 [INFO] core.evaluator_v2: [adakv] pred='The summary of the provided text is as follows:\n\nThe text outlines the requirements and procedures for the use of "other'
+2026-06-29 19:46:07,855 [INFO] core.evaluator_v2: [adakv] pred='The document provides a detailed analysis of the decline of cash as a payment system and the rise of electronic payment '
+2026-06-29 19:46:33,783 [INFO] core.evaluator_v2: [adakv] pred='The Department of Homeland Security (DHS) has implemented a comprehensive acquisition management system that includes re'
+2026-06-29 19:46:33,824 [INFO] core.evaluator_v2:   [10/50] avg=15.73
+2026-06-29 19:47:00,549 [INFO] core.evaluator_v2: [adakv] pred='The Department of Homeland Security (DHS) is a federal agency that is responsible for the security of the United States.'
+2026-06-29 19:47:20,651 [INFO] core.evaluator_v2: [adakv] pred='The Bureau of Land Management (BLM) has broad authority to acquire and dispose of federal lands, primarily under the Fed'
+2026-06-29 19:47:45,058 [INFO] core.evaluator_v2: [adakv] pred='The Black Lung Disability Trust Fund (Trust Fund) is a federal program that provides benefits to coal miners who have be'
+2026-06-29 19:48:11,098 [INFO] core.evaluator_v2: [adakv] pred='The United States provides foreign assistance to countries around the world, with a focus on economic development, secur'
+2026-06-29 19:48:35,628 [INFO] core.evaluator_v2: [adakv] pred='The Office of Surface Mining Reclamation and Enforcement (OSMRE) has issued a report on the financial assurance requirem'
+2026-06-29 19:48:35,657 [INFO] core.evaluator_v2:   [15/50] avg=16.19
+2026-06-29 19:48:57,817 [INFO] core.evaluator_v2: [adakv] pred="The Public Safety Officers' Benefits Improvement Act of 2017 (P.L. 115-36) provides for the payment of PSOEA benefits to"
+2026-06-29 19:49:18,375 [INFO] core.evaluator_v2: [adakv] pred='The U.S. federal government has a 2014 report that outlines selected funding mechanisms and considerations for each mech'
+2026-06-29 19:49:23,338 [INFO] core.evaluator_v2: [adakv] pred='The document is a work of the United States government and is not subject to copyright protection in the United States. '
+2026-06-29 19:49:50,560 [INFO] core.evaluator_v2: [adakv] pred='The 2019 Congressional Budget and Appropriations Process for the U.S. International Trade Commission (ITC) and the U.S. '
+2026-06-29 19:50:15,789 [INFO] core.evaluator_v2: [adakv] pred='The Black Lung Benefits Act (BLBA) of 1981, as amended by the Black Lung Benefits Amendments of 1981, provides for the p'
+2026-06-29 19:50:15,814 [INFO] core.evaluator_v2:   [20/50] avg=15.46
+2026-06-29 19:50:41,192 [INFO] core.evaluator_v2: [adakv] pred='The analysis of technology workforce data from 2014 reveals significant disparities in representation across racial and '
+2026-06-29 19:51:04,311 [INFO] core.evaluator_v2: [adakv] pred='The Federal Trade Commission (FTC) has issued a report on the Internet privacy and data security landscape in the United'
+2026-06-29 19:51:18,994 [INFO] core.evaluator_v2: [adakv] pred='The report provides an analysis of the factors leading to early withdrawals from retirement savings, including the impac'
+2026-06-29 19:51:42,497 [INFO] core.evaluator_v2: [adakv] pred='The Office of Management and Budget (OMB) has issued a guidance document that outlines the roles and responsibilities of'
+2026-06-29 19:52:07,451 [INFO] core.evaluator_v2: [adakv] pred='The U.S. Postal Service (USPS) has provided a detailed response to the Government Accountability Office (GAO) report on '
+2026-06-29 19:52:07,490 [INFO] core.evaluator_v2:   [25/50] avg=15.98
+2026-06-29 19:52:31,317 [INFO] core.evaluator_v2: [adakv] pred='The Tax Exclusion for Canceled Mortgage Debt Income (RL34212) and the Deduction for Mortgage Insurance Premiums (P.L. 10'
+2026-06-29 19:52:54,218 [INFO] core.evaluator_v2: [adakv] pred='The National Popular Vote (NPV) initiative is a proposal to reform the presidential election process by establishing a s'
+2026-06-29 19:53:22,402 [INFO] core.evaluator_v2: [adakv] pred='The Energy and Water Development Appropriations Bill for FY2020 includes several key components and funding allocations '
+2026-06-29 19:53:47,421 [INFO] core.evaluator_v2: [adakv] pred='The Office of Management and Budget (OMB) and the Department of Housing and Urban Development (HUD) have issued a final '
+2026-06-29 19:54:12,984 [INFO] core.evaluator_v2: [adakv] pred='The Government Accountability Office (GAO) has issued a report to the Department of Veterans Affairs (VA) regarding the '
+2026-06-29 19:54:13,011 [INFO] core.evaluator_v2:   [30/50] avg=16.01
+2026-06-29 19:54:26,451 [INFO] core.evaluator_v2: [adakv] pred='The Volcker Rule, introduced as part of the Dodd-Frank Act, aims to prevent banks from engaging in proprietary trading a'
+2026-06-29 19:54:51,234 [INFO] core.evaluator_v2: [adakv] pred='The U.S. European Command (EUCOM) and the Department of Defense (DOD) have been tasked with planning and executing postu'
+2026-06-29 19:55:16,968 [INFO] core.evaluator_v2: [adakv] pred='The U.S. Attorney’s Office for the District of Columbia (USAO) conducted a performance audit of the Federal Election Com'
+2026-06-29 19:55:29,868 [INFO] core.evaluator_v2: [adakv] pred='The report provides an analysis of the factors that contributed to Puerto Rico’s financial condition and levels of debt,'
+2026-06-29 19:55:56,234 [INFO] core.evaluator_v2: [adakv] pred='The Small Business Lending Fund (SBLF) was established under the Small Business Jobs Act of 2010 (P.L. 111-240) to provi'
+2026-06-29 19:55:56,267 [INFO] core.evaluator_v2:   [35/50] avg=15.83
+2026-06-29 19:56:22,292 [INFO] core.evaluator_v2: [adakv] pred='**Summary of the Report:**\n\nThe report evaluates the capital planning and expenditure processes of the Metropolitan Wash'
+2026-06-29 19:56:46,525 [INFO] core.evaluator_v2: [adakv] pred='The minority leader in the House of Representatives is a key strategist and leader of the Democratic party. They are res'
+2026-06-29 19:57:11,065 [INFO] core.evaluator_v2: [adakv] pred='The report provides a comprehensive overview of the Title IV (Federal Student Aid) eligibility criteria for postsecondar'
+2026-06-29 19:57:27,053 [INFO] core.evaluator_v2: [adakv] pred='The Secret Service’s Information Integration and Technology Transformation (IITT) investment, which includes two program'
+2026-06-29 19:57:46,502 [INFO] core.evaluator_v2: [adakv] pred='The 2016 report of DOE’s Biological and Environmental Research Advisory Committee provided information about research ne'
+2026-06-29 19:57:46,539 [INFO] core.evaluator_v2:   [40/50] avg=15.96
+2026-06-29 19:58:02,426 [INFO] core.evaluator_v2: [adakv] pred='The report provides an overview of the management of neonatal abstinence syndrome (NAS) in infants exposed to opioids in'
+2026-06-29 19:58:29,548 [INFO] core.evaluator_v2: [adakv] pred="The Aegis Ballistic Missile Defense (BMD) system is a critical component of the United States' missile defense strategy,"
+2026-06-29 19:58:54,894 [INFO] core.evaluator_v2: [adakv] pred='The United States, Japan, Mexico, Canada, South Korea, Singapore, Taiwan, and Australia are members of the APEC CBPR. Th'
+2026-06-29 19:59:15,504 [INFO] core.evaluator_v2: [adakv] pred='The U.S. Congress, through various committees and subcommittees, has been involved in the national defense authorization'
+2026-06-29 19:59:39,809 [INFO] core.evaluator_v2: [adakv] pred='The Bureau of the Census, in its 2020 Census cost estimate, has been criticized for not adequately accounting for risk a'
+2026-06-29 19:59:39,846 [INFO] core.evaluator_v2:   [45/50] avg=15.97
+2026-06-29 20:00:06,135 [INFO] core.evaluator_v2: [adakv] pred='The United States government has implemented a series of climate change adaptation and resilience strategies, supported '
+2026-06-29 20:00:31,533 [INFO] core.evaluator_v2: [adakv] pred='The U.S. Postal Service (USPS) has implemented a new scanning process for competitive products, which includes the use o'
+2026-06-29 20:00:53,380 [INFO] core.evaluator_v2: [adakv] pred='The summary of the report is as follows:\n\nThe report examines the status of ESF assistance and projects provided to the '
+2026-06-29 20:01:18,798 [INFO] core.evaluator_v2: [adakv] pred='The Office of Inspector General (OIG) conducted a performance audit of the Federal Aviation Administration (FAA) to eval'
+2026-06-29 20:01:44,780 [INFO] core.evaluator_v2: [adakv] pred='The United States has purchased a number of key ANDSF equipment, including MD-530 helicopters, Mobile Strike Force Vehic'
+2026-06-29 20:01:44,802 [INFO] core.evaluator_v2:   [50/50] avg=16.17
+2026-06-29 20:01:44,813 [INFO] __main__:   → score=16.17, mem_red=80.0%, ttft=2711.7ms
+2026-06-29 20:01:44,814 [INFO] __main__: 
+  Task: qmsum
+2026-06-29 20:01:44,815 [INFO] core.evaluator_v2: [adakv] qmsum (50샘플, budget=20%)
+2026-06-29 20:02:00,946 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-29 20:02:12,233 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 20:02:35,999 [INFO] core.evaluator_v2: [adakv] pred='The meeting is about the project, and the group is discussing the next steps. The professor, Professor C, is discussing '
+2026-06-29 20:03:01,166 [INFO] core.evaluator_v2: [adakv] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-29 20:03:27,613 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 20:03:27,622 [INFO] core.evaluator_v2:   [5/50] avg=6.19
+2026-06-29 20:03:52,345 [INFO] core.evaluator_v2: [adakv] pred='The speaker is discussing a research project involving neural networks and signal processing, specifically focusing on a'
+2026-06-29 20:04:00,891 [INFO] core.evaluator_v2: [adakv] pred='The article discusses the development of a new navigation system, which is designed to be more intuitive and user-friend'
+2026-06-29 20:04:25,546 [INFO] core.evaluator_v2: [adakv] pred='The Welsh Government has announced a new childcare offer, which is a £4.50 per hour rate, with the aim of providing affo'
+2026-06-29 20:04:44,993 [INFO] core.evaluator_v2: [adakv] pred='The conversation between the participants (grad students and professors) is about the training of a neural network model'
+2026-06-29 20:05:04,375 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the design and functionality of a universal remote control that can perform multiple acti'
+2026-06-29 20:05:04,377 [INFO] core.evaluator_v2:   [10/50] avg=5.97
+2026-06-29 20:05:28,990 [INFO] core.evaluator_v2: [adakv] pred='The speaker is discussing a project related to speech recognition and signal processing, specifically focusing on the de'
+2026-06-29 20:05:53,953 [INFO] core.evaluator_v2: [adakv] pred='The Welsh Government has announced a new childcare offer, which is a £4.50 per hour rate, with the aim of providing affo'
+2026-06-29 20:06:18,251 [INFO] core.evaluator_v2: [adakv] pred='The National Assembly for Wales has, in the first instance, the capacity to provide support for key workers and vulnerab'
+2026-06-29 20:06:30,360 [INFO] core.evaluator_v2: [adakv] pred='The meeting focused on the development of a remote control device, with a particular emphasis on the user interface and '
+2026-06-29 20:06:42,172 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design and features of a new product, focusing on the user interface, battery, and voice reco'
+2026-06-29 20:06:42,175 [INFO] core.evaluator_v2:   [15/50] avg=6.60
+2026-06-29 20:07:09,646 [INFO] core.evaluator_v2: [adakv] pred='The meeting between the Project Manager, Industrial Designer, and User Interface Designer focused on the development of '
+2026-06-29 20:07:29,190 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the design and functionality of a universal remote control that can perform multiple acti'
+2026-06-29 20:07:53,862 [INFO] core.evaluator_v2: [adakv] pred='The speaker is discussing a project related to speech recognition and signal processing, specifically focusing on the de'
+2026-06-29 20:08:20,386 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the development and presentation of a new product, focusing on the **User Interface (UI)**, **Pro'
+2026-06-29 20:08:45,304 [INFO] core.evaluator_v2: [adakv] pred='The Welsh Government has announced a new childcare offer, which is a £4.50 per hour rate, with the aim of providing affo'
+2026-06-29 20:08:45,315 [INFO] core.evaluator_v2:   [20/50] avg=7.00
+2026-06-29 20:09:08,185 [INFO] core.evaluator_v2: [adakv] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 20:09:17,958 [INFO] core.evaluator_v2: [adakv] pred='The document is a detailed report on the efforts of the Canadian government to respond to the pandemic, with a focus on '
+2026-06-29 20:09:42,384 [INFO] core.evaluator_v2: [adakv] pred='The speaker is discussing a research project involving neural networks and signal processing, specifically focusing on a'
+2026-06-29 20:10:07,795 [INFO] core.evaluator_v2: [adakv] pred='The meeting was a discussion about the {disfmarker} Industrial Designer: {vocalsound} Project Manager: {vocalsound} Mark'
+2026-06-29 20:10:16,471 [INFO] core.evaluator_v2: [adakv] pred='The project manager, industrial designer, and marketing team have successfully completed the project. The industrial des'
+2026-06-29 20:10:16,473 [INFO] core.evaluator_v2:   [25/50] avg=7.13
+2026-06-29 20:10:36,089 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design and features of a new remote control device, focusing on the user interface and functi'
+2026-06-29 20:10:58,990 [INFO] core.evaluator_v2: [adakv] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 20:11:07,699 [INFO] core.evaluator_v2: [adakv] pred='The article discusses the development of a new navigation system, which is designed to be more intuitive and user-friend'
+2026-06-29 20:11:19,503 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design and implementation of a remote control device for a new product, focusing on user inte'
+2026-06-29 20:11:38,766 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the design and functionality of a universal remote control that can perform multiple acti'
+2026-06-29 20:11:38,772 [INFO] core.evaluator_v2:   [30/50] avg=7.80
+2026-06-29 20:11:49,774 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 20:11:59,411 [INFO] core.evaluator_v2: [adakv] pred="The Government of Canada's national debt is a complex issue, but the key point is that the government is taking a proact"
+2026-06-29 20:12:11,361 [INFO] core.evaluator_v2: [adakv] pred='The summary of the conversation between the participants is as follows:\n\nThe conversation revolves around the design and'
+2026-06-29 20:12:35,500 [INFO] core.evaluator_v2: [adakv] pred='The National Assembly for Wales has, in the first instance, the capacity to provide support for key workers and vulnerab'
+2026-06-29 20:12:52,879 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the development and optimization of speech recognition systems, particularly focusing on '
+2026-06-29 20:12:52,882 [INFO] core.evaluator_v2:   [35/50] avg=7.90
+2026-06-29 20:13:15,889 [INFO] core.evaluator_v2: [adakv] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 20:13:38,869 [INFO] core.evaluator_v2: [adakv] pred='The team has successfully completed the project, and the meeting is now over. The key points discussed and decisions mad'
+2026-06-29 20:13:48,884 [INFO] core.evaluator_v2: [adakv] pred="The Government of Canada's national debt is a complex issue, but the key point is that the government is taking a proact"
+2026-06-29 20:14:00,917 [INFO] core.evaluator_v2: [adakv] pred='The meeting focused on the development of a remote control device, with a particular emphasis on the user interface and '
+2026-06-29 20:14:11,967 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the design and development of a new device, focusing on the user interface and industrial'
+2026-06-29 20:14:11,971 [INFO] core.evaluator_v2:   [40/50] avg=8.32
+2026-06-29 20:14:38,602 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 20:15:02,992 [INFO] core.evaluator_v2: [adakv] pred='The National Assembly for Wales has, in the first instance, the capacity to provide support for key workers and vulnerab'
+2026-06-29 20:15:32,520 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the development and presentation of a new product, focusing on the **User Interface (UI)**, **Pro'
+2026-06-29 20:15:53,961 [INFO] core.evaluator_v2: [adakv] pred='The meeting discussed the development of a remote control device with a focus on user interface design, marketing strate'
+2026-06-29 20:16:11,356 [INFO] core.evaluator_v2: [adakv] pred='The discussion revolves around the development and optimization of speech recognition systems, particularly focusing on '
+2026-06-29 20:16:11,358 [INFO] core.evaluator_v2:   [45/50] avg=7.90
+2026-06-29 20:16:25,349 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the development of a new remote control device that comes with a television, featuring a small, l'
+2026-06-29 20:16:39,173 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the development of a new remote control device that comes with a television, featuring a small, l'
+2026-06-29 20:16:54,943 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the design of a new remote control device, focusing on making it more user-friendly, stylish, and'
+2026-06-29 20:17:21,937 [INFO] core.evaluator_v2: [adakv] pred='The team is discussing the development and presentation of a new product, focusing on the **User Interface (UI)**, **Pro'
+2026-06-29 20:17:46,258 [INFO] core.evaluator_v2: [adakv] pred='The National Assembly for Wales has, in the first instance, the capacity to provide support for key workers and vulnerab'
+2026-06-29 20:17:46,265 [INFO] core.evaluator_v2:   [50/50] avg=7.95
+2026-06-29 20:17:46,265 [INFO] __main__:   → score=7.95, mem_red=80.0%, ttft=2901.5ms
+2026-06-29 20:17:46,266 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 20:17:46,266 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-29 20:17:46,267 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 20:17:46,268 [INFO] __main__: 
+  Task: gov_report
+2026-06-29 20:17:46,268 [INFO] core.evaluator_v2: [ours] gov_report (50샘플, budget=20%)
+2026-06-29 20:18:10,366 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has adopted a cost-management strategy to balance the use of rotators (research an'
+2026-06-29 20:18:35,551 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) of 2002 requires that federal agencies develop, document, and im'
+2026-06-29 20:18:47,999 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive analysis of the United States' strategic response to China's growing influence in "
+2026-06-29 20:19:02,942 [INFO] core.evaluator_v2: [ours] pred="The Trump Administration's FY2020 budget request proposed $6.07 billion overall for EPA. The request included $1.120 bil"
+2026-06-29 20:19:15,782 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-06-29 20:19:15,800 [INFO] core.evaluator_v2:   [5/50] avg=13.03
+2026-06-29 20:19:40,111 [INFO] core.evaluator_v2: [ours] pred='The audit of the Federal Information Security Modernization Act (FISMA) and the Federal Cybersecurity Enhancement Act (2'
+2026-06-29 20:19:53,594 [INFO] core.evaluator_v2: [ours] pred='The Small Business Administration (SBA) has issued a final rule to implement the Small Business Contracting (SBAC) progr'
+2026-06-29 20:20:14,077 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text outlines the procedures and requirements for the use of author'
+2026-06-29 20:20:24,008 [INFO] core.evaluator_v2: [ours] pred='The article discusses the declining role of cash in the economy, particularly in Sweden and Kenya, where electronic paym'
+2026-06-29 20:20:49,538 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has implemented a comprehensive acquisition management and resource allocation'
+2026-06-29 20:20:49,580 [INFO] core.evaluator_v2:   [10/50] avg=14.45
+2026-06-29 20:21:16,404 [INFO] core.evaluator_v2: [ours] pred='The Budget Enforcement Act of 1990 defines discretionary appropriations as budget authority and resulting outlays provid'
+2026-06-29 20:21:41,607 [INFO] core.evaluator_v2: [ours] pred='The Bureau of Land Management (BLM) has broad authority to acquire and dispose of federal lands under various laws and r'
+2026-06-29 20:22:06,626 [INFO] core.evaluator_v2: [ours] pred='The Black Lung Disability Trust Fund (Trust Fund) is a federal trust fund that provides benefits to coal miners who have'
+2026-06-29 20:22:32,844 [INFO] core.evaluator_v2: [ours] pred='The United States provides foreign assistance to countries around the world, with a focus on economic development, secur'
+2026-06-29 20:22:57,338 [INFO] core.evaluator_v2: [ours] pred='The Office of Surface Mining Reclamation and Enforcement (OSMRE) has issued a notice to the operator of a mine in Tennes'
+2026-06-29 20:22:57,366 [INFO] core.evaluator_v2:   [15/50] avg=14.97
+2026-06-29 20:23:18,501 [INFO] core.evaluator_v2: [ours] pred="The Public Safety Officers' Education and Assistance (PSOEA) program provides financial assistance with costs associated"
+2026-06-29 20:23:38,516 [INFO] core.evaluator_v2: [ours] pred='The U.S. federal government has identified several alternative funding mechanisms to support the acquisition, renovation'
+2026-06-29 20:23:43,264 [INFO] core.evaluator_v2: [ours] pred='The U.S. government and are not subject to copyright protection in the United States. The published product may be repro'
+2026-06-29 20:24:07,526 [INFO] core.evaluator_v2: [ours] pred='The 2019 Congressional Budget Justification for the U.S. Department of Commerce, specifically the Bureau of Economic Ana'
+2026-06-29 20:24:32,437 [INFO] core.evaluator_v2: [ours] pred='The Black Lung Benefits Act (BLBA) is a federal law that provides medical and disability benefits to coal miners who hav'
+2026-06-29 20:24:32,465 [INFO] core.evaluator_v2:   [20/50] avg=14.64
+2026-06-29 20:24:57,983 [INFO] core.evaluator_v2: [ours] pred='The analysis of technology-related degree earners and the compliance of technology companies with federal equal opportun'
+2026-06-29 20:25:22,103 [INFO] core.evaluator_v2: [ours] pred='The Federal Trade Commission (FTC) has been addressing Internet privacy through its unfair and deceptive practices autho'
+2026-06-29 20:25:48,731 [INFO] core.evaluator_v2: [ours] pred='This report provides a comprehensive analysis of the factors and strategies that may influence the decision of individua'
+2026-06-29 20:25:56,624 [INFO] core.evaluator_v2: [ours] pred='The agency has taken steps to improve its management of IT acquisitions and operations by implementing 14 of the 15 reco'
+2026-06-29 20:26:19,386 [INFO] core.evaluator_v2: [ours] pred='The report outlines eight potential policy approaches to address the financial sustainability of the Postal Service Reti'
+2026-06-29 20:26:19,423 [INFO] core.evaluator_v2:   [25/50] avg=14.85
+2026-06-29 20:26:40,297 [INFO] core.evaluator_v2: [ours] pred='The Tax Exclusion for Canceled Mortgage Debt (CMD) and the Deduction for Mortgage Insurance Premiums (MIP) are two tempo'
+2026-06-29 20:26:54,064 [INFO] core.evaluator_v2: [ours] pred='The National Popular Vote (NPV) initiative is a proposal to reform the U.S. presidential election system by establishing'
+2026-06-29 20:27:22,091 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Energy and Water Development Appropriations Bill for FY2020**\n\nThe Energy and Water Development Appropr'
+2026-06-29 20:27:47,029 [INFO] core.evaluator_v2: [ours] pred='The report provides a comprehensive analysis of the approaches and challenges agencies face in achieving their RTF (Revi'
+2026-06-29 20:28:12,877 [INFO] core.evaluator_v2: [ours] pred='The U.S. Department of Veterans Affairs (VA) has been working to improve access to burial services for veterans, particu'
+2026-06-29 20:28:12,905 [INFO] core.evaluator_v2:   [30/50] avg=14.99
+2026-06-29 20:28:35,479 [INFO] core.evaluator_v2: [ours] pred='The Volcker Rule, a key component of the Dodd-Frank Act, aims to limit the risk-taking behavior of banks by restricting '
+2026-06-29 20:28:59,899 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Report on the European Reassurance Initiative (ERI) and Defense Posture Planning**\n\nThe U.S. Department'
+2026-06-29 20:29:22,419 [INFO] core.evaluator_v2: [ours] pred='The audit of the Lobbying Disclosure Act (LDA) by the U.S. Government Accountability Office (GAO) found that while the L'
+2026-06-29 20:29:47,162 [INFO] core.evaluator_v2: [ours] pred='The Government Accountability Office (GAO) conducted a performance audit of the financial condition and levels of debt i'
+2026-06-29 20:30:05,524 [INFO] core.evaluator_v2: [ours] pred='The Small Business Lending Fund (SBLF) was established under the Small Business Jobs Act of 2010 (P.L. 111-240) to provi'
+2026-06-29 20:30:05,551 [INFO] core.evaluator_v2:   [35/50] avg=15.22
+2026-06-29 20:30:32,131 [INFO] core.evaluator_v2: [ours] pred="WMATA's capital planning and investment processes have been evaluated to determine how effectively the agency is allocat"
+2026-06-29 20:30:56,472 [INFO] core.evaluator_v2: [ours] pred="The minority leader in the House of Representatives is a key strategist and leader, responsible for the party's agenda, "
+2026-06-29 20:31:21,142 [INFO] core.evaluator_v2: [ours] pred='The HEA (Higher Education Act) includes provisions related to the prevention and response to incidents of domestic and s'
+2026-06-29 20:31:45,801 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and the Secret Service have implemented an Information Integration and Technol'
+2026-06-29 20:32:06,105 [INFO] core.evaluator_v2: [ours] pred='The Atomic Energy Act of 1954 (the Atomic Energy Act of 1954) is a federal law that authorizes the Secretary of Energy t'
+2026-06-29 20:32:06,137 [INFO] core.evaluator_v2:   [40/50] avg=15.31
+2026-06-29 20:32:29,727 [INFO] core.evaluator_v2: [ours] pred='The U.S. Department of Health and Human Services (HHS) has issued guidance and educational resources to help stakeholder'
+2026-06-29 20:32:56,951 [INFO] core.evaluator_v2: [ours] pred='The United States, and the, and the, and the, and the, and the, and the, and the, and the, and the, and the, and the, an'
+2026-06-29 20:33:20,917 [INFO] core.evaluator_v2: [ours] pred='The United States, as a global leader in trade and economic development, has a responsibility to ensure that its trade p'
+2026-06-29 20:33:48,901 [INFO] core.evaluator_v2: [ours] pred='The summary provides a detailed overview of various legislative reports and authorizations related to the U.S. Departmen'
+2026-06-29 20:34:13,520 [INFO] core.evaluator_v2: [ours] pred='The Bureau of the Census, in collaboration with the Department of Commerce, has developed a comprehensive cost estimatio'
+2026-06-29 20:34:13,550 [INFO] core.evaluator_v2:   [45/50] avg=15.22
+2026-06-29 20:34:39,620 [INFO] core.evaluator_v2: [ours] pred='The Global Climate Change Initiative (LDCF) was established in 2010 to support climate resilience in eight developing co'
+2026-06-29 20:35:03,518 [INFO] core.evaluator_v2: [ours] pred='The U.S. Postal Service (USPS) has been identified as having inconsistent and unclear procedures for scanning and tracki'
+2026-06-29 20:35:25,328 [INFO] core.evaluator_v2: [ours] pred='The report examines the status of ESF assistance and projects provided to the West Bank and Gaza for fiscal years 2015 a'
+2026-06-29 20:35:50,846 [INFO] core.evaluator_v2: [ours] pred="This audit of the Federal Government's Short-Term Rental Program for heavy equipment, conducted from October 2016 to Feb"
+2026-06-29 20:36:16,960 [INFO] core.evaluator_v2: [ours] pred='The United States, through the Department of Defense (DOD), has been and is continuing to provide and support the Afghan'
+2026-06-29 20:36:17,001 [INFO] core.evaluator_v2:   [50/50] avg=15.51
+2026-06-29 20:36:17,012 [INFO] __main__:   → score=15.51, mem_red=80.0%, ttft=2737.9ms
+2026-06-29 20:36:17,014 [INFO] __main__: 
+  Task: qmsum
+2026-06-29 20:36:17,014 [INFO] core.evaluator_v2: [ours] qmsum (50샘플, budget=20%)
+2026-06-29 20:36:40,676 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-29 20:36:51,279 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the design and development of a new device, focusing on the integration of a touchscreen '
+2026-06-29 20:37:15,269 [INFO] core.evaluator_v2: [ours] pred='The meeting is about the project, and the team is working on it. The goal is to finish the project, and the team is work'
+2026-06-29 20:37:25,753 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the project, with a focus on the user interface and the industrial design of a produc'
+2026-06-29 20:37:52,380 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 20:37:52,384 [INFO] core.evaluator_v2:   [5/50] avg=8.56
+2026-06-29 20:38:01,719 [INFO] core.evaluator_v2: [ours] pred='The speaker is discussing a research project on speech processing, specifically focusing on a neural network model for s'
+2026-06-29 20:38:10,922 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed the development of a new navigation system that can handle complex tasks, such as navigating to sp'
+2026-06-29 20:38:35,734 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government has launched a new childcare offer, which is being funded by the government. The offer is being pro'
+2026-06-29 20:38:58,680 [INFO] core.evaluator_v2: [ours] pred='The discussion between the participants (grad students and professors) revolves around the training of a neural network '
+2026-06-29 20:39:10,287 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design of a universal remote control that can perform multiple functions, such as changing ch'
+2026-06-29 20:39:10,291 [INFO] core.evaluator_v2:   [10/50] avg=7.00
+2026-06-29 20:39:34,747 [INFO] core.evaluator_v2: [ours] pred='The speaker is discussing the development of a global encoding standard for speech recognition, with a focus on the work'
+2026-06-29 20:39:59,303 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government has launched a new childcare offer, which is being funded by the government. The offer is being pro'
+2026-06-29 20:40:23,223 [INFO] core.evaluator_v2: [ours] pred='The following is a summary of the information and discussions that took place in the National Assembly for Wales, focusi'
+2026-06-29 20:40:33,086 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the development of a remote control device, with a particular emphasis on the user interface and '
+2026-06-29 20:40:58,875 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the development of a new product, which is a combination of a speaker, a mobile device, and a set'
+2026-06-29 20:40:58,880 [INFO] core.evaluator_v2:   [15/50] avg=6.58
+2026-06-29 20:41:14,094 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the development of a universal remote control for a television and DVD player, with the goal of m'
+2026-06-29 20:41:25,771 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design of a universal remote control that can perform multiple functions, such as changing ch'
+2026-06-29 20:41:50,299 [INFO] core.evaluator_v2: [ours] pred='The speaker is discussing the development of a global encoding standard for speech recognition, with a focus on the work'
+2026-06-29 20:42:13,060 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the development and launch of a new product, with a focus on user experience, design, and project'
+2026-06-29 20:42:37,981 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government has launched a new childcare offer, which is being funded by the government. The offer is being pro'
+2026-06-29 20:42:37,991 [INFO] core.evaluator_v2:   [20/50] avg=7.08
+2026-06-29 20:43:04,111 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the project, with a focus on **user experience**, **team collaboration**, and **proje'
+2026-06-29 20:43:09,585 [INFO] core.evaluator_v2: [ours] pred='The meeting was adjourned.'
+2026-06-29 20:43:19,286 [INFO] core.evaluator_v2: [ours] pred='The speaker is discussing a research project on speech processing, specifically focusing on a neural network model for s'
+2026-06-29 20:43:30,014 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the project, with a focus on the user interface and the industrial design of a produc'
+2026-06-29 20:43:41,663 [INFO] core.evaluator_v2: [ours] pred='The document is a detailed description of a project management process, with a focus on the development of a product. Th'
+2026-06-29 20:43:41,670 [INFO] core.evaluator_v2:   [25/50] avg=7.37
+2026-06-29 20:44:05,961 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and implementation of a new remote control device with a touch screen interface. The g'
+2026-06-29 20:44:32,030 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the project, with a focus on **user experience**, **team collaboration**, and **proje'
+2026-06-29 20:44:41,437 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed the development of a new navigation system that can handle complex tasks, such as navigating to sp'
+2026-06-29 20:44:50,794 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and implementation of a user interface for a remote control device, with a focus on si'
+2026-06-29 20:45:02,403 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design of a universal remote control that can perform multiple functions, such as changing ch'
+2026-06-29 20:45:02,416 [INFO] core.evaluator_v2:   [30/50] avg=7.88
+2026-06-29 20:45:16,192 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the design and development of a new device, focusing on the integration of a touchscreen '
+2026-06-29 20:45:25,872 [INFO] core.evaluator_v2: [ours] pred="The Government of Canada's balance sheet is strong, with a negative net worth of $1 trillion by the end of this fiscal y"
+2026-06-29 20:45:42,363 [INFO] core.evaluator_v2: [ours] pred='The conversation between the participants revolves around the design and functionality of a remote control for a televis'
+2026-06-29 20:46:06,509 [INFO] core.evaluator_v2: [ours] pred='The following is a summary of the information and discussions that took place in the National Assembly for Wales, focusi'
+2026-06-29 20:46:24,183 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the development and optimization of a speech recognition system, with a focus on reducing'
+2026-06-29 20:46:24,187 [INFO] core.evaluator_v2:   [35/50] avg=8.05
+2026-06-29 20:46:50,132 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the project, with a focus on **user experience**, **team collaboration**, and **proje'
+2026-06-29 20:47:16,400 [INFO] core.evaluator_v2: [ours] pred='The meeting was a discussion about the project, with a focus on **user experience**, **team collaboration**, and **proje'
+2026-06-29 20:47:26,198 [INFO] core.evaluator_v2: [ours] pred="The Government of Canada's balance sheet is strong, with a negative net worth of $1 trillion by the end of this fiscal y"
+2026-06-29 20:47:36,260 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the development of a remote control device, with a particular emphasis on the user interface and '
+2026-06-29 20:47:47,117 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the design and development of a new device, focusing on the integration of a touchscreen '
+2026-06-29 20:47:47,120 [INFO] core.evaluator_v2:   [40/50] avg=8.42
+2026-06-29 20:48:13,801 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and features of a new remote control device, focusing on the following key points:\n\n1.'
+2026-06-29 20:48:37,830 [INFO] core.evaluator_v2: [ours] pred='The following is a summary of the information and discussions that took place in the National Assembly for Wales, focusi'
+2026-06-29 20:49:00,744 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the development and launch of a new product, with a focus on user experience, design, and project'
+2026-06-29 20:49:27,210 [INFO] core.evaluator_v2: [ours] pred='The team is going to lunch, and then will work for thirty minutes individually, and then meet again for the next meeting'
+2026-06-29 20:49:44,834 [INFO] core.evaluator_v2: [ours] pred='The discussion revolves around the development and optimization of a speech recognition system, with a focus on reducing'
+2026-06-29 20:49:44,836 [INFO] core.evaluator_v2:   [45/50] avg=7.89
+2026-06-29 20:49:57,062 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and marketing of a remote control device that can be used with a television. They are '
+2026-06-29 20:50:09,588 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design and marketing of a remote control device that can be used with a television. They are '
+2026-06-29 20:50:33,473 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the design of a new remote control device. The goal is to create a sleek, stylish, and functional'
+2026-06-29 20:50:56,437 [INFO] core.evaluator_v2: [ours] pred='The team is discussing the development and launch of a new product, with a focus on user experience, design, and project'
+2026-06-29 20:51:20,414 [INFO] core.evaluator_v2: [ours] pred='The following is a summary of the information and discussions that took place in the National Assembly for Wales, focusi'
+2026-06-29 20:51:20,420 [INFO] core.evaluator_v2:   [50/50] avg=7.84
+2026-06-29 20:51:20,421 [INFO] __main__:   → score=7.84, mem_red=80.0%, ttft=2932.7ms
+2026-06-29 20:51:20,430 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260629_170947.csv
+2026-06-29 20:51:20,441 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260629_170947.json
+2026-06-29 20:51:20,442 [INFO] __main__: Experiment 1 completed!

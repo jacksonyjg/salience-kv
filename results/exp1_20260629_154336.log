@@ -1,0 +1,968 @@
+2026-06-29 15:43:36,223 [INFO] __main__: Experiment 1: Main Results
+2026-06-29 15:43:36,224 [INFO] __main__:   Model: qwen3-4b
+2026-06-29 15:43:36,224 [INFO] __main__:   Mode: full
+2026-06-29 15:43:36,225 [INFO] __main__:   Budget: 20%
+2026-06-29 15:43:36,226 [INFO] __main__:   Tasks: ['hotpotqa', '2wikimqa']
+2026-06-29 15:43:36,226 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-06-29 15:43:36,227 [INFO] __main__:   Samples/task: 50
+2026-06-29 15:43:36,227 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-06-29 15:43:36,227 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-06-29 15:43:36,346 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 15:43:36,348 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-06-29 15:43:36,355 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 15:43:36,420 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 15:43:36,428 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-06-29 15:43:36,498 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-06-29 15:43:36,561 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-06-29 15:43:37,763 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-06-29 15:43:37,765 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-06-29 15:43:37,797 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 15:43:37,814 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-06-29 15:44:05,199 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 15:44:05,213 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-06-29 15:44:05,286 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-06-29 15:44:05,322 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-06-29 15:44:05,335 [INFO] __main__: 사전 데이터 로딩 중...
+2026-06-29 15:44:05,336 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-06-29 15:44:05,372 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 15:44:05,401 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 15:44:05,994 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 15:44:06,038 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-06-29 15:44:06,070 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 15:44:06,103 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-06-29 15:44:06,633 [INFO] core.dataset_loader: Loaded 50 samples from hotpotqa
+2026-06-29 15:44:06,636 [INFO] __main__:   ✓ hotpotqa: 50샘플 로드 완료
+2026-06-29 15:44:06,637 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-06-29 15:44:06,672 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-06-29 15:44:06,702 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-06-29 15:44:07,567 [INFO] core.dataset_loader: Loaded 50 samples from 2wikimqa
+2026-06-29 15:44:07,569 [INFO] __main__:   ✓ 2wikimqa: 50샘플 로드 완료
+2026-06-29 15:44:07,570 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-06-29 15:44:07,570 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 15:44:07,572 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-06-29 15:44:07,572 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 15:44:07,573 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-29 15:44:07,574 [INFO] core.evaluator_v2: [fullkv] hotpotqa (50샘플, budget=20%)
+2026-06-29 15:44:15,260 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-06-29 15:44:22,988 [INFO] core.evaluator_v2: [fullkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-06-29 15:44:29,897 [INFO] core.evaluator_v2: [fullkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 15:44:41,170 [INFO] core.evaluator_v2: [fullkv] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-06-29 15:44:48,691 [INFO] core.evaluator_v2: [fullkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-06-29 15:44:48,692 [INFO] core.evaluator_v2:   [5/50] avg=2.50
+2026-06-29 15:44:52,411 [INFO] core.evaluator_v2: [fullkv] pred='Pleiospilos is a flowering plant. The text describes Pleiospilos as a genus of succulent flowering plants in the family '
+2026-06-29 15:45:00,886 [INFO] core.evaluator_v2: [fullkv] pred='Steel Venom is farther north than Wicked Twister. Steel Venom is located at Valleyfair in Shakopee, Minnesota, while Wic'
+2026-06-29 15:45:08,743 [INFO] core.evaluator_v2: [fullkv] pred='Baghdad was known as the "City of the Caliph" during the Abbasid Caliphate.'
+2026-06-29 15:45:20,031 [INFO] core.evaluator_v2: [fullkv] pred="The FIBT World Championships 1960 took place in Cortina d'Ampezzo, which is located in the Veneto region of Northern Ita"
+2026-06-29 15:45:28,250 [INFO] core.evaluator_v2: [fullkv] pred='Mike Leach currently serves as the special assistant to the head coach at NC State University.'
+2026-06-29 15:45:28,251 [INFO] core.evaluator_v2:   [10/50] avg=11.45
+2026-06-29 15:45:36,512 [INFO] core.evaluator_v2: [fullkv] pred='The Friday night programming block that included the collective series "Whatever Happened to... Robot Jones?" is the CBS'
+2026-06-29 15:45:44,296 [INFO] core.evaluator_v2: [fullkv] pred='The lowest vocal range in Cosmos is held by Jānis Strazdiņš, who is a bass.'
+2026-06-29 15:45:51,234 [INFO] core.evaluator_v2: [fullkv] pred='Fredric Rieders testified against John Swango, who had killed as many as 60 patients and received three consecutive life'
+2026-06-29 15:45:57,924 [INFO] core.evaluator_v2: [fullkv] pred='Robbie Tucker plays in "The Young and the Restless," a series that follows a group of friends who run an Irish bar.'
+2026-06-29 15:46:04,731 [INFO] core.evaluator_v2: [fullkv] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 35 people.'
+2026-06-29 15:46:04,733 [INFO] core.evaluator_v2:   [15/50] avg=12.16
+2026-06-29 15:46:11,035 [INFO] core.evaluator_v2: [fullkv] pred='The first name of the author who wrote the play in which Rønnaug Alten made her stage debut at Den Nationale Scene in 19'
+2026-06-29 15:46:16,649 [INFO] core.evaluator_v2: [fullkv] pred='The River Thames.'
+2026-06-29 15:46:28,371 [INFO] core.evaluator_v2: [fullkv] pred='The question refers to Lev Ivanov, who is mentioned as the choreographer of the Nutcracker and is said to be the last mu'
+2026-06-29 15:46:35,539 [INFO] core.evaluator_v2: [fullkv] pred='The text provided does not mention the host of the American survival skills reality show, The Island, or their origin. T'
+2026-06-29 15:46:42,616 [INFO] core.evaluator_v2: [fullkv] pred='Pope John X gave the mother of Alberic II of Spoleto, Marozia, the title "patricia" of Rome.'
+2026-06-29 15:46:42,617 [INFO] core.evaluator_v2:   [20/50] avg=14.50
+2026-06-29 15:46:51,919 [INFO] core.evaluator_v2: [fullkv] pred='Mimosa is a shrub. Cryptocoryne is an aquatic plant.'
+2026-06-29 15:46:59,115 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention that the actor who plays Sean Tully defeated anyone in a dancing contest.'
+2026-06-29 15:47:06,962 [INFO] core.evaluator_v2: [fullkv] pred='Mark Donohue was born in 1937 and performed in the 1971 Canadian Grand Prix.'
+2026-06-29 15:47:15,160 [INFO] core.evaluator_v2: [fullkv] pred='Yameen and Activision do not have a form of play in common. The text mentions Yameen as a hip hop producer and Activisio'
+2026-06-29 15:47:22,053 [INFO] core.evaluator_v2: [fullkv] pred='The Atherton Bridge spans the South Branch of the Nashua River.'
+2026-06-29 15:47:22,055 [INFO] core.evaluator_v2:   [25/50] avg=13.99
+2026-06-29 15:47:30,231 [INFO] core.evaluator_v2: [fullkv] pred='3 Arts Entertainment had a coalition with Hulu for the 13-episode, 2015 season of "The Mindy Project," a sitcom created '
+2026-06-29 15:47:41,535 [INFO] core.evaluator_v2: [fullkv] pred='High School Confidential followed twelve high school teenagers from Blue Valley Northwest High School in Overland Park, '
+2026-06-29 15:47:48,927 [INFO] core.evaluator_v2: [fullkv] pred='The 53rd National Hockey League All-Star Game took place at the Office Depot Center in Sunrise, which was completed in 2'
+2026-06-29 15:47:57,137 [INFO] core.evaluator_v2: [fullkv] pred='The Toronto International Film Festival premiered "The Meerkats" in 2008, which was produced by BBC Films.'
+2026-06-29 15:48:06,948 [INFO] core.evaluator_v2: [fullkv] pred='The arena where the Lewiston Maineiacs played their home games, the Androscoggin Bank Colisée, can seat 9,490 people.'
+2026-06-29 15:48:06,949 [INFO] core.evaluator_v2:   [30/50] avg=11.66
+2026-06-29 15:48:15,974 [INFO] core.evaluator_v2: [fullkv] pred="The winner of the London Riders' Championship in 1953 was Jack Young. In the 1952 Individual Speedway World Championship"
+2026-06-29 15:48:24,081 [INFO] core.evaluator_v2: [fullkv] pred="Erik Watts' father, Bill Watts, was born on December 29, 1946."
+2026-06-29 15:48:32,300 [INFO] core.evaluator_v2: [fullkv] pred='Migene González-Wippler is a leading expert on the Afro-Caribbean religion of Santería, which developed among the Yoruba'
+2026-06-29 15:48:40,181 [INFO] core.evaluator_v2: [fullkv] pred='The football club that plays in the area between the old tool gates: Brook Bar and Trafford Bar is Manchester United F.C'
+2026-06-29 15:48:48,534 [INFO] core.evaluator_v2: [fullkv] pred='The female member of Fitz and The Tantrums, Noelle Scaggs, was the front woman for The Rebirth, a Los Angeles soul band,'
+2026-06-29 15:48:48,536 [INFO] core.evaluator_v2:   [35/50] avg=11.07
+2026-06-29 15:48:58,205 [INFO] core.evaluator_v2: [fullkv] pred='No, Werther is not an opera. The text mentions "The Novel of Werther," a film based on Goethe\'s novel, and references an'
+2026-06-29 15:49:06,196 [INFO] core.evaluator_v2: [fullkv] pred='The Arab Kingdom of Syria surrendered to French forces on 25 July 1920.'
+2026-06-29 15:49:12,760 [INFO] core.evaluator_v2: [fullkv] pred="Santa Bring My Baby Back was released on Elvis' Christmas Album in 1957."
+2026-06-29 15:49:19,165 [INFO] core.evaluator_v2: [fullkv] pred='John Paesano wrote the music for the film "How to Train Your Dragon."'
+2026-06-29 15:49:27,668 [INFO] core.evaluator_v2: [fullkv] pred='The airline company that operated United Express Flight 3411 on April 9, 2017 on behalf of United Express is Republic Ai'
+2026-06-29 15:49:27,670 [INFO] core.evaluator_v2:   [40/50] avg=11.26
+2026-06-29 15:49:38,191 [INFO] core.evaluator_v2: [fullkv] pred='The Bangor Daily News is not directly talking about Sawin Millett. However, Sawin Millett is a Maine politician mentione'
+2026-06-29 15:49:46,967 [INFO] core.evaluator_v2: [fullkv] pred='Charles Haughey held the position of Taoiseach when he dissolved the list of members who were elected to the lower house'
+2026-06-29 15:49:53,786 [INFO] core.evaluator_v2: [fullkv] pred='Gary L. Bennett was a part of the space missions that have a primary destination of Jupiter.'
+2026-06-29 15:50:01,182 [INFO] core.evaluator_v2: [fullkv] pred='The 1958 Pro Bowl was played at the Los Angeles Memorial Coliseum, which is the home of the University of Southern Calif'
+2026-06-29 15:50:13,603 [INFO] core.evaluator_v2: [fullkv] pred='Luigi Cherubini was the composer who wrote his music most recently. He died in 1842, while Michael Tippett died in 1998.'
+2026-06-29 15:50:13,610 [INFO] core.evaluator_v2:   [45/50] avg=11.35
+2026-06-29 15:50:24,086 [INFO] core.evaluator_v2: [fullkv] pred='The population of the town where The Stelljes House is located, Goshen, New Hampshire, was 796 at the 2020 census. Howev'
+2026-06-29 15:50:32,704 [INFO] core.evaluator_v2: [fullkv] pred='James II was the last monarch of England to be overthrown before the English General Election, 1690.'
+2026-06-29 15:50:41,344 [INFO] core.evaluator_v2: [fullkv] pred='After Russell D. Moore served at the Southern Baptist Theological Seminary, he became the President of The Ethics & Reli'
+2026-06-29 15:50:49,748 [INFO] core.evaluator_v2: [fullkv] pred='The person who substituted for Simon Pagenaud, J. R. Hildebrand, secured a contract to drive in the 2017 IndyCar Series.'
+2026-06-29 15:50:57,884 [INFO] core.evaluator_v2: [fullkv] pred='The CEO of the football team based in Denver, Colorado, Pat Bowlen, stepped down in 2014 due to complications from Alzhe'
+2026-06-29 15:50:57,886 [INFO] core.evaluator_v2:   [50/50] avg=11.91
+2026-06-29 15:50:57,887 [INFO] __main__:   → score=11.91, mem_red=0.0%, ttft=3409.1ms
+2026-06-29 15:50:57,887 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-29 15:50:57,888 [INFO] core.evaluator_v2: [fullkv] 2wikimqa (50샘플, budget=20%)
+2026-06-29 15:51:07,166 [INFO] core.evaluator_v2: [fullkv] pred='Elmer Bäck was born in Finland.'
+2026-06-29 15:51:13,844 [INFO] core.evaluator_v2: [fullkv] pred='"Jugband Blues" came out first. It was released in 1968 by Pink Floyd, while "Joel the Lump of Coal" was released in 201'
+2026-06-29 15:51:23,450 [INFO] core.evaluator_v2: [fullkv] pred='True To The Navy. The director of True To The Navy, Frank Tuttle, died in 1963, while the director of No Trees In The St'
+2026-06-29 15:51:33,541 [INFO] core.evaluator_v2: [fullkv] pred="The place of death of Agnes of Hohenstaufen's husband, Henry V, Count Palatine of the Rhine, was Brunswick Cathedral. He"
+2026-06-29 15:51:46,326 [INFO] core.evaluator_v2: [fullkv] pred='According to the text, Paul De Scherff was born on 14 July 1820. The text does not provide the birth date of Lyudmyla Ol'
+2026-06-29 15:51:46,327 [INFO] core.evaluator_v2:   [5/50] avg=11.08
+2026-06-29 15:51:54,344 [INFO] core.evaluator_v2: [fullkv] pred="Helmichis's father-in-law is Alboin."
+2026-06-29 15:52:02,199 [INFO] core.evaluator_v2: [fullkv] pred="The Drover's Sweetheart came out earlier. It was released in 1911, while Pigsty (Film) was released in 1969."
+2026-06-29 15:52:12,165 [INFO] core.evaluator_v2: [fullkv] pred="Princess Charlotte of Saxe-Meiningen's husband was Ernest II, Duke of Saxe-Gotha-Altenburg, who was of German nationalit"
+2026-06-29 15:52:20,376 [INFO] core.evaluator_v2: [fullkv] pred='The text provided does not mention "The Hatton Garden Job" or "Carry On Cleo," so it is not possible to determine if the'
+2026-06-29 15:52:28,008 [INFO] core.evaluator_v2: [fullkv] pred='Dr. Socrates was released first. It was released in 1935, while Vacations in Majorca was released in 1959.'
+2026-06-29 15:52:28,015 [INFO] core.evaluator_v2:   [10/50] avg=11.75
+2026-06-29 15:52:34,341 [INFO] core.evaluator_v2: [fullkv] pred="The place of death of Randi Monsen's father, Fredrik Monsen, is not explicitly mentioned in the provided text. However, "
+2026-06-29 15:52:43,021 [INFO] core.evaluator_v2: [fullkv] pred="The place of birth of Abdulaziz Nasser Al Shamsi's wife, Hissa Abdulla Ahmed Al-Otaiba, is Abu Dhabi."
+2026-06-29 15:52:48,670 [INFO] core.evaluator_v2: [fullkv] pred='The director of the film *Nallavan Vazhvan* is P. Neelakantan. According to the text, P. Neelakantan was born on 2 Octob'
+2026-06-29 15:52:58,428 [INFO] core.evaluator_v2: [fullkv] pred='The director of "The Year of the Rabbit" is Fernando Ayala, who died on 11 September 1997. The director of "Monster on t'
+2026-06-29 15:53:07,813 [INFO] core.evaluator_v2: [fullkv] pred='The paternal grandfather of Bruno II von Berg is Count Adolf III of Berg.'
+2026-06-29 15:53:07,814 [INFO] core.evaluator_v2:   [15/50] avg=14.40
+2026-06-29 15:53:14,684 [INFO] core.evaluator_v2: [fullkv] pred='Prince Of Arcadia was released earlier. Prince Of Arcadia is a 1933 film, while Italia-Germania 4-3 is a 1990 film.'
+2026-06-29 15:53:24,383 [INFO] core.evaluator_v2: [fullkv] pred='Johnny Ekström was born later than Hugh Evelyn Wortham. Hugh Evelyn Wortham was born on 7 May 1884, while Johnny Ekström'
+2026-06-29 15:53:30,330 [INFO] core.evaluator_v2: [fullkv] pred='The director of the film "Clowning Around" is George Whaley, who was born in Castlemaine, Victoria, Australia.'
+2026-06-29 15:53:39,438 [INFO] core.evaluator_v2: [fullkv] pred='Solemn Promise was directed by Srđan Karanović, who was born on 17 November 1945. Tarzan the Magnificent was directed by'
+2026-06-29 15:53:47,626 [INFO] core.evaluator_v2: [fullkv] pred='The text provided does not mention the spouse of the director of the film "Streets Of Blood." Therefore, based on the gi'
+2026-06-29 15:53:47,628 [INFO] core.evaluator_v2:   [20/50] avg=15.10
+2026-06-29 15:53:56,059 [INFO] core.evaluator_v2: [fullkv] pred='Contragolpe. Alejandro Doria directed Contragolpe and died in 2009, while Roy Ward Baker directed Tiger in the Smoke and'
+2026-06-29 15:54:04,815 [INFO] core.evaluator_v2: [fullkv] pred='The composer of "Gretchen am Spinnrade" is Franz Schubert. According to the text, Franz Schubert died in Vienna.'
+2026-06-29 15:54:12,601 [INFO] core.evaluator_v2: [fullkv] pred="Gisela of Hungary's father-in-law was Henry II, Holy Roman Emperor."
+2026-06-29 15:54:20,837 [INFO] core.evaluator_v2: [fullkv] pred="Grand Duchess Elena Vladimirovna of Russia's father, Emperor Paul I, died in 1801."
+2026-06-29 15:54:30,788 [INFO] core.evaluator_v2: [fullkv] pred='From Corleone to Brooklyn was directed by Umberto Lenzi, born in 1931. Durango Valley Raiders was directed by Sam Newfie'
+2026-06-29 15:54:30,789 [INFO] core.evaluator_v2:   [25/50] avg=13.80
+2026-06-29 15:54:38,204 [INFO] core.evaluator_v2: [fullkv] pred="The place of birth of Sextus Barbour's father is Virginia."
+2026-06-29 15:54:41,222 [INFO] core.evaluator_v2: [fullkv] pred='The text does not provide information about the ages of Guy Arvely Dolsin and Altuğ Çelikbilek. Therefore, it is not pos'
+2026-06-29 15:54:51,992 [INFO] core.evaluator_v2: [fullkv] pred="The maternal grandfather of Marie Louise, Duchess of Parma is King Philip V of Spain. This is because Marie Louise's mot"
+2026-06-29 15:54:57,663 [INFO] core.evaluator_v2: [fullkv] pred='Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato came out first. It was released in 1970, wh'
+2026-06-29 15:55:04,083 [INFO] core.evaluator_v2: [fullkv] pred='Antoine Casavant was born first. He was born on October 20, 1826, while Abdul Ali Lalu was born on October 20, 1932.'
+2026-06-29 15:55:04,084 [INFO] core.evaluator_v2:   [30/50] avg=15.73
+2026-06-29 15:55:09,692 [INFO] core.evaluator_v2: [fullkv] pred="Sir William Gore, 3rd Baronet's paternal grandfather was Sir Paul Gore, 1st Baronet."
+2026-06-29 15:55:18,295 [INFO] core.evaluator_v2: [fullkv] pred="The place of death of Shahnawaz Bhutto's mother, Nusrat Bhutto, was Dubai, United Arab Emirates."
+2026-06-29 15:55:25,577 [INFO] core.evaluator_v2: [fullkv] pred="The text does not provide information about where Mary of Woodstock's mother died."
+2026-06-29 15:55:35,445 [INFO] core.evaluator_v2: [fullkv] pred="The text does not provide the birthday of Henrietta Maria of Brandenburg-Schwedt's father."
+2026-06-29 15:55:43,870 [INFO] core.evaluator_v2: [fullkv] pred='The director of the film "Wine of Morning," Katherine Stenholm, works at Bob Jones University.'
+2026-06-29 15:55:43,871 [INFO] core.evaluator_v2:   [35/50] avg=16.52
+2026-06-29 15:55:52,415 [INFO] core.evaluator_v2: [fullkv] pred="Isabella of Valois's paternal grandfather was Louis I, Duke of Bourbon."
+2026-06-29 15:55:59,876 [INFO] core.evaluator_v2: [fullkv] pred="Charles Willoughby, 10th Baron Willoughby of Parham's paternal grandmother was Lady Margaret Clinton. She was the daught"
+2026-06-29 15:56:05,662 [INFO] core.evaluator_v2: [fullkv] pred="The place of birth of Carrie Watson Fleming's husband, Aretas B. Fleming, is Fairmont, West Virginia."
+2026-06-29 15:56:15,850 [INFO] core.evaluator_v2: [fullkv] pred="The Wind's Fierce was directed by Mario Camus, born in 1935. Special Delivery (1927 Film) was directed by John Brahm, bo"
+2026-06-29 15:56:25,983 [INFO] core.evaluator_v2: [fullkv] pred='Charles Wheatstone lived longer than Jean-Claude Lauzon. Charles Wheatstone was born in 1802 and died in 1875, while Jea'
+2026-06-29 15:56:25,984 [INFO] core.evaluator_v2:   [40/50] avg=17.33
+2026-06-29 15:56:28,077 [INFO] core.evaluator_v2: [fullkv] pred='Yes, both Howard Lake (British Columbia) and North Buck Lake (Alberta) are located in Canada.'
+2026-06-29 15:56:34,246 [INFO] core.evaluator_v2: [fullkv] pred='Yes, both Reginald Fogwell, who directed "Betrayal" (1932), and Gabrielle Beaumont, who directed "The Godsend" (film), a'
+2026-06-29 15:56:46,149 [INFO] core.evaluator_v2: [fullkv] pred='Based on the text, "Beauty and the Bad Man" is a 1925 American silent Western film directed by William Worthington. The '
+2026-06-29 15:56:55,592 [INFO] core.evaluator_v2: [fullkv] pred="The place of birth of Ratna Malla's father, Yakshya Malla, is not explicitly mentioned in the text."
+2026-06-29 15:57:04,593 [INFO] core.evaluator_v2: [fullkv] pred="Aleksey Greig's father, Samuel Greig, was born in Inverkeithing, Fife, Scotland."
+2026-06-29 15:57:04,595 [INFO] core.evaluator_v2:   [45/50] avg=16.35
+2026-06-29 15:57:12,632 [INFO] core.evaluator_v2: [fullkv] pred="The mother of the director of the film *Atomised* is Oskar Roehler's wife, who is not explicitly named in the text. Howe"
+2026-06-29 15:57:16,028 [INFO] core.evaluator_v2: [fullkv] pred='No. Ding Yaping is Chinese and German, while Johann Christian Gustav Lucae is German.'
+2026-06-29 15:57:23,892 [INFO] core.evaluator_v2: [fullkv] pred="Helena Carroll's father, Paul Vincent Carroll, studied at St Patrick's College, Dublin."
+2026-06-29 15:57:33,516 [INFO] core.evaluator_v2: [fullkv] pred='Space Probe Taurus is directed by Leonard Katzman, who was born in 1927. Tom Mix in Arabia is directed by Lynn Reynolds,'
+2026-06-29 15:57:41,000 [INFO] core.evaluator_v2: [fullkv] pred='The Pyrammmid came out first. It is a 2011 Russian film, while Revolt Of The Praetorians is a 1964 Italian film.'
+2026-06-29 15:57:41,011 [INFO] core.evaluator_v2:   [50/50] avg=16.56
+2026-06-29 15:57:41,012 [INFO] __main__:   → score=16.56, mem_red=0.0%, ttft=3196.3ms
+2026-06-29 15:57:41,012 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 15:57:41,013 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-06-29 15:57:41,016 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 15:57:41,017 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-29 15:57:41,018 [INFO] core.evaluator_v2: [streaming] hotpotqa (50샘플, budget=20%)
+2026-06-29 15:57:47,785 [INFO] core.evaluator_v2: [streaming] pred='Audra McDonald.'
+2026-06-29 15:57:53,962 [INFO] core.evaluator_v2: [streaming] pred='Ribosomes.'
+2026-06-29 15:58:00,307 [INFO] core.evaluator_v2: [streaming] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 15:58:09,732 [INFO] core.evaluator_v2: [streaming] pred='YIVO.'
+2026-06-29 15:58:16,660 [INFO] core.evaluator_v2: [streaming] pred='Alfred A. Marcus worked as a consultant for the Nuclear Regulatory Commission.'
+2026-06-29 15:58:16,662 [INFO] core.evaluator_v2:   [5/50] avg=40.00
+2026-06-29 15:58:18,722 [INFO] core.evaluator_v2: [streaming] pred='Pleiospilos is a flowering plant.'
+2026-06-29 15:58:24,580 [INFO] core.evaluator_v2: [streaming] pred='Steel Venom is farther north than Wicked Twister.'
+2026-06-29 15:58:31,204 [INFO] core.evaluator_v2: [streaming] pred='The Abbasid Caliphate\'s capital, Baghdad, was also known as the "City of Peace" (al-Fustat) during its early years.'
+2026-06-29 15:58:40,405 [INFO] core.evaluator_v2: [streaming] pred="The FIBT World Championships 1960 took place in Cortina d'Ampezzo, located in the Veneto region of northern Italy."
+2026-06-29 15:58:47,395 [INFO] core.evaluator_v2: [streaming] pred='Mike Leach currently coaches at Washington State.'
+2026-06-29 15:58:47,408 [INFO] core.evaluator_v2:   [10/50] avg=40.36
+2026-06-29 15:58:55,120 [INFO] core.evaluator_v2: [streaming] pred='The Friday night programming block that included the collective series "Whatever Happened to... Robot Jones?" was **Cart'
+2026-06-29 15:59:01,836 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention anyone with a specific vocal range in Cosmos.'
+2026-06-29 15:59:07,108 [INFO] core.evaluator_v2: [streaming] pred='Swango.'
+2026-06-29 15:59:12,453 [INFO] core.evaluator_v2: [streaming] pred="It's Always Sunny in Philadelphia."
+2026-06-29 15:59:18,660 [INFO] core.evaluator_v2: [streaming] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 300 people.'
+2026-06-29 15:59:18,662 [INFO] core.evaluator_v2:   [15/50] avg=39.56
+2026-06-29 15:59:22,906 [INFO] core.evaluator_v2: [streaming] pred='William'
+2026-06-29 15:59:27,899 [INFO] core.evaluator_v2: [streaming] pred='The River Thames.'
+2026-06-29 15:59:36,271 [INFO] core.evaluator_v2: [streaming] pred='The answer is **Meryl Streep**. She is said to be the last muse for the choreographer and starred in the Nutcracker.'
+2026-06-29 15:59:42,949 [INFO] core.evaluator_v2: [streaming] pred='The text provided does not mention the host of the American survival skills reality show "The Island" or their origin. T'
+2026-06-29 15:59:48,486 [INFO] core.evaluator_v2: [streaming] pred='Pope Agapetus I.'
+2026-06-29 15:59:48,487 [INFO] core.evaluator_v2:   [20/50] avg=39.67
+2026-06-29 15:59:56,527 [INFO] core.evaluator_v2: [streaming] pred='Mimosa is a shrub.'
+2026-06-29 16:00:03,347 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention any dancing contest or specific defeat in a contest involving the actor who plays Sean Tully.'
+2026-06-29 16:00:12,607 [INFO] core.evaluator_v2: [streaming] pred='The racecar driver who performed in the 1971 Canadian Grand Prix and was born in 1937 is Mark Donohue.'
+2026-06-29 16:00:20,744 [INFO] core.evaluator_v2: [streaming] pred='The form of play that Yameen and Activision have in common is video game development. Yameen is a video game developer, '
+2026-06-29 16:00:26,759 [INFO] core.evaluator_v2: [streaming] pred='The Atherton Bridge spans the Columbia River.'
+2026-06-29 16:00:26,762 [INFO] core.evaluator_v2:   [25/50] avg=34.91
+2026-06-29 16:00:33,015 [INFO] core.evaluator_v2: [streaming] pred='Hulu'
+2026-06-29 16:00:39,813 [INFO] core.evaluator_v2: [streaming] pred='439th in the nation.'
+2026-06-29 16:00:46,915 [INFO] core.evaluator_v2: [streaming] pred='The 53rd National Hockey League All-Star Game took place at the arena that was completed in 1997.'
+2026-06-29 16:00:54,504 [INFO] core.evaluator_v2: [streaming] pred='The Toronto International Film Festival premiered a movie produced by BBC Films in 2012.'
+2026-06-29 16:01:03,097 [INFO] core.evaluator_v2: [streaming] pred='The arena where the Lewiston Maineiacs played their home games can seat 1,600 people.'
+2026-06-29 16:01:03,109 [INFO] core.evaluator_v2:   [30/50] avg=29.09
+2026-06-29 16:01:11,276 [INFO] core.evaluator_v2: [streaming] pred="The winner of the London Riders' Championship in 1953 was Jack Brabham. He scored 12 points in the 1952 Individual Speed"
+2026-06-29 16:01:18,517 [INFO] core.evaluator_v2: [streaming] pred="Erik Watts' father was born on 10 March 1915."
+2026-06-29 16:01:25,550 [INFO] core.evaluator_v2: [streaming] pred='The religion is Santería, which developed among the Afro-Caribbean ethnic group.'
+2026-06-29 16:01:32,653 [INFO] core.evaluator_v2: [streaming] pred='The football club that plays in the area between the old tool gates: Brook Bar and Trafford bar is Manchester United.'
+2026-06-29 16:01:40,176 [INFO] core.evaluator_v2: [streaming] pred='The female member of Fitz and the Tantrums, Noelle Scaggs, was the front woman for the band for ten years.'
+2026-06-29 16:01:40,179 [INFO] core.evaluator_v2:   [35/50] avg=25.50
+2026-06-29 16:01:47,671 [INFO] core.evaluator_v2: [streaming] pred='No, Werther is an opera, but The Odyssey is not an opera. The text discusses "The Death of Werther," which is an opera, '
+2026-06-29 16:01:54,361 [INFO] core.evaluator_v2: [streaming] pred='The kingdom surrendered to the Roman Senate.'
+2026-06-29 16:02:00,922 [INFO] core.evaluator_v2: [streaming] pred='The song "Santa Bring My Baby Back" was released on Mariah Carey\'s fourth studio album, "The Emancipation of Mimi," in 1'
+2026-06-29 16:02:06,698 [INFO] core.evaluator_v2: [streaming] pred='John Paesano wrote the film "How to Train Your Dragon" for DreamWorks Dragons.'
+2026-06-29 16:02:14,454 [INFO] core.evaluator_v2: [streaming] pred='The airline company that operated United Express Flight 3411 on April 9, 2017, on behalf of United Express is Republic A'
+2026-06-29 16:02:14,456 [INFO] core.evaluator_v2:   [40/50] avg=23.05
+2026-06-29 16:02:24,002 [INFO] core.evaluator_v2: [streaming] pred='The Bangor Daily News featured Sawin Millett as a food columnist and educator, highlighting her work in home economics, '
+2026-06-29 16:02:30,476 [INFO] core.evaluator_v2: [streaming] pred='Taoiseach.'
+2026-06-29 16:02:36,082 [INFO] core.evaluator_v2: [streaming] pred='Jupiter.'
+2026-06-29 16:02:42,610 [INFO] core.evaluator_v2: [streaming] pred='The 1958 Pro Bowl was played at the California stadium that is the home for the University of Utah.'
+2026-06-29 16:02:52,256 [INFO] core.evaluator_v2: [streaming] pred='Michael Tippett. The text indicates that Tippett\'s final major work was "The Rose Lake" in 1993, while Luigi Cherubini\'s'
+2026-06-29 16:02:52,258 [INFO] core.evaluator_v2:   [45/50] avg=22.64
+2026-06-29 16:03:00,333 [INFO] core.evaluator_v2: [streaming] pred='The population of the town where The Stelljes House is located in 2010 was 796.'
+2026-06-29 16:03:07,229 [INFO] core.evaluator_v2: [streaming] pred='Charles II.'
+2026-06-29 16:03:13,834 [INFO] core.evaluator_v2: [streaming] pred='1942.'
+2026-06-29 16:03:21,149 [INFO] core.evaluator_v2: [streaming] pred='The person who substituted for Simon Pagenaud secured a contract to drive in the 2017 Formula E season.'
+2026-06-29 16:03:28,371 [INFO] core.evaluator_v2: [streaming] pred="The CEO of the football team based in Denver, Colorado, stepped down in 2014 due to complications with Alzheimer's disea"
+2026-06-29 16:03:28,373 [INFO] core.evaluator_v2:   [50/50] avg=21.71
+2026-06-29 16:03:28,374 [INFO] __main__:   → score=21.71, mem_red=80.0%, ttft=3484.3ms
+2026-06-29 16:03:28,375 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-29 16:03:28,376 [INFO] core.evaluator_v2: [streaming] 2wikimqa (50샘플, budget=20%)
+2026-06-29 16:03:37,427 [INFO] core.evaluator_v2: [streaming] pred='The director of the film *Eisenstein in Guanajuato* is Peter Greenaway, who was born in London, England.'
+2026-06-29 16:03:43,293 [INFO] core.evaluator_v2: [streaming] pred='"Jugband Blues" came out first. It was released in 1925, while "Joel the Lump of Coal" was released in 2013.'
+2026-06-29 16:03:51,507 [INFO] core.evaluator_v2: [streaming] pred='No Trees in the Street. J. Lee Thompson died in 2002, while True to the Navy was directed in 1958.'
+2026-06-29 16:04:00,152 [INFO] core.evaluator_v2: [streaming] pred="The place of death of Agnes of Hohenstaufen's husband, Henry V, Holy Roman Emperor, was Waiblingen."
+2026-06-29 16:04:08,685 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention Lyudmyla Olyanovska, so it is not possible to determine who was born later between Paul De Sch'
+2026-06-29 16:04:08,686 [INFO] core.evaluator_v2:   [5/50] avg=13.75
+2026-06-29 16:04:15,971 [INFO] core.evaluator_v2: [streaming] pred="Helmichis's father-in-law is Ogawa."
+2026-06-29 16:04:22,146 [INFO] core.evaluator_v2: [streaming] pred="The Drover's Sweetheart came out earlier."
+2026-06-29 16:04:30,983 [INFO] core.evaluator_v2: [streaming] pred="Princess Charlotte of Saxe-Meiningen's husband was Prince Bernhard of Saxe-Meiningen. He was a German national."
+2026-06-29 16:04:44,109 [INFO] core.evaluator_v2: [streaming] pred='No, "The Hatton Garden Job" and "Carry On Cleo" are not from the same country. "The Hatton Garden Job" is a British film'
+2026-06-29 16:04:52,022 [INFO] core.evaluator_v2: [streaming] pred='Dr. Socrates. According to the text, "Dr. Socrates" was released in 1998, while "Vacations in Majorca" was released in 2'
+2026-06-29 16:04:52,023 [INFO] core.evaluator_v2:   [10/50] avg=15.25
+2026-06-29 16:04:58,312 [INFO] core.evaluator_v2: [streaming] pred="The place of death of Randi Monsen's father, Fredrik Monsen, is not explicitly mentioned in the provided text. However, "
+2026-06-29 16:05:05,292 [INFO] core.evaluator_v2: [streaming] pred='Hissa Abdulla Ahmed Al-Otaiba was born in Ajman.'
+2026-06-29 16:05:08,705 [INFO] core.evaluator_v2: [streaming] pred='The director of the film *Nallavan Vazhvan* is P. Neelakantan. The text does not provide the date of his death.'
+2026-06-29 16:05:17,795 [INFO] core.evaluator_v2: [streaming] pred='Monster on the Campus. The text indicates that Monster on the Campus was released in 1994, while The Year of the Rabbit '
+2026-06-29 16:05:26,449 [INFO] core.evaluator_v2: [streaming] pred='The paternal grandfather of Bruno II of Berg is Count Adolf III of Berg.'
+2026-06-29 16:05:26,451 [INFO] core.evaluator_v2:   [15/50] avg=14.39
+2026-06-29 16:05:31,597 [INFO] core.evaluator_v2: [streaming] pred='Prince of Arcadia was released earlier.'
+2026-06-29 16:05:40,251 [INFO] core.evaluator_v2: [streaming] pred='Johnny Ekström was born later than Hugh Evelyn Wortham. Hugh Evelyn Wortham was born in 1929, while Johnny Ekström was b'
+2026-06-29 16:05:45,659 [INFO] core.evaluator_v2: [streaming] pred='The director of the film "Clowning Around" is Peter Levin. The place of birth of Peter Levin is Fayetteville, Arkansas.'
+2026-06-29 16:05:53,808 [INFO] core.evaluator_v2: [streaming] pred='Solemn Promise was directed by Srđan Karanović, born in 1945. Tarzan The Magnificent was directed by Robert Day, born in'
+2026-06-29 16:06:00,580 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention the spouse of the director of the film "Streets of Blood."'
+2026-06-29 16:06:00,582 [INFO] core.evaluator_v2:   [20/50] avg=15.57
+2026-06-29 16:06:06,908 [INFO] core.evaluator_v2: [streaming] pred='Contragolpe.'
+2026-06-29 16:06:14,653 [INFO] core.evaluator_v2: [streaming] pred='The composer of "Gretchen am Spinnrade," Franz Schubert, died in Vienna, Austria.'
+2026-06-29 16:06:21,314 [INFO] core.evaluator_v2: [streaming] pred='Henry II, Holy Roman Emperor.'
+2026-06-29 16:06:28,817 [INFO] core.evaluator_v2: [streaming] pred="Grand Duchess Elena Vladimirovna of Russia's father, Emperor Alexander III, died in the Imperial Palace in St. Petersbur"
+2026-06-29 16:06:38,147 [INFO] core.evaluator_v2: [streaming] pred='From Corleone to Brooklyn was directed by Umberto Lenzi, born in 1930. Durango Valley Raiders was directed by Sergio Cor'
+2026-06-29 16:06:38,148 [INFO] core.evaluator_v2:   [25/50] avg=18.41
+2026-06-29 16:06:44,811 [INFO] core.evaluator_v2: [streaming] pred="The place of birth of Sextus Barbour's father is Cranmore."
+2026-06-29 16:06:46,948 [INFO] core.evaluator_v2: [streaming] pred='Guy Arvely Dolsin is older than Altuğ Çelikbilek.'
+2026-06-29 16:06:55,046 [INFO] core.evaluator_v2: [streaming] pred='The maternal grandfather of Marie Louise, Duchess of Parma, is King Ferdinand I of the Two Sicilies. She was the daughte'
+2026-06-29 16:06:59,995 [INFO] core.evaluator_v2: [streaming] pred='Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato (1970) came out first.'
+2026-06-29 16:07:05,677 [INFO] core.evaluator_v2: [streaming] pred='Antoine Casavant was born first. He was born in 1926, while Abdul Ali Lalu was born in 1947.'
+2026-06-29 16:07:05,679 [INFO] core.evaluator_v2:   [30/50] avg=21.24
+2026-06-29 16:07:10,355 [INFO] core.evaluator_v2: [streaming] pred='Sir Paul Gore, 1st Baronet.'
+2026-06-29 16:07:19,723 [INFO] core.evaluator_v2: [streaming] pred="The place of death of Shahnawaz Bhutto's mother, Begum Nusrat Bhutto, is not explicitly mentioned in the text. However, "
+2026-06-29 16:07:26,193 [INFO] core.evaluator_v2: [streaming] pred='Eleanor of Woodstock died in 1291.'
+2026-06-29 16:07:35,317 [INFO] core.evaluator_v2: [streaming] pred="The text does not provide the birthday of Henrietta Maria of Brandenburg-Schwedt's father."
+2026-06-29 16:07:42,211 [INFO] core.evaluator_v2: [streaming] pred='Bob Jones University.'
+2026-06-29 16:07:42,213 [INFO] core.evaluator_v2:   [35/50] avg=23.92
+2026-06-29 16:07:49,455 [INFO] core.evaluator_v2: [streaming] pred='Louis I, Duke of Bourbon.'
+2026-06-29 16:07:54,426 [INFO] core.evaluator_v2: [streaming] pred='Anne Manners.'
+2026-06-29 16:07:59,436 [INFO] core.evaluator_v2: [streaming] pred="The place of birth of Carrie Watson Fleming's husband is Greenock, Scotland."
+2026-06-29 16:08:09,949 [INFO] core.evaluator_v2: [streaming] pred='The director of "The Wind\'s Fierce" is unknown, while the director of "Special Delivery (1927 Film)" is unknown as well.'
+2026-06-29 16:08:21,917 [INFO] core.evaluator_v2: [streaming] pred='Charles Wheatstone lived longer than Jean-Claude Lauzon. Charles Wheatstone died on 21 February 1875, while Jean-Claude '
+2026-06-29 16:08:21,918 [INFO] core.evaluator_v2:   [40/50] avg=24.34
+2026-06-29 16:08:23,894 [INFO] core.evaluator_v2: [streaming] pred='Yes, both Howard Lake (British Columbia) and North Buck Lake (Alberta) are located in Canada.'
+2026-06-29 16:08:29,635 [INFO] core.evaluator_v2: [streaming] pred='Yes, both directors are British. Reginald Fogwell directed "Betrayal" (1932), and Gabrielle "Gabby" Douglas directed "Th'
+2026-06-29 16:08:37,476 [INFO] core.evaluator_v2: [streaming] pred='No, the text does not mention "Wild Child (Film)" and only mentions "Beauty and the Bad Man," which is a 1925 American s'
+2026-06-29 16:08:45,817 [INFO] core.evaluator_v2: [streaming] pred="The place of birth of Ratna Malla's father is not explicitly mentioned in the provided text."
+2026-06-29 16:08:53,439 [INFO] core.evaluator_v2: [streaming] pred="The place of birth of Aleksey Greig's father is London."
+2026-06-29 16:08:53,440 [INFO] core.evaluator_v2:   [45/50] avg=22.24
+2026-06-29 16:09:00,344 [INFO] core.evaluator_v2: [streaming] pred='The mother of the director of the film *Atomised* is **Kekuʻiapoiwa**, who was the wife of **Kamehameha I**, the first k'
+2026-06-29 16:09:03,461 [INFO] core.evaluator_v2: [streaming] pred='No, Ding Yaping is Chinese and German, while Johann Christian Gustav Lucae was German.'
+2026-06-29 16:09:10,545 [INFO] core.evaluator_v2: [streaming] pred="Helena Carroll's father, Paul Vincent Carroll, studied at St. Patrick's College, Dublin."
+2026-06-29 16:09:20,549 [INFO] core.evaluator_v2: [streaming] pred='Space Probe Taurus. The director of Space Probe Taurus, Thomas Baker, was born in 1897, while the director of Tom Mix In'
+2026-06-29 16:09:30,674 [INFO] core.evaluator_v2: [streaming] pred='The film "The Pyrammmid" (likely referring to "The Pyrammmid" as a misspelling or misreference to "The Pyramid") came ou'
+2026-06-29 16:09:30,676 [INFO] core.evaluator_v2:   [50/50] avg=21.28
+2026-06-29 16:09:30,677 [INFO] __main__:   → score=21.28, mem_red=80.0%, ttft=3190.3ms
+2026-06-29 16:09:30,677 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 16:09:30,678 [INFO] __main__: Method: H2O | Budget: 20%
+2026-06-29 16:09:30,678 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 16:09:30,678 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-29 16:09:30,679 [INFO] core.evaluator_v2: [h2o] hotpotqa (50샘플, budget=20%)
+2026-06-29 16:09:37,535 [INFO] core.evaluator_v2: [h2o] pred='Brian Stokes Mitchell.'
+2026-06-29 16:09:44,514 [INFO] core.evaluator_v2: [h2o] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-06-29 16:09:50,784 [INFO] core.evaluator_v2: [h2o] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 16:10:00,229 [INFO] core.evaluator_v2: [h2o] pred='YIVO.'
+2026-06-29 16:10:06,926 [INFO] core.evaluator_v2: [h2o] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-06-29 16:10:06,928 [INFO] core.evaluator_v2:   [5/50] avg=40.00
+2026-06-29 16:10:27,577 [INFO] core.evaluator_v2: [h2o] pred='Pleiospilos is a flowering plant. Pueraria is not a flowering plant. Pleiospilos is a genus of flowering plants in the f'
+2026-06-29 16:10:33,585 [INFO] core.evaluator_v2: [h2o] pred='Steel Venom is farther north than Wicked Twister.'
+2026-06-29 16:10:38,868 [INFO] core.evaluator_v2: [h2o] pred='Bagh.'
+2026-06-29 16:10:47,131 [INFO] core.evaluator_v2: [h2o] pred="Cortina d'Ampezzo, in the Veneto region of Italy."
+2026-06-29 16:10:54,068 [INFO] core.evaluator_v2: [h2o] pred='Mike Leach currently coaches at Washington State.'
+2026-06-29 16:10:54,069 [INFO] core.evaluator_v2:   [10/50] avg=35.18
+2026-06-29 16:11:01,576 [INFO] core.evaluator_v2: [h2o] pred='The Friday night programming block that included the collective series "Whatever Happened to... Robot Jones?" was the **'
+2026-06-29 16:11:07,864 [INFO] core.evaluator_v2: [h2o] pred='Georgia Brown.'
+2026-06-29 16:11:13,118 [INFO] core.evaluator_v2: [h2o] pred='Swango.'
+2026-06-29 16:11:18,648 [INFO] core.evaluator_v2: [h2o] pred="It's Always Sunny in Philadelphia."
+2026-06-29 16:11:24,732 [INFO] core.evaluator_v2: [h2o] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 35 people.'
+2026-06-29 16:11:24,734 [INFO] core.evaluator_v2:   [15/50] avg=36.90
+2026-06-29 16:11:29,379 [INFO] core.evaluator_v2: [h2o] pred='The first name of the author is "Viola".'
+2026-06-29 16:11:34,436 [INFO] core.evaluator_v2: [h2o] pred='The River Thames.'
+2026-06-29 16:11:43,602 [INFO] core.evaluator_v2: [h2o] pred='The choreographer who is said to be the last muse for the choreographer and starred in the Nutcracker is **Richard Maltb'
+2026-06-29 16:11:49,605 [INFO] core.evaluator_v2: [h2o] pred='The host of the American survival skills reality show, The Island, is originally from the United Kingdom.'
+2026-06-29 16:11:56,127 [INFO] core.evaluator_v2: [h2o] pred='The mother of Alberic II of Spoleto was given the title "patricia" of Rome by the bishop of Rome, who was also the bisho'
+2026-06-29 16:11:56,128 [INFO] core.evaluator_v2:   [20/50] avg=31.01
+2026-06-29 16:12:04,252 [INFO] core.evaluator_v2: [h2o] pred='Mimosa is a shrub.'
+2026-06-29 16:12:10,444 [INFO] core.evaluator_v2: [h2o] pred='The actor that plays Sean Tully defeated a dancing contest.'
+2026-06-29 16:12:16,657 [INFO] core.evaluator_v2: [h2o] pred='Mark Donohue'
+2026-06-29 16:12:42,854 [INFO] core.evaluator_v2: [h2o] pred='Yameen and Activision have in common the form of play known as "Raven Software" or "Raven Software Corporation." This is'
+2026-06-29 16:12:48,867 [INFO] core.evaluator_v2: [h2o] pred='The Atherton Bridge spans the Lancaster River.'
+2026-06-29 16:12:48,869 [INFO] core.evaluator_v2:   [25/50] avg=29.52
+2026-06-29 16:12:55,064 [INFO] core.evaluator_v2: [h2o] pred='Hulu'
+2026-06-29 16:13:01,786 [INFO] core.evaluator_v2: [h2o] pred='Blue Valley West High School.'
+2026-06-29 16:13:07,472 [INFO] core.evaluator_v2: [h2o] pred='2003'
+2026-06-29 16:13:13,863 [INFO] core.evaluator_v2: [h2o] pred='2012'
+2026-06-29 16:13:22,163 [INFO] core.evaluator_v2: [h2o] pred='The arena where the Lewiston Maineiacs played their home games can seat 1,200 people.'
+2026-06-29 16:13:22,165 [INFO] core.evaluator_v2:   [30/50] avg=24.60
+2026-06-29 16:13:30,043 [INFO] core.evaluator_v2: [h2o] pred="The winner of the 1953 London Riders' Championship scored 19 points in the 1952 Individual Speedway World Championship."
+2026-06-29 16:13:36,981 [INFO] core.evaluator_v2: [h2o] pred="Erik Watts' father was born in 1760."
+2026-06-29 16:13:43,505 [INFO] core.evaluator_v2: [h2o] pred='The Afro-Cuban religion of Santería.'
+2026-06-29 16:13:50,649 [INFO] core.evaluator_v2: [h2o] pred='The football club that plays in the area between the old tool gates: Brook Bar and Trafford bar is Manchester United.'
+2026-06-29 16:13:56,973 [INFO] core.evaluator_v2: [h2o] pred='The Rebirth.'
+2026-06-29 16:13:56,974 [INFO] core.evaluator_v2:   [35/50] avg=24.51
+2026-06-29 16:14:04,827 [INFO] core.evaluator_v2: [h2o] pred='No, Werther is not an opera. The Odyssey is a poem, not an opera. The text describes Werther as a character in a novel, '
+2026-06-29 16:14:11,186 [INFO] core.evaluator_v2: [h2o] pred='France.'
+2026-06-29 16:14:17,153 [INFO] core.evaluator_v2: [h2o] pred='Santa Bring My Baby Back was released on the fourth Elvis studio album in 1957.'
+2026-06-29 16:14:23,017 [INFO] core.evaluator_v2: [h2o] pred='John Paesano wrote the film "How to Train Your Dragon" for DreamWorks Dragons.'
+2026-06-29 16:14:30,244 [INFO] core.evaluator_v2: [h2o] pred='The airline company that operated United Express Flight 3411 on April 9, 2017, was headquartered in Chicago, Illinois.'
+2026-06-29 16:14:30,247 [INFO] core.evaluator_v2:   [40/50] avg=22.50
+2026-06-29 16:14:40,624 [INFO] core.evaluator_v2: [h2o] pred='The Bangor Daily News is talking about Sawin Millett because he was a Commissioner of the Maine Department of Agricultur'
+2026-06-29 16:14:48,719 [INFO] core.evaluator_v2: [h2o] pred='Charles Haughey held the position of Taoiseach when he dissolved the list of members who were elected to the lower house'
+2026-06-29 16:14:54,348 [INFO] core.evaluator_v2: [h2o] pred='Jupiter.'
+2026-06-29 16:15:01,076 [INFO] core.evaluator_v2: [h2o] pred='The 1958 Pro Bowl was played at the Los Angeles Memorial Coliseum, which is the home stadium for the University of Calif'
+2026-06-29 16:15:09,377 [INFO] core.evaluator_v2: [h2o] pred='Michael Tippett.'
+2026-06-29 16:15:09,378 [INFO] core.evaluator_v2:   [45/50] avg=22.86
+2026-06-29 16:15:17,646 [INFO] core.evaluator_v2: [h2o] pred='The population in 2010 of the town where The Stelljes House is located was 1,133.'
+2026-06-29 16:15:25,442 [INFO] core.evaluator_v2: [h2o] pred='The last monarch of England to be overthrown before the English General Election, 1690, was James II.'
+2026-06-29 16:15:32,953 [INFO] core.evaluator_v2: [h2o] pred='Russell D. Moore became the President of the Ethics & Religious Liberty Commission (ERLC) in 1993.'
+2026-06-29 16:15:39,779 [INFO] core.evaluator_v2: [h2o] pred='The championship was the 2017 Formula E championship.'
+2026-06-29 16:15:47,658 [INFO] core.evaluator_v2: [h2o] pred="The CEO of the football team based in Denver, Colorado, stepped down in 2014 due to complications with Alzheimer's disea"
+2026-06-29 16:15:47,660 [INFO] core.evaluator_v2:   [50/50] avg=22.36
+2026-06-29 16:15:47,660 [INFO] __main__:   → score=22.36, mem_red=80.0%, ttft=3512.2ms
+2026-06-29 16:15:47,661 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-29 16:15:47,662 [INFO] core.evaluator_v2: [h2o] 2wikimqa (50샘플, budget=20%)
+2026-06-29 16:15:55,640 [INFO] core.evaluator_v2: [h2o] pred='Finland.'
+2026-06-29 16:16:00,251 [INFO] core.evaluator_v2: [h2o] pred='Jugband Blues.'
+2026-06-29 16:16:07,398 [INFO] core.evaluator_v2: [h2o] pred='True to the Navy.'
+2026-06-29 16:16:16,740 [INFO] core.evaluator_v2: [h2o] pred="Agnes of Hohenstaufen's husband was Henry V, Holy Roman Emperor. He died in 1127, and his place of death was in the town"
+2026-06-29 16:16:25,277 [INFO] core.evaluator_v2: [h2o] pred='Paul De Scherff was born in 1848, and Lyudmyla Olyanovska was born in 1923. Therefore, Lyudmyla Olyanovska was born late'
+2026-06-29 16:16:25,278 [INFO] core.evaluator_v2:   [5/50] avg=23.64
+2026-06-29 16:16:34,584 [INFO] core.evaluator_v2: [h2o] pred="Helmichis's father-in-law is not explicitly mentioned in the provided text. The text focuses on various historical figur"
+2026-06-29 16:16:40,720 [INFO] core.evaluator_v2: [h2o] pred="The Drover's Sweetheart came out earlier."
+2026-06-29 16:16:49,073 [INFO] core.evaluator_v2: [h2o] pred="Princess Charlotte of Saxe-Meiningen's husband was of German nationality."
+2026-06-29 16:16:57,003 [INFO] core.evaluator_v2: [h2o] pred='No, the movies "The Hatton Garden Job" and "Carry On Cleo" are not from the same country. "The Hatton Garden Job" is a B'
+2026-06-29 16:17:02,919 [INFO] core.evaluator_v2: [h2o] pred='Vacations in Majorca was released first.'
+2026-06-29 16:17:02,920 [INFO] core.evaluator_v2:   [10/50] avg=19.20
+2026-06-29 16:17:09,816 [INFO] core.evaluator_v2: [h2o] pred="The place of death of Randi Monsen's father is not explicitly mentioned in the provided text. However, the text mentions"
+2026-06-29 16:17:16,575 [INFO] core.evaluator_v2: [h2o] pred='Hissa Abdulla Ahmed Al-Otaiba.'
+2026-06-29 16:17:19,734 [INFO] core.evaluator_v2: [h2o] pred='The date of death of the director of film Nallavan Vazhvan is 31 August 1961.'
+2026-06-29 16:17:26,102 [INFO] core.evaluator_v2: [h2o] pred='Monster on the Campus.'
+2026-06-29 16:17:34,646 [INFO] core.evaluator_v2: [h2o] pred='The paternal grandfather of Bruno II von Berg is Count Adolf III of Berg.'
+2026-06-29 16:17:34,648 [INFO] core.evaluator_v2:   [15/50] avg=22.80
+2026-06-29 16:17:39,949 [INFO] core.evaluator_v2: [h2o] pred='Prince of Arcadia was released earlier.'
+2026-06-29 16:17:47,321 [INFO] core.evaluator_v2: [h2o] pred='Johnny Ekström was born later.'
+2026-06-29 16:17:52,343 [INFO] core.evaluator_v2: [h2o] pred='The place of birth of the director of film "Clowning Around" is Australia.'
+2026-06-29 16:17:59,310 [INFO] core.evaluator_v2: [h2o] pred='Solemn Promise. The text states that Srđan Karanović, the director of "Solemn Promise," was born first.'
+2026-06-29 16:18:06,373 [INFO] core.evaluator_v2: [h2o] pred='The spouse of the director of the film "Streets of Blood" is Euclid Tsakalotos, the former Greek Minister of Finance.'
+2026-06-29 16:18:06,374 [INFO] core.evaluator_v2:   [20/50] avg=24.01
+2026-06-29 16:18:12,775 [INFO] core.evaluator_v2: [h2o] pred='Contragolpe.'
+2026-06-29 16:18:19,775 [INFO] core.evaluator_v2: [h2o] pred='Westwood Village Memorial Park Cemetery.'
+2026-06-29 16:18:26,858 [INFO] core.evaluator_v2: [h2o] pred="Gisela of Hungary's father-in-law is Henry II, Holy Roman Emperor."
+2026-06-29 16:18:34,252 [INFO] core.evaluator_v2: [h2o] pred="Grand Duchess Elena Vladimirovna of Russia's father, Emperor Paul I, died in the Russian Empire."
+2026-06-29 16:18:42,219 [INFO] core.evaluator_v2: [h2o] pred='From Corleone to Brooklyn (1979) is the film with the director born later.'
+2026-06-29 16:18:42,223 [INFO] core.evaluator_v2:   [25/50] avg=25.34
+2026-06-29 16:18:48,968 [INFO] core.evaluator_v2: [h2o] pred="The place of birth of Sextus Barbour's father is not specified in the text."
+2026-06-29 16:19:08,131 [INFO] core.evaluator_v2: [h2o] pred='The text does not provide information about the age of Guy Arvely Dolsin or Altuğ Çelikbilek. The text only provides inf'
+2026-06-29 16:19:15,337 [INFO] core.evaluator_v2: [h2o] pred='The maternal grandfather of Marie Louise, Duchess of Parma, is King Ferdinand I of the Two Sicilies.'
+2026-06-29 16:19:20,628 [INFO] core.evaluator_v2: [h2o] pred='Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato (1970) came out first. The Bag Man (2014) i'
+2026-06-29 16:19:25,321 [INFO] core.evaluator_v2: [h2o] pred='Antoine Casavant was born first.'
+2026-06-29 16:19:25,326 [INFO] core.evaluator_v2:   [30/50] avg=27.19
+2026-06-29 16:19:30,495 [INFO] core.evaluator_v2: [h2o] pred="Sir William Gore, 3rd Baronet's paternal grandfather is Sir William Gore, 2nd Baronet."
+2026-06-29 16:19:37,915 [INFO] core.evaluator_v2: [h2o] pred="Shahnawaz Bhutto's mother was born in Pakistan."
+2026-06-29 16:19:44,559 [INFO] core.evaluator_v2: [h2o] pred="Mary of Woodstock's mother died in 1240."
+2026-06-29 16:19:56,258 [INFO] core.evaluator_v2: [h2o] pred="The text does not provide the specific date of Henrietta Maria of Brandenburg-Schwedt's father's birthday. It only menti"
+2026-06-29 16:20:03,619 [INFO] core.evaluator_v2: [h2o] pred='The director of film "Wine of Morning" works at Bob Jones University.'
+2026-06-29 16:20:03,620 [INFO] core.evaluator_v2:   [35/50] avg=25.48
+2026-06-29 16:20:11,161 [INFO] core.evaluator_v2: [h2o] pred="Isabella of Bourbon's paternal grandfather was Louis I, Duke of Bourbon."
+2026-06-29 16:20:16,958 [INFO] core.evaluator_v2: [h2o] pred="Charles Willoughby, 10th Baron Willoughby of Parham's paternal grandmother was Anne Carey."
+2026-06-29 16:20:22,246 [INFO] core.evaluator_v2: [h2o] pred="Carrie Watson Fleming's husband is Aretas B. Fleming. He was born in Greenock, Texas."
+2026-06-29 16:20:29,580 [INFO] core.evaluator_v2: [h2o] pred='Special Delivery (1927 Film).'
+2026-06-29 16:20:37,115 [INFO] core.evaluator_v2: [h2o] pred='Charles Wheatstone lived longer than Jean-Claude Lauzon.'
+2026-06-29 16:20:37,117 [INFO] core.evaluator_v2:   [40/50] avg=24.66
+2026-06-29 16:20:39,496 [INFO] core.evaluator_v2: [h2o] pred='The text indicates that Howard Lake (British Columbia) and North Buck Lake (Alberta) are both located in the same countr'
+2026-06-29 16:20:46,385 [INFO] core.evaluator_v2: [h2o] pred='No, they do not share the same nationality. The director of "Betrayal" (1932) is Reginald Fogwell, a British director. T'
+2026-06-29 16:20:54,936 [INFO] core.evaluator_v2: [h2o] pred='No, the films Beauty And The Bad Man and Wild Child (Film) do not have directors from the same country. Beauty And The B'
+2026-06-29 16:21:02,842 [INFO] core.evaluator_v2: [h2o] pred="Ratna Malla's father was born in Kantipur."
+2026-06-29 16:21:10,437 [INFO] core.evaluator_v2: [h2o] pred='Inverkeithing, Fife, Scotland.'
+2026-06-29 16:21:10,439 [INFO] core.evaluator_v2:   [45/50] avg=23.12
+2026-06-29 16:21:16,339 [INFO] core.evaluator_v2: [h2o] pred='The mother of the director of the film "Atomised" is not mentioned in the provided text. The text only mentions the dire'
+2026-06-29 16:21:19,400 [INFO] core.evaluator_v2: [h2o] pred='No. Ding Yaping is Chinese and German, while Johann Christian Gustav Lucae is German.'
+2026-06-29 16:21:26,689 [INFO] core.evaluator_v2: [h2o] pred="Helena Carroll's father studied at the Central School of Speech and Drama in London."
+2026-06-29 16:21:33,690 [INFO] core.evaluator_v2: [h2o] pred='Space Probe Taurus.'
+2026-06-29 16:21:39,193 [INFO] core.evaluator_v2: [h2o] pred='The Pyrammmid came out first.'
+2026-06-29 16:21:39,196 [INFO] core.evaluator_v2:   [50/50] avg=20.81
+2026-06-29 16:21:39,210 [INFO] __main__:   → score=20.81, mem_red=80.0%, ttft=3254.2ms
+2026-06-29 16:21:39,211 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 16:21:39,212 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-06-29 16:21:39,212 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 16:21:39,213 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-29 16:21:39,214 [INFO] core.evaluator_v2: [snapkv] hotpotqa (50샘플, budget=20%)
+2026-06-29 16:21:45,954 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell.'
+2026-06-29 16:21:52,076 [INFO] core.evaluator_v2: [snapkv] pred='Ribosomes'
+2026-06-29 16:21:58,007 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:22:08,360 [INFO] core.evaluator_v2: [snapkv] pred='Based on the text, Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-06-29 16:22:15,080 [INFO] core.evaluator_v2: [snapkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-06-29 16:22:15,082 [INFO] core.evaluator_v2:   [5/50] avg=42.11
+2026-06-29 16:22:16,789 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:22:22,634 [INFO] core.evaluator_v2: [snapkv] pred='Steel Venom is farther north than Wicked Twister.'
+2026-06-29 16:22:27,817 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:22:35,888 [INFO] core.evaluator_v2: [snapkv] pred="Cortina d'Ampezzo, Italy."
+2026-06-29 16:22:42,968 [INFO] core.evaluator_v2: [snapkv] pred='Mike Leach currently coaches at the East Carolina Pirates.'
+2026-06-29 16:22:42,969 [INFO] core.evaluator_v2:   [10/50] avg=27.55
+2026-06-29 16:22:50,634 [INFO] core.evaluator_v2: [snapkv] pred='The Friday night programming block that included the collective series that includes "Whatever Happened to... Robot Jone'
+2026-06-29 16:22:57,793 [INFO] core.evaluator_v2: [snapkv] pred='The lowest vocal range in Cosmos was held by the basso profondo, a rare and powerful voice type.'
+2026-06-29 16:23:02,900 [INFO] core.evaluator_v2: [snapkv] pred='Swango.'
+2026-06-29 16:23:08,366 [INFO] core.evaluator_v2: [snapkv] pred='The series is "It\'s Always Sunny in Philadelphia."'
+2026-06-29 16:23:14,520 [INFO] core.evaluator_v2: [snapkv] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 12 people.'
+2026-06-29 16:23:14,521 [INFO] core.evaluator_v2:   [15/50] avg=29.20
+2026-06-29 16:23:18,816 [INFO] core.evaluator_v2: [snapkv] pred='Answer: William Shakespeare.'
+2026-06-29 16:23:23,818 [INFO] core.evaluator_v2: [snapkv] pred='The River Thames.'
+2026-06-29 16:23:31,142 [INFO] core.evaluator_v2: [snapkv] pred='Answer: Adam Cooper.'
+2026-06-29 16:23:37,336 [INFO] core.evaluator_v2: [snapkv] pred='The host of the American survival skills reality show, The Island, is originally from the United States.'
+2026-06-29 16:23:43,835 [INFO] core.evaluator_v2: [snapkv] pred='The mother of Alberic II of Spoleto was Marozia. She was given the title "patricia" of Rome by Pope John X.'
+2026-06-29 16:23:43,845 [INFO] core.evaluator_v2:   [20/50] avg=29.10
+2026-06-29 16:23:51,797 [INFO] core.evaluator_v2: [snapkv] pred='Cryptocoryne.'
+2026-06-29 16:23:57,538 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:24:03,949 [INFO] core.evaluator_v2: [snapkv] pred='Mark Donohue.'
+2026-06-29 16:24:10,418 [INFO] core.evaluator_v2: [snapkv] pred='Yameen and Activision have in common the form of play known as "Lotion Play."'
+2026-06-29 16:24:16,860 [INFO] core.evaluator_v2: [snapkv] pred='The Atherton Bridge spans the **Nashua River**, which is **132 miles long**.'
+2026-06-29 16:24:16,862 [INFO] core.evaluator_v2:   [25/50] avg=25.95
+2026-06-29 16:24:24,168 [INFO] core.evaluator_v2: [snapkv] pred='3 Arts Entertainment had at least one coalition with Hulu, with its 13-episode, 2015 season of a Tina Fey created sitcom'
+2026-06-29 16:24:33,566 [INFO] core.evaluator_v2: [snapkv] pred='The high school in Overland Park, Kansas, that was followed in the documentary "High School Confidential" is Blue Valley'
+2026-06-29 16:24:39,391 [INFO] core.evaluator_v2: [snapkv] pred='2002'
+2026-06-29 16:24:45,984 [INFO] core.evaluator_v2: [snapkv] pred='2012'
+2026-06-29 16:24:54,563 [INFO] core.evaluator_v2: [snapkv] pred='The arena where the Lewiston Maineiacs played their home games can seat 121,561 people.'
+2026-06-29 16:24:54,565 [INFO] core.evaluator_v2:   [30/50] avg=21.62
+2026-06-29 16:25:01,818 [INFO] core.evaluator_v2: [snapkv] pred='Based on the text, the answer is 1999.'
+2026-06-29 16:25:08,814 [INFO] core.evaluator_v2: [snapkv] pred="Erik Watts' father was born in 1813."
+2026-06-29 16:25:15,194 [INFO] core.evaluator_v2: [snapkv] pred='The Afro-Cuban religion.'
+2026-06-29 16:25:42,245 [INFO] core.evaluator_v2: [snapkv] pred='The football club that plays in the area between the old tool gates: Brook Bar and Trafford bar is the 1990s, 2000s, and'
+2026-06-29 16:25:48,628 [INFO] core.evaluator_v2: [snapkv] pred='The Rebirth.'
+2026-06-29 16:25:48,630 [INFO] core.evaluator_v2:   [35/50] avg=21.39
+2026-06-29 16:25:55,696 [INFO] core.evaluator_v2: [snapkv] pred='No, Werther and The Odyssey are not both operas. The text mentions that Werther is a historical drama film, and The Odys'
+2026-06-29 16:26:02,081 [INFO] core.evaluator_v2: [snapkv] pred='France.'
+2026-06-29 16:26:07,820 [INFO] core.evaluator_v2: [snapkv] pred='The fourth Elvis studio album in 1957 was "Elvis Christmas".'
+2026-06-29 16:26:13,577 [INFO] core.evaluator_v2: [snapkv] pred='John Paesano wrote the film "How to Train Your Dragon" for DreamWorks Dragons.'
+2026-06-29 16:26:30,906 [INFO] core.evaluator_v2: [snapkv] pred='The airline company that operated United Express Flight 3411 on April 9, 2017, on behalf of United Express was headquart'
+2026-06-29 16:26:30,908 [INFO] core.evaluator_v2:   [40/50] avg=20.46
+2026-06-29 16:26:58,077 [INFO] core.evaluator_v2: [snapkv] pred='The Bangor Daily News is talking about Sawin Millett because he is a politician and a commissioner of the Maine Departme'
+2026-06-29 16:27:04,569 [INFO] core.evaluator_v2: [snapkv] pred='Taoiseach.'
+2026-06-29 16:27:09,923 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:27:16,483 [INFO] core.evaluator_v2: [snapkv] pred='The 1958 Pro Bowl was played at the Los Angeles Memorial Coliseum, which is the home stadium for the University of South'
+2026-06-29 16:27:23,666 [INFO] core.evaluator_v2: [snapkv] pred='Luigi Cherubini.'
+2026-06-29 16:27:23,667 [INFO] core.evaluator_v2:   [45/50] avg=20.08
+2026-06-29 16:27:31,687 [INFO] core.evaluator_v2: [snapkv] pred='The population in 2010 of the town where The Stelljes House is located was 796.'
+2026-06-29 16:27:39,667 [INFO] core.evaluator_v2: [snapkv] pred='The last monarch of England to be overthrown before the English General Election, 1690, was **James II**.'
+2026-06-29 16:27:46,471 [INFO] core.evaluator_v2: [snapkv] pred='Answer: 1999.'
+2026-06-29 16:27:52,895 [INFO] core.evaluator_v2: [snapkv] pred='Formula E.'
+2026-06-29 16:28:00,091 [INFO] core.evaluator_v2: [snapkv] pred="The CEO of the football team based in Denver, Colorado stepped down in 2014 due to complications with Alzheimer's diseas"
+2026-06-29 16:28:00,093 [INFO] core.evaluator_v2:   [50/50] avg=19.64
+2026-06-29 16:28:00,094 [INFO] __main__:   → score=19.64, mem_red=80.0%, ttft=3645.9ms
+2026-06-29 16:28:00,094 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-29 16:28:00,095 [INFO] core.evaluator_v2: [snapkv] 2wikimqa (50샘플, budget=20%)
+2026-06-29 16:28:10,156 [INFO] core.evaluator_v2: [snapkv] pred='Brian Kennedy (1941–2006) was an Irish-born art museum director. He was the director of the Peabody Essex Museum in Sale'
+2026-06-29 16:28:17,232 [INFO] core.evaluator_v2: [snapkv] pred='The song "Jugband Blues" came out first. It was released on the band\'s second album, "A Saucer of Slang," in 1968. The s'
+2026-06-29 16:28:24,352 [INFO] core.evaluator_v2: [snapkv] pred='No Trees In The Street.'
+2026-06-29 16:28:32,690 [INFO] core.evaluator_v2: [snapkv] pred="The place of death of Agnes of Hohenstaufen's husband was Waiblingen."
+2026-06-29 16:28:43,739 [INFO] core.evaluator_v2: [snapkv] pred="Paul De Scherff was born in 1873, while Lyudmyla Olyanovska's birth year is not mentioned in the text. Since the text on"
+2026-06-29 16:28:43,741 [INFO] core.evaluator_v2:   [5/50] avg=22.75
+2026-06-29 16:28:51,004 [INFO] core.evaluator_v2: [snapkv] pred="Helmichis's father-in-law is Alboin."
+2026-06-29 16:28:57,153 [INFO] core.evaluator_v2: [snapkv] pred="The Drover's Sweetheart came out earlier."
+2026-06-29 16:29:04,984 [INFO] core.evaluator_v2: [snapkv] pred='German.'
+2026-06-29 16:29:12,402 [INFO] core.evaluator_v2: [snapkv] pred='The text does not mention the movies "The Hatton Garden Job" and "Carry On Cleo." Therefore, based on the text, we canno'
+2026-06-29 16:29:18,291 [INFO] core.evaluator_v2: [snapkv] pred='Dr. Socrates.'
+2026-06-29 16:29:18,293 [INFO] core.evaluator_v2:   [10/50] avg=27.09
+2026-06-29 16:29:22,621 [INFO] core.evaluator_v2: [snapkv] pred="The place of death of Randi Monsen's father was in the Loire department in France."
+2026-06-29 16:29:30,029 [INFO] core.evaluator_v2: [snapkv] pred="The place of birth of Abdulaziz Nasser Al Shamsi's wife is Abu Dhabi, United Arab Emirates."
+2026-06-29 16:29:33,013 [INFO] core.evaluator_v2: [snapkv] pred='Answer: The date of death of the director of film Nallavan Vazhvan is not stated in the text.'
+2026-06-29 16:29:39,425 [INFO] core.evaluator_v2: [snapkv] pred='The Year of the Rabbit.'
+2026-06-29 16:29:47,429 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:29:47,432 [INFO] core.evaluator_v2:   [15/50] avg=19.63
+2026-06-29 16:29:52,559 [INFO] core.evaluator_v2: [snapkv] pred='Prince Of Arcadia was released earlier.'
+2026-06-29 16:30:00,051 [INFO] core.evaluator_v2: [snapkv] pred='Johnny Ekström was born later than Hugh Evelyn Wortham.'
+2026-06-29 16:30:06,064 [INFO] core.evaluator_v2: [snapkv] pred='Australia'
+2026-06-29 16:30:12,813 [INFO] core.evaluator_v2: [snapkv] pred='Tarzan The Magnificent.'
+2026-06-29 16:30:19,520 [INFO] core.evaluator_v2: [snapkv] pred='The spouse of the director of film Streets Of Blood is Heather D. Gibson.'
+2026-06-29 16:30:19,521 [INFO] core.evaluator_v2:   [20/50] avg=27.37
+2026-06-29 16:30:26,022 [INFO] core.evaluator_v2: [snapkv] pred='The director of Contragolpe died earlier.'
+2026-06-29 16:30:53,974 [INFO] core.evaluator_v2: [snapkv] pred='The composer of song "Gretchen Am Spinnrade" was Franz Schubert. Schubert died on May 15, 2008, at the Sunrise assisted-'
+2026-06-29 16:31:00,966 [INFO] core.evaluator_v2: [snapkv] pred="Gisela of Hungary's father-in-law is Stephen I of Hungary."
+2026-06-29 16:31:08,125 [INFO] core.evaluator_v2: [snapkv] pred="Grand Duchess Elena Vladimirovna of Russia's father died in Saint Petersburg."
+2026-06-29 16:31:26,790 [INFO] core.evaluator_v2: [snapkv] pred='From Corleone to Brooklyn is an Italian poliziotteschi film directed by Umberto Lenzi. The film was released in Italy on'
+2026-06-29 16:31:26,792 [INFO] core.evaluator_v2:   [25/50] avg=24.64
+2026-06-29 16:31:33,371 [INFO] core.evaluator_v2: [snapkv] pred="The place of birth of Sextus Barbour's father is Virginia."
+2026-06-29 16:31:35,594 [INFO] core.evaluator_v2: [snapkv] pred='Based on the text, Altuğ Çelikbilek is younger than Guy Arvely Dolsin.'
+2026-06-29 16:31:42,098 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:31:49,365 [INFO] core.evaluator_v2: [snapkv] pred='The Bag Man came out first, in 1973. The film was released on August 25, 1973. It was distributed by P.I.C. in Italy. Th'
+2026-06-29 16:31:53,943 [INFO] core.evaluator_v2: [snapkv] pred='Antoine Casavant was born first.'
+2026-06-29 16:31:53,944 [INFO] core.evaluator_v2:   [30/50] avg=25.38
+2026-06-29 16:31:59,026 [INFO] core.evaluator_v2: [snapkv] pred="Sir William Gore, 3Rd Baronet's paternal grandfather was Sir William Acland, 2nd Baronet."
+2026-06-29 16:32:06,773 [INFO] core.evaluator_v2: [snapkv] pred="Answer: The place of death of Shahnawaz Bhutto's mother, Nusrat Bhutto, was in Karachi, Pakistan."
+2026-06-29 16:32:13,315 [INFO] core.evaluator_v2: [snapkv] pred="Mary of Woodstock's mother died in 1290."
+2026-06-29 16:32:21,383 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:32:28,552 [INFO] core.evaluator_v2: [snapkv] pred='The director of film Wine Of Morning works at Bob Jones University.'
+2026-06-29 16:32:28,553 [INFO] core.evaluator_v2:   [35/50] avg=23.93
+2026-06-29 16:32:35,482 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:32:41,779 [INFO] core.evaluator_v2: [snapkv] pred="Charles Willoughby, 10th Baron Willoughby of Parham's paternal grandmother was Elizabeth Manners, daughter of John Manne"
+2026-06-29 16:32:46,743 [INFO] core.evaluator_v2: [snapkv] pred="Carrie Watson Fleming's husband, Caroline Watson Fleming, was born in West Virginia."
+2026-06-29 16:32:53,873 [INFO] core.evaluator_v2: [snapkv] pred="The Wind'S Fierce."
+2026-06-29 16:33:01,475 [INFO] core.evaluator_v2: [snapkv] pred='Charles Wheatstone lived longer than Jean-Claude Lauzon.'
+2026-06-29 16:33:01,476 [INFO] core.evaluator_v2:   [40/50] avg=25.44
+2026-06-29 16:33:02,650 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:33:07,957 [INFO] core.evaluator_v2: [snapkv] pred='The director of film Betrayal (1932 Film) and the director of film The Godsend (Film) share the same nationality.'
+2026-06-29 16:33:21,083 [INFO] core.evaluator_v2: [snapkv] pred='Answer: No. Beauty and the Bad Man is a 1925 American silent Western film directed by William Worthington and starring M'
+2026-06-29 16:33:32,647 [INFO] core.evaluator_v2: [snapkv] pred="The place of birth of Ratna Malla's father is not explicitly stated in the provided text. However, the text mentions tha"
+2026-06-29 16:33:40,167 [INFO] core.evaluator_v2: [snapkv] pred='Inverkeithing, Fife, Scotland.'
+2026-06-29 16:33:40,168 [INFO] core.evaluator_v2:   [45/50] avg=23.76
+2026-06-29 16:33:44,784 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-06-29 16:34:05,379 [INFO] core.evaluator_v2: [snapkv] pred='No, Ding Yaping and Johann Christian Gustav Lucae are not of the same nationality.\n\nDing Yaping is a female Chinese and '
+2026-06-29 16:34:12,213 [INFO] core.evaluator_v2: [snapkv] pred="Helena Carroll's father studied at the Abbey Theatre in Dublin."
+2026-06-29 16:34:19,409 [INFO] core.evaluator_v2: [snapkv] pred='The director of Space Probe Taurus is older.'
+2026-06-29 16:34:24,888 [INFO] core.evaluator_v2: [snapkv] pred='The Pyrammmid came out first.'
+2026-06-29 16:34:24,889 [INFO] core.evaluator_v2:   [50/50] avg=21.38
+2026-06-29 16:34:24,890 [INFO] __main__:   → score=21.38, mem_red=80.0%, ttft=3541.0ms
+2026-06-29 16:34:24,891 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 16:34:24,891 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-06-29 16:34:24,892 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 16:34:24,892 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-29 16:34:24,893 [INFO] core.evaluator_v2: [pyramidkv] hotpotqa (50샘플, budget=20%)
+2026-06-29 16:34:31,745 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Stokes Mitchell.'
+2026-06-29 16:34:38,022 [INFO] core.evaluator_v2: [pyramidkv] pred='Ribosomes.'
+2026-06-29 16:34:44,253 [INFO] core.evaluator_v2: [pyramidkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 16:34:53,542 [INFO] core.evaluator_v2: [pyramidkv] pred='YIVO.'
+2026-06-29 16:35:00,286 [INFO] core.evaluator_v2: [pyramidkv] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-06-29 16:35:00,287 [INFO] core.evaluator_v2:   [5/50] avg=60.00
+2026-06-29 16:35:02,549 [INFO] core.evaluator_v2: [pyramidkv] pred='Pleiospilos is a flowering plant. Pueraria is not.'
+2026-06-29 16:35:08,405 [INFO] core.evaluator_v2: [pyramidkv] pred='Steel Venom is farther north than Wicked Twister.'
+2026-06-29 16:35:15,366 [INFO] core.evaluator_v2: [pyramidkv] pred='The city of Baghdad was known as the "City of the Caliph" during the Abbasid Caliphate. It was also known as the "City o'
+2026-06-29 16:35:23,146 [INFO] core.evaluator_v2: [pyramidkv] pred='Italy.'
+2026-06-29 16:35:30,077 [INFO] core.evaluator_v2: [pyramidkv] pred='Mike Leach currently coaches at Washington State.'
+2026-06-29 16:35:30,078 [INFO] core.evaluator_v2:   [10/50] avg=45.76
+2026-06-29 16:35:37,678 [INFO] core.evaluator_v2: [pyramidkv] pred='The Friday night programming block that included the collective series "Whatever Happened to... Robot Jones?" was **Cart'
+2026-06-29 16:35:43,975 [INFO] core.evaluator_v2: [pyramidkv] pred='Georgia Brown'
+2026-06-29 16:35:50,306 [INFO] core.evaluator_v2: [pyramidkv] pred='Fredric Rieders testified against Richard Swango, who had killed as many as 60 patients and received three consecutive l'
+2026-06-29 16:35:55,676 [INFO] core.evaluator_v2: [pyramidkv] pred="It's Always Sunny in Philadelphia."
+2026-06-29 16:36:01,598 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 35 people.'
+2026-06-29 16:36:01,620 [INFO] core.evaluator_v2:   [15/50] avg=40.02
+2026-06-29 16:36:06,102 [INFO] core.evaluator_v2: [pyramidkv] pred='The first name of the author is William Shakespeare.'
+2026-06-29 16:36:11,332 [INFO] core.evaluator_v2: [pyramidkv] pred='The River Thames.'
+2026-06-29 16:36:19,656 [INFO] core.evaluator_v2: [pyramidkv] pred='The answer is **Verdon**. She choreographed the role of the last muse for the choreographer and starred in the *Nutcrack'
+2026-06-29 16:36:26,384 [INFO] core.evaluator_v2: [pyramidkv] pred='The text provided does not mention the host of the American survival skills reality show, The Island, or their origin. T'
+2026-06-29 16:36:32,645 [INFO] core.evaluator_v2: [pyramidkv] pred='The mother of Alberic II of Spoleto was given the title "patricia" of Rome by Pope John X.'
+2026-06-29 16:36:32,646 [INFO] core.evaluator_v2:   [20/50] avg=36.18
+2026-06-29 16:36:40,721 [INFO] core.evaluator_v2: [pyramidkv] pred='Cryptocoryne is a shrub.'
+2026-06-29 16:37:06,558 [INFO] core.evaluator_v2: [pyramidkv] pred='The actor that plays Sean Tully defeated in a dancing contest. The text does not provide specific information about whic'
+2026-06-29 16:37:12,882 [INFO] core.evaluator_v2: [pyramidkv] pred='Mark Donohue'
+2026-06-29 16:37:19,382 [INFO] core.evaluator_v2: [pyramidkv] pred='Yameen and Activision have in common the form of play known as "Lotion Play."'
+2026-06-29 16:37:25,445 [INFO] core.evaluator_v2: [pyramidkv] pred='The Atherton Bridge spans the Lancaster River.'
+2026-06-29 16:37:25,447 [INFO] core.evaluator_v2:   [25/50] avg=31.61
+2026-06-29 16:37:31,561 [INFO] core.evaluator_v2: [pyramidkv] pred='Hulu'
+2026-06-29 16:37:38,316 [INFO] core.evaluator_v2: [pyramidkv] pred='Blue Valley West High School.'
+2026-06-29 16:37:44,753 [INFO] core.evaluator_v2: [pyramidkv] pred='The 53rd National Hockey League All-Star Game took place in 2003.'
+2026-06-29 16:37:51,350 [INFO] core.evaluator_v2: [pyramidkv] pred='2012'
+2026-06-29 16:37:59,918 [INFO] core.evaluator_v2: [pyramidkv] pred='The arena where the Lewiston Maineiacs played their home games can seat 12,156 people.'
+2026-06-29 16:37:59,919 [INFO] core.evaluator_v2:   [30/50] avg=26.34
+2026-06-29 16:38:27,672 [INFO] core.evaluator_v2: [pyramidkv] pred='1953: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: '
+2026-06-29 16:38:34,199 [INFO] core.evaluator_v2: [pyramidkv] pred='1920'
+2026-06-29 16:38:40,729 [INFO] core.evaluator_v2: [pyramidkv] pred='The Afro-Cuban religion.'
+2026-06-29 16:38:47,888 [INFO] core.evaluator_v2: [pyramidkv] pred='The football club that plays in the area between the old tool gates: Brook Bar and Trafford bar is **Manchester United**'
+2026-06-29 16:38:54,289 [INFO] core.evaluator_v2: [pyramidkv] pred='The Rebirth.'
+2026-06-29 16:38:54,290 [INFO] core.evaluator_v2:   [35/50] avg=26.00
+2026-06-29 16:39:01,415 [INFO] core.evaluator_v2: [pyramidkv] pred='No, Werther is not an opera. The Odyssey is not an opera. The text provided discusses the opera "Werther" by Massenet, n'
+2026-06-29 16:39:07,991 [INFO] core.evaluator_v2: [pyramidkv] pred='France.'
+2026-06-29 16:39:13,990 [INFO] core.evaluator_v2: [pyramidkv] pred='Santa Bring My Baby Back was released on the fourth Elvis studio album in 1957.'
+2026-06-29 16:39:19,280 [INFO] core.evaluator_v2: [pyramidkv] pred='"Dragon: Rise of Berk"'
+2026-06-29 16:39:26,463 [INFO] core.evaluator_v2: [pyramidkv] pred='The airline company that operated United Express Flight 3411 on April 9, 2017, was headquartered in Chicago.'
+2026-06-29 16:39:26,464 [INFO] core.evaluator_v2:   [40/50] avg=24.80
+2026-06-29 16:39:37,134 [INFO] core.evaluator_v2: [pyramidkv] pred='The Bangor Daily News is talking about Sawin Millett because he was a Commissioner of the Maine Department of Agricultur'
+2026-06-29 16:39:45,144 [INFO] core.evaluator_v2: [pyramidkv] pred='Charles Haughey held the position of Taoiseach when he dissolved the list of members who were elected to the lower house'
+2026-06-29 16:39:50,621 [INFO] core.evaluator_v2: [pyramidkv] pred='Jupiter.'
+2026-06-29 16:39:56,262 [INFO] core.evaluator_v2: [pyramidkv] pred='University of California, Los Angeles (UCLA).'
+2026-06-29 16:40:03,245 [INFO] core.evaluator_v2: [pyramidkv] pred='Michael Tippett.'
+2026-06-29 16:40:03,246 [INFO] core.evaluator_v2:   [45/50] avg=25.84
+2026-06-29 16:40:11,239 [INFO] core.evaluator_v2: [pyramidkv] pred='The population in 2010 of the town where The Stelljes House is located was 796.'
+2026-06-29 16:40:18,251 [INFO] core.evaluator_v2: [pyramidkv] pred='James II.'
+2026-06-29 16:40:24,741 [INFO] core.evaluator_v2: [pyramidkv] pred='2015.'
+2026-06-29 16:40:31,130 [INFO] core.evaluator_v2: [pyramidkv] pred='Formula E'
+2026-06-29 16:40:38,939 [INFO] core.evaluator_v2: [pyramidkv] pred="The CEO of the football team based in Denver, Colorado, stepped down in 2014 due to complications with Alzheimer's disea"
+2026-06-29 16:40:38,941 [INFO] core.evaluator_v2:   [50/50] avg=24.94
+2026-06-29 16:40:38,941 [INFO] __main__:   → score=24.94, mem_red=80.0%, ttft=3535.8ms
+2026-06-29 16:40:38,942 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-29 16:40:38,942 [INFO] core.evaluator_v2: [pyramidkv] 2wikimqa (50샘플, budget=20%)
+2026-06-29 16:40:47,642 [INFO] core.evaluator_v2: [pyramidkv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-29 16:40:54,088 [INFO] core.evaluator_v2: [pyramidkv] pred='"Joel the Lump of Coal" was released on December 1, 2014. "Jugband Blues" was released on October 23, 1973. Therefore, "'
+2026-06-29 16:41:01,156 [INFO] core.evaluator_v2: [pyramidkv] pred='No Trees in the Street.'
+2026-06-29 16:41:09,600 [INFO] core.evaluator_v2: [pyramidkv] pred="The place of death of Agnes of Hohenstaufen's husband was in 1190."
+2026-06-29 16:41:18,086 [INFO] core.evaluator_v2: [pyramidkv] pred='Paul De Scherff was born in 1848, and Lyudmyla Olyanovska was born in 1973. Therefore, Lyudmyla Olyanovska was born late'
+2026-06-29 16:41:18,088 [INFO] core.evaluator_v2:   [5/50] avg=26.71
+2026-06-29 16:41:25,447 [INFO] core.evaluator_v2: [pyramidkv] pred="Helmichis's father-in-law is Alboin."
+2026-06-29 16:41:31,620 [INFO] core.evaluator_v2: [pyramidkv] pred="The Drover's Sweetheart came out earlier."
+2026-06-29 16:41:39,295 [INFO] core.evaluator_v2: [pyramidkv] pred='German.'
+2026-06-29 16:41:47,568 [INFO] core.evaluator_v2: [pyramidkv] pred='No, "The Hatton Garden Job" and "Carry On Cleo" are not from the same country. "The Hatton Garden Job" is a British crim'
+2026-06-29 16:41:53,519 [INFO] core.evaluator_v2: [pyramidkv] pred='Dr. Socrates was released first.'
+2026-06-29 16:41:53,520 [INFO] core.evaluator_v2:   [10/50] avg=24.79
+2026-06-29 16:41:57,723 [INFO] core.evaluator_v2: [pyramidkv] pred="The place of death of Randi Monsen's father was in Kristiania, Norway."
+2026-06-29 16:42:04,647 [INFO] core.evaluator_v2: [pyramidkv] pred='Hissa Abdulla Ahmed Al-Otaiba.'
+2026-06-29 16:42:07,730 [INFO] core.evaluator_v2: [pyramidkv] pred='The date of death of the director of film Nallavan Vazhvan is 31 August 1961.'
+2026-06-29 16:42:14,192 [INFO] core.evaluator_v2: [pyramidkv] pred='The Year Of The Rabbit.'
+2026-06-29 16:42:22,799 [INFO] core.evaluator_v2: [pyramidkv] pred='The paternal grandfather of Bruno II von Berg was Count Adolf III of Berg.'
+2026-06-29 16:42:22,808 [INFO] core.evaluator_v2:   [15/50] avg=20.77
+2026-06-29 16:42:27,974 [INFO] core.evaluator_v2: [pyramidkv] pred='Prince of Arcadia was released earlier.'
+2026-06-29 16:42:35,568 [INFO] core.evaluator_v2: [pyramidkv] pred='Johnny Ekström was born later than Hugh Evelyn Wortham.'
+2026-06-29 16:42:40,656 [INFO] core.evaluator_v2: [pyramidkv] pred='The place of birth of the director of film "Clowning Around" is Perth, Australia.'
+2026-06-29 16:42:49,043 [INFO] core.evaluator_v2: [pyramidkv] pred='Tarzan The Magnificent. The director of Tarzan The Magnificent, Robert Day, was born in 1906, while the director of Sole'
+2026-06-29 16:42:55,788 [INFO] core.evaluator_v2: [pyramidkv] pred='The spouse of the director of film "Streets Of Blood" is Heather D. Gibson.'
+2026-06-29 16:42:55,789 [INFO] core.evaluator_v2:   [20/50] avg=21.99
+2026-06-29 16:43:02,014 [INFO] core.evaluator_v2: [pyramidkv] pred='Contragolpe.'
+2026-06-29 16:43:10,953 [INFO] core.evaluator_v2: [pyramidkv] pred='The composer of "Gretchen am Spinnrade" was Franz Schubert. He died in 1828 at the Sunrise assisted-living facility in P'
+2026-06-29 16:43:17,704 [INFO] core.evaluator_v2: [pyramidkv] pred='Henry II, Holy Roman Emperor.'
+2026-06-29 16:43:25,901 [INFO] core.evaluator_v2: [pyramidkv] pred="Grand Duchess Elena Vladimirovna of Russia's father, Emperor Paul I, died in the Russian Empire. He died on 15 January 1"
+2026-06-29 16:43:35,842 [INFO] core.evaluator_v2: [pyramidkv] pred='From Corleone to Brooklyn (1979) is the film with the director born later. Umberto Lenzi was born in 1933, while the dir'
+2026-06-29 16:43:35,844 [INFO] core.evaluator_v2:   [25/50] avg=22.92
+2026-06-29 16:43:42,701 [INFO] core.evaluator_v2: [pyramidkv] pred="The place of birth of Sextus Barbour's father is Cranmore, County Down, Ireland."
+2026-06-29 16:43:44,756 [INFO] core.evaluator_v2: [pyramidkv] pred='Guy Arvely Dolsin is younger than Altuğ Çelikbilek.'
+2026-06-29 16:43:51,961 [INFO] core.evaluator_v2: [pyramidkv] pred='The maternal grandfather of Marie Louise, Duchess of Parma, is King Ferdinand I of the Two Sicilies.'
+2026-06-29 16:43:57,574 [INFO] core.evaluator_v2: [pyramidkv] pred='Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato (1970) came out first. The Bag Man (2014) i'
+2026-06-29 16:44:02,367 [INFO] core.evaluator_v2: [pyramidkv] pred='Antoine Casavant was born first.'
+2026-06-29 16:44:02,368 [INFO] core.evaluator_v2:   [30/50] avg=26.46
+2026-06-29 16:44:07,490 [INFO] core.evaluator_v2: [pyramidkv] pred="Sir William Gore, 3rd Baronet's paternal grandfather is Sir William Gore, 2nd Baronet."
+2026-06-29 16:44:14,988 [INFO] core.evaluator_v2: [pyramidkv] pred="The place of death of Shahnawaz Bhutto's mother, Nusrat Bhutto, is Karachi, Pakistan."
+2026-06-29 16:44:21,479 [INFO] core.evaluator_v2: [pyramidkv] pred="Mary of Woodstock's mother died in 1285."
+2026-06-29 16:44:30,486 [INFO] core.evaluator_v2: [pyramidkv] pred="The text does not provide the birthday of Henrietta Maria of Brandenburg-Schwedt's father."
+2026-06-29 16:44:37,975 [INFO] core.evaluator_v2: [pyramidkv] pred='The director of film "Wine of Morning" works at Bob Jones University.'
+2026-06-29 16:44:37,977 [INFO] core.evaluator_v2:   [35/50] avg=24.86
+2026-06-29 16:44:45,548 [INFO] core.evaluator_v2: [pyramidkv] pred="Isabella of Bourbon's paternal grandfather was Louis I, Duke of Bourbon."
+2026-06-29 16:44:50,564 [INFO] core.evaluator_v2: [pyramidkv] pred='Anne Carey.'
+2026-06-29 16:44:55,548 [INFO] core.evaluator_v2: [pyramidkv] pred="Carrie Watson Fleming's husband was born in West Virginia."
+2026-06-29 16:45:02,749 [INFO] core.evaluator_v2: [pyramidkv] pred="The Wind's Fierce."
+2026-06-29 16:45:14,123 [INFO] core.evaluator_v2: [pyramidkv] pred='Charles Wheatstone lived longer than Jean-Claude Lauzon.'
+2026-06-29 16:45:14,125 [INFO] core.evaluator_v2:   [40/50] avg=27.45
+2026-06-29 16:45:17,086 [INFO] core.evaluator_v2: [pyramidkv] pred='No. Howard Lake (British Columbia) is in Canada, while North Buck Lake (Alberta) is in Canada. Both are in the same coun'
+2026-06-29 16:45:22,628 [INFO] core.evaluator_v2: [pyramidkv] pred='No, they do not share the same nationality. Reginald Fogwell was a British film director, while Howard W. Koch was an Am'
+2026-06-29 16:45:29,953 [INFO] core.evaluator_v2: [pyramidkv] pred='No, the films Beauty And The Bad Man and Wild Child (Film) do not have directors from the same country. Beauty And The B'
+2026-06-29 16:45:41,329 [INFO] core.evaluator_v2: [pyramidkv] pred="The place of birth of Ratna Malla's father is not explicitly stated in the provided text. However, it is mentioned that "
+2026-06-29 16:45:48,963 [INFO] core.evaluator_v2: [pyramidkv] pred='Inverkeithing, Fife, Scotland.'
+2026-06-29 16:45:48,965 [INFO] core.evaluator_v2:   [45/50] avg=25.71
+2026-06-29 16:45:54,539 [INFO] core.evaluator_v2: [pyramidkv] pred='The mother of the director of the film "Atomised" is Sheikha Fatima bint Sultan Al Nahyan.'
+2026-06-29 16:45:57,618 [INFO] core.evaluator_v2: [pyramidkv] pred='No. Ding Yaping is Chinese and German, while Johann Christian Gustav Lucae is German.'
+2026-06-29 16:46:04,174 [INFO] core.evaluator_v2: [pyramidkv] pred='University of Dublin.'
+2026-06-29 16:46:11,187 [INFO] core.evaluator_v2: [pyramidkv] pred='Space Probe Taurus.'
+2026-06-29 16:46:16,814 [INFO] core.evaluator_v2: [pyramidkv] pred='The Pyrammmid came out first.'
+2026-06-29 16:46:16,815 [INFO] core.evaluator_v2:   [50/50] avg=23.14
+2026-06-29 16:46:16,816 [INFO] __main__:   → score=23.14, mem_red=80.0%, ttft=3283.9ms
+2026-06-29 16:46:16,816 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 16:46:16,817 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-06-29 16:46:16,817 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 16:46:16,818 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-29 16:46:16,818 [INFO] core.evaluator_v2: [adakv] hotpotqa (50샘플, budget=20%)
+2026-06-29 16:46:23,661 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell.'
+2026-06-29 16:46:29,893 [INFO] core.evaluator_v2: [adakv] pred='Ribosomes.'
+2026-06-29 16:46:36,144 [INFO] core.evaluator_v2: [adakv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 16:46:45,592 [INFO] core.evaluator_v2: [adakv] pred='YIVO.'
+2026-06-29 16:46:52,368 [INFO] core.evaluator_v2: [adakv] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-06-29 16:46:52,369 [INFO] core.evaluator_v2:   [5/50] avg=60.00
+2026-06-29 16:46:54,663 [INFO] core.evaluator_v2: [adakv] pred='Pleiospilos is a flowering plant. Pueraria is not.'
+2026-06-29 16:47:00,556 [INFO] core.evaluator_v2: [adakv] pred='Steel Venom is farther north than Wicked Twister.'
+2026-06-29 16:47:07,549 [INFO] core.evaluator_v2: [adakv] pred='The city of Baghdad was known as the "City of the Caliph" during the Abbasid Caliphate. It was also known as the "City o'
+2026-06-29 16:47:15,281 [INFO] core.evaluator_v2: [adakv] pred='Italy.'
+2026-06-29 16:47:22,198 [INFO] core.evaluator_v2: [adakv] pred='Mike Leach currently coaches at Washington State.'
+2026-06-29 16:47:22,209 [INFO] core.evaluator_v2:   [10/50] avg=45.76
+2026-06-29 16:47:29,806 [INFO] core.evaluator_v2: [adakv] pred='The Friday night programming block that included the collective series "Whatever Happened to... Robot Jones?" was **Cart'
+2026-06-29 16:47:36,038 [INFO] core.evaluator_v2: [adakv] pred='Georgia Brown'
+2026-06-29 16:47:42,505 [INFO] core.evaluator_v2: [adakv] pred='Fredric Rieders testified against Stephen Harold Swango, who had killed as many as 60 patients and received three consec'
+2026-06-29 16:47:47,920 [INFO] core.evaluator_v2: [adakv] pred="It's Always Sunny in Philadelphia."
+2026-06-29 16:47:53,971 [INFO] core.evaluator_v2: [adakv] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 35 people.'
+2026-06-29 16:47:53,972 [INFO] core.evaluator_v2:   [15/50] avg=40.00
+2026-06-29 16:47:58,496 [INFO] core.evaluator_v2: [adakv] pred='The first name of the author is William Shakespeare.'
+2026-06-29 16:48:03,595 [INFO] core.evaluator_v2: [adakv] pred='The River Thames.'
+2026-06-29 16:48:11,954 [INFO] core.evaluator_v2: [adakv] pred='The answer is **Verdon**. She choreographed the role of the last muse for the choreographer and starred in the *Nutcrack'
+2026-06-29 16:48:18,817 [INFO] core.evaluator_v2: [adakv] pred='The text provided does not mention the host of the American survival skills reality show, The Island, or their original '
+2026-06-29 16:48:25,151 [INFO] core.evaluator_v2: [adakv] pred='The mother of Alberic II of Spoleto was given the title "patricia" of Rome by Pope John X.'
+2026-06-29 16:48:25,153 [INFO] core.evaluator_v2:   [20/50] avg=36.16
+2026-06-29 16:48:33,349 [INFO] core.evaluator_v2: [adakv] pred='Cryptocoryne is a shrub.'
+2026-06-29 16:48:59,526 [INFO] core.evaluator_v2: [adakv] pred='The actor that plays Sean Tully defeated in a dancing contest. The text does not provide specific information about whic'
+2026-06-29 16:49:05,876 [INFO] core.evaluator_v2: [adakv] pred='Mark Donohue'
+2026-06-29 16:49:12,362 [INFO] core.evaluator_v2: [adakv] pred='Yameen and Activision have in common the form of play known as "Lotion Play."'
+2026-06-29 16:49:18,270 [INFO] core.evaluator_v2: [adakv] pred='The Atherton Bridge spans the Lancaster River.'
+2026-06-29 16:49:18,272 [INFO] core.evaluator_v2:   [25/50] avg=31.60
+2026-06-29 16:49:24,375 [INFO] core.evaluator_v2: [adakv] pred='Hulu'
+2026-06-29 16:49:31,197 [INFO] core.evaluator_v2: [adakv] pred='Blue Valley West High School.'
+2026-06-29 16:49:37,720 [INFO] core.evaluator_v2: [adakv] pred='The 53rd National Hockey League All-Star Game took place in 2003.'
+2026-06-29 16:49:44,106 [INFO] core.evaluator_v2: [adakv] pred='2012'
+2026-06-29 16:49:52,479 [INFO] core.evaluator_v2: [adakv] pred='The arena where the Lewiston Maineiacs played their home games can seat 12,156 people.'
+2026-06-29 16:49:52,481 [INFO] core.evaluator_v2:   [30/50] avg=26.33
+2026-06-29 16:50:20,196 [INFO] core.evaluator_v2: [adakv] pred='1953: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: 1952: '
+2026-06-29 16:50:26,759 [INFO] core.evaluator_v2: [adakv] pred='1920'
+2026-06-29 16:50:33,114 [INFO] core.evaluator_v2: [adakv] pred='The Afro-Cuban religion.'
+2026-06-29 16:50:40,278 [INFO] core.evaluator_v2: [adakv] pred='The football club that plays in the area between the old tool gates: Brook Bar and Trafford bar is **Manchester United**'
+2026-06-29 16:50:46,708 [INFO] core.evaluator_v2: [adakv] pred='The Rebirth.'
+2026-06-29 16:50:46,709 [INFO] core.evaluator_v2:   [35/50] avg=26.00
+2026-06-29 16:50:53,857 [INFO] core.evaluator_v2: [adakv] pred='No, Werther is not an opera. The Odyssey is not an opera. The text provided discusses the opera "Werther" by Massenet, n'
+2026-06-29 16:51:00,443 [INFO] core.evaluator_v2: [adakv] pred='France.'
+2026-06-29 16:51:06,481 [INFO] core.evaluator_v2: [adakv] pred='Santa Bring My Baby Back was released on the fourth Elvis studio album in 1957.'
+2026-06-29 16:51:11,860 [INFO] core.evaluator_v2: [adakv] pred='"Dragon: Rise of Berk"'
+2026-06-29 16:51:18,989 [INFO] core.evaluator_v2: [adakv] pred='The airline company that operated United Express Flight 3411 on April 9, 2017, was headquartered in Chicago.'
+2026-06-29 16:51:18,990 [INFO] core.evaluator_v2:   [40/50] avg=24.79
+2026-06-29 16:51:29,646 [INFO] core.evaluator_v2: [adakv] pred='The Bangor Daily News is talking about Sawin Millett because he was a Commissioner of the Maine Department of Agricultur'
+2026-06-29 16:51:37,757 [INFO] core.evaluator_v2: [adakv] pred='Charles Haughey held the position of Taoiseach when he dissolved the list of members who were elected to the lower house'
+2026-06-29 16:51:43,318 [INFO] core.evaluator_v2: [adakv] pred='Jupiter.'
+2026-06-29 16:51:49,097 [INFO] core.evaluator_v2: [adakv] pred='University of California, Los Angeles (UCLA).'
+2026-06-29 16:51:56,276 [INFO] core.evaluator_v2: [adakv] pred='Michael Tippett.'
+2026-06-29 16:51:56,278 [INFO] core.evaluator_v2:   [45/50] avg=25.83
+2026-06-29 16:52:04,316 [INFO] core.evaluator_v2: [adakv] pred='The population in 2010 of the town where The Stelljes House is located was 796.'
+2026-06-29 16:52:11,202 [INFO] core.evaluator_v2: [adakv] pred='James II.'
+2026-06-29 16:52:17,924 [INFO] core.evaluator_v2: [adakv] pred='2015.'
+2026-06-29 16:52:24,408 [INFO] core.evaluator_v2: [adakv] pred='Formula E'
+2026-06-29 16:52:32,246 [INFO] core.evaluator_v2: [adakv] pred="The CEO of the football team based in Denver, Colorado, stepped down in 2014 due to complications with Alzheimer's disea"
+2026-06-29 16:52:32,256 [INFO] core.evaluator_v2:   [50/50] avg=24.93
+2026-06-29 16:52:32,257 [INFO] __main__:   → score=24.93, mem_red=80.0%, ttft=3566.5ms
+2026-06-29 16:52:32,257 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-29 16:52:32,258 [INFO] core.evaluator_v2: [adakv] 2wikimqa (50샘플, budget=20%)
+2026-06-29 16:52:41,039 [INFO] core.evaluator_v2: [adakv] pred='The director of the film "Eisenstein in Guanajuato" was born in Finland.'
+2026-06-29 16:52:47,948 [INFO] core.evaluator_v2: [adakv] pred='"Jugband Blues" came out first. It was released on the English psychedelic rock band Pink Floyd\'s second album, "Saucer '
+2026-06-29 16:52:55,130 [INFO] core.evaluator_v2: [adakv] pred='No Trees in the Street.'
+2026-06-29 16:53:03,454 [INFO] core.evaluator_v2: [adakv] pred="The place of death of Agnes of Hohenstaufen's husband was in 1190."
+2026-06-29 16:53:11,992 [INFO] core.evaluator_v2: [adakv] pred='Paul De Scherff was born in 1848, and Lyudmyla Olyanovska was born in 1973. Therefore, Lyudmyla Olyanovska was born late'
+2026-06-29 16:53:11,994 [INFO] core.evaluator_v2:   [5/50] avg=25.92
+2026-06-29 16:53:19,301 [INFO] core.evaluator_v2: [adakv] pred="Helmichis's father-in-law is Alboin."
+2026-06-29 16:53:25,476 [INFO] core.evaluator_v2: [adakv] pred="The Drover's Sweetheart came out earlier."
+2026-06-29 16:53:33,122 [INFO] core.evaluator_v2: [adakv] pred='German.'
+2026-06-29 16:53:41,385 [INFO] core.evaluator_v2: [adakv] pred='No, "The Hatton Garden Job" and "Carry On Cleo" are not from the same country. "The Hatton Garden Job" is a British crim'
+2026-06-29 16:53:47,411 [INFO] core.evaluator_v2: [adakv] pred='Dr. Socrates was released first.'
+2026-06-29 16:53:47,415 [INFO] core.evaluator_v2:   [10/50] avg=24.39
+2026-06-29 16:53:53,443 [INFO] core.evaluator_v2: [adakv] pred="The place of death of Randi Monsen's father, Ludvig Monsen, is not explicitly stated in the provided text. However, it i"
+2026-06-29 16:54:00,359 [INFO] core.evaluator_v2: [adakv] pred='Hissa Abdulla Ahmed Al-Otaiba.'
+2026-06-29 16:54:03,443 [INFO] core.evaluator_v2: [adakv] pred='The date of death of the director of film Nallavan Vazhvan is 31 August 1961.'
+2026-06-29 16:54:09,926 [INFO] core.evaluator_v2: [adakv] pred='The Year Of The Rabbit.'
+2026-06-29 16:54:18,573 [INFO] core.evaluator_v2: [adakv] pred='The paternal grandfather of Bruno II von Berg was Count Adolf III of Berg.'
+2026-06-29 16:54:18,574 [INFO] core.evaluator_v2:   [15/50] avg=19.67
+2026-06-29 16:54:23,688 [INFO] core.evaluator_v2: [adakv] pred='Prince of Arcadia was released earlier.'
+2026-06-29 16:54:31,354 [INFO] core.evaluator_v2: [adakv] pred='Johnny Ekström was born later than Hugh Evelyn Wortham.'
+2026-06-29 16:54:36,581 [INFO] core.evaluator_v2: [adakv] pred='The place of birth of the director of film "Clowning Around" is **Castlemorton, England**.'
+2026-06-29 16:54:45,010 [INFO] core.evaluator_v2: [adakv] pred='Tarzan The Magnificent. The director of Tarzan The Magnificent, Robert Day, was born in 1906, while the director of Sole'
+2026-06-29 16:54:51,879 [INFO] core.evaluator_v2: [adakv] pred='The spouse of the director of film "Streets Of Blood" is Heather D. Gibson.'
+2026-06-29 16:54:51,881 [INFO] core.evaluator_v2:   [20/50] avg=20.49
+2026-06-29 16:54:58,201 [INFO] core.evaluator_v2: [adakv] pred='Contragolpe.'
+2026-06-29 16:55:07,038 [INFO] core.evaluator_v2: [adakv] pred='The composer of "Gretchen am Spinnrade" was Franz Schubert. He died in 1828 at the Sunrise assisted-living facility in P'
+2026-06-29 16:55:13,781 [INFO] core.evaluator_v2: [adakv] pred='Henry II, Holy Roman Emperor.'
+2026-06-29 16:55:21,974 [INFO] core.evaluator_v2: [adakv] pred="Grand Duchess Elena Vladimirovna of Russia's father, Emperor Paul I, died in the Russian Empire. He died on 15 January 1"
+2026-06-29 16:55:31,883 [INFO] core.evaluator_v2: [adakv] pred='From Corleone to Brooklyn (1979) is the film with the director born later. Umberto Lenzi was born in 1933, while the dir'
+2026-06-29 16:55:31,884 [INFO] core.evaluator_v2:   [25/50] avg=21.73
+2026-06-29 16:55:38,715 [INFO] core.evaluator_v2: [adakv] pred="The place of birth of Sextus Barbour's father is Cranmore, County Down, Ireland."
+2026-06-29 16:55:40,728 [INFO] core.evaluator_v2: [adakv] pred='Guy Arvely Dolsin is younger than Altuğ Çelikbilek.'
+2026-06-29 16:55:47,933 [INFO] core.evaluator_v2: [adakv] pred='The maternal grandfather of Marie Louise, Duchess of Parma, is King Ferdinand I of the Two Sicilies.'
+2026-06-29 16:55:53,164 [INFO] core.evaluator_v2: [adakv] pred='Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato (1970) came out first. The Bag Man (2014) i'
+2026-06-29 16:55:57,905 [INFO] core.evaluator_v2: [adakv] pred='Antoine Casavant was born first.'
+2026-06-29 16:55:57,913 [INFO] core.evaluator_v2:   [30/50] avg=25.47
+2026-06-29 16:56:02,987 [INFO] core.evaluator_v2: [adakv] pred="Sir William Gore, 3rd Baronet's paternal grandfather is Sir William Gore, 2nd Baronet."
+2026-06-29 16:56:10,667 [INFO] core.evaluator_v2: [adakv] pred="The place of death of Shahnawaz Bhutto's mother, Nusrat Bhutto, is Karachi, Pakistan."
+2026-06-29 16:56:17,141 [INFO] core.evaluator_v2: [adakv] pred="Mary of Woodstock's mother died in 1285."
+2026-06-29 16:56:26,091 [INFO] core.evaluator_v2: [adakv] pred="The text does not provide the birthday of Henrietta Maria of Brandenburg-Schwedt's father."
+2026-06-29 16:56:33,381 [INFO] core.evaluator_v2: [adakv] pred='The director of film "Wine of Morning" works at Bob Jones University.'
+2026-06-29 16:56:33,382 [INFO] core.evaluator_v2:   [35/50] avg=24.01
+2026-06-29 16:56:41,071 [INFO] core.evaluator_v2: [adakv] pred="Isabella of Bourbon's paternal grandfather was Louis I, Duke of Bourbon."
+2026-06-29 16:56:45,884 [INFO] core.evaluator_v2: [adakv] pred='Anne Carey.'
+2026-06-29 16:56:50,644 [INFO] core.evaluator_v2: [adakv] pred="Carrie Watson Fleming's husband was born in West Virginia."
+2026-06-29 16:56:57,771 [INFO] core.evaluator_v2: [adakv] pred="The Wind's Fierce."
+2026-06-29 16:57:05,299 [INFO] core.evaluator_v2: [adakv] pred='Charles Wheatstone lived longer than Jean-Claude Lauzon.'
+2026-06-29 16:57:05,308 [INFO] core.evaluator_v2:   [40/50] avg=26.70
+2026-06-29 16:57:07,687 [INFO] core.evaluator_v2: [adakv] pred='No. Howard Lake (British Columbia) is in Canada, while North Buck Lake (Alberta) is in Canada. Both are in the same coun'
+2026-06-29 16:57:12,921 [INFO] core.evaluator_v2: [adakv] pred='No, they do not share the same nationality. Reginald Fogwell was a British film director, while Howard W. Koch was an Am'
+2026-06-29 16:57:20,251 [INFO] core.evaluator_v2: [adakv] pred='No, the films Beauty And The Bad Man and Wild Child (Film) do not have directors from the same country. Beauty And The B'
+2026-06-29 16:57:31,320 [INFO] core.evaluator_v2: [adakv] pred="The place of birth of Ratna Malla's father is not explicitly stated in the provided text. However, it is mentioned that "
+2026-06-29 16:57:38,911 [INFO] core.evaluator_v2: [adakv] pred='Inverkeithing, Fife, Scotland.'
+2026-06-29 16:57:38,912 [INFO] core.evaluator_v2:   [45/50] avg=25.05
+2026-06-29 16:57:44,389 [INFO] core.evaluator_v2: [adakv] pred='The mother of the director of the film "Atomised" is Sheikha Fatima bint Sultan Al Nahyan.'
+2026-06-29 16:57:47,527 [INFO] core.evaluator_v2: [adakv] pred='No. Ding Yaping is Chinese and German, while Johann Christian Gustav Lucae is German.'
+2026-06-29 16:57:54,139 [INFO] core.evaluator_v2: [adakv] pred='University of Dublin.'
+2026-06-29 16:58:01,047 [INFO] core.evaluator_v2: [adakv] pred='Space Probe Taurus.'
+2026-06-29 16:58:06,664 [INFO] core.evaluator_v2: [adakv] pred='The Pyrammmid came out first.'
+2026-06-29 16:58:06,666 [INFO] core.evaluator_v2:   [50/50] avg=22.54
+2026-06-29 16:58:06,667 [INFO] __main__:   → score=22.54, mem_red=80.0%, ttft=3263.0ms
+2026-06-29 16:58:06,668 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-06-29 16:58:06,668 [INFO] __main__: Method: OURS | Budget: 20%
+2026-06-29 16:58:06,669 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-06-29 16:58:06,669 [INFO] __main__: 
+  Task: hotpotqa
+2026-06-29 16:58:06,670 [INFO] core.evaluator_v2: [ours] hotpotqa (50샘플, budget=20%)
+2026-06-29 16:58:13,312 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-06-29 16:58:19,502 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-06-29 16:58:25,871 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-06-29 16:58:35,338 [INFO] core.evaluator_v2: [ours] pred='YIVO.'
+2026-06-29 16:58:42,293 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the **North American Company**.'
+2026-06-29 16:58:42,294 [INFO] core.evaluator_v2:   [5/50] avg=60.00
+2026-06-29 16:58:44,581 [INFO] core.evaluator_v2: [ours] pred='Pleiospilos is a flowering plant. Pueraria is not.'
+2026-06-29 16:58:50,407 [INFO] core.evaluator_v2: [ours] pred='Steel Venom is farther north than Wicked Twister.'
+2026-06-29 16:58:56,561 [INFO] core.evaluator_v2: [ours] pred='Baghdad was also known as the "City of the Caliph" during the Abbasid Caliphate.'
+2026-06-29 16:59:05,718 [INFO] core.evaluator_v2: [ours] pred="The FIBT World Championships 1960 took place in Cortina d'Ampezzo, which is located in the Veneto region of northern Ita"
+2026-06-29 16:59:12,850 [INFO] core.evaluator_v2: [ours] pred='Mike Leach currently coaches at Washington State.'
+2026-06-29 16:59:12,852 [INFO] core.evaluator_v2:   [10/50] avg=48.15
+2026-06-29 16:59:21,449 [INFO] core.evaluator_v2: [ours] pred='The Friday night programming block that included the collective series "Whatever Happened to... Robot Jones?" was **Cart'
+2026-06-29 16:59:28,557 [INFO] core.evaluator_v2: [ours] pred='The lowest vocal range in Cosmos was held by Georgia Brown, a Brazilian singer known for her extensive vocal range.'
+2026-06-29 16:59:35,061 [INFO] core.evaluator_v2: [ours] pred='Fredric Rieders testified against John Wayne Swango, who had killed as many as 60 patients and received three consecutiv'
+2026-06-29 16:59:40,556 [INFO] core.evaluator_v2: [ours] pred="It's Always Sunny in Philadelphia."
+2026-06-29 16:59:46,621 [INFO] core.evaluator_v2: [ours] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 32 people.'
+2026-06-29 16:59:46,623 [INFO] core.evaluator_v2:   [15/50] avg=40.78
+2026-06-29 16:59:52,459 [INFO] core.evaluator_v2: [ours] pred='The first name of the author who wrote the play in which Rønnaug Alten made her stage debut at Den Nationale Scene in 19'
+2026-06-29 16:59:57,575 [INFO] core.evaluator_v2: [ours] pred='The River Thames.'
+2026-06-29 17:00:08,764 [INFO] core.evaluator_v2: [ours] pred='The answer is: The choreographer who is said to be the last muse for the choreographer and starred in the Nutcracker is '
+2026-06-29 17:00:15,717 [INFO] core.evaluator_v2: [ours] pred='The host of the American survival skills reality show, The Island, is originally from the United Kingdom.'
+2026-06-29 17:00:21,134 [INFO] core.evaluator_v2: [ours] pred='Agapetus.'
+2026-06-29 17:00:21,135 [INFO] core.evaluator_v2:   [20/50] avg=34.30
+2026-06-29 17:00:29,264 [INFO] core.evaluator_v2: [ours] pred='Mimosa is a shrub.'
+2026-06-29 17:00:35,738 [INFO] core.evaluator_v2: [ours] pred='The actor who plays Sean Tully, Jason Bell, defeated Violet in a dancing contest.'
+2026-06-29 17:00:42,065 [INFO] core.evaluator_v2: [ours] pred='Mark Donohue'
+2026-06-29 17:00:53,492 [INFO] core.evaluator_v2: [ours] pred='Yameen and Activision have in common the form of play known as "Intellivision" or "Intellivision Lives!" which is a vide'
+2026-06-29 17:00:59,524 [INFO] core.evaluator_v2: [ours] pred='The Atherton Bridge spans the Atherton River.'
+2026-06-29 17:00:59,525 [INFO] core.evaluator_v2:   [25/50] avg=32.29
+2026-06-29 17:01:05,676 [INFO] core.evaluator_v2: [ours] pred='Hulu'
+2026-06-29 17:01:12,474 [INFO] core.evaluator_v2: [ours] pred='Blue Valley West High School.'
+2026-06-29 17:01:19,292 [INFO] core.evaluator_v2: [ours] pred='The 53rd National Hockey League All-Star Game took place at the Chicago Stadium, which was completed in 1984.'
+2026-06-29 17:01:25,875 [INFO] core.evaluator_v2: [ours] pred='2012'
+2026-06-29 17:01:34,401 [INFO] core.evaluator_v2: [ours] pred='The arena where the Lewiston Maineiacs played their home games can seat 1,216 people.'
+2026-06-29 17:01:34,406 [INFO] core.evaluator_v2:   [30/50] avg=26.91
+2026-06-29 17:01:42,542 [INFO] core.evaluator_v2: [ours] pred="The winner of the London Riders' Championship in 1953 scored 13 points in the 1952 Individual Speedway World Championshi"
+2026-06-29 17:01:49,130 [INFO] core.evaluator_v2: [ours] pred='1920'
+2026-06-29 17:01:55,556 [INFO] core.evaluator_v2: [ours] pred='The Afro-Cuban religion.'
+2026-06-29 17:02:01,844 [INFO] core.evaluator_v2: [ours] pred='Manchester United.'
+2026-06-29 17:02:08,288 [INFO] core.evaluator_v2: [ours] pred='The Rebirth.'
+2026-06-29 17:02:08,289 [INFO] core.evaluator_v2:   [35/50] avg=28.78
+2026-06-29 17:02:16,891 [INFO] core.evaluator_v2: [ours] pred='No, Werther is not an opera. The Odyssey is an epic poem, not an opera. The text provided discusses "The Sorrows of Youn'
+2026-06-29 17:02:23,681 [INFO] core.evaluator_v2: [ours] pred='The kingdom surrendered to the Roman Senate.'
+2026-06-29 17:02:30,370 [INFO] core.evaluator_v2: [ours] pred='"Santa Bring My Baby Back" was released on the fourth Elvis studio album in 1957, which is "Elvis Presley\'s 1957 Christm'
+2026-06-29 17:02:35,725 [INFO] core.evaluator_v2: [ours] pred='How to Train Your Dragon 2.'
+2026-06-29 17:02:43,068 [INFO] core.evaluator_v2: [ours] pred='The airline company that operated United Express Flight 3411 on April 9, 2017, was headquartered in Chicago.'
+2026-06-29 17:02:43,070 [INFO] core.evaluator_v2:   [40/50] avg=25.92
+2026-06-29 17:02:53,153 [INFO] core.evaluator_v2: [ours] pred='The Bangor Daily News is talking about Sawin Millett because she was a prominent figure in the Maine Department of Agric'
+2026-06-29 17:03:01,527 [INFO] core.evaluator_v2: [ours] pred='Charles Haughey held the position of Taoiseach (Prime Minister) when he dissolved the list of members who were elected t'
+2026-06-29 17:03:07,126 [INFO] core.evaluator_v2: [ours] pred='Jupiter.'
+2026-06-29 17:03:13,577 [INFO] core.evaluator_v2: [ours] pred='The 1958 Pro Bowl was played at the California stadium that is the home for the University of Utah.'
+2026-06-29 17:03:20,689 [INFO] core.evaluator_v2: [ours] pred='Michael Tippett.'
+2026-06-29 17:03:20,691 [INFO] core.evaluator_v2:   [45/50] avg=26.01
+2026-06-29 17:03:28,667 [INFO] core.evaluator_v2: [ours] pred='The population in 2010 of the town where The Stelljes House is located was 796.'
+2026-06-29 17:03:35,555 [INFO] core.evaluator_v2: [ours] pred='Charles II.'
+2026-06-29 17:03:42,219 [INFO] core.evaluator_v2: [ours] pred='1942'
+2026-06-29 17:03:49,990 [INFO] core.evaluator_v2: [ours] pred='The person who substituted for Simon Pagenaud in 2017 secured a contract to drive in the **2017 Formula One** championsh'
+2026-06-29 17:03:57,389 [INFO] core.evaluator_v2: [ours] pred="Due to complications with Alzheimer's disease, Bowlen officially relinquished control of the team to Joe Ellis on July 2"
+2026-06-29 17:03:57,390 [INFO] core.evaluator_v2:   [50/50] avg=24.92
+2026-06-29 17:03:57,391 [INFO] __main__:   → score=24.92, mem_red=80.0%, ttft=3604.7ms
+2026-06-29 17:03:57,392 [INFO] __main__: 
+  Task: 2wikimqa
+2026-06-29 17:03:57,392 [INFO] core.evaluator_v2: [ours] 2wikimqa (50샘플, budget=20%)
+2026-06-29 17:04:06,487 [INFO] core.evaluator_v2: [ours] pred='The director of the film "Eisenstein in Guanajuato" is Peter Greenaway, who was born in England.'
+2026-06-29 17:04:11,307 [INFO] core.evaluator_v2: [ours] pred='Jugband Blues.'
+2026-06-29 17:04:18,501 [INFO] core.evaluator_v2: [ours] pred='No Trees in the Street.'
+2026-06-29 17:04:27,092 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband was Reinhardsbrunn monastery."
+2026-06-29 17:04:35,702 [INFO] core.evaluator_v2: [ours] pred="Paul De Scherff was born in 1873, and Lyudmyla Olyanovska's birth year is not mentioned in the text. Therefore, based on"
+2026-06-29 17:04:35,707 [INFO] core.evaluator_v2:   [5/50] avg=41.29
+2026-06-29 17:04:43,334 [INFO] core.evaluator_v2: [ours] pred="Helmichis's father-in-law is Field Marshal Gen Sugiyama."
+2026-06-29 17:04:49,682 [INFO] core.evaluator_v2: [ours] pred="The Drover's Sweetheart came out earlier."
+2026-06-29 17:04:57,580 [INFO] core.evaluator_v2: [ours] pred='German.'
+2026-06-29 17:05:07,623 [INFO] core.evaluator_v2: [ours] pred='No, The Hatton Garden Job and Carry On Cleo are not from the same country. The text provided discusses "Carry On" films,'
+2026-06-29 17:05:13,436 [INFO] core.evaluator_v2: [ours] pred='Dr. Socrates.'
+2026-06-29 17:05:13,437 [INFO] core.evaluator_v2:   [10/50] avg=36.36
+2026-06-29 17:05:19,994 [INFO] core.evaluator_v2: [ours] pred="The place of death of Randi Monsen's father, Fredrik Monsen, is not explicitly stated in the provided text. However, bas"
+2026-06-29 17:05:27,042 [INFO] core.evaluator_v2: [ours] pred='Hissa Abdulla Ahmed Al-Otaiba.'
+2026-06-29 17:05:30,318 [INFO] core.evaluator_v2: [ours] pred='The date of death of the director of film Nallavan Vazhvan is 31 August 1961.'
+2026-06-29 17:05:38,222 [INFO] core.evaluator_v2: [ours] pred='The Year Of The Rabbit. The film "The Year Of The Rabbit" was directed by a man who died first, while "Monster On The Ca'
+2026-06-29 17:05:46,211 [INFO] core.evaluator_v2: [ours] pred=''
+2026-06-29 17:05:46,212 [INFO] core.evaluator_v2:   [15/50] avg=25.91
+2026-06-29 17:05:51,520 [INFO] core.evaluator_v2: [ours] pred='Prince Of Arcadia was released earlier.'
+2026-06-29 17:06:00,166 [INFO] core.evaluator_v2: [ours] pred='Hugh Evelyn Wortham was born in 1898, and Johnny Ekström was born in 1938. Therefore, Johnny Ekström was born later.'
+2026-06-29 17:06:05,231 [INFO] core.evaluator_v2: [ours] pred='The place of birth of the director of film "Clowning Around" is Marshall, Indiana.'
+2026-06-29 17:06:14,948 [INFO] core.evaluator_v2: [ours] pred='Solemn Promise was released in 1960, while Tarzan The Magnificent was released in 1960. Both films were released in the '
+2026-06-29 17:06:21,699 [INFO] core.evaluator_v2: [ours] pred='The spouse of the director of film "Streets Of Blood" is Heather D. Gibson.'
+2026-06-29 17:06:21,728 [INFO] core.evaluator_v2:   [20/50] avg=24.06
+2026-06-29 17:06:28,099 [INFO] core.evaluator_v2: [ours] pred='Contragolpe.'
+2026-06-29 17:06:36,323 [INFO] core.evaluator_v2: [ours] pred='The composer of "Gretchen am Spinnrade" was Franz Schubert. He died in the Sunrise assisted-living facility in Pacific P'
+2026-06-29 17:06:43,474 [INFO] core.evaluator_v2: [ours] pred="Gisela of Hungary's father-in-law is King Stephen I of Hungary."
+2026-06-29 17:06:51,402 [INFO] core.evaluator_v2: [ours] pred="Grand Duchess Elena Vladimirovna of Russia's father, Emperor Alexander III, died in the Winter Palace in St. Petersburg "
+2026-06-29 17:07:05,585 [INFO] core.evaluator_v2: [ours] pred='From Corleone to Brooklyn (1979) is an Italian poliziotteschi film directed by Umberto Lenzi. The film was released in I'
+2026-06-29 17:07:05,587 [INFO] core.evaluator_v2:   [25/50] avg=23.91
+2026-06-29 17:07:12,227 [INFO] core.evaluator_v2: [ours] pred="The place of birth of Sextus Barbour's father is Dublin."
+2026-06-29 17:07:13,785 [INFO] core.evaluator_v2: [ours] pred='Guy Arvely Dolsin is younger.'
+2026-06-29 17:07:21,019 [INFO] core.evaluator_v2: [ours] pred='The maternal grandfather of Marie Louise, Duchess of Parma, is King Ferdinand I of the Two Sicilies.'
+2026-06-29 17:07:26,319 [INFO] core.evaluator_v2: [ours] pred='Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi Dello Stato (1970) came out first. The Bag Man (2014) i'
+2026-06-29 17:07:31,107 [INFO] core.evaluator_v2: [ours] pred='Antoine Casavant was born first.'
+2026-06-29 17:07:31,111 [INFO] core.evaluator_v2:   [30/50] avg=25.95
+2026-06-29 17:07:36,270 [INFO] core.evaluator_v2: [ours] pred="Sir William Gore, 3rd Baronet's paternal grandfather is Sir Paul Gore, 1st Baronet."
+2026-06-29 17:07:44,069 [INFO] core.evaluator_v2: [ours] pred="The place of death of Shahnawaz Bhutto's mother, Nusrat Bhutto, was in Lahore, Pakistan."
+2026-06-29 17:07:50,695 [INFO] core.evaluator_v2: [ours] pred="The text does not provide specific information about where Mary of Woodstock's mother died."
+2026-06-29 17:07:59,746 [INFO] core.evaluator_v2: [ours] pred="The text does not provide the birthday of Henrietta Maria of Brandenburg-Schwedt's father."
+2026-06-29 17:08:06,616 [INFO] core.evaluator_v2: [ours] pred='Bob Jones University.'
+2026-06-29 17:08:06,618 [INFO] core.evaluator_v2:   [35/50] avg=26.69
+2026-06-29 17:08:13,877 [INFO] core.evaluator_v2: [ours] pred='Louis I, Duke of Bourbon.'
+2026-06-29 17:08:19,752 [INFO] core.evaluator_v2: [ours] pred='Answer: The paternal grandmother of Charles Willoughby, 10th Baron Willoughby of Parham, was Anne Carey.'
+2026-06-29 17:08:24,614 [INFO] core.evaluator_v2: [ours] pred="The place of birth of Carrie Watson Fleming's husband is West Virginia."
+2026-06-29 17:08:34,225 [INFO] core.evaluator_v2: [ours] pred="The Wind's Fierce (1927 film) is directed by Mario Camus García, born in 1924. Special Delivery (1927 film) is directed "
+2026-06-29 17:08:42,046 [INFO] core.evaluator_v2: [ours] pred='Charles Wheatstone lived longer than Jean-Claude Lauzon.'
+2026-06-29 17:08:42,048 [INFO] core.evaluator_v2:   [40/50] avg=27.47
+2026-06-29 17:08:44,274 [INFO] core.evaluator_v2: [ours] pred='Yes, both Howard Lake (British Columbia) and North Buck Lake (Alberta) are located in the same country, which is Canada.'
+2026-06-29 17:08:49,992 [INFO] core.evaluator_v2: [ours] pred='No, they do not share the same nationality. Reginald Fogwell was a British film director, while the director of "The God'
+2026-06-29 17:08:57,431 [INFO] core.evaluator_v2: [ours] pred='No, the directors of "Beauty and the Bad Man" and "Wild Child" are from different countries. "Beauty and the Bad Man" is'
+2026-06-29 17:09:05,352 [INFO] core.evaluator_v2: [ours] pred='Cranmore, Ireland.'
+2026-06-29 17:09:12,817 [INFO] core.evaluator_v2: [ours] pred='Inverkeithing, Fife, Scotland.'
+2026-06-29 17:09:12,818 [INFO] core.evaluator_v2:   [45/50] avg=25.91
+2026-06-29 17:09:18,681 [INFO] core.evaluator_v2: [ours] pred='The mother of the director of the film *Atomised* is **Kekuʻiapoiwa**, the mother of Kamehameha I.'
+2026-06-29 17:09:22,079 [INFO] core.evaluator_v2: [ours] pred='No. Ding Yaping is Chinese and German, while Johann Christian Gustav Lucae is German.'
+2026-06-29 17:09:28,796 [INFO] core.evaluator_v2: [ours] pred="St Patrick's College, Dublin."
+2026-06-29 17:09:35,991 [INFO] core.evaluator_v2: [ours] pred='Space Probe Taurus.'
+2026-06-29 17:09:41,520 [INFO] core.evaluator_v2: [ours] pred='The Pyrammmid came out first.'
+2026-06-29 17:09:41,521 [INFO] core.evaluator_v2:   [50/50] avg=25.04
+2026-06-29 17:09:41,522 [INFO] __main__:   → score=25.04, mem_red=80.0%, ttft=3364.8ms
+2026-06-29 17:09:41,535 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260629_154336.csv
+2026-06-29 17:09:41,542 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260629_154336.json
+2026-06-29 17:09:41,543 [INFO] __main__: Experiment 1 completed!
