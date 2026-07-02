@@ -1,0 +1,32 @@
+{
+  "model": "qwen3-4b",
+  "results": [
+    {
+      "method": "fullkv",
+      "budget": 0.2,
+      "avg_score": 8.8,
+      "task_scores": {
+        "qasper": 15.1,
+        "hotpotqa": 2.5
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.2,
+      "avg_score": 31.6,
+      "task_scores": {
+        "qasper": 3.3,
+        "hotpotqa": 60.0
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.2,
+      "avg_score": 27.1,
+      "task_scores": {
+        "qasper": 14.3,
+        "hotpotqa": 40.0
+      }
+    }
+  ]
+}

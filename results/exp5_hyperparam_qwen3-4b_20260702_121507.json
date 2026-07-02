@@ -1,0 +1,48 @@
+{
+  "model": "qwen3-4b",
+  "budget": 0.2,
+  "results": [
+    {
+      "Config": "λ=0.5",
+      "qasper": 8.4,
+      "hotpotqa": 22.5,
+      "Avg": 15.4,
+      "Δ vs Default": 0.0
+    },
+    {
+      "Config": "λ=1.0 (기본값)",
+      "qasper": 14.3,
+      "hotpotqa": 40.0,
+      "Avg": 27.1,
+      "Δ vs Default": 11.7
+    },
+    {
+      "Config": "λ=2.0",
+      "qasper": 9.3,
+      "hotpotqa": 42.5,
+      "Avg": 25.9,
+      "Δ vs Default": 10.4
+    },
+    {
+      "Config": "Default (0.40,0.20,0.20,0.20)",
+      "qasper": 14.3,
+      "hotpotqa": 40.0,
+      "Avg": 27.1,
+      "Δ vs Default": 0.0
+    },
+    {
+      "Config": "Uniform (0.25,0.25,0.25,0.25)",
+      "qasper": 12.5,
+      "hotpotqa": 5.0,
+      "Avg": 8.8,
+      "Δ vs Default": -18.4
+    },
+    {
+      "Config": "Attn-Heavy (0.55,0.15,0.15,0.15)",
+      "qasper": 7.1,
+      "hotpotqa": 50.0,
+      "Avg": 28.6,
+      "Δ vs Default": 1.4
+    }
+  ]
+}

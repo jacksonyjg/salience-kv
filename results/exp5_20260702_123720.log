@@ -1,0 +1,127 @@
+2026-07-02 12:37:20,229 [INFO] __main__: Experiment 5: Hyperparameter Sensitivity
+2026-07-02 12:37:20,230 [INFO] __main__:   Model: qwen3-4b | Budget: 20% | Mode: lambda
+2026-07-02 12:37:20,231 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-07-02 12:37:20,334 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:37:20,336 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-02 12:37:20,341 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 12:37:20,401 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:37:20,416 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-02 12:37:20,493 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-02 12:37:20,551 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-02 12:37:21,582 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-07-02 12:37:21,585 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-07-02 12:37:21,690 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:37:21,696 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 12:37:39,426 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:37:39,435 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-07-02 12:37:39,502 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-02 12:37:39,533 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-07-02 12:37:39,542 [INFO] __main__: 
+============================================================
+2026-07-02 12:37:39,543 [INFO] __main__: 5-A: λ 민감도
+2026-07-02 12:37:39,544 [INFO] __main__: 
+--- λ=0.5 ---
+2026-07-02 12:37:39,544 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 12:37:39,580 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:37:39,610 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:37:40,171 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:37:40,202 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-02 12:37:40,243 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:37:40,278 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-02 12:37:40,563 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 12:37:53,610 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies, when applied to the game, result in the following:\n\n- **KG-A2C** (with knowledge graph) and **A'
+2026-07-02 12:37:57,134 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, with a wide context window and a multi-task learning app'
+2026-07-02 12:38:00,611 [INFO] core.evaluator_v2: [ours] pred='The text does not provide the size of the Augmented LibriSpeech dataset.'
+2026-07-02 12:38:22,129 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n- Word/Character Embedding\n- CNN/LSTM\n- CRF\n- Attention\n- B'
+2026-07-02 12:38:29,108 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared with in the text are: 1) The 6-layers unidirectional LSTM model; 2) The 9-layers unidirectional'
+2026-07-02 12:38:29,117 [INFO] __main__:   qasper: 8.44
+2026-07-02 12:38:29,118 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 12:38:29,224 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:38:29,256 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:38:30,051 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 12:38:36,882 [INFO] core.evaluator_v2: [ours] pred='Audra McDonald.'
+2026-07-02 12:38:43,097 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-07-02 12:38:49,545 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 12:38:59,965 [INFO] core.evaluator_v2: [ours] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-07-02 12:39:06,918 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-07-02 12:39:06,919 [INFO] __main__:   hotpotqa: 22.50
+2026-07-02 12:39:06,920 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-07-02 12:39:06,990 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:39:07,019 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:39:07,711 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-07-02 12:39:32,103 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has adopted a human capital operating plan that includes short-term actions to ach'
+2026-07-02 12:39:57,168 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) requires federal agencies to develop, document, and implement in'
+2026-07-02 12:40:20,598 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text presents a series of analyses and opinions from various expert'
+2026-07-02 12:40:27,715 [INFO] core.evaluator_v2: [ours] pred='The final summary of the text is as follows:\n\nThe final summary of the text is as follows:'
+2026-07-02 12:40:40,535 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and its TRIO components—the U.S. Coast Guard (Coast Guard), Transportation Sec'
+2026-07-02 12:40:40,552 [INFO] __main__:   gov_report: 14.47
+2026-07-02 12:40:40,553 [INFO] __main__:   → Avg=15.13, Δ=+0.00
+2026-07-02 12:40:40,554 [INFO] __main__: 
+--- λ=1.0 (기본값) ---
+2026-07-02 12:40:40,554 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 12:40:40,626 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:40:40,670 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:40:41,395 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 12:40:47,433 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-07-02 12:40:51,413 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, which is extended with a wide context window and with mu'
+2026-07-02 12:40:55,012 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 12:40:57,589 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n- Word/Character embedding\n- CNN/LSTM\n- CRF (Conditional Ra'
+2026-07-02 12:41:06,972 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared in the text are: \n\n1. Very deep unidirectional LSTM (initialized with Xavier initialization)\n2.'
+2026-07-02 12:41:06,974 [INFO] __main__:   qasper: 14.32
+2026-07-02 12:41:06,974 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 12:41:07,049 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:41:07,077 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:41:07,798 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 12:41:14,657 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-07-02 12:41:20,933 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-07-02 12:41:27,344 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 12:41:36,821 [INFO] core.evaluator_v2: [ours] pred='Arnrich.'
+2026-07-02 12:41:43,656 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the **Southern Company**.'
+2026-07-02 12:41:43,657 [INFO] __main__:   hotpotqa: 40.00
+2026-07-02 12:41:43,658 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-07-02 12:41:43,727 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:41:43,772 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:41:44,408 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-07-02 12:42:08,538 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has implemented a workforce strategy that balances the use of rotating (IPA) and V'
+2026-07-02 12:42:33,029 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) of 2002, as amended by the Federal Information Security Manageme'
+2026-07-02 12:42:44,858 [INFO] core.evaluator_v2: [ours] pred="The article discusses the United States' response to China's maritime aggression in the South China Sea, emphasizing the"
+2026-07-02 12:43:11,847 [INFO] core.evaluator_v2: [ours] pred='The final full-year appropriations for the EPA were enacted as part of the Consolidated Appropriations Act, FY2019 (P.L.'
+2026-07-02 12:43:24,628 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and its TRIO components—the U.S. Coast Guard (Coast Guard), Transportation Sec'
+2026-07-02 12:43:24,646 [INFO] __main__:   gov_report: 14.39
+2026-07-02 12:43:24,646 [INFO] __main__:   → Avg=22.90, Δ=+7.77
+2026-07-02 12:43:24,647 [INFO] __main__: 
+--- λ=2.0 ---
+2026-07-02 12:43:24,647 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 12:43:24,728 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:43:24,769 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:43:25,494 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 12:43:32,568 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies, KG-A2C-chained and KG-A2C-Explore, both pass the bottleneck corresponding to entering the cella'
+2026-07-02 12:43:36,122 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, with a wide context window, and with multi-task learning'
+2026-07-02 12:43:39,529 [INFO] core.evaluator_v2: [ours] pred='The text does not provide the size of the Augmented LibriSpeech dataset.'
+2026-07-02 12:43:59,122 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules:\n\n- Word/Character Embedding\n- CNN/LSTM\n- Attention\n- Block Z'
+2026-07-02 12:44:04,998 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared with each other are the 6-layers and 9-layers models.'
+2026-07-02 12:44:05,009 [INFO] __main__:   qasper: 9.28
+2026-07-02 12:44:05,010 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 12:44:05,085 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:44:05,127 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:44:05,835 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 12:44:12,709 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-07-02 12:44:19,040 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-07-02 12:44:25,547 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 12:44:35,958 [INFO] core.evaluator_v2: [ours] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-07-02 12:44:42,979 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the **North American Company**.'
+2026-07-02 12:44:42,980 [INFO] __main__:   hotpotqa: 42.50
+2026-07-02 12:44:42,981 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-07-02 12:44:43,075 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:44:43,110 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:44:43,766 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-07-02 12:45:05,402 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has adopted a workforce strategy that balances the use of rotators (research and e'
+2026-07-02 12:45:32,596 [INFO] core.evaluator_v2: [ours] pred='The Federal Information Security Management Act (FISMA) requires that federal agencies’ inspectors general conduct annua'
+2026-07-02 12:45:52,022 [INFO] core.evaluator_v2: [ours] pred='The United States and China are engaged in a complex and strategic competition in the South China Sea, with significant '
+2026-07-02 12:46:19,144 [INFO] core.evaluator_v2: [ours] pred='The final full-year appropriations for the EPA were enacted as part of the Consolidated Appropriations Act, FY2019 (P.L.'
+2026-07-02 12:46:31,919 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) and its TRIO components—U.S. Coast Guard (Coast Guard), Transportation Securit'
+2026-07-02 12:46:31,939 [INFO] __main__:   gov_report: 14.47
+2026-07-02 12:46:31,943 [INFO] __main__:   → Avg=22.10, Δ=+6.97
+2026-07-02 12:46:31,954 [INFO] core.results_manager: Results saved to results/exp5_hyperparam_qwen3-4b_20260702_123720.csv
+2026-07-02 12:46:31,963 [INFO] core.results_manager: JSON saved to results/exp5_hyperparam_qwen3-4b_20260702_123720.json
+2026-07-02 12:46:31,964 [INFO] __main__: Experiment 5 completed!

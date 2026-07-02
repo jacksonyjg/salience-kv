@@ -1,0 +1,24 @@
+{
+  "model": "qwen3-4b",
+  "budget": 0.2,
+  "results": [
+    {
+      "Config": "λ=0.5",
+      "qasper": 14.6,
+      "Avg": 14.6,
+      "Δ vs Default": 0.0
+    },
+    {
+      "Config": "λ=1.0 (기본값)",
+      "qasper": 29.9,
+      "Avg": 29.9,
+      "Δ vs Default": 15.3
+    },
+    {
+      "Config": "λ=2.0",
+      "qasper": 17.0,
+      "Avg": 17.0,
+      "Δ vs Default": 2.4
+    }
+  ]
+}

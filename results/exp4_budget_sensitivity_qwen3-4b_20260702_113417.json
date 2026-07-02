@@ -1,0 +1,140 @@
+{
+  "model": "qwen3-4b",
+  "results": [
+    {
+      "method": "fullkv",
+      "budget": 0.1,
+      "avg_score": 8.8,
+      "task_scores": {
+        "qasper": 15.1,
+        "hotpotqa": 2.5
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.1,
+      "avg_score": 22.8,
+      "task_scores": {
+        "qasper": 5.6,
+        "hotpotqa": 40.0
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.1,
+      "avg_score": 23.4,
+      "task_scores": {
+        "qasper": 6.9,
+        "hotpotqa": 40.0
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.2,
+      "avg_score": 8.8,
+      "task_scores": {
+        "qasper": 15.1,
+        "hotpotqa": 2.5
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.2,
+      "avg_score": 31.6,
+      "task_scores": {
+        "qasper": 3.3,
+        "hotpotqa": 60.0
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.2,
+      "avg_score": 27.1,
+      "task_scores": {
+        "qasper": 14.3,
+        "hotpotqa": 40.0
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.3,
+      "avg_score": 8.8,
+      "task_scores": {
+        "qasper": 15.1,
+        "hotpotqa": 2.5
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.3,
+      "avg_score": 33.9,
+      "task_scores": {
+        "qasper": 7.8,
+        "hotpotqa": 60.0
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.3,
+      "avg_score": 24.4,
+      "task_scores": {
+        "qasper": 8.9,
+        "hotpotqa": 40.0
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.4,
+      "avg_score": 8.8,
+      "task_scores": {
+        "qasper": 15.1,
+        "hotpotqa": 2.5
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.4,
+      "avg_score": 37.0,
+      "task_scores": {
+        "qasper": 14.1,
+        "hotpotqa": 60.0
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.4,
+      "avg_score": 18.8,
+      "task_scores": {
+        "qasper": 15.1,
+        "hotpotqa": 22.5
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.5,
+      "avg_score": 8.8,
+      "task_scores": {
+        "qasper": 15.1,
+        "hotpotqa": 2.5
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.5,
+      "avg_score": 24.9,
+      "task_scores": {
+        "qasper": 9.7,
+        "hotpotqa": 40.0
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.5,
+      "avg_score": 27.6,
+      "task_scores": {
+        "qasper": 15.2,
+        "hotpotqa": 40.0
+      }
+    }
+  ]
+}

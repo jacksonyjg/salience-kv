@@ -1,0 +1,46 @@
+2026-07-02 13:43:32,261 [INFO] __main__: Experiment 4: Budget Sensitivity Analysis
+2026-07-02 13:43:32,261 [INFO] __main__:   Model: qwen3-4b | Budgets: ['10%', '20%', '30%', '40%', '50%']
+2026-07-02 13:43:32,262 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-07-02 13:43:32,406 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:43:32,418 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 13:43:32,490 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:43:32,491 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-02 13:43:32,497 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-02 13:43:32,610 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-02 13:43:32,661 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-02 13:43:33,703 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-07-02 13:43:33,712 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-07-02 13:43:33,744 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:43:33,752 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 13:43:51,981 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:43:51,987 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-07-02 13:43:52,076 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-02 13:43:52,094 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-07-02 13:43:52,117 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 13:43:52,118 [INFO] __main__: Budget: 10%
+2026-07-02 13:43:52,118 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-02 13:43:52,151 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:43:52,181 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 13:43:52,757 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:43:52,788 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-02 13:43:52,825 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:43:52,894 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-02 13:43:53,663 [INFO] core.dataset_loader: Loaded 50 samples from narrativeqa
+2026-07-02 13:44:01,678 [INFO] core.evaluator_v2: [fullkv] pred='Daisy encountered Jim in Maitland.'
+2026-07-02 13:44:10,900 [INFO] core.evaluator_v2: [fullkv] pred='Socrates ultimately decides it is unjust to escape because he believes that the laws of Athens are a social contract to '
+2026-07-02 13:44:20,349 [INFO] core.evaluator_v2: [fullkv] pred='The story is set in the medieval period, specifically in the castle of Drachenhausen and the surrounding areas, includin'
+2026-07-02 13:44:28,688 [INFO] core.evaluator_v2: [fullkv] pred='Baron Conrad did not kill anyone; however, he was killed by one-eyed Hans. The text states that one-eyed Hans brought ba'
+2026-07-02 13:44:36,629 [INFO] core.evaluator_v2: [fullkv] pred='Vigo the Carpathian.'
+2026-07-02 13:44:36,630 [INFO] __main__:   [fullkv@10%] narrativeqa [5/50] avg=15.92
+2026-07-02 13:44:45,226 [INFO] core.evaluator_v2: [fullkv] pred="Dana Barrett is the first person that falls under Vigo's spell."
+2026-07-02 13:44:47,624 [WARNING] core.model_loader: Input length 8721 > max 8192, truncating...
+2026-07-02 13:44:58,407 [INFO] core.evaluator_v2: [fullkv] pred="Clifford's profession is a security guard."
+2026-07-02 13:45:07,517 [INFO] core.evaluator_v2: [fullkv] pred="Mr. and Mrs. Vervelle live at Ville d'Avray."
+2026-07-02 13:45:15,334 [INFO] core.evaluator_v2: [fullkv] pred='The Witch threw the coffin into a ditch.'
+2026-07-02 13:45:24,038 [INFO] core.evaluator_v2: [fullkv] pred='Frank Saltram is a writer and speaker, known for his extraordinary mind and captivating talk. He is described as having '
+2026-07-02 13:45:24,039 [INFO] __main__:   [fullkv@10%] narrativeqa [10/50] avg=17.61
+2026-07-02 13:45:31,574 [INFO] core.evaluator_v2: [fullkv] pred='Mortimer Tregennis was once estranged from his siblings due to disagreements over the division of money from their tin-m'
+2026-07-02 13:45:39,894 [INFO] core.evaluator_v2: [fullkv] pred="The unique aspect of the phonetic spelling of the 'future' article is that it is written in a way that reflects the phon"
+2026-07-02 13:45:47,098 [INFO] core.evaluator_v2: [fullkv] pred='In the text, Death is disguised as a man in black.'
+2026-07-02 13:45:53,019 [INFO] core.evaluator_v2: [fullkv] pred="Lady Coxon is Ruth Anvoy's mother."

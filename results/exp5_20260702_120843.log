@@ -1,0 +1,55 @@
+2026-07-02 12:08:43,081 [INFO] __main__: Experiment 5: Hyperparameter Sensitivity
+2026-07-02 12:08:43,081 [INFO] __main__:   Model: qwen3-4b | Budget: 20% | Mode: weights
+2026-07-02 12:08:43,082 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-07-02 12:08:43,186 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:08:43,188 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-02 12:08:43,193 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 12:08:43,270 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:08:43,277 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-02 12:08:43,356 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-02 12:08:43,393 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-02 12:08:44,486 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-07-02 12:08:44,488 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-07-02 12:08:44,522 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:08:44,527 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 12:08:49,911 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:08:49,917 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-07-02 12:08:49,982 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-02 12:08:50,020 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-07-02 12:08:50,029 [INFO] __main__: 
+============================================================
+2026-07-02 12:08:50,031 [INFO] __main__: 5-B: 가중치 민감도
+2026-07-02 12:08:50,031 [INFO] __main__: 
+--- Default (0.40,0.20,0.20,0.20) ---
+2026-07-02 12:08:50,032 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 12:08:50,065 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:08:50,096 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:08:50,687 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:08:50,717 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-02 12:08:50,747 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:08:50,782 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-02 12:08:51,058 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 12:08:57,456 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-07-02 12:08:57,458 [INFO] __main__:   qasper: 29.85
+2026-07-02 12:08:57,459 [INFO] __main__:   → Avg=29.90, Δ=+0.00
+2026-07-02 12:08:57,459 [INFO] __main__: 
+--- Uniform (0.25,0.25,0.25,0.25) ---
+2026-07-02 12:08:57,460 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 12:08:57,564 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:08:57,655 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:08:58,401 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 12:09:05,556 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (Go-Explore and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explore g'
+2026-07-02 12:09:05,558 [INFO] __main__:   qasper: 21.74
+2026-07-02 12:09:05,558 [INFO] __main__:   → Avg=21.70, Δ=-8.20
+2026-07-02 12:09:05,559 [INFO] __main__: 
+--- Attn-Heavy (0.55,0.15,0.15,0.15) ---
+2026-07-02 12:09:05,559 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 12:09:05,629 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 12:09:05,657 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 12:09:06,345 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 12:09:27,502 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies, when applied, result in the following:\n\n- **KG-A2C-Chained** and **KG-A2C-Explore** both pass t'
+2026-07-02 12:09:27,512 [INFO] __main__:   qasper: 7.02
+2026-07-02 12:09:27,512 [INFO] __main__:   → Avg=7.00, Δ=-22.90
+2026-07-02 12:09:27,521 [INFO] core.results_manager: Results saved to results/exp5_hyperparam_qwen3-4b_20260702_120843.csv
+2026-07-02 12:09:27,532 [INFO] core.results_manager: JSON saved to results/exp5_hyperparam_qwen3-4b_20260702_120843.json
+2026-07-02 12:09:27,532 [INFO] __main__: Experiment 5 completed!

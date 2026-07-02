@@ -1,0 +1,42 @@
+{
+  "model": "qwen3-4b",
+  "budget": 0.2,
+  "results": [
+    {
+      "Config": "λ=0.5",
+      "qasper": 16.7,
+      "Avg": 16.7,
+      "Δ vs Default": 0.0
+    },
+    {
+      "Config": "λ=1.0 (기본값)",
+      "qasper": 13.3,
+      "Avg": 13.3,
+      "Δ vs Default": -3.4
+    },
+    {
+      "Config": "λ=2.0",
+      "qasper": 18.2,
+      "Avg": 18.2,
+      "Δ vs Default": 1.5
+    },
+    {
+      "Config": "Default (0.40,0.20,0.20,0.20)",
+      "qasper": 13.3,
+      "Avg": 13.3,
+      "Δ vs Default": 0.0
+    },
+    {
+      "Config": "Uniform (0.25,0.25,0.25,0.25)",
+      "qasper": 0.8,
+      "Avg": 0.8,
+      "Δ vs Default": -12.5
+    },
+    {
+      "Config": "Attn-Heavy (0.55,0.15,0.15,0.15)",
+      "qasper": 33.3,
+      "Avg": 33.3,
+      "Δ vs Default": 20.0
+    }
+  ]
+}

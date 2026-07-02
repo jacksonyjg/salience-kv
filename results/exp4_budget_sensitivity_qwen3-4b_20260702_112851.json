@@ -1,0 +1,77 @@
+{
+  "model": "qwen3-4b",
+  "results": [
+    {
+      "method": "fullkv",
+      "budget": 0.1,
+      "avg_score": 19.3,
+      "task_scores": {
+        "qasper": 19.3
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.1,
+      "avg_score": 2.7,
+      "task_scores": {
+        "qasper": 2.7
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.1,
+      "avg_score": 3.9,
+      "task_scores": {
+        "qasper": 3.9
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.2,
+      "avg_score": 19.3,
+      "task_scores": {
+        "qasper": 19.3
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.2,
+      "avg_score": 11.6,
+      "task_scores": {
+        "qasper": 11.6
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.2,
+      "avg_score": 29.9,
+      "task_scores": {
+        "qasper": 29.9
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.3,
+      "avg_score": 19.3,
+      "task_scores": {
+        "qasper": 19.3
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.3,
+      "avg_score": 8.1,
+      "task_scores": {
+        "qasper": 8.1
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.3,
+      "avg_score": 15.7,
+      "task_scores": {
+        "qasper": 15.7
+      }
+    }
+  ]
+}

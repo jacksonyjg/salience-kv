@@ -1,0 +1,24 @@
+{
+  "model": "qwen3-4b",
+  "budget": 0.2,
+  "results": [
+    {
+      "Config": "Default (0.40,0.20,0.20,0.20)",
+      "qasper": 29.9,
+      "Avg": 29.9,
+      "Δ vs Default": 0.0
+    },
+    {
+      "Config": "Uniform (0.25,0.25,0.25,0.25)",
+      "qasper": 21.7,
+      "Avg": 21.7,
+      "Δ vs Default": -8.2
+    },
+    {
+      "Config": "Attn-Heavy (0.55,0.15,0.15,0.15)",
+      "qasper": 7.0,
+      "Avg": 7.0,
+      "Δ vs Default": -22.9
+    }
+  ]
+}

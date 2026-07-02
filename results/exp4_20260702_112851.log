@@ -1,0 +1,97 @@
+2026-07-02 11:28:51,982 [INFO] __main__: Experiment 4: Budget Sensitivity Analysis
+2026-07-02 11:28:51,983 [INFO] __main__:   Model: qwen3-4b | Budgets: ['10%', '20%', '30%']
+2026-07-02 11:28:51,983 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-07-02 11:28:52,139 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:28:52,146 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 11:28:52,225 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:28:52,228 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-02 11:28:52,234 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-02 11:28:52,311 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-02 11:28:52,367 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-02 11:28:53,522 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-07-02 11:28:53,527 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-07-02 11:28:53,560 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:28:53,568 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 11:29:10,056 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:29:10,063 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-07-02 11:29:10,204 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-02 11:29:10,262 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-07-02 11:29:10,274 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 11:29:10,275 [INFO] __main__: Budget: 10%
+2026-07-02 11:29:10,277 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:29:10,311 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:29:10,380 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:29:10,983 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:29:11,014 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-02 11:29:11,104 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:29:11,155 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-02 11:29:11,671 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:29:18,982 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-02 11:29:18,984 [INFO] __main__:   [fullkv@10%] qasper: 19.28
+2026-07-02 11:29:18,985 [INFO] __main__:   FULLKV: 19.30
+2026-07-02 11:29:18,986 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:29:19,151 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:29:19,180 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:29:20,099 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:29:41,379 [INFO] core.evaluator_v2: [adakv] pred="The results from these proposed strategies are that the knowledge graph (KG) is critical for the agent's success in the "
+2026-07-02 11:29:41,384 [INFO] __main__:   [adakv@10%] qasper: 2.67
+2026-07-02 11:29:41,385 [INFO] __main__:   ADAKV: 2.70
+2026-07-02 11:29:41,386 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:29:41,493 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:29:41,522 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:29:42,474 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:30:04,665 [INFO] core.evaluator_v2: [ours] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained**:\n   - This strategy is significantly mor'
+2026-07-02 11:30:04,667 [INFO] __main__:   [ours@10%] qasper: 3.92
+2026-07-02 11:30:04,668 [INFO] __main__:   OURS: 3.90
+2026-07-02 11:30:04,669 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 11:30:04,669 [INFO] __main__: Budget: 20%
+2026-07-02 11:30:04,670 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:30:04,752 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:30:04,781 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:30:05,594 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:30:14,069 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-02 11:30:14,077 [INFO] __main__:   [fullkv@20%] qasper: 19.28
+2026-07-02 11:30:14,081 [INFO] __main__:   FULLKV: 19.30
+2026-07-02 11:30:14,083 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:30:14,159 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:30:14,189 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:30:15,369 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:30:26,983 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-07-02 11:30:26,986 [INFO] __main__:   [adakv@20%] qasper: 11.61
+2026-07-02 11:30:26,987 [INFO] __main__:   ADAKV: 11.60
+2026-07-02 11:30:26,988 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:30:27,063 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:30:27,092 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:30:27,994 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:30:33,972 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-07-02 11:30:33,990 [INFO] __main__:   [ours@20%] qasper: 29.85
+2026-07-02 11:30:34,004 [INFO] __main__:   OURS: 29.90
+2026-07-02 11:30:34,039 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 11:30:34,050 [INFO] __main__: Budget: 30%
+2026-07-02 11:30:34,053 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:30:34,166 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:30:34,197 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:30:35,084 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:30:42,175 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-02 11:30:42,177 [INFO] __main__:   [fullkv@30%] qasper: 19.28
+2026-07-02 11:30:42,178 [INFO] __main__:   FULLKV: 19.30
+2026-07-02 11:30:42,179 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:30:42,253 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:30:42,281 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:30:43,094 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:30:58,919 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C** (Knowledge Graph - Action - Chain) is a method t'
+2026-07-02 11:30:58,929 [INFO] __main__:   [adakv@30%] qasper: 8.14
+2026-07-02 11:30:58,930 [INFO] __main__:   ADAKV: 8.10
+2026-07-02 11:30:58,930 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:30:59,003 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:30:59,078 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:30:59,994 [INFO] core.dataset_loader: Loaded 1 samples from qasper
+2026-07-02 11:31:10,910 [INFO] core.evaluator_v2: [ours] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** and **KG-A2C-Explore** both pass the bot'
+2026-07-02 11:31:10,924 [INFO] __main__:   [ours@30%] qasper: 15.75
+2026-07-02 11:31:10,926 [INFO] __main__:   OURS: 15.70
+2026-07-02 11:31:10,940 [INFO] core.results_manager: Results saved to results/exp4_budget_sensitivity_qwen3-4b_20260702_112851.csv
+2026-07-02 11:31:10,954 [INFO] core.results_manager: JSON saved to results/exp4_budget_sensitivity_qwen3-4b_20260702_112851.json
+2026-07-02 11:31:10,965 [INFO] __main__: Experiment 4 completed!

@@ -1,0 +1,30 @@
+{
+  "model": "qwen3-4b",
+  "budget": 0.2,
+  "results": [
+    {
+      "Config": "λ=0.5",
+      "qasper": 8.4,
+      "hotpotqa": 22.5,
+      "gov_report": 14.5,
+      "Avg": 15.1,
+      "Δ vs Default": 0.0
+    },
+    {
+      "Config": "λ=1.0 (기본값)",
+      "qasper": 14.3,
+      "hotpotqa": 40.0,
+      "gov_report": 14.4,
+      "Avg": 22.9,
+      "Δ vs Default": 7.8
+    },
+    {
+      "Config": "λ=2.0",
+      "qasper": 9.3,
+      "hotpotqa": 42.5,
+      "gov_report": 14.5,
+      "Avg": 22.1,
+      "Δ vs Default": 7.0
+    }
+  ]
+}

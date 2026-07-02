@@ -1,0 +1,385 @@
+2026-07-02 11:34:17,855 [INFO] __main__: Experiment 4: Budget Sensitivity Analysis
+2026-07-02 11:34:17,856 [INFO] __main__:   Model: qwen3-4b | Budgets: ['10%', '20%', '30%', '40%', '50%']
+2026-07-02 11:34:17,857 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-07-02 11:34:18,005 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:34:18,019 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-02 11:34:18,027 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 11:34:18,107 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:34:18,122 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-02 11:34:18,264 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-02 11:34:18,304 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-02 11:34:19,397 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-07-02 11:34:19,416 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-07-02 11:34:19,449 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:34:19,455 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 11:34:25,751 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:34:25,758 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-07-02 11:34:25,891 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-02 11:34:25,939 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-07-02 11:34:25,952 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 11:34:25,953 [INFO] __main__: Budget: 10%
+2026-07-02 11:34:25,954 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:34:25,987 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:34:26,018 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:34:26,601 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:34:26,661 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-02 11:34:26,695 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:34:26,729 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-02 11:34:27,093 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:34:34,834 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-02 11:34:37,740 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-07-02 11:34:41,355 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:34:45,883 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-07-02 11:34:52,371 [INFO] core.evaluator_v2: [fullkv] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-07-02 11:34:52,373 [INFO] __main__:   [fullkv@10%] qasper [5/5] avg=15.08
+2026-07-02 11:34:52,373 [INFO] __main__:   [fullkv@10%] qasper: 15.08
+2026-07-02 11:34:52,374 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:34:52,484 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:34:52,515 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:34:53,204 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:35:00,836 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-07-02 11:35:08,702 [INFO] core.evaluator_v2: [fullkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:35:15,806 [INFO] core.evaluator_v2: [fullkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 11:35:27,032 [INFO] core.evaluator_v2: [fullkv] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-07-02 11:35:34,449 [INFO] core.evaluator_v2: [fullkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-07-02 11:35:34,451 [INFO] __main__:   [fullkv@10%] hotpotqa [5/5] avg=2.50
+2026-07-02 11:35:34,453 [INFO] __main__:   [fullkv@10%] hotpotqa: 2.50
+2026-07-02 11:35:34,454 [INFO] __main__:   FULLKV: 8.80
+2026-07-02 11:35:34,455 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:35:34,565 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:35:34,598 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:35:35,480 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:35:57,483 [INFO] core.evaluator_v2: [adakv] pred="The results from these proposed strategies are that the knowledge graph (KG) is critical for the agent's success in the "
+2026-07-02 11:36:18,810 [INFO] core.evaluator_v2: [adakv] pred='The encoder in the system is a character-based encoder-decoder model, which is trained to predict the correct surface fo'
+2026-07-02 11:36:24,580 [INFO] core.evaluator_v2: [adakv] pred='The Augmented LibriSpeech dataset is not mentioned in the text. The text provides details about the CoVoST corpus, which'
+2026-07-02 11:36:30,064 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network Layers, and Loss Function. The Blo'
+2026-07-02 11:36:37,711 [INFO] core.evaluator_v2: [adakv] pred='The 6-layers and 9-layers sMBR models were compared with the 2-layers and 8-layers sMBR models. The 6-layers and 9-layer'
+2026-07-02 11:36:37,744 [INFO] __main__:   [adakv@10%] qasper [5/5] avg=5.62
+2026-07-02 11:36:37,749 [INFO] __main__:   [adakv@10%] qasper: 5.62
+2026-07-02 11:36:37,750 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:36:37,828 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:36:37,868 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:36:38,852 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:36:46,099 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell'
+2026-07-02 11:36:52,767 [INFO] core.evaluator_v2: [adakv] pred='Ribosomes.'
+2026-07-02 11:36:59,471 [INFO] core.evaluator_v2: [adakv] pred='Sarah Price and Rob Schneider are both **actors**.'
+2026-07-02 11:37:09,609 [INFO] core.evaluator_v2: [adakv] pred='The American Psychoanalytic Association.'
+2026-07-02 11:37:16,873 [INFO] core.evaluator_v2: [adakv] pred='Alfred A. Marcus worked as a consultant for the North American Company.'
+2026-07-02 11:37:16,875 [INFO] __main__:   [adakv@10%] hotpotqa [5/5] avg=40.00
+2026-07-02 11:37:16,877 [INFO] __main__:   [adakv@10%] hotpotqa: 40.00
+2026-07-02 11:37:16,878 [INFO] __main__:   ADAKV: 22.80
+2026-07-02 11:37:16,879 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:37:16,952 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:37:16,985 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:37:17,893 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:37:42,060 [INFO] core.evaluator_v2: [ours] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained**:\n   - This strategy is significantly mor'
+2026-07-02 11:37:45,327 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture.'
+2026-07-02 11:37:48,938 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the Augmented LibriSpeech dataset.'
+2026-07-02 11:38:13,761 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks include the following neural network modules: \n\n- 3,047, 047, 047, 047, 047, 047, 047, 047, 047, 047, 047, '
+2026-07-02 11:38:20,019 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared with the text are: 6-layers and 9-layers sMBR models.'
+2026-07-02 11:38:20,024 [INFO] __main__:   [ours@10%] qasper [5/5] avg=6.94
+2026-07-02 11:38:20,024 [INFO] __main__:   [ours@10%] qasper: 6.94
+2026-07-02 11:38:20,025 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:38:20,096 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:38:20,135 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:38:21,018 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:38:28,352 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell'
+2026-07-02 11:38:35,087 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-07-02 11:38:41,775 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actresses.'
+2026-07-02 11:38:53,057 [INFO] core.evaluator_v2: [ours] pred='The organization Arnold Richards was the former chair of, which is a member of the Center for Jewish History, is the **A'
+2026-07-02 11:39:00,640 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the North American Company.'
+2026-07-02 11:39:00,645 [INFO] __main__:   [ours@10%] hotpotqa [5/5] avg=40.00
+2026-07-02 11:39:00,647 [INFO] __main__:   [ours@10%] hotpotqa: 40.00
+2026-07-02 11:39:00,649 [INFO] __main__:   OURS: 23.40
+2026-07-02 11:39:00,651 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 11:39:00,652 [INFO] __main__: Budget: 20%
+2026-07-02 11:39:00,653 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:39:00,726 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:39:00,764 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:39:02,106 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:39:09,289 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-02 11:39:12,216 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-07-02 11:39:15,880 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:39:20,554 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-07-02 11:39:26,658 [INFO] core.evaluator_v2: [fullkv] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-07-02 11:39:26,660 [INFO] __main__:   [fullkv@20%] qasper [5/5] avg=15.08
+2026-07-02 11:39:26,660 [INFO] __main__:   [fullkv@20%] qasper: 15.08
+2026-07-02 11:39:26,692 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:39:26,809 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:39:26,865 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:39:28,020 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:39:35,537 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-07-02 11:39:43,341 [INFO] core.evaluator_v2: [fullkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:39:50,311 [INFO] core.evaluator_v2: [fullkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 11:40:01,821 [INFO] core.evaluator_v2: [fullkv] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-07-02 11:40:09,451 [INFO] core.evaluator_v2: [fullkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-07-02 11:40:09,477 [INFO] __main__:   [fullkv@20%] hotpotqa [5/5] avg=2.50
+2026-07-02 11:40:09,503 [INFO] __main__:   [fullkv@20%] hotpotqa: 2.50
+2026-07-02 11:40:09,555 [INFO] __main__:   FULLKV: 8.80
+2026-07-02 11:40:09,563 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:40:09,644 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:40:09,689 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:40:10,678 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:40:22,305 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-07-02 11:40:43,911 [INFO] core.evaluator_v2: [adakv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-07-02 11:40:47,304 [INFO] core.evaluator_v2: [adakv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:41:08,569 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-07-02 11:41:33,930 [INFO] core.evaluator_v2: [adakv] pred='The LSTM models compared in the text are the 6-layer and 9-layer models. The 6-layer model is initialized with Xavier in'
+2026-07-02 11:41:33,933 [INFO] __main__:   [adakv@20%] qasper [5/5] avg=3.29
+2026-07-02 11:41:33,933 [INFO] __main__:   [adakv@20%] qasper: 3.29
+2026-07-02 11:41:33,934 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:41:34,018 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:41:34,048 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:41:34,798 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:41:41,617 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell.'
+2026-07-02 11:41:47,734 [INFO] core.evaluator_v2: [adakv] pred='Ribosomes.'
+2026-07-02 11:41:53,971 [INFO] core.evaluator_v2: [adakv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 11:42:03,264 [INFO] core.evaluator_v2: [adakv] pred='YIVO.'
+2026-07-02 11:42:10,172 [INFO] core.evaluator_v2: [adakv] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-07-02 11:42:10,174 [INFO] __main__:   [adakv@20%] hotpotqa [5/5] avg=60.00
+2026-07-02 11:42:10,175 [INFO] __main__:   [adakv@20%] hotpotqa: 60.00
+2026-07-02 11:42:10,175 [INFO] __main__:   ADAKV: 31.60
+2026-07-02 11:42:10,176 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:42:10,245 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:42:10,275 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:42:11,075 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:42:17,299 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas A2C-Explo'
+2026-07-02 11:42:21,367 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, which is extended with a wide context window and with mu'
+2026-07-02 11:42:24,996 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:42:27,637 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n- Word/Character embedding\n- CNN/LSTM\n- CRF (Conditional Ra'
+2026-07-02 11:42:37,033 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared in the text are: \n\n1. Very deep unidirectional LSTM (initialized with Xavier initialization)\n2.'
+2026-07-02 11:42:37,037 [INFO] __main__:   [ours@20%] qasper [5/5] avg=14.32
+2026-07-02 11:42:37,044 [INFO] __main__:   [ours@20%] qasper: 14.32
+2026-07-02 11:42:37,046 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:42:37,119 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:42:37,151 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:42:38,099 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:42:45,064 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-07-02 11:42:51,628 [INFO] core.evaluator_v2: [ours] pred='Ribosomes.'
+2026-07-02 11:42:57,926 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 11:43:07,458 [INFO] core.evaluator_v2: [ours] pred='Arnrich.'
+2026-07-02 11:43:14,327 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the **Southern Company**.'
+2026-07-02 11:43:14,337 [INFO] __main__:   [ours@20%] hotpotqa [5/5] avg=40.00
+2026-07-02 11:43:14,346 [INFO] __main__:   [ours@20%] hotpotqa: 40.00
+2026-07-02 11:43:14,348 [INFO] __main__:   OURS: 27.10
+2026-07-02 11:43:14,348 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 11:43:14,349 [INFO] __main__: Budget: 30%
+2026-07-02 11:43:14,350 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:43:14,419 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:43:14,482 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:43:15,447 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:43:23,170 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-02 11:43:26,149 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-07-02 11:43:29,858 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:43:34,638 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-07-02 11:43:40,762 [INFO] core.evaluator_v2: [fullkv] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-07-02 11:43:40,784 [INFO] __main__:   [fullkv@30%] qasper [5/5] avg=15.08
+2026-07-02 11:43:40,790 [INFO] __main__:   [fullkv@30%] qasper: 15.08
+2026-07-02 11:43:40,791 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:43:40,916 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:43:40,949 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:43:41,958 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:43:49,534 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-07-02 11:43:57,425 [INFO] core.evaluator_v2: [fullkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:44:04,485 [INFO] core.evaluator_v2: [fullkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 11:44:15,668 [INFO] core.evaluator_v2: [fullkv] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-07-02 11:44:23,296 [INFO] core.evaluator_v2: [fullkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-07-02 11:44:23,358 [INFO] __main__:   [fullkv@30%] hotpotqa [5/5] avg=2.50
+2026-07-02 11:44:23,366 [INFO] __main__:   [fullkv@30%] hotpotqa: 2.50
+2026-07-02 11:44:23,368 [INFO] __main__:   FULLKV: 8.80
+2026-07-02 11:44:23,370 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:44:23,554 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:44:23,587 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:44:24,869 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:44:41,638 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C** (Knowledge Graph - Action - Chain) is a method t'
+2026-07-02 11:45:03,235 [INFO] core.evaluator_v2: [adakv] pred='The encoder is a character-based encoder-decoder model with an LSTM for context encoding. The encoder is a character-bas'
+2026-07-02 11:45:07,361 [INFO] core.evaluator_v2: [adakv] pred='The text does not provide the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:45:29,811 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (such as LSTM, CNN, a'
+2026-07-02 11:45:36,320 [INFO] core.evaluator_v2: [adakv] pred='The LSTM models compared with in the text are: 1) the 9-layer LSTM model, 2) the 8-layer LSTM model, and 3) the 2-layer '
+2026-07-02 11:45:36,326 [INFO] __main__:   [adakv@30%] qasper [5/5] avg=7.82
+2026-07-02 11:45:36,327 [INFO] __main__:   [adakv@30%] qasper: 7.82
+2026-07-02 11:45:36,327 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:45:36,412 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:45:36,448 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:45:37,315 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:45:43,907 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell.'
+2026-07-02 11:45:49,853 [INFO] core.evaluator_v2: [adakv] pred='Ribosomes.'
+2026-07-02 11:45:55,968 [INFO] core.evaluator_v2: [adakv] pred='Sarah Price and Rob Schneider are both actors and comedians.'
+2026-07-02 11:46:04,984 [INFO] core.evaluator_v2: [adakv] pred='YIVO.'
+2026-07-02 11:46:11,429 [INFO] core.evaluator_v2: [adakv] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-07-02 11:46:11,441 [INFO] __main__:   [adakv@30%] hotpotqa [5/5] avg=60.00
+2026-07-02 11:46:11,443 [INFO] __main__:   [adakv@30%] hotpotqa: 60.00
+2026-07-02 11:46:11,444 [INFO] __main__:   ADAKV: 33.90
+2026-07-02 11:46:11,444 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:46:11,512 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:46:11,623 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:46:12,683 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:46:23,672 [INFO] core.evaluator_v2: [ours] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** and **KG-A2C-Explore** both pass the bot'
+2026-07-02 11:46:26,661 [INFO] core.evaluator_v2: [ours] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-07-02 11:46:29,944 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:46:50,963 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n\n- Block Zoo: a gallery of alternative layers/modules for t'
+2026-07-02 11:46:57,217 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared with in the text are: 6-layers unidirectional LSTM model, 9-layers unidirectional LSTM model, a'
+2026-07-02 11:46:57,242 [INFO] __main__:   [ours@30%] qasper [5/5] avg=8.89
+2026-07-02 11:46:57,268 [INFO] __main__:   [ours@30%] qasper: 8.89
+2026-07-02 11:46:57,270 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:46:57,359 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:46:57,391 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:46:58,217 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:47:04,700 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-07-02 11:47:11,576 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:47:17,244 [INFO] core.evaluator_v2: [ours] pred=''
+2026-07-02 11:47:26,040 [INFO] core.evaluator_v2: [ours] pred='YIVO.'
+2026-07-02 11:47:32,504 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the Southern Company.'
+2026-07-02 11:47:32,515 [INFO] __main__:   [ours@30%] hotpotqa [5/5] avg=40.00
+2026-07-02 11:47:32,516 [INFO] __main__:   [ours@30%] hotpotqa: 40.00
+2026-07-02 11:47:32,517 [INFO] __main__:   OURS: 24.40
+2026-07-02 11:47:32,518 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 11:47:32,518 [INFO] __main__: Budget: 40%
+2026-07-02 11:47:32,519 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:47:32,590 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:47:32,620 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:47:33,469 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:47:40,737 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-02 11:47:43,695 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-07-02 11:47:47,292 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:47:51,899 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-07-02 11:47:58,219 [INFO] core.evaluator_v2: [fullkv] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-07-02 11:47:58,233 [INFO] __main__:   [fullkv@40%] qasper [5/5] avg=15.08
+2026-07-02 11:47:58,235 [INFO] __main__:   [fullkv@40%] qasper: 15.08
+2026-07-02 11:47:58,235 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:47:58,348 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:47:58,380 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:47:59,390 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:48:06,994 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-07-02 11:48:14,703 [INFO] core.evaluator_v2: [fullkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:48:21,875 [INFO] core.evaluator_v2: [fullkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 11:48:33,172 [INFO] core.evaluator_v2: [fullkv] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-07-02 11:48:40,825 [INFO] core.evaluator_v2: [fullkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-07-02 11:48:40,828 [INFO] __main__:   [fullkv@40%] hotpotqa [5/5] avg=2.50
+2026-07-02 11:48:40,829 [INFO] __main__:   [fullkv@40%] hotpotqa: 2.50
+2026-07-02 11:48:40,830 [INFO] __main__:   FULLKV: 8.80
+2026-07-02 11:48:40,839 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:48:40,912 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:48:40,950 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:48:41,763 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:48:54,867 [INFO] core.evaluator_v2: [adakv] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas the A2C-E'
+2026-07-02 11:49:16,406 [INFO] core.evaluator_v2: [adakv] pred='The encoder is an encoder-decoder model with a character-based encoder and a LSTM-based encoder for the context. The mod'
+2026-07-02 11:49:19,820 [INFO] core.evaluator_v2: [adakv] pred='The text does not mention the Augmented LibriSpeech dataset. Therefore, the answer is not provided in the text.'
+2026-07-02 11:49:24,119 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (including LSTM, CNN,'
+2026-07-02 11:49:29,134 [INFO] core.evaluator_v2: [adakv] pred='9-layers unidirectional LSTM model and 2-layers LSTM model.'
+2026-07-02 11:49:29,137 [INFO] __main__:   [adakv@40%] qasper [5/5] avg=14.11
+2026-07-02 11:49:29,138 [INFO] __main__:   [adakv@40%] qasper: 14.11
+2026-07-02 11:49:29,139 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:49:29,216 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:49:29,256 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:49:30,012 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:49:36,220 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell.'
+2026-07-02 11:49:41,788 [INFO] core.evaluator_v2: [adakv] pred='Ribosomes.'
+2026-07-02 11:49:47,517 [INFO] core.evaluator_v2: [adakv] pred='Sarah Price and Rob Schneider are both **actors**.'
+2026-07-02 11:49:55,813 [INFO] core.evaluator_v2: [adakv] pred='YIVO.'
+2026-07-02 11:50:01,920 [INFO] core.evaluator_v2: [adakv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-07-02 11:50:01,932 [INFO] __main__:   [adakv@40%] hotpotqa [5/5] avg=60.00
+2026-07-02 11:50:01,938 [INFO] __main__:   [adakv@40%] hotpotqa: 60.00
+2026-07-02 11:50:01,940 [INFO] __main__:   ADAKV: 37.00
+2026-07-02 11:50:01,941 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:50:02,032 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:50:02,098 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:50:02,998 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:50:11,535 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas the A2C-E'
+2026-07-02 11:50:13,993 [INFO] core.evaluator_v2: [ours] pred='The encoder in the system is a character-based encoder-decoder model.'
+2026-07-02 11:50:17,162 [INFO] core.evaluator_v2: [ours] pred='The text does not provide the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:50:21,410 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n\n- Embedding\n- Neural Network Layers (e.g., CNN, LSTM, CRF)'
+2026-07-02 11:50:26,829 [INFO] core.evaluator_v2: [ours] pred='The 9-layers unidirectional LSTM model and the 2-layers distilled LSTM model were compared.'
+2026-07-02 11:50:26,831 [INFO] __main__:   [ours@40%] qasper [5/5] avg=15.06
+2026-07-02 11:50:26,832 [INFO] __main__:   [ours@40%] qasper: 15.06
+2026-07-02 11:50:26,832 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:50:26,903 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:50:27,009 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:50:27,883 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:50:34,086 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell'
+2026-07-02 11:50:40,589 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:50:45,872 [INFO] core.evaluator_v2: [ours] pred=''
+2026-07-02 11:50:55,317 [INFO] core.evaluator_v2: [ours] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-07-02 11:51:01,445 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-07-02 11:51:01,478 [INFO] __main__:   [ours@40%] hotpotqa [5/5] avg=22.50
+2026-07-02 11:51:01,482 [INFO] __main__:   [ours@40%] hotpotqa: 22.50
+2026-07-02 11:51:01,487 [INFO] __main__:   OURS: 18.80
+2026-07-02 11:51:01,488 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-02 11:51:01,489 [INFO] __main__: Budget: 50%
+2026-07-02 11:51:01,490 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:51:01,625 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:51:01,664 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:51:02,790 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:51:10,339 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-02 11:51:13,464 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-07-02 11:51:17,091 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-02 11:51:21,648 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-07-02 11:51:27,908 [INFO] core.evaluator_v2: [fullkv] pred='The text compares the 6-layers and 9-layers sMBR models.'
+2026-07-02 11:51:27,936 [INFO] __main__:   [fullkv@50%] qasper [5/5] avg=15.08
+2026-07-02 11:51:27,938 [INFO] __main__:   [fullkv@50%] qasper: 15.08
+2026-07-02 11:51:27,940 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:51:28,013 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:51:28,058 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:51:29,063 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:51:36,616 [INFO] core.evaluator_v2: [fullkv] pred='Audra McDonald.'
+2026-07-02 11:51:44,369 [INFO] core.evaluator_v2: [fullkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:51:51,431 [INFO] core.evaluator_v2: [fullkv] pred='Sarah Price and Rob Schneider are both actors.'
+2026-07-02 11:52:02,588 [INFO] core.evaluator_v2: [fullkv] pred='Arnold Richards was the former chair of YIVO, which is a member of the Center for Jewish History.'
+2026-07-02 11:52:10,034 [INFO] core.evaluator_v2: [fullkv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-07-02 11:52:10,035 [INFO] __main__:   [fullkv@50%] hotpotqa [5/5] avg=2.50
+2026-07-02 11:52:10,036 [INFO] __main__:   [fullkv@50%] hotpotqa: 2.50
+2026-07-02 11:52:10,037 [INFO] __main__:   FULLKV: 8.80
+2026-07-02 11:52:10,037 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:52:10,142 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:52:10,170 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:52:10,975 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:52:20,430 [INFO] core.evaluator_v2: [adakv] pred='The proposed strategies (KG-A2C-Explore and KG-A2C-Explore) both pass the bottleneck of a score of 40, whereas the A2C-E'
+2026-07-02 11:52:22,670 [INFO] core.evaluator_v2: [adakv] pred='The encoder is a character-based encoder-decoder model.'
+2026-07-02 11:52:25,817 [INFO] core.evaluator_v2: [adakv] pred='The text does not mention the Augmented LibriSpeech dataset. The answer is not available in the text.'
+2026-07-02 11:52:46,651 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (including RNN, CNN, '
+2026-07-02 11:52:51,474 [INFO] core.evaluator_v2: [adakv] pred='The LSTM models compared with are the 6-layers and 9-layers models.'
+2026-07-02 11:52:51,476 [INFO] __main__:   [adakv@50%] qasper [5/5] avg=9.75
+2026-07-02 11:52:51,476 [INFO] __main__:   [adakv@50%] qasper: 9.75
+2026-07-02 11:52:51,477 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:52:51,579 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:52:51,606 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:52:52,366 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:52:58,195 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell.'
+2026-07-02 11:53:04,305 [INFO] core.evaluator_v2: [adakv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:53:09,489 [INFO] core.evaluator_v2: [adakv] pred=''
+2026-07-02 11:53:17,459 [INFO] core.evaluator_v2: [adakv] pred='YIVO.'
+2026-07-02 11:53:23,177 [INFO] core.evaluator_v2: [adakv] pred='Alfred A. Marcus worked as a consultant for Southern Company.'
+2026-07-02 11:53:23,178 [INFO] __main__:   [adakv@50%] hotpotqa [5/5] avg=40.00
+2026-07-02 11:53:23,179 [INFO] __main__:   [adakv@50%] hotpotqa: 40.00
+2026-07-02 11:53:23,180 [INFO] __main__:   ADAKV: 24.90
+2026-07-02 11:53:23,180 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-02 11:53:23,247 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:53:23,278 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:53:24,000 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-02 11:53:46,109 [INFO] core.evaluator_v2: [ours] pred='Algorithm.\nKG-A2C-Explore Go-Explore BIBREF9 is an algorithm that is designed to keep track of sub-optimal and under-exp'
+2026-07-02 11:53:50,834 [INFO] core.evaluator_v2: [ours] pred='The encoder in the system is a character-based encoder-decoder architecture, which is extended by three core innovations'
+2026-07-02 11:54:13,680 [INFO] core.evaluator_v2: [ours] pred='The text does not provide the size of the Augmented LibriSpeech dataset. The text provides information about the CoVoST '
+2026-07-02 11:54:17,670 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n\n- Embedding Layer\n- Neural Network Layers (e.g., CNN, LSTM'
+2026-07-02 11:54:23,031 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared with in the text are: 6-layers, 8-layers, and 9-layers unidirectional LSTM models.'
+2026-07-02 11:54:23,033 [INFO] __main__:   [ours@50%] qasper [5/5] avg=15.25
+2026-07-02 11:54:23,033 [INFO] __main__:   [ours@50%] qasper: 15.25
+2026-07-02 11:54:23,034 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-07-02 11:54:23,120 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 11:54:23,150 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-02 11:54:23,873 [INFO] core.dataset_loader: Loaded 5 samples from hotpotqa
+2026-07-02 11:54:29,639 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell'
+2026-07-02 11:54:35,938 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-07-02 11:54:41,381 [INFO] core.evaluator_v2: [ours] pred='Answer: Both are actors.'
+2026-07-02 11:54:49,245 [INFO] core.evaluator_v2: [ours] pred='YIVO.'
+2026-07-02 11:54:55,420 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for the National Carbon Capture Center, which is managed by Southern Company.'
+2026-07-02 11:54:55,422 [INFO] __main__:   [ours@50%] hotpotqa [5/5] avg=40.00
+2026-07-02 11:54:55,423 [INFO] __main__:   [ours@50%] hotpotqa: 40.00
+2026-07-02 11:54:55,424 [INFO] __main__:   OURS: 27.60
+2026-07-02 11:54:55,433 [INFO] core.results_manager: Results saved to results/exp4_budget_sensitivity_qwen3-4b_20260702_113417.csv
+2026-07-02 11:54:55,442 [INFO] core.results_manager: JSON saved to results/exp4_budget_sensitivity_qwen3-4b_20260702_113417.json
+2026-07-02 11:54:55,442 [INFO] __main__: Experiment 4 completed!

@@ -1,0 +1,37 @@
+2026-07-02 13:26:27,083 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-07-02 13:26:27,212 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:26:27,216 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-02 13:26:27,222 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 13:26:27,281 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:26:27,288 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-02 13:26:27,369 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-02 13:26:27,436 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-02 13:26:28,579 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-07-02 13:26:28,585 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-07-02 13:26:28,644 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:26:28,653 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-02 13:26:47,509 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-02 13:26:47,517 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-07-02 13:26:47,614 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-02 13:26:47,649 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-07-02 13:26:47,650 [INFO] __main__:   fullkv @ seq_len=2048
+2026-07-02 13:26:50,397 [INFO] __main__:     prefill=499.8ms, compress=0.0ms, mem_red=0.0%
+2026-07-02 13:26:50,407 [INFO] __main__:   adakv @ seq_len=2048
+2026-07-02 13:26:52,884 [INFO] __main__:     prefill=268.8ms, compress=275.6ms, mem_red=80.0%
+2026-07-02 13:26:52,885 [INFO] __main__:   ours @ seq_len=2048
+2026-07-02 13:26:55,230 [INFO] __main__:     prefill=265.7ms, compress=274.0ms, mem_red=80.0%
+2026-07-02 13:26:55,231 [INFO] __main__:   fullkv @ seq_len=4096
+2026-07-02 13:26:59,684 [INFO] __main__:     prefill=739.3ms, compress=0.0ms, mem_red=0.0%
+2026-07-02 13:26:59,685 [INFO] __main__:   adakv @ seq_len=4096
+2026-07-02 13:27:04,476 [INFO] __main__:     prefill=743.3ms, compress=624.2ms, mem_red=80.0%
+2026-07-02 13:27:04,477 [INFO] __main__:   ours @ seq_len=4096
+2026-07-02 13:27:09,245 [INFO] __main__:     prefill=744.3ms, compress=646.8ms, mem_red=80.0%
+2026-07-02 13:27:09,245 [INFO] __main__:   fullkv @ seq_len=8192
+2026-07-02 13:27:23,431 [INFO] __main__:     prefill=2847.8ms, compress=0.0ms, mem_red=0.0%
+2026-07-02 13:27:23,432 [INFO] __main__:   adakv @ seq_len=8192
+2026-07-02 13:27:37,923 [INFO] __main__:     prefill=2803.2ms, compress=1794.7ms, mem_red=80.0%
+2026-07-02 13:27:38,338 [INFO] __main__:   ours @ seq_len=8192
+2026-07-02 13:27:52,664 [INFO] __main__:     prefill=2730.3ms, compress=1827.5ms, mem_red=80.0%
+2026-07-02 13:27:52,671 [INFO] core.results_manager: Results saved to results/exp6_overhead_qwen3-4b_20260702_132627.csv
+2026-07-02 13:27:52,681 [INFO] core.results_manager: JSON saved to results/exp6_overhead_qwen3-4b_20260702_132627.json
+2026-07-02 13:27:52,682 [INFO] __main__: Experiment 6 completed!

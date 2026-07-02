@@ -1,0 +1,30 @@
+{
+  "model": "qwen3-4b",
+  "budget": 0.2,
+  "results": [
+    {
+      "Config": "Default (0.40,0.20,0.20,0.20)",
+      "qasper": 14.3,
+      "hotpotqa": 40.0,
+      "gov_report": 14.4,
+      "Avg": 22.9,
+      "Δ vs Default": 0.0
+    },
+    {
+      "Config": "Uniform (0.25,0.25,0.25,0.25)",
+      "qasper": 12.5,
+      "hotpotqa": 5.0,
+      "gov_report": 14.2,
+      "Avg": 10.6,
+      "Δ vs Default": -12.3
+    },
+    {
+      "Config": "Attn-Heavy (0.55,0.15,0.15,0.15)",
+      "qasper": 7.1,
+      "hotpotqa": 50.0,
+      "gov_report": 13.8,
+      "Avg": 23.6,
+      "Δ vs Default": 0.7
+    }
+  ]
+}

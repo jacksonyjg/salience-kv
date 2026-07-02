@@ -1,0 +1,77 @@
+{
+  "model": "qwen3-4b",
+  "results": [
+    {
+      "method": "fullkv",
+      "seq_length": 1887,
+      "prefill_ms": 470.8,
+      "compress_ms": 0.0,
+      "total_ms": 470.8,
+      "mem_reduction_%": 0.0
+    },
+    {
+      "method": "adakv",
+      "seq_length": 1887,
+      "prefill_ms": 270.1,
+      "compress_ms": 262.9,
+      "total_ms": 533.0,
+      "mem_reduction_%": 80.0
+    },
+    {
+      "method": "ours",
+      "seq_length": 1887,
+      "prefill_ms": 265.9,
+      "compress_ms": 267.7,
+      "total_ms": 533.6,
+      "mem_reduction_%": 80.0
+    },
+    {
+      "method": "fullkv",
+      "seq_length": 3732,
+      "prefill_ms": 738.4,
+      "compress_ms": 0.0,
+      "total_ms": 738.4,
+      "mem_reduction_%": 0.0
+    },
+    {
+      "method": "adakv",
+      "seq_length": 3732,
+      "prefill_ms": 742.5,
+      "compress_ms": 625.6,
+      "total_ms": 1368.1,
+      "mem_reduction_%": 80.0
+    },
+    {
+      "method": "ours",
+      "seq_length": 3732,
+      "prefill_ms": 742.9,
+      "compress_ms": 659.9,
+      "total_ms": 1402.8,
+      "mem_reduction_%": 80.0
+    },
+    {
+      "method": "fullkv",
+      "seq_length": 7422,
+      "prefill_ms": 2828.7,
+      "compress_ms": 0.0,
+      "total_ms": 2828.7,
+      "mem_reduction_%": 0.0
+    },
+    {
+      "method": "adakv",
+      "seq_length": 7422,
+      "prefill_ms": 2810.2,
+      "compress_ms": 1799.7,
+      "total_ms": 4609.9,
+      "mem_reduction_%": 80.0
+    },
+    {
+      "method": "ours",
+      "seq_length": 7422,
+      "prefill_ms": 2755.1,
+      "compress_ms": 1843.8,
+      "total_ms": 4598.9,
+      "mem_reduction_%": 80.0
+    }
+  ]
+}
