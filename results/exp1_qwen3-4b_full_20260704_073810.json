@@ -1,0 +1,100 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 5,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 7.065527065527066,
+        "qasper": 14.118579581483832
+      },
+      "avg_score": 10.59205332350545,
+      "avg_ttft_ms": 1499.0970037618592,
+      "avg_throughput": 19.038425317893108,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "narrativeqa": 11.661453242098403,
+        "qasper": 6.303854875283446
+      },
+      "avg_score": 8.982654058690924,
+      "avg_ttft_ms": 1468.2954168809647,
+      "avg_throughput": 14.200779806783167,
+      "avg_memory_reduction_pct": 80.00722657744083
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "narrativeqa": 8.84076560966201,
+        "qasper": 7.849870578084557
+      },
+      "avg_score": 8.345318093873285,
+      "avg_ttft_ms": 1532.8586463872975,
+      "avg_throughput": 17.140256960572188,
+      "avg_memory_reduction_pct": 80.00722657744083
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "narrativeqa": 8.235401258058012,
+        "qasper": 1.3991798394728543
+      },
+      "avg_score": 4.817290548765433,
+      "avg_ttft_ms": 1526.9412416251757,
+      "avg_throughput": 16.41182147918881,
+      "avg_memory_reduction_pct": 80.00722657744083
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "narrativeqa": 6.538346550995172,
+        "qasper": 5.8297635398492895
+      },
+      "avg_score": 6.18405504542223,
+      "avg_ttft_ms": 1526.209553091398,
+      "avg_throughput": 19.961427035682075,
+      "avg_memory_reduction_pct": 80.00722657744083
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 6.538346550995172,
+        "qasper": 5.8297635398492895
+      },
+      "avg_score": 6.18405504542223,
+      "avg_ttft_ms": 1535.013921386384,
+      "avg_throughput": 20.315407193770575,
+      "avg_memory_reduction_pct": 80.00722657744083
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 8.695341355891815,
+        "qasper": 10.746243599429196
+      },
+      "avg_score": 9.720792477660506,
+      "avg_ttft_ms": 1615.6569751114612,
+      "avg_throughput": 16.814100064034267,
+      "avg_memory_reduction_pct": 80.00722657744083
+    }
+  ]
+}

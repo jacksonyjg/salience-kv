@@ -1,0 +1,109 @@
+2026-07-04 07:32:28,735 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 07:32:28,736 [INFO] __main__:   Model: qwen3-4b
+2026-07-04 07:32:28,736 [INFO] __main__:   Mode: full
+2026-07-04 07:32:28,737 [INFO] __main__:   Budget: 20%
+2026-07-04 07:32:28,738 [INFO] __main__:   Tasks: ['narrativeqa']
+2026-07-04 07:32:28,739 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-07-04 07:32:28,740 [INFO] __main__:   Samples/task: 1
+2026-07-04 07:32:28,741 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-07-04 07:32:28,742 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-07-04 07:32:28,850 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:32:28,856 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-04 07:32:28,954 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:32:28,962 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 07:32:29,065 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-04 07:32:29,119 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 07:32:30,266 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-07-04 07:32:30,269 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-07-04 07:32:30,303 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:32:30,314 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-04 07:32:30,320 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-04 07:32:47,184 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:32:47,190 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 07:32:47,276 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-04 07:32:47,300 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-07-04 07:32:47,320 [INFO] __main__: 사전 데이터 로딩 중...
+2026-07-04 07:32:47,321 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-04 07:32:47,349 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:32:47,380 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 07:32:48,014 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:32:48,045 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-04 07:32:48,077 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:32:48,116 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-04 07:32:48,461 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-07-04 07:32:48,463 [INFO] __main__:   ✓ narrativeqa: 1샘플 로드 완료
+2026-07-04 07:32:48,463 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-07-04 07:32:48,464 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:32:48,465 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-07-04 07:32:48,465 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:32:48,466 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:32:48,467 [INFO] core.evaluator_v2: [fullkv] narrativeqa (1샘플, budget=20%)
+2026-07-04 07:32:48,866 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:32:54,784 [INFO] core.evaluator_v2: [fullkv] pred='Daisy encountered Jim in Eatonville.'
+2026-07-04 07:32:54,787 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=3287.5ms
+2026-07-04 07:32:54,788 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:32:54,789 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-07-04 07:32:54,790 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:32:54,791 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:32:54,791 [INFO] core.evaluator_v2: [streaming] narrativeqa (1샘플, budget=20%)
+2026-07-04 07:32:55,567 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:33:04,571 [INFO] core.evaluator_v2: [streaming] pred='The town is not explicitly named in the text, but it is implied to be a small, racially segregated Southern community, l'
+2026-07-04 07:33:04,574 [INFO] __main__:   → score=5.00, mem_red=80.0%, ttft=2643.6ms
+2026-07-04 07:33:04,575 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:33:04,578 [INFO] __main__: Method: H2O | Budget: 20%
+2026-07-04 07:33:04,579 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:33:04,580 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:33:04,581 [INFO] core.evaluator_v2: [h2o] narrativeqa (1샘플, budget=20%)
+2026-07-04 07:33:05,405 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:33:12,670 [INFO] core.evaluator_v2: [h2o] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:33:12,672 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2929.7ms
+2026-07-04 07:33:12,672 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:33:12,673 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-07-04 07:33:12,674 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:33:12,674 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:33:12,675 [INFO] core.evaluator_v2: [snapkv] narrativeqa (1샘플, budget=20%)
+2026-07-04 07:33:13,233 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:33:20,516 [INFO] core.evaluator_v2: [snapkv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:33:20,518 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2937.9ms
+2026-07-04 07:33:20,519 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:33:20,519 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-07-04 07:33:20,520 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:33:20,521 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:33:20,521 [INFO] core.evaluator_v2: [pyramidkv] narrativeqa (1샘플, budget=20%)
+2026-07-04 07:33:21,170 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:33:28,403 [INFO] core.evaluator_v2: [pyramidkv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:33:28,411 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2884.7ms
+2026-07-04 07:33:28,413 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:33:28,414 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-07-04 07:33:28,416 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:33:28,416 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:33:28,418 [INFO] core.evaluator_v2: [adakv] narrativeqa (1샘플, budget=20%)
+2026-07-04 07:33:28,953 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:33:36,249 [INFO] core.evaluator_v2: [adakv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:33:36,251 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2922.4ms
+2026-07-04 07:33:36,252 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:33:36,252 [INFO] __main__: Method: OURS | Budget: 20%
+2026-07-04 07:33:36,253 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:33:36,254 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:33:36,254 [INFO] core.evaluator_v2: [ours] narrativeqa (1샘플, budget=20%)
+2026-07-04 07:33:36,898 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:33:44,258 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:33:44,271 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2979.8ms
+2026-07-04 07:33:44,282 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260704_073228.csv
+2026-07-04 07:33:44,310 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260704_073228.json
+2026-07-04 07:33:44,312 [INFO] __main__: Experiment 1 completed!

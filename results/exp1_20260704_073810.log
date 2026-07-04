@@ -1,0 +1,240 @@
+2026-07-04 07:38:10,073 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 07:38:10,074 [INFO] __main__:   Model: qwen3-4b
+2026-07-04 07:38:10,075 [INFO] __main__:   Mode: full
+2026-07-04 07:38:10,076 [INFO] __main__:   Budget: 20%
+2026-07-04 07:38:10,076 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper']
+2026-07-04 07:38:10,077 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-07-04 07:38:10,077 [INFO] __main__:   Samples/task: 5
+2026-07-04 07:38:10,078 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-07-04 07:38:10,079 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-07-04 07:38:10,179 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:38:10,185 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-04 07:38:10,256 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:38:10,258 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-04 07:38:10,264 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 07:38:10,351 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-04 07:38:10,391 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 07:38:11,438 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-07-04 07:38:11,440 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-07-04 07:38:11,471 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:38:11,476 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-07-04 07:38:20,222 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:38:20,229 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 07:38:20,311 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-04 07:38:20,340 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-07-04 07:38:20,357 [INFO] __main__: 사전 데이터 로딩 중...
+2026-07-04 07:38:20,358 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-04 07:38:20,400 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:38:20,440 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 07:38:21,047 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:38:21,078 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-04 07:38:21,112 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:38:21,147 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-04 07:38:21,563 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-07-04 07:38:21,565 [INFO] __main__:   ✓ narrativeqa: 5샘플 로드 완료
+2026-07-04 07:38:21,566 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-04 07:38:21,599 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 07:38:21,639 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 07:38:22,315 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-04 07:38:22,317 [INFO] __main__:   ✓ qasper: 5샘플 로드 완료
+2026-07-04 07:38:22,318 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-07-04 07:38:22,319 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:38:22,320 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-07-04 07:38:22,321 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:38:22,322 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:38:22,323 [INFO] core.evaluator_v2: [fullkv] narrativeqa (5샘플, budget=20%)
+2026-07-04 07:38:22,716 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:38:28,482 [INFO] core.evaluator_v2: [fullkv] pred='Daisy encountered Jim in Eatonville.'
+2026-07-04 07:38:35,137 [INFO] core.evaluator_v2: [fullkv] pred='Socrates ultimately decides it is unjust to escape because he believes that the laws of Athens are just and that he has '
+2026-07-04 07:38:35,700 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-07-04 07:38:43,833 [INFO] core.evaluator_v2: [fullkv] pred='The story is set in medieval Germany, specifically in the castle of Trutz-Drachen and the surrounding areas, including t'
+2026-07-04 07:38:44,503 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-07-04 07:38:51,822 [INFO] core.evaluator_v2: [fullkv] pred='Baron Conrad did not kill anyone. He held off the pursuing forces at the bridge and fought fiercely against Baron Henry '
+2026-07-04 07:38:52,390 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-07-04 07:38:58,123 [INFO] core.evaluator_v2: [fullkv] pred="The ghost that emerged from a painting at Dana's workplace is Vigo, the Carpathian."
+2026-07-04 07:38:58,124 [INFO] core.evaluator_v2:   [5/5] avg=7.07
+2026-07-04 07:38:58,125 [INFO] __main__:   → score=7.07, mem_red=0.0%, ttft=2497.4ms
+2026-07-04 07:38:58,126 [INFO] __main__: 
+  Task: qasper
+2026-07-04 07:38:58,126 [INFO] core.evaluator_v2: [fullkv] qasper (5샘플, budget=20%)
+2026-07-04 07:39:02,921 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies show that agents using knowledge graphs with enhanced exploration methods (KG-A2C-chained and KG'
+2026-07-04 07:39:04,578 [INFO] core.evaluator_v2: [fullkv] pred='The encoder in the system is an LSTM (Long Short-Term Memory) encoder.'
+2026-07-04 07:39:06,213 [INFO] core.evaluator_v2: [fullkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-04 07:39:09,375 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes the following neural network modules: Embedding Layer, Neural Network Layers (RNN, CNN, QRNN, Tran'
+2026-07-04 07:39:15,169 [INFO] core.evaluator_v2: [fullkv] pred='The text compares several LSTM models, including:\n\n1. 2-layer LSTM model (used as a shallow model for distillation and t'
+2026-07-04 07:39:15,171 [INFO] core.evaluator_v2:   [5/5] avg=14.12
+2026-07-04 07:39:15,171 [INFO] __main__:   → score=14.12, mem_red=0.0%, ttft=500.8ms
+2026-07-04 07:39:15,172 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:39:15,173 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-07-04 07:39:15,173 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:39:15,174 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:39:15,174 [INFO] core.evaluator_v2: [streaming] narrativeqa (5샘플, budget=20%)
+2026-07-04 07:39:15,467 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:39:24,066 [INFO] core.evaluator_v2: [streaming] pred='The town is not explicitly named in the text, but it is implied to be a small, racially segregated Southern community, l'
+2026-07-04 07:39:30,928 [INFO] core.evaluator_v2: [streaming] pred='Socrates decides it is unjust to escape because he believes in obeying the laws of the state, even when they lead to his'
+2026-07-04 07:39:31,332 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-07-04 07:39:40,980 [INFO] core.evaluator_v2: [streaming] pred='The story is set in medieval Europe, primarily in the regions of Drachenhausen and Trutz-Drachen, which are depicted as '
+2026-07-04 07:39:41,564 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-07-04 07:39:48,754 [INFO] core.evaluator_v2: [streaming] pred='Baron Conrad killed Baron Henry of Roderburg.'
+2026-07-04 07:39:49,477 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-07-04 07:39:56,892 [INFO] core.evaluator_v2: [streaming] pred="The ghost that emerged from a painting at Dana's workplace was **Vigo**."
+2026-07-04 07:39:56,893 [INFO] core.evaluator_v2:   [5/5] avg=11.66
+2026-07-04 07:39:56,894 [INFO] __main__:   → score=11.66, mem_red=80.0%, ttft=2398.9ms
+2026-07-04 07:39:56,895 [INFO] __main__: 
+  Task: qasper
+2026-07-04 07:39:56,906 [INFO] core.evaluator_v2: [streaming] qasper (5샘플, budget=20%)
+2026-07-04 07:40:00,073 [INFO] core.evaluator_v2: [streaming] pred='The proposed strategies show that KG-A2C-chained is significantly more sample efficient and converges faster, while both'
+2026-07-04 07:40:01,431 [INFO] core.evaluator_v2: [streaming] pred='The encoder is a character-based encoder-decoder model.'
+2026-07-04 07:40:03,121 [INFO] core.evaluator_v2: [streaming] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-04 07:40:05,030 [INFO] core.evaluator_v2: [streaming] pred='NeuronBlocks includes modules such as CNN, BiLSTM, Attention, and BERT-based models. It also supports knowledge distilla'
+2026-07-04 07:40:07,392 [INFO] core.evaluator_v2: [streaming] pred='The text compares the 6-layer and 9-layer sMBR models.'
+2026-07-04 07:40:07,393 [INFO] core.evaluator_v2:   [5/5] avg=6.30
+2026-07-04 07:40:07,394 [INFO] __main__:   → score=6.30, mem_red=80.0%, ttft=537.7ms
+2026-07-04 07:40:07,394 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:40:07,395 [INFO] __main__: Method: H2O | Budget: 20%
+2026-07-04 07:40:07,406 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:40:07,407 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:40:07,408 [INFO] core.evaluator_v2: [h2o] narrativeqa (5샘플, budget=20%)
+2026-07-04 07:40:07,709 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:40:15,051 [INFO] core.evaluator_v2: [h2o] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:40:23,322 [INFO] core.evaluator_v2: [h2o] pred='Socrates ultimately decides it is unjust to escape because he believes in the principles of justice and the laws of the '
+2026-07-04 07:40:23,755 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-07-04 07:40:35,972 [INFO] core.evaluator_v2: [h2o] pred='The setting of the story is a medieval European kingdom, specifically in the region of Germany, Austria, Italy, and Bohe'
+2026-07-04 07:40:36,536 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-07-04 07:40:43,847 [INFO] core.evaluator_v2: [h2o] pred='Baron Conrad was killed by Baron Henry of Roderburg.'
+2026-07-04 07:40:44,501 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-07-04 07:40:52,101 [INFO] core.evaluator_v2: [h2o] pred="The ghost that emerged from a painting at Dana's workplace was **Vigo**, a powerful psychic entity."
+2026-07-04 07:40:52,106 [INFO] core.evaluator_v2:   [5/5] avg=8.84
+2026-07-04 07:40:52,107 [INFO] __main__:   → score=8.84, mem_red=80.0%, ttft=2532.6ms
+2026-07-04 07:40:52,107 [INFO] __main__: 
+  Task: qasper
+2026-07-04 07:40:52,108 [INFO] core.evaluator_v2: [h2o] qasper (5샘플, budget=20%)
+2026-07-04 07:40:58,444 [INFO] core.evaluator_v2: [h2o] pred='The proposed strategies, when applied, show that the knowledge graph is a critical component in the decision-making proc'
+2026-07-04 07:41:15,361 [INFO] core.evaluator_v2: [h2o] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-07-04 07:41:17,028 [INFO] core.evaluator_v2: [h2o] pred='The text does not provide the size of the Augmented LibriSpeech dataset.'
+2026-07-04 07:41:22,880 [INFO] core.evaluator_v2: [h2o] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network Layers, Loss Function, Metric, Mod'
+2026-07-04 07:41:25,230 [INFO] core.evaluator_v2: [h2o] pred='The LSTM models compared are the 6-layers and 9-layers models.'
+2026-07-04 07:41:25,231 [INFO] core.evaluator_v2:   [5/5] avg=7.85
+2026-07-04 07:41:25,231 [INFO] __main__:   → score=7.85, mem_red=80.0%, ttft=533.1ms
+2026-07-04 07:41:25,232 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:41:25,232 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-07-04 07:41:25,232 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:41:25,233 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:41:25,233 [INFO] core.evaluator_v2: [snapkv] narrativeqa (5샘플, budget=20%)
+2026-07-04 07:41:25,505 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:41:32,823 [INFO] core.evaluator_v2: [snapkv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:41:40,694 [INFO] core.evaluator_v2: [snapkv] pred='Socrates ultimately decides it is unjust to escape because he believes in obeying the laws of the state, even when they '
+2026-07-04 07:41:41,101 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-07-04 07:41:51,280 [INFO] core.evaluator_v2: [snapkv] pred='The story is set in the medieval kingdom of Germany, with key locations including the castle of Drachenhausen, the bridg'
+2026-07-04 07:41:51,889 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-07-04 07:41:59,271 [INFO] core.evaluator_v2: [snapkv] pred='Baron Conrad killed Baron Henry of Roderburg.'
+2026-07-04 07:42:00,083 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-07-04 07:42:09,923 [INFO] core.evaluator_v2: [snapkv] pred="The ghost that emerged from a painting at Dana's workplace was **Vigo**, a powerful and menacing figure who was revealed"
+2026-07-04 07:42:09,925 [INFO] core.evaluator_v2:   [5/5] avg=8.24
+2026-07-04 07:42:09,925 [INFO] __main__:   → score=8.24, mem_red=80.0%, ttft=2522.8ms
+2026-07-04 07:42:09,926 [INFO] __main__: 
+  Task: qasper
+2026-07-04 07:42:09,926 [INFO] core.evaluator_v2: [snapkv] qasper (5샘플, budget=20%)
+2026-07-04 07:42:23,068 [INFO] core.evaluator_v2: [snapkv] pred='The results from these proposed strategies are that both agents successfully pass the bottleneck corresponding to enteri'
+2026-07-04 07:42:24,403 [INFO] core.evaluator_v2: [snapkv] pred='The encoder is a character-based encoder-decoder model.'
+2026-07-04 07:42:26,071 [INFO] core.evaluator_v2: [snapkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-04 07:42:27,178 [INFO] core.evaluator_v2: [snapkv] pred=''
+2026-07-04 07:42:44,801 [INFO] core.evaluator_v2: [snapkv] pred='The LSTM models compared in the text are the 2-layer and 9-layer LSTM models. The 2-layer model is distilled from the 9-'
+2026-07-04 07:42:44,809 [INFO] core.evaluator_v2:   [5/5] avg=1.40
+2026-07-04 07:42:44,809 [INFO] __main__:   → score=1.40, mem_red=80.0%, ttft=531.1ms
+2026-07-04 07:42:44,810 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:42:44,811 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-07-04 07:42:44,811 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:42:44,812 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:42:44,812 [INFO] core.evaluator_v2: [pyramidkv] narrativeqa (5샘플, budget=20%)
+2026-07-04 07:42:45,088 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:42:52,383 [INFO] core.evaluator_v2: [pyramidkv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:43:05,035 [INFO] core.evaluator_v2: [pyramidkv] pred='Socrates ultimately decides it is unjust to escape because he believes in the **moral and legal obligation to obey the l'
+2026-07-04 07:43:05,569 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-07-04 07:43:25,509 [INFO] core.evaluator_v2: [pyramidkv] pred='The setting of the story is a medieval European kingdom, specifically in the region of Germany, Austria, Italy, and Bohe'
+2026-07-04 07:43:26,223 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-07-04 07:43:33,538 [INFO] core.evaluator_v2: [pyramidkv] pred='Baron Conrad was killed by Baron Henry of Roderburg.'
+2026-07-04 07:43:34,246 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-07-04 07:43:42,461 [INFO] core.evaluator_v2: [pyramidkv] pred="The ghost that emerged from a painting at Dana's workplace was **Vigo**, a supernatural entity who was trapped in a pain"
+2026-07-04 07:43:42,462 [INFO] core.evaluator_v2:   [5/5] avg=6.54
+2026-07-04 07:43:42,462 [INFO] __main__:   → score=6.54, mem_red=80.0%, ttft=2532.7ms
+2026-07-04 07:43:42,463 [INFO] __main__: 
+  Task: qasper
+2026-07-04 07:43:42,463 [INFO] core.evaluator_v2: [pyramidkv] qasper (5샘플, budget=20%)
+2026-07-04 07:43:51,270 [INFO] core.evaluator_v2: [pyramidkv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-07-04 07:44:08,291 [INFO] core.evaluator_v2: [pyramidkv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-07-04 07:44:09,954 [INFO] core.evaluator_v2: [pyramidkv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-04 07:44:14,196 [INFO] core.evaluator_v2: [pyramidkv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-07-04 07:44:32,256 [INFO] core.evaluator_v2: [pyramidkv] pred='The LSTM models compared in the text are the unidirectional LSTM model and the bidirectional LSTM model. The text discus'
+2026-07-04 07:44:32,257 [INFO] core.evaluator_v2:   [5/5] avg=5.83
+2026-07-04 07:44:32,258 [INFO] __main__:   → score=5.83, mem_red=80.0%, ttft=519.7ms
+2026-07-04 07:44:32,259 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:44:32,260 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-07-04 07:44:32,260 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:44:32,261 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:44:32,262 [INFO] core.evaluator_v2: [adakv] narrativeqa (5샘플, budget=20%)
+2026-07-04 07:44:32,547 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:44:39,879 [INFO] core.evaluator_v2: [adakv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:44:52,708 [INFO] core.evaluator_v2: [adakv] pred='Socrates ultimately decides it is unjust to escape because he believes in the **moral and legal obligation to obey the l'
+2026-07-04 07:44:53,108 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-07-04 07:45:13,198 [INFO] core.evaluator_v2: [adakv] pred='The setting of the story is a medieval European kingdom, specifically in the region of Germany, Austria, Italy, and Bohe'
+2026-07-04 07:45:14,143 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-07-04 07:45:21,460 [INFO] core.evaluator_v2: [adakv] pred='Baron Conrad was killed by Baron Henry of Roderburg.'
+2026-07-04 07:45:22,142 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-07-04 07:45:30,264 [INFO] core.evaluator_v2: [adakv] pred="The ghost that emerged from a painting at Dana's workplace was **Vigo**, a supernatural entity who was trapped in a pain"
+2026-07-04 07:45:30,266 [INFO] core.evaluator_v2:   [5/5] avg=6.54
+2026-07-04 07:45:30,266 [INFO] __main__:   → score=6.54, mem_red=80.0%, ttft=2543.3ms
+2026-07-04 07:45:30,267 [INFO] __main__: 
+  Task: qasper
+2026-07-04 07:45:30,268 [INFO] core.evaluator_v2: [adakv] qasper (5샘플, budget=20%)
+2026-07-04 07:45:38,859 [INFO] core.evaluator_v2: [adakv] pred='The results from the proposed strategies are as follows:\n\n1. **KG-A2C-Chained** is significantly more sample efficient a'
+2026-07-04 07:45:55,437 [INFO] core.evaluator_v2: [adakv] pred='The encoder is a character-based encoder-decoder model with a wide context window, encoding the entire available context'
+2026-07-04 07:45:57,088 [INFO] core.evaluator_v2: [adakv] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-04 07:46:01,283 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes the following neural network modules: Embedding, Neural Network (NLP) Layers, Loss Function, Metri'
+2026-07-04 07:46:18,990 [INFO] core.evaluator_v2: [adakv] pred='The LSTM models compared in the text are the unidirectional LSTM model and the bidirectional LSTM model. The text discus'
+2026-07-04 07:46:18,992 [INFO] core.evaluator_v2:   [5/5] avg=5.83
+2026-07-04 07:46:18,992 [INFO] __main__:   → score=5.83, mem_red=80.0%, ttft=526.7ms
+2026-07-04 07:46:18,993 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 07:46:18,994 [INFO] __main__: Method: OURS | Budget: 20%
+2026-07-04 07:46:18,994 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 07:46:19,008 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 07:46:19,009 [INFO] core.evaluator_v2: [ours] narrativeqa (5샘플, budget=20%)
+2026-07-04 07:46:19,501 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-07-04 07:46:26,891 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-07-04 07:46:34,799 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in obeying the laws of his city and the moral pri'
+2026-07-04 07:46:35,263 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-07-04 07:46:47,588 [INFO] core.evaluator_v2: [ours] pred='The setting of the story is a medieval castle and its surrounding area, specifically the bridge over a river, which serv'
+2026-07-04 07:46:48,098 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-07-04 07:46:55,811 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad killed the robber baron, Baron Henry of Roderburg.'
+2026-07-04 07:46:56,444 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-07-04 07:47:04,238 [INFO] core.evaluator_v2: [ours] pred="The ghost that emerged from the painting at Dana's workplace was **Vigo**, a powerful supernatural entity."
+2026-07-04 07:47:04,240 [INFO] core.evaluator_v2:   [5/5] avg=8.70
+2026-07-04 07:47:04,241 [INFO] __main__:   → score=8.70, mem_red=80.0%, ttft=2674.5ms
+2026-07-04 07:47:04,241 [INFO] __main__: 
+  Task: qasper
+2026-07-04 07:47:04,242 [INFO] core.evaluator_v2: [ours] qasper (5샘플, budget=20%)
+2026-07-04 07:47:21,017 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies (KG-A2C-chained and KG-A2C-Explore) both successfully pass the bottleneck (enter the cellar and '
+2026-07-04 07:47:22,931 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder architecture, with a wide context window and a multi-task learning app'
+2026-07-04 07:47:24,604 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-04 07:47:40,973 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: Word/Character Embedding, CNN/LSTM, and Attention based mode'
+2026-07-04 07:47:43,568 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared in the text are the 6-layers and 9-layers sMBR models.'
+2026-07-04 07:47:43,569 [INFO] core.evaluator_v2:   [5/5] avg=10.75
+2026-07-04 07:47:43,570 [INFO] __main__:   → score=10.75, mem_red=80.0%, ttft=556.8ms
+2026-07-04 07:47:43,581 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260704_073810.csv
+2026-07-04 07:47:43,592 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260704_073810.json
+2026-07-04 07:47:43,594 [INFO] __main__: Experiment 1 completed!
