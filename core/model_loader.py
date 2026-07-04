@@ -236,7 +236,9 @@ def load_model_and_tokenizer(
     model_kwargs = {
         "torch_dtype": dtype,
         "device_map": device,
-        "trust_remote_code": True,
+        # Phi-3-mini는 Transformers 5.x에 내장 아키텍처로 편입되어 있어 trust_remote_code 불필요
+        # (저장소의 구버전 원격 코드는 DynamicCache.from_legacy_cache() 등 제거된 API에 의존해 비호환)
+        "trust_remote_code": model_key != "phi-3-mini",
         "attn_implementation": attn_impl,
     }
     
@@ -244,9 +246,12 @@ def load_model_and_tokenizer(
     if model_key == "gemma-2-2b":
         model_kwargs["attn_implementation"] = "eager"
 
-    # Qwen3, Phi-3: importance 계산은 key norm 기반(attn_weights 불필요, v3 기준)
+    # Qwen3: importance 계산은 key norm 기반(attn_weights 불필요, v3 기준)
     # sdpa로 전환하여 eager의 O(L^2) 메모리 문제 해결
-    if model_key in ("qwen3-4b", "phi-3-mini"):
+    if model_key == "qwen3-4b":
+        model_kwargs["attn_implementation"] = "sdpa"
+    # Phi-3-mini: trust_remote_code=False(내장 아키텍처)로 전환 후 sdpa 재시도
+    if model_key == "phi-3-mini":
         model_kwargs["attn_implementation"] = "sdpa"
 
     model = AutoModelForCausalLM.from_pretrained(model_name, **model_kwargs)
