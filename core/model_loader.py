@@ -126,9 +126,10 @@ def make_prompt(model_key: str, tokenizer, context: str, question: str, task_typ
         return prompt
 
     elif fmt == "gemma2_chat":
-        # Gemma-2: <start_of_turn>user\n ... <end_of_turn>\n<start_of_turn>model\n
+        # Gemma-2: <bos> 필수 (없으면 생성이 완전히 붕괴됨, 2026-07-04 확인)
+        bos = tokenizer.bos_token or "<bos>"
         prompt = (
-            f"<start_of_turn>user\n{user_content}<end_of_turn>\n"
+            f"{bos}<start_of_turn>user\n{user_content}<end_of_turn>\n"
             f"<start_of_turn>model\n"
         )
         return prompt

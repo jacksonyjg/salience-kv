@@ -73,7 +73,10 @@ class EvaluatorV2:
             context=sample["context"], question=sample["question"],
             task_type=sample["task_type"],
         )
-        inputs = tokenize_prompt(prompt, self.tokenizer, self.model_key, max_input_length=16000, device=self.device)
+        # 모델별 안전 한계 고려 (Gemma-2-2b는 8192 설계 한계 초과시 생성 붕괴, 2026-07-04 확인)
+        model_max_len = self.cfg.get("max_length", 16000)
+        safe_max_input = min(16000, model_max_len - 1000)  # 응답 생성 여유분 확보
+        inputs = tokenize_prompt(prompt, self.tokenizer, self.model_key, max_input_length=safe_max_input, device=self.device)
         input_ids = inputs["input_ids"]
         attention_mask = inputs["attention_mask"]
         input_length = input_ids.shape[1]
