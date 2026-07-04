@@ -1,0 +1,155 @@
+{
+  "model": "qwen3-4b",
+  "results": [
+    {
+      "method": "fullkv",
+      "budget": 0.1,
+      "avg_score": 14.3,
+      "task_scores": {
+        "narrativeqa": 14.8,
+        "hotpotqa": 11.9,
+        "gov_report": 16.1
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.1,
+      "avg_score": 14.9,
+      "task_scores": {
+        "narrativeqa": 10.4,
+        "hotpotqa": 19.0,
+        "gov_report": 15.3
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.1,
+      "avg_score": 14.8,
+      "task_scores": {
+        "narrativeqa": 8.0,
+        "hotpotqa": 21.8,
+        "gov_report": 14.7
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.2,
+      "avg_score": 14.3,
+      "task_scores": {
+        "narrativeqa": 14.8,
+        "hotpotqa": 11.9,
+        "gov_report": 16.1
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.2,
+      "avg_score": 17.7,
+      "task_scores": {
+        "narrativeqa": 12.1,
+        "hotpotqa": 24.9,
+        "gov_report": 16.2
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.2,
+      "avg_score": 16.9,
+      "task_scores": {
+        "narrativeqa": 13.4,
+        "hotpotqa": 21.3,
+        "gov_report": 15.9
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.3,
+      "avg_score": 14.3,
+      "task_scores": {
+        "narrativeqa": 14.8,
+        "hotpotqa": 11.9,
+        "gov_report": 16.1
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.3,
+      "avg_score": 16.8,
+      "task_scores": {
+        "narrativeqa": 11.7,
+        "hotpotqa": 23.8,
+        "gov_report": 15.0
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.3,
+      "avg_score": 16.9,
+      "task_scores": {
+        "narrativeqa": 11.3,
+        "hotpotqa": 23.7,
+        "gov_report": 15.8
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.4,
+      "avg_score": 14.3,
+      "task_scores": {
+        "narrativeqa": 14.8,
+        "hotpotqa": 11.9,
+        "gov_report": 16.1
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.4,
+      "avg_score": 16.6,
+      "task_scores": {
+        "narrativeqa": 10.0,
+        "hotpotqa": 24.7,
+        "gov_report": 15.2
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.4,
+      "avg_score": 15.9,
+      "task_scores": {
+        "narrativeqa": 9.1,
+        "hotpotqa": 22.8,
+        "gov_report": 15.8
+      }
+    },
+    {
+      "method": "fullkv",
+      "budget": 0.5,
+      "avg_score": 14.3,
+      "task_scores": {
+        "narrativeqa": 14.8,
+        "hotpotqa": 11.9,
+        "gov_report": 16.1
+      }
+    },
+    {
+      "method": "adakv",
+      "budget": 0.5,
+      "avg_score": 16.8,
+      "task_scores": {
+        "narrativeqa": 11.9,
+        "hotpotqa": 25.2,
+        "gov_report": 13.4
+      }
+    },
+    {
+      "method": "ours",
+      "budget": 0.5,
+      "avg_score": 15.7,
+      "task_scores": {
+        "narrativeqa": 8.5,
+        "hotpotqa": 23.5,
+        "gov_report": 15.1
+      }
+    }
+  ]
+}
