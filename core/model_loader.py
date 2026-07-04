@@ -244,9 +244,9 @@ def load_model_and_tokenizer(
     if model_key == "gemma-2-2b":
         model_kwargs["attn_implementation"] = "eager"
 
-    # Qwen3: importance 계산은 key norm 기반(attn_weights 불필요, v3 기준)
+    # Qwen3, Phi-3: importance 계산은 key norm 기반(attn_weights 불필요, v3 기준)
     # sdpa로 전환하여 eager의 O(L^2) 메모리 문제 해결
-    if model_key == "qwen3-4b":
+    if model_key in ("qwen3-4b", "phi-3-mini"):
         model_kwargs["attn_implementation"] = "sdpa"
 
     model = AutoModelForCausalLM.from_pretrained(model_name, **model_kwargs)
