@@ -1,0 +1,140 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 50,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 14.85429187943221,
+        "qasper": 24.650948068470594,
+        "multifieldqa_en": 46.31771162210132,
+        "hotpotqa": 17.58585666623318,
+        "2wikimqa": 16.614255873451366,
+        "gov_report": 17.626905946298074,
+        "qmsum": 9.451094358389424
+      },
+      "avg_score": 21.01443777348231,
+      "avg_ttft_ms": 1597.0586898711688,
+      "avg_throughput": 18.211957612633178,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "narrativeqa": 16.53336689788353,
+        "qasper": 18.821983902865483,
+        "multifieldqa_en": 31.35713812504084,
+        "hotpotqa": 23.30564717400529,
+        "2wikimqa": 24.936428512220083,
+        "gov_report": 16.79778920806858,
+        "qmsum": 8.613827276058714
+      },
+      "avg_score": 20.052311585163217,
+      "avg_ttft_ms": 1461.2799654550556,
+      "avg_throughput": 14.300437590622858,
+      "avg_memory_reduction_pct": 80.0046970491676
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "narrativeqa": 13.512136034366627,
+        "qasper": 18.896870739733586,
+        "multifieldqa_en": 25.328148278894364,
+        "hotpotqa": 13.472411972830127,
+        "2wikimqa": 19.10577007875328,
+        "gov_report": 16.26871997284276,
+        "qmsum": 7.7263210498814
+      },
+      "avg_score": 16.330054018186022,
+      "avg_ttft_ms": 1662.469603217915,
+      "avg_throughput": 15.803809140274694,
+      "avg_memory_reduction_pct": 80.0046970491676
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "narrativeqa": 13.141090464803376,
+        "qasper": 13.697512408863043,
+        "multifieldqa_en": 25.434720932257843,
+        "hotpotqa": 16.480147667903157,
+        "2wikimqa": 18.635282959382238,
+        "gov_report": 15.750317492591314,
+        "qmsum": 6.9593635854286795
+      },
+      "avg_score": 15.728347930175664,
+      "avg_ttft_ms": 1791.423315802885,
+      "avg_throughput": 13.848602732364478,
+      "avg_memory_reduction_pct": 80.0046970491676
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "narrativeqa": 13.294093123017895,
+        "qasper": 21.07194382166456,
+        "multifieldqa_en": 26.922693867933322,
+        "hotpotqa": 16.386491402479052,
+        "2wikimqa": 22.43950418154118,
+        "gov_report": 16.302893906425485,
+        "qmsum": 8.28868608762225
+      },
+      "avg_score": 17.815186627240536,
+      "avg_ttft_ms": 1662.4274612966333,
+      "avg_throughput": 15.929367310810226,
+      "avg_memory_reduction_pct": 80.00641329787302
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 13.405300434225206,
+        "qasper": 20.841808512245365,
+        "multifieldqa_en": 26.93478348219907,
+        "hotpotqa": 16.386491402479052,
+        "2wikimqa": 20.14970826317384,
+        "gov_report": 16.16497877561876,
+        "qmsum": 8.053476585581445
+      },
+      "avg_score": 17.419506779360393,
+      "avg_ttft_ms": 1671.940907741433,
+      "avg_throughput": 14.47362825812385,
+      "avg_memory_reduction_pct": 80.0046970491676
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 12.237141553002207,
+        "qasper": 16.390267579275875,
+        "multifieldqa_en": 24.484258390605305,
+        "hotpotqa": 18.54365364963277,
+        "2wikimqa": 23.5590558815989,
+        "gov_report": 15.984471740433392,
+        "qmsum": 8.231645844408499
+      },
+      "avg_score": 17.061499234136708,
+      "avg_ttft_ms": 1750.5908053488943,
+      "avg_throughput": 13.801850612909272,
+      "avg_memory_reduction_pct": 80.0046970491676
+    }
+  ]
+}
