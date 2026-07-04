@@ -244,10 +244,10 @@ def load_model_and_tokenizer(
     if model_key == "gemma-2-2b":
         model_kwargs["attn_implementation"] = "eager"
 
-    # Qwen3: SDPA는 attn_weights=None 반환 → hook으로 attention 수집 불가
-    # eager로 강제해야 Hybrid Score의 Attention 신호(α=0.40) 작동
+    # Qwen3: importance 계산은 key norm 기반(attn_weights 불필요, v3 기준)
+    # sdpa로 전환하여 eager의 O(L^2) 메모리 문제 해결
     if model_key == "qwen3-4b":
-        model_kwargs["attn_implementation"] = "eager"
+        model_kwargs["attn_implementation"] = "sdpa"
 
     model = AutoModelForCausalLM.from_pretrained(model_name, **model_kwargs)
     model.eval()

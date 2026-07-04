@@ -73,7 +73,7 @@ class EvaluatorV2:
             context=sample["context"], question=sample["question"],
             task_type=sample["task_type"],
         )
-        inputs = tokenize_prompt(prompt, self.tokenizer, self.model_key, device=self.device)
+        inputs = tokenize_prompt(prompt, self.tokenizer, self.model_key, max_input_length=16000, device=self.device)
         input_ids = inputs["input_ids"]
         attention_mask = inputs["attention_mask"]
         input_length = input_ids.shape[1]

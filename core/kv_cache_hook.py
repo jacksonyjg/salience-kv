@@ -359,7 +359,7 @@ class OursHybridCache(BaseHookCache):
     """
     def __init__(self, budget_ratio, num_layers, model_config,
                  alpha=0.40, beta=0.20, gamma=0.20, delta=0.20, lambda_pos=1.0,
-                 use_attention=True, use_entropy=True, use_semantic=True, use_position=True):
+                 use_attention=True, use_entropy=True, use_semantic=False, use_position=True):
         super().__init__(budget_ratio, num_layers, model_config)
         total = alpha + beta + gamma + delta
         self.alpha = alpha / total

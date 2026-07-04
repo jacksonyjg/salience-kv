@@ -150,10 +150,12 @@ def load_longbench_task(
     for item in dataset:
         context = item.get(task_cfg["context_field"], "")
         
-        # 컨텍스트 최대 길이 제한 (OOM 방지) - 단어 기준 8000개 = 약 8k 토큰
+        # 컨텍스트 최대 길이 제한: 진짜 truncation은 tokenize_prompt()의
+        # max_input_length(토큰 기준, 16000)에서 처리. 여기서는 극단적으로
+        # 긴 문서의 불필요한 토크나이즈 비용만 줄이는 안전망으로 40000 단어 사용.
         words = context.split()
-        if len(words) > 4000:
-            context = " ".join(words[:3000]) + " ... " + " ".join(words[-1000:])
+        if len(words) > 40000:
+            context = " ".join(words[:30000]) + " ... " + " ".join(words[-10000:])
         
         # 질문 필드 처리
         if task_cfg["question_field"] is not None:
