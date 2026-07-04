@@ -1,0 +1,63 @@
+2026-07-04 22:38:31,091 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 22:38:31,092 [INFO] __main__:   Model: gemma-2-2b
+2026-07-04 22:38:31,093 [INFO] __main__:   Mode: cross
+2026-07-04 22:38:31,094 [INFO] __main__:   Budget: 20%
+2026-07-04 22:38:31,094 [INFO] __main__:   Tasks: ['narrativeqa']
+2026-07-04 22:38:31,095 [INFO] __main__:   Methods: ['fullkv', 'adakv', 'ours']
+2026-07-04 22:38:31,108 [INFO] __main__:   Samples/task: 1
+2026-07-04 22:38:31,109 [INFO] __main__: 
+Loading model: gemma-2-2b ...
+2026-07-04 22:38:31,109 [INFO] core.model_loader: Loading tokenizer: google/gemma-2-2b-it
+2026-07-04 22:38:31,225 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:38:31,294 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:38:31,388 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-04 22:38:31,459 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:38:34,885 [INFO] core.model_loader: Loading model: google/gemma-2-2b-it in torch.bfloat16
+2026-07-04 22:38:34,933 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:38:38,085 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:38:38,190 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-04 22:38:38,221 [INFO] core.model_loader: Model loaded: layers=26, num_heads=8, num_kv_heads=4
+2026-07-04 22:38:38,230 [INFO] __main__: 사전 데이터 로딩 중...
+2026-07-04 22:38:38,231 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-04 22:38:38,268 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:38:38,305 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 22:38:38,848 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:38:38,895 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-04 22:38:38,948 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:38:38,989 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:38:39,257 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-07-04 22:38:39,258 [INFO] __main__:   ✓ narrativeqa: 1샘플 로드 완료
+2026-07-04 22:38:39,258 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-07-04 22:38:39,259 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:38:39,259 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-07-04 22:38:39,260 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:38:39,261 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:38:39,261 [INFO] core.evaluator_v2: [fullkv] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:38:39,619 [WARNING] core.model_loader: Input length 23335 > max 7192, truncating...
+2026-07-04 22:38:44,366 [INFO] core.evaluator_v2: [fullkv] pred='The text states that Daisy encountered Jim in Eatonville, Florida.'
+2026-07-04 22:38:44,369 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=2518.9ms
+2026-07-04 22:38:44,371 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:38:44,372 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-07-04 22:38:44,373 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:38:44,374 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:38:44,375 [INFO] core.evaluator_v2: [adakv] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:38:45,155 [WARNING] core.model_loader: Input length 23335 > max 7192, truncating...
+2026-07-04 22:38:53,932 [INFO] core.evaluator_v2: [adakv] pred="This is a tricky one.  The text doesn't explicitly state the town, but it's implied that it's a small town in the South."
+2026-07-04 22:38:53,935 [INFO] __main__:   → score=2.35, mem_red=74.5%, ttft=1841.6ms
+2026-07-04 22:38:53,935 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:38:53,936 [INFO] __main__: Method: OURS | Budget: 20%
+2026-07-04 22:38:53,937 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:38:53,938 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:38:53,938 [INFO] core.evaluator_v2: [ours] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:38:54,500 [WARNING] core.model_loader: Input length 23335 > max 7192, truncating...
+2026-07-04 22:39:19,559 [INFO] core.evaluator_v2: [ours] pred="I'm sorry, I can't help you with that. \n\nI'm sorry, I can't help you with that. \n\nI'm sorry, I can't help you with that."
+2026-07-04 22:39:19,562 [INFO] __main__:   → score=0.00, mem_red=74.5%, ttft=1814.2ms
+2026-07-04 22:39:19,575 [INFO] core.results_manager: Results saved to results/exp1_gemma-2-2b_cross_20260704_223831.csv
+2026-07-04 22:39:19,585 [INFO] core.results_manager: JSON saved to results/exp1_gemma-2-2b_cross_20260704_223831.json
+2026-07-04 22:39:19,586 [INFO] __main__: Experiment 1 completed!

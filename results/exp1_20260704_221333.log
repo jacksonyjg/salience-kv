@@ -1,0 +1,12 @@
+2026-07-04 22:13:33,381 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 22:13:33,382 [INFO] __main__:   Model: gemma-2-2b
+2026-07-04 22:13:33,383 [INFO] __main__:   Mode: cross
+2026-07-04 22:13:33,384 [INFO] __main__:   Budget: 20%
+2026-07-04 22:13:33,384 [INFO] __main__:   Tasks: ['narrativeqa']
+2026-07-04 22:13:33,385 [INFO] __main__:   Methods: ['fullkv', 'adakv', 'ours']
+2026-07-04 22:13:33,386 [INFO] __main__:   Samples/task: 1
+2026-07-04 22:13:33,387 [INFO] __main__: 
+Loading model: gemma-2-2b ...
+2026-07-04 22:13:33,387 [INFO] core.model_loader: Loading tokenizer: google/gemma-2-2b-it
+2026-07-04 22:13:33,513 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 401 Unauthorized"
+2026-07-04 22:13:33,551 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 401 Unauthorized"

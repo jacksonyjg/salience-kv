@@ -1,0 +1,73 @@
+2026-07-04 21:58:12,915 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 21:58:12,916 [INFO] __main__:   Model: phi-3-mini
+2026-07-04 21:58:12,917 [INFO] __main__:   Mode: cross
+2026-07-04 21:58:12,918 [INFO] __main__:   Budget: 20%
+2026-07-04 21:58:12,918 [INFO] __main__:   Tasks: ['narrativeqa']
+2026-07-04 21:58:12,919 [INFO] __main__:   Methods: ['fullkv', 'adakv', 'ours']
+2026-07-04 21:58:12,923 [INFO] __main__:   Samples/task: 1
+2026-07-04 21:58:12,924 [INFO] __main__: 
+Loading model: phi-3-mini ...
+2026-07-04 21:58:12,925 [INFO] core.model_loader: Loading tokenizer: microsoft/Phi-3-mini-128k-instruct
+2026-07-04 21:58:13,033 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:13,040 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-07-04 21:58:13,117 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/configuration_phi3.py "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:13,120 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-04 21:58:13,126 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/configuration_phi3.py "HTTP/1.1 200 OK"
+2026-07-04 21:58:13,228 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:13,235 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-07-04 21:58:13,312 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:13,324 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 21:58:13,395 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:13,427 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 21:58:13,488 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/microsoft/Phi-3-mini-128k-instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-04 21:58:13,590 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/microsoft/Phi-3-mini-128k-instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 21:58:14,028 [INFO] core.model_loader: Loading model: microsoft/Phi-3-mini-128k-instruct in torch.float16
+2026-07-04 21:58:14,070 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:14,078 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-07-04 21:58:18,484 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:18,491 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 21:58:18,538 [INFO] core.model_loader: Model loaded: layers=32, num_heads=32, num_kv_heads=32
+2026-07-04 21:58:18,547 [INFO] __main__: 사전 데이터 로딩 중...
+2026-07-04 21:58:18,548 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-04 21:58:18,584 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:18,612 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 21:58:19,112 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:19,197 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-04 21:58:19,247 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:58:19,282 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-04 21:58:19,645 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-07-04 21:58:19,646 [INFO] __main__:   ✓ narrativeqa: 1샘플 로드 완료
+2026-07-04 21:58:19,647 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-07-04 21:58:19,648 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 21:58:19,649 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-07-04 21:58:19,650 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 21:58:19,651 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 21:58:19,652 [INFO] core.evaluator_v2: [fullkv] narrativeqa (1샘플, budget=20%)
+2026-07-04 21:58:20,149 [WARNING] core.model_loader: Input length 27625 > max 16000, truncating...
+2026-07-04 21:58:26,092 [INFO] core.evaluator_v2: [fullkv] pred='Eatonville, Florida Eatonville, Florida'
+2026-07-04 21:58:26,095 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=3161.6ms
+2026-07-04 21:58:26,116 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 21:58:26,117 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-07-04 21:58:26,118 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 21:58:26,119 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 21:58:26,121 [INFO] core.evaluator_v2: [adakv] narrativeqa (1샘플, budget=20%)
+2026-07-04 21:58:27,040 [WARNING] core.model_loader: Input length 27625 > max 16000, truncating...
+2026-07-04 21:58:31,712 [INFO] core.evaluator_v2: [adakv] pred='Eatonville Eatonville'
+2026-07-04 21:58:31,717 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2825.0ms
+2026-07-04 21:58:31,719 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 21:58:31,719 [INFO] __main__: Method: OURS | Budget: 20%
+2026-07-04 21:58:31,720 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 21:58:31,721 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 21:58:31,721 [INFO] core.evaluator_v2: [ours] narrativeqa (1샘플, budget=20%)
+2026-07-04 21:58:32,730 [WARNING] core.model_loader: Input length 27625 > max 16000, truncating...
+2026-07-04 21:58:37,376 [INFO] core.evaluator_v2: [ours] pred='Eatonville Eatonville'
+2026-07-04 21:58:37,379 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2800.2ms
+2026-07-04 21:58:37,392 [INFO] core.results_manager: Results saved to results/exp1_phi-3-mini_cross_20260704_215812.csv
+2026-07-04 21:58:37,428 [INFO] core.results_manager: JSON saved to results/exp1_phi-3-mini_cross_20260704_215812.json
+2026-07-04 21:58:37,429 [INFO] __main__: Experiment 1 completed!

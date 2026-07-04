@@ -1,0 +1,125 @@
+2026-07-04 22:40:54,751 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 22:40:54,752 [INFO] __main__:   Model: gemma-2-2b
+2026-07-04 22:40:54,752 [INFO] __main__:   Mode: cross
+2026-07-04 22:40:54,753 [INFO] __main__:   Budget: 20%
+2026-07-04 22:40:54,754 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper']
+2026-07-04 22:40:54,754 [INFO] __main__:   Methods: ['fullkv', 'adakv', 'ours']
+2026-07-04 22:40:54,755 [INFO] __main__:   Samples/task: 5
+2026-07-04 22:40:54,756 [INFO] __main__: 
+Loading model: gemma-2-2b ...
+2026-07-04 22:40:54,756 [INFO] core.model_loader: Loading tokenizer: google/gemma-2-2b-it
+2026-07-04 22:40:54,885 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:40:54,969 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:40:55,059 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-04 22:40:55,169 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:40:58,452 [INFO] core.model_loader: Loading model: google/gemma-2-2b-it in torch.bfloat16
+2026-07-04 22:40:58,499 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:41:01,357 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:41:01,432 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-04 22:41:01,458 [INFO] core.model_loader: Model loaded: layers=26, num_heads=8, num_kv_heads=4
+2026-07-04 22:41:01,468 [INFO] __main__: 사전 데이터 로딩 중...
+2026-07-04 22:41:01,470 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-04 22:41:01,509 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:41:01,572 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 22:41:02,062 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:41:02,096 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-04 22:41:02,143 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:41:02,181 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:41:02,396 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-07-04 22:41:02,407 [INFO] __main__:   ✓ narrativeqa: 5샘플 로드 완료
+2026-07-04 22:41:02,408 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-04 22:41:02,442 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:41:02,473 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 22:41:03,109 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-04 22:41:03,111 [INFO] __main__:   ✓ qasper: 5샘플 로드 완료
+2026-07-04 22:41:03,112 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-07-04 22:41:03,112 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:41:03,113 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-07-04 22:41:03,114 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:41:03,115 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:41:03,115 [INFO] core.evaluator_v2: [fullkv] narrativeqa (5샘플, budget=20%)
+2026-07-04 22:41:03,433 [WARNING] core.model_loader: Input length 23335 > max 7192, truncating...
+2026-07-04 22:41:08,011 [INFO] core.evaluator_v2: [fullkv] pred='The text states that Daisy encountered Jim in Eatonville, Florida.'
+2026-07-04 22:41:08,710 [WARNING] core.model_loader: Input length 8885 > max 7192, truncating...
+2026-07-04 22:41:14,815 [INFO] core.evaluator_v2: [fullkv] pred='Socrates ultimately decides it is unjust to escape because he believes that escaping would be a betrayal of the laws and'
+2026-07-04 22:41:15,767 [WARNING] core.model_loader: Input length 36716 > max 7192, truncating...
+2026-07-04 22:41:19,653 [INFO] core.evaluator_v2: [fullkv] pred='The story is set in medieval Germany during the reign of Emperor Rudolph.'
+2026-07-04 22:41:20,392 [WARNING] core.model_loader: Input length 36714 > max 7192, truncating...
+2026-07-04 22:41:24,502 [INFO] core.evaluator_v2: [fullkv] pred='Baron Conrad killed the Baron Henry of Trutz-Drachen.'
+2026-07-04 22:41:25,307 [WARNING] core.model_loader: Input length 43371 > max 7192, truncating...
+2026-07-04 22:41:28,742 [INFO] core.evaluator_v2: [fullkv] pred='Vigo.'
+2026-07-04 22:41:28,743 [INFO] core.evaluator_v2:   [5/5] avg=31.29
+2026-07-04 22:41:28,744 [INFO] __main__:   → score=31.29, mem_red=0.0%, ttft=1977.2ms
+2026-07-04 22:41:28,745 [INFO] __main__: 
+  Task: qasper
+2026-07-04 22:41:28,746 [INFO] core.evaluator_v2: [fullkv] qasper (5샘플, budget=20%)
+2026-07-04 22:41:34,880 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies, KG-A2C-chained and KG-A2C-Explore, significantly outperform baseline A2C and KG-A2C in passing '
+2026-07-04 22:41:36,780 [INFO] core.evaluator_v2: [fullkv] pred='The encoder is an encoder-decoder on character sequences.'
+2026-07-04 22:41:38,864 [INFO] core.evaluator_v2: [fullkv] pred="The text doesn't mention the size of the Augmented LibriSpeech dataset."
+2026-07-04 22:41:46,051 [INFO] core.evaluator_v2: [fullkv] pred='NeuronBlocks includes a variety of neural network modules, including:\n\n* **Embedding Layer:** Word/character embedding a'
+2026-07-04 22:41:54,744 [INFO] core.evaluator_v2: [fullkv] pred='They compared the following LSTM models:\n\n* **Xavier initialization:**  Used as the initialisation method for the deep L'
+2026-07-04 22:41:54,746 [INFO] core.evaluator_v2:   [5/5] avg=9.24
+2026-07-04 22:41:54,747 [INFO] __main__:   → score=9.24, mem_red=0.0%, ttft=819.5ms
+2026-07-04 22:41:54,748 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:41:54,749 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-07-04 22:41:54,751 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:41:54,752 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:41:54,753 [INFO] core.evaluator_v2: [adakv] narrativeqa (5샘플, budget=20%)
+2026-07-04 22:41:55,357 [WARNING] core.model_loader: Input length 23335 > max 7192, truncating...
+2026-07-04 22:42:04,919 [INFO] core.evaluator_v2: [adakv] pred="This is a tricky one.  The text doesn't explicitly state the town, but it's implied that it's a small town in the South."
+2026-07-04 22:42:05,592 [WARNING] core.model_loader: Input length 8885 > max 7192, truncating...
+2026-07-04 22:42:13,679 [INFO] core.evaluator_v2: [adakv] pred="This is a great example of how to answer a question in a concise and informative way. \n\nHere's a breakdown of the key po"
+2026-07-04 22:42:14,229 [WARNING] core.model_loader: Input length 36716 > max 7192, truncating...
+2026-07-04 22:42:17,907 [INFO] core.evaluator_v2: [adakv] pred='The story takes place in the Imperial Palace of the Emperor Rudolph, in the\ncity of Trutz-Drachen.'
+2026-07-04 22:42:18,436 [WARNING] core.model_loader: Input length 36714 > max 7192, truncating...
+2026-07-04 22:42:26,121 [INFO] core.evaluator_v2: [adakv] pred="The text does not explicitly state who Baron Conrad killed. \n\nHere's why:\n\n* **The text focuses on the consequences of B"
+2026-07-04 22:42:26,847 [WARNING] core.model_loader: Input length 43371 > max 7192, truncating...
+2026-07-04 22:42:30,080 [INFO] core.evaluator_v2: [adakv] pred='The Ghostbusters.'
+2026-07-04 22:42:30,082 [INFO] core.evaluator_v2:   [5/5] avg=1.96
+2026-07-04 22:42:30,104 [INFO] __main__:   → score=1.96, mem_red=74.5%, ttft=1814.8ms
+2026-07-04 22:42:30,117 [INFO] __main__: 
+  Task: qasper
+2026-07-04 22:42:30,120 [INFO] core.evaluator_v2: [adakv] qasper (5샘플, budget=20%)
+2026-07-04 22:42:36,940 [INFO] core.evaluator_v2: [adakv] pred='The results of these proposed strategies are:\n\n* **KG-A2C-chained:**  This is significantly more sample efficient and co'
+2026-07-04 22:42:38,950 [INFO] core.evaluator_v2: [adakv] pred='The text does not explicitly state the architecture of the encoder.'
+2026-07-04 22:42:41,431 [INFO] core.evaluator_v2: [adakv] pred='The text does not provide information about the size of the Augmented LibriSpeech dataset.'
+2026-07-04 22:42:45,411 [INFO] core.evaluator_v2: [adakv] pred='The text provides a list of the following neural network modules included in NeuronBlocks:\n\n* **Word/Character Embedding'
+2026-07-04 22:43:05,143 [INFO] core.evaluator_v2: [adakv] pred="This is a good start! Here's a breakdown of the key points and how to improve it:\n\n**Strengths:**\n\n* **Clear and Concise"
+2026-07-04 22:43:05,146 [INFO] core.evaluator_v2:   [5/5] avg=5.33
+2026-07-04 22:43:05,147 [INFO] __main__:   → score=5.33, mem_red=79.4%, ttft=885.5ms
+2026-07-04 22:43:05,147 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:43:05,148 [INFO] __main__: Method: OURS | Budget: 20%
+2026-07-04 22:43:05,149 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:43:05,150 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:43:05,151 [INFO] core.evaluator_v2: [ours] narrativeqa (5샘플, budget=20%)
+2026-07-04 22:43:05,720 [WARNING] core.model_loader: Input length 23335 > max 7192, truncating...
+2026-07-04 22:43:29,259 [INFO] core.evaluator_v2: [ours] pred="I'm sorry, I can't help you with that. \n\nI'm sorry, I can't help you with that. \n\nI'm sorry, I can't help you with that."
+2026-07-04 22:43:29,773 [WARNING] core.model_loader: Input length 8885 > max 7192, truncating...
+2026-07-04 22:43:50,984 [INFO] core.evaluator_v2: [ours] pred="This is a good start to the answer.  \n\nHere's a more detailed breakdown of the answer:\n\n**Why Socrates's Answer is Good:"
+2026-07-04 22:43:51,762 [WARNING] core.model_loader: Input length 36716 > max 7192, truncating...
+2026-07-04 22:43:55,492 [INFO] core.evaluator_v2: [ours] pred='The story takes place in the **Imperial Castle of Drachenhausen**, Germany.'
+2026-07-04 22:43:56,164 [WARNING] core.model_loader: Input length 36714 > max 7192, truncating...
+2026-07-04 22:44:13,678 [INFO] core.evaluator_v2: [ours] pred="This is a great start!  Here's a breakdown of the strengths and weaknesses of your\nanalysis:\n\n**Strengths:**\n\n* **Clear "
+2026-07-04 22:44:14,265 [WARNING] core.model_loader: Input length 43371 > max 7192, truncating...
+2026-07-04 22:44:17,086 [INFO] core.evaluator_v2: [ours] pred=''
+2026-07-04 22:44:17,088 [INFO] core.evaluator_v2:   [5/5] avg=4.29
+2026-07-04 22:44:17,088 [INFO] __main__:   → score=4.29, mem_red=74.5%, ttft=1869.4ms
+2026-07-04 22:44:17,089 [INFO] __main__: 
+  Task: qasper
+2026-07-04 22:44:17,089 [INFO] core.evaluator_v2: [ours] qasper (5샘플, budget=20%)
+2026-07-04 22:44:20,693 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies outperform the baseline, with both agents successfully passing the bottleneck.  The knowledge gr'
+2026-07-04 22:44:22,740 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based architecture.'
+2026-07-04 22:44:24,954 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset.'
+2026-07-04 22:44:29,342 [INFO] core.evaluator_v2: [ours] pred='The text mentions the following neural network modules included in NeuronBlocks:\n\n* **BiLSTM:**  A type of recurrent neu'
+2026-07-04 22:44:31,861 [INFO] core.evaluator_v2: [ours] pred=''
+2026-07-04 22:44:31,863 [INFO] core.evaluator_v2:   [5/5] avg=4.74
+2026-07-04 22:44:31,864 [INFO] __main__:   → score=4.74, mem_red=79.4%, ttft=945.6ms
+2026-07-04 22:44:31,878 [INFO] core.results_manager: Results saved to results/exp1_gemma-2-2b_cross_20260704_224054.csv
+2026-07-04 22:44:31,888 [INFO] core.results_manager: JSON saved to results/exp1_gemma-2-2b_cross_20260704_224054.json
+2026-07-04 22:44:31,889 [INFO] __main__: Experiment 1 completed!

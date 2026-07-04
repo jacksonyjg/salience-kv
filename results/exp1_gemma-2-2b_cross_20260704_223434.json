@@ -1,0 +1,48 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "gemma-2-2b",
+  "mode": "cross",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa"
+  ],
+  "methods": [
+    "fullkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 1,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 7627.895394076404,
+      "avg_throughput": 16.511541754337333,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 7230.567084312497,
+      "avg_throughput": 18.972261386433868,
+      "avg_memory_reduction_pct": 68.15128141328688
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 7634.910789152855,
+      "avg_throughput": 18.29260892990763,
+      "avg_memory_reduction_pct": 68.15128141328688
+    }
+  ]
+}

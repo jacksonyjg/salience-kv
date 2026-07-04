@@ -1,0 +1,132 @@
+2026-07-04 21:59:55,131 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 21:59:55,132 [INFO] __main__:   Model: phi-3-mini
+2026-07-04 21:59:55,133 [INFO] __main__:   Mode: cross
+2026-07-04 21:59:55,134 [INFO] __main__:   Budget: 20%
+2026-07-04 21:59:55,134 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper']
+2026-07-04 21:59:55,135 [INFO] __main__:   Methods: ['fullkv', 'adakv', 'ours']
+2026-07-04 21:59:55,136 [INFO] __main__:   Samples/task: 5
+2026-07-04 21:59:55,137 [INFO] __main__: 
+Loading model: phi-3-mini ...
+2026-07-04 21:59:55,138 [INFO] core.model_loader: Loading tokenizer: microsoft/Phi-3-mini-128k-instruct
+2026-07-04 21:59:55,259 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:59:55,267 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-07-04 21:59:55,360 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/configuration_phi3.py "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:59:55,362 [WARNING] huggingface_hub.utils._http: Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-07-04 21:59:55,367 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/configuration_phi3.py "HTTP/1.1 200 OK"
+2026-07-04 21:59:55,480 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:59:55,487 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-07-04 21:59:55,560 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:59:55,567 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 21:59:55,653 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:59:55,662 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 21:59:55,722 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/microsoft/Phi-3-mini-128k-instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-04 21:59:55,796 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/microsoft/Phi-3-mini-128k-instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 21:59:56,175 [INFO] core.model_loader: Loading model: microsoft/Phi-3-mini-128k-instruct in torch.float16
+2026-07-04 21:59:56,209 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 21:59:56,218 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:00:01,247 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:00:01,256 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:00:01,292 [INFO] core.model_loader: Model loaded: layers=32, num_heads=32, num_kv_heads=32
+2026-07-04 22:00:01,315 [INFO] __main__: 사전 데이터 로딩 중...
+2026-07-04 22:00:01,316 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-04 22:00:01,369 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:00:01,401 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 22:00:01,962 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:00:02,024 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-04 22:00:02,058 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:00:02,097 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:00:02,427 [INFO] core.dataset_loader: Loaded 5 samples from narrativeqa
+2026-07-04 22:00:02,429 [INFO] __main__:   ✓ narrativeqa: 5샘플 로드 완료
+2026-07-04 22:00:02,430 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-07-04 22:00:02,465 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:00:02,500 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 22:00:03,215 [INFO] core.dataset_loader: Loaded 5 samples from qasper
+2026-07-04 22:00:03,217 [INFO] __main__:   ✓ qasper: 5샘플 로드 완료
+2026-07-04 22:00:03,218 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-07-04 22:00:03,219 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:00:03,220 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-07-04 22:00:03,220 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:00:03,221 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:00:03,222 [INFO] core.evaluator_v2: [fullkv] narrativeqa (5샘플, budget=20%)
+2026-07-04 22:00:03,685 [WARNING] core.model_loader: Input length 27625 > max 16000, truncating...
+2026-07-04 22:00:10,314 [INFO] core.evaluator_v2: [fullkv] pred='Eatonville, Florida Eatonville, Florida'
+2026-07-04 22:00:35,867 [INFO] core.evaluator_v2: [fullkv] pred='Socrates decides it is unjust to escape because he believes in upholding the laws and principles of justice, even if it '
+2026-07-04 22:00:36,447 [WARNING] core.model_loader: Input length 41823 > max 16000, truncating...
+2026-07-04 22:01:08,941 [INFO] core.evaluator_v2: [fullkv] pred='A medieval European castle and its surroundings A medieval European castle and its surroundings A medieval European cast'
+2026-07-04 22:01:09,683 [WARNING] core.model_loader: Input length 41822 > max 16000, truncating...
+2026-07-04 22:01:14,848 [INFO] core.evaluator_v2: [fullkv] pred='Baron Henry of Roderburg Baron Henry of Roderburg'
+2026-07-04 22:01:15,669 [WARNING] core.model_loader: Input length 64881 > max 16000, truncating...
+2026-07-04 22:01:48,711 [INFO] core.evaluator_v2: [fullkv] pred="Vigo the Carpathian Vigo the Carpathian The ghost that emerged from a painting at Dana's workplace was Vigo the Carpathi"
+2026-07-04 22:01:48,718 [INFO] core.evaluator_v2:   [5/5] avg=4.94
+2026-07-04 22:01:48,719 [INFO] __main__:   → score=4.94, mem_red=0.0%, ttft=2405.7ms
+2026-07-04 22:01:48,720 [INFO] __main__: 
+  Task: qasper
+2026-07-04 22:01:48,721 [INFO] core.evaluator_v2: [fullkv] qasper (5샘플, budget=20%)
+2026-07-04 22:02:11,438 [INFO] core.evaluator_v2: [fullkv] pred='The proposed strategies, which include KG-A2C-chained and KG-A2C-Explore, both successfully pass the bottleneck correspo'
+2026-07-04 22:02:28,347 [INFO] core.evaluator_v2: [fullkv] pred='LSTM The encoder architecture consists of an LSTM that encodes the entire available context. The encoder architecture co'
+2026-07-04 22:02:44,962 [INFO] core.evaluator_v2: [fullkv] pred='The text does not provide specific information about the size of the Augmented LibriSpeech dataset. The text does not me'
+2026-07-04 22:03:03,298 [INFO] core.evaluator_v2: [fullkv] pred='Embedding Layer, RNN, CNN, Transformer, Attention Mechanisms, Dropout, Layer Norm, Batch Norm, Focal Loss, AUC, Accuracy'
+2026-07-04 22:03:25,310 [INFO] core.evaluator_v2: [fullkv] pred='9-layers unidirectional LSTM model and 2-layers distilled LSTM model The text compares a very deep 9-layers unidirection'
+2026-07-04 22:03:25,314 [INFO] core.evaluator_v2:   [5/5] avg=3.58
+2026-07-04 22:03:25,315 [INFO] __main__:   → score=3.58, mem_red=0.0%, ttft=707.7ms
+2026-07-04 22:03:25,316 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:03:25,316 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-07-04 22:03:25,317 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:03:25,318 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:03:25,318 [INFO] core.evaluator_v2: [adakv] narrativeqa (5샘플, budget=20%)
+2026-07-04 22:03:25,688 [WARNING] core.model_loader: Input length 27625 > max 16000, truncating...
+2026-07-04 22:03:30,103 [INFO] core.evaluator_v2: [adakv] pred='Eatonville Eatonville'
+2026-07-04 22:03:54,368 [INFO] core.evaluator_v2: [adakv] pred='Socrates decides it is unjust to escape because he believes it would be an act of injustice towards the laws and his cit'
+2026-07-04 22:03:55,000 [WARNING] core.model_loader: Input length 41823 > max 16000, truncating...
+2026-07-04 22:04:23,504 [INFO] core.evaluator_v2: [adakv] pred='The story is set in medieval Germany, involving a castle, a young boy named Otto, and various nobles and emperors. The s'
+2026-07-04 22:04:24,214 [WARNING] core.model_loader: Input length 41822 > max 16000, truncating...
+2026-07-04 22:04:52,971 [INFO] core.evaluator_v2: [adakv] pred='Baron Henry of Roderburg Baron Henry of Roderburg Baron Henry of Roderburg Baron Henry of Roderburg Baron Henry of Roder'
+2026-07-04 22:04:53,764 [WARNING] core.model_loader: Input length 64881 > max 16000, truncating...
+2026-07-04 22:05:22,859 [INFO] core.evaluator_v2: [adakv] pred='Vigo A demon named Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo V'
+2026-07-04 22:05:22,861 [INFO] core.evaluator_v2:   [5/5] avg=1.25
+2026-07-04 22:05:22,862 [INFO] __main__:   → score=1.25, mem_red=80.0%, ttft=2242.3ms
+2026-07-04 22:05:22,863 [INFO] __main__: 
+  Task: qasper
+2026-07-04 22:05:22,864 [INFO] core.evaluator_v2: [adakv] qasper (5샘플, budget=20%)
+2026-07-04 22:05:42,599 [INFO] core.evaluator_v2: [adakv] pred=', in, for, in this, being,,,,, to, for,,\n, in, for, in, in, in, in, in, in,, in,\n,.,.,,,,,,,,,,\n,\n,,,,, in in in,\nex, in'
+2026-07-04 22:06:01,969 [INFO] core.evaluator_v2: [adakv] pred='The encoder architecture in the system is designed to capture a wide context window, encoding the entire available conte'
+2026-07-04 22:06:21,525 [INFO] core.evaluator_v2: [adakv] pred='The text does not provide specific information about the size of the Augmented LibriSpeech dataset. The text does not me'
+2026-07-04 22:06:36,363 [INFO] core.evaluator_v2: [adakv] pred='NeuronBlocks includes various neural network modules such as Convolutional Neural Networks (CNNs), Bidirectional Long Sh'
+2026-07-04 22:06:57,694 [INFO] core.evaluator_v2: [adakv] pred='They compared very deep LSTM models with shallower 2-layers LSTM models. Very deep LSTM models (9-layers) were distilled'
+2026-07-04 22:06:57,721 [INFO] core.evaluator_v2:   [5/5] avg=2.22
+2026-07-04 22:06:57,722 [INFO] __main__:   → score=2.22, mem_red=80.0%, ttft=741.9ms
+2026-07-04 22:06:57,724 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:06:57,725 [INFO] __main__: Method: OURS | Budget: 20%
+2026-07-04 22:06:57,726 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:06:57,727 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:06:57,728 [INFO] core.evaluator_v2: [ours] narrativeqa (5샘플, budget=20%)
+2026-07-04 22:06:58,359 [WARNING] core.model_loader: Input length 27625 > max 16000, truncating...
+2026-07-04 22:07:03,042 [INFO] core.evaluator_v2: [ours] pred='Eatonville Eatonville'
+2026-07-04 22:07:26,863 [INFO] core.evaluator_v2: [ours] pred='Socrates decides it is unjust to escape because he believes it would be an act of injustice towards the laws and his cit'
+2026-07-04 22:07:27,531 [WARNING] core.model_loader: Input length 41823 > max 16000, truncating...
+2026-07-04 22:07:56,991 [INFO] core.evaluator_v2: [ours] pred='The story is set in medieval Germany, involving a castle, a young boy named Otto, and various nobles and emperors. The s'
+2026-07-04 22:07:58,016 [WARNING] core.model_loader: Input length 41822 > max 16000, truncating...
+2026-07-04 22:08:27,651 [INFO] core.evaluator_v2: [ours] pred='Baron Henry of Roderburg Baron Henry of Roderburg Baron Henry of Roderburg Baron Henry of Roderburg Baron Henry of Roder'
+2026-07-04 22:08:28,534 [WARNING] core.model_loader: Input length 64881 > max 16000, truncating...
+2026-07-04 22:08:57,884 [INFO] core.evaluator_v2: [ours] pred='Vigo A demon named Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo Vigo V'
+2026-07-04 22:08:57,887 [INFO] core.evaluator_v2:   [5/5] avg=1.25
+2026-07-04 22:08:57,887 [INFO] __main__:   → score=1.25, mem_red=80.0%, ttft=2510.5ms
+2026-07-04 22:08:57,888 [INFO] __main__: 
+  Task: qasper
+2026-07-04 22:08:57,888 [INFO] core.evaluator_v2: [ours] qasper (5샘플, budget=20%)
+2026-07-04 22:09:13,813 [INFO] core.evaluator_v2: [ours] pred=', of, of in in,\n, of, in, in,\n,\n,\n,\n, for, in,\n, of, in,\n,\n,\n,\n,\n.\n, and,\n,\n,,,,\n,\n,\n,\nin,in,in,\n\n\n,\n, and, and,\n,\n,\n\n,\n'
+2026-07-04 22:09:20,101 [INFO] core.evaluator_v2: [ours] pred='The encoder architecture extends a character-based encoder-decoder model. The encoder architecture extends a character-b'
+2026-07-04 22:09:38,203 [INFO] core.evaluator_v2: [ours] pred='The text does not provide specific information about the size of the Augmented LibriSpeech dataset. The text does not me'
+2026-07-04 22:09:43,243 [INFO] core.evaluator_v2: [ours] pred='Neural modules included in NeuronBlocks:\n\n- BiLSTM\n- Attention-based models\n\nThese modules are part of NeuronBlocks, a t'
+2026-07-04 22:10:04,041 [INFO] core.evaluator_v2: [ours] pred='They compared very deep LSTM models with shallower 2-layers LSTM models. Very deep LSTM models (9-layers) were distilled'
+2026-07-04 22:10:04,043 [INFO] core.evaluator_v2:   [5/5] avg=1.59
+2026-07-04 22:10:04,044 [INFO] __main__:   → score=1.59, mem_red=80.0%, ttft=751.5ms
+2026-07-04 22:10:04,051 [INFO] core.results_manager: Results saved to results/exp1_phi-3-mini_cross_20260704_215955.csv
+2026-07-04 22:10:04,059 [INFO] core.results_manager: JSON saved to results/exp1_phi-3-mini_cross_20260704_215955.json
+2026-07-04 22:10:04,060 [INFO] __main__: Experiment 1 completed!

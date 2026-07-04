@@ -1,0 +1,76 @@
+2026-07-04 22:28:46,028 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 22:28:46,028 [INFO] __main__:   Model: gemma-2-2b
+2026-07-04 22:28:46,029 [INFO] __main__:   Mode: cross
+2026-07-04 22:28:46,029 [INFO] __main__:   Budget: 20%
+2026-07-04 22:28:46,030 [INFO] __main__:   Tasks: ['narrativeqa']
+2026-07-04 22:28:46,031 [INFO] __main__:   Methods: ['fullkv', 'adakv', 'ours']
+2026-07-04 22:28:46,031 [INFO] __main__:   Samples/task: 1
+2026-07-04 22:28:46,032 [INFO] __main__: 
+Loading model: gemma-2-2b ...
+2026-07-04 22:28:46,032 [INFO] core.model_loader: Loading tokenizer: google/gemma-2-2b-it
+2026-07-04 22:28:46,158 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:46,230 [INFO] httpx: HTTP Request: GET https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:46,324 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:46,384 [INFO] httpx: HTTP Request: GET https://huggingface.co/google/gemma-2-2b-it/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:46,495 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-04 22:28:46,571 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:28:46,624 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/tokenizer.json "HTTP/1.1 302 Found"
+2026-07-04 22:28:47,472 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-07-04 22:28:47,548 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:47,607 [INFO] httpx: HTTP Request: GET https://huggingface.co/google/gemma-2-2b-it/resolve/main/special_tokens_map.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:47,688 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-07-04 22:28:50,121 [INFO] core.model_loader: Loading model: google/gemma-2-2b-it in torch.bfloat16
+2026-07-04 22:28:50,170 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:50,912 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-07-04 22:28:50,984 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:51,070 [INFO] httpx: HTTP Request: GET https://huggingface.co/google/gemma-2-2b-it/resolve/main/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-07-04 22:28:51,205 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/revision/main "HTTP/1.1 200 OK"
+2026-07-04 22:28:51,268 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:29:04,069 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:29:04,137 [INFO] httpx: HTTP Request: GET https://huggingface.co/google/gemma-2-2b-it/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:29:04,233 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-04 22:29:04,256 [INFO] core.model_loader: Model loaded: layers=26, num_heads=8, num_kv_heads=4
+2026-07-04 22:29:04,268 [INFO] __main__: 사전 데이터 로딩 중...
+2026-07-04 22:29:04,269 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-04 22:29:04,311 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:29:04,350 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 22:29:04,870 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:29:04,919 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-04 22:29:04,956 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:29:04,992 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:29:05,302 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-07-04 22:29:05,313 [INFO] __main__:   ✓ narrativeqa: 1샘플 로드 완료
+2026-07-04 22:29:05,314 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-07-04 22:29:05,316 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:29:05,316 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-07-04 22:29:05,318 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:29:05,319 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:29:05,319 [INFO] core.evaluator_v2: [fullkv] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:29:05,667 [WARNING] core.model_loader: Input length 23334 > max 16000, truncating...
+2026-07-04 22:29:43,498 [INFO] core.evaluator_v2: [fullkv] pred="'s.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n"
+2026-07-04 22:29:43,512 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=8274.1ms
+2026-07-04 22:29:43,513 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:29:43,515 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-07-04 22:29:43,516 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:29:43,517 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:29:43,518 [INFO] core.evaluator_v2: [adakv] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:29:45,091 [WARNING] core.model_loader: Input length 23334 > max 16000, truncating...
+2026-07-04 22:30:21,105 [INFO] core.evaluator_v2: [adakv] pred="'s.\n\n(I's a's a's.\n\n(\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's."
+2026-07-04 22:30:21,115 [INFO] __main__:   → score=0.00, mem_red=68.2%, ttft=7169.3ms
+2026-07-04 22:30:21,116 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:30:21,117 [INFO] __main__: Method: OURS | Budget: 20%
+2026-07-04 22:30:21,118 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:30:21,118 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:30:21,119 [INFO] core.evaluator_v2: [ours] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:30:22,910 [WARNING] core.model_loader: Input length 23334 > max 16000, truncating...
+2026-07-04 22:30:57,819 [INFO] core.evaluator_v2: [ours] pred="'s.\n\n(I's.\n\n(I'm a's.\n\n(I'm a.\n\n(I's.\n\n's.\n\n(I'm a's.\n\n(I'm a's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n\n's.\n"
+2026-07-04 22:30:57,822 [INFO] __main__:   → score=0.00, mem_red=68.2%, ttft=7168.2ms
+2026-07-04 22:30:57,831 [INFO] core.results_manager: Results saved to results/exp1_gemma-2-2b_cross_20260704_222846.csv
+2026-07-04 22:30:57,839 [INFO] core.results_manager: JSON saved to results/exp1_gemma-2-2b_cross_20260704_222846.json
+2026-07-04 22:30:57,841 [INFO] __main__: Experiment 1 completed!

@@ -1,0 +1,52 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "phi-3-mini",
+  "mode": "cross",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper"
+  ],
+  "methods": [
+    "fullkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 5,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 4.9419390980753075,
+        "qasper": 3.5764955290769302
+      },
+      "avg_score": 4.259217313576119,
+      "avg_ttft_ms": 1556.7100863875955,
+      "avg_throughput": 20.83445954118197,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 1.246783555944606,
+        "qasper": 2.21788396141602
+      },
+      "avg_score": 1.7323337586803131,
+      "avg_ttft_ms": 1492.1003199844563,
+      "avg_throughput": 23.190476161454313,
+      "avg_memory_reduction_pct": 80.00775966443416
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 1.246783555944606,
+        "qasper": 1.5901570360169086
+      },
+      "avg_score": 1.4184702959807574,
+      "avg_ttft_ms": 1631.013516416375,
+      "avg_throughput": 23.92170549983194,
+      "avg_memory_reduction_pct": 80.00775966443416
+    }
+  ]
+}

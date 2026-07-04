@@ -1,0 +1,63 @@
+2026-07-04 22:34:34,131 [INFO] __main__: Experiment 1: Main Results
+2026-07-04 22:34:34,132 [INFO] __main__:   Model: gemma-2-2b
+2026-07-04 22:34:34,132 [INFO] __main__:   Mode: cross
+2026-07-04 22:34:34,133 [INFO] __main__:   Budget: 20%
+2026-07-04 22:34:34,133 [INFO] __main__:   Tasks: ['narrativeqa']
+2026-07-04 22:34:34,134 [INFO] __main__:   Methods: ['fullkv', 'adakv', 'ours']
+2026-07-04 22:34:34,134 [INFO] __main__:   Samples/task: 1
+2026-07-04 22:34:34,135 [INFO] __main__: 
+Loading model: gemma-2-2b ...
+2026-07-04 22:34:34,136 [INFO] core.model_loader: Loading tokenizer: google/gemma-2-2b-it
+2026-07-04 22:34:34,298 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:34:34,384 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:34:34,479 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-07-04 22:34:34,560 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/google/gemma-2-2b-it/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:34:37,888 [INFO] core.model_loader: Loading model: google/gemma-2-2b-it in torch.bfloat16
+2026-07-04 22:34:37,935 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/config.json "HTTP/1.1 200 OK"
+2026-07-04 22:34:40,830 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/generation_config.json "HTTP/1.1 200 OK"
+2026-07-04 22:34:40,915 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/google/gemma-2-2b-it/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-07-04 22:34:40,933 [INFO] core.model_loader: Model loaded: layers=26, num_heads=8, num_kv_heads=4
+2026-07-04 22:34:40,947 [INFO] __main__: 사전 데이터 로딩 중...
+2026-07-04 22:34:40,947 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-07-04 22:34:40,983 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:34:41,015 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-07-04 22:34:41,485 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:34:41,521 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-07-04 22:34:41,554 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-07-04 22:34:41,592 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-07-04 22:34:41,831 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-07-04 22:34:41,832 [INFO] __main__:   ✓ narrativeqa: 1샘플 로드 완료
+2026-07-04 22:34:41,833 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-07-04 22:34:41,833 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:34:41,834 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-07-04 22:34:41,835 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:34:41,835 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:34:41,836 [INFO] core.evaluator_v2: [fullkv] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:34:42,169 [WARNING] core.model_loader: Input length 23335 > max 16000, truncating...
+2026-07-04 22:35:20,749 [INFO] core.evaluator_v2: [fullkv] pred="'s.\n\n'\n\n's.\n\n's.\n\n's.\n\n's.\n\n'\n\n'\n\n'\n\n's.\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n's.\n\n'\n\n'\n\n'\n\n's.\n\n'\n\n'\n\n's.\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n"
+2026-07-04 22:35:20,753 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=7627.9ms
+2026-07-04 22:35:20,754 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:35:20,755 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-07-04 22:35:20,757 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:35:20,758 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:35:20,759 [INFO] core.evaluator_v2: [adakv] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:35:22,786 [WARNING] core.model_loader: Input length 23335 > max 16000, truncating...
+2026-07-04 22:35:56,955 [INFO] core.evaluator_v2: [adakv] pred="'\n\n'\n\n'\n\n's.\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n's.\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n"
+2026-07-04 22:35:56,957 [INFO] __main__:   → score=0.00, mem_red=68.2%, ttft=7230.6ms
+2026-07-04 22:35:56,958 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-07-04 22:35:56,959 [INFO] __main__: Method: OURS | Budget: 20%
+2026-07-04 22:35:56,959 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-07-04 22:35:56,960 [INFO] __main__: 
+  Task: narrativeqa
+2026-07-04 22:35:56,961 [INFO] core.evaluator_v2: [ours] narrativeqa (1샘플, budget=20%)
+2026-07-04 22:35:58,352 [WARNING] core.model_loader: Input length 23335 > max 16000, truncating...
+2026-07-04 22:36:33,925 [INFO] core.evaluator_v2: [ours] pred="'s.\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'\n\n'"
+2026-07-04 22:36:33,928 [INFO] __main__:   → score=0.00, mem_red=68.2%, ttft=7634.9ms
+2026-07-04 22:36:33,938 [INFO] core.results_manager: Results saved to results/exp1_gemma-2-2b_cross_20260704_223434.csv
+2026-07-04 22:36:33,949 [INFO] core.results_manager: JSON saved to results/exp1_gemma-2-2b_cross_20260704_223434.json
+2026-07-04 22:36:33,950 [INFO] __main__: Experiment 1 completed!
