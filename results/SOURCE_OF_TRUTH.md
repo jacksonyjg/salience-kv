@@ -23,3 +23,9 @@
 
 ## 그 외 results/*.csv, *.log 파일들
 - 대부분 디버깅 중 단일 태스크/소샘플 실행 흔적. 정식 결과 아님. 삭제하지 말고 참고용으로만 보관.
+
+## Exp4 Budget Sensitivity 7태스크 풀버전 (2026-07-05 확정)
+- results/exp4_budget_sensitivity_qwen3-4b_20260705_003415.csv
+- Budget 10/20/30/40/50%, 50샘플, seed=42, 3-signal+16k+sdpa 조건
+- 결과: OURS가 20% 제외 전 구간(10/30/40/50%)에서 AdaKV 상회, 30%에서 FullKV 동등 달성(100.0%)
+- 논문 Section V.G(Budget Sensitivity)에 반영 예정 (기존 3태스크 부분 데이터는 폐기)
