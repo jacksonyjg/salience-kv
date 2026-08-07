@@ -1,0 +1,548 @@
+
+================================================================================
+[sample 0] method=fullkv score=6.25 rep_ratio=0.030 collapsed=0
+PRED: The document is a transcript of a project meeting where the team discusses the goals and structure of a design project to create a new remote control for a television. Key points include:
+
+- The project aims to design an original, trendy, and user-friendly remote control.
+- The project is divided into three design phases: functional, conceptual, and detailed.
+- The team will work individually initially and then collaborate in meetings.
+- The meeting includes an introduction of team members, a discussion of the project plan, and a creative activity where each member draws their favorite animal and relates it to their role.
+- The team also discusses the remote control's features, focusing on making it unique and user-friendly, while keeping it functional.
+- The meeting concludes with a summary of the project plan and next steps.
+
+================================================================================
+[sample 0] method=streaming score=13.74 rep_ratio=0.008 collapsed=0
+PRED: The meeting begins with an introduction and team bonding activity where each member draws their favorite animal and shares personal information. The team discusses the project goal of designing a new remote control that is trendy, user-friendly, and original. They explore ideas for unique features, such as a menu-based interface to reduce the number of buttons, and consider design elements that make the remote control visually appealing and functional. The team also discusses the project budget and profit goals, aiming to sell the remote controls for 25 Euros each with a profit of 50 million Euros. The meeting concludes with a plan to continue working on the project and a reminder of upcoming tasks and meetings. The team emphasizes the importance of collaboration and creativity in achieving their design goals.
+
+================================================================================
+[sample 0] method=h2o score=6.33 rep_ratio=0.702 collapsed=1
+PRED: The team met to discuss the project. The Project Manager introduced the agenda and the project's goals. The team discussed the remote control's design and the features it should have. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target
+
+================================================================================
+[sample 0] method=snapkv score=2.84 rep_ratio=0.865 collapsed=1
+PRED: The team is meeting to review the project. The meeting is focused on the project. The discussion is about the project. The summary is: the team is meeting to review the project. The meeting is focused on the project. The discussion is about the project. The summary is: the team is meeting to review the project. The meeting is focused on the project. The discussion is about the project. The summary is: the team is meeting to review the project. The meeting is focused on the project. The discussion is about the project. The summary is: the team is meeting to review the project. The meeting is focused on the project. The discussion is about the project. The summary is: the team is meeting to review the project. The meeting is focused on the project. The discussion is about the project. The summary is: the team is meeting to review the project. The meeting is focused on the project. The discussion is about the project. The summary is: the team is meeting
+
+================================================================================
+[sample 0] method=pyramidkv score=6.33 rep_ratio=0.702 collapsed=1
+PRED: The team met to discuss the project. The Project Manager introduced the agenda and the project's goals. The team discussed the remote control's design and the features it should have. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target
+
+================================================================================
+[sample 0] method=adakv score=6.33 rep_ratio=0.702 collapsed=1
+PRED: The team met to discuss the project. The Project Manager introduced the agenda and the project's goals. The team discussed the remote control's design and the features it should have. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target. The team discussed the remote control's features and the features that could be included to make it unique. The Project Manager mentioned the budget and the profit target
+
+================================================================================
+[sample 0] method=ours score=7.79 rep_ratio=0.000 collapsed=0
+PRED: The meeting focused on the project, which involves creating a new remote control. Key points included the project's goals, the design phases (functional, conceptual, detailed), and the team's roles. The discussion included ideas for unique features, the design process, and the project's budget and profit goals. The team also shared personal information and discussed the remote control's design and functionality. The meeting concluded with a plan for the project and a follow-up meeting.
+
+================================================================================
+[sample 1] method=fullkv score=12.50 rep_ratio=0.006 collapsed=0
+PRED: The document is a meeting transcript between a project manager, industrial designer, user interface designer, and marketing representative discussing the design and features of a new remote control. Key points include:
+
+- **Design Concepts**: The team is considering a remote control with a hand-shaped design, soft materials, and a unique scroll button for navigation.
+- **User Interface**: The team discussed the layout, buttons, and icons, emphasizing clarity and usability.
+- **Functionality**: They debated the inclusion of an LCD screen, which would increase cost but improve functionality, versus a simpler design.
+- **Cost Considerations**: The team is concerned about budget constraints and the need to balance cost with functionality and appeal to younger consumers.
+- **Trends**: Marketing highlighted the importance of staying current with trends, particularly among younger users who prefer vibrant colors and curved designs.
+- **Final Decision**: The team agreed to develop two concepts: one with an LCD screen and one without, with a focus on usability, cost, and market appeal
+
+================================================================================
+[sample 1] method=streaming score=13.13 rep_ratio=0.006 collapsed=0
+PRED: The meeting focuses on designing a new remote control for a television, with input from the Project Manager, Industrial Designer, and Marketing. Key points include:
+
+- **User Interface Concept**: The remote should have a simple, intuitive design with a scroll button for channel and volume control, and a menu button for additional functions. A scroll wheel is considered for ease of use, though it may be more expensive.
+
+- **Design and Materials**: The remote should be shaped like a hand for better grip, made of soft plastic with rubber around it for comfort and durability. It should be compact, similar in size to a phone.
+
+- **Technology and Cost**: The remote can come in two versions: one with an LCD screen (more expensive) and one without. The LCD version would offer a menu system, but the budget is limited, so the simpler version is preferred.
+
+- **Trends and Market Research**: The design should appeal to younger consumers, who prefer trendy, curved, and soft materials. The remote
+
+================================================================================
+[sample 1] method=h2o score=0.00 rep_ratio=0.919 collapsed=1
+PRED: The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager
+
+================================================================================
+[sample 1] method=snapkv score=8.65 rep_ratio=0.575 collapsed=1
+PRED: The team held a meeting to discuss the remote control. The discussion concluded with the team deciding to present the design. The design includes a remote control with a menu, a scroll button, and a display. The team decided to use a normal battery and a simple chip. The design will be presented in the next meeting, with the team aiming to present a detailed design. The team will present the design and the buttons in the next meeting. The team will present the design and the buttons in the next meeting. The team will present the design and the buttons in the next meeting. The team will present the design and the buttons in the next meeting. The team will present the design and the buttons in the next meeting. The team will present the design and the buttons in the next meeting. The team will present the design and the buttons in the next meeting. The team will present the design and the buttons in the next meeting. The team will present the design and the buttons in the next meeting.
+
+================================================================================
+[sample 1] method=pyramidkv score=0.00 rep_ratio=0.919 collapsed=1
+PRED: The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager
+
+================================================================================
+[sample 1] method=adakv score=0.00 rep_ratio=0.919 collapsed=1
+PRED: The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The manager
+
+================================================================================
+[sample 1] method=ours score=13.47 rep_ratio=0.036 collapsed=0
+PRED: The meeting focused on the design and user interface of a remote control. Key points included:
+
+- **User Interface** discussed the design of the remote control, emphasizing the need for a soft, hand-shaped design with scroll buttons for channels and sound.
+- **Industrial Designer** proposed a remote control with a scroll button and a menu, with an LCD screen for enhanced functionality, though this would increase costs.
+- **Marketing** emphasized the importance of trends and the target market (young and trendy) in product design.
+- **Project Manager** facilitated the discussion, ensuring that the design was user-friendly and suitable for a wide range of televisions.
+- The team decided on two concepts: one with an LCD screen and one without, based on cost and usability.
+
+The final decision was to use a standard battery and a regular chip for cost-effective design, with a focus on usability and trends for the target market. The design was to be hand-shaped, with scroll buttons for channels and sound, and a soft
+
+================================================================================
+[sample 2] method=fullkv score=11.24 rep_ratio=0.025 collapsed=0
+PRED: The document is a meeting transcript discussing progress and planning for a research project involving the SmartKom system, a language processing system. Key points include:
+
+- **SmartKom System**: The team has made progress in making the system respond to spoken input, using a German speech synthesis module. They are working on improving the system's ability to generate speech and understand natural language, with a focus on concept-to-speech approaches.
+
+- **Technical Challenges**: The system is currently fragile and requires many manual adjustments. The team is working on making it more robust and user-friendly, with plans to integrate it with a virtual touch screen interface.
+
+- **Belief-Network Development**: The team is working on developing a belief network for a specific subdomain. They have outlined the structure and are planning to finalize it in the coming weeks. There are discussions about the technical and semantic aspects of the network.
+
+- **Research Focus**: The team is shifting from applied project work to more theoretical research, focusing on formalizing notation,
+
+================================================================================
+[sample 2] method=streaming score=8.94 rep_ratio=0.031 collapsed=0
+PRED: The meeting discusses various aspects of a research project involving natural language processing, spatial descriptions, and belief networks. Key points include:
+
+- **SmartKom System**: The team is working on a system that allows users to interact with it through speech, with some challenges in making it fully functional. They have a working version but need to address bugs and improve usability.
+
+- **Belief-Nets**: The group is focusing on developing a belief network for a specific subdomain. They have a partial structure but need to finalize the connections and semantics. Bhaskara is leaving the project, and the team is working on completing the network.
+
+- **Spatial Descriptions**: The team is exploring how spatial descriptions are handled in different languages, including English, German, and Japanese. They are looking into how spatial reference frames and relative positioning are managed.
+
+- **Reference Frames**: The discussion includes the concept of reference frames in spatial descriptions, with a focus on egocentric and allocentric frames, as well as proximal
+
+================================================================================
+[sample 2] method=h2o score=4.14 rep_ratio=0.912 collapsed=1
+PRED: The document is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary
+
+================================================================================
+[sample 2] method=snapkv score=3.80 rep_ratio=0.750 collapsed=1
+PRED: The group is discussing a project that involves a system. The discussion covers the following points:
+
+1. The group is discussing a project that involves a system. The discussion covers the following points:
+
+2. The group is discussing a project that involves a system. The discussion covers the following points:
+
+3. The group is discussing a project that involves a system. The discussion covers the following points:
+
+4. The group is discussing a project that involves a system. The discussion covers the following points:
+
+5. The group is discussing a project that involves a system. The discussion covers the following points:
+
+6. The group is discussing a project that involves a system. The discussion covers the following points:
+
+7. The group is discussing a project that involves a system. The discussion covers the following points:
+
+8. The group is discussing a project that involves a system. The discussion covers the following points:
+
+9. The group is discussing a project that involves a system. The discussion covers the following points:
+
+10
+
+================================================================================
+[sample 2] method=pyramidkv score=4.14 rep_ratio=0.912 collapsed=1
+PRED: The document is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary
+
+================================================================================
+[sample 2] method=adakv score=4.14 rep_ratio=0.912 collapsed=1
+PRED: The document is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary of a project, which includes the following: 
+
+The project is a summary
+
+================================================================================
+[sample 2] method=ours score=8.51 rep_ratio=0.050 collapsed=0
+PRED: The document is a meeting transcript where researchers and researchers discuss various topics, including the development of a system, the belief-net, spatial descriptions, reference frames, and other linguistic and cognitive concepts. The discussion covers the design and learning of reference frames, the distinction between English and German in spatial descriptions, the role of the brain in near and far objects, and the importance of formalism and system design in their research. The meeting also touches on the importance of collaboration, the need for decisions on ontology and system design, and the potential for shared work between projects. The discussion concludes with a plan to focus on scientific research and to make decisions on ontology and system design in the coming weeks.
+
+================================================================================
+[sample 3] method=fullkv score=11.88 rep_ratio=0.019 collapsed=0
+PRED: The document is a detailed audio transcript of a team meeting discussing the development of a new remote control device. Key points include:
+
+- The team reviewed a prototype of a remote control with voice recognition, large buttons, and a slide-out panel for advanced functions.
+- The remote is designed to be eco-friendly, incorporating a solar cell and edible materials.
+- The team discussed budget constraints and decided to keep the solar cell despite it pushing the budget over, as it is integral to the product's unique selling point.
+- The remote was evaluated for functionality, design, and market appeal, with positive feedback on its natural, organic look and user-friendly interface.
+- The team also reflected on the project process, noting the importance of creativity, collaboration, and the challenges of working within a limited timeframe and resource constraints.
+- The meeting concluded with a discussion on future steps, including project evaluation and the need for further refinement.
+
+================================================================================
+[sample 3] method=streaming score=11.32 rep_ratio=0.000 collapsed=0
+PRED: The document details a collaborative project meeting involving a team of individuals (likely students or professionals) working on a remote control design project. The meeting covered several key areas:
+
+1. **Project Overview**: The team discussed the design and functionality of a new remote control, emphasizing its natural, organic look and voice recognition features. They also considered the environmental aspect with a solar cell, though this was later removed due to budget constraints.
+
+2. **Design and Functionality**: The remote was designed with a rubbery, spongy texture, a drop-down panel, and a unique, unconventional appearance. The team expressed satisfaction with the design, though they acknowledged the challenge of adapting to the new interface.
+
+3. **Budget and Cost Constraints**: The project initially exceeded the budget, leading to discussions about removing the solar cell and back-up battery to stay within limits. The team ultimately decided to proceed without the solar cell, accepting it as a necessary compromise.
+
+4. **Project Evaluation**: The team evaluated their work based
+
+================================================================================
+[sample 3] method=h2o score=1.97 rep_ratio=0.898 collapsed=1
+PRED: The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process.
+
+================================================================================
+[sample 3] method=snapkv score=7.92 rep_ratio=0.000 collapsed=0
+PRED: The meeting involved team members in a project. The project was evaluated, and despite budget constraints, a functional product was developed. The team expressed satisfaction with the outcome, and the meeting was concluded.
+
+================================================================================
+[sample 3] method=pyramidkv score=1.97 rep_ratio=0.898 collapsed=1
+PRED: The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process.
+
+================================================================================
+[sample 3] method=adakv score=1.97 rep_ratio=0.898 collapsed=1
+PRED: The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process. The team successfully completed the project, despite challenges in the process. The project was successfully completed, despite challenges in the process.
+
+================================================================================
+[sample 3] method=ours score=11.35 rep_ratio=0.024 collapsed=0
+PRED: The meeting focused on evaluating the project, with discussions on the remote control design, the use of technology, and the overall process. The team faced challenges in meeting the budget, which led to a compromise in removing the solar cell. The project was evaluated as successful, with the remote control functioning as intended. The team appreciated the creative process and the collaboration, despite some challenges in communication and the use of technology. The meeting concluded with a celebration, acknowledging the successful completion of the project.
+
+================================================================================
+[sample 4] method=fullkv score=7.14 rep_ratio=0.000 collapsed=0
+PRED: The document is a transcript of a conceptual design meeting for a new remote control device. Key points include:
+
+- **Design Decisions**: The team decided to use simple batteries instead of solar cells, titanium for the design (over rubber), and push buttons instead of LCD displays to reduce cost and complexity.
+- **Speech Recognition**: The team aims to incorporate speech recognition technology, though it will be a basic, programmable chip to keep costs low.
+- **User Interface**: The remote will have a minimalistic design with few buttons, focusing on functionality over complexity.
+- **Trends**: The team is influenced by current design trends, such as a "fruit and vegetable" aesthetic, which includes spongy materials and natural shapes.
+- **Future Steps**: The team will create a prototype using modeling clay, with each member responsible for different aspects of the design (industrial design, user interface, product evaluation).
+- **Final Agreement**: The team agreed to prioritize a sleek, modern look and functionality,
+
+================================================================================
+[sample 4] method=streaming score=4.17 rep_ratio=0.008 collapsed=0
+PRED: The meeting discusses the design of a new remote control, focusing on key aspects such as aesthetics, functionality, and trends. The team agrees that the remote should be "fancy" with a unique look and feel, emphasizing design over functionality. They consider using materials like rubber for a spongy, natural appearance, inspired by current trends in design that favor organic shapes and textures. The remote will include features like speech recognition and a simplified interface with minimal buttons. The team also plans to explore two design options: a titanium-like remote with a fruity scent and a spongy, fruit-shaped remote. They will create a prototype using modeling clay and later refine the design. The remote will prioritize style and innovation over traditional functionality, aiming to stand out in the market.
+
+================================================================================
+[sample 4] method=h2o score=4.19 rep_ratio=0.582 collapsed=1
+PRED: The team is working on a remote control with a fancy look and feel. The remote control needs to be fancy, with a fancy look and feel. It needs to be technologically innovative and new. The most important thing is to be fancy. It needs to be new with some new technology inside. This is more important than the last thing, which is to be useful as a remote control. The remote control needs to be useful as a remote control but it seems that it's not so important that it's useful as a remote control. The remote control needs to be useful as a remote control but it seems that it's not so important that it's useful as a remote control. The remote control needs to be useful as a remote control but it seems that it's not so important that it's useful as a remote control. The remote control needs to be useful as a remote control but it seems that it's not so important that it's useful as a remote control. The remote control needs to
+
+================================================================================
+[sample 4] method=snapkv score=0.00 rep_ratio=0.965 collapsed=1
+PRED: The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has reached
+
+================================================================================
+[sample 4] method=pyramidkv score=3.37 rep_ratio=0.747 collapsed=1
+PRED: The team is working on a remote control with a fancy look and feel. The remote control needs to be fancy, with a fancy look and feel. It needs to be technologically innovative and new. It needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness
+
+================================================================================
+[sample 4] method=adakv score=3.37 rep_ratio=0.747 collapsed=1
+PRED: The team is working on a remote control with a fancy look and feel. The remote control needs to be fancy, with a fancy look and feel. It needs to be technologically innovative and new. It needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness is not the most important. The remote control needs to be useful as a remote control, but the usefulness
+
+================================================================================
+[sample 4] method=ours score=4.17 rep_ratio=0.032 collapsed=0
+PRED: The project team discussed the design of a remote control, focusing on its appearance and functionality. They agreed on the importance of a stylish and innovative design, which is more important than functionality. The team also considered current trends, which emphasize a natural, spongy look and feel, inspired by fruits and vegetables. They decided to incorporate these trends into the design, using materials like rubber for a spongy feel and titanium for a stylish look. The team will create a prototype using modeling clay to explore these concepts. They will also focus on the remote control's user interface and functionality, ensuring it is both stylish and functional. The final decision will be to use a spongy, fruit-like design with titanium for a stylish and innovative remote control.
+
+================================================================================
+[sample 5] method=fullkv score=6.32 rep_ratio=0.007 collapsed=0
+PRED: The document is a conversation among researchers discussing their work on improving speech recognition systems, focusing on noise robustness and the use of neural networks. Key points include:
+
+- They are testing the effectiveness of different feature types (e.g., PLP vs. MFCC) and neural networks in improving recognition accuracy, especially under noisy conditions.
+- The use of on-line normalization and delta features has shown significant improvements in performance.
+- There is a discussion about the impact of training data on model performance, with multi-English data being particularly effective.
+- The team is exploring various configurations, including combining neural networks with traditional features, and is considering ways to enhance model robustness.
+- They are also discussing potential future work, including integrating their models into existing systems and further optimizing training data and features.
+- Challenges include managing computational resources and addressing issues related to feature normalization and model generalization across different languages and noise conditions.
+
+================================================================================
+[sample 5] method=streaming score=5.35 rep_ratio=0.000 collapsed=0
+PRED: The document is a detailed discussion among researchers discussing their work on speech recognition systems, focusing on the use of neural networks (MLPs) and various feature types (e.g., PLP, MFCC) in improving performance under different conditions. Key points include:
+
+- **Feature Types**: PLP and MFCC both work well, but delta features are important for performance.
+- **Training Data**: The best results come from training on the TIMIT database, which is hand-labeled. Other datasets are Viterbi-aligned, which may introduce some errors.
+- **Normalization**: On-line normalization is crucial for performance, and poor normalization can lead to worse results.
+- **Neural Networks**: MLPs can improve performance when trained on the target task, but can also degrade performance if trained on different tasks.
+- **Language and Noise Dependency**: Performance varies with language and noise conditions, suggesting a need for more robust training strategies.
+- **Future Work**: Researchers plan to explore multi-band approaches, combine features
+
+================================================================================
+[sample 5] method=h2o score=4.74 rep_ratio=0.827 collapsed=1
+PRED: The summary of the document is as follows:
+
+A team is working on various tasks, and the results from these tasks are being analyzed. The results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other tasks, and the results from these tasks are being compared to the results from other
+
+================================================================================
+[sample 5] method=snapkv score=4.94 rep_ratio=0.126 collapsed=0
+PRED: The document describes a team of researchers who are discussing various aspects of their work. The discussion covers the following key points:
+
+1. **Noise Robustness**: The team is discussing the effectiveness of different features in the context of noise and speech processing.
+
+2. **Training and Features**: The team is exploring the effectiveness of different features (e.g., PLP and MFCC) and the impact of different training conditions (e.g., on-line normalization and delta features).
+
+3. **Language and Noise Dependency**: The team is discussing the impact of different languages and noise conditions on the performance of their models.
+
+4. **Future Work**: The team is planning to focus on improving results from a single training condition, and to explore the effectiveness of different features and training conditions in the context of their work.
+
+================================================================================
+[sample 5] method=pyramidkv score=1.06 rep_ratio=0.744 collapsed=1
+PRED: The summary of the document is as follows:
+
+A team is working on various tasks, and a new method is being considered. The process involves various steps, and the results are being analyzed. The results are being compared, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed,
+
+================================================================================
+[sample 5] method=adakv score=1.06 rep_ratio=0.744 collapsed=1
+PRED: The summary of the document is as follows:
+
+A team is working on various tasks, and a new method is being considered. The process involves various steps, and the results are being analyzed. The results are being compared, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed, and the results are being improved. The results are being analyzed,
+
+================================================================================
+[sample 5] method=ours score=3.24 rep_ratio=0.007 collapsed=0
+PRED: The document is a detailed meeting transcript discussing research on neural networks, feature extraction (PLP vs. MFCC), training methods, and system integration. Key points include:
+
+1. **Feature Analysis**: PLP and MFCC both work, but delta features are important for performance.
+2. **Training and Features**: The best results come from multi-English training, which is hand-labeled. Other features are Viterbi-aligned, which may introduce errors.
+3. **Network Size and Training Sets**: Experiments with different network sizes (500 to 1000 units) are ongoing. The best training set is multi-English, but results are not fully understood.
+4. **Language and Noise Dependency**: Neural networks perform better when trained on the same language and noise conditions. However, performance can degrade when trained on different conditions.
+5. **Training Targets and Methods**: Using phonetic targets is effective, but articulatory or soft targets may improve results. Neural networks that perform
+
+================================================================================
+[sample 6] method=fullkv score=8.16 rep_ratio=0.019 collapsed=0
+PRED: The document is a conversation among graduate students and professors discussing a research project focused on understanding and processing user intentions in a tourist context. Key points include:
+
+- The team is working on a system to interpret user requests for locations, such as "I want to touch the side of the Powder-Tower," which requires distinguishing between different intentions like viewing, entering, or approaching a location (referred to as "Vista," "Enter," and "Tango" modes).
+
+- They are using the SmartKom system, which generates a basic XML structure ("M-three-L") for parsed speech, but this is too crude to capture nuanced intentions. They need a more sophisticated approach, such as a belief-net, to differentiate between these intentions.
+
+- The team is planning to collect data through a simulated scenario where participants interact with a computer system that mimics a tourist guide. This data will help train and test their models.
+
+- They are discussing the technical aspects of data collection, the choice of tools (like
+
+================================================================================
+[sample 6] method=streaming score=8.87 rep_ratio=0.029 collapsed=0
+PRED: The meeting discusses the development of a belief network to interpret user intentions in a complex scenario involving a computer system that understands and responds to user queries. The goal is to differentiate between three intentions: viewing an object, entering it, and getting as close as possible to it (Tango mode). The team is working with data from a system called SmartKom, which generates a crude output known as M-Three-L. They aim to extract features from this data to build a belief network that can accurately classify user intentions.
+
+Key points include:
+- The need to identify and extract features from the M-Three-L output to feed into a belief network.
+- The challenge of distinguishing between different intentions, especially when the user's intent is not explicitly stated.
+- The use of a belief network to combine linguistic and contextual features to infer the user's intention.
+- The plan to collect more data through a controlled experiment involving simulated scenarios and user interactions with a computer system.
+- The discussion of potential tools and packages for
+
+================================================================================
+[sample 6] method=h2o score=1.20 rep_ratio=0.943 collapsed=1
+PRED: The document is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary
+
+================================================================================
+[sample 6] method=snapkv score=6.90 rep_ratio=0.714 collapsed=1
+PRED: The summary of the discussion is as follows:
+
+The discussion focuses on the development of a belief network to distinguish between three intentions: "View it," "Enter it," and "Tango" (i.e., "Get close to it"). The discussion also covers the development of a belief network to distinguish between three intentions: "View it," "Enter it," and "Tango" (i.e., "Get close to it"). The discussion also covers the development of a belief network to distinguish between three intentions: "View it," "Enter it," and "Tango" (i.e., "Get close to it"). The discussion also covers the development of a belief network to distinguish between three intentions: "View it," "Enter it," and "Tango" (i.e., "Get close to it"). The discussion also covers the development of a belief network to distinguish between three intentions: "View it," "Enter it," and "Tango" (i.e., "Get
+
+================================================================================
+[sample 6] method=pyramidkv score=1.20 rep_ratio=0.943 collapsed=1
+PRED: The document is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary
+
+================================================================================
+[sample 6] method=adakv score=1.20 rep_ratio=0.943 collapsed=1
+PRED: The document is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary is a conversation about the future. The summary
+
+================================================================================
+[sample 6] method=ours score=7.51 rep_ratio=0.508 collapsed=1
+PRED: The document discusses a project focused on understanding user intentions through dialogue. The team is working on a system that can interpret user intentions and contextual factors. They are using a belief-net approach to classify intentions into three categories: View, Enter, and Tango. They are using XML for data interchange and have access to various tools and packages for belief-net construction. The team is planning to use a belief-net package and is considering the use of XML for data interchange. They are also planning to use a belief-net package and are considering the use of XML for data interchange. The team is also planning to use a belief-net package and is considering the use of XML for data interchange. The team is also planning to use a belief-net package and is considering the use of XML for data interchange. The team is also planning to use a belief-net package and is considering the use of XML for data interchange. The team is also planning to use a belief-net package and is considering the use of XML for data interchange.
+
+================================================================================
+[sample 7] method=fullkv score=5.03 rep_ratio=0.000 collapsed=0
+PRED: The Welsh Government's childcare offer, as discussed in the Children, Young People and Education Committee, aims to provide 30 hours of free childcare per week for working parents, with a £4.50 hourly rate. The initiative is being piloted in early implementer areas to learn lessons and improve the system before a full rollout by 2020. Key challenges include administrative burdens, communication with parents and providers, and ensuring the scheme is affordable and accessible. The government is working to address these issues through a centralized system, improved communication, and workforce development. Concerns have been raised about the potential for wealthier parents to access better care through add-ons, and the impact on disadvantaged families. The government has also considered the need for a universal rate, while acknowledging the complexity of the sector and the importance of quality childcare. The policy is part of a broader strategy to support working parents and improve child development, with a focus on early education and reducing inequalities.
+
+================================================================================
+[sample 7] method=streaming score=3.75 rep_ratio=0.019 collapsed=0
+PRED: The Welsh Government's childcare policy aims to provide 30 hours of free childcare per week for working parents, with a focus on supporting employment and child development. The policy includes a £4.50 per hour rate for childcare, with additional charges for food, transport, and other services. The government has emphasized the importance of affordability and has engaged in discussions with providers and parents to ensure the scheme is accessible and beneficial. Concerns have been raised about the potential impact on disadvantaged families and the need for further evaluation to ensure the policy's effectiveness. The government has also highlighted the importance of integrating the childcare offer with other support services, such as Flying Start and the Parents, Childcare and Employment programme, to address broader social and economic challenges. The policy is being piloted in various areas, with plans to expand it nationwide, and the government is committed to reviewing and adjusting the scheme as needed based on feedback and outcomes.
+
+================================================================================
+[sample 7] method=h2o score=2.48 rep_ratio=0.875 collapsed=1
+PRED: The Children and Education Committee in Wales has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare
+
+================================================================================
+[sample 7] method=snapkv score=3.66 rep_ratio=0.392 collapsed=1
+PRED: The Welsh Government is implementing a childcare offer. The policy aims to close the attainment gap later in life. The policy is designed to enable parents to return to the workforce. The policy is focused on registered and inspected providers, as opposed to every Tom or Har. The quality of childcare is key, and the £4.50 per hour rate is being considered to ensure affordability and the ability to meet the policy objectives. The policy is being implemented in a phased manner, with the aim of providing a universal childcare offer. The policy is focused on the most disadvantaged families, and the £4.50 per hour rate is being considered to ensure that the most disadvantaged families can access the childcare offer. The policy is being implemented in a way that ensures the most disadvantaged families can access the childcare offer. The policy is being implemented in a way that ensures the most disadvantaged families can access the childcare offer. The policy is being implemented in a way that ensures the most disadvantaged families can access the childcare offer.
+
+================================================================================
+[sample 7] method=pyramidkv score=2.48 rep_ratio=0.875 collapsed=1
+PRED: The Children and Education Committee in Wales has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare
+
+================================================================================
+[sample 7] method=adakv score=2.48 rep_ratio=0.875 collapsed=1
+PRED: The Children and Education Committee in Wales has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare offer, with the Minister and officials present. The committee has been focused on the childcare
+
+================================================================================
+[sample 7] method=ours score=3.68 rep_ratio=0.087 collapsed=0
+PRED: The Welsh Government's childcare offer, which provides 30 hours of childcare with 10 hours of early education, is being piloted in selected areas. The scheme aims to support working parents and improve children's readiness for school. The offer is designed to be accessible and affordable, with a £4.50 per hour rate, which is considered to be a universal rate. The government has considered the impact of the offer on families, including those with lower incomes, and has worked to ensure that the offer is accessible and beneficial for all parents. The offer is being rolled out progressively, with the aim of providing 30 hours of childcare for all working parents by 2020. The government has also considered the impact of the offer on children's development and school readiness. The offer is being evaluated and refined based on feedback from pilots and other stakeholders. The government is committed to ensuring the offer is accessible, beneficial, and sustainable for all working parents in Wales.
+
+================================================================================
+[sample 8] method=fullkv score=4.88 rep_ratio=0.000 collapsed=0
+PRED: The meeting discussed several key topics related to a research project. Key points included:
+
+1. **Transcription Status**: Jane is handling transcription tasks, with new transcribers hired. Transcriptions from IBM are expected soon, while others are being transcribed locally.
+
+2. **Participant Approval**: A system was proposed to allow participants to review and edit transcripts via web links, with access to both transcripts and audio.
+
+3. **DARPA Demo Status**: The back-end system is nearly ready, though it is slower due to the complexity of the programming language used. Plans are in place to improve it.
+
+4. **Disk Space Issues**: The team is running low on disk space, particularly on the backup disk. They discussed potential solutions, including using new SUN-Blade machines for additional storage.
+
+5. **Transcriber Interface**: There was discussion about enhancing the Transcriber interface to include additional signal data, such as pitch contours, for better visualization during demos.
+
+6. **Disk Management
+
+================================================================================
+[sample 8] method=streaming score=6.10 rep_ratio=0.000 collapsed=0
+PRED: The meeting discussed several key topics related to the Meeting Recorder project. Key points included:
+
+1. **Transcription and Data Management**: The team discussed the progress of transcription, the need for more disk space, and the challenges of managing large datasets. They considered using new SUN-Blade machines for additional storage.
+
+2. **Disk Space Issues**: The team was concerned about running out of disk space, particularly on the backup disks. They discussed potential solutions, including using new machines and expanding existing storage.
+
+3. **System Performance**: There was discussion about the performance of the recognition system, with a notable improvement of 1.5% when combining two systems. The team also discussed the potential benefits of using different front-end features like RASTA and MSG.
+
+4. **Meeting Structure and Focus**: The team considered alternating the focus of meetings to better address different aspects of the project, such as data collection and recognition systems, to avoid overwhelming participants.
+
+5. **System Development and Training**: The team
+
+================================================================================
+[sample 8] method=h2o score=3.70 rep_ratio=0.845 collapsed=1
+PRED: The meeting was focused on several key topics. The discussion began with the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information
+
+================================================================================
+[sample 8] method=snapkv score=1.28 rep_ratio=0.894 collapsed=1
+PRED: The meeting was focused on several key topics. The discussion covered the following points:
+
+1. The meeting was focused on several key topics. The discussion covered the following points:
+
+- The meeting was focused on several key topics. The discussion covered the following points:
+
+1. The meeting was focused on several key topics. The discussion covered the following points:
+
+- The meeting was focused on several key topics. The discussion covered the following points:
+
+1. The meeting was focused on several key topics. The discussion covered the following points:
+
+- The meeting was focused on several key topics. The discussion covered the following points:
+
+1. The meeting was focused on several key topics. The discussion covered the following points:
+
+- The meeting was focused on several key topics. The discussion covered the following points:
+
+1. The meeting was focused on several key topics. The discussion covered the following points:
+
+- The meeting was focused on several key topics. The discussion covered the following points:
+
+1. The meeting was focused on several key
+
+================================================================================
+[sample 8] method=pyramidkv score=3.70 rep_ratio=0.845 collapsed=1
+PRED: The meeting was focused on several key topics. The discussion began with the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information
+
+================================================================================
+[sample 8] method=adakv score=3.70 rep_ratio=0.845 collapsed=1
+PRED: The meeting was focused on several key topics. The discussion began with the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information. The discussion moved to the status of transcripts, and the need to gather information
+
+================================================================================
+[sample 8] method=ours score=7.14 rep_ratio=0.184 collapsed=0
+PRED: The meeting discussed various topics, including transcription status, participant approval, audio files, disk space issues, and recognition system performance. Key points included the use of different front-end features, the performance of recognition systems, and the need for additional features. The group also discussed the importance of disk space, the need for additional meetings, and the potential for improvements in recognition systems. The discussion concluded with a decision to focus on specific tasks and to consider the addition of new features to the system. The meeting ended with a decision to focus on specific tasks and to consider the addition of new features to the system.
+
+================================================================================
+[sample 9] method=fullkv score=9.02 rep_ratio=0.000 collapsed=0
+PRED: The document is a transcript of a kick-off meeting for the design of a new remote control. The project manager, Christa Pavlov, outlines the project goals: creating an original, trendy, and user-friendly remote control. Key discussion points include the remote's design (functional, conceptual, and detailed), target audience (children), safety features (waterproof, baby-proof), color (colorful but not too complex), size (palm-sized), and functionality (simple, intuitive, with possible customizable features). The team also discusses the remote's price point, aiming for a production cost of €12.50 with a target of selling two million units. The meeting concludes with a plan to meet again in thirty minutes to refine ideas and develop user requirements.
+
+================================================================================
+[sample 9] method=streaming score=14.29 rep_ratio=0.033 collapsed=0
+PRED: The meeting discusses the design and features of a new child-proof remote control. Key points include:
+
+- **Target Audience**: The remote control is designed for children, needing to be robust, waterproof, and safe (to prevent ingestion).
+- **Design Features**: The remote should be colorful, small, and easy to use. It should have a simple layout with intuitive buttons, possibly with a left-handed or right-handed design.
+- **Functionality**: The remote should allow for basic functions like changing channels, adjusting volume, and possibly include a "previous" or "history" button for easier navigation.
+- **Price and Market**: The target price is 25 Euros, with a goal to sell two million units. The remote should be versatile, possibly a universal remote that can control multiple devices.
+- **Technical Considerations**: The remote should have a minimal number of buttons (around 3-4) and avoid complex features like screens due to cost and usability concerns.
+- **Next Steps**: The
+
+================================================================================
+[sample 9] method=h2o score=6.02 rep_ratio=0.277 collapsed=0
+PRED: The team held a kick-off meeting to discuss the design of a new remote control. The Project Manager, Christa, introduced the team and the goal, which was to design a remote control that was original, trendy, and user-friendly. The team discussed the functional, conceptual, and detailed design of the remote control. They decided to work individually and then meet during the day. The whiteboard was used to share ideas. The Marketing team, who had experience with remote controls, shared their thoughts. The Project Manager, Christa, shared the goal of the price for the remote control, which was twenty-five euros. The team discussed the features of the remote control, such as being child-proof, colorful, and easy to use. The Project Manager, Christa, shared the goal of the price for the remote control, which was twenty-five euros. The team discussed the features of the remote control, such as being child-proof, colorful, and easy to use. The Project Manager, Christa
+
+================================================================================
+[sample 9] method=snapkv score=2.54 rep_ratio=0.960 collapsed=1
+PRED: The team is working on a remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control remote control
+
+================================================================================
+[sample 9] method=pyramidkv score=6.02 rep_ratio=0.277 collapsed=0
+PRED: The team held a kick-off meeting to discuss the design of a new remote control. The Project Manager, Christa, introduced the team and the goal, which was to design a remote control that was original, trendy, and user-friendly. The team discussed the functional, conceptual, and detailed design of the remote control. They decided to work individually and then meet during the day. The whiteboard was used to share ideas. The Marketing team, who had experience with remote controls, shared their thoughts. The Project Manager, Christa, shared the goal of the price for the remote control, which was twenty-five euros. The team discussed the features of the remote control, such as being child-proof, colorful, and easy to use. The Project Manager, Christa, shared the goal of the price for the remote control, which was twenty-five euros. The team discussed the features of the remote control, such as being child-proof, colorful, and easy to use. The Project Manager, Christa
+
+================================================================================
+[sample 9] method=adakv score=6.02 rep_ratio=0.277 collapsed=0
+PRED: The team held a kick-off meeting to discuss the design of a new remote control. The Project Manager, Christa, introduced the team and the goal, which was to design a remote control that was original, trendy, and user-friendly. The team discussed the functional, conceptual, and detailed design of the remote control. They decided to work individually and then meet during the day. The whiteboard was used to share ideas. The Marketing team, who had experience with remote controls, shared their thoughts. The Project Manager, Christa, shared the goal of the price for the remote control, which was twenty-five euros. The team discussed the features of the remote control, such as being child-proof, colorful, and easy to use. The Project Manager, Christa, shared the goal of the price for the remote control, which was twenty-five euros. The team discussed the features of the remote control, such as being child-proof, colorful, and easy to use. The Project Manager, Christa
+
+================================================================================
+[sample 9] method=ours score=10.00 rep_ratio=0.041 collapsed=0
+PRED: The meeting is focused on the design of a new remote control. Key points include the product's features (color, durability, usability, size), its differentiation from others, and the design of the remote control. The team discusses the need for a remote control with a screen that can display information based on the user's needs. They also consider the remote control's usability, size, and target audience. The project aims to create a remote control that is user-friendly, durable, and visually appealing. The team will meet again in thirty minutes to finalize the design and technical aspects of the remote control.

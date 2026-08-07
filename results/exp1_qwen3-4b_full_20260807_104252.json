@@ -1,0 +1,92 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa"
+  ],
+  "methods": [
+    "fullkv",
+    "streaming",
+    "h2o",
+    "snapkv",
+    "pyramidkv",
+    "adakv",
+    "ours"
+  ],
+  "num_samples": 1,
+  "seed": 42,
+  "results": [
+    {
+      "method": "fullkv",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 3184.8386120465066,
+      "avg_throughput": 3.221069902913209,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "streaming",
+      "task_scores": {
+        "narrativeqa": 5.0
+      },
+      "avg_score": 5.0,
+      "avg_ttft_ms": 2616.110282335079,
+      "avg_throughput": 8.836750378815257,
+      "avg_memory_reduction_pct": 80.0
+    },
+    {
+      "method": "h2o",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 2906.189829909376,
+      "avg_throughput": 3.0273236867761746,
+      "avg_memory_reduction_pct": 80.0
+    },
+    {
+      "method": "snapkv",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 2857.031937422497,
+      "avg_throughput": 3.0252589189548327,
+      "avg_memory_reduction_pct": 80.0
+    },
+    {
+      "method": "pyramidkv",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 2861.245279333421,
+      "avg_throughput": 3.0145896428595105,
+      "avg_memory_reduction_pct": 80.0
+    },
+    {
+      "method": "adakv",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 2905.5600384516374,
+      "avg_throughput": 3.006337454407498,
+      "avg_memory_reduction_pct": 80.0
+    },
+    {
+      "method": "ours",
+      "task_scores": {
+        "narrativeqa": 0.0
+      },
+      "avg_score": 0.0,
+      "avg_ttft_ms": 3040.395530472909,
+      "avg_throughput": 2.9902330774627552,
+      "avg_memory_reduction_pct": 80.0
+    }
+  ]
+}

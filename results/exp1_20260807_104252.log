@@ -1,0 +1,136 @@
+2026-08-07 10:42:52,170 [INFO] __main__: Experiment 1: Main Results
+2026-08-07 10:42:52,173 [INFO] __main__:   Model: qwen3-4b
+2026-08-07 10:42:52,175 [INFO] __main__:   Mode: full
+2026-08-07 10:42:52,177 [INFO] __main__:   Budget: 20%
+2026-08-07 10:42:52,178 [INFO] __main__:   Tasks: ['narrativeqa']
+2026-08-07 10:42:52,180 [INFO] __main__:   Methods: ['fullkv', 'streaming', 'h2o', 'snapkv', 'pyramidkv', 'adakv', 'ours']
+2026-08-07 10:42:52,181 [INFO] __main__:   Samples/task: 1
+2026-08-07 10:42:52,183 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-08-07 10:42:52,185 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-07 10:42:52,422 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:42:52,469 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:52,601 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:52,940 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:42:52,976 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:53,089 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:53,310 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-07 10:42:53,397 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-07 10:42:53,501 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/vocab.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:42:53,564 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:53,678 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/vocab.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:53,924 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/merges.txt "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:42:54,010 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/merges.txt "HTTP/1.1 200 OK"
+2026-08-07 10:42:54,113 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/merges.txt "HTTP/1.1 200 OK"
+2026-08-07 10:42:54,383 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer.json "HTTP/1.1 302 Found"
+2026-08-07 10:42:55,326 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/added_tokens.json "HTTP/1.1 404 Not Found"
+2026-08-07 10:42:55,485 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/special_tokens_map.json "HTTP/1.1 404 Not Found"
+2026-08-07 10:42:55,681 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/chat_template.jinja "HTTP/1.1 404 Not Found"
+2026-08-07 10:42:57,177 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-07 10:42:57,181 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-07 10:42:57,280 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:42:57,306 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:58,005 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/model.safetensors "HTTP/1.1 404 Not Found"
+2026-08-07 10:42:58,136 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/model.safetensors.index.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:42:58,169 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:58,276 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/model.safetensors.index.json "HTTP/1.1 200 OK"
+2026-08-07 10:42:58,627 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/revision/main "HTTP/1.1 200 OK"
+2026-08-07 10:42:58,682 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/1cfa9a7208912126459214e8b04321603b3df60c?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-07 10:43:18,128 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:18,164 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-07 10:43:18,292 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-07 10:43:18,517 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-07 10:43:18,586 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-07 10:43:18,634 [INFO] __main__: 사전 데이터 로딩 중...
+2026-08-07 10:43:18,636 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-08-07 10:43:18,683 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:18,718 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench "HTTP/1.1 200 OK"
+2026-08-07 10:43:19,276 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/main "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:19,315 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/main "HTTP/1.1 200 OK"
+2026-08-07 10:43:19,376 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:19,440 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/main?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-07 10:43:19,515 [INFO] httpx: HTTP Request: GET https://huggingface.co/datasets/THUDM/LongBench/resolve/main/LongBench.py "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:19,564 [INFO] httpx: HTTP Request: GET https://huggingface.co/datasets/zai-org/LongBench/resolve/main/LongBench.py "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:19,600 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/LongBench.py?%2Fdatasets%2Fzai-org%2FLongBench%2Fresolve%2Fmain%2FLongBench.py=&etag=%22c68bcc96bd3df0ac2f3905a356b99ff25a43b725%22 "HTTP/1.1 200 OK"
+2026-08-07 10:43:19,875 [INFO] httpx: HTTP Request: GET https://huggingface.co/datasets/THUDM/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:19,908 [INFO] httpx: HTTP Request: GET https://huggingface.co/datasets/zai-org/LongBench/resolve/main/README.md "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:19,973 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/resolve-cache/datasets/zai-org/LongBench/5e628be450b7e67fb7ae6e201bd6d8f7056f7672/README.md?%2Fdatasets%2Fzai-org%2FLongBench%2Fresolve%2Fmain%2FREADME.md=&etag=%22dc9a87ac3719353c4137963bc9d952d608b64d97%22 "HTTP/1.1 200 OK"
+2026-08-07 10:43:21,106 [INFO] httpx: HTTP Request: GET https://huggingface.co/datasets/THUDM/LongBench/resolve/main/data.zip "HTTP/1.1 307 Temporary Redirect"
+2026-08-07 10:43:21,268 [INFO] httpx: HTTP Request: GET https://huggingface.co/datasets/zai-org/LongBench/resolve/main/data.zip "HTTP/1.1 302 Found"
+2026-08-07 10:43:21,551 [INFO] httpx: HTTP Request: GET https://us.aws.cdn.hf.co/xet-bridge-us/64c523313f3387bcfa19d940/59f4339b6a500a51b14add87c1ca805d5c8fa60ffd1bb0676e3ce73a3bdfc4d1?response-content-type=application%2Fzip&response-content-disposition=inline%3B+filename*%3DUTF-8%27%27data.zip%3B+filename%3D%22data.zip%22%3B&user_id=6a0c5d73289c874208c1b3f7&X-Xet-Cas-Uid=6a0c5d73289c874208c1b3f7&Expires=1786103001&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly91cy5hd3MuY2RuLmhmLmNvL3hldC1icmlkZ2UtdXMvNjRjNTIzMzEzZjMzODdiY2ZhMTlkOTQwLzU5ZjQzMzliNmE1MDBhNTFiMTRhZGQ4N2MxY2E4MDVkNWM4ZmE2MGZmZDFiYjA2NzZlM2NlNzNhM2JkZmM0ZDFcXD9yZXNwb25zZS1jb250ZW50LXR5cGU9YXBwbGljYXRpb24lMkZ6aXAmcmVzcG9uc2UtY29udGVudC1kaXNwb3NpdGlvbj1pbmxpbmUlM0IrZmlsZW5hbWUlMkElM0RVVEYtOCUyNyUyN2RhdGEuemlwJTNCK2ZpbGVuYW1lJTNEJTIyZGF0YS56aXAlMjIlM0ImdXNlcl9pZD02YTBjNWQ3MzI4OWM4NzQyMDhjMWIzZjcmWC1YZXQtQ2FzLVVpZD02YTBjNWQ3MzI4OWM4NzQyMDhjMWIzZjciLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkVwb2NoVGltZSI6MTc4NjEwMzAwMX19fV19&Signature=MEYCIQDI-Jxq%7EgZ9slE0o1eCG0%7EA-vlOdUuWmlFfzhYnD9G-VwIhANe-IJOnkb6A9sc-OKRjSoRkhmh8JFQjMdmxWm8I26e2&Key-Pair-Id=01KXEF4KZ1B6FV465MAWR4M21F "HTTP/1.1 200 OK"
+2026-08-07 10:43:38,217 [INFO] core.dataset_loader: Loaded 1 samples from narrativeqa
+2026-08-07 10:43:38,247 [INFO] __main__:   ✓ narrativeqa: 1샘플 로드 완료
+2026-08-07 10:43:38,249 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-08-07 10:43:38,250 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-07 10:43:38,252 [INFO] __main__: Method: FULLKV | Budget: 20%
+2026-08-07 10:43:38,254 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-07 10:43:38,255 [INFO] __main__: 
+  Task: narrativeqa
+2026-08-07 10:43:38,257 [INFO] core.evaluator_v2: [fullkv] narrativeqa (1샘플, budget=20%)
+2026-08-07 10:43:38,632 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-07 10:43:44,310 [INFO] core.evaluator_v2: [fullkv] pred='Daisy encountered Jim in Eatonville.'
+2026-08-07 10:43:44,336 [INFO] __main__:   → score=0.00, mem_red=0.0%, ttft=3184.8ms
+2026-08-07 10:43:44,343 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-07 10:43:44,345 [INFO] __main__: Method: STREAMING | Budget: 20%
+2026-08-07 10:43:44,347 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-07 10:43:44,349 [INFO] __main__: 
+  Task: narrativeqa
+2026-08-07 10:43:44,350 [INFO] core.evaluator_v2: [streaming] narrativeqa (1샘플, budget=20%)
+2026-08-07 10:43:44,906 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-07 10:43:53,442 [INFO] core.evaluator_v2: [streaming] pred='The town is not explicitly named in the text, but it is implied to be a small, racially segregated Southern community, l'
+2026-08-07 10:43:53,445 [INFO] __main__:   → score=5.00, mem_red=80.0%, ttft=2616.1ms
+2026-08-07 10:43:53,452 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-07 10:43:53,454 [INFO] __main__: Method: H2O | Budget: 20%
+2026-08-07 10:43:53,455 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-07 10:43:53,456 [INFO] __main__: 
+  Task: narrativeqa
+2026-08-07 10:43:53,458 [INFO] core.evaluator_v2: [h2o] narrativeqa (1샘플, budget=20%)
+2026-08-07 10:43:53,952 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-07 10:44:01,157 [INFO] core.evaluator_v2: [h2o] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-08-07 10:44:01,163 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2906.2ms
+2026-08-07 10:44:01,165 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-07 10:44:01,167 [INFO] __main__: Method: SNAPKV | Budget: 20%
+2026-08-07 10:44:01,170 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-07 10:44:01,171 [INFO] __main__: 
+  Task: narrativeqa
+2026-08-07 10:44:01,172 [INFO] core.evaluator_v2: [snapkv] narrativeqa (1샘플, budget=20%)
+2026-08-07 10:44:01,659 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-07 10:44:08,815 [INFO] core.evaluator_v2: [snapkv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-08-07 10:44:08,856 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2857.0ms
+2026-08-07 10:44:08,858 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-07 10:44:08,861 [INFO] __main__: Method: PYRAMIDKV | Budget: 20%
+2026-08-07 10:44:08,862 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-07 10:44:08,865 [INFO] __main__: 
+  Task: narrativeqa
+2026-08-07 10:44:08,872 [INFO] core.evaluator_v2: [pyramidkv] narrativeqa (1샘플, budget=20%)
+2026-08-07 10:44:09,366 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-07 10:44:16,542 [INFO] core.evaluator_v2: [pyramidkv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-08-07 10:44:16,549 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2861.2ms
+2026-08-07 10:44:16,550 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-07 10:44:16,552 [INFO] __main__: Method: ADAKV | Budget: 20%
+2026-08-07 10:44:16,554 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-07 10:44:16,556 [INFO] __main__: 
+  Task: narrativeqa
+2026-08-07 10:44:16,558 [INFO] core.evaluator_v2: [adakv] narrativeqa (1샘플, budget=20%)
+2026-08-07 10:44:17,115 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-07 10:44:24,374 [INFO] core.evaluator_v2: [adakv] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-08-07 10:44:24,376 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=2905.6ms
+2026-08-07 10:44:24,377 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-07 10:44:24,381 [INFO] __main__: Method: OURS | Budget: 20%
+2026-08-07 10:44:24,382 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-07 10:44:24,383 [INFO] __main__: 
+  Task: narrativeqa
+2026-08-07 10:44:24,384 [INFO] core.evaluator_v2: [ours] narrativeqa (1샘플, budget=20%)
+2026-08-07 10:44:24,903 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-07 10:44:32,339 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of **Cincinnati**.'
+2026-08-07 10:44:32,343 [INFO] __main__:   → score=0.00, mem_red=80.0%, ttft=3040.4ms
+2026-08-07 10:44:32,370 [INFO] core.results_manager: Results saved to results/exp1_qwen3-4b_full_20260807_104252.csv
+2026-08-07 10:44:32,386 [INFO] core.results_manager: JSON saved to results/exp1_qwen3-4b_full_20260807_104252.json
+2026-08-07 10:44:32,387 [INFO] __main__: Experiment 1 completed!
