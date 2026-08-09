@@ -45,6 +45,40 @@ def _key_importance(key_states: torch.Tensor) -> torch.Tensor:
     return score
 
 
+def _select_with_sink(score: torch.Tensor, seq_len: int, budget: int,
+                       recent_w: int, sink_size: int, device) -> torch.Tensor:
+    """
+    budget 내에서 sink_size(시퀀스 최초 위치)와 recent_w(최근 위치)를 우선 보존하고,
+    나머지 예산은 score 기반 top-k로 선택한다.
+    StreamingLLMCache의 sink 회계 방식(budget 안에서 차감)과 동일한 관례를 따른다 —
+    즉 sink4를 추가해도 전체 KV 캐시 크기(budget)는 baseline과 동일하게 유지된다.
+    """
+    sink_size = max(min(sink_size, budget, seq_len), 0)
+    recent_w = max(min(recent_w, max(budget - sink_size, 0), seq_len), 0)
+    mid_budget = max(budget - sink_size - recent_w, 0)
+
+    sink_idx = torch.arange(sink_size, device=device)
+    if recent_w > 0:
+        recent_idx = torch.arange(seq_len - recent_w, seq_len, device=device)
+    else:
+        recent_idx = torch.empty(0, dtype=torch.long, device=device)
+
+    mid_start, mid_end = sink_size, seq_len - recent_w
+    if mid_budget > 0 and mid_end > mid_start:
+        mid_score = score[mid_start:mid_end]
+        k = min(mid_budget, mid_end - mid_start)
+        _, top_idx = torch.topk(mid_score, k=k)
+        top_idx = top_idx + mid_start
+        top_idx, _ = top_idx.sort()
+    else:
+        top_idx = torch.empty(0, dtype=torch.long, device=device)
+
+    indices = torch.cat([sink_idx, top_idx, recent_idx])
+    indices = torch.unique(indices)
+    indices, _ = indices.sort()
+    return indices
+
+
 # ─────────────────────────────────────────────────────────────
 # Base Hook Cache
 # ─────────────────────────────────────────────────────────────
@@ -55,11 +89,12 @@ class BaseHookCache(DynamicCache):
     일괄 압축. Transformers 5.10.2: layers[i].keys / layers[i].values 구조.
     """
 
-    def __init__(self, budget_ratio: float, num_layers: int, model_config: Dict):
+    def __init__(self, budget_ratio: float, num_layers: int, model_config: Dict, sink_size: int = 0):
         super().__init__()
         self.budget_ratio = budget_ratio
         self.num_layers = num_layers
         self.model_config = model_config
+        self.sink_size = sink_size  # 0이면 기존 baseline과 완전히 동일한 동작
         # prefill key tensor 저장 (importance 계산용)
         self._prefill_keys: List[Optional[torch.Tensor]] = [None] * num_layers
         self._prefill_done = False
@@ -144,16 +179,7 @@ class H2OCache(BaseHookCache):
 
         window = min(16, seq_len // 4, budget // 4) if budget > 4 else 0
         window = max(window, 0)
-        if window > 0 and seq_len > window:
-            recent_idx = torch.arange(seq_len - window, seq_len, device=device)
-            prefix_budget = max(budget - window, 1)
-            prefix_len = seq_len - window
-            _, top_idx = torch.topk(score[:prefix_len], k=min(prefix_budget, prefix_len))
-            top_idx, _ = top_idx.sort()
-            indices = torch.cat([top_idx, recent_idx])
-        else:
-            _, indices = torch.topk(score, k=min(budget, seq_len))
-            indices, _ = indices.sort()
+        indices = _select_with_sink(score, seq_len, budget, window, self.sink_size, device)
 
         return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
@@ -163,8 +189,8 @@ class H2OCache(BaseHookCache):
 # ─────────────────────────────────────────────────────────────
 
 class SnapKVCache(BaseHookCache):
-    def __init__(self, budget_ratio, num_layers, model_config, window_size=32, kernel_size=5):
-        super().__init__(budget_ratio, num_layers, model_config)
+    def __init__(self, budget_ratio, num_layers, model_config, window_size=32, kernel_size=5, sink_size=0):
+        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size)
         self.window_size = window_size
         self.kernel_size = kernel_size
         self._snap_indices: List[Optional[torch.Tensor]] = [None] * num_layers
@@ -185,14 +211,7 @@ class SnapKVCache(BaseHookCache):
                 kernel_size=self.kernel_size, stride=1, padding=self.kernel_size // 2,
             ).squeeze()
         device = score.device
-        recent_start = max(seq_len - self.window_size, 0)
-        select_budget = max(budget - self.window_size, 1)
-        if recent_start > 0:
-            _, top_idx = torch.topk(score[:recent_start], k=min(select_budget, recent_start))
-            top_idx, _ = top_idx.sort()
-            recent_idx = torch.arange(recent_start, seq_len, device=device)
-            return torch.cat([top_idx, recent_idx])
-        return torch.arange(seq_len, device=device)
+        return _select_with_sink(score, seq_len, budget, self.window_size, self.sink_size, device)
 
     def _compress(self, key_states, value_states, layer_idx, budget):
         seq_len = key_states.shape[2]
@@ -217,8 +236,8 @@ class PyramidKVCache(BaseHookCache):
     레이어별 선형 감소 budget (초기 레이어 많이, 후기 레이어 적게).
     key norm으로 중요 토큰 선택.
     """
-    def __init__(self, budget_ratio, num_layers, model_config, min_ratio=0.1):
-        super().__init__(budget_ratio, num_layers, model_config)
+    def __init__(self, budget_ratio, num_layers, model_config, min_ratio=0.1, sink_size=0):
+        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size)
         self.min_ratio = min_ratio
 
     def _get_layer_budget(self, layer_idx, seq_len):
@@ -256,18 +275,9 @@ class PyramidKVCache(BaseHookCache):
         device = key_states.device
         ref_k = pk.to(device) if (pk is not None and pk.shape[2] == seq_len) else key_states
         score = _key_importance(ref_k).to(device)
-        # recency 보정: 최근 window는 무조건 유지
         w = min(32, seq_len // 4)
-        recent_idx = torch.arange(seq_len - w, seq_len, device=device)
-        prefix_b = max(b - w, 1)
-        if seq_len - w > 0:
-            _, top_idx = torch.topk(score[:seq_len - w], k=min(prefix_b, seq_len - w))
-            top_idx, _ = top_idx.sort()
-            top_idx = top_idx.to(device)
-            idx = torch.cat([top_idx, recent_idx])
-        else:
-            idx = recent_idx
-        idx = idx[:b].to(key_states.device)
+        idx = _select_with_sink(score, seq_len, b, w, self.sink_size, device)
+
         return key_states[:, :, idx, :], value_states[:, :, idx, :], idx.cpu()
 
 
@@ -327,16 +337,8 @@ class AdaKVCache(BaseHookCache):
                                 else key_states)
         w = min(32, seq_len // 4, budget // 2)
         w = max(w, 0)
-        if w > 0 and seq_len > w:
-            recent_idx = torch.arange(seq_len - w, seq_len, device=device)
-            prefix_b = max(budget - w, 1)
-            _, top_idx = torch.topk(score[:seq_len - w], k=min(prefix_b, seq_len - w))
-            top_idx, _ = top_idx.sort()
-            indices = torch.cat([top_idx, recent_idx])
-        else:
-            _, indices = torch.topk(score, k=min(budget, seq_len))
-            indices, _ = indices.sort()
-        indices = indices.to(device)
+        indices = _select_with_sink(score, seq_len, budget, w, self.sink_size, device)
+
         return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 
@@ -359,8 +361,9 @@ class OursHybridCache(BaseHookCache):
     """
     def __init__(self, budget_ratio, num_layers, model_config,
                  alpha=0.40, beta=0.20, gamma=0.20, delta=0.20, lambda_pos=1.0,
-                 use_attention=True, use_entropy=True, use_semantic=False, use_position=True):
-        super().__init__(budget_ratio, num_layers, model_config)
+                 use_attention=True, use_entropy=True, use_semantic=False, use_position=True,
+                 sink_size=0):
+        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size)
         total = alpha + beta + gamma + delta
         self.alpha = alpha / total
         self.beta = beta / total
@@ -438,18 +441,8 @@ class OursHybridCache(BaseHookCache):
         scores = self._compute_hybrid_score(key_states, layer_idx, seq_len)
         w = min(32, seq_len // 4, budget // 2)
         w = max(w, 0)
-        if w > 0 and seq_len > w:
-            recent_idx = torch.arange(seq_len - w, seq_len, device=device)
-            prefix_b = max(budget - w, 1)
-            _, top_idx = torch.topk(scores[:seq_len - w], k=min(prefix_b, seq_len - w))
-            top_idx, _ = top_idx.sort()
-            indices = torch.cat([top_idx, recent_idx])
-        else:
-            if scores.sum() == 0:
-                indices = torch.arange(seq_len - budget, seq_len, device=device)
-            else:
-                _, indices = torch.topk(scores, k=min(budget, seq_len))
-                indices, _ = indices.sort()
+        indices = _select_with_sink(scores, seq_len, budget, w, self.sink_size, device)
+
         return key_states[:, :, indices, :], value_states[:, :, indices, :], indices.cpu()
 
 
