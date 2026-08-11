@@ -144,13 +144,17 @@ def main():
         results["2"] = ok
     
     # ── 실험 3: Ablation - Allocation Strategy ──────────
+    # [2026-08-11] Exp3는 legacy/로 격리됨 - HF generate() API가 레이어마다
+    # 다른 캐시 길이를 지원하지 않아 이 실험(H2 가설: 레이어별 동적 예산
+    # "크기" 할당) 자체가 이 파이프라인 구조에서 의미 있게 테스트 불가능하다고
+    # 결론 (AdaKV/PyramidKV의 레이어 적응형 설계 무력화와 동일한 아키텍처 제약).
+    # 논문 V5에 이미 이 한계가 기록됨. 실행하지 않음.
     if "3" in run_exps:
-        ok = run_command(
-            [sys.executable, "experiments/exp3_ablation_allocation.py"]
-            + model_flag + budget_flag + ns_flag,
-            "Exp 3: Ablation - Budget Allocation Strategy"
+        logger.warning(
+            "Exp 3는 실행하지 않습니다 - legacy/exp3_ablation_allocation.py 참고 "
+            "(아키텍처 제약으로 테스트 불가 결론, legacy/README.md 참고)"
         )
-        results["3"] = ok
+        results["3"] = None
     
     # ── 실험 4: Budget Sensitivity ──────────
     if "4" in run_exps:

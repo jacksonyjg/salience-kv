@@ -7,7 +7,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
 
-df = pd.read_csv('results/M1_final_charrep_20260808_010351.csv')
+df = pd.read_csv('results/legacy_pre_fix/M1_final_charrep_20260808_010351.csv')
 df80 = df[df['budget'] == 0.8].copy()
 
 METHOD_STYLE = {
@@ -64,5 +64,5 @@ fig.suptitle('Recent-Context Retention vs. Repetition Collapse\n(Qwen3-4B, 80% B
 plt.tight_layout()
 import os
 os.makedirs('results/figures', exist_ok=True)
-plt.savefig('results/figures/recent500_vs_collapse_v3.png', dpi=150, bbox_inches='tight')
-print('저장 완료: results/figures/recent500_vs_collapse_v3.png')
+plt.savefig('results/figures/legacy_pre_fix/recent500_vs_collapse_v3.png', dpi=150, bbox_inches='tight')
+print('저장 완료: results/figures/legacy_pre_fix/recent500_vs_collapse_v3.png')
