@@ -31,7 +31,6 @@ def test_metrics():
     """메트릭 계산 단위 테스트."""
     from core.metrics import compute_f1, compute_rouge_l
     
-    # F1 테스트
     f1 = compute_f1("the cat sat on the mat", ["the cat sat on the mat"])
     assert abs(f1 - 100.0) < 0.1, f"F1 perfect match failed: {f1}"
     
@@ -41,7 +40,6 @@ def test_metrics():
     f1 = compute_f1("the cat", ["the big cat"])
     assert 0 < f1 < 100, f"F1 partial match failed: {f1}"
     
-    # ROUGE-L 테스트
     rouge = compute_rouge_l("hello world", ["hello world"])
     assert abs(rouge - 100.0) < 0.1, f"ROUGE-L perfect failed: {rouge}"
     
@@ -55,7 +53,6 @@ def test_model_loading(model_key: str):
     logger.info(f"Loading {model_key} ...")
     model, tokenizer, cfg = load_model_and_tokenizer(model_key, device="cuda")
     
-    # 프롬프트 생성 테스트
     prompt = make_prompt(
         model_key=model_key,
         tokenizer=tokenizer,
@@ -65,10 +62,7 @@ def test_model_loading(model_key: str):
     )
     logger.info(f"Prompt (first 200 chars): {repr(prompt[:200])}")
     
-    # Qwen3 특수 검증
     if model_key == "qwen3-4b":
-        # <think>\n\n</think> 빈 블록은 thinking 억제용으로 허용
-        # 실제 thinking content가 있는 경우(<think>실제내용</think>)만 금지
         import re
         thinking_blocks = re.findall(r'<think>(.*?)</think>', prompt, re.DOTALL)
         has_thinking_content = any(b.strip() for b in thinking_blocks)
@@ -76,13 +70,11 @@ def test_model_loading(model_key: str):
         assert "<|im_start|>" in prompt or "user" in prompt.lower(), \
             "Qwen3 chat template not applied"
     
-    # 토크나이즈 테스트
     inputs = tokenize_prompt(prompt, tokenizer, model_key, device="cuda")
     logger.info(f"Input token length: {inputs['input_ids'].shape[1]}")
     assert inputs["input_ids"].shape[1] > 0, "Tokenization failed"
     assert "attention_mask" in inputs, "Missing attention_mask"
     
-    # 짧은 생성 테스트
     import torch
     with torch.no_grad():
         out = model.generate(
@@ -105,15 +97,13 @@ def test_model_loading(model_key: str):
 
 
 def test_kv_methods(model, tokenizer, model_config):
-    """모든 KV 방법 압축 동작 테스트."""
+    """모든 KV 방법 압축 동작 테스트. (2026-08-11: V2 kv_cache_hook 방식으로 이전)"""
     import torch
     from core.model_loader import make_prompt, tokenize_prompt
-    from core.kv_methods import create_kv_method
-    from core.kv_base import register_attention_hooks, remove_hooks, get_kv_cache_size_mb
-    
+    from core.kv_cache_hook import make_hook_cache, BaseHookCache
+
     model_key = model_config["model_key"]
-    
-    # 테스트 입력
+
     prompt = make_prompt(
         model_key=model_key,
         tokenizer=tokenizer,
@@ -122,85 +112,72 @@ def test_kv_methods(model, tokenizer, model_config):
         task_type="qa",
     )
     inputs = tokenize_prompt(prompt, tokenizer, model_key, max_input_length=512, device="cuda")
-    
-    # Prefill
-    num_layers = model_config["num_layers"]
-    hooks, attn_weights_list = register_attention_hooks(model, num_layers)
-    
-    with torch.no_grad():
-        try:
-            out = model(
-                **inputs,
-                use_cache=True,
-                output_attentions=True,
-                return_dict=True,
-            )
-            if hasattr(out, "attentions") and out.attentions:
-                for li, a in enumerate(out.attentions):
-                    if a is not None:
-                        attn_weights_list[li] = a.detach().cpu()
-        except Exception:
-            out = model(**inputs, use_cache=True, return_dict=True)
-        
-        past_kv = out.past_key_values
-    
-    remove_hooks(hooks)
-    
-    # DynamicCache 호환 처리 (Transformers 5.x)
-    if hasattr(past_kv, 'get_seq_length'):
-        seq_len = past_kv.get_seq_length()
-    elif hasattr(past_kv, 'key_cache'):
-        seq_len = past_kv.key_cache[0].shape[2]
-    else:
-        seq_len = past_kv[0][0].shape[2]
 
+    with torch.no_grad():
+        out = model(**inputs, use_cache=True, return_dict=True, output_attentions=False)
+        prefill_kv = out.past_key_values
+
+    seq_len = prefill_kv.get_seq_length() if hasattr(prefill_kv, 'get_seq_length') else prefill_kv.layers[0].keys.shape[2]
 
     budget_ratio = 0.20
     dtype = model_config.get("dtype", torch.float16)
-    
-    kv_size_original = get_kv_cache_size_mb(past_kv, dtype)
+    bytes_per = 2 if dtype == torch.float16 else 4
+
+    def _kv_size_mb(cache):
+        total = 0
+        if hasattr(cache, 'layers'):
+            for layer in cache.layers:
+                if getattr(layer, 'keys', None) is not None:
+                    total += layer.keys.numel() * bytes_per
+                if getattr(layer, 'values', None) is not None:
+                    total += layer.values.numel() * bytes_per
+        return total / (1024 * 1024)
+
+    kv_size_original = _kv_size_mb(prefill_kv)
     logger.info(f"Original KV cache: {kv_size_original:.2f} MB, seq_len={seq_len}")
-    
+
     methods_to_test = ["fullkv", "streaming", "h2o", "snapkv", "pyramidkv", "adakv", "ours"]
-    
+
     for method_name in methods_to_test:
-        kv_method = create_kv_method(method_name, model_config)
-        
-        compressed = kv_method.compress(past_kv, attn_weights_list, budget_ratio)
-        
-        # DynamicCache 호환 처리 (Transformers 5.x)
-        if hasattr(compressed, 'get_seq_length'):
-            compressed_seq = compressed.get_seq_length()
-        elif hasattr(compressed, 'layers'):
+        hook_cache = make_hook_cache(method_name, budget_ratio, model_config)
+
+        if isinstance(hook_cache, BaseHookCache):
+            for i, layer in enumerate(prefill_kv.layers):
+                if i >= len(hook_cache.layers):
+                    hook_cache.update(layer.keys, layer.values, i)
+                else:
+                    hook_cache.layers[i].keys = layer.keys.clone()
+                    hook_cache.layers[i].values = layer.values.clone()
+                hook_cache.set_prefill_keys(i, layer.keys)
+            hook_cache.mark_prefill_done(seq_len)
+            hook_cache.apply_compression_all_layers()
+            compressed = hook_cache
             compressed_seq = compressed.layers[0].keys.shape[2]
+            kv_size_after = _kv_size_mb(compressed)
         else:
-            compressed_seq = compressed[0][0].shape[2]
-        
-        
-        kv_size_after = get_kv_cache_size_mb(compressed, dtype)
-        mem_red = (1 - kv_size_after / kv_size_original) * 100
-        
-        # 검증
+            compressed_seq = seq_len
+            kv_size_after = kv_size_original
+
+        mem_red = (1 - kv_size_after / kv_size_original) * 100 if kv_size_original > 0 else 0.0
+
         assert compressed_seq > 0, f"{method_name}: compressed seq_len = 0"
         if method_name != "fullkv":
             assert compressed_seq <= seq_len, f"{method_name}: seq grew!"
-        
+
         logger.info(
             f"  ✓ {method_name:15s}: seq {seq_len} → {compressed_seq}, "
             f"mem_red={mem_red:.1f}%"
         )
-    
+
     logger.info("✓ All KV methods test passed")
 
 
 def test_evaluator_single_sample(model, tokenizer, model_config):
-    """Evaluator 단일 샘플 평가 테스트."""
-    from core.kv_methods import create_kv_method
-    from core.evaluator import Evaluator
-    
-    evaluator = Evaluator(model, tokenizer, model_config, seed=42)
-    kv_method = create_kv_method("ours", model_config)
-    
+    """Evaluator 단일 샘플 평가 테스트. (2026-08-11: EvaluatorV2로 이전)"""
+    from core.evaluator_v2 import EvaluatorV2
+
+    evaluator = EvaluatorV2(model, tokenizer, model_config, seed=42)
+
     sample = {
         "context": "The Eiffel Tower is located in Paris, France. It was built in 1889.",
         "question": "Where is the Eiffel Tower?",
@@ -210,18 +187,18 @@ def test_evaluator_single_sample(model, tokenizer, model_config):
         "metric": "f1",
         "max_new_tokens": 20,
     }
-    
-    result = evaluator.evaluate_sample(sample, kv_method, budget_ratio=0.20)
-    
+
+    result = evaluator.evaluate_sample(sample, "ours", budget_ratio=0.20)
+
     logger.info(f"  Score: {result['score']:.2f}")
     logger.info(f"  Prediction: {repr(result['prediction'])}")
     logger.info(f"  TTFT: {result['ttft_ms']:.1f}ms")
     logger.info(f"  Memory reduction: {result['memory_reduction_pct']:.1f}%")
-    
+
     assert isinstance(result["score"], float), "Score is not float"
     assert isinstance(result["prediction"], str), "Prediction is not str"
-    
-    logger.info("✓ Evaluator single sample test passed")
+
+    logger.info("✓ Evaluator single sample test passed (EvaluatorV2)")
 
 
 def parse_args():
@@ -242,19 +219,15 @@ def main():
     logger.info("Sanity Check: KV Cache Experiment System")
     logger.info("=" * 60)
     
-    # 1. 메트릭 테스트 (모델 불필요)
     logger.info("\n[1] Testing metrics ...")
     test_metrics()
     
-    # 2. 모델 로드 테스트
     logger.info(f"\n[2] Testing model loading: {args.model} ...")
     model, tokenizer, model_config = test_model_loading(args.model)
     
-    # 3. KV 방법 테스트
     logger.info("\n[3] Testing KV cache methods ...")
     test_kv_methods(model, tokenizer, model_config)
     
-    # 4. Evaluator 테스트 (선택)
     if args.full_check:
         logger.info("\n[4] Testing Evaluator (single sample) ...")
         test_evaluator_single_sample(model, tokenizer, model_config)

@@ -44,12 +44,9 @@ class EvaluatorV2:
 
     def _clean_prediction(self, text: str) -> str:
         import re
-        # <think>...</think> 블록 전체 제거
         text = re.sub(r'<think>.*?</think>', '', text, flags=re.DOTALL)
-        # </think> 이후만 남기기 (블록이 잘린 경우)
         if "</think>" in text:
             text = text.split("</think>")[-1]
-        # 고아 <think> 태그 제거
         text = text.replace("<think>", "").replace("</think>", "")
         return text.strip()
 
@@ -73,9 +70,8 @@ class EvaluatorV2:
             context=sample["context"], question=sample["question"],
             task_type=sample["task_type"],
         )
-        # 모델별 안전 한계 고려 (Gemma-2-2b는 8192 설계 한계 초과시 생성 붕괴, 2026-07-04 확인)
         model_max_len = self.cfg.get("max_length", 16000)
-        safe_max_input = min(16000, model_max_len - 1000)  # 응답 생성 여유분 확보
+        safe_max_input = min(16000, model_max_len - 1000)
         inputs = tokenize_prompt(prompt, self.tokenizer, self.model_key, max_input_length=safe_max_input, device=self.device)
         input_ids = inputs["input_ids"]
         attention_mask = inputs["attention_mask"]
@@ -94,6 +90,7 @@ class EvaluatorV2:
                 output_attentions=False,
             )
             prefill_kv = prefill_out.past_key_values
+            last_logits = prefill_out.logits[:, -1, :].detach().clone()
         prefill_time_ms = (time.perf_counter() - prefill_start) * 1000
 
         kv_before = self._kv_size_mb(prefill_kv) if measure_efficiency else 0.0
@@ -104,16 +101,13 @@ class EvaluatorV2:
         if isinstance(hook_cache, BaseHookCache):
             if hasattr(prefill_kv, 'layers'):
                 for i, layer in enumerate(prefill_kv.layers):
-                    # KV 복사
                     if i >= len(hook_cache.layers):
                         hook_cache.update(layer.keys, layer.values, i)
                     else:
                         hook_cache.layers[i].keys = layer.keys.clone()
                         hook_cache.layers[i].values = layer.values.clone()
-                    # key tensor 저장 (importance 계산용, CPU)
                     hook_cache.set_prefill_keys(i, layer.keys)
 
-            # 원본 KV 즉시 해제
             del prefill_kv
             gc.collect()
             torch.cuda.empty_cache()
@@ -122,74 +116,50 @@ class EvaluatorV2:
             hook_cache.apply_compression_all_layers()
             compressed_cache = hook_cache
         else:
-            # FullKV: past_key_values 없이 generate (position 중복 방지)
-            del prefill_kv
-            gc.collect()
-            torch.cuda.empty_cache()
-            compressed_cache = None
+            # [2026-08-11 수정] FullKV: 이전엔 prefill_kv를 버리고 model.generate()가
+            # 처음부터 다시 prefill하게 방치했음 - 실측(ttft_check.py)으로 이중 prefill
+            # 확인됨(forward 호출 길이가 [N, N, 1] 패턴). 이제 prefill_kv를 그대로
+            # compressed_cache로 재사용해 압축 경로와 동일한 단일 prefill 방식으로 통일.
+            compressed_cache = prefill_kv
 
         compress_time_ms = (time.perf_counter() - compress_start) * 1000
 
-        if not measure_efficiency:
-            kv_after = 0.0
-            mem_red = 0.0
-        elif compressed_cache is None:
-            # FullKV: 압축 없음 → mem_red=0%
-            kv_after = kv_before
-            mem_red = 0.0
-        else:
-            kv_after = self._kv_size_mb(compressed_cache)
-            mem_red = (1 - kv_after / kv_before) * 100 if kv_before > 0 else 0.0
+        kv_after = 0.0 if not measure_efficiency else self._kv_size_mb(compressed_cache)
+        mem_red = (1 - kv_after / kv_before) * 100 if (measure_efficiency and kv_before > 0) else 0.0
         # ── Step 3: Generate ──────────────────────────────────
         gen_start = time.perf_counter()
         try:
-            if compressed_cache is not None:
-                # 레이어별 seq_len 중 최솟값으로 모든 레이어 통일
-                # 모든 레이어가 apply_compression에서 이미 동일 길이로 통일됨
-                cache_len = compressed_cache.layers[0].keys.shape[2]
-                gen_input_ids = input_ids
-                past_mask = torch.ones(
-                    1, cache_len,
-                    dtype=attention_mask.dtype,
-                    device=attention_mask.device,
-                )
-                gen_attention_mask = torch.cat([past_mask, attention_mask], dim=1)
+            eos_id = self.tokenizer.eos_token_id
+            max_new = sample["max_new_tokens"]
 
-                # SnapKV 전용: attention_mask를 실제 input_length 크기로 설정
-                # generate()는 attention_mask.shape[1]로 다음 토큰 position을 계산함.
-                # SnapKV sparse 캐시(cache_len=420)는 실제 2101토큰 중 선택된 것이므로
-                # attention_mask를 실제 input_length(2101)로 맞춰야 RoPE position 정확.
-                if False:  # SnapKV 전용 분기 제거 - 다른 메서드와 동일하게 처리
-                    pass
-                else:
-                    gen_cache_position = None
-                    gen_position_ids = None
-            else:
-                gen_input_ids = input_ids
-                gen_attention_mask = attention_mask
-                gen_position_ids = None
-                gen_cache_position = None
-            with torch.no_grad():
-                gen_kwargs = dict(
-                    input_ids=gen_input_ids,
-                    attention_mask=gen_attention_mask,
-                    past_key_values=compressed_cache,
-                    max_new_tokens=sample["max_new_tokens"],
-                    do_sample=False,
-                    temperature=None,
-                    top_p=None,
-                    top_k=None,
-                    pad_token_id=self.tokenizer.pad_token_id,
-                    eos_token_id=self.tokenizer.eos_token_id,
+            cache_len = compressed_cache.layers[0].keys.shape[2]
+
+            next_token = last_logits.argmax(dim=-1, keepdim=True)
+            generated_ids = [next_token.item()]
+
+            cur_pos = input_length
+            step = 0
+            while step < max_new - 1 and generated_ids[-1] != eos_id:
+                cache_position = torch.tensor([cur_pos], device=self.device)
+                attn_mask_step = torch.ones(
+                    1, cache_len + step + 1,
+                    dtype=attention_mask.dtype, device=attention_mask.device,
                 )
-                if gen_position_ids is not None:
-                    gen_kwargs["position_ids"] = gen_position_ids
-                if gen_cache_position is not None:
-                    gen_kwargs["cache_position"] = gen_cache_position
-                output = self.model.generate(**gen_kwargs)
-            # SnapKV는 gen_input_ids가 1토큰이므로 gen_prompt_len 기준으로 슬라이싱
-            gen_prompt_len = gen_input_ids.shape[1]
-            new_tokens = output[0, gen_prompt_len:]
+                with torch.no_grad():
+                    step_out = self.model(
+                        input_ids=next_token,
+                        past_key_values=compressed_cache,
+                        cache_position=cache_position,
+                        attention_mask=attn_mask_step,
+                        use_cache=True,
+                        return_dict=True,
+                    )
+                next_token = step_out.logits[:, -1, :].argmax(dim=-1, keepdim=True)
+                generated_ids.append(next_token.item())
+                cur_pos += 1
+                step += 1
+
+            new_tokens = torch.tensor(generated_ids, device=self.device)
         except Exception as e:
             logger.error(f"generate() failed: {e}")
             return {
