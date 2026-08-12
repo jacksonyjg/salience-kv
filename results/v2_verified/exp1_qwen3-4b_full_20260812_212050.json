@@ -1,0 +1,190 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "gov_report",
+    "qmsum"
+  ],
+  "methods": [
+    [
+      "fullkv",
+      "FullKV",
+      {}
+    ],
+    [
+      "streaming",
+      "StreamingLLM",
+      {}
+    ],
+    [
+      "h2o",
+      "H2O",
+      {}
+    ],
+    [
+      "snapkv",
+      "SnapKV",
+      {}
+    ],
+    [
+      "pyramidkv",
+      "PyramidKV-adapted",
+      {}
+    ],
+    [
+      "adakv",
+      "AdaKV-adapted",
+      {}
+    ],
+    [
+      "ours",
+      "SalienceKV_wo_sink",
+      {
+        "sink_size": 0
+      }
+    ],
+    [
+      "ours",
+      "SalienceKV_Sink4",
+      {
+        "sink_size": 4
+      }
+    ]
+  ],
+  "num_samples": 5,
+  "seed": 42,
+  "results": [
+    {
+      "method": "FullKV",
+      "task_scores": {
+        "gov_report": 15.84643558032987,
+        "qmsum": 8.906865774290239
+      },
+      "task_collapse_rates": {
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 12.376650677310055,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_ttft_ms": 951.2384435173632,
+      "avg_throughput": 25.136936509271,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "StreamingLLM",
+      "task_scores": {
+        "gov_report": 17.59743465631779,
+        "qmsum": 8.014149734149735
+      },
+      "task_collapse_rates": {
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 12.805792195233764,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_ttft_ms": 1498.7132328162236,
+      "avg_throughput": 24.97889834077234,
+      "avg_memory_reduction_pct": 80.00236436743019
+    },
+    {
+      "method": "H2O",
+      "task_scores": {
+        "gov_report": 4.909755459504624,
+        "qmsum": 1.2603951708235985
+      },
+      "task_collapse_rates": {
+        "gov_report": 100.0,
+        "qmsum": 100.0
+      },
+      "avg_score": 3.0850753151641115,
+      "avg_collapse_rate_pct": 100.0,
+      "avg_ttft_ms": 1787.1304752099604,
+      "avg_throughput": 27.072974399760852,
+      "avg_memory_reduction_pct": 80.00236436743019
+    },
+    {
+      "method": "SnapKV",
+      "task_scores": {
+        "gov_report": 1.9532680843691366,
+        "qmsum": 0.2843937059581239
+      },
+      "task_collapse_rates": {
+        "gov_report": 20.0,
+        "qmsum": 40.0
+      },
+      "avg_score": 1.1188308951636303,
+      "avg_collapse_rate_pct": 30.0,
+      "avg_ttft_ms": 1771.6857569925437,
+      "avg_throughput": 28.30987361875987,
+      "avg_memory_reduction_pct": 80.00236436743019
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "task_scores": {
+        "gov_report": 9.120420984797295,
+        "qmsum": 0.911494591030471
+      },
+      "task_collapse_rates": {
+        "gov_report": 100.0,
+        "qmsum": 100.0
+      },
+      "avg_score": 5.015957787913884,
+      "avg_collapse_rate_pct": 100.0,
+      "avg_ttft_ms": 1791.5153371460292,
+      "avg_throughput": 25.26252116391859,
+      "avg_memory_reduction_pct": 80.00236436743019
+    },
+    {
+      "method": "AdaKV-adapted",
+      "task_scores": {
+        "gov_report": 9.120420984797295,
+        "qmsum": 0.911494591030471
+      },
+      "task_collapse_rates": {
+        "gov_report": 100.0,
+        "qmsum": 100.0
+      },
+      "avg_score": 5.015957787913884,
+      "avg_collapse_rate_pct": 100.0,
+      "avg_ttft_ms": 1782.8463482742336,
+      "avg_throughput": 25.9663163829229,
+      "avg_memory_reduction_pct": 80.00236436743019
+    },
+    {
+      "method": "SalienceKV_wo_sink",
+      "task_scores": {
+        "gov_report": 9.028108143895572,
+        "qmsum": 2.4091440289337496
+      },
+      "task_collapse_rates": {
+        "gov_report": 60.0,
+        "qmsum": 100.0
+      },
+      "avg_score": 5.718626086414661,
+      "avg_collapse_rate_pct": 80.0,
+      "avg_ttft_ms": 1855.9950565621325,
+      "avg_throughput": 26.053487207646327,
+      "avg_memory_reduction_pct": 80.00236436743019
+    },
+    {
+      "method": "SalienceKV_Sink4",
+      "task_scores": {
+        "gov_report": 15.444427150269766,
+        "qmsum": 7.481680761236591
+      },
+      "task_collapse_rates": {
+        "gov_report": 0.0,
+        "qmsum": 0.0
+      },
+      "avg_score": 11.463053955753178,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_ttft_ms": 1863.997853617917,
+      "avg_throughput": 26.097035130798336,
+      "avg_memory_reduction_pct": 80.00236436743019
+    }
+  ],
+  "completed_methods": 8,
+  "total_methods": 8
+}

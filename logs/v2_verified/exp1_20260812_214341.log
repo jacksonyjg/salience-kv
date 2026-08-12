@@ -1,0 +1,273 @@
+2026-08-12 21:43:41,283 [INFO] __main__: Experiment 1: Main Results
+2026-08-12 21:43:41,284 [INFO] __main__:   Model: qwen3-4b
+2026-08-12 21:43:41,284 [INFO] __main__:   Mode: full
+2026-08-12 21:43:41,285 [INFO] __main__:   Budget: 80%
+2026-08-12 21:43:41,286 [INFO] __main__:   Tasks: ['gov_report', 'qmsum']
+2026-08-12 21:43:41,286 [INFO] __main__:   Methods: [('fullkv', 'FullKV', {}), ('streaming', 'StreamingLLM', {}), ('h2o', 'H2O', {}), ('snapkv', 'SnapKV', {}), ('pyramidkv', 'PyramidKV-adapted', {}), ('adakv', 'AdaKV-adapted', {}), ('ours', 'SalienceKV_wo_sink', {'sink_size': 0}), ('ours', 'SalienceKV_Sink4', {'sink_size': 4})]
+2026-08-12 21:43:41,287 [INFO] __main__:   Samples/task: 5
+2026-08-12 21:43:41,288 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-08-12 21:43:41,288 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-12 21:43:41,497 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-12 21:43:41,505 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-12 21:43:41,606 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-12 21:43:41,627 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-12 21:43:41,714 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-12 21:43:41,792 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-12 21:43:43,094 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-12 21:43:43,096 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-12 21:43:43,155 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-12 21:43:43,161 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-12 21:44:16,064 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-12 21:44:16,072 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-12 21:44:16,226 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-12 21:44:16,252 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-12 21:44:16,260 [INFO] __main__: 사전 데이터 로딩 중...
+2026-08-12 21:44:16,261 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-12 21:44:16,301 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-12 21:44:16,370 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-12 21:44:16,586 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-12 21:44:16,620 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-12 21:44:16,661 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-12 21:44:16,745 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-12 21:44:17,146 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-08-12 21:44:17,148 [INFO] __main__:   ✓ gov_report: 5샘플 로드 완료
+2026-08-12 21:44:17,149 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-12 21:44:17,190 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-12 21:44:17,224 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-12 21:44:17,576 [INFO] core.dataset_loader: Loaded 5 samples from qmsum
+2026-08-12 21:44:17,577 [INFO] __main__:   ✓ qmsum: 5샘플 로드 완료
+2026-08-12 21:44:17,578 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-08-12 21:44:17,579 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-12 21:44:17,580 [INFO] __main__: Method: FULLKV | Budget: 80% | kwargs={}
+2026-08-12 21:44:17,580 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-12 21:44:17,581 [INFO] __main__: 
+  Task: gov_report
+2026-08-12 21:44:17,582 [INFO] core.evaluator_v2: [fullkv] gov_report (5샘플, budget=80%, kwargs={})
+2026-08-12 21:44:26,700 [INFO] core.evaluator_v2: [fullkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-08-12 21:44:34,508 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the challenges and efforts in managing federal IT systems and cybersecurity. Despite a $96 billion'
+2026-08-12 21:44:35,000 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-12 21:44:53,042 [INFO] core.evaluator_v2: [fullkv] pred="**Summary:**\n\nThis report provides a comprehensive overview of China's actions in the South China Sea (SCS) and East Chi"
+2026-08-12 21:44:53,568 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-12 21:45:05,687 [INFO] core.evaluator_v2: [fullkv] pred='The Clean Water Act (CWA) authorizes federal grants for municipal wastewater treatment plant construction and related ac'
+2026-08-12 21:45:23,090 [INFO] core.evaluator_v2: [fullkv] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) has faced significant internal control and financial management '
+2026-08-12 21:45:23,123 [INFO] core.evaluator_v2:   [5/5] avg=15.85
+2026-08-12 21:45:23,124 [INFO] __main__:   → score=15.85, collapse=0.0%, mem_red=0.0%, ttft=1072.1ms
+2026-08-12 21:45:23,126 [INFO] __main__: 
+  Task: qmsum
+2026-08-12 21:45:23,127 [INFO] core.evaluator_v2: [fullkv] qmsum (5샘플, budget=80%, kwargs={})
+2026-08-12 21:45:30,725 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-08-12 21:45:39,411 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript between a project manager, industrial designer, user interface designer, and market'
+2026-08-12 21:45:54,122 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript discussing progress and planning for a research project involving the SmartKom syst'
+2026-08-12 21:46:03,771 [INFO] core.evaluator_v2: [fullkv] pred='The document is a detailed audio transcript of a team meeting discussing the development of a new remote control device.'
+2026-08-12 21:46:13,163 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a conceptual design meeting for a new remote control device. Key points include:\n\n- **De'
+2026-08-12 21:46:13,165 [INFO] core.evaluator_v2:   [5/5] avg=8.91
+2026-08-12 21:46:13,166 [INFO] __main__:   → score=8.91, collapse=0.0%, mem_red=0.0%, ttft=842.3ms
+2026-08-12 21:46:13,181 [INFO] core.results_manager: Results saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.csv
+2026-08-12 21:46:13,188 [INFO] core.results_manager: JSON saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.json
+2026-08-12 21:46:13,189 [INFO] __main__:   [중간 저장 완료] 1/8 설정
+2026-08-12 21:46:13,189 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-12 21:46:13,190 [INFO] __main__: Method: STREAMINGLLM | Budget: 80% | kwargs={}
+2026-08-12 21:46:13,190 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-12 21:46:13,191 [INFO] __main__: 
+  Task: gov_report
+2026-08-12 21:46:13,191 [INFO] core.evaluator_v2: [streaming] gov_report (5샘플, budget=80%, kwargs={})
+2026-08-12 21:46:21,572 [INFO] core.evaluator_v2: [streaming] pred='The National Science Foundation (NSF) uses two types of rotating participants—Independent (IPA) and Visiting (VSEE) part'
+2026-08-12 21:46:38,358 [INFO] core.evaluator_v2: [streaming] pred='The document outlines the challenges and progress in managing federal IT acquisitions and operations, as well as ensurin'
+2026-08-12 21:46:39,079 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-12 21:47:03,009 [INFO] core.evaluator_v2: [streaming] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. perspective on China's maritime claims in the "
+2026-08-12 21:47:03,726 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-12 21:47:22,370 [INFO] core.evaluator_v2: [streaming] pred='The Clean Water Revolving Fund (CWSRF) and Drinking Water Revolving Fund (DWSRF) are federal programs established under '
+2026-08-12 21:47:44,645 [INFO] core.evaluator_v2: [streaming] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) initiated the TRIO project to modernize its financial management'
+2026-08-12 21:47:44,688 [INFO] core.evaluator_v2:   [5/5] avg=16.94
+2026-08-12 21:47:44,689 [INFO] __main__:   → score=16.94, collapse=0.0%, mem_red=20.0%, ttft=1722.1ms
+2026-08-12 21:47:44,690 [INFO] __main__: 
+  Task: qmsum
+2026-08-12 21:47:44,691 [INFO] core.evaluator_v2: [streaming] qmsum (5샘플, budget=80%, kwargs={})
+2026-08-12 21:47:52,945 [INFO] core.evaluator_v2: [streaming] pred='The meeting begins with an introduction and team bonding activity where each member draws their favorite animal and shar'
+2026-08-12 21:48:08,598 [INFO] core.evaluator_v2: [streaming] pred='The meeting focuses on designing a new remote control for a television, with input from the Project Manager, Industrial '
+2026-08-12 21:48:27,261 [INFO] core.evaluator_v2: [streaming] pred='The meeting discusses various aspects of a research project involving natural language processing, spatial descriptions,'
+2026-08-12 21:48:43,398 [INFO] core.evaluator_v2: [streaming] pred='The document details a collaborative project meeting involving a team of individuals (likely students or professionals) '
+2026-08-12 21:48:50,664 [INFO] core.evaluator_v2: [streaming] pred='The meeting discusses the design of a new remote control, focusing on key aspects such as aesthetics, functionality, and'
+2026-08-12 21:48:50,667 [INFO] core.evaluator_v2:   [5/5] avg=9.06
+2026-08-12 21:48:50,668 [INFO] __main__:   → score=9.06, collapse=0.0%, mem_red=20.0%, ttft=1266.5ms
+2026-08-12 21:48:50,678 [INFO] core.results_manager: Results saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.csv
+2026-08-12 21:48:50,694 [INFO] core.results_manager: JSON saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.json
+2026-08-12 21:48:50,695 [INFO] __main__:   [중간 저장 완료] 2/8 설정
+2026-08-12 21:48:50,696 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-12 21:48:50,696 [INFO] __main__: Method: H2O | Budget: 80% | kwargs={}
+2026-08-12 21:48:50,697 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-12 21:48:50,699 [INFO] __main__: 
+  Task: gov_report
+2026-08-12 21:48:50,699 [INFO] core.evaluator_v2: [h2o] gov_report (5샘플, budget=80%, kwargs={})
+2026-08-12 21:49:13,372 [INFO] core.evaluator_v2: [h2o] pred='The National Science Agency (NSC) uses two programs, the Independent Science (IS) and the Independent Science (IS), to r'
+2026-08-12 21:49:21,948 [INFO] core.evaluator_v2: [h2o] pred='The federal government has launched a significant initiative to address high-risk areas in the management of IT and to e'
+2026-08-12 21:49:22,424 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-12 21:49:45,313 [INFO] core.evaluator_v2: [h2o] pred="**Summary:**\n\nThe report provides background information and implications for the United States regarding China's action"
+2026-08-12 21:49:45,941 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-12 21:50:09,122 [INFO] core.evaluator_v2: [h2o] pred='The **Clean Water Act** (CWA) provides **federal funding** for **municipal wastewater treatment**. The **Federal Water I'
+2026-08-12 21:50:30,157 [INFO] core.evaluator_v2: [h2o] pred='**Summary:**\n\nThe **Department of Homeland Security (DHS)** has faced **significant risks** in **modernizing financial m'
+2026-08-12 21:50:30,198 [INFO] core.evaluator_v2:   [5/5] avg=16.05
+2026-08-12 21:50:30,199 [INFO] __main__:   → score=16.05, collapse=60.0%, mem_red=20.0%, ttft=1933.6ms
+2026-08-12 21:50:30,199 [INFO] __main__: 
+  Task: qmsum
+2026-08-12 21:50:30,200 [INFO] core.evaluator_v2: [h2o] qmsum (5샘플, budget=80%, kwargs={})
+2026-08-12 21:50:49,218 [INFO] core.evaluator_v2: [h2o] pred="The team met to discuss the project. The Project Manager introduced the agenda and the project's goals. The team discuss"
+2026-08-12 21:51:07,723 [INFO] core.evaluator_v2: [h2o] pred='The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The ma'
+2026-08-12 21:51:30,411 [INFO] core.evaluator_v2: [h2o] pred='The document is a summary of a project, which includes the following: \n\nThe project is a summary of a project, which inc'
+2026-08-12 21:51:53,914 [INFO] core.evaluator_v2: [h2o] pred='The team successfully completed the project, despite challenges in the process. The project was successfully completed, '
+2026-08-12 21:52:16,066 [INFO] core.evaluator_v2: [h2o] pred='The team is working on a remote control with a fancy look and feel. The remote control needs to be fancy, with a fancy l'
+2026-08-12 21:52:16,070 [INFO] core.evaluator_v2:   [5/5] avg=1.48
+2026-08-12 21:52:16,071 [INFO] __main__:   → score=1.48, collapse=100.0%, mem_red=20.0%, ttft=1662.8ms
+2026-08-12 21:52:16,088 [INFO] core.results_manager: Results saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.csv
+2026-08-12 21:52:16,100 [INFO] core.results_manager: JSON saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.json
+2026-08-12 21:52:16,101 [INFO] __main__:   [중간 저장 완료] 3/8 설정
+2026-08-12 21:52:16,102 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-12 21:52:16,130 [INFO] __main__: Method: SNAPKV | Budget: 80% | kwargs={}
+2026-08-12 21:52:16,134 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-12 21:52:16,136 [INFO] __main__: 
+  Task: gov_report
+2026-08-12 21:52:16,136 [INFO] core.evaluator_v2: [snapkv] gov_report (5샘플, budget=80%, kwargs={})
+2026-08-12 21:52:36,529 [INFO] core.evaluator_v2: [snapkv] pred='The National Science Foundation (NSF) operates two primary programs: **Science and Engineering**. The agency has experie'
+2026-08-12 21:52:42,598 [INFO] core.evaluator_v2: [snapkv] pred='The federal government is facing significant challenges in improving the management of IT and ensuring the security of f'
+2026-08-12 21:52:43,079 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-12 21:53:04,726 [INFO] core.evaluator_v2: [snapkv] pred='**Summary:**  \n\nThe United States is deeply involved in the South China Sea (SCT), where China is aggressively expanding'
+2026-08-12 21:53:05,422 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-12 21:53:26,281 [INFO] core.evaluator_v2: [snapkv] pred='The Clean Water Infrastructure Program, established through federal funding, has evolved over several decades. The progr'
+2026-08-12 21:53:49,878 [INFO] core.evaluator_v2: [snapkv] pred='**Summary of Key Issues and Recommendations in the DHS TRIO Project:**\n\nThe **DHS TRIO Project** is a key element of the'
+2026-08-12 21:53:49,943 [INFO] core.evaluator_v2:   [5/5] avg=15.46
+2026-08-12 21:53:49,945 [INFO] __main__:   → score=15.46, collapse=60.0%, mem_red=20.0%, ttft=1922.6ms
+2026-08-12 21:53:49,947 [INFO] __main__: 
+  Task: qmsum
+2026-08-12 21:53:49,949 [INFO] core.evaluator_v2: [snapkv] qmsum (5샘플, budget=80%, kwargs={})
+2026-08-12 21:54:11,360 [INFO] core.evaluator_v2: [snapkv] pred='The team is meeting to review the project. The meeting is focused on the project. The discussion is about the project. T'
+2026-08-12 21:54:33,270 [INFO] core.evaluator_v2: [snapkv] pred='The team held a meeting to discuss the remote control. The discussion concluded with the team deciding to present the de'
+2026-08-12 21:54:58,469 [INFO] core.evaluator_v2: [snapkv] pred='The group is discussing a project that involves a system. The discussion covers the following points:\n\n1. The group is d'
+2026-08-12 21:55:02,750 [INFO] core.evaluator_v2: [snapkv] pred='The meeting involved team members in a project. The project was evaluated, and despite budget constraints, a functional '
+2026-08-12 21:55:28,068 [INFO] core.evaluator_v2: [snapkv] pred='The team has reached a conclusion. The team has reached a conclusion. The team has reached a conclusion. The team has re'
+2026-08-12 21:55:28,075 [INFO] core.evaluator_v2:   [5/5] avg=3.01
+2026-08-12 21:55:28,076 [INFO] __main__:   → score=3.01, collapse=80.0%, mem_red=20.0%, ttft=1653.1ms
+2026-08-12 21:55:28,089 [INFO] core.results_manager: Results saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.csv
+2026-08-12 21:55:28,100 [INFO] core.results_manager: JSON saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.json
+2026-08-12 21:55:28,101 [INFO] __main__:   [중간 저장 완료] 4/8 설정
+2026-08-12 21:55:28,102 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-12 21:55:28,103 [INFO] __main__: Method: PYRAMIDKV-ADAPTED | Budget: 80% | kwargs={}
+2026-08-12 21:55:28,128 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-12 21:55:28,131 [INFO] __main__: 
+  Task: gov_report
+2026-08-12 21:55:28,132 [INFO] core.evaluator_v2: [pyramidkv] gov_report (5샘플, budget=80%, kwargs={})
+2026-08-12 21:55:49,280 [INFO] core.evaluator_v2: [pyramidkv] pred='The National Science Agency (NSC) uses two programs, the Independent Science (IS) and the Independent Science (IS), to r'
+2026-08-12 21:55:57,600 [INFO] core.evaluator_v2: [pyramidkv] pred='The federal government has launched a significant initiative to address high-risk areas in the management of IT and to e'
+2026-08-12 21:55:58,144 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-12 21:56:18,435 [INFO] core.evaluator_v2: [pyramidkv] pred="**Summary:**\n\nThe report provides background information and implications for the United States regarding China's action"
+2026-08-12 21:56:19,077 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-12 21:56:39,491 [INFO] core.evaluator_v2: [pyramidkv] pred='The **Clean Water Act** (CWA) is a federal law that authorizes grants to states for wastewater treatment plant construct'
+2026-08-12 21:57:03,221 [INFO] core.evaluator_v2: [pyramidkv] pred='**Summary:**\n\nThe **Department of Homeland Security (DHS)** has faced **significant risks** in **modernizing financial m'
+2026-08-12 21:57:03,271 [INFO] core.evaluator_v2:   [5/5] avg=15.97
+2026-08-12 21:57:03,288 [INFO] __main__:   → score=15.97, collapse=80.0%, mem_red=20.0%, ttft=1930.7ms
+2026-08-12 21:57:03,296 [INFO] __main__: 
+  Task: qmsum
+2026-08-12 21:57:03,299 [INFO] core.evaluator_v2: [pyramidkv] qmsum (5샘플, budget=80%, kwargs={})
+2026-08-12 21:57:25,225 [INFO] core.evaluator_v2: [pyramidkv] pred="The team met to discuss the project. The Project Manager introduced the agenda and the project's goals. The team discuss"
+2026-08-12 21:57:47,992 [INFO] core.evaluator_v2: [pyramidkv] pred='The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The ma'
+2026-08-12 21:58:10,429 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a summary of a project, which includes the following: \n\nThe project is a summary of a project, which inc'
+2026-08-12 21:58:32,655 [INFO] core.evaluator_v2: [pyramidkv] pred='The team successfully completed the project, despite challenges in the process. The project was successfully completed, '
+2026-08-12 21:58:54,772 [INFO] core.evaluator_v2: [pyramidkv] pred='The team is working on a remote control with a fancy look and feel. The remote control needs to be fancy, with a fancy l'
+2026-08-12 21:58:54,786 [INFO] core.evaluator_v2:   [5/5] avg=1.41
+2026-08-12 21:58:54,788 [INFO] __main__:   → score=1.41, collapse=100.0%, mem_red=20.0%, ttft=1648.3ms
+2026-08-12 21:58:54,871 [INFO] core.results_manager: Results saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.csv
+2026-08-12 21:58:54,887 [INFO] core.results_manager: JSON saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.json
+2026-08-12 21:58:54,891 [INFO] __main__:   [중간 저장 완료] 5/8 설정
+2026-08-12 21:58:54,893 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-12 21:58:54,895 [INFO] __main__: Method: ADAKV-ADAPTED | Budget: 80% | kwargs={}
+2026-08-12 21:58:54,896 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-12 21:58:54,897 [INFO] __main__: 
+  Task: gov_report
+2026-08-12 21:58:54,900 [INFO] core.evaluator_v2: [adakv] gov_report (5샘플, budget=80%, kwargs={})
+2026-08-12 21:59:17,662 [INFO] core.evaluator_v2: [adakv] pred='The National Science Agency (NSC) uses two programs, the Independent Science (IS) and the Independent Science (IS), to r'
+2026-08-12 21:59:25,567 [INFO] core.evaluator_v2: [adakv] pred='The federal government has launched a significant initiative to address high-risk areas in the management of IT and to e'
+2026-08-12 21:59:26,189 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-12 21:59:52,700 [INFO] core.evaluator_v2: [adakv] pred="**Summary:**\n\nThe report provides background information and implications for the United States regarding China's action"
+2026-08-12 21:59:53,409 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-12 22:00:16,875 [INFO] core.evaluator_v2: [adakv] pred='The **Clean Water Act** (CWA) is a federal law that authorizes grants to states for wastewater treatment plant construct'
+2026-08-12 22:00:39,002 [INFO] core.evaluator_v2: [adakv] pred='**Summary:**\n\nThe **Department of Homeland Security (DHS)** has faced **significant risks** in **modernizing financial m'
+2026-08-12 22:00:39,078 [INFO] core.evaluator_v2:   [5/5] avg=15.97
+2026-08-12 22:00:39,080 [INFO] __main__:   → score=15.97, collapse=80.0%, mem_red=20.0%, ttft=1933.5ms
+2026-08-12 22:00:39,081 [INFO] __main__: 
+  Task: qmsum
+2026-08-12 22:00:39,082 [INFO] core.evaluator_v2: [adakv] qmsum (5샘플, budget=80%, kwargs={})
+2026-08-12 22:00:58,762 [INFO] core.evaluator_v2: [adakv] pred="The team met to discuss the project. The Project Manager introduced the agenda and the project's goals. The team discuss"
+2026-08-12 22:01:21,489 [INFO] core.evaluator_v2: [adakv] pred='The team discussed a project. The manager asked a question. The assistant answered. The team discussed a project. The ma'
+2026-08-12 22:01:43,188 [INFO] core.evaluator_v2: [adakv] pred='The document is a summary of a project, which includes the following: \n\nThe project is a summary of a project, which inc'
+2026-08-12 22:02:02,468 [INFO] core.evaluator_v2: [adakv] pred='The team successfully completed the project, despite challenges in the process. The project was successfully completed, '
+2026-08-12 22:02:23,935 [INFO] core.evaluator_v2: [adakv] pred='The team is working on a remote control with a fancy look and feel. The remote control needs to be fancy, with a fancy l'
+2026-08-12 22:02:23,955 [INFO] core.evaluator_v2:   [5/5] avg=1.41
+2026-08-12 22:02:23,957 [INFO] __main__:   → score=1.41, collapse=100.0%, mem_red=20.0%, ttft=1666.1ms
+2026-08-12 22:02:23,970 [INFO] core.results_manager: Results saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.csv
+2026-08-12 22:02:23,982 [INFO] core.results_manager: JSON saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.json
+2026-08-12 22:02:23,983 [INFO] __main__:   [중간 저장 완료] 6/8 설정
+2026-08-12 22:02:23,984 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-12 22:02:23,985 [INFO] __main__: Method: SALIENCEKV_WO_SINK | Budget: 80% | kwargs={'sink_size': 0}
+2026-08-12 22:02:23,985 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-12 22:02:23,986 [INFO] __main__: 
+  Task: gov_report
+2026-08-12 22:02:23,987 [INFO] core.evaluator_v2: [ours] gov_report (5샘플, budget=80%, kwargs={'sink_size': 0})
+2026-08-12 22:02:44,473 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two types of temporary employees (rotators): Individual (IPA) and Visiting (V'
+2026-08-12 22:02:57,075 [INFO] core.evaluator_v2: [ours] pred='The federal government faces significant challenges in managing its information technology (IT) systems and ensuring cyb'
+2026-08-12 22:02:57,758 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-12 22:03:19,675 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThe report on China's actions in the South China Sea (SCS) and East China Sea (ECS) highlights the complex"
+2026-08-12 22:03:20,358 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-12 22:03:36,359 [INFO] core.evaluator_v2: [ours] pred='The **Clean Water State Revolving (SRF)** program, established under the **Clean Water Act**, provides **federal funding'
+2026-08-12 22:03:59,805 [INFO] core.evaluator_v2: [ours] pred='**Summary of the GAO Report on the DHS TRIO Project:**\n\nThe Department of Homeland Security (DHS) initiated a modernizat'
+2026-08-12 22:03:59,928 [INFO] core.evaluator_v2:   [5/5] avg=17.32
+2026-08-12 22:03:59,938 [INFO] __main__:   → score=17.32, collapse=0.0%, mem_red=20.0%, ttft=1970.8ms
+2026-08-12 22:03:59,942 [INFO] __main__: 
+  Task: qmsum
+2026-08-12 22:03:59,943 [INFO] core.evaluator_v2: [ours] qmsum (5샘플, budget=80%, kwargs={'sink_size': 0})
+2026-08-12 22:04:05,784 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the project, which involves creating a new remote control. Key points included the project's goal"
+2026-08-12 22:04:17,488 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the design and user interface of a remote control. Key points included:\n\n- **User Interface** dis'
+2026-08-12 22:04:26,606 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where researchers and researchers discuss various topics, including the development'
+2026-08-12 22:04:34,062 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on evaluating the project, with discussions on the remote control design, the use of technology, and'
+2026-08-12 22:04:43,169 [INFO] core.evaluator_v2: [ours] pred='The project team discussed the design of a remote control, focusing on its appearance and functionality. They agreed on '
+2026-08-12 22:04:43,171 [INFO] core.evaluator_v2:   [5/5] avg=8.83
+2026-08-12 22:04:43,172 [INFO] __main__:   → score=8.83, collapse=0.0%, mem_red=20.0%, ttft=1734.4ms
+2026-08-12 22:04:43,184 [INFO] core.results_manager: Results saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.csv
+2026-08-12 22:04:43,195 [INFO] core.results_manager: JSON saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.json
+2026-08-12 22:04:43,195 [INFO] __main__:   [중간 저장 완료] 7/8 설정
+2026-08-12 22:04:43,196 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-12 22:04:43,197 [INFO] __main__: Method: SALIENCEKV_SINK4 | Budget: 80% | kwargs={'sink_size': 4}
+2026-08-12 22:04:43,198 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-12 22:04:43,199 [INFO] __main__: 
+  Task: gov_report
+2026-08-12 22:04:43,200 [INFO] core.evaluator_v2: [ours] gov_report (5샘플, budget=80%, kwargs={'sink_size': 4})
+2026-08-12 22:04:57,120 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) utilizes two types of rotators—IPA (Institutional Partner Agreement) and VSEE (Vol'
+2026-08-12 22:05:10,293 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and progress in federal IT management and cybersecurity, emphasizing the need for i'
+2026-08-12 22:05:10,825 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-12 22:05:35,372 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. and international responses to China's maritim"
+2026-08-12 22:05:36,034 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-12 22:05:59,102 [INFO] core.evaluator_v2: [ours] pred='The Clean Water Revolving Fund (CWSRF) and Drinking Water Revolving Fund (DWSRF) are critical federal programs that prov'
+2026-08-12 22:06:20,387 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) initiated the TRIO project to modernize its financial management'
+2026-08-12 22:06:20,462 [INFO] core.evaluator_v2:   [5/5] avg=17.70
+2026-08-12 22:06:20,473 [INFO] __main__:   → score=17.70, collapse=0.0%, mem_red=20.0%, ttft=1965.7ms
+2026-08-12 22:06:20,477 [INFO] __main__: 
+  Task: qmsum
+2026-08-12 22:06:20,479 [INFO] core.evaluator_v2: [ours] qmsum (5샘플, budget=80%, kwargs={'sink_size': 4})
+2026-08-12 22:06:28,646 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, which involves designing a new, original, and user-friendly telev'
+2026-08-12 22:06:40,481 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on designing a new remote control aimed at younger consumers. Key points included:\n\n- **User Interfa'
+2026-08-12 22:06:56,000 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript discussing various aspects of a research project involving natural language process'
+2026-08-12 22:07:04,081 [INFO] core.evaluator_v2: [ours] pred='The document describes a collaborative project meeting where a team of individuals—Marketing, User Interface, Industrial'
+2026-08-12 22:07:11,875 [INFO] core.evaluator_v2: [ours] pred='The team discussed the design and features of a new remote control, focusing on key aspects such as aesthetics, function'
+2026-08-12 22:07:11,879 [INFO] core.evaluator_v2:   [5/5] avg=10.13
+2026-08-12 22:07:11,881 [INFO] __main__:   → score=10.13, collapse=0.0%, mem_red=20.0%, ttft=1687.2ms
+2026-08-12 22:07:11,902 [INFO] core.results_manager: Results saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.csv
+2026-08-12 22:07:11,980 [INFO] core.results_manager: JSON saved to results/v2_verified/exp1_qwen3-4b_full_20260812_214341.json
+2026-08-12 22:07:11,982 [INFO] __main__:   [중간 저장 완료] 8/8 설정
+2026-08-12 22:07:11,985 [INFO] __main__: Experiment 1 completed!
