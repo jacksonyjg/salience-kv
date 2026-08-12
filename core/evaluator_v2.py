@@ -186,16 +186,16 @@ class EvaluatorV2:
             "kv_size_after_mb": kv_after, "memory_reduction_pct": mem_red,
         }
 
-    def evaluate_task(self, samples, method_name, budget_ratio, max_samples=None):
+    def evaluate_task(self, samples, method_name, budget_ratio, max_samples=None, method_kwargs=None):
         if max_samples is not None:
             samples = samples[:max_samples]
         scores, ttfts, throughputs, mem_reds = [], [], [], []
         task_name = samples[0]["task_name"] if samples else "unknown"
-        logger.info(f"[{method_name}] {task_name} ({len(samples)}샘플, budget={budget_ratio:.0%})")
+        logger.info(f"[{method_name}] {task_name} ({len(samples)}샘플, budget={budget_ratio:.0%}, kwargs={method_kwargs})")
 
         for i, sample in enumerate(samples):
             try:
-                r = self.evaluate_sample(sample, method_name, budget_ratio)
+                r = self.evaluate_sample(sample, method_name, budget_ratio, method_kwargs=method_kwargs)
                 scores.append(r["score"]); ttfts.append(r["ttft_ms"])
                 throughputs.append(r["throughput"]); mem_reds.append(r["memory_reduction_pct"])
                 if (i + 1) % 5 == 0:

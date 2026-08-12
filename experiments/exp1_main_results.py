@@ -53,8 +53,22 @@ TASK_ORDER = [
 ]
 
 # 모드별 비교 메서드
-METHODS_FULL = ["fullkv", "streaming", "h2o", "snapkv", "pyramidkv", "adakv", "ours"]
-METHODS_CROSS = ["fullkv", "adakv", "ours"]  # 교차 아키텍처: Full KV + AdaKV + Ours만
+# [2026-08-12] Plan v3 반영: SalienceKV(ours)를 w/o sink(m=0)와 Sink-4(m=4) 두 설정으로 분리.
+METHODS_FULL = [
+    ("fullkv", "FullKV", {}),
+    ("streaming", "StreamingLLM", {}),
+    ("h2o", "H2O", {}),
+    ("snapkv", "SnapKV", {}),
+    ("pyramidkv", "PyramidKV-adapted", {}),
+    ("adakv", "AdaKV-adapted", {}),
+    ("ours", "SalienceKV_wo_sink", {"sink_size": 0}),
+    ("ours", "SalienceKV_Sink4", {"sink_size": 4}),
+]
+METHODS_CROSS = [
+    ("fullkv", "FullKV", {}),
+    ("adakv", "AdaKV-adapted", {}),
+    ("ours", "SalienceKV_Sink4", {"sink_size": 4}),
+]
 
 
 def parse_args():
@@ -84,10 +98,13 @@ def run_method_on_all_tasks(
     num_samples: int,
     seed: int,
     preloaded_data: Dict = None,
+    label: str = None,
+    method_kwargs: Dict = None,
 ) -> Dict:
     """단일 메서드를 모든 태스크에서 평가."""
+    display = label or method_name
     logger.info(f"\n{'─'*60}")
-    logger.info(f"Method: {method_name.upper()} | Budget: {budget_ratio:.0%}")
+    logger.info(f"Method: {display.upper()} | Budget: {budget_ratio:.0%} | kwargs={method_kwargs}")
     logger.info(f"{'─'*60}")
     
     task_scores = {}
@@ -107,6 +124,7 @@ def run_method_on_all_tasks(
                 samples=samples,
                 method_name=method_name,
                 budget_ratio=budget_ratio,
+                method_kwargs=method_kwargs,
             )
             
             task_scores[task_name] = result["avg_score"]
@@ -130,7 +148,7 @@ def run_method_on_all_tasks(
     avg_mem = sum(task_mem_reductions) / len(task_mem_reductions) if task_mem_reductions else 0.0
     
     return {
-        "method": method_name,
+        "method": display,
         "task_scores": task_scores,
         "avg_score": avg_score,
         "avg_ttft_ms": avg_ttft,
@@ -185,7 +203,7 @@ def main():
     all_results = []
     table_rows = []
     
-    for method_name in methods:
+    for method_name, label, method_kwargs in methods:
         result = run_method_on_all_tasks(
             evaluator=evaluator,
             method_name=method_name,
@@ -194,12 +212,14 @@ def main():
             num_samples=args.num_samples,
             seed=args.seed,
             preloaded_data=preloaded_data,
+            label=label,
+            method_kwargs=method_kwargs,
         )
         all_results.append(result)
         
         # Table 행 생성
         row = format_table_row(
-            method=method_name.upper(),
+            method=label,
             task_scores=result["task_scores"],
             task_order=tasks,
             avg_score=result["avg_score"],
