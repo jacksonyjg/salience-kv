@@ -5,6 +5,11 @@ LongBench 데이터셋 로드 및 태스크별 프롬프트 구성.
 
 LongBench HuggingFace 데이터셋: THUDM/LongBench
 각 태스크별 올바른 입력 필드(context, input)와 메트릭(F1/ROUGE-L) 매핑.
+
+[2026-08-12] 재현성 확보를 위해 revision을 고정(E1 결정, Plan v3 참고).
+이전엔 revision 미고정으로 파드마다 다른 스냅샷을 로드해 세션 간 절대
+수치가 흔들리는 문제가 있었음(2026-08-08 vs 08-09 파드에서 방법 무관
+일괄 하락 관찰). 이후 모든 Phase 2/3 실험은 아래 고정된 revision을 사용.
 """
 
 import re
@@ -13,6 +18,11 @@ from typing import Dict, List, Optional, Tuple
 from datasets import load_dataset
 
 logger = logging.getLogger(__name__)
+
+# 재현성 고정: 2026-08-12 기준 THUDM/LongBench 최신 commit sha
+# (huggingface_hub.HfApi().dataset_info("THUDM/LongBench").sha 로 확인,
+#  원본 데이터셋 마지막 수정일 2024-12-18)
+LONGBENCH_REVISION = "5e628be450b7e67fb7ae6e201bd6d8f7056f7672"
 
 # ─────────────────────────────────────────────
 # 태스크 설정
@@ -137,6 +147,7 @@ def load_longbench_task(
             task_cfg["subset"],
             split="test",
             trust_remote_code=True,
+            revision=LONGBENCH_REVISION,
         )
     except Exception as e:
         logger.error(f"Failed to load {task_name}: {e}")
