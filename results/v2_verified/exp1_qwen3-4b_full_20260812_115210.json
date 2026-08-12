@@ -1,0 +1,175 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa"
+  ],
+  "methods": [
+    [
+      "fullkv",
+      "FullKV",
+      {}
+    ],
+    [
+      "streaming",
+      "StreamingLLM",
+      {}
+    ],
+    [
+      "h2o",
+      "H2O",
+      {}
+    ],
+    [
+      "snapkv",
+      "SnapKV",
+      {}
+    ],
+    [
+      "pyramidkv",
+      "PyramidKV-adapted",
+      {}
+    ],
+    [
+      "adakv",
+      "AdaKV-adapted",
+      {}
+    ],
+    [
+      "ours",
+      "SalienceKV_wo_sink",
+      {
+        "sink_size": 0
+      }
+    ],
+    [
+      "ours",
+      "SalienceKV_Sink4",
+      {
+        "sink_size": 4
+      }
+    ]
+  ],
+  "num_samples": 10,
+  "seed": 42,
+  "results": [
+    {
+      "method": "FullKV",
+      "task_scores": {
+        "narrativeqa": 10.082547082547084,
+        "qasper": 34.10801032843226,
+        "multifieldqa_en": 58.207886406595165,
+        "hotpotqa": 30.82813184357807,
+        "2wikimqa": 13.779875136681289
+      },
+      "avg_score": 29.401290159566777,
+      "avg_ttft_ms": 787.7470570623437,
+      "avg_throughput": 17.850755305546663,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "StreamingLLM",
+      "task_scores": {
+        "narrativeqa": 11.572704354271675,
+        "qasper": 11.898095141573403,
+        "multifieldqa_en": 49.40590892814709,
+        "hotpotqa": 33.72259021172065,
+        "2wikimqa": 8.901444822903446
+      },
+      "avg_score": 23.100148691723255,
+      "avg_ttft_ms": 1345.2955716031036,
+      "avg_throughput": 20.46937301406694,
+      "avg_memory_reduction_pct": 80.00566777767939
+    },
+    {
+      "method": "H2O",
+      "task_scores": {
+        "narrativeqa": 1.9546403932572418,
+        "qasper": 10.752889839865755,
+        "multifieldqa_en": 18.178488083453182,
+        "hotpotqa": 7.583391667314821,
+        "2wikimqa": 8.103092783505154
+      },
+      "avg_score": 9.314500553479231,
+      "avg_ttft_ms": 1491.6354573529757,
+      "avg_throughput": 25.74515867665437,
+      "avg_memory_reduction_pct": 80.00566777767939
+    },
+    {
+      "method": "SnapKV",
+      "task_scores": {
+        "narrativeqa": 2.749167980381853,
+        "qasper": 12.15188102642139,
+        "multifieldqa_en": 32.4658285412604,
+        "hotpotqa": 12.085470085470085,
+        "2wikimqa": 26.840048840048844
+      },
+      "avg_score": 17.258479294716516,
+      "avg_ttft_ms": 1491.7926808107884,
+      "avg_throughput": 26.330402267964985,
+      "avg_memory_reduction_pct": 80.00566777767939
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "task_scores": {
+        "narrativeqa": 8.731281118629997,
+        "qasper": 11.537410100405442,
+        "multifieldqa_en": 28.932262095359313,
+        "hotpotqa": 19.282135049123497,
+        "2wikimqa": 11.12437043234468
+      },
+      "avg_score": 15.921491759172586,
+      "avg_ttft_ms": 1578.5900259533762,
+      "avg_throughput": 25.94459225552759,
+      "avg_memory_reduction_pct": 80.00775936657422
+    },
+    {
+      "method": "AdaKV-adapted",
+      "task_scores": {
+        "narrativeqa": 8.731281118629997,
+        "qasper": 11.537410100405442,
+        "multifieldqa_en": 28.932262095359313,
+        "hotpotqa": 19.282135049123497,
+        "2wikimqa": 11.12437043234468
+      },
+      "avg_score": 15.921491759172586,
+      "avg_ttft_ms": 1504.1732652839032,
+      "avg_throughput": 24.08026940112139,
+      "avg_memory_reduction_pct": 80.00566777767939
+    },
+    {
+      "method": "SalienceKV_wo_sink",
+      "task_scores": {
+        "narrativeqa": 7.643644135382724,
+        "qasper": 15.474088047347205,
+        "multifieldqa_en": 38.399391702445136,
+        "hotpotqa": 21.666220888188853,
+        "2wikimqa": 18.98211932994542
+      },
+      "avg_score": 20.433092820661866,
+      "avg_ttft_ms": 1650.2128270949477,
+      "avg_throughput": 24.28014795315238,
+      "avg_memory_reduction_pct": 80.00566777767939
+    },
+    {
+      "method": "SalienceKV_Sink4",
+      "task_scores": {
+        "narrativeqa": 10.535353535353535,
+        "qasper": 15.691288726927265,
+        "multifieldqa_en": 50.42722132675001,
+        "hotpotqa": 32.13512762696065,
+        "2wikimqa": 11.645966072263407
+      },
+      "avg_score": 24.086991457650974,
+      "avg_ttft_ms": 1733.10101658113,
+      "avg_throughput": 24.023467770236774,
+      "avg_memory_reduction_pct": 80.00566777767939
+    }
+  ]
+}

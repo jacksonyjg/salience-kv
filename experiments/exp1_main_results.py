@@ -36,12 +36,15 @@ from core.results_manager import (
     print_result_table, get_timestamp,
 )
 
+os.makedirs("logs/v2_verified", exist_ok=True)
+os.makedirs("results/v2_verified", exist_ok=True)
+
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler(f"results/exp1_{get_timestamp()}.log"),
+        logging.FileHandler(f"logs/v2_verified/exp1_{get_timestamp()}.log"),
     ],
 )
 logger = logging.getLogger(__name__)
@@ -160,7 +163,8 @@ def run_method_on_all_tasks(
 def main():
     args = parse_args()
     
-    os.makedirs("results", exist_ok=True)
+    os.makedirs("results/v2_verified", exist_ok=True)
+    os.makedirs("logs/v2_verified", exist_ok=True)
     timestamp = get_timestamp()
     
     tasks = args.tasks if args.tasks else TASK_ORDER

@@ -13,7 +13,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-RESULTS_DIR = "results"
+RESULTS_DIR = "results/v2_verified"
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 
