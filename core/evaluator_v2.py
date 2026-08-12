@@ -23,6 +23,7 @@ import numpy as np
 from core.kv_cache_hook import BaseHookCache, FullKVCache, make_hook_cache
 from core.metrics import compute_score, aggregate_scores
 from core.model_loader import tokenize_prompt, make_prompt
+from core.collapse_metrics import is_collapsed
 
 logger = logging.getLogger(__name__)
 
@@ -193,23 +194,27 @@ class EvaluatorV2:
         task_name = samples[0]["task_name"] if samples else "unknown"
         logger.info(f"[{method_name}] {task_name} ({len(samples)}샘플, budget={budget_ratio:.0%}, kwargs={method_kwargs})")
 
+        collapses = []
         for i, sample in enumerate(samples):
             try:
                 r = self.evaluate_sample(sample, method_name, budget_ratio, method_kwargs=method_kwargs)
                 scores.append(r["score"]); ttfts.append(r["ttft_ms"])
                 throughputs.append(r["throughput"]); mem_reds.append(r["memory_reduction_pct"])
+                collapses.append(1.0 if is_collapsed(r["prediction"]) else 0.0)
                 if (i + 1) % 5 == 0:
                     logger.info(f"  [{i+1}/{len(samples)}] avg={aggregate_scores(scores):.2f}")
             except Exception as e:
                 logger.warning(f"Sample {i} failed: {e}")
                 scores.append(0.0); ttfts.append(0.0)
                 throughputs.append(0.0); mem_reds.append(0.0)
+                collapses.append(1.0)
 
         return {
             "avg_score": aggregate_scores(scores), "scores": scores,
             "avg_ttft_ms": aggregate_scores(ttfts),
             "avg_throughput": aggregate_scores(throughputs),
             "avg_memory_reduction_pct": aggregate_scores(mem_reds),
+            "avg_collapse_rate_pct": (sum(collapses) / len(collapses) * 100) if collapses else 0.0,
             "num_samples": len(scores), "method": method_name,
             "task": task_name, "budget_ratio": budget_ratio,
         }
