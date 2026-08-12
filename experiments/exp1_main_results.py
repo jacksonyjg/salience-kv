@@ -206,7 +206,9 @@ def main():
     # 각 메서드 평가
     all_results = []
     table_rows = []
-    
+    csv_filename = f"exp1_{args.model}_{args.mode}_{timestamp}.csv"
+    json_filename = f"exp1_{args.model}_{args.mode}_{timestamp}.json"
+
     for method_name, label, method_kwargs in methods:
         result = run_method_on_all_tasks(
             evaluator=evaluator,
@@ -232,31 +234,31 @@ def main():
             throughput=result["avg_throughput"],
         )
         table_rows.append(row)
-    
-    # 결과 출력
+
+        # 무인 장시간 실행 안전장치: method 하나 끝날 때마다 즉시 저장(덮어쓰기)
+        save_results_csv(table_rows, csv_filename)
+        json_data_partial = {
+            "experiment": "exp1_main_results",
+            "model": args.model,
+            "mode": args.mode,
+            "budget_ratio": args.budget,
+            "tasks": tasks,
+            "methods": methods,
+            "num_samples": args.num_samples,
+            "seed": args.seed,
+            "results": all_results,
+            "completed_methods": len(all_results),
+            "total_methods": len(methods),
+        }
+        save_results_json(json_data_partial, json_filename)
+        logger.info(f"  [중간 저장 완료] {len(all_results)}/{len(methods)} 설정")
+
+    # 결과 출력 (최종)
     print_result_table(
         table_rows,
         title=f"Exp1 Main Results | {args.model} | Budget={args.budget:.0%}"
     )
-    
-    # CSV 저장
-    csv_filename = f"exp1_{args.model}_{args.mode}_{timestamp}.csv"
-    save_results_csv(table_rows, csv_filename)
-    
-    # 상세 JSON 저장
-    json_data = {
-        "experiment": "exp1_main_results",
-        "model": args.model,
-        "mode": args.mode,
-        "budget_ratio": args.budget,
-        "tasks": tasks,
-        "methods": methods,
-        "num_samples": args.num_samples,
-        "seed": args.seed,
-        "results": all_results,
-    }
-    save_results_json(json_data, f"exp1_{args.model}_{args.mode}_{timestamp}.json")
-    
+
     logger.info("Experiment 1 completed!")
 
 
