@@ -34,14 +34,16 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-VARIANTS = [
-    ("3signal_NVP", {"use_attention": True, "use_entropy": True, "use_position": True, "use_semantic": False, "sink_size": 0}),
-    ("4signal_NVPS", {"use_attention": True, "use_entropy": True, "use_position": True, "use_semantic": True, "sink_size": 0}),
-    ("wo_N", {"use_attention": False, "use_entropy": True, "use_position": True, "use_semantic": False, "sink_size": 0}),
-    ("wo_V", {"use_attention": True, "use_entropy": False, "use_position": True, "use_semantic": False, "sink_size": 0}),
-    ("wo_P", {"use_attention": True, "use_entropy": True, "use_position": False, "use_semantic": False, "sink_size": 0}),
-    ("N_only", {"use_attention": True, "use_entropy": False, "use_position": False, "use_semantic": False, "sink_size": 0}),
-]
+def make_variants(sink_size: int):
+    """신호 조합 6개, sink_size는 외부에서 고정값으로 주입."""
+    return [
+        ("3signal_NVP", {"use_attention": True, "use_entropy": True, "use_position": True, "use_semantic": False, "sink_size": sink_size}),
+        ("4signal_NVPS", {"use_attention": True, "use_entropy": True, "use_position": True, "use_semantic": True, "sink_size": sink_size}),
+        ("wo_N", {"use_attention": False, "use_entropy": True, "use_position": True, "use_semantic": False, "sink_size": sink_size}),
+        ("wo_V", {"use_attention": True, "use_entropy": False, "use_position": True, "use_semantic": False, "sink_size": sink_size}),
+        ("wo_P", {"use_attention": True, "use_entropy": True, "use_position": False, "use_semantic": False, "sink_size": sink_size}),
+        ("N_only", {"use_attention": True, "use_entropy": False, "use_position": False, "use_semantic": False, "sink_size": sink_size}),
+    ]
 
 
 def run_method_on_all_tasks(
@@ -122,18 +124,20 @@ def parse_args():
     parser.add_argument("--tasks", nargs="+", default=["qmsum", "gov_report"])
     parser.add_argument("--num_samples", type=int, default=30)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--sink_size", type=int, default=0, help="모든 variant에 고정 적용할 sink 크기 (기본 0)")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     timestamp = get_timestamp()
+    variants = make_variants(args.sink_size)
 
     logger.info("=" * 60)
     logger.info("Table7: Signal Ablation (TABLE VII)")
-    logger.info(f"  Model: {args.model} | Budget: {args.budget:.0%} (sink=0 고정)")
+    logger.info(f"  Model: {args.model} | Budget: {args.budget:.0%} | sink_size={args.sink_size} 고정")
     logger.info(f"  Tasks: {args.tasks} | Samples: {args.num_samples}")
-    logger.info(f"  Variants: {len(VARIANTS)}개")
+    logger.info(f"  Variants: {len(variants)}개")
     logger.info("=" * 60)
 
     model, tokenizer, model_config = load_model_and_tokenizer(args.model)
@@ -141,10 +145,10 @@ def main():
 
     all_results = []
     table_rows = []
-    csv_filename = f"exp7_signal_ablation_{args.model}_{timestamp}.csv"
-    json_filename = f"exp7_signal_ablation_{args.model}_{timestamp}.json"
+    csv_filename = f"exp7_signal_ablation_{args.model}_sink{args.sink_size}_{timestamp}.csv"
+    json_filename = f"exp7_signal_ablation_{args.model}_sink{args.sink_size}_{timestamp}.json"
 
-    for label, method_kwargs in VARIANTS:
+    for label, method_kwargs in variants:
         result = run_method_on_all_tasks(
             evaluator=evaluator,
             tasks=args.tasks,
@@ -182,10 +186,10 @@ def main():
             "seed": args.seed,
             "results": all_results,
             "completed_variants": len(all_results),
-            "total_variants": len(VARIANTS),
+            "total_variants": len(variants),
         }
         save_results_json(json_data_partial, json_filename)
-        logger.info(f"  [중간 저장 완료] {len(all_results)}/{len(VARIANTS)} 설정")
+        logger.info(f"  [중간 저장 완료] {len(all_results)}/{len(variants)} 설정")
 
     print_result_table(
         table_rows,
