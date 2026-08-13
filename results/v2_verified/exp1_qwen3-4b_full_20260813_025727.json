@@ -1,0 +1,255 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "full",
+  "budget_ratio": 0.8,
+  "tasks": [
+    "qmsum",
+    "gov_report",
+    "2wikimqa"
+  ],
+  "methods": [
+    [
+      "fullkv",
+      "FullKV",
+      {}
+    ],
+    [
+      "streaming",
+      "StreamingLLM",
+      {}
+    ],
+    [
+      "h2o",
+      "H2O",
+      {}
+    ],
+    [
+      "snapkv",
+      "SnapKV",
+      {}
+    ],
+    [
+      "pyramidkv",
+      "PyramidKV-adapted",
+      {}
+    ],
+    [
+      "adakv",
+      "AdaKV-adapted",
+      {}
+    ],
+    [
+      "ours",
+      "SalienceKV_wo_sink",
+      {
+        "sink_size": 0
+      }
+    ],
+    [
+      "ours",
+      "SalienceKV_Sink4",
+      {
+        "sink_size": 4
+      }
+    ]
+  ],
+  "num_samples": 50,
+  "seed": 42,
+  "results": [
+    {
+      "method": "FullKV",
+      "task_scores": {
+        "qmsum": 9.451094358389424,
+        "gov_report": 17.626905946298074,
+        "2wikimqa": 16.614255873451366
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0,
+        "2wikimqa": 2.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/50",
+        "gov_report": "0/50",
+        "2wikimqa": "1/50"
+      },
+      "avg_score": 14.564085392712954,
+      "avg_collapse_rate_pct": 0.6666666666666666,
+      "avg_collapse_frac": "1/150",
+      "avg_ttft_ms": 814.758380904599,
+      "avg_throughput": 21.91625861690376,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "StreamingLLM",
+      "task_scores": {
+        "qmsum": 8.816874420264606,
+        "gov_report": 18.10775537913996,
+        "2wikimqa": 15.927349206111842
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0,
+        "2wikimqa": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/50",
+        "gov_report": "0/50",
+        "2wikimqa": "0/50"
+      },
+      "avg_score": 14.283993001838802,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/150",
+      "avg_ttft_ms": 1337.157253799703,
+      "avg_throughput": 24.38691252222323,
+      "avg_memory_reduction_pct": 20.0043379347166
+    },
+    {
+      "method": "H2O",
+      "task_scores": {
+        "qmsum": 3.1395284415068456,
+        "gov_report": 18.324501775790683,
+        "2wikimqa": 14.09197974626147
+      },
+      "task_collapse_rates": {
+        "qmsum": 98.0,
+        "gov_report": 50.0,
+        "2wikimqa": 18.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "49/50",
+        "gov_report": "25/50",
+        "2wikimqa": "9/50"
+      },
+      "avg_score": 11.852003321186332,
+      "avg_collapse_rate_pct": 55.333333333333336,
+      "avg_collapse_frac": "83/150",
+      "avg_ttft_ms": 1590.061458157903,
+      "avg_throughput": 26.23116516654588,
+      "avg_memory_reduction_pct": 20.0043379347166
+    },
+    {
+      "method": "SnapKV",
+      "task_scores": {
+        "qmsum": 4.576536397161554,
+        "gov_report": 12.78036288429677,
+        "2wikimqa": 19.720163280779783
+      },
+      "task_collapse_rates": {
+        "qmsum": 76.0,
+        "gov_report": 68.0,
+        "2wikimqa": 2.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "38/50",
+        "gov_report": "34/50",
+        "2wikimqa": "1/50"
+      },
+      "avg_score": 12.359020854079368,
+      "avg_collapse_rate_pct": 48.666666666666664,
+      "avg_collapse_frac": "73/150",
+      "avg_ttft_ms": 1590.946317642296,
+      "avg_throughput": 26.870247078718645,
+      "avg_memory_reduction_pct": 20.0043379347166
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "task_scores": {
+        "qmsum": 3.1641051384863177,
+        "gov_report": 18.30346501794951,
+        "2wikimqa": 14.530178930974376
+      },
+      "task_collapse_rates": {
+        "qmsum": 98.0,
+        "gov_report": 52.0,
+        "2wikimqa": 6.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "49/50",
+        "gov_report": "26/50",
+        "2wikimqa": "3/50"
+      },
+      "avg_score": 11.999249695803401,
+      "avg_collapse_rate_pct": 52.0,
+      "avg_collapse_frac": "78/150",
+      "avg_ttft_ms": 1592.0656261476088,
+      "avg_throughput": 26.957875253079052,
+      "avg_memory_reduction_pct": 20.0043379347166
+    },
+    {
+      "method": "AdaKV-adapted",
+      "task_scores": {
+        "qmsum": 3.1641051384863177,
+        "gov_report": 18.30346501794951,
+        "2wikimqa": 14.530178930974376
+      },
+      "task_collapse_rates": {
+        "qmsum": 98.0,
+        "gov_report": 52.0,
+        "2wikimqa": 6.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "49/50",
+        "gov_report": "26/50",
+        "2wikimqa": "3/50"
+      },
+      "avg_score": 11.999249695803401,
+      "avg_collapse_rate_pct": 52.0,
+      "avg_collapse_frac": "78/150",
+      "avg_ttft_ms": 1592.689211310924,
+      "avg_throughput": 27.2323649018697,
+      "avg_memory_reduction_pct": 20.0043379347166
+    },
+    {
+      "method": "SalienceKV_wo_sink",
+      "task_scores": {
+        "qmsum": 9.4443277759032,
+        "gov_report": 19.395278615558365,
+        "2wikimqa": 16.356432188394493
+      },
+      "task_collapse_rates": {
+        "qmsum": 12.0,
+        "gov_report": 6.0,
+        "2wikimqa": 2.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "6/50",
+        "gov_report": "3/50",
+        "2wikimqa": "1/50"
+      },
+      "avg_score": 15.065346193285352,
+      "avg_collapse_rate_pct": 6.666666666666667,
+      "avg_collapse_frac": "10/150",
+      "avg_ttft_ms": 1618.9922412446083,
+      "avg_throughput": 27.04947065097498,
+      "avg_memory_reduction_pct": 20.0043379347166
+    },
+    {
+      "method": "SalienceKV_Sink4",
+      "task_scores": {
+        "qmsum": 9.405010608184023,
+        "gov_report": 18.517336306150632,
+        "2wikimqa": 17.142777777206874
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0,
+        "2wikimqa": 2.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/50",
+        "gov_report": "0/50",
+        "2wikimqa": "1/50"
+      },
+      "avg_score": 15.021708230513843,
+      "avg_collapse_rate_pct": 0.6666666666666666,
+      "avg_collapse_frac": "1/150",
+      "avg_ttft_ms": 1620.1171750859385,
+      "avg_throughput": 27.32669630612749,
+      "avg_memory_reduction_pct": 20.0043379347166
+    }
+  ],
+  "completed_methods": 8,
+  "total_methods": 8
+}
