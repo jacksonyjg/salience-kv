@@ -112,9 +112,12 @@ def run_method_on_all_tasks(
     
     task_scores = {}
     task_collapse_rates = {}
+    task_collapse_fracs = {}
     task_ttfts = []
     task_throughputs = []
     task_mem_reductions = []
+    total_collapse_count = 0
+    total_collapse_total = 0
     
     for task_name in tasks:
         logger.info(f"\n  Task: {task_name}")
@@ -133,13 +136,16 @@ def run_method_on_all_tasks(
             
             task_scores[task_name] = result["avg_score"]
             task_collapse_rates[task_name] = result["avg_collapse_rate_pct"]
+            task_collapse_fracs[task_name] = f"{result['collapse_count']}/{result['collapse_total']}"
+            total_collapse_count += result["collapse_count"]
+            total_collapse_total += result["collapse_total"]
             task_ttfts.append(result["avg_ttft_ms"])
             task_throughputs.append(result["avg_throughput"])
             task_mem_reductions.append(result["avg_memory_reduction_pct"])
             
             logger.info(
                 f"  → score={result['avg_score']:.2f}, "
-                f"collapse={result['avg_collapse_rate_pct']:.1f}%, "
+                f"collapse={result['collapse_count']}/{result['collapse_total']} ({result['avg_collapse_rate_pct']:.1f}%), "
                 f"mem_red={result['avg_memory_reduction_pct']:.1f}%, "
                 f"ttft={result['avg_ttft_ms']:.1f}ms"
             )
@@ -148,6 +154,7 @@ def run_method_on_all_tasks(
             logger.error(f"  Task {task_name} failed: {e}")
             task_scores[task_name] = 0.0
             task_collapse_rates[task_name] = 100.0
+            task_collapse_fracs[task_name] = "N/A"
     
     avg_score = sum(task_scores.values()) / len(task_scores) if task_scores else 0.0
     avg_collapse = sum(task_collapse_rates.values()) / len(task_collapse_rates) if task_collapse_rates else 0.0
@@ -159,8 +166,10 @@ def run_method_on_all_tasks(
         "method": display,
         "task_scores": task_scores,
         "task_collapse_rates": task_collapse_rates,
+        "task_collapse_fracs": task_collapse_fracs,
         "avg_score": avg_score,
         "avg_collapse_rate_pct": avg_collapse,
+        "avg_collapse_frac": f"{total_collapse_count}/{total_collapse_total}",
         "avg_ttft_ms": avg_ttft,
         "avg_throughput": avg_throughput,
         "avg_memory_reduction_pct": avg_mem,
@@ -242,7 +251,9 @@ def main():
         )
         for task in tasks:
             row[f"{task}_collapse_%"] = round(result["task_collapse_rates"].get(task, 0.0), 1)
+            row[f"{task}_collapse_n"] = result["task_collapse_fracs"].get(task, "N/A")
         row["Avg_Collapse_%"] = round(result["avg_collapse_rate_pct"], 1)
+        row["Avg_Collapse_n"] = result["avg_collapse_frac"]
         table_rows.append(row)
 
         # 무인 장시간 실행 안전장치: method 하나 끝날 때마다 즉시 저장(덮어쓰기)

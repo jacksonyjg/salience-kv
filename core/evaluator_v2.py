@@ -215,6 +215,8 @@ class EvaluatorV2:
             "avg_throughput": aggregate_scores(throughputs),
             "avg_memory_reduction_pct": aggregate_scores(mem_reds),
             "avg_collapse_rate_pct": (sum(collapses) / len(collapses) * 100) if collapses else 0.0,
+            "collapse_count": int(sum(collapses)),
+            "collapse_total": len(collapses),
             "num_samples": len(scores), "method": method_name,
             "task": task_name, "budget_ratio": budget_ratio,
         }
