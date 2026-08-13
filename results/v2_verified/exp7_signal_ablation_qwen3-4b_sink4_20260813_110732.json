@@ -1,0 +1,141 @@
+{
+  "experiment": "exp7_signal_ablation",
+  "model": "qwen3-4b",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qmsum",
+    "gov_report"
+  ],
+  "num_samples": 30,
+  "seed": 42,
+  "results": [
+    {
+      "method": "3signal_NVP",
+      "task_scores": {
+        "qmsum": 8.002245142475209,
+        "gov_report": 15.948358297317762
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/30",
+        "gov_report": "0/30"
+      },
+      "avg_score": 11.975301719896486,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/60",
+      "avg_ttft_ms": 1865.2966359535042,
+      "avg_throughput": 26.487818944633084,
+      "avg_memory_reduction_pct": 80.00285570951306
+    },
+    {
+      "method": "4signal_NVPS",
+      "task_scores": {
+        "qmsum": 8.68728461639365,
+        "gov_report": 15.621580754668905
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/30",
+        "gov_report": "0/30"
+      },
+      "avg_score": 12.154432685531278,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/60",
+      "avg_ttft_ms": 1907.564524392485,
+      "avg_throughput": 26.542412855063525,
+      "avg_memory_reduction_pct": 80.00285570951306
+    },
+    {
+      "method": "wo_N",
+      "task_scores": {
+        "qmsum": 8.300815676062944,
+        "gov_report": 15.459292832716676
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/30",
+        "gov_report": "0/30"
+      },
+      "avg_score": 11.88005425438981,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/60",
+      "avg_ttft_ms": 1847.4129389358063,
+      "avg_throughput": 26.957532574083622,
+      "avg_memory_reduction_pct": 80.00285570951306
+    },
+    {
+      "method": "wo_V",
+      "task_scores": {
+        "qmsum": 8.590522957051887,
+        "gov_report": 16.37390072255656
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/30",
+        "gov_report": "0/30"
+      },
+      "avg_score": 12.482211839804222,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/60",
+      "avg_ttft_ms": 1850.0503026464671,
+      "avg_throughput": 25.84993267231909,
+      "avg_memory_reduction_pct": 80.00285570951306
+    },
+    {
+      "method": "wo_P",
+      "task_scores": {
+        "qmsum": 9.425338334304026,
+        "gov_report": 15.886618487639193
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 3.3333333333333335
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/30",
+        "gov_report": "1/30"
+      },
+      "avg_score": 12.65597841097161,
+      "avg_collapse_rate_pct": 1.6666666666666667,
+      "avg_collapse_frac": "1/60",
+      "avg_ttft_ms": 1864.7204050252676,
+      "avg_throughput": 26.72059830740555,
+      "avg_memory_reduction_pct": 80.00285570951306
+    },
+    {
+      "method": "N_only",
+      "task_scores": {
+        "qmsum": 8.790107395005863,
+        "gov_report": 15.832584507526489
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/30",
+        "gov_report": "0/30"
+      },
+      "avg_score": 12.311345951266176,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/60",
+      "avg_ttft_ms": 1844.6066883358203,
+      "avg_throughput": 26.783262089095462,
+      "avg_memory_reduction_pct": 80.00285570951306
+    }
+  ],
+  "completed_variants": 6,
+  "total_variants": 6
+}
