@@ -1,0 +1,58 @@
+{
+  "experiment": "table13_position_content_validation",
+  "model": "qwen3-4b",
+  "tasks": [
+    "qmsum",
+    "gov_report"
+  ],
+  "num_samples": 10,
+  "budget_ratio": 0.2,
+  "sink_size": 4,
+  "results": [
+    {
+      "condition": "front_real",
+      "mode": "position:front",
+      "task_scores": {
+        "qmsum": 6.35,
+        "gov_report": 16.14
+      },
+      "avg_score": 11.25
+    },
+    {
+      "condition": "middle_real",
+      "mode": "position:middle",
+      "task_scores": {
+        "qmsum": 2.63,
+        "gov_report": 12.4
+      },
+      "avg_score": 7.52
+    },
+    {
+      "condition": "end_real",
+      "mode": "position:end",
+      "task_scores": {
+        "qmsum": 2.77,
+        "gov_report": 13.23
+      },
+      "avg_score": 8.0
+    },
+    {
+      "condition": "front_placeholder",
+      "mode": "content:None",
+      "task_scores": {
+        "qmsum": 5.47,
+        "gov_report": 14.96
+      },
+      "avg_score": 10.21
+    },
+    {
+      "condition": "none",
+      "mode": "position:none",
+      "task_scores": {
+        "qmsum": 2.63,
+        "gov_report": 12.67
+      },
+      "avg_score": 7.65
+    }
+  ]
+}

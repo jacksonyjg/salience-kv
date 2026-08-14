@@ -1,0 +1,270 @@
+2026-08-14 10:24:07,138 [INFO] __main__: TABLE XIII: Sink Position/Content Controlled Validation (경량 확인용)
+2026-08-14 10:24:07,142 [INFO] __main__:   Model: qwen3-4b | Tasks: ['qmsum', 'gov_report'] | Samples: 10/task | Budget: 20%
+2026-08-14 10:24:07,143 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-14 10:24:07,283 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:24:07,301 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-14 10:24:07,421 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:24:07,451 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-14 10:24:07,539 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-14 10:24:07,616 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-14 10:24:08,872 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-14 10:24:08,875 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-14 10:24:08,923 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:24:08,933 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-14 10:24:35,426 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:24:35,442 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-14 10:24:35,598 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-14 10:24:35,667 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-14 10:24:35,687 [INFO] __main__:   placeholder_token_id (pad_token): 151643
+2026-08-14 10:24:35,689 [INFO] __main__: 
+============================================================
+2026-08-14 10:24:35,690 [INFO] __main__: Condition: front_real (mode=('position', 'front'))
+2026-08-14 10:24:35,692 [INFO] __main__: ============================================================
+2026-08-14 10:24:35,694 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-14 10:24:35,765 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:24:35,796 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:24:35,992 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:24:36,045 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:24:36,088 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:24:36,130 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-14 10:24:36,735 [INFO] core.dataset_loader: Loaded 10 samples from qmsum
+2026-08-14 10:24:43,051 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed the design and features of a new remote control device. Key points included the need for a unique,'
+2026-08-14 10:24:48,476 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed the design and development of a new product, focusing on key components such as the remote control'
+2026-08-14 10:25:01,682 [INFO] core.evaluator_v2: [ours] pred='The document outlines a collaborative project involving multiple researchers and students working on various aspects of '
+2026-08-14 10:25:12,035 [INFO] core.evaluator_v2: [ours] pred='The document is a detailed transcript of a meeting, likely involving team members discussing project progress, evaluatio'
+2026-08-14 10:25:24,414 [INFO] core.evaluator_v2: [ours] pred='The document outlines a meeting discussion among team members (likely in a product development or design context) focuse'
+2026-08-14 10:25:24,439 [INFO] __main__:   [front_real] qmsum [5/10] avg=7.48
+2026-08-14 10:25:24,822 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 10:25:37,852 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of a project involving neural networks, data processing, and system testing. Key p'
+2026-08-14 10:25:38,361 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 10:25:48,093 [INFO] core.evaluator_v2: [ours] pred='The document outlines a collaborative project involving the development of belief networks (BNs) for a specific applicat'
+2026-08-14 10:25:48,654 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 10:25:59,411 [INFO] core.evaluator_v2: [ours] pred="The committee met to discuss the Welsh Government's childcare offer, which provides 30 hours of free childcare per week "
+2026-08-14 10:25:59,918 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-14 10:26:12,585 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of speech recognition and machine learning, focusing on the development and evalua'
+2026-08-14 10:26:17,278 [INFO] core.evaluator_v2: [ours] pred='The document is a transcript of a meeting where team members discuss project ideas, responsibilities, and next steps. Ke'
+2026-08-14 10:26:17,280 [INFO] __main__:   [front_real] qmsum [10/10] avg=6.35
+2026-08-14 10:26:17,282 [INFO] __main__:   → qmsum: 6.35
+2026-08-14 10:26:17,284 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-14 10:26:17,348 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:26:17,383 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:26:17,988 [INFO] core.dataset_loader: Loaded 10 samples from gov_report
+2026-08-14 10:26:33,336 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has been tasked with managing its use of research and development (R&D) personnel,'
+2026-08-14 10:26:42,361 [INFO] core.evaluator_v2: [ours] pred='The U.S. Government Accountability Office (GAO) has identified key challenges in the management of IT acquisitions and o'
+2026-08-14 10:26:43,128 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-14 10:26:53,983 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThe document provides an in-depth analysis of China's maritime assertiveness in the South China Sea (SCS) "
+2026-08-14 10:26:54,487 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-14 10:27:14,589 [INFO] core.evaluator_v2: [ours] pred='The U.S. Environmental Protection Agency (EPA) has faced significant budgetary challenges and shifting priorities over t'
+2026-08-14 10:27:37,047 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe U.S. Department of Homeland Security (DHS) conducted an audit of the TRIO components—U.S. Coast Guard '
+2026-08-14 10:27:37,105 [INFO] __main__:   [front_real] gov_report [5/10] avg=15.44
+2026-08-14 10:27:56,900 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThe report evaluates the effectiveness of the federal government's approach and strategy for securing agen"
+2026-08-14 10:28:13,750 [INFO] core.evaluator_v2: [ours] pred='The Small Business Administration (SBA) and federal agencies have implemented various programs to promote small business'
+2026-08-14 10:28:14,363 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-14 10:28:37,818 [INFO] core.evaluator_v2: [ours] pred='The U.S. Department of Defense (DoD) has established a framework for conducting research and development (R&D) projects '
+2026-08-14 10:28:53,760 [INFO] core.evaluator_v2: [ours] pred='The document discusses the declining role of cash in modern economies, highlighting the increasing adoption of non-cash '
+2026-08-14 10:28:54,252 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-14 10:29:08,248 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has been assessed on its major acquisition programs and policies to determine '
+2026-08-14 10:29:08,275 [INFO] __main__:   [front_real] gov_report [10/10] avg=16.14
+2026-08-14 10:29:08,276 [INFO] __main__:   → gov_report: 16.14
+2026-08-14 10:29:08,285 [INFO] core.results_manager: JSON saved to results/v2_verified/table13_position_content_20260814_102435.json
+2026-08-14 10:29:08,285 [INFO] __main__: [중간 저장 완료] 1/5 조건
+2026-08-14 10:29:08,286 [INFO] __main__: 
+============================================================
+2026-08-14 10:29:08,286 [INFO] __main__: Condition: middle_real (mode=('position', 'middle'))
+2026-08-14 10:29:08,287 [INFO] __main__: ============================================================
+2026-08-14 10:29:08,288 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-14 10:29:08,357 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:29:08,503 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:29:08,878 [INFO] core.dataset_loader: Loaded 10 samples from qmsum
+2026-08-14 10:29:30,722 [INFO] core.evaluator_v2: [ours] pred='The summary is:  \n\nThis is a team that is working on a project. The goal is to create a product that is original and has'
+2026-08-14 10:29:53,463 [INFO] core.evaluator_v2: [ours] pred='The team is working on a new design. The buttons are on a new design. The buttons are on a new design. The buttons are o'
+2026-08-14 10:30:14,694 [INFO] core.evaluator_v2: [ours] pred='The team is working on a project that involves a series of decisions. The goal is to reach a conclusion that will be use'
+2026-08-14 10:30:35,373 [INFO] core.evaluator_v2: [ours] pred='The team completed the project, which was initially designed to flow logically from basic to complex. The project was ev'
+2026-08-14 10:30:59,996 [INFO] core.evaluator_v2: [ours] pred='The team decided to follow a shape, which needed to be fancy, and to be fancy, it needed to be fancy, and to be fancy, i'
+2026-08-14 10:31:00,002 [INFO] __main__:   [middle_real] qmsum [5/10] avg=2.41
+2026-08-14 10:31:00,479 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 10:31:08,080 [INFO] core.evaluator_v2: [ours] pred='The summary highlights the following key points:\n\n- The team is working on a new set of features.\n- The process involves'
+2026-08-14 10:31:08,556 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 10:31:30,770 [INFO] core.evaluator_v2: [ours] pred='The summary of the discussion and the key points from the conversation and the discussion and the discussion and the dis'
+2026-08-14 10:31:31,310 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 10:31:42,188 [INFO] core.evaluator_v2: [ours] pred='The summary of the key points from the discussion is as follows:\n\nThe government has conducted a study on the proposed p'
+2026-08-14 10:31:42,653 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-14 10:32:03,213 [INFO] core.evaluator_v2: [ours] pred='The meeting lasted for approximately 1 hour, with 10 participants, and 1200000000000000000000000000000000000000000000000'
+2026-08-14 10:32:21,840 [INFO] core.evaluator_v2: [ours] pred='The summary is:  \n\nThe team conducted a session with a focus on a specific action. The session was marked by a decision '
+2026-08-14 10:32:21,846 [INFO] __main__:   [middle_real] qmsum [10/10] avg=2.63
+2026-08-14 10:32:21,847 [INFO] __main__:   → qmsum: 2.63
+2026-08-14 10:32:21,848 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-14 10:32:21,931 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:32:21,967 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:32:22,438 [INFO] core.dataset_loader: Loaded 10 samples from gov_report
+2026-08-14 10:32:43,847 [INFO] core.evaluator_v2: [ours] pred='The National Fund (NF) has adopted several strategies to manage the cost of rotators. The agency has taken positive step'
+2026-08-14 10:32:51,216 [INFO] core.evaluator_v2: [ours] pred='The federal government has opportunities to address high-risk areas in IT acquisition and operation, and to ensure the s'
+2026-08-14 10:32:51,801 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-14 10:33:14,891 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe **South** has been **w**.  \n\n**Summary:**\n\nThe **South** has been **w**.  \n\n**Summary:**\n\nThe **South*'
+2026-08-14 10:33:15,514 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-14 10:33:37,408 [INFO] core.evaluator_v2: [ours] pred='The summary of the key information and the detailed analysis of the budget and funding decisions for the EPA and the EPA'
+2026-08-14 10:33:58,871 [INFO] core.evaluator_v2: [ours] pred='**Summary:**  \n\n**Key Takeaways:**  \n\n1. **Following Best Practices:**  \n   - The **Trio (TRIOT)****** (U.S. Homeland Se'
+2026-08-14 10:33:58,915 [INFO] __main__:   [middle_real] gov_report [5/10] avg=8.45
+2026-08-14 10:34:13,606 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe federal government has adopted a legal and policy-based approach to secure information systems, as out'
+2026-08-14 10:34:26,881 [INFO] core.evaluator_v2: [ours] pred='The summary of the federal small business accounting and performance review process is as follows:\n\nFederal agencies gen'
+2026-08-14 10:34:27,261 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-14 10:34:33,643 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text provides a detailed summary of the legal and regulatory framew'
+2026-08-14 10:34:56,317 [INFO] core.evaluator_v2: [ours] pred='The summary of the key points and the analysis of the situation and the factors that have been considered in the process'
+2026-08-14 10:34:57,134 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-14 10:35:18,266 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has implemented policies and practices to manage its portfolio of major acquis'
+2026-08-14 10:35:18,308 [INFO] __main__:   [middle_real] gov_report [10/10] avg=12.40
+2026-08-14 10:35:18,320 [INFO] __main__:   → gov_report: 12.40
+2026-08-14 10:35:18,344 [INFO] core.results_manager: JSON saved to results/v2_verified/table13_position_content_20260814_102435.json
+2026-08-14 10:35:18,346 [INFO] __main__: [중간 저장 완료] 2/5 조건
+2026-08-14 10:35:18,349 [INFO] __main__: 
+============================================================
+2026-08-14 10:35:18,350 [INFO] __main__: Condition: end_real (mode=('position', 'end'))
+2026-08-14 10:35:18,350 [INFO] __main__: ============================================================
+2026-08-14 10:35:18,351 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-14 10:35:18,497 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:35:18,534 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:35:18,968 [INFO] core.dataset_loader: Loaded 10 samples from qmsum
+2026-08-14 10:35:39,241 [INFO] core.evaluator_v2: [ours] pred='The summary is:  \n\nThis is a team that is working on a project. The goal is to create a product that is original and has'
+2026-08-14 10:36:00,143 [INFO] core.evaluator_v2: [ours] pred='The team is working on a new design. The buttons are on a new design. The buttons are on a new design. The buttons are o'
+2026-08-14 10:36:19,788 [INFO] core.evaluator_v2: [ours] pred='The team is working on a project that involves a series of decisions. The goal is to reach a conclusion that will be use'
+2026-08-14 10:36:25,471 [INFO] core.evaluator_v2: [ours] pred='The meeting concluded with a friendly and friendly attitude. The team was focused on the basics, and the process was log'
+2026-08-14 10:36:46,944 [INFO] core.evaluator_v2: [ours] pred='The team decided to follow a shape, which needed to be fancy, and to be fancy, it needed to be fancy, and to be fancy, i'
+2026-08-14 10:36:46,950 [INFO] __main__:   [end_real] qmsum [5/10] avg=3.31
+2026-08-14 10:36:47,345 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 10:37:07,302 [INFO] core.evaluator_v2: [ours] pred='The summary highlights the following key points:\n\n- The team is working on a new set of features.\n- The process involves'
+2026-08-14 10:37:07,850 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 10:37:30,292 [INFO] core.evaluator_v2: [ours] pred='The summary of the discussion and the key points from the conversation and the discussion and the discussion and the dis'
+2026-08-14 10:37:30,754 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 10:37:45,057 [INFO] core.evaluator_v2: [ours] pred='The committee reviewed a Welsh government policy, which concluded that it would have no substantial impact on net income'
+2026-08-14 10:37:45,770 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-14 10:38:07,699 [INFO] core.evaluator_v2: [ours] pred='The meeting lasted for approximately 1 hour, with 10 participants, and 1200000000000000000000000000000000000000000000000'
+2026-08-14 10:38:27,177 [INFO] core.evaluator_v2: [ours] pred='The summary is:  \n\nThe team conducted a session with a focus on a specific action. The session was marked by a decision '
+2026-08-14 10:38:27,185 [INFO] __main__:   [end_real] qmsum [10/10] avg=2.77
+2026-08-14 10:38:27,185 [INFO] __main__:   → qmsum: 2.77
+2026-08-14 10:38:27,186 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-14 10:38:27,269 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:38:27,299 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:38:27,662 [INFO] core.dataset_loader: Loaded 10 samples from gov_report
+2026-08-14 10:38:47,934 [INFO] core.evaluator_v2: [ours] pred='The National Fund (NF) has adopted several strategies to manage the cost of rotators. In recent years, the NF has recogn'
+2026-08-14 10:38:56,266 [INFO] core.evaluator_v2: [ours] pred='The federal government has opportunities to address key IT management and cybersecurity areas, thereby saving billions o'
+2026-08-14 10:38:56,805 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-14 10:39:19,390 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe **South** has been **w**.  \n\n**Summary:**\n\nThe **South** has been **w**.  \n\n**Summary:**\n\nThe **South*'
+2026-08-14 10:39:19,974 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-14 10:39:42,611 [INFO] core.evaluator_v2: [ours] pred='The summary of the key information and the detailed analysis of the budget and funding decisions for the EPA and the EPA'
+2026-08-14 10:40:09,339 [INFO] core.evaluator_v2: [ours] pred='**Summary:**  \n\n**Key Takeaways:**  \n\n1. **Following Best Practices:**  \n   - The **Department of Homeland Security (DHS'
+2026-08-14 10:40:09,344 [INFO] __main__:   [end_real] gov_report [5/10] avg=10.13
+2026-08-14 10:40:25,181 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe federal government has adopted a legal and policy-based approach to secure information systems, as out'
+2026-08-14 10:40:40,307 [INFO] core.evaluator_v2: [ours] pred='The summary of the federal small business accounting and performance review process is as follows:\n\nFederal agencies gen'
+2026-08-14 10:40:40,723 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-14 10:40:46,739 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text provides a detailed summary of the legal and regulatory framew'
+2026-08-14 10:41:07,844 [INFO] core.evaluator_v2: [ours] pred='The summary of the key points and the analysis of the situation and the factors that have been considered in the process'
+2026-08-14 10:41:08,470 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-14 10:41:31,529 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has implemented policies and practices to manage its portfolio of major acquis'
+2026-08-14 10:41:31,597 [INFO] __main__:   [end_real] gov_report [10/10] avg=13.23
+2026-08-14 10:41:31,599 [INFO] __main__:   → gov_report: 13.23
+2026-08-14 10:41:31,628 [INFO] core.results_manager: JSON saved to results/v2_verified/table13_position_content_20260814_102435.json
+2026-08-14 10:41:31,629 [INFO] __main__: [중간 저장 완료] 3/5 조건
+2026-08-14 10:41:31,630 [INFO] __main__: 
+============================================================
+2026-08-14 10:41:31,631 [INFO] __main__: Condition: front_placeholder (mode=('content', None))
+2026-08-14 10:41:31,632 [INFO] __main__: ============================================================
+2026-08-14 10:41:31,632 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-14 10:41:31,711 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:41:31,781 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:41:32,153 [INFO] core.dataset_loader: Loaded 10 samples from qmsum
+2026-08-14 10:41:38,054 [INFO] core.evaluator_v2: [ours] pred='The meeting concluded with a discussion on the remote control project, with the team discussing the budget, profit margi'
+2026-08-14 10:41:57,446 [INFO] core.evaluator_v2: [ours] pred='The meeting was a collaborative session between the Project Manager, Marketing, and Industrial Designer to discuss the d'
+2026-08-14 10:42:20,437 [INFO] core.evaluator_v2: [ours] pred='The text provided is a detailed and comprehensive discussion of a meeting meeting between a group of individuals discuss'
+2026-08-14 10:42:34,354 [INFO] core.evaluator_v2: [ours] pred='The meeting was a collaborative session between a team of professionals, likely in a marketing or product development co'
+2026-08-14 10:42:45,851 [INFO] core.evaluator_v2: [ours] pred='The meeting concluded with a discussion on the design and evaluation of a new product, focusing on key aspects such as t'
+2026-08-14 10:42:45,854 [INFO] __main__:   [front_placeholder] qmsum [5/10] avg=7.60
+2026-08-14 10:42:46,213 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 10:43:08,331 [INFO] core.evaluator_v2: [ours] pred='The user provided aื่\n\nThe user provided a lengthy text that appears to be a mix of various text fragments or fragments '
+2026-08-14 10:43:08,807 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 10:43:31,465 [INFO] core.evaluator_v2: [ours] pred='The user has provided aื่\n\nThe user has provided aื่\n\nThe user has provided a lengthy text that appears to be aื่\n\nThe u'
+2026-08-14 10:43:32,049 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 10:43:52,754 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe UK government has been working on a comprehensive review of the childcare offer and education system, '
+2026-08-14 10:43:53,182 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-14 10:44:13,883 [INFO] core.evaluator_v2: [ours] pred='The user has provided aื่\n\nThe user has provided a lengthy text in Chinese, which appears to be a conversation or a conv'
+2026-08-14 10:44:24,038 [INFO] core.evaluator_v2: [ours] pred='The provided text appears to be a conversation between a project manager, a marketing representative, a user interface d'
+2026-08-14 10:44:24,042 [INFO] __main__:   [front_placeholder] qmsum [10/10] avg=5.47
+2026-08-14 10:44:24,043 [INFO] __main__:   → qmsum: 5.47
+2026-08-14 10:44:24,044 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-14 10:44:24,120 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:44:24,151 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:44:24,553 [INFO] core.dataset_loader: Loaded 10 samples from gov_report
+2026-08-14 10:44:33,548 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has been tasked with managing its use of rotating staff (rotators) and permanent f'
+2026-08-14 10:44:44,566 [INFO] core.evaluator_v2: [ours] pred="The U.S. Government's efforts to improve the management of information technology (IT) acquisitions and operations, as w"
+2026-08-14 10:44:45,160 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-14 10:45:06,985 [INFO] core.evaluator_v2: [ours] pred="The user has provided a lengthy text block containing a detailed description of the U.S. response to China's actions in "
+2026-08-14 10:45:07,706 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-14 10:45:31,098 [INFO] core.evaluator_v2: [ours] pred='The U.S. Department of Health (HHS) has been involved in various legislative and regulatory activities, including the Wa'
+2026-08-14 10:45:40,795 [INFO] core.evaluator_v2: [ours] pred="The Department of Homeland Security's TRIO components—U.S. Coast (U.S. Coast), Transportation Security (TSA), and Domest"
+2026-08-14 10:45:40,813 [INFO] __main__:   [front_placeholder] gov_report [5/10] avg=15.68
+2026-08-14 10:46:01,382 [INFO] core.evaluator_v2: [ours] pred='The report evaluates the effectiveness of the federal government’s approach and strategy for securing information system'
+2026-08-14 10:46:11,931 [INFO] core.evaluator_v2: [ours] pred='The U.S. government has established small business contracting programs with strong bipartisan support, aiming to promot'
+2026-08-14 10:46:12,320 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-14 10:46:32,597 [INFO] core.evaluator_v2: [ours] pred='The provided text is a lengthy and complex legal document that outlines the authority and authority of the Department of'
+2026-08-14 10:46:43,804 [INFO] core.evaluator_v2: [ours] pred='The use of cash is declining globally, with several countries like Sweden and Kenya serving as examples of how market fo'
+2026-08-14 10:46:44,359 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-14 10:47:06,163 [INFO] core.evaluator_v2: [ours] pred='The U.S. Department of Homeland Security (DHS) has conducted a comprehensive audit of its 79 major acquisition programs '
+2026-08-14 10:47:06,196 [INFO] __main__:   [front_placeholder] gov_report [10/10] avg=14.96
+2026-08-14 10:47:06,197 [INFO] __main__:   → gov_report: 14.96
+2026-08-14 10:47:06,232 [INFO] core.results_manager: JSON saved to results/v2_verified/table13_position_content_20260814_102435.json
+2026-08-14 10:47:06,234 [INFO] __main__: [중간 저장 완료] 4/5 조건
+2026-08-14 10:47:06,235 [INFO] __main__: 
+============================================================
+2026-08-14 10:47:06,237 [INFO] __main__: Condition: none (mode=('position', 'none'))
+2026-08-14 10:47:06,238 [INFO] __main__: ============================================================
+2026-08-14 10:47:06,239 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-14 10:47:06,312 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:47:06,360 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:47:06,716 [INFO] core.dataset_loader: Loaded 10 samples from qmsum
+2026-08-14 10:47:27,314 [INFO] core.evaluator_v2: [ours] pred='The summary is:  \n\nThis is a team that is working on a project. The goal is to create a product that is original and has'
+2026-08-14 10:47:47,689 [INFO] core.evaluator_v2: [ours] pred='The team is working on a new design. The buttons are on a new design. The buttons are on a new design. The buttons are o'
+2026-08-14 10:48:10,613 [INFO] core.evaluator_v2: [ours] pred='The team is working on a project that involves a series of decisions. The goal is to reach a conclusion that will be use'
+2026-08-14 10:48:36,572 [INFO] core.evaluator_v2: [ours] pred='The team completed the project, which was initially designed to flow logically from basic to complex. The project was ev'
+2026-08-14 10:48:59,967 [INFO] core.evaluator_v2: [ours] pred='The team decided to follow a shape, which needed to be fancy, and to be fancy, it needed to be fancy, and to be fancy, i'
+2026-08-14 10:48:59,974 [INFO] __main__:   [none] qmsum [5/10] avg=2.41
+2026-08-14 10:49:00,378 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 10:49:08,808 [INFO] core.evaluator_v2: [ours] pred='The summary highlights the following key points:\n\n- The team is working on a new set of features.\n- The process involves'
+2026-08-14 10:49:09,525 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 10:49:33,192 [INFO] core.evaluator_v2: [ours] pred='The summary of the discussion and the key points from the conversation and the discussion and the discussion and the dis'
+2026-08-14 10:49:33,705 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 10:49:43,885 [INFO] core.evaluator_v2: [ours] pred='The summary of the key points from the discussion is as follows:\n\nThe government has conducted a study on the proposed p'
+2026-08-14 10:49:44,308 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-14 10:50:04,368 [INFO] core.evaluator_v2: [ours] pred='The meeting lasted for approximately 1 hour, with 10 participants, and 1200000000000000000000000000000000000000000000000'
+2026-08-14 10:50:26,215 [INFO] core.evaluator_v2: [ours] pred='The summary is:  \n\nThe team conducted a session with a focus on a specific action. The session was marked by a decision '
+2026-08-14 10:50:26,231 [INFO] __main__:   [none] qmsum [10/10] avg=2.63
+2026-08-14 10:50:26,233 [INFO] __main__:   → qmsum: 2.63
+2026-08-14 10:50:26,234 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-14 10:50:26,304 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 10:50:26,361 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 10:50:26,887 [INFO] core.dataset_loader: Loaded 10 samples from gov_report
+2026-08-14 10:50:49,615 [INFO] core.evaluator_v2: [ours] pred='The National Fund (NF) has adopted several strategies to manage the cost of rotators. The agency has taken positive step'
+2026-08-14 10:50:58,237 [INFO] core.evaluator_v2: [ours] pred='The federal government has opportunities to address key IT management and cybersecurity areas, thereby saving billions o'
+2026-08-14 10:50:58,665 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-14 10:51:19,501 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe **South** has been **w**.  \n\n**Summary:**\n\nThe **South** has been **w**.  \n\n**Summary:**\n\nThe **South*'
+2026-08-14 10:51:20,073 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-14 10:51:42,575 [INFO] core.evaluator_v2: [ours] pred='The summary of the key information and the detailed analysis of the budget and funding decisions for the EPA and the EPA'
+2026-08-14 10:52:05,032 [INFO] core.evaluator_v2: [ours] pred='**Summary:**  \n\n**Key Takeaways:**  \n\n1. **Following Best Practices:**  \n   - The **Department of Homeland Security (DHS'
+2026-08-14 10:52:05,039 [INFO] __main__:   [none] gov_report [5/10] avg=9.03
+2026-08-14 10:52:19,923 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe federal government has adopted a legal and policy-based approach to secure information systems, as out'
+2026-08-14 10:52:35,251 [INFO] core.evaluator_v2: [ours] pred='The summary of the federal small business accounting and performance review process is as follows:\n\nFederal agencies gen'
+2026-08-14 10:52:35,668 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-14 10:52:41,730 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text provides a detailed summary of the legal and regulatory framew'
+2026-08-14 10:53:02,402 [INFO] core.evaluator_v2: [ours] pred='The summary of the key points and the analysis of the situation and the factors that have been considered in the process'
+2026-08-14 10:53:03,153 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-14 10:53:23,249 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has implemented policies and practices to manage its portfolio of major acquis'
+2026-08-14 10:53:23,291 [INFO] __main__:   [none] gov_report [10/10] avg=12.67
+2026-08-14 10:53:23,292 [INFO] __main__:   → gov_report: 12.67
+2026-08-14 10:53:23,352 [INFO] core.results_manager: JSON saved to results/v2_verified/table13_position_content_20260814_102435.json
+2026-08-14 10:53:23,353 [INFO] __main__: [중간 저장 완료] 5/5 조건
+2026-08-14 10:53:23,369 [INFO] core.results_manager: Results saved to results/v2_verified/table13_position_content_20260814_102435.csv
+2026-08-14 10:53:23,370 [INFO] __main__: 
+완료: 5개 조건
+2026-08-14 10:53:23,371 [INFO] __main__:   front_real           avg_score=11.25
+2026-08-14 10:53:23,372 [INFO] __main__:   middle_real          avg_score=7.52
+2026-08-14 10:53:23,373 [INFO] __main__:   end_real             avg_score=8.0
+2026-08-14 10:53:23,375 [INFO] __main__:   front_placeholder    avg_score=10.21
+2026-08-14 10:53:23,375 [INFO] __main__:   none                 avg_score=7.65
