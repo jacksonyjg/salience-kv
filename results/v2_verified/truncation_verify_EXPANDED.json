@@ -1,0 +1,74 @@
+[
+  {
+    "cap_label": "EXPANDED",
+    "task": "gov_report",
+    "indices": [
+      2,
+      3,
+      9
+    ],
+    "method": "FullKV",
+    "avg_score": 15.711904496427536,
+    "collapse_count": 0,
+    "collapse_total": 3
+  },
+  {
+    "cap_label": "EXPANDED",
+    "task": "gov_report",
+    "indices": [
+      2,
+      3,
+      9
+    ],
+    "method": "SalienceKV_sink0",
+    "avg_score": 11.73407011728714,
+    "collapse_count": 2,
+    "collapse_total": 3
+  },
+  {
+    "cap_label": "EXPANDED",
+    "task": "gov_report",
+    "indices": [
+      2,
+      3,
+      9
+    ],
+    "method": "SalienceKV_sink4",
+    "avg_score": 17.962233995340608,
+    "collapse_count": 0,
+    "collapse_total": 3
+  },
+  {
+    "cap_label": "EXPANDED",
+    "task": "qmsum",
+    "indices": [
+      21
+    ],
+    "method": "FullKV",
+    "avg_score": 8.860759493670885,
+    "collapse_count": 0,
+    "collapse_total": 1
+  },
+  {
+    "cap_label": "EXPANDED",
+    "task": "qmsum",
+    "indices": [
+      21
+    ],
+    "method": "SalienceKV_sink0",
+    "avg_score": 1.9464720194647203,
+    "collapse_count": 1,
+    "collapse_total": 1
+  },
+  {
+    "cap_label": "EXPANDED",
+    "task": "qmsum",
+    "indices": [
+      21
+    ],
+    "method": "SalienceKV_sink4",
+    "avg_score": 10.218978102189782,
+    "collapse_count": 0,
+    "collapse_total": 1
+  }
+]
