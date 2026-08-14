@@ -1,0 +1,329 @@
+{
+  "experiment": "exp8_budget_sensitivity",
+  "model": "qwen3-4b",
+  "tasks": [
+    "qmsum",
+    "hotpotqa"
+  ],
+  "num_samples": 10,
+  "seed": 42,
+  "results": [
+    {
+      "method": "StreamingLLM",
+      "budget_ratio": 0.1,
+      "task_scores": {
+        "qmsum": 6.59,
+        "hotpotqa": 30.16
+      },
+      "avg_score": 18.38
+    },
+    {
+      "method": "H2O",
+      "budget_ratio": 0.1,
+      "task_scores": {
+        "qmsum": 1.48,
+        "hotpotqa": 10.74
+      },
+      "avg_score": 6.11
+    },
+    {
+      "method": "SnapKV",
+      "budget_ratio": 0.1,
+      "task_scores": {
+        "qmsum": 0.65,
+        "hotpotqa": 11.05
+      },
+      "avg_score": 5.85
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "budget_ratio": 0.1,
+      "task_scores": {
+        "qmsum": 1.71,
+        "hotpotqa": 16.81
+      },
+      "avg_score": 9.26
+    },
+    {
+      "method": "AdaKV-adapted",
+      "budget_ratio": 0.1,
+      "task_scores": {
+        "qmsum": 1.71,
+        "hotpotqa": 16.81
+      },
+      "avg_score": 9.26
+    },
+    {
+      "method": "SalienceKV (w/o sink)",
+      "budget_ratio": 0.1,
+      "task_scores": {
+        "qmsum": 1.67,
+        "hotpotqa": 13.4
+      },
+      "avg_score": 7.54
+    },
+    {
+      "method": "SalienceKV-Sink-4",
+      "budget_ratio": 0.1,
+      "task_scores": {
+        "qmsum": 6.37,
+        "hotpotqa": 31.24
+      },
+      "avg_score": 18.8
+    },
+    {
+      "method": "StreamingLLM",
+      "budget_ratio": 0.2,
+      "task_scores": {
+        "qmsum": 7.08,
+        "hotpotqa": 33.72
+      },
+      "avg_score": 20.4
+    },
+    {
+      "method": "H2O",
+      "budget_ratio": 0.2,
+      "task_scores": {
+        "qmsum": 1.44,
+        "hotpotqa": 7.58
+      },
+      "avg_score": 4.51
+    },
+    {
+      "method": "SnapKV",
+      "budget_ratio": 0.2,
+      "task_scores": {
+        "qmsum": 0.64,
+        "hotpotqa": 12.09
+      },
+      "avg_score": 6.37
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "budget_ratio": 0.2,
+      "task_scores": {
+        "qmsum": 0.62,
+        "hotpotqa": 19.28
+      },
+      "avg_score": 9.95
+    },
+    {
+      "method": "AdaKV-adapted",
+      "budget_ratio": 0.2,
+      "task_scores": {
+        "qmsum": 0.62,
+        "hotpotqa": 19.28
+      },
+      "avg_score": 9.95
+    },
+    {
+      "method": "SalienceKV (w/o sink)",
+      "budget_ratio": 0.2,
+      "task_scores": {
+        "qmsum": 2.63,
+        "hotpotqa": 21.67
+      },
+      "avg_score": 12.15
+    },
+    {
+      "method": "SalienceKV-Sink-4",
+      "budget_ratio": 0.2,
+      "task_scores": {
+        "qmsum": 6.35,
+        "hotpotqa": 32.14
+      },
+      "avg_score": 19.25
+    },
+    {
+      "method": "StreamingLLM",
+      "budget_ratio": 0.4,
+      "task_scores": {
+        "qmsum": 8.43,
+        "hotpotqa": 34.78
+      },
+      "avg_score": 21.61
+    },
+    {
+      "method": "H2O",
+      "budget_ratio": 0.4,
+      "task_scores": {
+        "qmsum": 1.26,
+        "hotpotqa": 25.69
+      },
+      "avg_score": 13.48
+    },
+    {
+      "method": "SnapKV",
+      "budget_ratio": 0.4,
+      "task_scores": {
+        "qmsum": 2.39,
+        "hotpotqa": 16.66
+      },
+      "avg_score": 9.53
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "budget_ratio": 0.4,
+      "task_scores": {
+        "qmsum": 0.97,
+        "hotpotqa": 15.08
+      },
+      "avg_score": 8.03
+    },
+    {
+      "method": "AdaKV-adapted",
+      "budget_ratio": 0.4,
+      "task_scores": {
+        "qmsum": 0.97,
+        "hotpotqa": 15.08
+      },
+      "avg_score": 8.03
+    },
+    {
+      "method": "SalienceKV (w/o sink)",
+      "budget_ratio": 0.4,
+      "task_scores": {
+        "qmsum": 2.78,
+        "hotpotqa": 21.75
+      },
+      "avg_score": 12.27
+    },
+    {
+      "method": "SalienceKV-Sink-4",
+      "budget_ratio": 0.4,
+      "task_scores": {
+        "qmsum": 7.74,
+        "hotpotqa": 34.01
+      },
+      "avg_score": 20.88
+    },
+    {
+      "method": "StreamingLLM",
+      "budget_ratio": 0.6,
+      "task_scores": {
+        "qmsum": 8.36,
+        "hotpotqa": 34.06
+      },
+      "avg_score": 21.21
+    },
+    {
+      "method": "H2O",
+      "budget_ratio": 0.6,
+      "task_scores": {
+        "qmsum": 1.16,
+        "hotpotqa": 28.5
+      },
+      "avg_score": 14.83
+    },
+    {
+      "method": "SnapKV",
+      "budget_ratio": 0.6,
+      "task_scores": {
+        "qmsum": 3.27,
+        "hotpotqa": 27.76
+      },
+      "avg_score": 15.52
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "budget_ratio": 0.6,
+      "task_scores": {
+        "qmsum": 2.28,
+        "hotpotqa": 21.95
+      },
+      "avg_score": 12.12
+    },
+    {
+      "method": "AdaKV-adapted",
+      "budget_ratio": 0.6,
+      "task_scores": {
+        "qmsum": 2.28,
+        "hotpotqa": 21.95
+      },
+      "avg_score": 12.12
+    },
+    {
+      "method": "SalienceKV (w/o sink)",
+      "budget_ratio": 0.6,
+      "task_scores": {
+        "qmsum": 5.28,
+        "hotpotqa": 21.35
+      },
+      "avg_score": 13.32
+    },
+    {
+      "method": "SalienceKV-Sink-4",
+      "budget_ratio": 0.6,
+      "task_scores": {
+        "qmsum": 7.59,
+        "hotpotqa": 33.49
+      },
+      "avg_score": 20.54
+    },
+    {
+      "method": "StreamingLLM",
+      "budget_ratio": 0.8,
+      "task_scores": {
+        "qmsum": 7.91,
+        "hotpotqa": 33.75
+      },
+      "avg_score": 20.83
+    },
+    {
+      "method": "H2O",
+      "budget_ratio": 0.8,
+      "task_scores": {
+        "qmsum": 1.73,
+        "hotpotqa": 25.5
+      },
+      "avg_score": 13.62
+    },
+    {
+      "method": "SnapKV",
+      "budget_ratio": 0.8,
+      "task_scores": {
+        "qmsum": 2.65,
+        "hotpotqa": 33.33
+      },
+      "avg_score": 17.99
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "budget_ratio": 0.8,
+      "task_scores": {
+        "qmsum": 1.53,
+        "hotpotqa": 16.55
+      },
+      "avg_score": 9.04
+    },
+    {
+      "method": "AdaKV-adapted",
+      "budget_ratio": 0.8,
+      "task_scores": {
+        "qmsum": 1.53,
+        "hotpotqa": 16.55
+      },
+      "avg_score": 9.04
+    },
+    {
+      "method": "SalienceKV (w/o sink)",
+      "budget_ratio": 0.8,
+      "task_scores": {
+        "qmsum": 7.53,
+        "hotpotqa": 21.56
+      },
+      "avg_score": 14.54
+    },
+    {
+      "method": "SalienceKV-Sink-4",
+      "budget_ratio": 0.8,
+      "task_scores": {
+        "qmsum": 8.42,
+        "hotpotqa": 34.2
+      },
+      "avg_score": 21.31
+    }
+  ],
+  "completed_configs": 35,
+  "total_configs": 35
+}

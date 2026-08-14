@@ -1,0 +1,36 @@
+method,budget_ratio,task_scores,avg_score
+StreamingLLM,0.1,"{'qmsum': 6.59, 'hotpotqa': 30.16}",18.38
+H2O,0.1,"{'qmsum': 1.48, 'hotpotqa': 10.74}",6.11
+SnapKV,0.1,"{'qmsum': 0.65, 'hotpotqa': 11.05}",5.85
+PyramidKV-adapted,0.1,"{'qmsum': 1.71, 'hotpotqa': 16.81}",9.26
+AdaKV-adapted,0.1,"{'qmsum': 1.71, 'hotpotqa': 16.81}",9.26
+SalienceKV (w/o sink),0.1,"{'qmsum': 1.67, 'hotpotqa': 13.4}",7.54
+SalienceKV-Sink-4,0.1,"{'qmsum': 6.37, 'hotpotqa': 31.24}",18.8
+StreamingLLM,0.2,"{'qmsum': 7.08, 'hotpotqa': 33.72}",20.4
+H2O,0.2,"{'qmsum': 1.44, 'hotpotqa': 7.58}",4.51
+SnapKV,0.2,"{'qmsum': 0.64, 'hotpotqa': 12.09}",6.37
+PyramidKV-adapted,0.2,"{'qmsum': 0.62, 'hotpotqa': 19.28}",9.95
+AdaKV-adapted,0.2,"{'qmsum': 0.62, 'hotpotqa': 19.28}",9.95
+SalienceKV (w/o sink),0.2,"{'qmsum': 2.63, 'hotpotqa': 21.67}",12.15
+SalienceKV-Sink-4,0.2,"{'qmsum': 6.35, 'hotpotqa': 32.14}",19.25
+StreamingLLM,0.4,"{'qmsum': 8.43, 'hotpotqa': 34.78}",21.61
+H2O,0.4,"{'qmsum': 1.26, 'hotpotqa': 25.69}",13.48
+SnapKV,0.4,"{'qmsum': 2.39, 'hotpotqa': 16.66}",9.53
+PyramidKV-adapted,0.4,"{'qmsum': 0.97, 'hotpotqa': 15.08}",8.03
+AdaKV-adapted,0.4,"{'qmsum': 0.97, 'hotpotqa': 15.08}",8.03
+SalienceKV (w/o sink),0.4,"{'qmsum': 2.78, 'hotpotqa': 21.75}",12.27
+SalienceKV-Sink-4,0.4,"{'qmsum': 7.74, 'hotpotqa': 34.01}",20.88
+StreamingLLM,0.6,"{'qmsum': 8.36, 'hotpotqa': 34.06}",21.21
+H2O,0.6,"{'qmsum': 1.16, 'hotpotqa': 28.5}",14.83
+SnapKV,0.6,"{'qmsum': 3.27, 'hotpotqa': 27.76}",15.52
+PyramidKV-adapted,0.6,"{'qmsum': 2.28, 'hotpotqa': 21.95}",12.12
+AdaKV-adapted,0.6,"{'qmsum': 2.28, 'hotpotqa': 21.95}",12.12
+SalienceKV (w/o sink),0.6,"{'qmsum': 5.28, 'hotpotqa': 21.35}",13.32
+SalienceKV-Sink-4,0.6,"{'qmsum': 7.59, 'hotpotqa': 33.49}",20.54
+StreamingLLM,0.8,"{'qmsum': 7.91, 'hotpotqa': 33.75}",20.83
+H2O,0.8,"{'qmsum': 1.73, 'hotpotqa': 25.5}",13.62
+SnapKV,0.8,"{'qmsum': 2.65, 'hotpotqa': 33.33}",17.99
+PyramidKV-adapted,0.8,"{'qmsum': 1.53, 'hotpotqa': 16.55}",9.04
+AdaKV-adapted,0.8,"{'qmsum': 1.53, 'hotpotqa': 16.55}",9.04
+SalienceKV (w/o sink),0.8,"{'qmsum': 7.53, 'hotpotqa': 21.56}",14.54
+SalienceKV-Sink-4,0.8,"{'qmsum': 8.42, 'hotpotqa': 34.2}",21.31

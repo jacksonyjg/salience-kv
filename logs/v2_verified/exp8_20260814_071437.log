@@ -1,0 +1,300 @@
+2026-08-14 07:14:37,194 [INFO] __main__: Experiment 8: Budget Sensitivity (TABLE VIII)
+2026-08-14 07:14:37,195 [INFO] __main__:   Model: qwen3-4b | Budgets: ['10%', '20%', '40%', '60%', '80%'] | Tasks: ['qmsum', 'gov_report', 'hotpotqa'] | Samples: 30
+2026-08-14 07:14:37,195 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-14 07:14:37,366 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:14:37,374 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-14 07:14:37,494 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:14:37,499 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-14 07:14:37,598 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-14 07:14:37,698 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-14 07:14:38,894 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-14 07:14:38,896 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-14 07:14:38,961 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:14:38,969 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-14 07:15:05,303 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:15:05,337 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-14 07:15:05,406 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-14 07:15:05,452 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-14 07:15:05,467 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-14 07:15:05,470 [INFO] __main__: Method: StreamingLLM | Budget: 10% | kwargs={}
+2026-08-14 07:15:05,471 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-14 07:15:05,471 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-14 07:15:05,505 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:15:05,621 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 07:15:05,787 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:15:05,868 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 07:15:05,905 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:15:05,970 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-14 07:15:06,313 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-14 07:15:16,037 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting summary outlines a collaborative discussion among team members focused on the design and development of a ne'
+2026-08-14 07:15:23,451 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discussed the design and development of a new product, focusing on user experience, functionality, and aesth'
+2026-08-14 07:15:31,729 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discusses various academic and research topics, including the development of a structured proposal for the b'
+2026-08-14 07:15:37,394 [INFO] core.evaluator_v2: [streamingllm] pred="The meeting concluded with a discussion on the project's progress, including the development of a new product, challenge"
+2026-08-14 07:15:43,371 [INFO] core.evaluator_v2: [streamingllm] pred='The project team discussed the design and features of a new television remote control. Key decisions included using two '
+2026-08-14 07:15:43,868 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 07:15:54,139 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discusses the progress and challenges of a research project involving neural networks and audio processing. '
+2026-08-14 07:15:54,767 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 07:16:06,897 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discussed the development of a belief-based navigation system, with a focus on improving location-based task'
+2026-08-14 07:16:07,489 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 07:16:16,526 [INFO] core.evaluator_v2: [streamingllm] pred="The committee met to discuss the Welsh Government's childcare policy, which aims to provide 30 hours of free childcare p"
+2026-08-14 07:16:17,013 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-14 07:16:30,440 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discussed various aspects of speech processing and machine learning, including the progress on transcription'
+2026-08-14 07:16:37,190 [INFO] core.evaluator_v2: [streamingllm] pred='The summary of the provided text is a meeting log where a team discusses the next steps for a project. Key points includ'
+2026-08-14 07:16:37,201 [INFO] __main__:   [StreamingLLM@10%] qmsum [10/30] avg=6.59
+2026-08-14 07:16:37,557 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-14 07:16:48,180 [INFO] core.evaluator_v2: [streamingllm] pred='The text is a detailed transcript of a meeting or discussion involving multiple participants, likely in an academic or r'
+2026-08-14 07:16:48,713 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 07:16:57,605 [INFO] core.evaluator_v2: [streamingllm] pred="The committee met to discuss the Welsh Government's childcare policy, which aims to provide 30 hours of free childcare p"
+2026-08-14 07:17:04,431 [INFO] core.evaluator_v2: [streamingllm] pred='The committee met to discuss various issues affecting children and young people, including the impact of the pandemic on'
+2026-08-14 07:17:11,070 [INFO] core.evaluator_v2: [streamingllm] pred='The team successfully completed a project to design a "banana remote control" with unique features such as a banana-shap'
+2026-08-14 07:17:17,960 [INFO] core.evaluator_v2: [streamingllm] pred='The team discussed and finalized the design concept for a new product. Key elements include a simple battery power sourc'
+2026-08-14 07:17:26,961 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting summary outlines a collaborative discussion among team members (Project Manager, User Interface specialist, '
+2026-08-14 07:17:33,823 [INFO] core.evaluator_v2: [streamingllm] pred='The summary of the provided text is a meeting log where a team discusses the next steps for a project. Key points includ'
+2026-08-14 07:17:34,112 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-14 07:17:46,262 [INFO] core.evaluator_v2: [streamingllm] pred='The text is a detailed transcript of a meeting or discussion involving multiple participants, likely in an academic or r'
+2026-08-14 07:17:57,276 [INFO] core.evaluator_v2: [streamingllm] pred='The document is a detailed record of a project meeting involving team members discussing the development and challenges '
+2026-08-14 07:17:57,768 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 07:18:09,145 [INFO] core.evaluator_v2: [streamingllm] pred="The committee met to discuss the Welsh Government's childcare policy, which aims to provide 30 hours of free childcare p"
+2026-08-14 07:18:09,151 [INFO] __main__:   [StreamingLLM@10%] qmsum [20/30] avg=7.96
+2026-08-14 07:18:15,973 [INFO] core.evaluator_v2: [streamingllm] pred='The document describes a project meeting where the team discusses the progress, evaluation, and future plans of a new re'
+2026-08-14 07:18:16,452 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-14 07:18:33,234 [INFO] core.evaluator_v2: [streamingllm] pred='The House of Commons Committee on Health and Social Development held a meeting to discuss various health and social issu'
+2026-08-14 07:18:33,872 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 07:18:44,988 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discusses the progress and challenges of a research project involving neural networks and audio processing. '
+2026-08-14 07:18:50,648 [INFO] core.evaluator_v2: [streamingllm] pred="The meeting concluded with a discussion on the project's progress, including the development of a new product, challenge"
+2026-08-14 07:18:57,937 [INFO] core.evaluator_v2: [streamingllm] pred='The summary outlines a project review and evaluation process involving a team of professionals, including a project mana'
+2026-08-14 07:19:07,079 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discussed the design and development of a new remote control device. Key points included:\n\n- **Design Requir'
+2026-08-14 07:19:14,162 [INFO] core.evaluator_v2: [streamingllm] pred='The document describes a project meeting where the team discusses the progress, evaluation, and future plans of a new re'
+2026-08-14 07:19:14,724 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 07:19:30,034 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discussed the development of a belief-based navigation system, with a focus on improving location-based task'
+2026-08-14 07:19:41,053 [INFO] core.evaluator_v2: [streamingllm] pred="The meeting focused on discussing the project's functional requirements and planning for the next steps. Key points incl"
+2026-08-14 07:19:46,948 [INFO] core.evaluator_v2: [streamingllm] pred='The summary of the provided text is a meeting log where a team discusses the next steps for a project. Key points includ'
+2026-08-14 07:19:46,953 [INFO] __main__:   [StreamingLLM@10%] qmsum [30/30] avg=8.31
+2026-08-14 07:19:46,955 [INFO] __main__:   → qmsum: 8.31
+2026-08-14 07:19:46,956 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-14 07:19:47,035 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:19:47,065 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 07:19:47,642 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-14 07:19:55,265 [INFO] core.evaluator_v2: [streamingllm] pred="The report outlines the National Science Foundation's (NSF) use of two types of staff: Institutional Partners (IPA) and "
+2026-08-14 07:20:08,861 [INFO] core.evaluator_v2: [streamingllm] pred="The U.S. Government Accountability Office (GAO) provides an overview of the federal government's efforts to improve the "
+2026-08-14 07:20:09,460 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-14 07:20:29,663 [INFO] core.evaluator_v2: [streamingllm] pred="**Summary:**\n\nThe document provides a comprehensive overview of the U.S. response to China's growing influence in the So"
+2026-08-14 07:20:30,226 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-14 07:20:43,371 [INFO] core.evaluator_v2: [streamingllm] pred='The U.S. Environmental Protection Agency (EPA) has historically received federal funding through the Clean Water Act (CW'
+2026-08-14 07:20:54,939 [INFO] core.evaluator_v2: [streamingllm] pred="**Summary:**\n\nThe U.S. Department of Homeland Security's TRIO components—U.S. Coast Guard (Coast Guard), Transportation "
+2026-08-14 07:21:14,655 [INFO] core.evaluator_v2: [streamingllm] pred="**Summary:**\n\nThe report evaluates the effectiveness of the federal government's approach and strategy for securing info"
+2026-08-14 07:21:30,958 [INFO] core.evaluator_v2: [streamingllm] pred="The report discusses the U.S. federal government's efforts to promote small business contracting through various program"
+2026-08-14 07:21:31,448 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-14 07:21:52,456 [INFO] core.evaluator_v2: [streamingllm] pred='The provided text is a detailed legal document outlining the regulations and procedures for the procurement and use of e'
+2026-08-14 07:22:03,256 [INFO] core.evaluator_v2: [streamingllm] pred='The article discusses the declining role of cash in modern economies, highlighting the rise of electronic payment system'
+2026-08-14 07:22:04,075 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-14 07:22:16,208 [INFO] core.evaluator_v2: [streamingllm] pred='The Department of Homeland Security (DHS) has implemented policies and procedures to manage its major acquisitions, incl'
+2026-08-14 07:22:16,249 [INFO] __main__:   [StreamingLLM@10%] gov_report [10/30] avg=14.84
+2026-08-14 07:22:32,696 [INFO] core.evaluator_v2: [streamingllm] pred='This document provides a comprehensive overview of the U.S. federal budget process, focusing on the allocation and manag'
+2026-08-14 07:22:42,377 [INFO] core.evaluator_v2: [streamingllm] pred='The U.S. Bureau of Land Management (BLM) oversees a vast area of public land, managing it for various purposes including'
+2026-08-14 07:22:54,842 [INFO] core.evaluator_v2: [streamingllm] pred='The Black Lung Disability Trust Fund (BLDTF) faces significant financial challenges due to declining coal production and'
+2026-08-14 07:23:15,977 [INFO] core.evaluator_v2: [streamingllm] pred='The U.S. foreign assistance system is a complex framework encompassing a wide range of programs and policies aimed at pr'
+2026-08-14 07:23:38,890 [INFO] core.evaluator_v2: [streamingllm] pred='**Summary:**\n\nThe Office of Surface Mining Reclamation and Enforcement (OSMRE) oversees the enforcement of federal laws '
+2026-08-14 07:23:51,354 [INFO] core.evaluator_v2: [streamingllm] pred='The PSOB (Public Service Office of Benefits) program provides financial assistance to individuals who have been denied b'
+2026-08-14 07:23:55,740 [INFO] core.evaluator_v2: [streamingllm] pred='The summary outlines the U.S. Government Accountability Office (GAO) testimony on various fiscal and policy issues, incl'
+2026-08-14 07:24:02,080 [INFO] core.evaluator_v2: [streamingllm] pred="The summary discusses the U.S. Government Accountability Office's (GAO) analysis of the Department of Veterans Affairs' "
+2026-08-14 07:24:20,045 [INFO] core.evaluator_v2: [streamingllm] pred='The summary outlines the budget and funding allocations for the U.S. Trade Representative (USTR), the Department of Comm'
+2026-08-14 07:24:28,432 [INFO] core.evaluator_v2: [streamingllm] pred='The text discusses the financial challenges faced by the U.S. government in managing the benefits provided to coal miner'
+2026-08-14 07:24:28,443 [INFO] __main__:   [StreamingLLM@10%] gov_report [20/30] avg=14.46
+2026-08-14 07:24:44,771 [INFO] core.evaluator_v2: [streamingllm] pred='**Summary:**\n\nThis report examines the oversight of technology companies by the Equal Employment Opportunity Commission '
+2026-08-14 07:24:57,881 [INFO] core.evaluator_v2: [streamingllm] pred="**Summary:**\n\nThe report provides an overview of the Federal Trade Commission's (FTC) efforts to enforce internet privac"
+2026-08-14 07:25:12,990 [INFO] core.evaluator_v2: [streamingllm] pred='**Summary:**\n\nThe document provides an in-depth analysis of retirement savings systems in the United States, focusing on'
+2026-08-14 07:25:19,936 [INFO] core.evaluator_v2: [streamingllm] pred='The Government Accountability Office (GAO) evaluated the management of information technology (IT) at the Social Securit'
+2026-08-14 07:25:30,182 [INFO] core.evaluator_v2: [streamingllm] pred='The GAO report highlights the growing unfunded liability for postal retiree health benefits, with the net funded status '
+2026-08-14 07:25:47,321 [INFO] core.evaluator_v2: [streamingllm] pred='The document outlines key issues and considerations related to housing and tax policy in the context of the 116th Congre'
+2026-08-14 07:26:03,515 [INFO] core.evaluator_v2: [streamingllm] pred='The National Popular Vote (NPV) initiative aims to ensure that the presidential candidate who receives the most votes na'
+2026-08-14 07:26:19,315 [INFO] core.evaluator_v2: [streamingllm] pred='The Energy and Water Development Bill outlines the funding and operations of various federal agencies and programs respo'
+2026-08-14 07:26:36,523 [INFO] core.evaluator_v2: [streamingllm] pred='The report evaluates the implementation of the Real Time Feedback (RTF) policy by the 24 CFO Act agencies, focusing on h'
+2026-08-14 07:26:44,276 [INFO] core.evaluator_v2: [streamingllm] pred="The GAO report evaluates the Department of Veterans Affairs' (VA) cost-estimating guidance for cemetery construction pro"
+2026-08-14 07:26:44,289 [INFO] __main__:   [StreamingLLM@10%] gov_report [30/30] avg=14.38
+2026-08-14 07:26:44,289 [INFO] __main__:   → gov_report: 14.38
+2026-08-14 07:26:44,290 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-14 07:26:44,385 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:26:44,509 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 07:26:45,140 [INFO] core.dataset_loader: Loaded 30 samples from hotpotqa
+2026-08-14 07:26:45,452 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-14 07:26:48,153 [INFO] core.evaluator_v2: [streamingllm] pred='Brian Stokes Mitchell.'
+2026-08-14 07:26:48,641 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-14 07:26:51,948 [INFO] core.evaluator_v2: [streamingllm] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-14 07:26:54,699 [INFO] core.evaluator_v2: [streamingllm] pred='Sarah Price and Rob Schneider are both filmmakers.'
+2026-08-14 07:26:57,884 [INFO] core.evaluator_v2: [streamingllm] pred='Arnold Richards was the former chair of the American Psychoanalytic Association, which is a member of the Center for Jew'
+2026-08-14 07:26:58,281 [WARNING] core.model_loader: Input length 16934 > max 16000, truncating...
+2026-08-14 07:27:01,480 [INFO] core.evaluator_v2: [streamingllm] pred='Alfred A. Marcus worked as a consultant with Xcel Energy.'
+2026-08-14 07:27:02,936 [INFO] core.evaluator_v2: [streamingllm] pred='Pleiospilos is a flowering plant.'
+2026-08-14 07:27:06,474 [INFO] core.evaluator_v2: [streamingllm] pred='Steel Venom is farther north than Wicked Twister. Steel Venom is located at Valleyfair, which is in Minnesota, while Wic'
+2026-08-14 07:27:07,115 [WARNING] core.model_loader: Input length 16637 > max 16000, truncating...
+2026-08-14 07:27:10,639 [INFO] core.evaluator_v2: [streamingllm] pred='Baghdad was known as the "City of Peace" during the Abbasid Caliphate.'
+2026-08-14 07:27:14,842 [INFO] core.evaluator_v2: [streamingllm] pred="The FIBT World Championships 1960 took place in Cortina d'Ampezzo, which is located in the Veneto region of northern Ita"
+2026-08-14 07:27:18,315 [INFO] core.evaluator_v2: [streamingllm] pred='Mike Leach currently coaches at Mississippi State.'
+2026-08-14 07:27:18,321 [INFO] __main__:   [StreamingLLM@10%] hotpotqa [10/30] avg=30.16
+2026-08-14 07:27:21,895 [INFO] core.evaluator_v2: [streamingllm] pred='The Friday night programming block that included the collective series "Whatever Happened to... Robot Jones?" is Cartoon'
+2026-08-14 07:27:24,371 [INFO] core.evaluator_v2: [streamingllm] pred='The text does not provide information about the lowest vocal range of anyone in Cosmos.'
+2026-08-14 07:27:24,902 [WARNING] core.model_loader: Input length 16792 > max 16000, truncating...
+2026-08-14 07:27:29,251 [INFO] core.evaluator_v2: [streamingllm] pred='Fredric Rieders testified against John Bodkin Adams, who killed as many as 60 patients and received three consecutive li'
+2026-08-14 07:27:33,678 [INFO] core.evaluator_v2: [streamingllm] pred='Robbie Tucker plays in the series "It\'s Always Sunny in Philadelphia," which follows a group of friends who run an Irish'
+2026-08-14 07:27:34,389 [WARNING] core.model_loader: Input length 16875 > max 16000, truncating...
+2026-08-14 07:27:37,877 [INFO] core.evaluator_v2: [streamingllm] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 35 people.'
+2026-08-14 07:27:41,246 [INFO] core.evaluator_v2: [streamingllm] pred='The first name of the author who wrote the play in which Rønnaug Alten made her stage debut at Den Nationale Scene in 19'
+2026-08-14 07:27:44,204 [INFO] core.evaluator_v2: [streamingllm] pred='The Thames.'
+2026-08-14 07:27:48,251 [INFO] core.evaluator_v2: [streamingllm] pred='Darren Day choreographed one who is said to be the last muse for the choreographer and starred in the Nutcracker.'
+2026-08-14 07:27:48,779 [WARNING] core.model_loader: Input length 16802 > max 16000, truncating...
+2026-08-14 07:27:52,257 [INFO] core.evaluator_v2: [streamingllm] pred='The host of the American survival skills reality show, The Island, is originally from the United Kingdom.'
+2026-08-14 07:27:54,012 [INFO] core.evaluator_v2: [streamingllm] pred='Patricia of Rome was given the title by the Roman Emperor.'
+2026-08-14 07:27:54,024 [INFO] __main__:   [StreamingLLM@10%] hotpotqa [20/30] avg=24.32
+2026-08-14 07:27:56,033 [INFO] core.evaluator_v2: [streamingllm] pred='Mimosa is a shrub. Cryptocoryne is an aquatic plant, not a shrub.'
+2026-08-14 07:28:00,071 [INFO] core.evaluator_v2: [streamingllm] pred='The actor who plays Sean Tully is John Barrowman. In the text, it is mentioned that John Barrowman defeated David Bamber'
+2026-08-14 07:28:00,619 [WARNING] core.model_loader: Input length 17206 > max 16000, truncating...
+2026-08-14 07:28:03,959 [INFO] core.evaluator_v2: [streamingllm] pred='Mark Donohue was born in 1937 and performed in the 1971 Canadian Grand Prix.'
+2026-08-14 07:28:08,222 [INFO] core.evaluator_v2: [streamingllm] pred='Yameen and Activision have in common the form of play known as video game development. Yameen is associated with the dev'
+2026-08-14 07:28:12,587 [INFO] core.evaluator_v2: [streamingllm] pred='The Atherton Bridge spans the Concord River. According to the text, the bridge is located in Massachusetts and spans the'
+2026-08-14 07:28:16,107 [INFO] core.evaluator_v2: [streamingllm] pred='3 Arts Entertainment had a coalition with Hulu, with its 13-episode, 2015 season of the sitcom "The Mindy Project," whic'
+2026-08-14 07:28:19,765 [INFO] core.evaluator_v2: [streamingllm] pred='High School Confidential followed twelve high school teenagers from Blue Valley Northwest High School in Overland Park, '
+2026-08-14 07:28:23,251 [INFO] core.evaluator_v2: [streamingllm] pred='The 53rd National Hockey League All-Star Game took place at the indoor arena that was completed in 1970.'
+2026-08-14 07:28:26,375 [INFO] core.evaluator_v2: [streamingllm] pred='The Toronto International Film Festival premiered a movie produced by BBC Films in 2012.'
+2026-08-14 07:28:26,784 [WARNING] core.model_loader: Input length 16382 > max 16000, truncating...
+2026-08-14 07:28:30,198 [INFO] core.evaluator_v2: [streamingllm] pred='The arena where the Lewiston Maineiacs played their home games can seat 13,663 people.'
+2026-08-14 07:28:30,199 [INFO] __main__:   [StreamingLLM@10%] hotpotqa [30/30] avg=18.01
+2026-08-14 07:28:30,200 [INFO] __main__:   → hotpotqa: 18.01
+2026-08-14 07:28:30,231 [INFO] core.results_manager: JSON saved to results/v2_verified/exp8_budget_sensitivity_qwen3-4b_20260814_071437.json
+2026-08-14 07:28:30,232 [INFO] __main__:   [중간 저장 완료] 1/35 설정
+2026-08-14 07:28:30,232 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-14 07:28:30,234 [INFO] __main__: Method: H2O | Budget: 10% | kwargs={}
+2026-08-14 07:28:30,235 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-14 07:28:30,235 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-14 07:28:30,297 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:28:30,326 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 07:28:30,799 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-14 07:28:51,870 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nA team has been assigned to a task. The task is to find and and and and and and and and and and and a'
+2026-08-14 07:29:12,374 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe story is about the team, the process, and the end.  The end is the end, and the end is the end.  '
+2026-08-14 07:29:34,716 [INFO] core.evaluator_v2: [h2o] pred='The summary is as follows:\n\nThe project is being analyzed. The team is being tracked. The team is being tracked. The tea'
+2026-08-14 07:29:37,914 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is working to get the feedback.'
+2026-08-14 07:30:04,204 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is focused on the task.  The task is being addressed.  The task is being addressed.  The tas'
+2026-08-14 07:30:05,249 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 07:30:30,388 [INFO] core.evaluator_v2: [h2o] pred='The summary provides a detailed summary of the key points. The summary highlights the key points and provides a detailed'
+2026-08-14 07:30:30,942 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 07:30:56,453 [INFO] core.evaluator_v2: [h2o] pred='The summary is as follows: \n\nThis is a summary of the following content: \n\nThis is a summary of the following content: \n'
+2026-08-14 07:30:57,051 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 07:31:17,638 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided information is as follows:\n\nThe policy and the offer are being considered. The income and th'
+2026-08-14 07:31:18,488 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-14 07:31:38,623 [INFO] core.evaluator_v2: [h2o] pred='The summary provides a detailed summary of the following content. The summary is a detailed summary of the following con'
+2026-08-14 07:31:57,349 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is working to get the feedback.  The feedback is being received.  The feedback is being rece'
+2026-08-14 07:31:57,356 [INFO] __main__:   [H2O@10%] qmsum [10/30] avg=1.48
+2026-08-14 07:31:57,615 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-14 07:32:17,290 [INFO] core.evaluator_v2: [h2o] pred='The provided text is a detailed summary of a conversation between participants. The summary highlights key points and in'
+2026-08-14 07:32:18,129 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 07:32:39,384 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided information is as follows:\n\nThe policy and the offer are being considered. The income and th'
+2026-08-14 07:33:00,827 [INFO] core.evaluator_v2: [h2o] pred='The summary highlights the key aspects of the emergency, including the impact and the response. The emergency was addres'
+2026-08-14 07:33:22,855 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team was working to make the decisions.  The process was being tracked.  The decisions were being'
+2026-08-14 07:33:47,430 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nA team is working to find and and and and and and and and and and and and and and and and and and and'
+2026-08-14 07:33:49,741 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \nA team is working to design a remote control.'
+2026-08-14 07:34:09,040 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is working to get the feedback.  The feedback is being received.  The feedback is being rece'
+2026-08-14 07:34:09,329 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-14 07:34:32,858 [INFO] core.evaluator_v2: [h2o] pred='The provided text is a detailed summary of a conversation between participants. The summary highlights key points and in'
+2026-08-14 07:34:54,973 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is working to find and and and and and and and and and and and and and and and and and and a'
+2026-08-14 07:34:55,447 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-14 07:35:15,260 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided information is as follows:\n\nThe policy and the offer are being considered. The income and th'
+2026-08-14 07:35:15,265 [INFO] __main__:   [H2O@10%] qmsum [20/30] avg=1.83
+2026-08-14 07:35:18,369 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nA team is working to support the goal.'
+2026-08-14 07:35:18,891 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-14 07:35:39,371 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nA group of individuals, who are, are, are, are, are, are, are, are, are'
+2026-08-14 07:35:39,911 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-14 07:35:59,933 [INFO] core.evaluator_v2: [h2o] pred='The summary provides a detailed summary of the key points. The summary highlights the key points and provides a detailed'
+2026-08-14 07:36:03,000 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is working to get the feedback.'
+2026-08-14 07:36:26,064 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is working to get the right right right right right right right right right right right righ'
+2026-08-14 07:36:49,468 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nThe text discusses a project that involves a decision to take a action.'
+2026-08-14 07:36:52,300 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nA team is working to support the goal.'
+2026-08-14 07:36:52,761 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-14 07:37:14,088 [INFO] core.evaluator_v2: [h2o] pred='The summary is as follows: \n\nThis is a summary of the following content: \n\nThis is a summary of the following content: \n'
+2026-08-14 07:37:35,453 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is working to find and and and and and and and and and and and and and and and and and and a'
+2026-08-14 07:37:56,896 [INFO] core.evaluator_v2: [h2o] pred='The summary is:  \n\nThe team is working to get the feedback.  The feedback is being received.  The feedback is being rece'
+2026-08-14 07:37:56,911 [INFO] __main__:   [H2O@10%] qmsum [30/30] avg=1.75
+2026-08-14 07:37:56,936 [INFO] __main__:   → qmsum: 1.75
+2026-08-14 07:37:56,940 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-14 07:37:57,040 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:37:57,073 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 07:37:57,680 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-14 07:38:21,326 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided content is as follows:\n\nThe document provides a detailed summary of the contents of the orig'
+2026-08-14 07:38:42,300 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nThe text discusses the following topics:\n\n1. The following topics are d'
+2026-08-14 07:38:42,796 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-14 07:39:03,031 [INFO] core.evaluator_v2: [h2o] pred='**Summary:**\n\nThe **South** has been **w**. The **w** is **w**. The **w** is **w**. The **w** is **w**. The **w** is **w'
+2026-08-14 07:39:03,639 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-14 07:39:23,307 [INFO] core.evaluator_v2: [h2o] pred='The summary of the key information and the final summary of the content and the final summary of the content and the fin'
+2026-08-14 07:39:46,532 [INFO] core.evaluator_v2: [h2o] pred='**Summary:**  \n\n**Key Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Risk Ris'
+2026-08-14 07:40:10,019 [INFO] core.evaluator_v2: [h2o] pred='**Summary:**  \n\n**Key Insights:**  \n\n**1.** **Cy** *********************************************************************'
+2026-08-14 07:40:30,869 [INFO] core.evaluator_v2: [h2o] pred='The **** is a ****. The **** is a ****. The **** is a ****. The **** is a ****. The **** is a ****. The **** is a ****. '
+2026-08-14 07:40:31,369 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-14 07:40:53,208 [INFO] core.evaluator_v2: [h2o] pred='The National National National National National National National National National National National National National'
+2026-08-14 07:41:15,503 [INFO] core.evaluator_v2: [h2o] pred='The summary of the article is as follows:\n\nThe article discusses the role of cash in the economy and the impact of elect'
+2026-08-14 07:41:16,136 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-14 07:41:36,197 [INFO] core.evaluator_v2: [h2o] pred='The United States Department of Homeland, which is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, is, '
+2026-08-14 07:41:36,222 [INFO] __main__:   [H2O@10%] gov_report [10/30] avg=4.66
+2026-08-14 07:41:56,590 [INFO] core.evaluator_v2: [h2o] pred='This summary provides a concise overview of the key points and information in the original text. The summary is a concis'
+2026-08-14 07:42:14,091 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nThe text discusses the federal system, the federal federal, and the fed'
+2026-08-14 07:42:33,735 [INFO] core.evaluator_v2: [h2o] pred='The **Black** **Black** **Black** **Black** **Black** **Black** **Black** **Black** **Black** **Black** **Black** **Blac'
+2026-08-14 07:42:56,830 [INFO] core.evaluator_v2: [h2o] pred='The summary of the foreign aid and foreign aid and foreign aid and foreign aid and foreign aid and foreign aid and forei'
+2026-08-14 07:43:16,968 [INFO] core.evaluator_v2: [h2o] pred='**Summary:**  \n\n**Key Takeaways:**  \n\n**1. Self-Bord** **2. Self-Bord** **3. Self-Bord** **4. Self-Bord** **5. Self-Bord'
+2026-08-14 07:43:34,596 [INFO] core.evaluator_v2: [h2o] pred='The **Public Safety** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** **** ***'
+2026-08-14 07:43:53,932 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nIn 2014, the federal government and the federal government and the fede'
+2026-08-14 07:44:14,370 [INFO] core.evaluator_v2: [h2o] pred='The summary of the text is as follows:\n\nThe text is a summary of a text, which is a summary of a text, which is a summar'
+2026-08-14 07:44:35,034 [INFO] core.evaluator_v2: [h2o] pred='The summary of the key points of the text is as follows:\n\nThe text provides a summary of the key points of the following'
+2026-08-14 07:44:54,416 [INFO] core.evaluator_v2: [h2o] pred='The **Black Lung** (also known as **Black Lung**) is a **Black Lung** (also known as **Black Lung**) that is a **Black L'
+2026-08-14 07:44:54,452 [INFO] __main__:   [H2O@10%] gov_report [20/30] avg=5.19
+2026-08-14 07:45:14,358 [INFO] core.evaluator_v2: [h2o] pred='**Summary:**  \n\n**Key Highlights:**  \n\n**1. Technology Sector Overview:**  \n- **Technology Sector:**  \n  - **Definition:'
+2026-08-14 07:45:35,723 [INFO] core.evaluator_v2: [h2o] pred='**Summary:**  \n\n**Key Insights:**  \n\n**1. Civil Civil Civil Civil Civil Civil Civil Civil Civil Civil Civil Civil Civil '
+2026-08-14 07:45:56,175 [INFO] core.evaluator_v2: [h2o] pred='**Summary:**\n\nThe ******************************************************************************************************'
+2026-08-14 07:46:14,285 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nThe text discusses the role of the CIO in the context of IT. It outline'
+2026-08-14 07:46:37,418 [INFO] core.evaluator_v2: [h2o] pred='The **** is ****. \n\nSummary:  \nThe **** is ****.  \n\nSummary:  \nThe **** is ****.  \n\nSummary:  \nThe **** is ****.  \n\nSumm'
+2026-08-14 07:47:03,673 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nThe text discusses the housing and mortgage industries, particularly th'
+2026-08-14 07:47:27,486 [INFO] core.evaluator_v2: [h2o] pred='The **Elect** **Elect** **Elect** **Elect** **Elect** **Elect** **Elect** **Elect** **Elect** **Elect** **Elect** **Elec'
+2026-08-14 07:47:48,145 [INFO] core.evaluator_v2: [h2o] pred='The Energy and Environmental, and the, and the, and the, and the, and the, and the, and the, and the, and the, and the, '
+2026-08-14 07:48:10,867 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided content is as follows:\n\nTo achieve the goals, it is necessary to consider the approaches and'
+2026-08-14 07:48:29,413 [INFO] core.evaluator_v2: [h2o] pred='The **** is a ****. \n\nThe **** is a ****. \n\nThe **** is a ****. \n\nThe **** is a ****. \n\nThe **** is a ****. \n\nThe **** i'
+2026-08-14 07:48:29,430 [INFO] __main__:   [H2O@10%] gov_report [30/30] avg=5.48
+2026-08-14 07:48:29,431 [INFO] __main__:   → gov_report: 5.48
+2026-08-14 07:48:29,432 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-14 07:48:29,553 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-14 07:48:29,589 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-14 07:48:30,166 [INFO] core.dataset_loader: Loaded 30 samples from hotpotqa
+2026-08-14 07:48:30,517 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-14 07:48:33,274 [INFO] core.evaluator_v2: [h2o] pred='Brian Taylor.'
+2026-08-14 07:48:33,890 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-14 07:48:58,566 [INFO] core.evaluator_v2: [h2o] pred='The ribosomes are composed of the 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 '
+2026-08-14 07:49:01,354 [INFO] core.evaluator_v2: [h2o] pred='Sarah Price and Schneider are filmmakers.'
+2026-08-14 07:49:21,035 [INFO] core.evaluator_v2: [h2o] pred='Arn Richards was a editor for The American Psychoanalytic. Richards was an editor for The American Psychoanalytic. Richa'
+2026-08-14 07:49:21,409 [WARNING] core.model_loader: Input length 16934 > max 16000, truncating...
+2026-08-14 07:49:24,284 [INFO] core.evaluator_v2: [h2o] pred='Alfred Marcus participated in the electricity.'
+2026-08-14 07:49:46,430 [INFO] core.evaluator_v2: [h2o] pred='Pleiosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplosplospl'
+2026-08-14 07:50:08,471 [INFO] core.evaluator_v2: [h2o] pred='Steel Venom is located in Valley. Steel Venom is located in Valley. Steel Venom is located in Valley. Steel Venom is loc'
+2026-08-14 07:50:08,927 [WARNING] core.model_loader: Input length 16637 > max 16000, truncating...
+2026-08-14 07:50:11,624 [INFO] core.evaluator_v2: [h2o] pred='Bagaleza.'
+2026-08-14 07:50:14,639 [INFO] core.evaluator_v2: [h2o] pred='The town where the 1963 World Championships were held is Cortina.'
+2026-08-14 07:50:17,671 [INFO] core.evaluator_v2: [h2o] pred='Mike Tech (Washington State)'
+2026-08-14 07:50:17,698 [INFO] __main__:   [H2O@10%] hotpotqa [10/30] avg=10.74
+2026-08-14 07:50:37,799 [INFO] core.evaluator_v2: [h2o] pred='The programming block that included the collective series "Robot Jones" is the television network. The block "Robot Jone'
+2026-08-14 07:50:40,774 [INFO] core.evaluator_v2: [h2o] pred='The text does not provide information about the band or the singer. Based on the text, the answer is: The text does not '
+2026-08-14 07:50:41,124 [WARNING] core.model_loader: Input length 16792 > max 16000, truncating...
+2026-08-14 07:50:43,880 [INFO] core.evaluator_v2: [h2o] pred='Fred Harris.'
+2026-08-14 07:51:05,115 [INFO] core.evaluator_v2: [h2o] pred='Rob Tucker joined the cast for the following following following following following following following following follo'
+2026-08-14 07:51:05,607 [WARNING] core.model_loader: Input length 16875 > max 16000, truncating...
+2026-08-14 07:51:25,940 [INFO] core.evaluator_v2: [h2o] pred='The National Firearms Agreement was established. The National Firearms Agreement was established. The National Firearms '
+2026-08-14 07:51:27,745 [INFO] core.evaluator_v2: [h2o] pred='The play in which Romain was born is "Hamlette" (based on the text).'
+2026-08-14 07:51:53,594 [INFO] core.evaluator_v2: [h2o] pred='The River Thames, which flows through the city, is where the Waterloo Bridge is located. The Waterloo Bridge is located '
+2026-08-14 07:51:56,690 [INFO] core.evaluator_v2: [h2o] pred='Darinee.'
+2026-08-14 07:51:57,409 [WARNING] core.model_loader: Input length 16802 > max 16000, truncating...
+2026-08-14 07:52:00,561 [INFO] core.evaluator_v2: [h2o] pred='The host of the American reality television series "Is" is Bear.'
+2026-08-14 07:52:21,530 [INFO] core.evaluator_v2: [h2o] pred='Pope Sergius was the father of Pope Gregory. The text states that Pope Gregory was the father of Pope Gregory. The text '
+2026-08-14 07:52:21,538 [INFO] __main__:   [H2O@10%] hotpotqa [20/30] avg=5.43
+2026-08-14 07:52:24,194 [INFO] core.evaluator_v2: [h2o] pred='Mimosa (species in the family) is a shrub in the family. Cryptococcus (species in the family) is a yeast in the family.'
+2026-08-14 07:52:44,350 [INFO] core.evaluator_v2: [h2o] pred='The actor Sean was introduced to the show. The actor Sean was introduced to the show. The actor Sean was introduced to t'
+2026-08-14 07:52:44,939 [WARNING] core.model_loader: Input length 17206 > max 16000, truncating...
+2026-08-14 07:52:47,655 [INFO] core.evaluator_v2: [h2o] pred='Mark Donight.'
+2026-08-14 07:52:50,454 [INFO] core.evaluator_v2: [h2o] pred='Yawn.'
+2026-08-14 07:53:11,099 [INFO] core.evaluator_v2: [h2o] pred='The Maiden Bridge is 110 feet long. The bridge is 110 feet long. The bridge is 110 feet long. The bridge is 110 feet lon'
+2026-08-14 07:53:35,458 [INFO] core.evaluator_v2: [h2o] pred='30 TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV TV '
