@@ -1,0 +1,66 @@
+{
+  "experiment": "exp12_weight_sensitivity",
+  "model": "qwen3-4b",
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "num_samples": 50,
+  "budget_ratio": 0.2,
+  "sink_size": 4,
+  "results": [
+    {
+      "setting": "Default",
+      "alpha": 0.4,
+      "beta": 0.2,
+      "delta": 0.2,
+      "task_scores": {
+        "narrativeqa": 15.3,
+        "qasper": 17.65,
+        "multifieldqa_en": 35.46,
+        "hotpotqa": 18.08,
+        "2wikimqa": 13.81,
+        "gov_report": 16.16,
+        "qmsum": 8.5
+      },
+      "avg_score": 17.85
+    },
+    {
+      "setting": "Uniform",
+      "alpha": 0.25,
+      "beta": 0.25,
+      "delta": 0.25,
+      "task_scores": {
+        "narrativeqa": 16.16,
+        "qasper": 17.16,
+        "multifieldqa_en": 36.77,
+        "hotpotqa": 18.12,
+        "2wikimqa": 13.95,
+        "gov_report": 16.18,
+        "qmsum": 8.67
+      },
+      "avg_score": 18.14
+    },
+    {
+      "setting": "N-centric",
+      "alpha": 0.55,
+      "beta": 0.15,
+      "delta": 0.15,
+      "task_scores": {
+        "narrativeqa": 15.54,
+        "qasper": 20.36,
+        "multifieldqa_en": 33.89,
+        "hotpotqa": 15.99,
+        "2wikimqa": 13.8,
+        "gov_report": 16.26,
+        "qmsum": 8.19
+      },
+      "avg_score": 17.72
+    }
+  ]
+}
