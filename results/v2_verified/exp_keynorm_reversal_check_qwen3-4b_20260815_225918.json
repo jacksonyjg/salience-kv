@@ -1,0 +1,81 @@
+{
+  "rows": [
+    {
+      "evaluator": "FIXED(현재,수정후)",
+      "variant": "3signal_NVP",
+      "avg_score": 9.73,
+      "band_this_pass": 6.96
+    },
+    {
+      "evaluator": "FIXED(현재,수정후)",
+      "variant": "4signal_NVPS",
+      "avg_score": 9.47,
+      "band_this_pass": 6.96
+    },
+    {
+      "evaluator": "FIXED(현재,수정후)",
+      "variant": "wo_N",
+      "avg_score": 14.1,
+      "band_this_pass": 6.96
+    },
+    {
+      "evaluator": "FIXED(현재,수정후)",
+      "variant": "wo_V",
+      "avg_score": 10.5,
+      "band_this_pass": 6.96
+    },
+    {
+      "evaluator": "FIXED(현재,수정후)",
+      "variant": "wo_P",
+      "avg_score": 12.26,
+      "band_this_pass": 6.96
+    },
+    {
+      "evaluator": "FIXED(현재,수정후)",
+      "variant": "N_only",
+      "avg_score": 7.14,
+      "band_this_pass": 6.96
+    },
+    {
+      "evaluator": "BUGGY(구버전재현)",
+      "variant": "3signal_NVP",
+      "avg_score": 11.81,
+      "band_this_pass": 3.49
+    },
+    {
+      "evaluator": "BUGGY(구버전재현)",
+      "variant": "4signal_NVPS",
+      "avg_score": 12.92,
+      "band_this_pass": 3.49
+    },
+    {
+      "evaluator": "BUGGY(구버전재현)",
+      "variant": "wo_N",
+      "avg_score": 15.3,
+      "band_this_pass": 3.49
+    },
+    {
+      "evaluator": "BUGGY(구버전재현)",
+      "variant": "wo_V",
+      "avg_score": 13.01,
+      "band_this_pass": 3.49
+    },
+    {
+      "evaluator": "BUGGY(구버전재현)",
+      "variant": "wo_P",
+      "avg_score": 14.04,
+      "band_this_pass": 3.49
+    },
+    {
+      "evaluator": "BUGGY(구버전재현)",
+      "variant": "N_only",
+      "avg_score": 12.82,
+      "band_this_pass": 3.49
+    }
+  ],
+  "tasks": [
+    "qmsum",
+    "gov_report"
+  ],
+  "num_samples": 2
+}

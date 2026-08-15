@@ -1,0 +1,13 @@
+evaluator,variant,avg_score,band_this_pass
+"FIXED(현재,수정후)",3signal_NVP,9.73,6.96
+"FIXED(현재,수정후)",4signal_NVPS,9.47,6.96
+"FIXED(현재,수정후)",wo_N,14.1,6.96
+"FIXED(현재,수정후)",wo_V,10.5,6.96
+"FIXED(현재,수정후)",wo_P,12.26,6.96
+"FIXED(현재,수정후)",N_only,7.14,6.96
+BUGGY(구버전재현),3signal_NVP,11.81,3.49
+BUGGY(구버전재현),4signal_NVPS,12.92,3.49
+BUGGY(구버전재현),wo_N,15.3,3.49
+BUGGY(구버전재현),wo_V,13.01,3.49
+BUGGY(구버전재현),wo_P,14.04,3.49
+BUGGY(구버전재현),N_only,12.82,3.49
