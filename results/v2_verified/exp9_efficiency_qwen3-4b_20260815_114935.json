@@ -1,0 +1,211 @@
+{
+  "experiment": "exp9_efficiency",
+  "model": "qwen3-4b",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qmsum",
+    "gov_report"
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "cap_conditions": [
+    "default",
+    "uncapped"
+  ],
+  "results": [
+    {
+      "method": "FullKV",
+      "method_name": "fullkv",
+      "cap": "default",
+      "avg_prefill_ms": 587.3007889604196,
+      "avg_compress_ms": 0.001719803549349308,
+      "avg_first_decode_step_ms": 54.87196089234203,
+      "avg_decode_throughput": 32.98042668485547,
+      "avg_ttft_ms": 620.2490811685669,
+      "avg_throughput": 30.40619878799597,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "StreamingLLM",
+      "method_name": "streamingllm",
+      "cap": "default",
+      "avg_prefill_ms": 496.8921836698428,
+      "avg_compress_ms": 406.15712862927467,
+      "avg_first_decode_step_ms": 33.98998163174838,
+      "avg_decode_throughput": 32.822686264172034,
+      "avg_ttft_ms": 933.9067106407315,
+      "avg_throughput": 32.432224988268835,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "H2O",
+      "method_name": "h2o",
+      "cap": "default",
+      "avg_prefill_ms": 535.191198461689,
+      "avg_compress_ms": 521.8062672065571,
+      "avg_first_decode_step_ms": 32.89354918524623,
+      "avg_decode_throughput": 32.884352942044806,
+      "avg_ttft_ms": 1087.3592362761428,
+      "avg_throughput": 32.941223144119306,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "SnapKV",
+      "method_name": "snapkv",
+      "cap": "default",
+      "avg_prefill_ms": 516.8145613279194,
+      "avg_compress_ms": 523.6845813924447,
+      "avg_first_decode_step_ms": 37.35951904673129,
+      "avg_decode_throughput": 28.30357913930832,
+      "avg_ttft_ms": 1071.4545705006458,
+      "avg_throughput": 32.53837370840761,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "method_name": "pyramidkv",
+      "cap": "default",
+      "avg_prefill_ms": 500.71621080860496,
+      "avg_compress_ms": 539.022518787533,
+      "avg_first_decode_step_ms": 32.0877842605114,
+      "avg_decode_throughput": 33.45826336593623,
+      "avg_ttft_ms": 1069.5766313608601,
+      "avg_throughput": 33.51687588704006,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "AdaKV-adapted",
+      "method_name": "adakv",
+      "cap": "default",
+      "avg_prefill_ms": 500.3414108650759,
+      "avg_compress_ms": 551.9598491955549,
+      "avg_first_decode_step_ms": 32.2202208917588,
+      "avg_decode_throughput": 33.19321250130008,
+      "avg_ttft_ms": 1082.388583975444,
+      "avg_throughput": 33.25153122978493,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "SalienceKV (w/o sink)",
+      "method_name": "ours",
+      "cap": "default",
+      "avg_prefill_ms": 510.65048563759774,
+      "avg_compress_ms": 587.4311977531761,
+      "avg_first_decode_step_ms": 30.971843167208135,
+      "avg_decode_throughput": 33.28738757847331,
+      "avg_ttft_ms": 1128.041546578103,
+      "avg_throughput": 33.3789118451119,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "SalienceKV-Sink-4",
+      "method_name": "ours",
+      "cap": "default",
+      "avg_prefill_ms": 509.1894456418231,
+      "avg_compress_ms": 585.8402134617791,
+      "avg_first_decode_step_ms": 30.52362147718668,
+      "avg_decode_throughput": 33.091560557078935,
+      "avg_ttft_ms": 1125.08671006302,
+      "avg_throughput": 33.31761303877737,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "FullKV",
+      "method_name": "fullkv",
+      "cap": "uncapped",
+      "avg_prefill_ms": 501.5231042634696,
+      "avg_compress_ms": 0.0012672971934080124,
+      "avg_first_decode_step_ms": 33.67465757764876,
+      "avg_decode_throughput": 31.614098383273426,
+      "avg_ttft_ms": 535.7160866571493,
+      "avg_throughput": 29.294881212615525,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "StreamingLLM",
+      "method_name": "streamingllm",
+      "cap": "uncapped",
+      "avg_prefill_ms": 520.2427381882444,
+      "avg_compress_ms": 399.2952996632084,
+      "avg_first_decode_step_ms": 33.697713050059974,
+      "avg_decode_throughput": 32.5638166439904,
+      "avg_ttft_ms": 950.690900020073,
+      "avg_throughput": 32.188800148706335,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "H2O",
+      "method_name": "h2o",
+      "cap": "uncapped",
+      "avg_prefill_ms": 507.551588001661,
+      "avg_compress_ms": 532.4478490510955,
+      "avg_first_decode_step_ms": 31.79246245417744,
+      "avg_decode_throughput": 33.840516560454006,
+      "avg_ttft_ms": 1069.5091845216211,
+      "avg_throughput": 33.8998515401701,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "SnapKV",
+      "method_name": "snapkv",
+      "cap": "uncapped",
+      "avg_prefill_ms": 501.8383538117632,
+      "avg_compress_ms": 540.3348788386211,
+      "avg_first_decode_step_ms": 36.43119311891496,
+      "avg_decode_throughput": 28.505190214480916,
+      "avg_ttft_ms": 1072.7581714600092,
+      "avg_throughput": 32.802157173105826,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "method_name": "pyramidkv",
+      "cap": "uncapped",
+      "avg_prefill_ms": 502.24501837510616,
+      "avg_compress_ms": 538.7978779617697,
+      "avg_first_decode_step_ms": 32.06770040560514,
+      "avg_decode_throughput": 33.29525683666842,
+      "avg_ttft_ms": 1071.0298261874414,
+      "avg_throughput": 33.353910010121034,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "AdaKV-adapted",
+      "method_name": "adakv",
+      "cap": "uncapped",
+      "avg_prefill_ms": 507.0367818698287,
+      "avg_compress_ms": 541.4359853602946,
+      "avg_first_decode_step_ms": 30.544466571882367,
+      "avg_decode_throughput": 33.01665513599632,
+      "avg_ttft_ms": 1078.710210536883,
+      "avg_throughput": 33.07851568948036,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "SalienceKV (w/o sink)",
+      "method_name": "ours",
+      "cap": "uncapped",
+      "avg_prefill_ms": 524.0492564626038,
+      "avg_compress_ms": 589.1643455252051,
+      "avg_first_decode_step_ms": 33.79041876178235,
+      "avg_decode_throughput": 32.067520664644434,
+      "avg_ttft_ms": 1144.3626221025042,
+      "avg_throughput": 32.1485236369204,
+      "avg_memory_reduction_pct": 80.00318804110623
+    },
+    {
+      "method": "SalienceKV-Sink-4",
+      "method_name": "ours",
+      "cap": "uncapped",
+      "avg_prefill_ms": 514.9050718173385,
+      "avg_compress_ms": 583.6846405873075,
+      "avg_first_decode_step_ms": 33.76718075014651,
+      "avg_decode_throughput": 31.58595760109741,
+      "avg_ttft_ms": 1130.045732565346,
+      "avg_throughput": 31.794565634568954,
+      "avg_memory_reduction_pct": 80.00318804110623
+    }
+  ],
+  "completed": 16,
+  "total": 16
+}

@@ -1,0 +1,119 @@
+{
+  "experiment": "exp9_efficiency",
+  "model": "qwen3-4b",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "num_samples": 10,
+  "seed": 42,
+  "cap_conditions": [
+    "default"
+  ],
+  "results": [
+    {
+      "method": "FullKV",
+      "method_name": "fullkv",
+      "cap": "default",
+      "avg_prefill_ms": 792.5296193520937,
+      "avg_compress_ms": 0.001520337536931038,
+      "avg_first_decode_step_ms": 35.567031760833096,
+      "avg_decode_throughput": 31.079476636246017,
+      "avg_ttft_ms": 847.6968243129412,
+      "avg_throughput": 22.249752323278788,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "StreamingLLM",
+      "method_name": "streamingllm",
+      "cap": "default",
+      "avg_prefill_ms": 784.1305078605989,
+      "avg_compress_ms": 610.9984430284904,
+      "avg_first_decode_step_ms": 31.9459933321923,
+      "avg_decode_throughput": 32.94733874238527,
+      "avg_ttft_ms": 1430.4471224486404,
+      "avg_throughput": 30.828307632706476,
+      "avg_memory_reduction_pct": 80.00449685441508
+    },
+    {
+      "method": "H2O",
+      "method_name": "h2o",
+      "cap": "default",
+      "avg_prefill_ms": 785.3337768864419,
+      "avg_compress_ms": 823.5559073210295,
+      "avg_first_decode_step_ms": 31.97955091350845,
+      "avg_decode_throughput": 32.74710318227802,
+      "avg_ttft_ms": 1638.4892501060538,
+      "avg_throughput": 33.87249652674881,
+      "avg_memory_reduction_pct": 80.00449685441508
+    },
+    {
+      "method": "SnapKV",
+      "method_name": "snapkv",
+      "cap": "default",
+      "avg_prefill_ms": 781.1857357488146,
+      "avg_compress_ms": 827.8455374429801,
+      "avg_first_decode_step_ms": 31.87919320937778,
+      "avg_decode_throughput": 32.693922002421985,
+      "avg_ttft_ms": 1637.183219345495,
+      "avg_throughput": 35.7894234203339,
+      "avg_memory_reduction_pct": 80.00449685441508
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "method_name": "pyramidkv",
+      "cap": "default",
+      "avg_prefill_ms": 781.1049170193395,
+      "avg_compress_ms": 824.1315127217343,
+      "avg_first_decode_step_ms": 31.370769028684922,
+      "avg_decode_throughput": 33.40362880795281,
+      "avg_ttft_ms": 1634.363072529779,
+      "avg_throughput": 34.405968146144055,
+      "avg_memory_reduction_pct": 80.0062663665269
+    },
+    {
+      "method": "AdaKV-adapted",
+      "method_name": "adakv",
+      "cap": "default",
+      "avg_prefill_ms": 784.6395456697792,
+      "avg_compress_ms": 832.1391033873495,
+      "avg_first_decode_step_ms": 31.846377386578492,
+      "avg_decode_throughput": 32.76065548832662,
+      "avg_ttft_ms": 1646.5200628879115,
+      "avg_throughput": 33.73178944670484,
+      "avg_memory_reduction_pct": 80.00449685441508
+    },
+    {
+      "method": "SalienceKV (w/o sink)",
+      "method_name": "ours",
+      "cap": "default",
+      "avg_prefill_ms": 780.7772166827427,
+      "avg_compress_ms": 888.7141586414406,
+      "avg_first_decode_step_ms": 31.364007054695062,
+      "avg_decode_throughput": 33.22696699846381,
+      "avg_ttft_ms": 1698.7784001005546,
+      "avg_throughput": 34.22163330078852,
+      "avg_memory_reduction_pct": 80.00449685441508
+    },
+    {
+      "method": "SalienceKV-Sink-4",
+      "method_name": "ours",
+      "cap": "default",
+      "avg_prefill_ms": 787.4947556227978,
+      "avg_compress_ms": 882.3271967670215,
+      "avg_first_decode_step_ms": 32.24892145288842,
+      "avg_decode_throughput": 32.62918766645317,
+      "avg_ttft_ms": 1699.5781963823779,
+      "avg_throughput": 33.725709070134016,
+      "avg_memory_reduction_pct": 80.00449685441508
+    }
+  ],
+  "completed": 8,
+  "total": 8
+}

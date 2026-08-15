@@ -63,7 +63,8 @@ class EvaluatorV2:
                     total += layer.values.numel() * bytes_per
         return total / (1024 * 1024)
 
-    def evaluate_sample(self, sample, method_name, budget_ratio, measure_efficiency=True, method_kwargs=None):
+    def evaluate_sample(self, sample, method_name, budget_ratio, measure_efficiency=True,
+                         method_kwargs=None, max_input_length=None):
         self._clear_cache()
 
         prompt = make_prompt(
@@ -72,7 +73,13 @@ class EvaluatorV2:
             task_type=sample["task_type"],
         )
         model_max_len = self.cfg.get("max_length", 16000)
-        safe_max_input = min(16000, model_max_len - 1000)
+        if max_input_length is None:
+            # 기본값: 기존 16k 하드캡 동작 유지 (TABLE III~VIII 회귀 방지)
+            safe_max_input = min(16000, model_max_len - 1000)
+        else:
+            # TABLE IX 등에서 명시적으로 캡을 조정/해제하고 싶을 때 사용.
+            # max_input_length=-1 이면 모델 실제 max_length까지 허용.
+            safe_max_input = (model_max_len - 1000) if max_input_length == -1 else max_input_length
         inputs = tokenize_prompt(prompt, self.tokenizer, self.model_key, max_input_length=safe_max_input, device=self.device)
         input_ids = inputs["input_ids"]
         attention_mask = inputs["attention_mask"]
@@ -140,7 +147,10 @@ class EvaluatorV2:
 
             cur_pos = input_length
             step = 0
+            first_decode_step_ms = None
+            step_times = []  # 첫 스텝 제외한 이후 스텝들의 소요시간(초)
             while step < max_new - 1 and generated_ids[-1] != eos_id:
+                step_start = time.perf_counter()
                 cache_position = torch.tensor([cur_pos], device=self.device)
                 attn_mask_step = torch.ones(
                     1, cache_len + step + 1,
@@ -158,15 +168,23 @@ class EvaluatorV2:
                 next_token = step_out.logits[:, -1, :].argmax(dim=-1, keepdim=True)
                 generated_ids.append(next_token.item())
                 cur_pos += 1
+                step_elapsed = time.perf_counter() - step_start
+                if first_decode_step_ms is None:
+                    first_decode_step_ms = step_elapsed * 1000
+                else:
+                    step_times.append(step_elapsed)
                 step += 1
 
             new_tokens = torch.tensor(generated_ids, device=self.device)
+            decode_throughput = (len(step_times) / sum(step_times)) if step_times else 0.0
         except Exception as e:
             logger.error(f"generate() failed: {e}")
             return {
                 "score": 0.0, "prediction": "", "ttft_ms": 0.0,
                 "throughput": 0.0, "kv_size_before_mb": kv_before,
                 "kv_size_after_mb": kv_after, "memory_reduction_pct": mem_red,
+                "prefill_ms": prefill_time_ms, "compress_ms": compress_time_ms,
+                "first_decode_step_ms": 0.0, "decode_throughput": 0.0,
             }
 
         gen_elapsed = time.perf_counter() - gen_start
@@ -185,21 +203,33 @@ class EvaluatorV2:
             "score": score, "prediction": prediction, "ttft_ms": ttft_ms,
             "throughput": throughput, "kv_size_before_mb": kv_before,
             "kv_size_after_mb": kv_after, "memory_reduction_pct": mem_red,
+            # TABLE IX용 세분화 지표 (기존 ttft_ms/throughput은 하위호환 위해 유지)
+            "prefill_ms": prefill_time_ms,
+            "compress_ms": compress_time_ms,
+            "first_decode_step_ms": first_decode_step_ms if first_decode_step_ms is not None else 0.0,
+            "decode_throughput": decode_throughput,
         }
 
-    def evaluate_task(self, samples, method_name, budget_ratio, max_samples=None, method_kwargs=None):
+    def evaluate_task(self, samples, method_name, budget_ratio, max_samples=None,
+                       method_kwargs=None, max_input_length=None):
         if max_samples is not None:
             samples = samples[:max_samples]
         scores, ttfts, throughputs, mem_reds = [], [], [], []
+        prefill_mss, compress_mss, first_decode_mss, decode_throughputs = [], [], [], []
         task_name = samples[0]["task_name"] if samples else "unknown"
         logger.info(f"[{method_name}] {task_name} ({len(samples)}샘플, budget={budget_ratio:.0%}, kwargs={method_kwargs})")
 
         collapses = []
         for i, sample in enumerate(samples):
             try:
-                r = self.evaluate_sample(sample, method_name, budget_ratio, method_kwargs=method_kwargs)
+                r = self.evaluate_sample(sample, method_name, budget_ratio, method_kwargs=method_kwargs,
+                                          max_input_length=max_input_length)
                 scores.append(r["score"]); ttfts.append(r["ttft_ms"])
                 throughputs.append(r["throughput"]); mem_reds.append(r["memory_reduction_pct"])
+                prefill_mss.append(r.get("prefill_ms", 0.0))
+                compress_mss.append(r.get("compress_ms", 0.0))
+                first_decode_mss.append(r.get("first_decode_step_ms", 0.0))
+                decode_throughputs.append(r.get("decode_throughput", 0.0))
                 collapses.append(1.0 if is_collapsed(r["prediction"]) else 0.0)
                 if (i + 1) % 5 == 0:
                     logger.info(f"  [{i+1}/{len(samples)}] avg={aggregate_scores(scores):.2f}")
@@ -207,6 +237,8 @@ class EvaluatorV2:
                 logger.warning(f"Sample {i} failed: {e}")
                 scores.append(0.0); ttfts.append(0.0)
                 throughputs.append(0.0); mem_reds.append(0.0)
+                prefill_mss.append(0.0); compress_mss.append(0.0)
+                first_decode_mss.append(0.0); decode_throughputs.append(0.0)
                 collapses.append(1.0)
 
         return {
@@ -214,6 +246,11 @@ class EvaluatorV2:
             "avg_ttft_ms": aggregate_scores(ttfts),
             "avg_throughput": aggregate_scores(throughputs),
             "avg_memory_reduction_pct": aggregate_scores(mem_reds),
+            # TABLE IX용 세분화 집계 지표
+            "avg_prefill_ms": aggregate_scores(prefill_mss),
+            "avg_compress_ms": aggregate_scores(compress_mss),
+            "avg_first_decode_step_ms": aggregate_scores(first_decode_mss),
+            "avg_decode_throughput": aggregate_scores(decode_throughputs),
             "avg_collapse_rate_pct": (sum(collapses) / len(collapses) * 100) if collapses else 0.0,
             "collapse_count": int(sum(collapses)),
             "collapse_total": len(collapses),

@@ -1,0 +1,17 @@
+Method,Cap,Budget,Prefill_ms,Compression_ms,First_Decode_Step_ms,Decode_Throughput_tok_s,Legacy_TTFT_ms,Legacy_Throughput_tok_s,Memory_Reduction_pct
+FullKV,default,20%,587.3,0.0,54.9,32.98,620.2,30.41,0.0
+StreamingLLM,default,20%,496.9,406.2,34.0,32.82,933.9,32.43,80.0
+H2O,default,20%,535.2,521.8,32.9,32.88,1087.4,32.94,80.0
+SnapKV,default,20%,516.8,523.7,37.4,28.3,1071.5,32.54,80.0
+PyramidKV-adapted,default,20%,500.7,539.0,32.1,33.46,1069.6,33.52,80.0
+AdaKV-adapted,default,20%,500.3,552.0,32.2,33.19,1082.4,33.25,80.0
+SalienceKV (w/o sink),default,20%,510.7,587.4,31.0,33.29,1128.0,33.38,80.0
+SalienceKV-Sink-4,default,20%,509.2,585.8,30.5,33.09,1125.1,33.32,80.0
+FullKV,uncapped,20%,501.5,0.0,33.7,31.61,535.7,29.29,0.0
+StreamingLLM,uncapped,20%,520.2,399.3,33.7,32.56,950.7,32.19,80.0
+H2O,uncapped,20%,507.6,532.4,31.8,33.84,1069.5,33.9,80.0
+SnapKV,uncapped,20%,501.8,540.3,36.4,28.51,1072.8,32.8,80.0
+PyramidKV-adapted,uncapped,20%,502.2,538.8,32.1,33.3,1071.0,33.35,80.0
+AdaKV-adapted,uncapped,20%,507.0,541.4,30.5,33.02,1078.7,33.08,80.0
+SalienceKV (w/o sink),uncapped,20%,524.0,589.2,33.8,32.07,1144.4,32.15,80.0
+SalienceKV-Sink-4,uncapped,20%,514.9,583.7,33.8,31.59,1130.0,31.79,80.0
