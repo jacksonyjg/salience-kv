@@ -1,0 +1,236 @@
+{
+  "experiment": "exp7_signal_ablation",
+  "model": "qwen3-4b",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "num_samples": 30,
+  "seed": 42,
+  "results": [
+    {
+      "method": "3signal_NVP",
+      "task_scores": {
+        "narrativeqa": 6.513145639262197,
+        "qasper": 15.534099390123293,
+        "multifieldqa_en": 29.601378533451363,
+        "hotpotqa": 14.908382400777072,
+        "2wikimqa": 14.52490005357578,
+        "gov_report": 11.139410382773105,
+        "qmsum": 3.4951362385594833
+      },
+      "task_collapse_rates": {
+        "narrativeqa": 50.0,
+        "qasper": 20.0,
+        "multifieldqa_en": 16.666666666666664,
+        "hotpotqa": 20.0,
+        "2wikimqa": 16.666666666666664,
+        "gov_report": 60.0,
+        "qmsum": 80.0
+      },
+      "task_collapse_fracs": {
+        "narrativeqa": "15/30",
+        "qasper": "6/30",
+        "multifieldqa_en": "5/30",
+        "hotpotqa": "6/30",
+        "2wikimqa": "5/30",
+        "gov_report": "18/30",
+        "qmsum": "24/30"
+      },
+      "avg_score": 13.673778948360328,
+      "avg_collapse_rate_pct": 37.61904761904761,
+      "avg_collapse_frac": "79/210",
+      "avg_ttft_ms": 1646.0876599694914,
+      "avg_throughput": 33.54527689247013,
+      "avg_memory_reduction_pct": 80.00474981620827
+    },
+    {
+      "method": "4signal_NVPS",
+      "task_scores": {
+        "narrativeqa": 11.029298617981937,
+        "qasper": 14.05872820185789,
+        "multifieldqa_en": 24.28795395941883,
+        "hotpotqa": 9.746481141675506,
+        "2wikimqa": 12.86987359536449,
+        "gov_report": 12.40592663695186,
+        "qmsum": 3.0963769054580994
+      },
+      "task_collapse_rates": {
+        "narrativeqa": 36.666666666666664,
+        "qasper": 23.333333333333332,
+        "multifieldqa_en": 30.0,
+        "hotpotqa": 20.0,
+        "2wikimqa": 33.33333333333333,
+        "gov_report": 76.66666666666667,
+        "qmsum": 100.0
+      },
+      "task_collapse_fracs": {
+        "narrativeqa": "11/30",
+        "qasper": "7/30",
+        "multifieldqa_en": "9/30",
+        "hotpotqa": "6/30",
+        "2wikimqa": "10/30",
+        "gov_report": "23/30",
+        "qmsum": "30/30"
+      },
+      "avg_score": 12.499234151244087,
+      "avg_collapse_rate_pct": 45.714285714285715,
+      "avg_collapse_frac": "96/210",
+      "avg_ttft_ms": 1685.5493915874774,
+      "avg_throughput": 32.476930390592834,
+      "avg_memory_reduction_pct": 80.00474981620827
+    },
+    {
+      "method": "wo_N",
+      "task_scores": {
+        "narrativeqa": 12.96073845833737,
+        "qasper": 12.94543343422062,
+        "multifieldqa_en": 35.26531345362692,
+        "hotpotqa": 15.366130300772049,
+        "2wikimqa": 13.309154296381926,
+        "gov_report": 17.15239112773249,
+        "qmsum": 8.607890832704102
+      },
+      "task_collapse_rates": {
+        "narrativeqa": 3.3333333333333335,
+        "qasper": 10.0,
+        "multifieldqa_en": 3.3333333333333335,
+        "hotpotqa": 0.0,
+        "2wikimqa": 0.0,
+        "gov_report": 10.0,
+        "qmsum": 23.333333333333332
+      },
+      "task_collapse_fracs": {
+        "narrativeqa": "1/30",
+        "qasper": "3/30",
+        "multifieldqa_en": "1/30",
+        "hotpotqa": "0/30",
+        "2wikimqa": "0/30",
+        "gov_report": "3/30",
+        "qmsum": "7/30"
+      },
+      "avg_score": 16.515293129110784,
+      "avg_collapse_rate_pct": 7.142857142857143,
+      "avg_collapse_frac": "15/210",
+      "avg_ttft_ms": 1638.0864138288712,
+      "avg_throughput": 32.29306668387629,
+      "avg_memory_reduction_pct": 80.00474981620827
+    },
+    {
+      "method": "wo_V",
+      "task_scores": {
+        "narrativeqa": 11.13441514970977,
+        "qasper": 15.953145375340586,
+        "multifieldqa_en": 28.03256066839451,
+        "hotpotqa": 10.757606384158214,
+        "2wikimqa": 11.69134013251517,
+        "gov_report": 9.284774925988916,
+        "qmsum": 2.502073606657134
+      },
+      "task_collapse_rates": {
+        "narrativeqa": 53.333333333333336,
+        "qasper": 26.666666666666668,
+        "multifieldqa_en": 26.666666666666668,
+        "hotpotqa": 10.0,
+        "2wikimqa": 26.666666666666668,
+        "gov_report": 83.33333333333334,
+        "qmsum": 80.0
+      },
+      "task_collapse_fracs": {
+        "narrativeqa": "16/30",
+        "qasper": "8/30",
+        "multifieldqa_en": "8/30",
+        "hotpotqa": "3/30",
+        "2wikimqa": "8/30",
+        "gov_report": "25/30",
+        "qmsum": "24/30"
+      },
+      "avg_score": 12.765130891823471,
+      "avg_collapse_rate_pct": 43.80952380952381,
+      "avg_collapse_frac": "92/210",
+      "avg_ttft_ms": 1638.523903800866,
+      "avg_throughput": 32.27833102867811,
+      "avg_memory_reduction_pct": 80.00474981620827
+    },
+    {
+      "method": "wo_P",
+      "task_scores": {
+        "narrativeqa": 10.659067757034784,
+        "qasper": 21.244179584265602,
+        "multifieldqa_en": 34.251971273764276,
+        "hotpotqa": 12.124394021298047,
+        "2wikimqa": 15.116602905769161,
+        "gov_report": 12.271193185746505,
+        "qmsum": 7.09834575730828
+      },
+      "task_collapse_rates": {
+        "narrativeqa": 26.666666666666668,
+        "qasper": 13.333333333333334,
+        "multifieldqa_en": 13.333333333333334,
+        "hotpotqa": 6.666666666666667,
+        "2wikimqa": 3.3333333333333335,
+        "gov_report": 73.33333333333333,
+        "qmsum": 26.666666666666668
+      },
+      "task_collapse_fracs": {
+        "narrativeqa": "8/30",
+        "qasper": "4/30",
+        "multifieldqa_en": "4/30",
+        "hotpotqa": "2/30",
+        "2wikimqa": "1/30",
+        "gov_report": "22/30",
+        "qmsum": "8/30"
+      },
+      "avg_score": 16.109393497883808,
+      "avg_collapse_rate_pct": 23.333333333333336,
+      "avg_collapse_frac": "49/210",
+      "avg_ttft_ms": 1641.810705458481,
+      "avg_throughput": 32.6495799126035,
+      "avg_memory_reduction_pct": 80.00474981620827
+    },
+    {
+      "method": "N_only",
+      "task_scores": {
+        "narrativeqa": 10.747033458902406,
+        "qasper": 14.133259742603173,
+        "multifieldqa_en": 27.820300585475554,
+        "hotpotqa": 14.565400150773112,
+        "2wikimqa": 9.270271746838707,
+        "gov_report": 8.495384258841762,
+        "qmsum": 1.6943132977283661
+      },
+      "task_collapse_rates": {
+        "narrativeqa": 50.0,
+        "qasper": 36.666666666666664,
+        "multifieldqa_en": 33.33333333333333,
+        "hotpotqa": 16.666666666666664,
+        "2wikimqa": 33.33333333333333,
+        "gov_report": 100.0,
+        "qmsum": 80.0
+      },
+      "task_collapse_fracs": {
+        "narrativeqa": "15/30",
+        "qasper": "11/30",
+        "multifieldqa_en": "10/30",
+        "hotpotqa": "5/30",
+        "2wikimqa": "10/30",
+        "gov_report": "30/30",
+        "qmsum": "24/30"
+      },
+      "avg_score": 12.389423320166156,
+      "avg_collapse_rate_pct": 50.0,
+      "avg_collapse_frac": "105/210",
+      "avg_ttft_ms": 1632.0574412682151,
+      "avg_throughput": 32.49290454551436,
+      "avg_memory_reduction_pct": 80.00474981620827
+    }
+  ],
+  "completed_variants": 6,
+  "total_variants": 6
+}
