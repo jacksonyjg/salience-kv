@@ -1,0 +1,36 @@
+{
+  "results": [
+    {
+      "variant": "V_only",
+      "avg_score": 11.26632649669704,
+      "avg_collapse_pct": 33.33333333333333,
+      "task_scores": {
+        "qmsum": 7.897648512653699,
+        "gov_report": 14.63500448074038
+      },
+      "task_collapse_pct": {
+        "qmsum": 0.0,
+        "gov_report": 66.66666666666666
+      }
+    },
+    {
+      "variant": "P_only",
+      "avg_score": 6.933483628711214,
+      "avg_collapse_pct": 66.66666666666666,
+      "task_scores": {
+        "qmsum": 1.7150840615960263,
+        "gov_report": 12.1518831958264
+      },
+      "task_collapse_pct": {
+        "qmsum": 100.0,
+        "gov_report": 33.33333333333333
+      }
+    }
+  ],
+  "tasks": [
+    "qmsum",
+    "gov_report"
+  ],
+  "num_samples": 3,
+  "sink_size": 0
+}
