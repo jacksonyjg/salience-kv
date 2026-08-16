@@ -1,0 +1,61 @@
+{
+  "results": [
+    {
+      "variant": "V_only",
+      "avg_score": 15.149315206305179,
+      "avg_collapse_pct": 5.238095238095238,
+      "task_scores": {
+        "narrativeqa": 10.587711115449306,
+        "qasper": 12.731578106703902,
+        "multifieldqa_en": 32.69089435852094,
+        "hotpotqa": 13.573085630877168,
+        "2wikimqa": 12.717585205647898,
+        "gov_report": 14.852634681832997,
+        "qmsum": 8.891717345104048
+      },
+      "task_collapse_pct": {
+        "narrativeqa": 0.0,
+        "qasper": 6.666666666666667,
+        "multifieldqa_en": 0.0,
+        "hotpotqa": 10.0,
+        "2wikimqa": 0.0,
+        "gov_report": 20.0,
+        "qmsum": 0.0
+      }
+    },
+    {
+      "variant": "P_only",
+      "avg_score": 14.11202392459803,
+      "avg_collapse_pct": 25.714285714285715,
+      "task_scores": {
+        "narrativeqa": 12.046017691521918,
+        "qasper": 12.91323567181893,
+        "multifieldqa_en": 27.628068236716,
+        "hotpotqa": 11.810961903067168,
+        "2wikimqa": 17.54784285815774,
+        "gov_report": 12.281562615292716,
+        "qmsum": 4.556478495611746
+      },
+      "task_collapse_pct": {
+        "narrativeqa": 23.333333333333332,
+        "qasper": 16.666666666666664,
+        "multifieldqa_en": 10.0,
+        "hotpotqa": 6.666666666666667,
+        "2wikimqa": 20.0,
+        "gov_report": 56.666666666666664,
+        "qmsum": 46.666666666666664
+      }
+    }
+  ],
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "num_samples": 30,
+  "sink_size": 0
+}

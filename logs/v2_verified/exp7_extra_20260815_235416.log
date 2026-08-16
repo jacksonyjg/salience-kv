@@ -1,0 +1,731 @@
+2026-08-15 23:54:16,947 [INFO] __main__: ============================================================
+2026-08-15 23:54:16,947 [INFO] __main__: TABLE VII 보완: V_only, P_only 절제 실험
+2026-08-15 23:54:16,948 [INFO] __main__:   Model: qwen3-4b | Sink: 0 | Budget: 20%
+2026-08-15 23:54:16,951 [INFO] __main__:   Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum'] | Samples: 30
+2026-08-15 23:54:16,952 [INFO] __main__: ============================================================
+2026-08-15 23:54:16,952 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-15 23:54:17,046 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:54:17,052 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-15 23:54:17,110 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:54:17,126 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-15 23:54:17,192 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-15 23:54:17,271 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-15 23:54:18,291 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-15 23:54:18,293 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-15 23:54:18,330 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:54:18,337 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-15 23:54:25,688 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:54:25,697 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-15 23:54:25,808 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-15 23:54:25,855 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-15 23:54:25,868 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-15 23:54:25,870 [INFO] __main__: Variant: V_only | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0}
+2026-08-15 23:54:25,871 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-15 23:54:25,873 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-08-15 23:54:25,917 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:54:25,953 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:54:26,163 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:54:26,216 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:54:26,274 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:54:26,323 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-15 23:54:26,907 [INFO] core.dataset_loader: Loaded 30 samples from narrativeqa
+2026-08-15 23:54:26,926 [INFO] core.evaluator_v2: [ours] narrativeqa (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-15 23:54:27,230 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-15 23:54:30,649 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in Eatonville.'
+2026-08-15 23:54:37,565 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape because he believes in the moral importance of obeying the laws of th'
+2026-08-15 23:54:37,979 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-08-15 23:54:42,828 [INFO] core.evaluator_v2: [ours] pred='The story is set in medieval Germany, during the time of the Middle Ages, in a region that includes castles and rural ar'
+2026-08-15 23:54:43,352 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-08-15 23:54:48,029 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad did not kill anyone. He fought against the pursuing forces that tried to capture him, but he did not kill a'
+2026-08-15 23:54:48,474 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-08-15 23:54:51,589 [INFO] core.evaluator_v2: [ours] pred="The ghost that emerged from a painting at Dana's workplace is Vigo."
+2026-08-15 23:54:51,591 [INFO] core.evaluator_v2:   [5/30] avg=6.54
+2026-08-15 23:54:52,023 [WARNING] core.model_loader: Input length 46746 > max 16000, truncating...
+2026-08-15 23:54:55,397 [INFO] core.evaluator_v2: [ours] pred="The first person that falls under Vigo's spell is Janosz, the painting of Vigo's."
+2026-08-15 23:54:55,869 [WARNING] core.model_loader: Input length 64167 > max 16000, truncating...
+2026-08-15 23:54:58,755 [INFO] core.evaluator_v2: [ours] pred="Clifford's profession is a actor."
+2026-08-15 23:55:02,303 [INFO] core.evaluator_v2: [ours] pred='Mr. and Mrs. Vervelle live in a villa in France. The text mentions that they have a house in Vervelle, which is in the c'
+2026-08-15 23:55:04,147 [INFO] core.evaluator_v2: [ours] pred='The Witch threw a coffin into a ditch.'
+2026-08-15 23:55:04,492 [WARNING] core.model_loader: Input length 31340 > max 16000, truncating...
+2026-08-15 23:55:08,988 [INFO] core.evaluator_v2: [ours] pred='Based on the text, Frank Saltram is a writer. He is known for his literary works and is described as a man of letters, w'
+2026-08-15 23:55:08,989 [INFO] core.evaluator_v2:   [10/30] avg=9.93
+2026-08-15 23:55:12,941 [INFO] core.evaluator_v2: [ours] pred='Mortimer Tregennis was once estranged from his siblings due to financial difficulties and disputes over their tin mining'
+2026-08-15 23:55:13,371 [WARNING] core.model_loader: Input length 16515 > max 16000, truncating...
+2026-08-15 23:55:18,022 [INFO] core.evaluator_v2: [ours] pred='The \'future\' article that discussed Beerbohm\'s story was titled "Enoch forsooth," which is a play on "Enoch the Prophet"'
+2026-08-15 23:55:18,413 [WARNING] core.model_loader: Input length 31069 > max 16000, truncating...
+2026-08-15 23:55:23,104 [INFO] core.evaluator_v2: [ours] pred='In the text, Death is disguised as a chess game. This is evident from the dialogue between the Knight and Death, where D'
+2026-08-15 23:55:23,635 [WARNING] core.model_loader: Input length 31342 > max 16000, truncating...
+2026-08-15 23:55:26,562 [INFO] core.evaluator_v2: [ours] pred="Lady Coxon is Ruth Anvoy's mother."
+2026-08-15 23:55:27,091 [WARNING] core.model_loader: Input length 36325 > max 16000, truncating...
+2026-08-15 23:55:30,133 [INFO] core.evaluator_v2: [ours] pred='Rogers learned his battle knowledge during the First World War.'
+2026-08-15 23:55:30,134 [INFO] core.evaluator_v2:   [15/30] avg=12.92
+2026-08-15 23:55:30,598 [WARNING] core.model_loader: Input length 36331 > max 16000, truncating...
+2026-08-15 23:55:39,429 [INFO] core.evaluator_v2: [ours] pred='Anthony Rogers was working for a gang or organization that was involved in conflict with the Han people, as part of a la'
+2026-08-15 23:55:39,929 [WARNING] core.model_loader: Input length 19086 > max 16000, truncating...
+2026-08-15 23:55:43,815 [INFO] core.evaluator_v2: [ours] pred='The boarder who realizes that none of the boarders like each other is Miss Miranda (from the United States), as she is t'
+2026-08-15 23:55:49,920 [INFO] core.evaluator_v2: [ours] pred='Holmes and Dr. Watson are in Cornwall because they are investigating a mysterious and terrifying event that occurred in '
+2026-08-15 23:55:50,410 [WARNING] core.model_loader: Input length 32917 > max 16000, truncating...
+2026-08-15 23:55:54,980 [INFO] core.evaluator_v2: [ours] pred='The hidden message Reiko finds within the video is the phrase "Shizuka bakkai, boku koto no kimi." This phrase translate'
+2026-08-15 23:55:55,467 [WARNING] core.model_loader: Input length 37018 > max 16000, truncating...
+2026-08-15 23:56:02,419 [INFO] core.evaluator_v2: [ours] pred="Important themes in the story include:\n\n1. **Sacrifice and Heroism**: One-eyed Hans's bravery and self-sacrifice to save"
+2026-08-15 23:56:02,421 [INFO] core.evaluator_v2:   [20/30] avg=10.49
+2026-08-15 23:56:02,929 [WARNING] core.model_loader: Input length 32915 > max 16000, truncating...
+2026-08-15 23:56:06,882 [INFO] core.evaluator_v2: [ours] pred='The teenagers were discussing a video that was recorded on a VCR. The video contained a scene where a woman is recorded '
+2026-08-15 23:56:07,388 [WARNING] core.model_loader: Input length 60372 > max 16000, truncating...
+2026-08-15 23:56:10,447 [INFO] core.evaluator_v2: [ours] pred='Bill worked as a harvestman in Chicago when he lived there.'
+2026-08-15 23:56:13,839 [INFO] core.evaluator_v2: [ours] pred="Two people fainted after seeing Brenda's dead body. Mrs. Porter (the housekeeper) and Dr. Sterndale (the explorer)."
+2026-08-15 23:56:14,235 [WARNING] core.model_loader: Input length 37018 > max 16000, truncating...
+2026-08-15 23:56:19,477 [INFO] core.evaluator_v2: [ours] pred='Otto is known for his gentle nature and for being a favorite among the people. He is also known for his kindness and for'
+2026-08-15 23:56:19,896 [WARNING] core.model_loader: Input length 19082 > max 16000, truncating...
+2026-08-15 23:56:24,709 [INFO] core.evaluator_v2: [ours] pred='Leon focuses on the cultural and social aspects of Paris, including the people he meets, their behaviors, and the social'
+2026-08-15 23:56:24,721 [INFO] core.evaluator_v2:   [25/30] avg=11.31
+2026-08-15 23:56:31,282 [INFO] core.evaluator_v2: [ours] pred='The owner of the manor in the story is Madame de Breteche, who is the former owner of the house that is now in disrepair'
+2026-08-15 23:56:31,867 [WARNING] core.model_loader: Input length 32913 > max 16000, truncating...
+2026-08-15 23:56:35,663 [INFO] core.evaluator_v2: [ours] pred="Reiko's job is not mentioned in the text. The story focuses on characters like Masami, Tomo, and others, but there is no"
+2026-08-15 23:56:40,142 [INFO] core.evaluator_v2: [ours] pred='Holmes observes that the fire in the fireplace was lit and that the fire was burning when he and Watson arrived at the s'
+2026-08-15 23:56:45,688 [INFO] core.evaluator_v2: [ours] pred='Socrates compares citizens and the law to a master and a servant, or more specifically, to a parent and a child. He uses'
+2026-08-15 23:56:50,916 [INFO] core.evaluator_v2: [ours] pred='La Grande Breteche is a secluded, decaying house in Vendome, France, which once belonged to a family but is now in disre'
+2026-08-15 23:56:50,928 [INFO] core.evaluator_v2:   [30/30] avg=10.59
+2026-08-15 23:56:50,929 [INFO] __main__:   narrativeqa: score=10.59, collapse=0.0%
+2026-08-15 23:56:50,930 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-08-15 23:56:51,010 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:56:51,055 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:56:51,434 [INFO] core.dataset_loader: Loaded 30 samples from qasper
+2026-08-15 23:56:51,435 [INFO] core.evaluator_v2: [ours] qasper (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-15 23:56:56,000 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies show that both KG-A2C and the modified A2C methods outperform baseline approaches on the Zork1 g'
+2026-08-15 23:57:00,632 [INFO] core.evaluator_v2: [ours] pred='The encoder in the system is a character-level encoder, which is part of a sequence-to-sequence model. It is not explici'
+2026-08-15 23:57:02,800 [INFO] core.evaluator_v2: [ours] pred='The text does not mention the size of the Augmented LibriSpeech dataset. It discusses the CoVoST dataset, which includes'
+2026-08-15 23:57:18,950 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks includes the following neural network modules: \n\n- Embedding layers\n- RNNs (Recurrent Neural Networks)\n- CN'
+2026-08-15 23:57:23,655 [INFO] core.evaluator_v2: [ours] pred='The text compares several LSTM models, including:\n\n1. **2-layer LSTM** (used as a baseline)\n2. **9-layers LSTM** (used f'
+2026-08-15 23:57:23,656 [INFO] core.evaluator_v2:   [5/30] avg=4.32
+2026-08-15 23:57:25,346 [INFO] core.evaluator_v2: [ours] pred='The datasets used for evaluation are CNN/DailyMail, NYT, and XSum.'
+2026-08-15 23:57:28,090 [INFO] core.evaluator_v2: [ours] pred='The text indicates that the transformer layer (used in the proposed method) works better than the RNN layer. The results'
+2026-08-15 23:57:29,258 [INFO] core.evaluator_v2: [ours] pred='The ancient Chinese dataset comes from the internet.'
+2026-08-15 23:57:31,551 [INFO] core.evaluator_v2: [ours] pred='The baselines used for evaluation are: Pointer-Gen, Pointer-Gen with filtered samples, Pointer-Gen with filtered samples'
+2026-08-15 23:57:32,937 [INFO] core.evaluator_v2: [ours] pred='The Twitter dataset consists of 1,400 tweets.'
+2026-08-15 23:57:32,938 [INFO] core.evaluator_v2:   [10/30] avg=13.10
+2026-08-15 23:57:34,950 [INFO] core.evaluator_v2: [ours] pred='The text does not provide a specific numerical value for the improvement, but it states that the multitask learning appr'
+2026-08-15 23:57:38,935 [INFO] core.evaluator_v2: [ours] pred='The text mentions that the effectiveness of the chatbots is measured through experimental results, which show that the s'
+2026-08-15 23:57:41,592 [INFO] core.evaluator_v2: [ours] pred='The combination of rewards for reinforcement learning in the text is the harmonic mean of the sentiment reward and the t'
+2026-08-15 23:57:43,783 [INFO] core.evaluator_v2: [ours] pred='The attention module is pretrained on the source and target text data, which includes the source language and target lan'
+2026-08-15 23:57:46,319 [INFO] core.evaluator_v2: [ours] pred='The text does not provide a specific size for the dataset, but it mentions that the dataset is used for training and eva'
+2026-08-15 23:57:46,322 [INFO] core.evaluator_v2:   [15/30] avg=13.69
+2026-08-15 23:57:48,191 [INFO] core.evaluator_v2: [ours] pred='They evaluate on the WS (Word Sentence) corpus and the Penn Treebank. Specifically, they use the Penn Treebank for their'
+2026-08-15 23:57:50,741 [INFO] core.evaluator_v2: [ours] pred='The model is compared to previous methods such as rule-based approaches, term-based features, and machine learning model'
+2026-08-15 23:57:54,524 [INFO] core.evaluator_v2: [ours] pred='The Ngunas (zulu, swa, swh, swh, and so on) are similar to each other. The text mentions that the Ngunas are similar to '
+2026-08-15 23:58:12,089 [INFO] core.evaluator_v2: [ours] pred='The 7 Indian languages they experiment with are: Hindi, Tamil, Telugu, Malayalam, Punjabi, and Sanskrit. (Note: The text'
+2026-08-15 23:58:13,905 [INFO] core.evaluator_v2: [ours] pred='In addition to testing on hashtag prediction, the text mentions that the method is applicable to various NLP tasks, incl'
+2026-08-15 23:58:13,920 [INFO] core.evaluator_v2:   [20/30] avg=12.51
+2026-08-15 23:58:16,784 [INFO] core.evaluator_v2: [ours] pred='The tagging scheme employed is a three-tag scheme, where each word is labeled as either the beginning, middle, or end of'
+2026-08-15 23:58:19,047 [INFO] core.evaluator_v2: [ours] pred='The text considers natural language processing (NLP) tasks such as text classification and sentiment analysis, where the'
+2026-08-15 23:58:22,212 [INFO] core.evaluator_v2: [ours] pred='The NCEL approach is highly effective, as it outperforms other methods on various benchmarks, demonstrating superior per'
+2026-08-15 23:58:25,795 [INFO] core.evaluator_v2: [ours] pred='The text considers the following methods to find examples of biases and unwarranted inferences: analyzing descriptions i'
+2026-08-15 23:58:26,808 [INFO] core.evaluator_v2: [ours] pred='The corpus consists of 53 documents.'
+2026-08-15 23:58:26,820 [INFO] core.evaluator_v2:   [25/30] avg=13.17
+2026-08-15 23:58:30,173 [INFO] core.evaluator_v2: [ours] pred='An individual model in the context of the text consists of a Bayesian model that uses a hierarchical structure to repres'
+2026-08-15 23:58:33,421 [INFO] core.evaluator_v2: [ours] pred='The text mentions that stylistic features obtained include features related to the structure and style of text, such as '
+2026-08-15 23:58:37,291 [INFO] core.evaluator_v2: [ours] pred='The highest MRR score was "near the top" in the third batch, but the exact value is not specified. However, it is mentio'
+2026-08-15 23:58:44,384 [INFO] core.evaluator_v2: [ours] pred='The data presented to the subjects to elicit event-related responses was a set of 11 auditory stimuli. These stimuli wer'
+2026-08-15 23:58:48,109 [INFO] core.evaluator_v2: [ours] pred='The dataset is annotated with labels indicating whether each tweet represents no evidence of depression, evidence of dep'
+2026-08-15 23:58:48,119 [INFO] core.evaluator_v2:   [30/30] avg=12.73
+2026-08-15 23:58:48,120 [INFO] __main__:   qasper: score=12.73, collapse=6.7%
+2026-08-15 23:58:48,120 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-08-15 23:58:48,181 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:58:48,212 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:58:48,573 [INFO] core.dataset_loader: Loaded 30 samples from multifieldqa_en
+2026-08-15 23:58:48,574 [INFO] core.evaluator_v2: [ours] multifieldqa_en (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-15 23:58:50,465 [INFO] core.evaluator_v2: [ours] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested. He is later released, but he is deeply affected by the "
+2026-08-15 23:58:53,045 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the method is applicable to v'
+2026-08-15 23:58:56,085 [INFO] core.evaluator_v2: [ours] pred='The generative interactive model used in the method is the **Coupled Dynamic Bayesian Network (CDBN)**.'
+2026-08-15 23:59:00,237 [INFO] core.evaluator_v2: [ours] pred='The purpose of an ICD (Implantable Cardiac Defibrillator) is to monitor and treat life-threatening heart rhythm disorder'
+2026-08-15 23:59:02,141 [INFO] core.evaluator_v2: [ours] pred='The normalized least squares (NLMS) algorithm is engaged in the PLMS-PPIC method.'
+2026-08-15 23:59:02,143 [INFO] core.evaluator_v2:   [5/30] avg=47.47
+2026-08-15 23:59:03,557 [INFO] core.evaluator_v2: [ours] pred='In 2009, Brooksley Born received the John D. McCloud Award for Public Service.'
+2026-08-15 23:59:07,472 [INFO] core.evaluator_v2: [ours] pred='A media application determines the context of an event using a content-recognition module that analyzes the media asset.'
+2026-08-15 23:59:10,844 [INFO] core.evaluator_v2: [ours] pred='The sticking point in the political showdown over the budget is the disagreement over the amount of funding to be cut, w'
+2026-08-15 23:59:12,206 [INFO] core.evaluator_v2: [ours] pred='The county seat of McPherson County is McPherson.'
+2026-08-15 23:59:13,929 [INFO] core.evaluator_v2: [ours] pred='The new Iraqi Body Count organization provides a count of the dead, specifically highlighting the number of casualties.'
+2026-08-15 23:59:13,930 [INFO] core.evaluator_v2:   [10/30] avg=38.68
+2026-08-15 23:59:17,633 [INFO] core.evaluator_v2: [ours] pred="Accounting for path preference reduces the complexity of the robot's belief update, allowing it to handle dynamic enviro"
+2026-08-15 23:59:21,880 [INFO] core.evaluator_v2: [ours] pred='It is important for the sides of the fuselage to be sloped (tumbled home) to ensure the correct shape and structural int'
+2026-08-15 23:59:26,228 [INFO] core.evaluator_v2: [ours] pred='The court in In re Ferguson concluded that the transformation prong of the Bilski test was not met, as the process did n'
+2026-08-15 23:59:29,005 [INFO] core.evaluator_v2: [ours] pred='KSTP-FM 102.1 was on the air from 1946 to 1951, which is a period of 5 years. Therefore, KSTP-FM 102.1 was on the air fo'
+2026-08-15 23:59:32,979 [INFO] core.evaluator_v2: [ours] pred='Thalassemias are classified based on the type of hemoglobin chain affected (alpha or beta) and the severity of the condi'
+2026-08-15 23:59:32,981 [INFO] core.evaluator_v2:   [15/30] avg=29.59
+2026-08-15 23:59:36,343 [INFO] core.evaluator_v2: [ours] pred='The transition probability of the environment affects the learning rate in the static agent by causing it to decrease as'
+2026-08-15 23:59:39,254 [INFO] core.evaluator_v2: [ours] pred='The experimental techniques used to study the quantum dot structures in this research were scanning tunneling microscopy'
+2026-08-15 23:59:40,269 [INFO] core.evaluator_v2: [ours] pred='Margaret Way was born in Australia and died in Queensland.'
+2026-08-15 23:59:43,043 [INFO] core.evaluator_v2: [ours] pred='The two states observed for indeno[1,2-a]fluorene on NaCl surfaces are the open-shell (π-diradical) state and the closed'
+2026-08-15 23:59:47,186 [INFO] core.evaluator_v2: [ours] pred="The scoring engine generates a stream of content for the channel by querying new content items based on the channel's ca"
+2026-08-15 23:59:47,188 [INFO] core.evaluator_v2:   [20/30] avg=32.75
+2026-08-15 23:59:52,160 [INFO] core.evaluator_v2: [ours] pred='The stability conditions for a solution of $-\\Delta u = f(u)$ are given by the inequality:\n\n$$\n\\int_{\\text{comp}} \\nabla'
+2026-08-15 23:59:53,437 [INFO] core.evaluator_v2: [ours] pred='McPherson County is located in the U.S. state of Kansas.'
+2026-08-15 23:59:57,351 [INFO] core.evaluator_v2: [ours] pred='The main focus of the research paper is to study the liquid-gas phase transition in lattice QCD at strong coupling, usin'
+2026-08-15 23:59:57,652 [WARNING] core.model_loader: Input length 16496 > max 16000, truncating...
+2026-08-16 00:00:00,912 [INFO] core.evaluator_v2: [ours] pred='The security parameter for the AES-256 block cipher is 128.'
+2026-08-16 00:00:04,915 [INFO] core.evaluator_v2: [ours] pred='The most active fan club is the South Malatia Fan Club.'
+2026-08-16 00:00:04,919 [INFO] core.evaluator_v2:   [25/30] avg=33.05
+2026-08-16 00:00:05,995 [INFO] core.evaluator_v2: [ours] pred='Margaret Way wrote 123 novels.'
+2026-08-16 00:00:09,465 [INFO] core.evaluator_v2: [ours] pred='The significance of the interlayer Berry connection polarizability is that it underlies the nonlinear dynamical Hall eff'
+2026-08-16 00:00:15,272 [INFO] core.evaluator_v2: [ours] pred='Wearables and devices such as those mentioned in the text are now capable of estimating physical activity levels and phy'
+2026-08-16 00:00:17,385 [INFO] core.evaluator_v2: [ours] pred='One of Kam W. Leong\'s publications in "Journal of Controlled Release" is "Gene therapy with a synthetic peptide: a strat'
+2026-08-16 00:00:21,643 [INFO] core.evaluator_v2: [ours] pred='The symptoms of vitamin K deficiency include anemia, bleeding (from the gums, nose, or other parts of the body), and wea'
+2026-08-16 00:00:21,645 [INFO] core.evaluator_v2:   [30/30] avg=32.69
+2026-08-16 00:00:21,646 [INFO] __main__:   multifieldqa_en: score=32.69, collapse=0.0%
+2026-08-16 00:00:21,646 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-16 00:00:21,718 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:00:21,750 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:00:22,261 [INFO] core.dataset_loader: Loaded 30 samples from hotpotqa
+2026-08-16 00:00:22,263 [INFO] core.evaluator_v2: [ours] hotpotqa (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:00:22,755 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-16 00:00:26,133 [INFO] core.evaluator_v2: [ours] pred='Brian Mitchell (the actor) won the Tony Award for Best Actor in 2000.'
+2026-08-16 00:00:26,674 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-16 00:00:30,100 [INFO] core.evaluator_v2: [ours] pred='The large and small subunits that use two types of RNA are major components that make up the ribosome.'
+2026-08-16 00:00:32,803 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both filmmakers.'
+2026-08-16 00:00:37,181 [INFO] core.evaluator_v2: [ours] pred='Arnold Richards was the founder of the Center for Jewish History, which is a member of the Center for Jewish History. Ho'
+2026-08-16 00:00:37,520 [WARNING] core.model_loader: Input length 16934 > max 16000, truncating...
+2026-08-16 00:00:40,636 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant for Xcel Energy.'
+2026-08-16 00:00:40,637 [INFO] core.evaluator_v2:   [5/30] avg=12.99
+2026-08-16 00:00:41,677 [INFO] core.evaluator_v2: [ours] pred='Pleiospilos is a flowering plant.'
+2026-08-16 00:00:44,742 [INFO] core.evaluator_v2: [ours] pred='Steel Venom is farther north than Wicked Twister. Steel Venom is located at Dorney Park in Shakopee, Minnesota, while Wi'
+2026-08-16 00:00:45,035 [WARNING] core.model_loader: Input length 16637 > max 16000, truncating...
+2026-08-16 00:00:48,340 [INFO] core.evaluator_v2: [ours] pred='Baghdad was known as the "City of God" during the Abbasid Caliphate.'
+2026-08-16 00:00:51,753 [INFO] core.evaluator_v2: [ours] pred="The town where the FIBT World Championships 1960 took place is Cortina d'Ampezzo, which is located in the northern part "
+2026-08-16 00:00:55,927 [INFO] core.evaluator_v2: [ours] pred='Mike Leach currently coaches at Washington State University, where he was the head coach from 2011 to 2022. After leavin'
+2026-08-16 00:00:55,929 [INFO] core.evaluator_v2:   [10/30] avg=18.46
+2026-08-16 00:00:59,921 [INFO] core.evaluator_v2: [ours] pred='The collective series that includes "Whatever Happened to... Robot Jones?" is "Robot Cartoons," which is part of the "Ca'
+2026-08-16 00:01:02,771 [INFO] core.evaluator_v2: [ours] pred='The text does not provide information about the lowest vocal range in Cosmos. It discusses vocal registers, types, and r'
+2026-08-16 00:01:03,056 [WARNING] core.model_loader: Input length 16792 > max 16000, truncating...
+2026-08-16 00:01:05,909 [INFO] core.evaluator_v2: [ours] pred='Fred Rieders.'
+2026-08-16 00:01:09,605 [INFO] core.evaluator_v2: [ours] pred='Robbie Tuck plays in the series "It\'s Always Sunny in Philadelphia," which follows a group of friends who run an Irish b'
+2026-08-16 00:01:10,094 [WARNING] core.model_loader: Input length 16875 > max 16000, truncating...
+2026-08-16 00:01:13,420 [INFO] core.evaluator_v2: [ours] pred='The National Firearms Agreement (NFA) was in response to the Port Arthur massacre that killed 34 people.'
+2026-08-16 00:01:13,422 [INFO] core.evaluator_v2:   [15/30] avg=16.61
+2026-08-16 00:01:15,942 [INFO] core.evaluator_v2: [ours] pred='The answer is William Shakespeare. The text states that Rønne Alsen played "Viola" in the 1930 production at Den Nationa'
+2026-08-16 00:01:18,805 [INFO] core.evaluator_v2: [ours] pred='The River Thames.'
+2026-08-16 00:01:22,264 [INFO] core.evaluator_v2: [ours] pred='Darci Kistler is the last muse for the choreographer George Balanchine and starred in the Nutcracker.'
+2026-08-16 00:01:22,624 [WARNING] core.model_loader: Input length 16802 > max 16000, truncating...
+2026-08-16 00:01:26,006 [INFO] core.evaluator_v2: [ours] pred='The host of the American survival skills reality show, The Island, is Bear Grylls, who is originally from England.'
+2026-08-16 00:01:27,706 [INFO] core.evaluator_v2: [ours] pred='Pope Gregory I gave the title "patricia" of Rome to Marozia.'
+2026-08-16 00:01:27,712 [INFO] core.evaluator_v2:   [20/30] avg=18.26
+2026-08-16 00:01:30,572 [INFO] core.evaluator_v2: [ours] pred='Mimosa is a shrub. Cryptocoryne is a plant species, but it is not described as a shrub in the text. The text describes M'
+2026-08-16 00:01:36,562 [INFO] core.evaluator_v2: [ours] pred='The actor who plays Sean Tully is Antony Cunnings. In the text, it is mentioned that Sean Tully defeated a contestant in'
+2026-08-16 00:01:37,078 [WARNING] core.model_loader: Input length 17206 > max 16000, truncating...
+2026-08-16 00:01:40,518 [INFO] core.evaluator_v2: [ours] pred='Mark Donohue was born in 1937 and participated in the 1971 Canadian Grand Prix.'
+2026-08-16 00:01:45,187 [INFO] core.evaluator_v2: [ours] pred='Yameen and Activision have in common the subset of play known as wetware, which involves the use of biological organisms'
+2026-08-16 00:01:47,045 [INFO] core.evaluator_v2: [ours] pred='The Atherton Bridge spans the Nashua River.'
+2026-08-16 00:01:47,050 [INFO] core.evaluator_v2:   [25/30] avg=15.82
+2026-08-16 00:01:49,446 [INFO] core.evaluator_v2: [ours] pred='30 Rock'
+2026-08-16 00:01:58,715 [INFO] core.evaluator_v2: [ours] pred='High School Confidential (TV series) is an eight-episode television series that premiered on September 13, 2008, on the '
+2026-08-16 00:02:02,180 [INFO] core.evaluator_v2: [ours] pred='The 53rd National Hockey League All-Star Game took place at the indoor arena that was completed in 1998.'
+2026-08-16 00:02:12,679 [INFO] core.evaluator_v2: [ours] pred='The Toronto International Film Festival premiered the movie "The BFG" produced by BBC Films. However, based on the text '
+2026-08-16 00:02:13,034 [WARNING] core.model_loader: Input length 16382 > max 16000, truncating...
+2026-08-16 00:02:16,383 [INFO] core.evaluator_v2: [ours] pred='The arena where the Lewiston Maineiacs played their home games can seat 1,400 people.'
+2026-08-16 00:02:16,385 [INFO] core.evaluator_v2:   [30/30] avg=13.57
+2026-08-16 00:02:16,386 [INFO] __main__:   hotpotqa: score=13.57, collapse=10.0%
+2026-08-16 00:02:16,386 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-08-16 00:02:16,446 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:02:16,479 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:02:16,860 [INFO] core.dataset_loader: Loaded 30 samples from 2wikimqa
+2026-08-16 00:02:16,861 [INFO] core.evaluator_v2: [ours] 2wikimqa (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:02:19,283 [INFO] core.evaluator_v2: [ours] pred='El director de la película "Eisenstein in Guanajuato" es Peter Green. Según el texto, Peter Green nació en Inglaterra.'
+2026-08-16 00:02:21,300 [INFO] core.evaluator_v2: [ours] pred='"Jugband Blues" came out first. It was released in 1967, while "Joel The Lump Of Coal" was released in 2014.'
+2026-08-16 00:02:25,364 [INFO] core.evaluator_v2: [ours] pred='No Trees in the Street. According to the text, J. Lee Thompson (director of No Trees in the Street) died in 2002, while '
+2026-08-16 00:02:27,967 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband, Henry the Younger, is not explicitly mentioned in the text. Howev"
+2026-08-16 00:02:31,213 [INFO] core.evaluator_v2: [ours] pred='Lyudmyla Olyanovska was born in 1985, while Paul de Scherff was born in 1855. Therefore, Lyudmyla Olyanovska is older.'
+2026-08-16 00:02:31,235 [INFO] core.evaluator_v2:   [5/30] avg=11.10
+2026-08-16 00:02:33,851 [INFO] core.evaluator_v2: [ours] pred="Helmichis's father-in-law is Alboin."
+2026-08-16 00:02:36,093 [INFO] core.evaluator_v2: [ours] pred="The Drover's Sweetheart was released earlier. It is mentioned as a 1911 film, while Pigsty (Film) was released in 1969."
+2026-08-16 00:02:38,442 [INFO] core.evaluator_v2: [ours] pred="Princess Charlotte of Saxe-Meiningen's husband is Ernest of Saxe-Gotha-Lichtenstein, who was of German nationality."
+2026-08-16 00:02:38,714 [WARNING] core.model_loader: Input length 16424 > max 16000, truncating...
+2026-08-16 00:02:41,716 [INFO] core.evaluator_v2: [ours] pred='Yes, both films are from the United Kingdom.'
+2026-08-16 00:02:44,069 [INFO] core.evaluator_v2: [ours] pred='Dr. Socrates was released first. It was released in 1936, while Vacations in Majorca was released in 1959.'
+2026-08-16 00:02:44,070 [INFO] core.evaluator_v2:   [10/30] avg=13.23
+2026-08-16 00:02:46,705 [INFO] core.evaluator_v2: [ours] pred="The place of death of Randi Monsen's father, Fredrik Monsen, is not explicitly mentioned in the text. However, it is sta"
+2026-08-16 00:02:50,125 [INFO] core.evaluator_v2: [ours] pred="The place of birth of Abdulaziz Nasser Al Shamsi's wife is not explicitly mentioned in the text. However, it is stated t"
+2026-08-16 00:02:52,771 [INFO] core.evaluator_v2: [ours] pred='The director of the film *Nallavan Vazhvan* is P. Neelakantan. According to the text, P. Neelakantan died in 1992. There'
+2026-08-16 00:02:56,343 [INFO] core.evaluator_v2: [ours] pred='The director of "The Year of the Rabbit" is Germain, who died in 1997. The director of "Monster on the Campus" is Jack A'
+2026-08-16 00:02:58,202 [INFO] core.evaluator_v2: [ours] pred='The paternal grandfather of Bruno II von Berg is Diepold I, Count of Berg.'
+2026-08-16 00:02:58,224 [INFO] core.evaluator_v2:   [15/30] avg=12.68
+2026-08-16 00:03:00,426 [INFO] core.evaluator_v2: [ours] pred='Prince of Arcadia was released in 1932, while Italia-Germania 4-3 was released in 1990. Therefore, Prince of Arcadia was'
+2026-08-16 00:03:03,240 [INFO] core.evaluator_v2: [ours] pred='Johnny Ekström was born later. Hugh Evelyn Wortham was born in 1884, while Johnny Ekström was born in 1984.'
+2026-08-16 00:03:04,733 [INFO] core.evaluator_v2: [ours] pred='The place of birth of the director of the film "Clowning Around" is Australia.'
+2026-08-16 00:03:07,807 [INFO] core.evaluator_v2: [ours] pred='Solemn Promise was directed by Srđan Karanović, who was born in 1945. Tarzan The Magnificent was directed by Robert Z. T'
+2026-08-16 00:03:11,591 [INFO] core.evaluator_v2: [ours] pred='The spouse of the director of the film "Streets of Blood" is Mary Ann Robinson. She is the wife of the director, Charles'
+2026-08-16 00:03:11,592 [INFO] core.evaluator_v2:   [20/30] avg=12.98
+2026-08-16 00:03:14,455 [INFO] core.evaluator_v2: [ours] pred='Contragolpe. The director of Contragolpe, Alejandro Doria, died in 2009. The director of Tiger in the Smoke, Roy Walker,'
+2026-08-16 00:03:14,692 [WARNING] core.model_loader: Input length 16690 > max 16000, truncating...
+2026-08-16 00:03:18,621 [INFO] core.evaluator_v2: [ours] pred='The composer of the song "Gretchen Am Spinnrade" is Franz Schubert. According to the text, Franz Schubert died in Vienna'
+2026-08-16 00:03:19,065 [WARNING] core.model_loader: Input length 17007 > max 16000, truncating...
+2026-08-16 00:03:23,207 [INFO] core.evaluator_v2: [ours] pred="Gisela of Hungary's father-in-law is King Otto I of Germany. She was the wife of Stephen I of Hungary, and her father wa"
+2026-08-16 00:03:27,012 [INFO] core.evaluator_v2: [ours] pred="Grand Duchess Elena Vladimirovna of Russia's father, Grand Duke Vladimir Alexandrovich of Russia, died in 1905."
+2026-08-16 00:03:30,686 [INFO] core.evaluator_v2: [ours] pred='From Corleone to Brooklyn was directed by Umberto Lenzi, who was born in 1931. Durango Valley Raiders was directed by Sa'
+2026-08-16 00:03:30,688 [INFO] core.evaluator_v2:   [25/30] avg=11.85
+2026-08-16 00:03:33,905 [INFO] core.evaluator_v2: [ours] pred="The place of birth of Sextus Barbour's father, Philip Barbour, is Orange, Virginia."
+2026-08-16 00:03:36,059 [INFO] core.evaluator_v2: [ours] pred='The text does not provide information about the ages or birth years of Altuğ Çelikbilek or Guy Dolsin. Therefore, it is '
+2026-08-16 00:03:40,895 [INFO] core.evaluator_v2: [ours] pred='The maternal grandfather of Marie Louise, Duchess of Parma is King Francis I of France. This is based on the information'
+2026-08-16 00:03:43,792 [INFO] core.evaluator_v2: [ours] pred='Una prostituta con le leggi dello stato (1970) was released in 1970, while The Bag Man (2013) was released in 2013. Ther'
+2026-08-16 00:03:46,241 [INFO] core.evaluator_v2: [ours] pred='Antoine Casavant was born first. According to the text, Antoine Casavant was born in 1826, while Abdul Ali Lalu was born'
+2026-08-16 00:03:46,243 [INFO] core.evaluator_v2:   [30/30] avg=12.72
+2026-08-16 00:03:46,244 [INFO] __main__:   2wikimqa: score=12.72, collapse=0.0%
+2026-08-16 00:03:46,244 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-16 00:03:46,311 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:03:46,349 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:03:46,902 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-16 00:03:46,904 [INFO] core.evaluator_v2: [ours] gov_report (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:04:04,849 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) utilizes two primary programs for rotating personnel: the **Interagency Personnel '
+2026-08-16 00:04:14,477 [INFO] core.evaluator_v2: [ours] pred='The document highlights the challenges and successes in managing federal IT systems, emphasizing the need for effective '
+2026-08-16 00:04:14,906 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-16 00:04:31,925 [INFO] core.evaluator_v2: [ours] pred="**Summary of the Document:**\n\nThe document provides a comprehensive overview of the United States' strategic response to"
+2026-08-16 00:04:32,484 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-16 00:04:51,547 [INFO] core.evaluator_v2: [ours] pred='The **Clean Water Act** (CWA), established in 1973, is a U.S. federal law that regulates the discharge of pollutants int'
+2026-08-16 00:05:06,071 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) initiated a modernization project to replace its legacy financia'
+2026-08-16 00:05:06,105 [INFO] core.evaluator_v2:   [5/30] avg=13.79
+2026-08-16 00:05:25,382 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document highlights the ongoing challenges and efforts in securing federal information systems against'
+2026-08-16 00:05:39,297 [INFO] core.evaluator_v2: [ours] pred="The document outlines the U.S. government's efforts to promote small business growth through federal contracting policie"
+2026-08-16 00:05:39,765 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-16 00:05:56,343 [INFO] core.evaluator_v2: [ours] pred='The document discusses the use of **Other Transaction (OT)** mechanisms in the U.S. Department of Defense (DOD) to acqui'
+2026-08-16 00:06:08,677 [INFO] core.evaluator_v2: [ours] pred='The document discusses the growing role of electronic payment systems in replacing traditional cash transactions, driven'
+2026-08-16 00:06:09,117 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-16 00:06:28,071 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) manages a variety of acquisition programs to support its mission, using a stru'
+2026-08-16 00:06:28,102 [INFO] core.evaluator_v2:   [10/30] avg=14.59
+2026-08-16 00:06:34,941 [INFO] core.evaluator_v2: [ours] pred='This report provides an overview of the Department of Homeland Security (DHS) appropriations for the fiscal year 2019. I'
+2026-08-16 00:06:47,088 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of the acquisition and disposal processes of federal lands in the United States, manag'
+2026-08-16 00:06:57,628 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of the U.S. Black Lung Disability Program, which provides financial assis'
+2026-08-16 00:07:05,222 [INFO] core.evaluator_v2: [ours] pred='The U.S. foreign assistance program is a multifaceted system that encompasses a wide range of activities aimed at promot'
+2026-08-16 00:07:23,086 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the U.S. coal mining industry, focusing on regulatory fr'
+2026-08-16 00:07:23,113 [INFO] core.evaluator_v2:   [15/30] avg=14.53
+2026-08-16 00:07:29,329 [INFO] core.evaluator_v2: [ours] pred='The Public Safety Officers Benefits (PSOBS) program provides financial assistance to the families of deceased public saf'
+2026-08-16 00:07:38,818 [INFO] core.evaluator_v2: [ours] pred="The document discusses the ongoing challenges and considerations related to the FBI's headquarters in Washington, D.C., "
+2026-08-16 00:07:46,335 [INFO] core.evaluator_v2: [ours] pred='The document highlights challenges faced by the VA in aligning its services with changing veteran needs, particularly du'
+2026-08-16 00:07:57,575 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of the funding for the U.S. trade agencies—**International Trade Administration (ITA)*'
+2026-08-16 00:08:09,550 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of the **Black Lung Benefits Act** and the **Black Lung Disability Trust '
+2026-08-16 00:08:09,566 [INFO] core.evaluator_v2:   [20/30] avg=15.11
+2026-08-16 00:08:25,721 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the technology sector in the United States, focusing on '
+2026-08-16 00:08:40,428 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Document:**\n\nThe document provides a comprehensive overview of the current state of privacy regulation '
+2026-08-16 00:08:57,178 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Document:**\n\nThe document provides an overview of the U.S. retirement system, focusing on 401(k) and 40'
+2026-08-16 00:09:03,191 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) is responsible for administering programs that provide benefits to individuals '
+2026-08-16 00:09:16,934 [INFO] core.evaluator_v2: [ours] pred="The document outlines the challenges facing the postal service's health benefits program, which is funded by the federal"
+2026-08-16 00:09:16,963 [INFO] core.evaluator_v2:   [25/30] avg=14.81
+2026-08-16 00:09:29,341 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of key housing-related issues and policy considerations in the United States, particul'
+2026-08-16 00:09:48,051 [INFO] core.evaluator_v2: [ours] pred='The National Popular Vote (NPV) initiative seeks to ensure that the president of the United States is elected by the nat'
+2026-08-16 00:09:56,996 [INFO] core.evaluator_v2: [ours] pred='The document outlines the key provisions and funding levels for the U.S. Army Corps of Engineers (USACE) and other feder'
+2026-08-16 00:10:07,859 [INFO] core.evaluator_v2: [ours] pred="The document outlines the federal government's efforts to improve the efficiency and management of its real property. Ke"
+2026-08-16 00:10:25,467 [INFO] core.evaluator_v2: [ours] pred='The National Cemeteries Administration (NCA) is responsible for managing burial sites for veterans and their families ac'
+2026-08-16 00:10:25,498 [INFO] core.evaluator_v2:   [30/30] avg=14.85
+2026-08-16 00:10:25,499 [INFO] __main__:   gov_report: score=14.85, collapse=20.0%
+2026-08-16 00:10:25,500 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-16 00:10:25,608 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:10:25,658 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:10:26,175 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-16 00:10:26,177 [INFO] core.evaluator_v2: [ours] qmsum (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:10:34,407 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the team discusses the design of a new television remote control. Key points '
+2026-08-16 00:10:41,834 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the team discusses the design and features of a television remote control. Ke'
+2026-08-16 00:10:52,229 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the group discusses their project on natural language processing, specificall'
+2026-08-16 00:10:59,870 [INFO] core.evaluator_v2: [ours] pred='The document is a detailed recording of a team meeting where members discuss the development of a remote control device.'
+2026-08-16 00:11:08,250 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the team discusses the design and development of a new product, likely a remo'
+2026-08-16 00:11:08,252 [INFO] core.evaluator_v2:   [5/30] avg=7.95
+2026-08-16 00:11:08,667 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-16 00:11:17,497 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between professors and researchers discussing their work on speech recognition and '
+2026-08-16 00:11:17,984 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-16 00:11:28,757 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the group discusses a project related to natural language processing and beli'
+2026-08-16 00:11:29,286 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-16 00:11:39,775 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a child and family funding scheme to support families in need, with a focus on impr'
+2026-08-16 00:11:40,197 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-16 00:11:48,385 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where participants discuss various project-related tasks and challenges. Key points'
+2026-08-16 00:11:55,529 [INFO] core.evaluator_v2: [ours] pred='The meeting is a project kick-off for the design of a new remote control. Key points include:\n\n- **Project Goal**: Devel'
+2026-08-16 00:11:55,532 [INFO] core.evaluator_v2:   [10/30] avg=7.06
+2026-08-16 00:11:55,855 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-16 00:12:07,320 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the group discusses various aspects of a speech recognition project. Key poin'
+2026-08-16 00:12:07,819 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-16 00:12:18,394 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a child and family funding scheme to support families in need, with a focus on impr'
+2026-08-16 00:12:25,236 [INFO] core.evaluator_v2: [ours] pred='The meeting of the Children and Young People Committee was held in a virtual format, with a focus on the impact of the p'
+2026-08-16 00:12:34,807 [INFO] core.evaluator_v2: [ours] pred='The document describes a meeting where the team reviews and finalizes the design of a remote control device. Key points '
+2026-08-16 00:12:44,981 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on designing a remote control with key considerations for user interface, material options, and tren'
+2026-08-16 00:12:44,985 [INFO] core.evaluator_v2:   [15/30] avg=7.62
+2026-08-16 00:12:52,406 [INFO] core.evaluator_v2: [ours] pred='The document is a transcript of a meeting between project team members, focusing on the design of a new remote control. '
+2026-08-16 00:12:59,604 [INFO] core.evaluator_v2: [ours] pred='The meeting is a project kick-off for the design of a new remote control. Key points include:\n\n- **Project Goal**: Devel'
+2026-08-16 00:12:59,865 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-16 00:13:11,453 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the group discusses various aspects of a speech recognition project. Key poin'
+2026-08-16 00:13:20,903 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the team discusses the design and development of a new product. Key points in'
+2026-08-16 00:13:21,311 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-16 00:13:33,068 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a child and family funding scheme to support families in need, with a focus on impr'
+2026-08-16 00:13:33,073 [INFO] core.evaluator_v2:   [20/30] avg=8.50
+2026-08-16 00:13:42,036 [INFO] core.evaluator_v2: [ours] pred='The document describes a meeting where team members discuss the design and feasibility of a new product, likely a remote'
+2026-08-16 00:13:42,513 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-16 00:13:53,547 [INFO] core.evaluator_v2: [ours] pred='The document is a transcript of a meeting of the House of Commons, where members debated various issues related to the C'
+2026-08-16 00:13:54,000 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-16 00:14:02,944 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between professors and researchers discussing their work on speech recognition and '
+2026-08-16 00:14:10,577 [INFO] core.evaluator_v2: [ours] pred='The document is a detailed recording of a team meeting where members discuss the development of a remote control device.'
+2026-08-16 00:14:17,492 [INFO] core.evaluator_v2: [ours] pred='The document details a meeting where team members discuss a product prototype. Key points include:\n\n- **Project Overview'
+2026-08-16 00:14:17,496 [INFO] core.evaluator_v2:   [25/30] avg=8.62
+2026-08-16 00:14:24,552 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and features of a new television remote control. Key points include:\n\n- **Design Requir'
+2026-08-16 00:14:32,192 [INFO] core.evaluator_v2: [ours] pred='The document describes a meeting where team members discuss the design and feasibility of a new product, likely a remote'
+2026-08-16 00:14:32,553 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-16 00:14:43,409 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the group discusses a project related to natural language processing and beli'
+2026-08-16 00:14:54,001 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where project team members discuss the design and functionality of a remote control'
+2026-08-16 00:15:01,107 [INFO] core.evaluator_v2: [ours] pred='The meeting is a project kick-off for the design of a new remote control. Key points include:\n\n- **Project Goal**: Devel'
+2026-08-16 00:15:01,123 [INFO] core.evaluator_v2:   [30/30] avg=8.89
+2026-08-16 00:15:01,124 [INFO] __main__:   qmsum: score=8.89, collapse=0.0%
+2026-08-16 00:15:01,134 [INFO] core.results_manager: Results saved to results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_235416.csv
+2026-08-16 00:15:01,141 [INFO] core.results_manager: JSON saved to results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_235416.json
+2026-08-16 00:15:01,141 [INFO] __main__:   [중간 저장 완료] V_only
+2026-08-16 00:15:01,142 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-16 00:15:01,142 [INFO] __main__: Variant: P_only | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0}
+2026-08-16 00:15:01,143 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-16 00:15:01,143 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-08-16 00:15:01,205 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:15:01,257 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:15:01,900 [INFO] core.dataset_loader: Loaded 30 samples from narrativeqa
+2026-08-16 00:15:01,902 [INFO] core.evaluator_v2: [ours] narrativeqa (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:15:02,464 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-16 00:15:05,541 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in the town of New York.'
+2026-08-16 00:15:25,093 [INFO] core.evaluator_v2: [ours] pred='Socrates ultimately decides it is unjust to escape based on the text because Socrates decides it is unjust to escape bas'
+2026-08-16 00:15:25,514 [WARNING] core.model_loader: Input length 37016 > max 16000, truncating...
+2026-08-16 00:15:29,082 [INFO] core.evaluator_v2: [ours] pred='The setting of the story is medieval Germany, with a focus on the town of Nurnburg and the monastery of the White Cross '
+2026-08-16 00:15:29,588 [WARNING] core.model_loader: Input length 37014 > max 16000, truncating...
+2026-08-16 00:15:32,737 [INFO] core.evaluator_v2: [ours] pred='Baron Conrad killed Baron Henry of Roderburg of Trutz-Drachen.'
+2026-08-16 00:15:33,293 [WARNING] core.model_loader: Input length 46744 > max 16000, truncating...
+2026-08-16 00:15:36,403 [INFO] core.evaluator_v2: [ours] pred="The ghost that emerged from a painting at Dana's workplace is Vigo."
+2026-08-16 00:15:36,420 [INFO] core.evaluator_v2:   [5/30] avg=9.45
+2026-08-16 00:15:36,897 [WARNING] core.model_loader: Input length 46746 > max 16000, truncating...
+2026-08-16 00:15:40,132 [INFO] core.evaluator_v2: [ours] pred="The first person that falls under Vigo's spell is Janosz."
+2026-08-16 00:15:40,615 [WARNING] core.model_loader: Input length 64167 > max 16000, truncating...
+2026-08-16 00:15:43,525 [INFO] core.evaluator_v2: [ours] pred="Clifford's profession is a waiter."
+2026-08-16 00:15:46,547 [INFO] core.evaluator_v2: [ours] pred="Mr. and Mrs. Vervelle live in a park at the summit of Ville d'Avray."
+2026-08-16 00:15:48,366 [INFO] core.evaluator_v2: [ours] pred='The Witch threw a coffin into a ditch.'
+2026-08-16 00:15:48,700 [WARNING] core.model_loader: Input length 31340 > max 16000, truncating...
+2026-08-16 00:15:52,068 [INFO] core.evaluator_v2: [ours] pred='Based on the text, Frank Saltram is a writer and intellectual adventurer and pathfinder.'
+2026-08-16 00:15:52,069 [INFO] core.evaluator_v2:   [10/30] avg=10.98
+2026-08-16 00:15:55,406 [INFO] core.evaluator_v2: [ours] pred='Mortimer Trefinnis was once estranged from his siblings due to a family quarrel about money.'
+2026-08-16 00:15:55,780 [WARNING] core.model_loader: Input length 16515 > max 16000, truncating...
+2026-08-16 00:16:00,058 [INFO] core.evaluator_v2: [ours] pred='The unique aspect of the \'future\' article that discussed Beerbohm\'s story is the phonetic spelling of the word "immajnar'
+2026-08-16 00:16:00,575 [WARNING] core.model_loader: Input length 31069 > max 16000, truncating...
+2026-08-16 00:16:03,605 [INFO] core.evaluator_v2: [ours] pred='In the text, death is disguised as a smith.'
+2026-08-16 00:16:04,147 [WARNING] core.model_loader: Input length 31342 > max 16000, truncating...
+2026-08-16 00:16:07,157 [INFO] core.evaluator_v2: [ours] pred="Lady Coxon is Ruth Anvoy's mother."
+2026-08-16 00:16:07,698 [WARNING] core.model_loader: Input length 36325 > max 16000, truncating...
+2026-08-16 00:16:11,844 [INFO] core.evaluator_v2: [ours] pred='Rogers learned his battle knowledge during the war described in the text, where he and other characters fought against t'
+2026-08-16 00:16:11,845 [INFO] core.evaluator_v2:   [15/30] avg=12.82
+2026-08-16 00:16:12,396 [WARNING] core.model_loader: Input length 36331 > max 16000, truncating...
+2026-08-16 00:16:15,520 [INFO] core.evaluator_v2: [ours] pred='Anthony Rogers was working for the Hans in 1927.'
+2026-08-16 00:16:15,934 [WARNING] core.model_loader: Input length 19086 > max 16000, truncating...
+2026-08-16 00:16:19,995 [INFO] core.evaluator_v2: [ours] pred='The boarder who realizes that none of the boarders like each other is the young lady from New York. She realizes this be'
+2026-08-16 00:16:39,007 [INFO] core.evaluator_v2: [ours] pred='Holence Belfast Project Gutenberg Ebstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstbstb'
+2026-08-16 00:16:39,410 [WARNING] core.model_loader: Input length 32917 > max 16000, truncating...
+2026-08-16 00:16:58,551 [INFO] core.evaluator_v2: [ours] pred='The hidden message within the video is the curse, which is broken by showing the video to someone else. The message is t'
+2026-08-16 00:16:59,000 [WARNING] core.model_loader: Input length 37018 > max 16000, truncating...
+2026-08-16 00:17:05,627 [INFO] core.evaluator_v2: [ours] pred='Important themes in the story include:\n\n- **Justice and mercy**: The story deals with the cruelty of a robber baron and '
+2026-08-16 00:17:05,629 [INFO] core.evaluator_v2:   [20/30] avg=10.11
+2026-08-16 00:17:06,059 [WARNING] core.model_loader: Input length 32915 > max 16000, truncating...
+2026-08-16 00:17:09,210 [INFO] core.evaluator_v2: [ours] pred='The teenagers were discussing a videotape that features a shot of a well.'
+2026-08-16 00:17:09,704 [WARNING] core.model_loader: Input length 60372 > max 16000, truncating...
+2026-08-16 00:17:12,613 [INFO] core.evaluator_v2: [ours] pred='Bill worked as a farmer in Chicago.'
+2026-08-16 00:17:31,579 [INFO] core.evaluator_v2: [ours] pred="Two people fainted after seeing Brenda's dead body. One person fainted. Another person fainted. The text describes the f"
+2026-08-16 00:17:32,045 [WARNING] core.model_loader: Input length 37018 > max 16000, truncating...
+2026-08-16 00:17:35,325 [INFO] core.evaluator_v2: [ours] pred='Otto is known for his pure silver hand, which was given him by the Emperor.'
+2026-08-16 00:17:35,728 [WARNING] core.model_loader: Input length 19082 > max 16000, truncating...
+2026-08-16 00:17:38,821 [INFO] core.evaluator_v2: [ours] pred='Leon focuses on observing and analyzing the people and their interactions in the text.'
+2026-08-16 00:17:38,824 [INFO] core.evaluator_v2:   [25/30] avg=11.26
+2026-08-16 00:17:57,276 [INFO] core.evaluator_v2: [ours] pred='The owner of the manor in the story is Monsieur de Balcot. However, based on the text, the owner of the manor in the sto'
+2026-08-16 00:17:57,646 [WARNING] core.model_loader: Input length 32913 > max 16000, truncating...
+2026-08-16 00:18:00,671 [INFO] core.evaluator_v2: [ours] pred="Reiko's job is not mentioned in the text."
+2026-08-16 00:18:03,789 [INFO] core.evaluator_v2: [ours] pred='Holmes observes remains of powder upon the shield in the fireplace.'
+2026-08-16 00:18:21,676 [INFO] core.evaluator_v2: [ours] pred='Socrates compares citizens and the law to a citizen and the law, to a citizen and the law, to a citizen and the law, to '
+2026-08-16 00:18:39,963 [INFO] core.evaluator_v2: [ours] pred='La Grande Breteche is a provincial at Balac, based on the text. It is a house in the text. It is a house in the text. It'
+2026-08-16 00:18:39,965 [INFO] core.evaluator_v2:   [30/30] avg=12.05
+2026-08-16 00:18:39,965 [INFO] __main__:   narrativeqa: score=12.05, collapse=23.3%
+2026-08-16 00:18:39,966 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-08-16 00:18:40,038 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:18:40,070 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:18:40,445 [INFO] core.dataset_loader: Loaded 30 samples from qasper
+2026-08-16 00:18:40,447 [INFO] core.evaluator_v2: [ours] qasper (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:18:42,869 [INFO] core.evaluator_v2: [ours] pred='The results from these proposed strategies are that both strategies successfully pass the bottleneck corresponding to en'
+2026-08-16 00:18:43,875 [INFO] core.evaluator_v2: [ours] pred='The encoder has a character-based encoder-decoder model.'
+2026-08-16 00:18:45,193 [INFO] core.evaluator_v2: [ours] pred='The text does not provide big aug lib speech dataset. Answer concly based on text.'
+2026-08-16 00:18:46,101 [INFO] core.evaluator_v2: [ours] pred='NeuronBlocks include concisely based on the text.'
+2026-08-16 00:18:47,883 [INFO] core.evaluator_v2: [ours] pred='The LSTM models compared with are: 6-layers sMBR model and 9-layers sMBR model.'
+2026-08-16 00:18:47,885 [INFO] core.evaluator_v2:   [5/30] avg=10.43
+2026-08-16 00:18:49,433 [INFO] core.evaluator_v2: [ours] pred='The datasets used for evaluation are CNN Daily Mail and NYT.'
+2026-08-16 00:19:06,409 [INFO] core.evaluator_v2: [ours] pred='The text answers conclylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylylyl'
+2026-08-16 00:19:08,031 [INFO] core.evaluator_v2: [ours] pred='The ancient Chinese dataset comes from the proposed method, which expands the dataset using the proposed method continua'
+2026-08-16 00:19:09,665 [INFO] core.evaluator_v2: [ours] pred='The baselines used for evaluation are: \n\nPointer-generator with coverage loss.'
+2026-08-16 00:19:26,751 [INFO] core.evaluator_v2: [ours] pred='The Twitter dataset is 5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555'
+2026-08-16 00:19:26,752 [INFO] core.evaluator_v2:   [10/30] avg=9.80
+2026-08-16 00:19:28,474 [INFO] core.evaluator_v2: [ours] pred='The text provides concise answers to questions. The answer to the question is: "By how much did they improve?" Answer co'
+2026-08-16 00:19:31,739 [INFO] core.evaluator_v2: [ours] pred='The metrics used to establish that chat bots make more knowledgeable and better at learning and conversation are **Cover'
+2026-08-16 00:19:33,545 [INFO] core.evaluator_v2: [ours] pred='The combination of rewards for reinforcement learning is the harmony of the effectiveness of the analysis of the failure'
+2026-08-16 00:19:35,167 [INFO] core.evaluator_v2: [ours] pred='The attention module is pretrained on MT data.'
+2026-08-16 00:19:52,252 [INFO] core.evaluator_v2: [ours] pred='The text does not provide a concise answer based on the text. The answer is: The text does not provide a concise answer '
+2026-08-16 00:19:52,255 [INFO] core.evaluator_v2:   [15/30] avg=11.73
+2026-08-16 00:20:09,646 [INFO] core.evaluator_v2: [ours] pred='They evaluate on the WSJ (specifically, the WSJ and the WSJ and the WSJ and the WSJ and the WSJ and the WSJ and the WSJ '
+2026-08-16 00:20:11,829 [INFO] core.evaluator_v2: [ours] pred='The previous methods is their model compared to are: CNN, Probase, WordNet, TREC, and the text.'
+2026-08-16 00:20:13,305 [INFO] core.evaluator_v2: [ours] pred='The languages similar to each other are: un-hashed feature representations which causes it to be dependent on the suppor'
+2026-08-16 00:20:14,632 [INFO] core.evaluator_v2: [ours] pred='The 7 Indian languages do they experiment with are: All India Radio news channel for 7 Indian languages.'
+2026-08-16 00:20:16,086 [INFO] core.evaluator_v2: [ours] pred='In addition to testing on rare words and frequent words, they test their method on tasks such as tracking infectious dis'
+2026-08-16 00:20:16,087 [INFO] core.evaluator_v2:   [20/30] avg=12.20
+2026-08-16 00:20:18,436 [INFO] core.evaluator_v2: [ours] pred='The tagging scheme employed is a novel tagging scheme designed to incorporate the constraint that each text in our corpo'
+2026-08-16 00:20:19,806 [INFO] core.evaluator_v2: [ours] pred='The NLP tasks they consider are text and unsupervised clustering assignments.'
+2026-08-16 00:20:21,826 [INFO] core.evaluator_v2: [ours] pred='The NCEL approach is highly effective, as it outperforms state-of-the-art collective methods across five different datas'
+2026-08-16 00:20:23,328 [INFO] core.evaluator_v2: [ours] pred='The methods considered to find examples of biases and unwarranted inferences are manually detecting stereotypes, biases,'
+2026-08-16 00:20:24,542 [INFO] core.evaluator_v2: [ours] pred='The corpus is valued based on the text. The answer is: 59.'
+2026-08-16 00:20:24,543 [INFO] core.evaluator_v2:   [25/30] avg=13.37
+2026-08-16 00:20:26,477 [INFO] core.evaluator_v2: [ours] pred='An individual model consists of a Bayesian model for semantic role induction (SRI) that uses crosslingual latent variabl'
+2026-08-16 00:20:27,728 [INFO] core.evaluator_v2: [ours] pred='The text concisely based on the answer.'
+2026-08-16 00:20:45,686 [INFO] core.evaluator_v2: [ours] pred='The highest MRR score is 5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5.5'
+2026-08-16 00:20:47,043 [INFO] core.evaluator_v2: [ours] pred='The data presented to the subjects to elicit event-related responses is speech imagery EEG data.'
+2026-08-16 00:20:48,355 [INFO] core.evaluator_v2: [ours] pred='The dataset is annotated with simple lexical features and reduced feature sets can produce comparable results to the muc'
+2026-08-16 00:20:48,356 [INFO] core.evaluator_v2:   [30/30] avg=12.91
+2026-08-16 00:20:48,357 [INFO] __main__:   qasper: score=12.91, collapse=16.7%
+2026-08-16 00:20:48,357 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-08-16 00:20:48,423 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:20:48,455 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:20:48,844 [INFO] core.dataset_loader: Loaded 30 samples from multifieldqa_en
+2026-08-16 00:20:48,845 [INFO] core.evaluator_v2: [ours] multifieldqa_en (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:20:50,138 [INFO] core.evaluator_v2: [ours] pred="After he attacks Jacobo at a workers' strike, concently based on the text: \n\nAnswer based on the text."
+2026-08-16 00:20:52,184 [INFO] core.evaluator_v2: [ours] pred='Yes, based on the text. The denoiser can be applied to circuits with non-Clifford noise.'
+2026-08-16 00:20:55,035 [INFO] core.evaluator_v2: [ours] pred='The name of the generative interactive model used in the method is "Dynamic Interactive Model".'
+2026-08-16 00:21:14,048 [INFO] core.evaluator_v2: [ours] pred='The purpose of an ICD (Wolff-Parkinson-White Syndrome) is to treat an ventricular fibrillation (VF or VT). An ICD is a d'
+2026-08-16 00:21:16,167 [INFO] core.evaluator_v2: [ours] pred='The PLMS-PPIC method engages the adaptive multistage structure with a set of NLMS algorithms with different step-sizes.'
+2026-08-16 00:21:16,169 [INFO] core.evaluator_v2:   [5/30] avg=28.81
+2026-08-16 00:21:17,336 [INFO] core.evaluator_v2: [ours] pred='In 2009, Brooksley Born received the Profiles in Courage Award.'
+2026-08-16 00:21:19,772 [INFO] core.evaluator_v2: [ours] pred='A media application determines the context of an event by recognizing and presenting clip of the actual event, summary i'
+2026-08-16 00:21:22,689 [INFO] core.evaluator_v2: [ours] pred='The sticking point in the political showdown over the budget is whether the government will pass a budget that includes '
+2026-08-16 00:21:23,837 [INFO] core.evaluator_v2: [ours] pred='The county seat of McPherson County is Lindsburg.'
+2026-08-16 00:21:25,877 [INFO] core.evaluator_v2: [ours] pred='The new Iraqi Body Count organization provides cover for the war and allows supporters of the illegal war to point to it'
+2026-08-16 00:21:25,878 [INFO] core.evaluator_v2:   [10/30] avg=36.48
+2026-08-16 00:21:35,023 [INFO] core.evaluator_v2: [ours] pred='Accounting for path preference consistently improves performance compared with the goal-only baseline. Results also show'
+2026-08-16 00:21:53,319 [INFO] core.evaluator_v2: [ours] pred='It is important for the sides of the fuselage to be sloped (tumbled home) because this shape allows the fuselage to main'
+2026-08-16 00:21:56,097 [INFO] core.evaluator_v2: [ours] pred='The court in In re Ferguson concluded that the transformation prong of the Bilski test was not applicable.'
+2026-08-16 00:21:57,561 [INFO] core.evaluator_v2: [ours] pred='KSTP-FM 102.1 has been on the air for 3 years.'
+2026-08-16 00:22:00,278 [INFO] core.evaluator_v2: [ours] pred='Thalassemias are classified based on the polypeptide chains of globin, with the two major categories being α- and β-thal'
+2026-08-16 00:22:00,280 [INFO] core.evaluator_v2:   [15/30] avg=27.14
+2026-08-16 00:22:02,232 [INFO] core.evaluator_v2: [ours] pred='The transition probability of the environment affects the learning rate in the static agent by reducing the learning rat'
+2026-08-16 00:22:04,752 [INFO] core.evaluator_v2: [ours] pred='The experimental techniques used to study the quantum dot structures in this research are low-temperature STM/STS measur'
+2026-08-16 00:22:06,045 [INFO] core.evaluator_v2: [ours] pred='Margway was born in Australia and where did she die?  \n\nAnswer concly based on text.'
+2026-08-16 00:22:08,787 [INFO] core.evaluator_v2: [ours] pred='The two ground states observed for indeno[1,2-a]fluorene on NaCl surfaces are π-diradical open-shell and closed-shell.'
+2026-08-16 00:22:12,103 [INFO] core.evaluator_v2: [ours] pred='The scoring engine generates a stream of content for the channel by receiving a request including the channel category a'
+2026-08-16 00:22:12,124 [INFO] core.evaluator_v2:   [20/30] avg=27.42
+2026-08-16 00:22:17,309 [INFO] core.evaluator_v2: [ours] pred='The stability conditions for a solution of $-\\Delta u = f(u)$ are given by the text as follows:\n\nA solution $u$ of $-\\De'
+2026-08-16 00:22:18,332 [INFO] core.evaluator_v2: [ours] pred='McPherson County is located in Kansas.'
+2026-08-16 00:22:19,996 [INFO] core.evaluator_v2: [ours] pred='The main focus of the research paper is the study of the nuclear transition in 3 dim. effective theory.'
+2026-08-16 00:22:20,265 [WARNING] core.model_loader: Input length 16496 > max 16000, truncating...
+2026-08-16 00:22:23,469 [INFO] core.evaluator_v2: [ours] pred='The security parameter for the AES-256 block cipher is 172.'
+2026-08-16 00:22:24,539 [INFO] core.evaluator_v2: [ours] pred='The most active fan club is based on the text.'
+2026-08-16 00:22:24,540 [INFO] core.evaluator_v2:   [25/30] avg=29.22
+2026-08-16 00:22:25,445 [INFO] core.evaluator_v2: [ours] pred='Margway wrote 1 novel based on the text.'
+2026-08-16 00:22:27,519 [INFO] core.evaluator_v2: [ours] pred='The significance of the interlayer Berry connection polarizability is that it provides the geometric origin for the in-p'
+2026-08-16 00:22:30,440 [INFO] core.evaluator_v2: [ours] pred='Wearable and ambient sensors now capable of estimating physical activity levels and physiological outcomes of older adul'
+2026-08-16 00:22:32,674 [INFO] core.evaluator_v2: [ours] pred='One of Kam W. Leong\'s publications in "Journal of Controlled Release" is "Inducing hepatic differentiation of human mese'
+2026-08-16 00:22:52,171 [INFO] core.evaluator_v2: [ours] pred='The symptoms of vitamin K deficiency according to the text are: blood clot, undercarcarcarcarcarcarcarcarcarcarcarcarcar'
+2026-08-16 00:22:52,173 [INFO] core.evaluator_v2:   [30/30] avg=27.63
+2026-08-16 00:22:52,174 [INFO] __main__:   multifieldqa_en: score=27.63, collapse=10.0%
+2026-08-16 00:22:52,174 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-16 00:22:52,236 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:22:52,274 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:22:52,709 [INFO] core.dataset_loader: Loaded 30 samples from hotpotqa
+2026-08-16 00:22:52,719 [INFO] core.evaluator_v2: [ours] hotpotqa (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:22:53,126 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-16 00:22:56,494 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell is a powerful baritone who won the Tony Award for Best Actor in 2000.'
+2026-08-16 00:22:56,894 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-16 00:23:00,288 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up ribosomes.'
+2026-08-16 00:23:03,068 [INFO] core.evaluator_v2: [ours] pred='Sarah Price and Rob Schneider are both filmmakers.'
+2026-08-16 00:23:21,872 [INFO] core.evaluator_v2: [ours] pred='Arnrichrichrichrichritchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitchitch'
+2026-08-16 00:23:22,218 [WARNING] core.model_loader: Input length 16934 > max 16000, truncating...
+2026-08-16 00:23:25,308 [INFO] core.evaluator_v2: [ours] pred='Alfred A. Marcus worked as a consultant with Xcel Energy.'
+2026-08-16 00:23:25,320 [INFO] core.evaluator_v2:   [5/30] avg=16.04
+2026-08-16 00:23:26,490 [INFO] core.evaluator_v2: [ours] pred='Pleiospiloc is a flowering plant, based on the text.'
+2026-08-16 00:23:28,410 [INFO] core.evaluator_v2: [ours] pred='Steel Venom is farther north than Wicked Twister.'
+2026-08-16 00:23:28,723 [WARNING] core.model_loader: Input length 16637 > max 16000, truncating...
+2026-08-16 00:23:32,045 [INFO] core.evaluator_v2: [ours] pred='Baghdad was also known as the "breadbasket" during the Abbasid Caliphate.'
+2026-08-16 00:23:35,414 [INFO] core.evaluator_v2: [ours] pred='The FIBT World Championships 1960 took place in Cortina, which is located in the Veneto region of Italy.'
+2026-08-16 00:23:38,590 [INFO] core.evaluator_v2: [ours] pred='Mike Leach currently coaches at Washington State.'
+2026-08-16 00:23:38,592 [INFO] core.evaluator_v2:   [10/30] avg=20.28
+2026-08-16 00:23:57,378 [INFO] core.evaluator_v2: [ours] pred='The Friday night programming block that included the collective series "Whatever Happened to... Robot Jones?" is "SNM"."'
+2026-08-16 00:23:59,795 [INFO] core.evaluator_v2: [ours] pred='The text does not provide information about the lowest vocal range in Cosmos. However, based on the text, the answer is:'
+2026-08-16 00:24:00,080 [WARNING] core.model_loader: Input length 16792 > max 16000, truncating...
+2026-08-16 00:24:03,869 [INFO] core.evaluator_v2: [ours] pred='Fredric Rieders testified against Michael Bodkin Adams, who killed as many as 60 patients and received three consecutive'
+2026-08-16 00:24:07,489 [INFO] core.evaluator_v2: [ours] pred='Robbie Tucker plays in the series "It\'s Always Sunny in Philadelphia," which follows a group of friends who run an Irish'
+2026-08-16 00:24:07,865 [WARNING] core.model_loader: Input length 16875 > max 16000, truncating...
+2026-08-16 00:24:11,289 [INFO] core.evaluator_v2: [ours] pred='The National Firearms Agreement was in response to the Port Arthur massacre that killed 20,000 people.'
+2026-08-16 00:24:11,290 [INFO] core.evaluator_v2:   [15/30] avg=17.60
+2026-08-16 00:24:13,728 [INFO] core.evaluator_v2: [ours] pred='The first name of the author who wrote the play in which Rønnaug Alten made her stage debut at Den Nationale Scene in 19'
+2026-08-16 00:24:16,840 [INFO] core.evaluator_v2: [ours] pred='The River Thames is common to Waterloo Bridge and the London Eye.'
+2026-08-16 00:24:19,846 [INFO] core.evaluator_v2: [ours] pred='Darindam Bhatcharjee.'
+2026-08-16 00:24:20,305 [WARNING] core.model_loader: Input length 16802 > max 16000, truncating...
+2026-08-16 00:24:23,519 [INFO] core.evaluator_v2: [ours] pred='The host of the American survival skills reality show, The Island, is originally from Britain.'
+2026-08-16 00:24:26,436 [INFO] core.evaluator_v2: [ours] pred='Pope John XI gave the title "patricia" of Rome to the mother of Alberic II of Spoleto, who is described in the text as b'
+2026-08-16 00:24:26,437 [INFO] core.evaluator_v2:   [20/30] avg=15.04
+2026-08-16 00:24:28,412 [INFO] core.evaluator_v2: [ours] pred='Mimosa is a shrub, Cryptocoryne is a shrub.'
+2026-08-16 00:24:32,672 [INFO] core.evaluator_v2: [ours] pred='The actor who plays Sean Tully is John Partridge. In the text, it is mentioned that John Partridge defeated in a dancing'
+2026-08-16 00:24:33,061 [WARNING] core.model_loader: Input length 17206 > max 16000, truncating...
+2026-08-16 00:24:36,508 [INFO] core.evaluator_v2: [ours] pred='Mark Donohue performed in the 1971 Canadian Grand Prix was born in 1937.'
+2026-08-16 00:24:39,883 [INFO] core.evaluator_v2: [ours] pred='Yameen and Activision have in common the form of play known as Intellivision Rocks.'
+2026-08-16 00:24:42,059 [INFO] core.evaluator_v2: [ours] pred='The Atherton Bridge spans a river that is 250 feet (76 m) long.'
+2026-08-16 00:24:42,060 [INFO] core.evaluator_v2:   [25/30] avg=14.17
+2026-08-16 00:24:45,578 [INFO] core.evaluator_v2: [ours] pred='3 Arts Entertainment had at least one coalition with OSN First Comedy HD, with its 13-episode, 2015 season of a Tina Fey'
+2026-08-16 00:24:49,319 [INFO] core.evaluator_v2: [ours] pred='High School Confidential followed twelve high school teenagers from Blue Valley Northwest High School in Overland Park, '
+2026-08-16 00:24:52,966 [INFO] core.evaluator_v2: [ours] pred='The 53rd National Hockey League All-Star Game took place at the St. Louis Arena, which was completed in 1970.'
+2026-08-16 00:24:56,116 [INFO] core.evaluator_v2: [ours] pred='The Toronto International Film Festival premiered a movie produced by BBC Films in 2012.'
+2026-08-16 00:24:56,545 [WARNING] core.model_loader: Input length 16382 > max 16000, truncating...
+2026-08-16 00:24:59,896 [INFO] core.evaluator_v2: [ours] pred='The arena where the Lewiston Maineiacs played their home games can seat 1,200 people.'
+2026-08-16 00:24:59,897 [INFO] core.evaluator_v2:   [30/30] avg=11.81
+2026-08-16 00:24:59,898 [INFO] __main__:   hotpotqa: score=11.81, collapse=6.7%
+2026-08-16 00:24:59,899 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-08-16 00:24:59,992 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:25:00,033 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:25:00,456 [INFO] core.dataset_loader: Loaded 30 samples from 2wikimqa
+2026-08-16 00:25:00,458 [INFO] core.evaluator_v2: [ours] 2wikimqa (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:25:02,153 [INFO] core.evaluator_v2: [ours] pred='Elmer Bäck was born in Finland.'
+2026-08-16 00:25:19,357 [INFO] core.evaluator_v2: [ours] pred='"Jugband Blues" came out first. According to the text, "Jugband Blues" was released in 1961. "Joel The Lump Of Coal" was'
+2026-08-16 00:25:37,658 [INFO] core.evaluator_v2: [ours] pred='No Trees In The Street. J. Lee Thompson died later. True To The Navy is directed by J. Lee Thompson, who died later. No '
+2026-08-16 00:25:39,604 [INFO] core.evaluator_v2: [ours] pred="The place of death of Agnes of Hohenstaufen's husband is Germany, based on the text."
+2026-08-16 00:25:41,997 [INFO] core.evaluator_v2: [ours] pred='Lyudmyla Olyanovska was born later, based on the text.'
+2026-08-16 00:25:41,999 [INFO] core.evaluator_v2:   [5/30] avg=8.76
+2026-08-16 00:25:44,642 [INFO] core.evaluator_v2: [ours] pred="Helmichs's father-in-law is Viscount Ogawa Mataji."
+2026-08-16 00:26:02,026 [INFO] core.evaluator_v2: [ours] pred="The Drover'S Sweetheart came out earlier. According to the text, The Drover'S Sweetheart was released on 6 September 200"
+2026-08-16 00:26:04,176 [INFO] core.evaluator_v2: [ours] pred="Princess Charlotte Of Saxe-Meiningen's husband is nationality based on the text."
+2026-08-16 00:26:04,547 [WARNING] core.model_loader: Input length 16424 > max 16000, truncating...
+2026-08-16 00:26:07,636 [INFO] core.evaluator_v2: [ours] pred='Yes, both movies are from the same country, which is Britain.'
+2026-08-16 00:26:09,274 [INFO] core.evaluator_v2: [ours] pred='Dr. Socrates was released first.'
+2026-08-16 00:26:09,276 [INFO] core.evaluator_v2:   [10/30] avg=13.58
+2026-08-16 00:26:12,103 [INFO] core.evaluator_v2: [ours] pred="The place of death of Randi Monsen's father is not mentioned in the text. However, based on the text, the father of Rand"
+2026-08-16 00:26:13,841 [INFO] core.evaluator_v2: [ours] pred="The place of birth of Abdulaziz Nasser Al Shamsi's wife is Ajman."
+2026-08-16 00:26:14,985 [INFO] core.evaluator_v2: [ours] pred='The director of film Nallavan Vazhvan is P. Neak.'
+2026-08-16 00:26:17,112 [INFO] core.evaluator_v2: [ours] pred='The director of *Monster on the Campus* died first.'
+2026-08-16 00:26:34,815 [INFO] core.evaluator_v2: [ours] pred='The paternal grandfather of Bruno II von Berg is Count Adolf III of Berg. Based on the text, the answer is concise and b'
+2026-08-16 00:26:34,820 [INFO] core.evaluator_v2:   [15/30] avg=13.58
+2026-08-16 00:26:36,158 [INFO] core.evaluator_v2: [ours] pred='Prince Of Arcadia was released earlier.'
+2026-08-16 00:26:38,154 [INFO] core.evaluator_v2: [ours] pred='Johnny Ekström was born later.'
+2026-08-16 00:26:39,778 [INFO] core.evaluator_v2: [ours] pred='The place of birth of the director of film "Cloning Around" is London. based on the text.'
+2026-08-16 00:26:57,343 [INFO] core.evaluator_v2: [ours] pred='Solemn Promise was directed by Srđan Karanović, who was born first. Tarzan The Magnificent was directed by Robert Day, w'
+2026-08-16 00:27:00,836 [INFO] core.evaluator_v2: [ours] pred='The spouse of the director of film "Streets Of Blood" is Euclid Tsakalotos.'
+2026-08-16 00:27:00,837 [INFO] core.evaluator_v2:   [20/30] avg=16.44
+2026-08-16 00:27:18,310 [INFO] core.evaluator_v2: [ours] pred='Contragolpe was directed by Roy Ward Baker, who died in 2010. Tiger In The Smoke was directed by Roy Ward Baker, who die'
+2026-08-16 00:27:18,575 [WARNING] core.model_loader: Input length 16690 > max 16000, truncating...
+2026-08-16 00:27:23,122 [INFO] core.evaluator_v2: [ours] pred='The composer of "Gretchen am Spinnrade" is Franz Schubert. According to the text, Franz Schubert died in California. How'
+2026-08-16 00:27:23,514 [WARNING] core.model_loader: Input length 17007 > max 16000, truncating...
+2026-08-16 00:27:26,726 [INFO] core.evaluator_v2: [ours] pred="Gisela of Hungary's father-in-law is Henry II, Holy Roman Emperor."
+2026-08-16 00:27:30,156 [INFO] core.evaluator_v2: [ours] pred="Grand Duchess Elena Vladimirovna of Russia's father died in Yekaterinburg."
+2026-08-16 00:27:32,296 [INFO] core.evaluator_v2: [ours] pred='From Corleone To Brooklyn is directed by Umberto Lenzi, who is born later than director of film Durango Valley Raiders.'
+2026-08-16 00:27:32,297 [INFO] core.evaluator_v2:   [25/30] avg=14.51
+2026-08-16 00:27:35,163 [INFO] core.evaluator_v2: [ours] pred="The place of birth of Sextus Barbour's father is Belfast."
+2026-08-16 00:27:36,747 [INFO] core.evaluator_v2: [ours] pred='The text answers concly based on the text. \n\nAnswer: Based on the text, Altuğ Çelikbilek is younger.'
+2026-08-16 00:27:39,794 [INFO] core.evaluator_v2: [ours] pred='The maternal grandfather of Marie Louise, Duchess of Parma is Emperor Franz II, who was the paternal grandfather of Mari'
+2026-08-16 00:27:41,455 [INFO] core.evaluator_v2: [ours] pred='Una Prostituta Al Servizio Del Pubblico E In Regola Con Le Leggi dello stato came out first.'
+2026-08-16 00:27:42,823 [INFO] core.evaluator_v2: [ours] pred='Antoine Casavant was born first, based on the text.'
+2026-08-16 00:27:42,824 [INFO] core.evaluator_v2:   [30/30] avg=17.55
+2026-08-16 00:27:42,825 [INFO] __main__:   2wikimqa: score=17.55, collapse=20.0%
+2026-08-16 00:27:42,826 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-16 00:27:42,890 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:27:42,947 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:27:44,022 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-16 00:27:44,025 [INFO] core.evaluator_v2: [ours] gov_report (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:28:02,140 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has recognized the need to think more strategically about its use of rotators and '
+2026-08-16 00:28:08,464 [INFO] core.evaluator_v2: [ours] pred='The federal government has opportunities to address high-risk areas on improving the management of IT acquisitions and o'
+2026-08-16 00:28:08,866 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-16 00:28:11,629 [INFO] core.evaluator_v2: [ours] pred='**Summary:**'
+2026-08-16 00:28:12,169 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-16 00:28:31,111 [INFO] core.evaluator_v2: [ours] pred='The **Clean Water Infrastructure** program, established under the **Clean Water Act**, is a federal initiative aimed at '
+2026-08-16 00:28:50,257 [INFO] core.evaluator_v2: [ours] pred='**Summary of the GAO Report on the Department of Homeland Security (DHS) TRIO Components:**\n\nThe Department of Homeland '
+2026-08-16 00:28:50,298 [INFO] core.evaluator_v2:   [5/30] avg=13.50
+2026-08-16 00:29:09,889 [INFO] core.evaluator_v2: [ours] pred='**Summary:**  \n\nThe federal government faces significant challenges in securing its information systems. Key challenges '
+2026-08-16 00:29:21,786 [INFO] core.evaluator_v2: [ours] pred='The document provides a detailed overview of federal small business contracting programs. Key points include:\n\n- **Bipar'
+2026-08-16 00:29:22,150 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-16 00:29:30,655 [INFO] core.evaluator_v2: [ours] pred='The Department of Defense operates under a framework of authority, which includes provisions for research, development, '
+2026-08-16 00:29:39,920 [INFO] core.evaluator_v2: [ours] pred='The payment system in the United States is evolving, with a growing preference for electronic payment methods. Cash has '
+2026-08-16 00:29:40,448 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-16 00:29:59,525 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has implemented policies and processes to better reflect key portfolio managem'
+2026-08-16 00:29:59,565 [INFO] core.evaluator_v2:   [10/30] avg=15.52
+2026-08-16 00:30:18,030 [INFO] core.evaluator_v2: [ours] pred='This article provides a'
+2026-08-16 00:30:35,944 [INFO] core.evaluator_v2: [ours] pred='The United States maintains a significant federal landholding, with approximately 150 million acres in federal ownership'
+2026-08-16 00:30:53,608 [INFO] core.evaluator_v2: [ours] pred='The Black Lung Disability Trust Fund (Trust Fund) has faced significant financial challenges. The Trust Fund, which is r'
+2026-08-16 00:30:56,553 [INFO] core.evaluator_v2: [ours] pred='The summary of the report is as follows:\n\nThe summary of the report is as follows:'
+2026-08-16 00:31:14,352 [INFO] core.evaluator_v2: [ours] pred="**Summary of the Office of Surface Mining Reclamation and Enforcement's (OSMRE) Oversight Activities:**\n\nThe Office of S"
+2026-08-16 00:31:14,384 [INFO] core.evaluator_v2:   [15/30] avg=13.72
+2026-08-16 00:31:15,345 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows:'
+2026-08-16 00:31:16,042 [INFO] core.evaluator_v2: [ours] pred='The summary is:'
+2026-08-16 00:31:16,781 [INFO] core.evaluator_v2: [ours] pred='The summary is:'
+2026-08-16 00:31:18,193 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows:\n\nThe summary is as follows:'
+2026-08-16 00:31:36,082 [INFO] core.evaluator_v2: [ours] pred='The **Black Lung Disability Disability Disability Disability Disability Disability Disability Disability Disability Disa'
+2026-08-16 00:31:36,115 [INFO] core.evaluator_v2:   [20/30] avg=10.49
+2026-08-16 00:31:55,153 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Document:**\n\nThe document, authored by the U.S. Department, provides a detailed analysis of the technol'
+2026-08-16 00:32:12,494 [INFO] core.evaluator_v2: [ours] pred="**Summary of the Federal Government's Internet Privacy Review:**\n\nThe federal government's Internet privacy review highl"
+2026-08-16 00:32:31,206 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Document:**\n\nThe document provides a comprehensive overview of the U.S. retirement system, focusing on '
+2026-08-16 00:32:42,482 [INFO] core.evaluator_v2: [ours] pred="The Government Accountability Institution (GAO) has issued a summary of the U.S. Government's report on the effectivenes"
+2026-08-16 00:33:00,100 [INFO] core.evaluator_v2: [ours] pred='The GAO report outlines the financial status and challenges of the U.S. Postal Service Retiree Health Benefits Fund (RHB'
+2026-08-16 00:33:00,141 [INFO] core.evaluator_v2:   [25/30] avg=11.66
+2026-08-16 00:33:18,708 [INFO] core.evaluator_v2: [ours] pred='The 116th Congress is focusing on key issues related to housing, including:\n\n- **Housing Market Recovery**: The housing '
+2026-08-16 00:33:37,005 [INFO] core.evaluator_v2: [ours] pred='The **National Popular Vote (NPV)****** is a **novel effort** to achieve the **goal of direct election of the President '
+2026-08-16 00:33:56,158 [INFO] core.evaluator_v2: [ours] pred='The Energy and Water Development Act focuses on the following key points:\n\n- The Act is a comprehensive framework that a'
+2026-08-16 00:34:06,380 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided document is as follows:\n\n**Summary of the Document:**\n\nThe document outlines the approaches '
+2026-08-16 00:34:13,950 [INFO] core.evaluator_v2: [ours] pred='The Department of Veterans Affairs (VA) has made significant progress in increasing burial access for veterans. However,'
+2026-08-16 00:34:13,962 [INFO] core.evaluator_v2:   [30/30] avg=12.28
+2026-08-16 00:34:13,964 [INFO] __main__:   gov_report: score=12.28, collapse=56.7%
+2026-08-16 00:34:13,964 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-16 00:34:14,042 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-16 00:34:14,074 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-16 00:34:14,559 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-16 00:34:14,561 [INFO] core.evaluator_v2: [ours] qmsum (30샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-16 00:34:32,432 [INFO] core.evaluator_v2: [ours] pred='The summary of the meeting is as follows:\n\n**Summary:**\n\nThis is the summary of the meeting, which is as follows:\n\n**Sum'
+2026-08-16 00:34:50,220 [INFO] core.evaluator_v2: [ours] pred='The meeting involved team members discussing the design of a new product. The key points of the meeting are as follows:\n'
+2026-08-16 00:35:09,540 [INFO] core.evaluator_v2: [ours] pred='The meeting involved discussions about a project. Here is a summary of the key points discussed in the meeting:\n\n**Summa'
+2026-08-16 00:35:13,219 [INFO] core.evaluator_v2: [ours] pred='The summary of the document is as follows:\n\nThis document is a recording of a meeting, which is a summary of the events '
+2026-08-16 00:35:15,311 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows:'
+2026-08-16 00:35:15,319 [INFO] core.evaluator_v2:   [5/30] avg=3.30
+2026-08-16 00:35:15,624 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-16 00:35:23,218 [INFO] core.evaluator_v2: [ours] pred='The summary of the meeting is as follows:\n\n**Summary:**\n\nThe meeting involved a team of researchers and graduate student'
+2026-08-16 00:35:23,685 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-16 00:35:42,529 [INFO] core.evaluator_v2: [ours] pred='The meeting involved discussions about a project focused on belief networks. Key points include:\n\n- The project involves'
+2026-08-16 00:35:43,096 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-16 00:35:49,332 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a childcare offer. The offer is designed to support child development, with a focus'
+2026-08-16 00:35:49,780 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-16 00:36:08,672 [INFO] core.evaluator_v2: [ours] pred='The document is a summary of a meeting. The meeting is a summary of a meeting. The meeting is a summary of a meeting. Th'
+2026-08-16 00:36:26,311 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows: \n\nThe summary is as follows: \n\nThe summary is as follows: \n\nThe summary is as follows: \n\nThe '
+2026-08-16 00:36:26,322 [INFO] core.evaluator_v2:   [10/30] avg=3.18
+2026-08-16 00:36:26,578 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-16 00:36:29,627 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows:\n\nThis is a summary of a meeting.'
+2026-08-16 00:36:30,091 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-16 00:36:36,329 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a childcare offer. The offer is designed to support child development, with a focus'
+2026-08-16 00:36:39,063 [INFO] core.evaluator_v2: [ours] pred='The summary of the document is as follows:'
+2026-08-16 00:36:45,587 [INFO] core.evaluator_v2: [ours] pred='The team developed a remote control shaped like a banana. The remote control features a flipping open mechanism, a vibra'
+2026-08-16 00:37:04,308 [INFO] core.evaluator_v2: [ours] pred='The team has concluded a meeting where they have discussed the following key points:\n\n**Summary:**\n\nThe team has conclud'
+2026-08-16 00:37:04,327 [INFO] core.evaluator_v2:   [15/30] avg=3.70
+2026-08-16 00:37:08,803 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThis text describes a meeting between a Project Manager, a User Interfa'
+2026-08-16 00:37:26,139 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows: \n\nThe summary is as follows: \n\nThe summary is as follows: \n\nThe summary is as follows: \n\nThe '
+2026-08-16 00:37:26,407 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-16 00:37:29,468 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows:\n\nThis is a summary of a meeting.'
+2026-08-16 00:37:34,490 [INFO] core.evaluator_v2: [ours] pred='The document details a project involving a team. The project focused on designing a remote, but faced challenges due to '
+2026-08-16 00:37:34,953 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-16 00:37:41,186 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a childcare offer. The offer is designed to support child development, with a focus'
+2026-08-16 00:37:41,188 [INFO] core.evaluator_v2:   [20/30] avg=4.75
+2026-08-16 00:37:44,954 [INFO] core.evaluator_v2: [ours] pred='The meeting involved a team discussing a project. Key points include: the team is strong, they found new ideas, and the '
+2026-08-16 00:37:45,325 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-16 00:37:49,000 [INFO] core.evaluator_v2: [ours] pred='The House of Commons held a committee session, with members and virtual participants. The committee is now adjourned unt'
+2026-08-16 00:37:49,381 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-16 00:37:57,034 [INFO] core.evaluator_v2: [ours] pred='The summary of the meeting is as follows:\n\n**Summary:**\n\nThe meeting involved a team of researchers and graduate student'
+2026-08-16 00:38:00,761 [INFO] core.evaluator_v2: [ours] pred='The summary of the document is as follows:\n\nThis document is a recording of a meeting, which is a summary of the events '
+2026-08-16 00:38:18,355 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows: \n\nThe summary is as follows: \n\nThe summary is as follows: \n\nThe summary is as follows: \n\nThe '
+2026-08-16 00:38:18,360 [INFO] core.evaluator_v2:   [25/30] avg=4.94
+2026-08-16 00:38:36,049 [INFO] core.evaluator_v2: [ours] pred='The team has decided to focus on the following project: a remote control device with the following features. The team ha'
+2026-08-16 00:38:39,736 [INFO] core.evaluator_v2: [ours] pred='The meeting involved a team discussing a project. Key points include: the team is strong, they found new ideas, and the '
+2026-08-16 00:38:40,084 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-16 00:38:59,010 [INFO] core.evaluator_v2: [ours] pred='The meeting involved discussions about a project focused on belief networks. Key points include:\n\n- The project involves'
+2026-08-16 00:39:04,088 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on discussing the remote control. Key topics included the remote control's design, functionality, an"
+2026-08-16 00:39:21,925 [INFO] core.evaluator_v2: [ours] pred='The summary is as follows: \n\nThe summary is as follows: \n\nThe summary is as follows: \n\nThe summary is as follows: \n\nThe '
+2026-08-16 00:39:21,931 [INFO] core.evaluator_v2:   [30/30] avg=4.56
+2026-08-16 00:39:21,932 [INFO] __main__:   qmsum: score=4.56, collapse=46.7%
+2026-08-16 00:39:21,940 [INFO] core.results_manager: Results saved to results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_235416.csv
+2026-08-16 00:39:21,951 [INFO] core.results_manager: JSON saved to results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_235416.json
+2026-08-16 00:39:21,952 [INFO] __main__:   [중간 저장 완료] P_only
+2026-08-16 00:39:21,953 [INFO] __main__: 
+============================================================
+2026-08-16 00:39:21,954 [INFO] __main__: 완료. 기존 TABLE VII(a) 6개 변형과 비교:
+2026-08-16 00:39:21,954 [INFO] __main__:   참고 - 기존: 3signal_NVP=13.67, 4signal_NVPS=12.50, wo_N=16.52,
+2026-08-16 00:39:21,955 [INFO] __main__:                 wo_V=12.77, wo_P=16.11, N_only=12.39
+2026-08-16 00:39:21,956 [INFO] __main__:   V_only: score=15.15, collapse=5.2%
+2026-08-16 00:39:21,956 [INFO] __main__:   P_only: score=14.11, collapse=25.7%
+2026-08-16 00:39:21,957 [INFO] __main__: CSV: results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_235416.csv
+2026-08-16 00:39:21,957 [INFO] __main__: ============================================================

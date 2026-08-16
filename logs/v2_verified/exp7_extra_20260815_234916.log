@@ -1,0 +1,85 @@
+2026-08-15 23:49:16,682 [INFO] __main__: ============================================================
+2026-08-15 23:49:16,683 [INFO] __main__: TABLE VII 보완: V_only, P_only 절제 실험
+2026-08-15 23:49:16,683 [INFO] __main__:   Model: qwen3-4b | Sink: 0 | Budget: 20%
+2026-08-15 23:49:16,683 [INFO] __main__:   Tasks: ['qmsum', 'gov_report'] | Samples: 3
+2026-08-15 23:49:16,684 [INFO] __main__: ============================================================
+2026-08-15 23:49:16,684 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-15 23:49:16,828 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:49:16,837 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-15 23:49:16,904 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:49:16,936 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-15 23:49:17,000 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-15 23:49:17,088 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-15 23:49:18,027 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-15 23:49:18,029 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-15 23:49:18,074 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:49:18,080 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-15 23:49:55,397 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:49:55,405 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-15 23:49:55,501 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-15 23:49:55,544 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-15 23:49:55,570 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-15 23:49:55,571 [INFO] __main__: Variant: V_only | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0}
+2026-08-15 23:49:55,571 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-15 23:49:55,572 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-15 23:49:55,609 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:49:55,661 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:49:55,871 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:49:55,986 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:49:56,023 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:49:56,249 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-15 23:49:56,564 [INFO] core.dataset_loader: Loaded 3 samples from qmsum
+2026-08-15 23:49:56,573 [INFO] core.evaluator_v2: [ours] qmsum (3샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-15 23:50:05,440 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the team discusses the design of a new television remote control. Key points '
+2026-08-15 23:50:12,596 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the team discusses the design and features of a television remote control. Ke'
+2026-08-15 23:50:22,438 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where the group discusses their project on natural language processing, specificall'
+2026-08-15 23:50:22,440 [INFO] __main__:   qmsum: score=7.90, collapse=0.0%
+2026-08-15 23:50:22,441 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-15 23:50:22,500 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:50:22,531 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:50:22,880 [INFO] core.dataset_loader: Loaded 3 samples from gov_report
+2026-08-15 23:50:22,882 [INFO] core.evaluator_v2: [ours] gov_report (3샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0})
+2026-08-15 23:50:39,922 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) utilizes two primary programs for rotating personnel: the **Interagency Personnel '
+2026-08-15 23:50:48,499 [INFO] core.evaluator_v2: [ours] pred='The document highlights the challenges and successes in managing federal IT systems, emphasizing the need for effective '
+2026-08-15 23:50:48,895 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-15 23:51:05,072 [INFO] core.evaluator_v2: [ours] pred="**Summary of the Document:**\n\nThe document provides a comprehensive overview of the United States' strategic response to"
+2026-08-15 23:51:05,104 [INFO] __main__:   gov_report: score=14.64, collapse=66.7%
+2026-08-15 23:51:05,134 [INFO] core.results_manager: Results saved to results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_234916.csv
+2026-08-15 23:51:05,142 [INFO] core.results_manager: JSON saved to results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_234916.json
+2026-08-15 23:51:05,142 [INFO] __main__:   [중간 저장 완료] V_only
+2026-08-15 23:51:05,143 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-15 23:51:05,143 [INFO] __main__: Variant: P_only | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0}
+2026-08-15 23:51:05,144 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-15 23:51:05,144 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-15 23:51:05,210 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:51:05,319 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:51:05,669 [INFO] core.dataset_loader: Loaded 3 samples from qmsum
+2026-08-15 23:51:05,670 [INFO] core.evaluator_v2: [ours] qmsum (3샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-15 23:51:22,318 [INFO] core.evaluator_v2: [ours] pred='The summary of the meeting is as follows:\n\n**Summary:**\n\nThis is the summary of the meeting, which is as follows:\n\n**Sum'
+2026-08-15 23:51:39,225 [INFO] core.evaluator_v2: [ours] pred='The meeting involved team members discussing the design of a new product. The key points of the meeting are as follows:\n'
+2026-08-15 23:51:57,571 [INFO] core.evaluator_v2: [ours] pred='The meeting involved discussions about a project. Here is a summary of the key points discussed in the meeting:\n\n**Summa'
+2026-08-15 23:51:57,576 [INFO] __main__:   qmsum: score=1.72, collapse=100.0%
+2026-08-15 23:51:57,576 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-15 23:51:57,639 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-15 23:51:57,687 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-15 23:51:58,020 [INFO] core.dataset_loader: Loaded 3 samples from gov_report
+2026-08-15 23:51:58,029 [INFO] core.evaluator_v2: [ours] gov_report (3샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0})
+2026-08-15 23:52:14,794 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has recognized the need to think more strategically about its use of rotators and '
+2026-08-15 23:52:20,891 [INFO] core.evaluator_v2: [ours] pred='The federal government has opportunities to address high-risk areas on improving the management of IT acquisitions and o'
+2026-08-15 23:52:21,311 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-15 23:52:24,017 [INFO] core.evaluator_v2: [ours] pred='**Summary:**'
+2026-08-15 23:52:24,024 [INFO] __main__:   gov_report: score=12.15, collapse=33.3%
+2026-08-15 23:52:24,039 [INFO] core.results_manager: Results saved to results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_234916.csv
+2026-08-15 23:52:24,054 [INFO] core.results_manager: JSON saved to results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_234916.json
+2026-08-15 23:52:24,054 [INFO] __main__:   [중간 저장 완료] P_only
+2026-08-15 23:52:24,055 [INFO] __main__: 
+============================================================
+2026-08-15 23:52:24,055 [INFO] __main__: 완료. 기존 TABLE VII(a) 6개 변형과 비교:
+2026-08-15 23:52:24,056 [INFO] __main__:   참고 - 기존: 3signal_NVP=13.67, 4signal_NVPS=12.50, wo_N=16.52,
+2026-08-15 23:52:24,056 [INFO] __main__:                 wo_V=12.77, wo_P=16.11, N_only=12.39
+2026-08-15 23:52:24,056 [INFO] __main__:   V_only: score=11.27, collapse=33.3%
+2026-08-15 23:52:24,057 [INFO] __main__:   P_only: score=6.93, collapse=66.7%
+2026-08-15 23:52:24,057 [INFO] __main__: CSV: results/v2_verified/exp7_extra_signals_qwen3-4b_20260815_234916.csv
+2026-08-15 23:52:24,057 [INFO] __main__: ============================================================
