@@ -362,7 +362,7 @@ class OursHybridCache(BaseHookCache):
     def __init__(self, budget_ratio, num_layers, model_config,
                  alpha=0.40, beta=0.20, gamma=0.20, delta=0.20, lambda_pos=1.0,
                  use_attention=True, use_entropy=True, use_semantic=False, use_position=True,
-                 sink_size=0):
+                 sink_size=0, invert_norm=False):
         super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size)
         total = alpha + beta + gamma + delta
         self.alpha = alpha / total
@@ -374,6 +374,7 @@ class OursHybridCache(BaseHookCache):
         self.use_entropy = use_entropy
         self.use_semantic = use_semantic
         self.use_position = use_position
+        self.invert_norm = invert_norm
 
     def apply_compression_all_layers(self):
         """균일 budget으로 모든 레이어 압축."""
@@ -400,6 +401,8 @@ class OursHybridCache(BaseHookCache):
         # A: key norm (attention 근사)
         if self.use_attention:
             a_score = _key_importance(ref_k)
+            if self.invert_norm:
+                a_score = -a_score
             rng = a_score.max() - a_score.min()
             if rng > 1e-9:
                 a_score = (a_score - a_score.min()) / rng
