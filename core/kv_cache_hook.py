@@ -89,12 +89,14 @@ class BaseHookCache(DynamicCache):
     일괄 압축. Transformers 5.10.2: layers[i].keys / layers[i].values 구조.
     """
 
-    def __init__(self, budget_ratio: float, num_layers: int, model_config: Dict, sink_size: int = 0):
+    def __init__(self, budget_ratio: float, num_layers: int, model_config: Dict, sink_size: int = 0,
+                 invert_norm: bool = False):
         super().__init__()
         self.budget_ratio = budget_ratio
         self.num_layers = num_layers
         self.model_config = model_config
         self.sink_size = sink_size  # 0이면 기존 baseline과 완전히 동일한 동작
+        self.invert_norm = invert_norm  # True면 low-key-norm 토큰 우선 (Devoto et al. 방향)
         # prefill key tensor 저장 (importance 계산용)
         self._prefill_keys: List[Optional[torch.Tensor]] = [None] * num_layers
         self._prefill_done = False
@@ -176,6 +178,8 @@ class H2OCache(BaseHookCache):
         pk = self._prefill_keys[layer_idx]
         ref_k = pk.to(device) if (pk is not None and pk.shape[2] == seq_len) else key_states
         score = _key_importance(ref_k).to(device)
+        if self.invert_norm:
+            score = -score
 
         window = min(16, seq_len // 4, budget // 4) if budget > 4 else 0
         window = max(window, 0)
@@ -189,8 +193,10 @@ class H2OCache(BaseHookCache):
 # ─────────────────────────────────────────────────────────────
 
 class SnapKVCache(BaseHookCache):
-    def __init__(self, budget_ratio, num_layers, model_config, window_size=32, kernel_size=5, sink_size=0):
-        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size)
+    def __init__(self, budget_ratio, num_layers, model_config, window_size=32, kernel_size=5, sink_size=0,
+                 invert_norm=False):
+        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size,
+                         invert_norm=invert_norm)
         self.window_size = window_size
         self.kernel_size = kernel_size
         self._snap_indices: List[Optional[torch.Tensor]] = [None] * num_layers
@@ -202,6 +208,8 @@ class SnapKVCache(BaseHookCache):
             pk = self._prefill_keys[i]
             if pk is not None:
                 score = _key_importance(pk)  # [seq_len]
+                if self.invert_norm:
+                    score = -score
                 self._snap_indices[i] = self._compute_snap_indices(score, seq_len, budget)
 
     def _compute_snap_indices(self, score, seq_len, budget):
@@ -236,8 +244,10 @@ class PyramidKVCache(BaseHookCache):
     레이어별 선형 감소 budget (초기 레이어 많이, 후기 레이어 적게).
     key norm으로 중요 토큰 선택.
     """
-    def __init__(self, budget_ratio, num_layers, model_config, min_ratio=0.1, sink_size=0):
-        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size)
+    def __init__(self, budget_ratio, num_layers, model_config, min_ratio=0.1, sink_size=0,
+                 invert_norm=False):
+        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size,
+                         invert_norm=invert_norm)
         self.min_ratio = min_ratio
 
     def _get_layer_budget(self, layer_idx, seq_len):
@@ -275,6 +285,8 @@ class PyramidKVCache(BaseHookCache):
         device = key_states.device
         ref_k = pk.to(device) if (pk is not None and pk.shape[2] == seq_len) else key_states
         score = _key_importance(ref_k).to(device)
+        if self.invert_norm:
+            score = -score
         w = min(32, seq_len // 4)
         idx = _select_with_sink(score, seq_len, b, w, self.sink_size, device)
 
@@ -335,6 +347,8 @@ class AdaKVCache(BaseHookCache):
         pk = self._prefill_keys[layer_idx]
         score = _key_importance(pk.to(device) if pk is not None and pk.shape[2] == seq_len
                                 else key_states)
+        if self.invert_norm:
+            score = -score
         w = min(32, seq_len // 4, budget // 2)
         w = max(w, 0)
         indices = _select_with_sink(score, seq_len, budget, w, self.sink_size, device)
@@ -363,7 +377,8 @@ class OursHybridCache(BaseHookCache):
                  alpha=0.40, beta=0.20, gamma=0.20, delta=0.20, lambda_pos=1.0,
                  use_attention=True, use_entropy=True, use_semantic=False, use_position=True,
                  sink_size=0, invert_norm=False):
-        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size)
+        super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size,
+                         invert_norm=invert_norm)
         total = alpha + beta + gamma + delta
         self.alpha = alpha / total
         self.beta = beta / total
@@ -374,7 +389,6 @@ class OursHybridCache(BaseHookCache):
         self.use_entropy = use_entropy
         self.use_semantic = use_semantic
         self.use_position = use_position
-        self.invert_norm = invert_norm
 
     def apply_compression_all_layers(self):
         """균일 budget으로 모든 레이어 압축."""
