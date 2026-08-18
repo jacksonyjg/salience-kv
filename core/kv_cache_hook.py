@@ -146,8 +146,9 @@ class FullKVCache(DynamicCache):
 # ─────────────────────────────────────────────────────────────
 
 class StreamingLLMCache(BaseHookCache):
-    def __init__(self, budget_ratio, num_layers, model_config, sink_size=4):
-        super().__init__(budget_ratio, num_layers, model_config)
+    def __init__(self, budget_ratio, num_layers, model_config, sink_size=4,
+                 invert_norm=False):
+        super().__init__(budget_ratio, num_layers, model_config, invert_norm=invert_norm)
         self.sink_size = sink_size
 
     def _compress(self, key_states, value_states, layer_idx, budget):
