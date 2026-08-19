@@ -1,0 +1,242 @@
+{
+  "experiment": "exp7_signal_ablation",
+  "model": "qwen3-4b",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qmsum"
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "results": [
+    {
+      "method": "3signal_NVP",
+      "task_scores": {
+        "qmsum": 9.251519756838906
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.251519756838906,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1175.745064863409,
+      "avg_throughput": 29.95295254654995,
+      "avg_memory_reduction_pct": 80.00365942912906,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 8.928571428571429,
+            "prediction": "The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed the requirements for the remote, emphasizing originality and user-friendliness. They explored ideas for the remote's functionality, aiming to simplify the user experience by reducing the number of buttons and incorporating intuitive features. The team also considered aspects like battery life and design aesthetics. The meeting concluded with a plan to continue working on the project, with specific instructions for each member to follow in their workspace. The key takeaway was to create a remote control that is both innovative and easy to use, fitting within the broader context of television technology.",
+            "word_rep": 0.0,
+            "char_rep": 0.1452282157676349,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.574468085106384,
+            "prediction": "The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: The team is considering the layout of buttons, including power, volume, and channel controls. There is debate over the placement and labeling of these buttons.\n  \n- **Design Features**: The remote is being designed to be user-friendly, with a focus on the target demographic (younger users). There is discussion about the shape, material, and ergonomics of the remote.\n\n- **Functionality**: The team is exploring advanced features such as a scroll wheel, menu navigation, and possibly a joystick for better control.\n\n- **Cost and Budget**: The team is considering the cost of components, including the use of a scroll wheel or joystick, and ensuring the design fits within the budget.\n\n- **Final Design**: The team agrees on a design that is innovative, user-friendly, and fits within the budget. They plan to finalize the design and prepare for the next meeting, which will focus on detailed design.",
+            "word_rep": 0.037267080745341574,
+            "char_rep": 0.24852071005917165,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "4signal_NVPS",
+      "task_scores": {
+        "qmsum": 5.5651641539756636
+      },
+      "task_collapse_rates": {
+        "qmsum": 50.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "1/2"
+      },
+      "avg_score": 5.5651641539756636,
+      "avg_collapse_rate_pct": 50.0,
+      "avg_collapse_frac": "1/2",
+      "avg_ttft_ms": 1012.803443608665,
+      "avg_throughput": 30.976829959690654,
+      "avg_memory_reduction_pct": 80.00365942912906,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 2.191780821917808,
+            "prediction": "The meeting introduced a project to design a new remote control. The team discussed the remote's originality, functionality, and user learning. They aimed to create a remote that is both original and user-friendly, with a learning curve. The project also considered the remote's battery life and technical specifications. The team agreed to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is original, user-friendly, and technically sound, with a learning curve. The meeting concluded with instructions for the team to work on the project. The team was to create a remote that is",
+            "word_rep": 0.8243559718969555,
+            "char_rep": 0.8631498470948012,
+            "collapsed": true
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.938547486033519,
+            "prediction": "The document is a meeting log where team members discuss the design of a remote control device. Key points include:\n\n- **User Interface**: Design decisions for buttons, controls, and screen layout.\n- **Trends**: The team is focusing on a modern, user-friendly design that appeals to younger audiences.\n- **Challenges**: The team is considering the cost, functionality, and usability of the remote control.\n- **Design Ideas**: The team is exploring a remote control with a joystick, advanced features, and a compact, hand-shaped design.\n- **Budget Constraints**: The team is considering the cost of components and the budget for the project.\n- **Final Design**: The team is planning to create a remote control with a compact, hand-shaped design, advanced features, and a user-friendly interface.\n\nThe meeting log includes discussions on design, functionality, budget, and trends for the remote control device. The team is planning to create a modern, user-friendly remote control that appeals to younger audiences.",
+            "word_rep": 0.15131578947368418,
+            "char_rep": 0.3934588701684837,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_N",
+      "task_scores": {
+        "qmsum": 8.576344086021507
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 8.576344086021507,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 975.0386643779586,
+      "avg_throughput": 29.943905333922267,
+      "avg_memory_reduction_pct": 80.00365942912906,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 6.4,
+            "prediction": "The summary of the provided text is as follows:\n\nA design team meets to discuss the development of a new television remote control. They aim to create a device that is both original and user-friendly, while also considering the functionality and design of the remote. The team discusses the features that the remote should have, such as a sleek and modern design, a simplified interface with minimal buttons, and a focus on the most commonly used functions. They also consider the battery life and the learning curve for new users. The meeting ends with the team receiving specific instructions for their next steps, and they agree to wrap up the session. The team will meet again in thirty minutes to continue their work on the remote control design.",
+            "word_rep": 0.0,
+            "char_rep": 0.16733601070950466,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.752688172043012,
+            "prediction": "The document is a meeting transcript where team members discuss the design and functionality of a remote control device. Key points include:\n\n- **Functionality and Design**: The remote control needs to be user-friendly, with a focus on new features and ease of use.\n- **Cost Considerations**: The team is evaluating the cost of components, such as the battery and the display screen.\n- **Design and User Experience**: The remote control should be in a shape that is easy to use, with a focus on selling it to the target market.\n- **Final Design and Presentation**: The team agrees on the design, with buttons on the next page. The design needs to be ready for the next meeting, which will be a detailed design session.\n\nThe meeting concludes with the team agreeing on the design and preparing for the next meeting, which will focus on detailed design. The meeting ends with the team thanking each other and preparing for the next meeting.",
+            "word_rep": 0.08176100628930816,
+            "char_rep": 0.3126338329764454,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_V",
+      "task_scores": {
+        "qmsum": 7.4650461933698935
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 7.4650461933698935,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1004.2940483255803,
+      "avg_throughput": 28.756147328294894,
+      "avg_memory_reduction_pct": 80.00365942912906,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 6.837606837606837,
+            "prediction": "The summary of the provided text is as follows:\n\nThis is a meeting introduction where the team discusses the design of a new remote control. The meeting starts with an introduction, followed by a discussion on the design of the remote control. The team discusses the design of the remote control, aiming for it to be original, user-friendly, and innovative. They also discuss the features of the remote control, such as the number of buttons, the battery life, and the learning curve for new users. The team also discusses the marketing strategy for the remote control, aiming to make it stand out from the competition. The meeting ends with the team wrapping up and going back to their workspaces to continue the design process.",
+            "word_rep": 0.0901639344262295,
+            "char_rep": 0.30482758620689654,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.092485549132949,
+            "prediction": "The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- **Design Features**: The remote control has a hand-shaped, soft plastic body with a rubber grip, and a curved, hand-shaped design.\n- **User Interface**: The remote includes buttons for channel selection, volume, and other functions. The design aims to be user-friendly and modern.\n- **Cost Considerations**: The team is discussing the costs of materials and components, with a focus on keeping the design within budget.\n- **Trends and User Preferences**: The team is considering trends in consumer electronics, aiming to create a remote control that appeals to younger users.\n- **Next Steps**: The team has a meeting scheduled for the detailed design phase, where all aspects of the remote control must be ready.\n\nThe meeting concludes with a call to action for the detailed design phase.",
+            "word_rep": 0.020979020979020935,
+            "char_rep": 0.25027685492801777,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_P",
+      "task_scores": {
+        "qmsum": 7.738095238095237
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 7.738095238095237,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1003.4431244546499,
+      "avg_throughput": 30.208227756759513,
+      "avg_memory_reduction_pct": 80.00365942912906,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 7.142857142857142,
+            "prediction": "The document describes a design project meeting where the team discusses creating a new remote control for a TV. Key points include:\n\n- The meeting's purpose is to introduce the project, clarify roles, and begin collaborative design work.\n- The remote control should be innovative, user-friendly, and visually appealing.\n- The team is divided into roles: User Interface, Industrial Designer, and Project Manager.\n- The project involves three phases: initial planning, design development, and final presentation.\n- The team will use the whiteboard for brainstorming and idea sharing.\n- The remote control should incorporate modern technology and be intuitive for users.\n- The meeting ends with a plan to continue the project and present their ideas.",
+            "word_rep": 0.03508771929824561,
+            "char_rep": 0.19892473118279574,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.333333333333332,
+            "prediction": "The document is a meeting transcript between team members discussing the design of a remote control. Key points include:\n\n- **User Interface**: Discussion on button placement, color schemes, and visual design. Some elements, like the volume indicator, are deemed unclear or poorly designed.\n- **Industrial Designer**: Proposes a new, user-friendly design with a focus on simplicity, ease of use, and aesthetics. The design includes a scroll wheel for navigation and a trigger-like power button.\n- **Marketing**: Emphasizes the importance of trends and user preferences, suggesting a design that stands out and appeals to younger audiences.\n- **Budget and Feasibility**: The team considers cost and technical feasibility, with some members expressing concerns about the complexity of the proposed design.\n- **Final Design**: The team agrees on a design that balances functionality, aesthetics, and budget, with the industrial designer responsible for creating the final prototype.\n\nOverall, the meeting focuses on refining the remote control's design to meet user needs, market trends, and budget constraints.",
+            "word_rep": 0.006249999999999978,
+            "char_rep": 0.18659420289855078,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "N_only",
+      "task_scores": {
+        "qmsum": 9.82727814175104
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.82727814175104,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 969.4254672645493,
+      "avg_throughput": 30.187190320376796,
+      "avg_memory_reduction_pct": 80.00365942912906,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 8.695652173913043,
+            "prediction": "The document details a meeting where team members introduce themselves and discuss a design project. The project involves creating a new remote control for a television, focusing on making it innovative, user-friendly, and visually appealing. The meeting includes an introduction to the project, team roles, and a collaborative activity using a whiteboard. Key points include the project's goals, team members' introductions, and initial brainstorming about the remote control's features and design. The meeting concludes with a plan for the project and a reminder to return to the whiteboard for further collaboration.",
+            "word_rep": 0.0,
+            "char_rep": 0.22601626016260168,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.95890410958904,
+            "prediction": "The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- **User Interface**: The team talks about the remote's buttons, layout, and color scheme. They mention the need for clarity and user-friendliness, and discuss potential design elements like a V-shaped button for volume control.\n- **User Experience**: The team discusses the remote's ergonomics, including the shape and size. They consider a more intuitive design that is easier to use, such as a trigger-like button for volume control.\n- **Marketing and Design**: The team considers the remote's design in terms of marketing, including the use of colors and shapes that appeal to the target audience. They discuss the need for a unique design that stands out from competitors.\n- **Budget and Costs**: The team discusses the costs of the remote, including the need to keep the price competitive. They consider the use of materials that are cost-effective and durable.\n- **Final Design**: The team finalizes the design of the remote, including the need for a unique shape and layout that is both functional and appealing to the target audience.\n\nThe meeting concludes with the team agreeing on the next steps for the remote control design.",
+            "word_rep": 0.08955223880597019,
+            "char_rep": 0.35891286970423664,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ],
+  "completed_variants": 6,
+  "total_variants": 6
+}

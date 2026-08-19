@@ -1,0 +1,189 @@
+2026-08-19 12:31:33,454 [INFO] __main__: ============================================================
+2026-08-19 12:31:33,455 [INFO] __main__: Table7: Signal Ablation (TABLE VII)
+2026-08-19 12:31:33,455 [INFO] __main__:   Model: qwen3-4b | Budget: 20% | sink_size=0 고정
+2026-08-19 12:31:33,456 [INFO] __main__:   Tasks: ['qmsum', 'gov_report'] | Samples: 2
+2026-08-19 12:31:33,456 [INFO] __main__:   Variants: 6개
+2026-08-19 12:31:33,457 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-19 12:31:33,458 [INFO] __main__: ============================================================
+2026-08-19 12:31:33,458 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-19 12:31:33,583 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:31:33,591 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-19 12:31:33,683 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:31:33,688 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-19 12:31:33,796 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-19 12:31:33,889 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-19 12:31:35,002 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-19 12:31:35,024 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-19 12:31:35,064 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:31:35,071 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-19 12:31:39,522 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:31:39,528 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-19 12:31:39,636 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-19 12:31:39,668 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-19 12:31:39,680 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:31:39,681 [INFO] __main__: Variant: 3signal_NVP | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:31:39,683 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:31:39,684 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:31:39,685 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:31:39,730 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:31:39,765 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:31:39,966 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:31:39,997 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:31:40,083 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:31:40,127 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-19 12:31:40,502 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:31:40,522 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:31:46,290 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-19 12:31:53,780 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-19 12:31:53,783 [INFO] __main__:   → score=9.25, collapse=0/2 (0.0%)
+2026-08-19 12:31:53,784 [INFO] __main__: 
+  Task: gov_report
+2026-08-19 12:31:53,784 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 12:31:53,845 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:31:53,876 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:31:54,295 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 12:31:54,299 [INFO] core.evaluator_v2: [ours] gov_report (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:32:13,302 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-19 12:32:24,485 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-19 12:32:24,514 [INFO] __main__:   → score=14.08, collapse=1/2 (50.0%)
+2026-08-19 12:32:24,531 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.csv
+2026-08-19 12:32:24,543 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.json
+2026-08-19 12:32:24,544 [INFO] __main__:   [중간 저장 완료] 1/6 설정
+2026-08-19 12:32:24,545 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:32:24,546 [INFO] __main__: Variant: 4signal_NVPS | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': True, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:32:24,546 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:32:24,548 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:32:24,548 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:32:24,610 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:32:24,654 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:32:25,083 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:32:25,084 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': True, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:32:43,230 [INFO] core.evaluator_v2: [ours] pred="The meeting introduced a project to design a new remote control. The team discussed the remote's originality, functional"
+2026-08-19 12:32:50,993 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting log where team members discuss the design of a remote control device. Key points include:\n\n- *'
+2026-08-19 12:32:50,996 [INFO] __main__:   → score=5.57, collapse=1/2 (50.0%)
+2026-08-19 12:32:50,996 [INFO] __main__: 
+  Task: gov_report
+2026-08-19 12:32:50,997 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 12:32:51,092 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:32:51,123 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:32:51,466 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 12:32:51,467 [INFO] core.evaluator_v2: [ours] gov_report (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': True, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:33:09,449 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs to manage its workforce: the Independent Rotator (IPA) and the V'
+2026-08-19 12:33:21,637 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and opportunities in managing federal IT projects. Key points include:\n\n- **High Co'
+2026-08-19 12:33:21,667 [INFO] __main__:   → score=14.93, collapse=2/2 (100.0%)
+2026-08-19 12:33:21,675 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.csv
+2026-08-19 12:33:21,697 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.json
+2026-08-19 12:33:21,698 [INFO] __main__:   [중간 저장 완료] 2/6 설정
+2026-08-19 12:33:21,698 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:33:21,699 [INFO] __main__: Variant: wo_N | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:33:21,699 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:33:21,699 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:33:21,700 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:33:21,787 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:33:21,820 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:33:22,163 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:33:22,164 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:33:27,594 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nA design team meets to discuss the development of a new television remo'
+2026-08-19 12:33:34,934 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where team members discuss the design and functionality of a remote control device.'
+2026-08-19 12:33:34,937 [INFO] __main__:   → score=8.58, collapse=0/2 (0.0%)
+2026-08-19 12:33:34,938 [INFO] __main__: 
+  Task: gov_report
+2026-08-19 12:33:34,939 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 12:33:35,012 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:33:35,051 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:33:35,384 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 12:33:35,385 [INFO] core.evaluator_v2: [ours] gov_report (2샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:33:46,959 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) has implemented several strategies to manage its rotator programs, which are desig'
+2026-08-19 12:33:58,613 [INFO] core.evaluator_v2: [ours] pred='The federal government has made significant strides in addressing high-risk areas related to the management of IT acquis'
+2026-08-19 12:33:58,655 [INFO] __main__:   → score=19.62, collapse=0/2 (0.0%)
+2026-08-19 12:33:58,666 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.csv
+2026-08-19 12:33:58,677 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.json
+2026-08-19 12:33:58,678 [INFO] __main__:   [중간 저장 완료] 3/6 설정
+2026-08-19 12:33:58,678 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:33:58,679 [INFO] __main__: Variant: wo_V | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:33:58,679 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:33:58,680 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:33:58,680 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:33:58,784 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:33:58,817 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:33:59,239 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:33:59,240 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:34:05,674 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThis is a meeting introduction where the team discusses the design of a'
+2026-08-19 12:34:13,158 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-19 12:34:13,160 [INFO] __main__:   → score=7.47, collapse=0/2 (0.0%)
+2026-08-19 12:34:13,161 [INFO] __main__: 
+  Task: gov_report
+2026-08-19 12:34:13,162 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 12:34:13,242 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:34:13,274 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:34:13,595 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 12:34:13,596 [INFO] core.evaluator_v2: [ours] gov_report (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:34:31,701 [INFO] core.evaluator_v2: [ours] pred="The GAO report outlines the structure and operations of the National Science Foundation's (NSF) programs that bring in e"
+2026-08-19 12:34:49,232 [INFO] core.evaluator_v2: [ours] pred='The document highlights the challenges and opportunities in improving the management of federal information technology ('
+2026-08-19 12:34:49,287 [INFO] __main__:   → score=15.39, collapse=2/2 (100.0%)
+2026-08-19 12:34:49,299 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.csv
+2026-08-19 12:34:49,338 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.json
+2026-08-19 12:34:49,339 [INFO] __main__:   [중간 저장 완료] 4/6 설정
+2026-08-19 12:34:49,339 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:34:49,340 [INFO] __main__: Variant: wo_P | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:34:49,340 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:34:49,340 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:34:49,341 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:34:49,418 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:34:49,461 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:34:49,807 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:34:49,829 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:34:55,678 [INFO] core.evaluator_v2: [ours] pred='The document describes a design project meeting where the team discusses creating a new remote control for a TV. Key poi'
+2026-08-19 12:35:04,142 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between team members discussing the design of a remote control. Key points include:'
+2026-08-19 12:35:04,160 [INFO] __main__:   → score=7.74, collapse=0/2 (0.0%)
+2026-08-19 12:35:04,161 [INFO] __main__: 
+  Task: gov_report
+2026-08-19 12:35:04,162 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 12:35:04,224 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:35:04,263 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:35:04,593 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 12:35:04,595 [INFO] core.evaluator_v2: [ours] gov_report (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:35:12,824 [INFO] core.evaluator_v2: [ours] pred="The document outlines the NSF's use of two programs—IPA (Individuals in Professional Positions) and VSEE (Visiting Scien"
+2026-08-19 12:35:19,800 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts related to IT management in the U.S. federal government. Despite a $96 '
+2026-08-19 12:35:19,816 [INFO] __main__:   → score=11.00, collapse=0/2 (0.0%)
+2026-08-19 12:35:19,850 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.csv
+2026-08-19 12:35:19,863 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.json
+2026-08-19 12:35:19,864 [INFO] __main__:   [중간 저장 완료] 5/6 설정
+2026-08-19 12:35:19,864 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:35:19,864 [INFO] __main__: Variant: N_only | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': False, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:35:19,865 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:35:19,865 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:35:19,866 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:35:19,924 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:35:19,959 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:35:20,241 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:35:20,242 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': False, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:35:25,289 [INFO] core.evaluator_v2: [ours] pred='The document details a meeting where team members introduce themselves and discuss a design project. The project involve'
+2026-08-19 12:35:35,273 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-19 12:35:35,277 [INFO] __main__:   → score=9.83, collapse=0/2 (0.0%)
+2026-08-19 12:35:35,278 [INFO] __main__: 
+  Task: gov_report
+2026-08-19 12:35:35,278 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 12:35:35,339 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:35:35,381 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:35:35,697 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 12:35:35,699 [INFO] core.evaluator_v2: [ours] gov_report (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': False, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:35:45,306 [INFO] core.evaluator_v2: [ours] pred='The document details the two main programs through which the National Science Foundation (NSF) recruits rotating personn'
+2026-08-19 12:35:51,438 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and inefficiencies in federal IT spending and management, despite a $96 billion bud'
+2026-08-19 12:35:51,453 [INFO] __main__:   → score=10.59, collapse=1/2 (50.0%)
+2026-08-19 12:35:51,463 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.csv
+2026-08-19 12:35:51,472 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_123133.json
+2026-08-19 12:35:51,473 [INFO] __main__:   [중간 저장 완료] 6/6 설정
+2026-08-19 12:35:51,474 [INFO] __main__: Table VII (Signal Ablation) completed!

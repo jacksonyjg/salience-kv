@@ -1,0 +1,77 @@
+2026-08-19 11:46:20,530 [INFO] __main__:   Key-norm direction: CORRECTED (low-norm 우선)
+2026-08-19 11:46:20,530 [INFO] __main__:   Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-19 11:46:20,532 [INFO] __main__: Experiment 1: Main Results
+2026-08-19 11:46:20,533 [INFO] __main__:   Model: qwen3-4b
+2026-08-19 11:46:20,533 [INFO] __main__:   Mode: cross
+2026-08-19 11:46:20,534 [INFO] __main__:   Budget: 20%
+2026-08-19 11:46:20,534 [INFO] __main__:   Tasks: ['qmsum']
+2026-08-19 11:46:20,535 [INFO] __main__:   Methods: [('fullkv', 'FullKV', {'invert_norm': True}), ('adakv', 'AdaKV-adapted', {'invert_norm': True}), ('ours', 'SalienceKV_Sink4', {'sink_size': 4, 'invert_norm': True})]
+2026-08-19 11:46:20,536 [INFO] __main__:   Samples/task: 2
+2026-08-19 11:46:20,536 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-08-19 11:46:20,537 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-19 11:46:20,685 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:46:20,695 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-19 11:46:20,800 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:46:20,809 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-19 11:46:20,931 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-19 11:46:21,026 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-19 11:46:22,173 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-19 11:46:22,175 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-19 11:46:22,214 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:46:22,236 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-19 11:46:58,440 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:46:58,449 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-19 11:46:58,533 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-19 11:46:58,562 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-19 11:46:58,575 [INFO] __main__: 사전 데이터 로딩 중...
+2026-08-19 11:46:58,576 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 11:46:58,617 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:46:58,658 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:46:58,874 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:46:58,905 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:46:58,967 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:46:59,053 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-19 11:46:59,580 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 11:46:59,581 [INFO] __main__:   ✓ qmsum: 2샘플 로드 완료
+2026-08-19 11:46:59,583 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-08-19 11:46:59,583 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 11:46:59,584 [INFO] __main__: Method: FULLKV | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-19 11:46:59,584 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 11:46:59,585 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 11:46:59,586 [INFO] core.evaluator_v2: [fullkv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-19 11:47:06,357 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-08-19 11:47:14,865 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript between a project manager, industrial designer, user interface designer, and market'
+2026-08-19 11:47:14,870 [INFO] __main__:   → score=8.89, collapse=0/2 (0.0%), mem_red=0.0%, ttft=658.9ms
+2026-08-19 11:47:14,879 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_cross_20260819_114620.csv
+2026-08-19 11:47:14,890 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_cross_20260819_114620.json
+2026-08-19 11:47:14,891 [INFO] __main__:   [중간 저장 완료] 1/3 설정
+2026-08-19 11:47:14,892 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 11:47:14,893 [INFO] __main__: Method: ADAKV-ADAPTED | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-19 11:47:14,893 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 11:47:14,893 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 11:47:14,894 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-19 11:47:19,792 [INFO] core.evaluator_v2: [adakv] pred='The document details a meeting where team members introduce themselves and discuss a design project. The project involve'
+2026-08-19 11:47:28,792 [INFO] core.evaluator_v2: [adakv] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-19 11:47:28,796 [INFO] __main__:   → score=9.83, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1022.8ms
+2026-08-19 11:47:28,828 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_cross_20260819_114620.csv
+2026-08-19 11:47:28,837 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_cross_20260819_114620.json
+2026-08-19 11:47:28,838 [INFO] __main__:   [중간 저장 완료] 2/3 설정
+2026-08-19 11:47:28,839 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 11:47:28,839 [INFO] __main__: Method: SALIENCEKV_SINK4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-19 11:47:28,840 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 11:47:28,841 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 11:47:28,841 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-19 11:47:36,514 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a'
+2026-08-19 11:47:44,530 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interfa'
+2026-08-19 11:47:44,533 [INFO] __main__:   → score=9.09, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1032.6ms
+2026-08-19 11:47:44,548 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_cross_20260819_114620.csv
+2026-08-19 11:47:44,573 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_cross_20260819_114620.json
+2026-08-19 11:47:44,574 [INFO] __main__:   [중간 저장 완료] 3/3 설정
+2026-08-19 11:47:44,575 [INFO] __main__: Experiment 1 completed!

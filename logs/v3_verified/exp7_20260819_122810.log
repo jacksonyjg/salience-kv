@@ -1,0 +1,130 @@
+2026-08-19 12:28:10,939 [INFO] __main__: ============================================================
+2026-08-19 12:28:10,940 [INFO] __main__: Table7: Signal Ablation (TABLE VII)
+2026-08-19 12:28:10,941 [INFO] __main__:   Model: qwen3-4b | Budget: 20% | sink_size=0 고정
+2026-08-19 12:28:10,943 [INFO] __main__:   Tasks: ['qmsum'] | Samples: 2
+2026-08-19 12:28:10,944 [INFO] __main__:   Variants: 6개
+2026-08-19 12:28:10,946 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-19 12:28:10,947 [INFO] __main__: ============================================================
+2026-08-19 12:28:10,948 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-19 12:28:11,102 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-08-19 12:28:11,178 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:28:11,187 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-19 12:28:11,314 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:28:11,331 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-19 12:28:11,423 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-19 12:28:11,510 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-19 12:28:13,072 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-19 12:28:13,075 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-19 12:28:13,129 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:28:13,139 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-19 12:28:47,858 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:28:47,867 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-19 12:28:48,047 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-19 12:28:48,083 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-19 12:28:48,098 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:28:48,099 [INFO] __main__: Variant: 3signal_NVP | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:28:48,100 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:28:48,101 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:28:48,121 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:28:48,169 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:28:48,201 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:28:48,473 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:28:48,507 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:28:48,564 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:28:48,606 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-19 12:28:49,105 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:28:49,122 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:28:55,152 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-19 12:29:02,962 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-19 12:29:02,965 [INFO] __main__:   → score=9.25, collapse=0/2 (0.0%)
+2026-08-19 12:29:02,976 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.csv
+2026-08-19 12:29:02,986 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.json
+2026-08-19 12:29:02,987 [INFO] __main__:   [중간 저장 완료] 1/6 설정
+2026-08-19 12:29:02,988 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:29:02,990 [INFO] __main__: Variant: 4signal_NVPS | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': True, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:29:02,991 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:29:02,993 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:29:02,994 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:29:03,056 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:29:03,088 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:29:03,448 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:29:03,450 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': True, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:29:20,603 [INFO] core.evaluator_v2: [ours] pred="The meeting introduced a project to design a new remote control. The team discussed the remote's originality, functional"
+2026-08-19 12:29:28,569 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting log where team members discuss the design of a remote control device. Key points include:\n\n- *'
+2026-08-19 12:29:28,572 [INFO] __main__:   → score=5.57, collapse=1/2 (50.0%)
+2026-08-19 12:29:28,593 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.csv
+2026-08-19 12:29:28,621 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.json
+2026-08-19 12:29:28,623 [INFO] __main__:   [중간 저장 완료] 2/6 설정
+2026-08-19 12:29:28,625 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:29:28,626 [INFO] __main__: Variant: wo_N | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:29:28,626 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:29:28,627 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:29:28,628 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:29:28,695 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:29:28,729 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:29:28,971 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:29:28,972 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:29:34,898 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nA design team meets to discuss the development of a new television remo'
+2026-08-19 12:29:42,336 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where team members discuss the design and functionality of a remote control device.'
+2026-08-19 12:29:42,339 [INFO] __main__:   → score=8.58, collapse=0/2 (0.0%)
+2026-08-19 12:29:42,353 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.csv
+2026-08-19 12:29:42,361 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.json
+2026-08-19 12:29:42,361 [INFO] __main__:   [중간 저장 완료] 3/6 설정
+2026-08-19 12:29:42,362 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:29:42,363 [INFO] __main__: Variant: wo_V | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:29:42,363 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:29:42,363 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:29:42,364 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:29:43,504 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:29:43,559 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:29:43,899 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:29:43,900 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:29:50,080 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThis is a meeting introduction where the team discusses the design of a'
+2026-08-19 12:29:57,394 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-19 12:29:57,398 [INFO] __main__:   → score=7.47, collapse=0/2 (0.0%)
+2026-08-19 12:29:57,428 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.csv
+2026-08-19 12:29:57,441 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.json
+2026-08-19 12:29:57,443 [INFO] __main__:   [중간 저장 완료] 4/6 설정
+2026-08-19 12:29:57,443 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:29:57,444 [INFO] __main__: Variant: wo_P | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:29:57,445 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:29:57,445 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:29:57,446 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:29:57,512 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:29:57,552 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:29:57,942 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:29:57,943 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:30:03,621 [INFO] core.evaluator_v2: [ours] pred='The document describes a design project meeting where the team discusses creating a new remote control for a TV. Key poi'
+2026-08-19 12:30:11,764 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between team members discussing the design of a remote control. Key points include:'
+2026-08-19 12:30:11,767 [INFO] __main__:   → score=7.74, collapse=0/2 (0.0%)
+2026-08-19 12:30:11,776 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.csv
+2026-08-19 12:30:11,785 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.json
+2026-08-19 12:30:11,786 [INFO] __main__:   [중간 저장 완료] 5/6 설정
+2026-08-19 12:30:11,786 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-19 12:30:11,787 [INFO] __main__: Variant: N_only | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': False, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-19 12:30:11,787 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-19 12:30:11,788 [INFO] __main__: 
+  Task: qmsum
+2026-08-19 12:30:11,788 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:30:11,866 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:30:11,900 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:30:12,199 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:30:12,200 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': False, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-19 12:30:17,251 [INFO] core.evaluator_v2: [ours] pred='The document details a meeting where team members introduce themselves and discuss a design project. The project involve'
+2026-08-19 12:30:26,179 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-19 12:30:26,183 [INFO] __main__:   → score=9.83, collapse=0/2 (0.0%)
+2026-08-19 12:30:26,196 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.csv
+2026-08-19 12:30:26,226 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_122810.json
+2026-08-19 12:30:26,227 [INFO] __main__:   [중간 저장 완료] 6/6 설정
+2026-08-19 12:30:26,229 [INFO] __main__: Table VII (Signal Ablation) completed!

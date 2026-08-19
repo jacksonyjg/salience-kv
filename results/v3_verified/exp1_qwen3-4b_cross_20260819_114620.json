@@ -1,0 +1,93 @@
+{
+  "experiment": "exp1_main_results",
+  "model": "qwen3-4b",
+  "mode": "cross",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qmsum"
+  ],
+  "methods": [
+    [
+      "fullkv",
+      "FullKV",
+      {
+        "invert_norm": true
+      }
+    ],
+    [
+      "adakv",
+      "AdaKV-adapted",
+      {
+        "invert_norm": true
+      }
+    ],
+    [
+      "ours",
+      "SalienceKV_Sink4",
+      {
+        "sink_size": 4,
+        "invert_norm": true
+      }
+    ]
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "results": [
+    {
+      "method": "FullKV",
+      "task_scores": {
+        "qmsum": 8.89423076923077
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 8.89423076923077,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 658.9066406583923,
+      "avg_throughput": 27.875115400851648,
+      "avg_memory_reduction_pct": 0.0
+    },
+    {
+      "method": "AdaKV-adapted",
+      "task_scores": {
+        "qmsum": 9.82727814175104
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.82727814175104,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1022.8185082339965,
+      "avg_throughput": 30.54310395444591,
+      "avg_memory_reduction_pct": 80.00365942912906
+    },
+    {
+      "method": "SalienceKV_Sink4",
+      "task_scores": {
+        "qmsum": 9.08538253442354
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.08538253442354,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1032.6381573392418,
+      "avg_throughput": 31.130425227049123,
+      "avg_memory_reduction_pct": 80.00365942912906
+    }
+  ],
+  "completed_methods": 3,
+  "total_methods": 3
+}

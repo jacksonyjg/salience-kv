@@ -1,0 +1,4 @@
+Method,qmsum,Avg,Mem_Reduction_%,TTFT_ms,Throughput_tps,qmsum_collapse_%,qmsum_collapse_n,Avg_Collapse_%,Avg_Collapse_n
+FullKV,8.9,8.9,0.0,658.9,27.9,0.0,0/2,0.0,0/2
+AdaKV-adapted,9.8,9.8,80.0,1022.8,30.5,0.0,0/2,0.0,0/2
+SalienceKV_Sink4,9.1,9.1,80.0,1032.6,31.1,0.0,0/2,0.0,0/2

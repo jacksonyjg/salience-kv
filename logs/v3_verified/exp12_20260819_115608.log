@@ -1,0 +1,202 @@
+2026-08-19 11:56:08,550 [INFO] __main__: Experiment 12: Weight Sensitivity (TABLE XII)
+2026-08-19 11:56:08,551 [INFO] __main__:   Model: qwen3-4b | Tasks: ['narrativeqa', 'qasper', 'multifieldqa_en', 'hotpotqa', '2wikimqa', 'gov_report', 'qmsum'] | Samples: 2 | Sink: 4 | Budget: 20%
+2026-08-19 11:56:08,551 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-19 11:56:08,552 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-19 11:56:08,657 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:08,663 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-19 11:56:08,729 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:08,737 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-19 11:56:08,804 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-19 11:56:08,894 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-19 11:56:09,989 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-19 11:56:09,991 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-19 11:56:10,036 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:10,043 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-19 11:56:33,086 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:33,092 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-19 11:56:33,225 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-19 11:56:33,252 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-19 11:56:33,262 [INFO] __main__: 
+============================================================
+2026-08-19 11:56:33,263 [INFO] __main__: Setting: Default (α=0.4, β=0.2, δ=0.2) | invert_norm=True
+2026-08-19 11:56:33,263 [INFO] __main__: ============================================================
+2026-08-19 11:56:33,264 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-08-19 11:56:33,302 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:33,359 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:56:33,564 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:33,600 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:56:33,660 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:33,696 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-19 11:56:33,982 [INFO] core.dataset_loader: Loaded 2 samples from narrativeqa
+2026-08-19 11:56:34,255 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-19 11:56:37,653 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in Eatonville, Florida.'
+2026-08-19 11:56:43,608 [INFO] core.evaluator_v2: [ours] pred='Socrates decides it is unjust to escape because he believes in the importance of obeying the laws of the state, even whe'
+2026-08-19 11:56:43,624 [INFO] __main__:   → narrativeqa: 6.36
+2026-08-19 11:56:43,625 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-08-19 11:56:43,697 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:43,728 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:56:44,083 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-08-19 11:56:48,268 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies show that the combined approach of policy chaining with backtracking and the use of knowledge gr'
+2026-08-19 11:56:53,006 [INFO] core.evaluator_v2: [ours] pred='The encoder in the described system is a character-based sequence-to-sequence model with an encoder-decoder architecture'
+2026-08-19 11:56:53,021 [INFO] __main__:   → qasper: 8.30
+2026-08-19 11:56:53,023 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-08-19 11:56:53,087 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:53,119 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:56:53,465 [INFO] core.dataset_loader: Loaded 2 samples from multifieldqa_en
+2026-08-19 11:56:54,718 [INFO] core.evaluator_v2: [ours] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned."
+2026-08-19 11:56:57,870 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the method is designed to han'
+2026-08-19 11:56:57,871 [INFO] __main__:   → multifieldqa_en: 41.90
+2026-08-19 11:56:57,872 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-19 11:56:57,919 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:56:57,966 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:56:58,387 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-19 11:56:58,675 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-19 11:57:02,177 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell, also known as Brian Stokes Mitchell, is a powerful baritone who won the Tony Award for Best Actor'
+2026-08-19 11:57:02,403 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-19 11:57:06,048 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-19 11:57:06,051 [INFO] __main__:   → hotpotqa: 12.50
+2026-08-19 11:57:06,052 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-08-19 11:57:06,117 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:57:06,157 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:57:06,518 [INFO] core.dataset_loader: Loaded 2 samples from 2wikimqa
+2026-08-19 11:57:08,994 [INFO] core.evaluator_v2: [ours] pred='El director de la película "Eisenstein in Guanajuato", Peter Greenaway, fue nacido en Inglaterra.'
+2026-08-19 11:57:12,124 [INFO] core.evaluator_v2: [ours] pred='"Jugband Blues" came out first. According to the text, "Jugband Blues" is a song by Pink Floyd, released in 1968, while '
+2026-08-19 11:57:12,126 [INFO] __main__:   → 2wikimqa: 6.25
+2026-08-19 11:57:12,127 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 11:57:12,190 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:57:12,221 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:57:13,078 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 11:57:30,602 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D'
+2026-08-19 11:57:43,204 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-19 11:57:43,258 [INFO] __main__:   → gov_report: 13.25
+2026-08-19 11:57:43,259 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 11:57:43,330 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:57:43,363 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:57:43,784 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 11:57:52,333 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a'
+2026-08-19 11:58:01,503 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interfa'
+2026-08-19 11:58:01,537 [INFO] __main__:   → qmsum: 9.09
+2026-08-19 11:58:01,767 [INFO] core.results_manager: JSON saved to results/v3_verified/exp12_weight_sensitivity_qwen3-4b_20260819_115608.json
+2026-08-19 11:58:01,769 [INFO] __main__: [중간 저장 완료] 1/3 설정
+2026-08-19 11:58:01,770 [INFO] __main__: 
+============================================================
+2026-08-19 11:58:01,771 [INFO] __main__: Setting: Uniform (α=0.25, β=0.25, δ=0.25) | invert_norm=True
+2026-08-19 11:58:01,773 [INFO] __main__: ============================================================
+2026-08-19 11:58:01,774 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-08-19 11:58:01,854 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:58:01,901 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:58:02,375 [INFO] core.dataset_loader: Loaded 2 samples from narrativeqa
+2026-08-19 11:58:02,724 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-19 11:58:05,551 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in Eatonville.'
+2026-08-19 11:58:10,996 [INFO] core.evaluator_v2: [ours] pred='Socrates decides it is unjust to escape because he believes in the importance of obeying the laws of the state, even whe'
+2026-08-19 11:58:10,997 [INFO] __main__:   → narrativeqa: 5.38
+2026-08-19 11:58:10,998 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-08-19 11:58:11,094 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:58:11,128 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:58:11,565 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-08-19 11:58:15,357 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies show that the combined approach of policy chaining with backtracking and the knowledge graph-bas'
+2026-08-19 11:58:18,598 [INFO] core.evaluator_v2: [ours] pred='The encoder in the described system is a character-based encoder, which is part of a sequence-to-sequence model. It is u'
+2026-08-19 11:58:18,599 [INFO] __main__:   → qasper: 3.85
+2026-08-19 11:58:18,603 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-08-19 11:58:18,691 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:58:18,729 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:58:19,153 [INFO] core.dataset_loader: Loaded 2 samples from multifieldqa_en
+2026-08-19 11:58:20,396 [INFO] core.evaluator_v2: [ours] pred="After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned."
+2026-08-19 11:58:23,547 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the method is designed to han'
+2026-08-19 11:58:23,548 [INFO] __main__:   → multifieldqa_en: 41.90
+2026-08-19 11:58:23,549 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-19 11:58:23,591 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:58:23,621 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:58:23,999 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-19 11:58:24,243 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-19 11:58:28,026 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in 2000 for his performance in "R'
+2026-08-19 11:58:28,239 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-19 11:58:31,609 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-19 11:58:31,627 [INFO] __main__:   → hotpotqa: 12.50
+2026-08-19 11:58:31,627 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-08-19 11:58:31,692 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:58:31,726 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:58:32,095 [INFO] core.dataset_loader: Loaded 2 samples from 2wikimqa
+2026-08-19 11:58:33,615 [INFO] core.evaluator_v2: [ours] pred='Elmer Bäck was born in Finland.'
+2026-08-19 11:58:36,572 [INFO] core.evaluator_v2: [ours] pred='"Jugband Blues" came out first. According to the text, "Jugband Blues" is a song by Pink Floyd, released in 1968, while '
+2026-08-19 11:58:36,574 [INFO] __main__:   → 2wikimqa: 6.25
+2026-08-19 11:58:36,574 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 11:58:36,616 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:58:36,657 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:58:37,048 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 11:58:50,815 [INFO] core.evaluator_v2: [ours] pred="The report outlines the National Science Foundation's (NSF) use of rotating personnel (rotators) in its operations, focu"
+2026-08-19 11:58:56,679 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and progress in managing federal IT systems and cybersecurity. It highlights that w'
+2026-08-19 11:58:56,693 [INFO] __main__:   → gov_report: 13.09
+2026-08-19 11:58:56,693 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 11:58:56,779 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:58:56,813 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:58:57,241 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 11:59:05,149 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design of a new television remote control. The team aims to create a modern, user-friendly dev'
+2026-08-19 11:59:13,860 [INFO] core.evaluator_v2: [ours] pred='The meeting involved a team discussing the design of a new remote control device. Key points included:\n\n- **Design and F'
+2026-08-19 11:59:13,864 [INFO] __main__:   → qmsum: 8.48
+2026-08-19 11:59:13,874 [INFO] core.results_manager: JSON saved to results/v3_verified/exp12_weight_sensitivity_qwen3-4b_20260819_115608.json
+2026-08-19 11:59:13,875 [INFO] __main__: [중간 저장 완료] 2/3 설정
+2026-08-19 11:59:13,875 [INFO] __main__: 
+============================================================
+2026-08-19 11:59:13,877 [INFO] __main__: Setting: N-centric (α=0.55, β=0.15, δ=0.15) | invert_norm=True
+2026-08-19 11:59:13,877 [INFO] __main__: ============================================================
+2026-08-19 11:59:13,878 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-08-19 11:59:13,944 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:59:13,978 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:59:14,303 [INFO] core.dataset_loader: Loaded 2 samples from narrativeqa
+2026-08-19 11:59:14,581 [WARNING] core.model_loader: Input length 23148 > max 16000, truncating...
+2026-08-19 11:59:17,429 [INFO] core.evaluator_v2: [ours] pred='Daisy encountered Jim in Eatonville, Florida.'
+2026-08-19 11:59:22,953 [INFO] core.evaluator_v2: [ours] pred='Socrates decides it is unjust to escape because he believes in the importance of obeying the laws of the state, even whe'
+2026-08-19 11:59:22,954 [INFO] __main__:   → narrativeqa: 6.31
+2026-08-19 11:59:22,955 [INFO] core.dataset_loader: Loading LongBench/qasper ...
+2026-08-19 11:59:23,015 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:59:23,053 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:59:23,376 [INFO] core.dataset_loader: Loaded 2 samples from qasper
+2026-08-19 11:59:28,460 [INFO] core.evaluator_v2: [ours] pred='The proposed strategies show that the combined approach of policy improvement with policy evaluation (PPO) and a custom '
+2026-08-19 11:59:30,468 [INFO] core.evaluator_v2: [ours] pred='The encoder in the system described uses a character-based approach, with the encoder and decoder both operating on char'
+2026-08-19 11:59:30,470 [INFO] __main__:   → qasper: 5.81
+2026-08-19 11:59:30,470 [INFO] core.dataset_loader: Loading LongBench/multifieldqa_en ...
+2026-08-19 11:59:30,542 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:59:30,571 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:59:30,959 [INFO] core.dataset_loader: Loaded 2 samples from multifieldqa_en
+2026-08-19 11:59:32,089 [INFO] core.evaluator_v2: [ours] pred="After attacking Jacobo at a workers' strike, Ngotho is killed."
+2026-08-19 11:59:35,666 [INFO] core.evaluator_v2: [ours] pred='Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the denoiser is designed to h'
+2026-08-19 11:59:35,668 [INFO] __main__:   → multifieldqa_en: 44.10
+2026-08-19 11:59:35,668 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-19 11:59:35,735 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:59:35,770 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:59:36,152 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-19 11:59:36,357 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-19 11:59:39,041 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-08-19 11:59:39,415 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-19 11:59:43,106 [INFO] core.evaluator_v2: [ours] pred='The major components that make up the ribosome are the large subunit and the small subunit, which use two types of RNA: '
+2026-08-19 11:59:43,118 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-19 11:59:43,120 [INFO] core.dataset_loader: Loading LongBench/2wikimqa ...
+2026-08-19 11:59:43,183 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:59:43,214 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:59:43,556 [INFO] core.dataset_loader: Loaded 2 samples from 2wikimqa
+2026-08-19 11:59:45,804 [INFO] core.evaluator_v2: [ours] pred='El director de la película "Eisenstein en Guanajuato", Peter Greenaway, fue nacido en Inglaterra.'
+2026-08-19 11:59:49,511 [INFO] core.evaluator_v2: [ours] pred='"Jugband Blues" came out first. According to the text, "Jugband Blues" is a song by Pink Floyd from their album "The Dar'
+2026-08-19 11:59:49,521 [INFO] __main__:   → 2wikimqa: 5.26
+2026-08-19 11:59:49,522 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-19 11:59:49,594 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 11:59:49,627 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 11:59:49,975 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-19 11:59:59,080 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs, the Rotating Assistant Professor (RAP) and the Visiting Researc'
+2026-08-19 12:00:06,465 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in managing federal IT systems, highlighting past failures in project e'
+2026-08-19 12:00:06,486 [INFO] __main__:   → gov_report: 11.01
+2026-08-19 12:00:06,487 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-19 12:00:06,578 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-19 12:00:06,610 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-19 12:00:06,988 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-19 12:00:15,174 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with a welcome and introduction of the project, which is to design a new remote control for a televis'
+2026-08-19 12:00:22,871 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where a team discusses the design of a new remote control. Key points include:\n\n- *'
+2026-08-19 12:00:22,874 [INFO] __main__:   → qmsum: 9.00
+2026-08-19 12:00:22,883 [INFO] core.results_manager: JSON saved to results/v3_verified/exp12_weight_sensitivity_qwen3-4b_20260819_115608.json
+2026-08-19 12:00:22,883 [INFO] __main__: [중간 저장 완료] 3/3 설정
+2026-08-19 12:00:22,892 [INFO] core.results_manager: Results saved to results/v3_verified/exp12_weight_sensitivity_qwen3-4b_20260819_115608.csv
+2026-08-19 12:00:22,892 [INFO] __main__: 
+완료: 3개 설정
+2026-08-19 12:00:22,893 [INFO] __main__:   Default      avg_score=13.95
+2026-08-19 12:00:22,893 [INFO] __main__:   Uniform      avg_score=13.06
+2026-08-19 12:00:22,894 [INFO] __main__:   N-centric    avg_score=18.78

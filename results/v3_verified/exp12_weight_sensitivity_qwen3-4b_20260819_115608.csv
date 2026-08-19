@@ -1,0 +1,4 @@
+setting,alpha,beta,delta,task_scores,avg_score
+Default,0.4,0.2,0.2,"{'narrativeqa': 6.36, 'qasper': 8.3, 'multifieldqa_en': 41.9, 'hotpotqa': 12.5, '2wikimqa': 6.25, 'gov_report': 13.25, 'qmsum': 9.09}",13.95
+Uniform,0.25,0.25,0.25,"{'narrativeqa': 5.38, 'qasper': 3.85, 'multifieldqa_en': 41.9, 'hotpotqa': 12.5, '2wikimqa': 6.25, 'gov_report': 13.09, 'qmsum': 8.48}",13.06
+N-centric,0.55,0.15,0.15,"{'narrativeqa': 6.31, 'qasper': 5.81, 'multifieldqa_en': 44.1, 'hotpotqa': 50.0, '2wikimqa': 5.26, 'gov_report': 11.01, 'qmsum': 9.0}",18.78
