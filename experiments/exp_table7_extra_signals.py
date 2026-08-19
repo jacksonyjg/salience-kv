@@ -33,17 +33,6 @@ from core.evaluator_v2 import EvaluatorV2
 from core.collapse_metrics import is_collapsed
 from core.results_manager import save_results_csv, save_results_json, get_timestamp
 
-os.makedirs("logs/v2_verified", exist_ok=True)
-os.makedirs("results/v2_verified", exist_ok=True)
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler(f"logs/v2_verified/exp7_extra_{get_timestamp()}.log"),
-    ],
-)
 logger = logging.getLogger(__name__)
 
 
@@ -68,6 +57,7 @@ def run_variant_on_all_tasks(evaluator, tasks: List[str], budget_ratio: float,
     task_collapse_pct = {}
     all_scores = []
     all_collapse = []
+    all_sample_records = {}
 
     for task_name in tasks:
         try:
@@ -80,6 +70,7 @@ def run_variant_on_all_tasks(evaluator, tasks: List[str], budget_ratio: float,
             task_collapse_pct[task_name] = result["avg_collapse_rate_pct"]
             all_scores.append(result["avg_score"])
             all_collapse.append(result["avg_collapse_rate_pct"])
+            all_sample_records[task_name] = result.get("sample_records", [])
             logger.info(f"  {task_name}: score={result['avg_score']:.2f}, "
                         f"collapse={result['avg_collapse_rate_pct']:.1f}%")
         except Exception as e:
@@ -90,6 +81,7 @@ def run_variant_on_all_tasks(evaluator, tasks: List[str], budget_ratio: float,
     return {
         "variant": label, "avg_score": avg_score, "avg_collapse_pct": avg_collapse,
         "task_scores": task_scores, "task_collapse_pct": task_collapse_pct,
+        "sample_records": all_sample_records,
     }
 
 
@@ -103,12 +95,26 @@ def parse_args():
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--sink_size", type=int, default=0)
     parser.add_argument("--budget", type=float, default=0.20)
+    parser.add_argument("--invert_norm", action="store_true",
+                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     timestamp = get_timestamp()
+
+    log_dir = "logs/v3_verified"
+    os.makedirs(log_dir, exist_ok=True)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(f"{log_dir}/exp7_extra_{timestamp}.log"),
+        ],
+        force=True,
+    )
 
     logger.info("=" * 60)
     logger.info("TABLE VII 보완: V_only, P_only 절제 실험")
@@ -120,6 +126,14 @@ def main():
     evaluator = EvaluatorV2(model, tokenizer, model_config)
 
     variants = make_extra_variants(args.sink_size)
+    if args.invert_norm:
+        variants = [(name, {**kw, "invert_norm": True}) for name, kw in variants]
+
+    import core.results_manager as rm
+    rm.RESULTS_DIR = "results/v3_verified"
+    os.makedirs(rm.RESULTS_DIR, exist_ok=True)
+    logger.info(f"  Key-norm direction: {'CORRECTED' if args.invert_norm else 'legacy'} | Results dir: {rm.RESULTS_DIR} | Log dir: {log_dir}")
+
     table_rows = []
     all_results = []
 

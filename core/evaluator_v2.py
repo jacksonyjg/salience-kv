@@ -23,7 +23,7 @@ import numpy as np
 from core.kv_cache_hook import BaseHookCache, FullKVCache, make_hook_cache
 from core.metrics import compute_score, aggregate_scores
 from core.model_loader import tokenize_prompt, make_prompt
-from core.collapse_metrics import is_collapsed
+from core.collapse_metrics import is_collapsed, word_repetition_ratio, char_repetition_ratio
 
 logger = logging.getLogger(__name__)
 
@@ -220,6 +220,7 @@ class EvaluatorV2:
         logger.info(f"[{method_name}] {task_name} ({len(samples)}샘플, budget={budget_ratio:.0%}, kwargs={method_kwargs})")
 
         collapses = []
+        sample_records = []
         for i, sample in enumerate(samples):
             try:
                 r = self.evaluate_sample(sample, method_name, budget_ratio, method_kwargs=method_kwargs,
@@ -230,7 +231,17 @@ class EvaluatorV2:
                 compress_mss.append(r.get("compress_ms", 0.0))
                 first_decode_mss.append(r.get("first_decode_step_ms", 0.0))
                 decode_throughputs.append(r.get("decode_throughput", 0.0))
-                collapses.append(1.0 if is_collapsed(r["prediction"]) else 0.0)
+                pred = r["prediction"]
+                is_c = is_collapsed(pred)
+                collapses.append(1.0 if is_c else 0.0)
+                sample_records.append({
+                    "sample_idx": i,
+                    "score": r["score"],
+                    "prediction": pred,
+                    "word_rep": word_repetition_ratio(pred),
+                    "char_rep": char_repetition_ratio(pred),
+                    "collapsed": is_c,
+                })
                 if (i + 1) % 5 == 0:
                     logger.info(f"  [{i+1}/{len(samples)}] avg={aggregate_scores(scores):.2f}")
             except Exception as e:
@@ -240,6 +251,15 @@ class EvaluatorV2:
                 prefill_mss.append(0.0); compress_mss.append(0.0)
                 first_decode_mss.append(0.0); decode_throughputs.append(0.0)
                 collapses.append(1.0)
+                sample_records.append({
+                    "sample_idx": i,
+                    "score": 0.0,
+                    "prediction": None,
+                    "word_rep": None,
+                    "char_rep": None,
+                    "collapsed": True,
+                    "error": str(e)[:300],
+                })
 
         return {
             "avg_score": aggregate_scores(scores), "scores": scores,
@@ -256,4 +276,5 @@ class EvaluatorV2:
             "collapse_total": len(collapses),
             "num_samples": len(scores), "method": method_name,
             "task": task_name, "budget_ratio": budget_ratio,
+            "sample_records": sample_records,
         }

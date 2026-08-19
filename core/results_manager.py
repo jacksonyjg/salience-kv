@@ -24,9 +24,10 @@ def get_timestamp() -> str:
 def save_results_csv(
     results: List[Dict],
     filename: str,
-    results_dir: str = RESULTS_DIR,
+    results_dir: str = None,
 ) -> str:
     """결과 딕셔너리 리스트를 CSV로 저장."""
+    results_dir = results_dir or RESULTS_DIR
     os.makedirs(results_dir, exist_ok=True)
     filepath = os.path.join(results_dir, filename)
     
@@ -48,9 +49,10 @@ def save_results_csv(
 def save_results_json(
     results: Dict,
     filename: str,
-    results_dir: str = RESULTS_DIR,
+    results_dir: str = None,
 ) -> str:
     """결과를 JSON으로 저장."""
+    results_dir = results_dir or RESULTS_DIR
     os.makedirs(results_dir, exist_ok=True)
     filepath = os.path.join(results_dir, filename)
     

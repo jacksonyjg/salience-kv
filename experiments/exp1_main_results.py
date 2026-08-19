@@ -36,17 +36,6 @@ from core.results_manager import (
     print_result_table, get_timestamp,
 )
 
-os.makedirs("logs/v2_verified", exist_ok=True)
-os.makedirs("results/v2_verified", exist_ok=True)
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler(f"logs/v2_verified/exp1_{get_timestamp()}.log"),
-    ],
-)
 logger = logging.getLogger(__name__)
 
 # 실험계획서 Table I 태스크 순서
@@ -90,6 +79,9 @@ def parse_args():
     parser.add_argument("--use_flash_attn", action="store_true",
                         help="FlashAttention2 활성화")
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--invert_norm", action="store_true",
+                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환. "
+                             "기본값(미지정)은 기존 legacy 방향(high-norm 우선) 유지.")
     return parser.parse_args()
 
 
@@ -118,6 +110,7 @@ def run_method_on_all_tasks(
     task_mem_reductions = []
     total_collapse_count = 0
     total_collapse_total = 0
+    all_sample_records = {}
     
     for task_name in tasks:
         logger.info(f"\n  Task: {task_name}")
@@ -142,6 +135,7 @@ def run_method_on_all_tasks(
             task_ttfts.append(result["avg_ttft_ms"])
             task_throughputs.append(result["avg_throughput"])
             task_mem_reductions.append(result["avg_memory_reduction_pct"])
+            all_sample_records[task_name] = result.get("sample_records", [])
             
             logger.info(
                 f"  → score={result['avg_score']:.2f}, "
@@ -173,18 +167,37 @@ def run_method_on_all_tasks(
         "avg_ttft_ms": avg_ttft,
         "avg_throughput": avg_throughput,
         "avg_memory_reduction_pct": avg_mem,
+        "sample_records": all_sample_records,
     }
 
 
 def main():
     args = parse_args()
-    
-    os.makedirs("results/v2_verified", exist_ok=True)
-    os.makedirs("logs/v2_verified", exist_ok=True)
+
+    log_dir = "logs/v3_verified"
+    results_dir = "results/v3_verified"
+    os.makedirs(log_dir, exist_ok=True)
+    os.makedirs(results_dir, exist_ok=True)
     timestamp = get_timestamp()
-    
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(f"{log_dir}/exp1_{timestamp}.log"),
+        ],
+        force=True,
+    )
+
     tasks = args.tasks if args.tasks else TASK_ORDER
     methods = METHODS_FULL if args.mode == "full" else METHODS_CROSS
+    if args.invert_norm:
+        methods = [(m, l, {**kw, "invert_norm": True}) for m, l, kw in methods]
+
+    import core.results_manager as rm
+    rm.RESULTS_DIR = results_dir
+    logger.info(f"  Key-norm direction: {'CORRECTED (low-norm 우선)' if args.invert_norm else 'legacy (high-norm 우선)'}")
+    logger.info(f"  Results dir: {rm.RESULTS_DIR} | Log dir: {log_dir}")
     
     logger.info(f"Experiment 1: Main Results")
     logger.info(f"  Model: {args.model}")

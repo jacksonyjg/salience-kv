@@ -32,17 +32,6 @@ from core.results_manager import (
     print_result_table, get_timestamp,
 )
 
-os.makedirs("logs/v2_verified", exist_ok=True)
-os.makedirs("results/v2_verified", exist_ok=True)
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler(f"logs/v2_verified/exp6_{get_timestamp()}.log"),
-    ],
-)
 logger = logging.getLogger(__name__)
 
 # 5개 base 방법 x 6개 sink 크기 = 30개 설정
@@ -85,6 +74,7 @@ def run_method_on_all_tasks(
     task_mem_reductions = []
     total_collapse_count = 0
     total_collapse_total = 0
+    all_sample_records = {}
 
     for task_name in tasks:
         logger.info(f"\n  Task: {task_name}")
@@ -104,6 +94,7 @@ def run_method_on_all_tasks(
             task_ttfts.append(result["avg_ttft_ms"])
             task_throughputs.append(result["avg_throughput"])
             task_mem_reductions.append(result["avg_memory_reduction_pct"])
+            all_sample_records[task_name] = result.get("sample_records", [])
 
             logger.info(
                 f"  → score={result['avg_score']:.2f}, "
@@ -133,6 +124,7 @@ def run_method_on_all_tasks(
         "avg_ttft_ms": avg_ttft,
         "avg_throughput": avg_throughput,
         "avg_memory_reduction_pct": avg_mem,
+        "sample_records": all_sample_records,
     }
 
 
@@ -143,6 +135,8 @@ def parse_args():
     parser.add_argument("--tasks", nargs="+", default=["qmsum", "gov_report"])
     parser.add_argument("--num_samples", type=int, default=30)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--invert_norm", action="store_true",
+                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
     return parser.parse_args()
 
 
@@ -150,11 +144,32 @@ def main():
     args = parse_args()
     timestamp = get_timestamp()
 
+    log_dir = "logs/v3_verified"
+    os.makedirs(log_dir, exist_ok=True)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(f"{log_dir}/exp6_{timestamp}.log"),
+        ],
+        force=True,
+    )
+
+    methods_to_run = METHODS
+    if args.invert_norm:
+        methods_to_run = [(m, l, {**kw, "invert_norm": True}) for m, l, kw in METHODS]
+
+    import core.results_manager as rm
+    rm.RESULTS_DIR = "results/v3_verified"
+    os.makedirs(rm.RESULTS_DIR, exist_ok=True)
+
     logger.info("=" * 60)
     logger.info("Table6: Sink Intervention (TABLE VI)")
     logger.info(f"  Model: {args.model} | Budget: {args.budget:.0%}")
     logger.info(f"  Tasks: {args.tasks} | Samples: {args.num_samples}")
-    logger.info(f"  Methods: {len(METHODS)}개 설정 (5방법 x 6 sink크기)")
+    logger.info(f"  Methods: {len(methods_to_run)}개 설정 (5방법 x 6 sink크기)")
+    logger.info(f"  Key-norm direction: {'CORRECTED' if args.invert_norm else 'legacy'} | Results dir: {rm.RESULTS_DIR} | Log dir: {log_dir}")
     logger.info("=" * 60)
 
     model, tokenizer, model_config = load_model_and_tokenizer(args.model)
@@ -165,7 +180,7 @@ def main():
     csv_filename = f"exp6_sink_intervention_{args.model}_budget{int(args.budget*100)}_{timestamp}.csv"
     json_filename = f"exp6_sink_intervention_{args.model}_budget{int(args.budget*100)}_{timestamp}.json"
 
-    for method_name, label, method_kwargs in METHODS:
+    for method_name, label, method_kwargs in methods_to_run:
         result = run_method_on_all_tasks(
             evaluator=evaluator,
             method_name=method_name,

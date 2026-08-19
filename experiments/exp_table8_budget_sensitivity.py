@@ -9,22 +9,12 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.model_loader import load_model_and_tokenizer
 from core.dataset_loader import load_longbench_task
 from core.evaluator_v2 import EvaluatorV2
+from core.collapse_metrics import is_collapsed, word_repetition_ratio, char_repetition_ratio
 from core.results_manager import (
     save_results_csv, save_results_json, format_table_row,
     print_result_table, get_timestamp,
 )
 
-os.makedirs("logs/v2_verified", exist_ok=True)
-os.makedirs("results/v2_verified", exist_ok=True)
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler(f"logs/v2_verified/exp8_{get_timestamp()}.log"),
-    ],
-)
 logger = logging.getLogger(__name__)
 
 BUDGET_RATIOS = [0.10, 0.20, 0.40, 0.60, 0.80]
@@ -57,21 +47,33 @@ def run_method_at_budget(
     logger.info(f"{'─'*60}")
 
     task_scores = {}
+    all_sample_records = {}
     for task_name in tasks:
         try:
             samples = load_longbench_task(task_name, num_samples=num_samples, seed=seed)
             scores = []
+            sample_records = []
             for i, sample in enumerate(samples):
                 r = evaluator.evaluate_sample(
                     sample, method_name, budget_ratio,
                     measure_efficiency=False, method_kwargs=method_kwargs,
                 )
                 scores.append(r["score"])
+                pred = r["prediction"]
+                sample_records.append({
+                    "sample_idx": i,
+                    "score": r["score"],
+                    "prediction": pred,
+                    "word_rep": word_repetition_ratio(pred),
+                    "char_rep": char_repetition_ratio(pred),
+                    "collapsed": is_collapsed(pred),
+                })
                 if (i + 1) % 10 == 0:
                     logger.info(f"  [{label}@{budget_ratio:.0%}] {task_name} [{i+1}/{len(samples)}] "
                                 f"avg={sum(scores)/len(scores):.2f}")
             avg = sum(scores) / len(scores) if scores else 0.0
             task_scores[task_name] = round(avg, 2)
+            all_sample_records[task_name] = sample_records
             logger.info(f"  → {task_name}: {avg:.2f}")
         except Exception as e:
             logger.error(f"  {task_name} failed: {e}", exc_info=True)
@@ -83,6 +85,7 @@ def run_method_at_budget(
         "budget_ratio": budget_ratio,
         "task_scores": task_scores,
         "avg_score": round(avg_score, 2),
+        "sample_records": all_sample_records,
     }
 
 
@@ -93,6 +96,8 @@ def parse_args():
     parser.add_argument("--tasks", nargs="+", default=None)
     parser.add_argument("--num_samples", type=int, default=30)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--invert_norm", action="store_true",
+                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
     return parser.parse_args()
 
 
@@ -102,16 +107,37 @@ def main():
     budgets = args.budgets if args.budgets else BUDGET_RATIOS
     timestamp = get_timestamp()
 
+    log_dir = "logs/v3_verified"
+    os.makedirs(log_dir, exist_ok=True)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(f"{log_dir}/exp8_{timestamp}.log"),
+        ],
+        force=True,
+    )
+
     logger.info("Experiment 8: Budget Sensitivity (TABLE VIII)")
     logger.info(f"  Model: {args.model} | Budgets: {[f'{b:.0%}' for b in budgets]} | Tasks: {tasks} | "
                 f"Samples: {args.num_samples}")
+
+    methods_to_run = METHODS
+    if args.invert_norm:
+        methods_to_run = [(m, l, {**kw, "invert_norm": True}) for m, l, kw in METHODS]
+
+    import core.results_manager as rm
+    rm.RESULTS_DIR = "results/v3_verified"
+    os.makedirs(rm.RESULTS_DIR, exist_ok=True)
+    logger.info(f"  Key-norm direction: {'CORRECTED' if args.invert_norm else 'legacy'} | Results dir: {rm.RESULTS_DIR} | Log dir: {log_dir}")
 
     model, tokenizer, model_config = load_model_and_tokenizer(args.model)
     evaluator = EvaluatorV2(model, tokenizer, model_config)
 
     all_results = []
     for budget in budgets:
-        for method_name, label, method_kwargs in METHODS:
+        for method_name, label, method_kwargs in methods_to_run:
             result = run_method_at_budget(
                 evaluator=evaluator,
                 method_name=method_name,

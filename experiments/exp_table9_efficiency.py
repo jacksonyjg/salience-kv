@@ -43,17 +43,6 @@ from core.results_manager import (
     save_results_csv, save_results_json, get_timestamp,
 )
 
-os.makedirs("logs/v2_verified", exist_ok=True)
-os.makedirs("results/v2_verified", exist_ok=True)
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler(f"logs/v2_verified/exp9_{get_timestamp()}.log"),
-    ],
-)
 logger = logging.getLogger(__name__)
 
 METHODS = [
@@ -88,6 +77,7 @@ def run_method_on_all_tasks(
     task_prefill_ms, task_compress_ms = [], []
     task_first_decode_ms, task_decode_tp = [], []
     task_ttfts, task_throughputs, task_mem_reductions = [], [], []
+    all_sample_records = {}
 
     for task_name in tasks:
         logger.info(f"\n  Task: {task_name}")
@@ -107,6 +97,7 @@ def run_method_on_all_tasks(
             task_ttfts.append(result["avg_ttft_ms"])
             task_throughputs.append(result["avg_throughput"])
             task_mem_reductions.append(result["avg_memory_reduction_pct"])
+            all_sample_records[task_name] = result.get("sample_records", [])
 
             logger.info(
                 f"  → prefill={result['avg_prefill_ms']:.1f}ms, "
@@ -131,6 +122,7 @@ def run_method_on_all_tasks(
         "avg_ttft_ms": _avg(task_ttfts),
         "avg_throughput": _avg(task_throughputs),
         "avg_memory_reduction_pct": _avg(task_mem_reductions),
+        "sample_records": all_sample_records,
     }
 
 
@@ -143,12 +135,26 @@ def parse_args():
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--cap", choices=["default", "uncapped", "both"], default="default",
                          help="default=기존 16k 캡 유지, uncapped=캡 해제(-1), both=두 조건 모두 실행")
+    parser.add_argument("--invert_norm", action="store_true",
+                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     timestamp = get_timestamp()
+
+    log_dir = "logs/v3_verified"
+    os.makedirs(log_dir, exist_ok=True)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(f"{log_dir}/exp9_{timestamp}.log"),
+        ],
+        force=True,
+    )
 
     if args.cap == "default":
         cap_conditions = [("default", None)]
@@ -161,7 +167,16 @@ def main():
     logger.info("Table9: Efficiency (TABLE IX)")
     logger.info(f"  Model: {args.model} | Budget: {args.budget:.0%}")
     logger.info(f"  Tasks: {args.tasks} | Samples: {args.num_samples}")
-    logger.info(f"  Methods: {len(METHODS)}개 | Cap conditions: {[c[0] for c in cap_conditions]}")
+    methods_to_run = METHODS
+    if args.invert_norm:
+        methods_to_run = [(l, m, {**kw, "invert_norm": True}) for l, m, kw in METHODS]
+
+    import core.results_manager as rm
+    rm.RESULTS_DIR = "results/v3_verified"
+    os.makedirs(rm.RESULTS_DIR, exist_ok=True)
+
+    logger.info(f"  Methods: {len(methods_to_run)}개 | Cap conditions: {[c[0] for c in cap_conditions]}")
+    logger.info(f"  Key-norm direction: {'CORRECTED' if args.invert_norm else 'legacy'} | Results dir: {rm.RESULTS_DIR} | Log dir: {log_dir}")
     logger.info("=" * 60)
 
     model, tokenizer, model_config = load_model_and_tokenizer(args.model)
@@ -173,7 +188,7 @@ def main():
     json_filename = f"exp9_efficiency_{args.model}_{timestamp}.json"
 
     for cap_label, max_input_length in cap_conditions:
-        for label, method_name, method_kwargs in METHODS:
+        for label, method_name, method_kwargs in methods_to_run:
             result = run_method_on_all_tasks(
                 evaluator=evaluator,
                 tasks=args.tasks,

@@ -21,17 +21,6 @@ from core.results_manager import (
     print_result_table, get_timestamp,
 )
 
-os.makedirs("logs/v2_verified", exist_ok=True)
-os.makedirs("results/v2_verified", exist_ok=True)
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler(f"logs/v2_verified/exp7_{get_timestamp()}.log"),
-    ],
-)
 logger = logging.getLogger(__name__)
 
 def make_variants(sink_size: int):
@@ -67,6 +56,7 @@ def run_method_on_all_tasks(
     task_mem_reductions = []
     total_collapse_count = 0
     total_collapse_total = 0
+    all_sample_records = {}
 
     for task_name in tasks:
         logger.info(f"\n  Task: {task_name}")
@@ -86,6 +76,7 @@ def run_method_on_all_tasks(
             task_ttfts.append(result["avg_ttft_ms"])
             task_throughputs.append(result["avg_throughput"])
             task_mem_reductions.append(result["avg_memory_reduction_pct"])
+            all_sample_records[task_name] = result.get("sample_records", [])
 
             logger.info(
                 f"  → score={result['avg_score']:.2f}, "
@@ -114,6 +105,7 @@ def run_method_on_all_tasks(
         "avg_ttft_ms": avg_ttft,
         "avg_throughput": avg_throughput,
         "avg_memory_reduction_pct": avg_mem,
+        "sample_records": all_sample_records,
     }
 
 
@@ -125,19 +117,41 @@ def parse_args():
     parser.add_argument("--num_samples", type=int, default=30)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--sink_size", type=int, default=0, help="모든 variant에 고정 적용할 sink 크기 (기본 0)")
+    parser.add_argument("--invert_norm", action="store_true",
+                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     timestamp = get_timestamp()
+
+    log_dir = "logs/v3_verified"
+    os.makedirs(log_dir, exist_ok=True)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(f"{log_dir}/exp7_{timestamp}.log"),
+        ],
+        force=True,
+    )
+
     variants = make_variants(args.sink_size)
+    if args.invert_norm:
+        variants = [(name, {**kw, "invert_norm": True}) for name, kw in variants]
+
+    import core.results_manager as rm
+    rm.RESULTS_DIR = "results/v3_verified"
+    os.makedirs(rm.RESULTS_DIR, exist_ok=True)
 
     logger.info("=" * 60)
     logger.info("Table7: Signal Ablation (TABLE VII)")
     logger.info(f"  Model: {args.model} | Budget: {args.budget:.0%} | sink_size={args.sink_size} 고정")
     logger.info(f"  Tasks: {args.tasks} | Samples: {args.num_samples}")
     logger.info(f"  Variants: {len(variants)}개")
+    logger.info(f"  Key-norm direction: {'CORRECTED' if args.invert_norm else 'legacy'} | Results dir: {rm.RESULTS_DIR} | Log dir: {log_dir}")
     logger.info("=" * 60)
 
     model, tokenizer, model_config = load_model_and_tokenizer(args.model)
