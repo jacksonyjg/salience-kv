@@ -166,7 +166,7 @@ def main():
             logger.info(f"  [중간 저장 완료] {len(all_results)}/{len(budgets) * len(METHODS)} 설정")
 
     save_results_csv(all_results, csv_filename)
-    logger.info(f"\n완료: {len(all_results)}개 설정. 저장: results/v2_verified/{csv_filename}")
+    logger.info(f"\n완료: {len(all_results)}개 설정. 저장: {rm.RESULTS_DIR}/{csv_filename}")
 
 
 if __name__ == "__main__":

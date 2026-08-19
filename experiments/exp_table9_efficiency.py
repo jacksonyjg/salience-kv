@@ -234,8 +234,8 @@ def main():
 
     logger.info("\n" + "=" * 60)
     logger.info("Table IX (Efficiency) completed!")
-    logger.info(f"CSV: results/v2_verified/{csv_filename}")
-    logger.info(f"JSON: results/v2_verified/{json_filename}")
+    logger.info(f"CSV: {rm.RESULTS_DIR}/{csv_filename}")
+    logger.info(f"JSON: {rm.RESULTS_DIR}/{json_filename}")
     logger.info("=" * 60)
 
 

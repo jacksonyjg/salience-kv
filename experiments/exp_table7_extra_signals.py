@@ -161,7 +161,7 @@ def main():
     logger.info("                wo_V=12.77, wo_P=16.11, N_only=12.39")
     for r in all_results:
         logger.info(f"  {r['variant']}: score={r['avg_score']:.2f}, collapse={r['avg_collapse_pct']:.1f}%")
-    logger.info(f"CSV: results/v2_verified/{csv_filename}")
+    logger.info(f"CSV: {rm.RESULTS_DIR}/{csv_filename}")
     logger.info("=" * 60)
 
 
