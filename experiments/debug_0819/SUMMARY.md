@@ -25,3 +25,25 @@ generate() API 레이어별 가변 캐시 길이 미지원 → 균일 budget 강
 ## 코드 변경 없음
 전부 monkeypatch 기반 디버그 스크립트(core/kv_cache_hook.py 원본 미수정).
 다음 세션에서 corrected_v1 실험 설계 시 이 결론을 E0/E11 해석에 반영 필요.
+
+## 추가 확인 (0820, TABLE IV corrected 본실행 sanity check 중 재발견)
+
+TABLE IV(exp_table6_sink_intervention.py, corrected 방향, N=2 sanity check)에서 **SnapKV의
+m0/m1/m2(sink_size=0/1/2) 점수가 소수점까지 완전히 동일**하게 나오는 현상 재관찰
+(gov_report, N=2: 세 조건 모두 score=15.95).
+
+위 결론(smoothing이 sink_size=0에서도 위치 0~1을 우연히 선점)이 맞다면, sink_size=1·2로
+"강제 보존"해봤자 이미 자연 선택되어 있던 위치라 실제 선택 토큰 집합 자체가 안 바뀔 것이라는
+예측이 나옴 → 직접 검증(`_selected_positions` 캡처, gov_report 1샘플, sink=0/1/2/4 비교):
+
+```
+sink=0  score=15.95  선택 토큰=1472개
+sink=1  score=15.95  선택 토큰=1472개  (m0와 완전 동일 집합)
+sink=2  score=15.95  선택 토큰=1472개  (m0와 완전 동일 집합)
+sink=4  score=16.35  선택 토큰=1472개  (여기서 처음 집합이 달라짐)
+```
+
+**확정**: m0==m1==m2는 우연한 점수 근접이 아니라 **선택된 토큰 집합 자체가 진짜로 동일**해서
+발생. sink=4부터 처음으로 실제 차이 발생. 버그 아님 — 위 0819 결론(smoothing의 우연한 sink
+위치 재포착)의 직접적·필연적 귀결로 최종 확정. TABLE IV 본실행(N=30)에서도 SnapKV
+m0=m1=m2가 동일하게 재현될 가능성 높음 — 발견 시 이 문서를 근거로 정상 처리할 것.
