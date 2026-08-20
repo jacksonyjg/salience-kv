@@ -1,0 +1,195 @@
+2026-08-20 11:18:45,363 [INFO] __main__:   Key-norm direction: CORRECTED (low-norm 우선)
+2026-08-20 11:18:45,364 [INFO] __main__:   Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-20 11:18:45,365 [INFO] __main__: Experiment 1: Main Results
+2026-08-20 11:18:45,366 [INFO] __main__:   Model: qwen3-4b
+2026-08-20 11:18:45,366 [INFO] __main__:   Mode: full
+2026-08-20 11:18:45,367 [INFO] __main__:   Budget: 20%
+2026-08-20 11:18:45,367 [INFO] __main__:   Tasks: ['qmsum', 'gov_report']
+2026-08-20 11:18:45,368 [INFO] __main__:   Methods: [('fullkv', 'FullKV', {'invert_norm': True}), ('streaming', 'StreamingLLM', {'invert_norm': True}), ('h2o', 'H2O', {'invert_norm': True}), ('snapkv', 'SnapKV', {'invert_norm': True}), ('pyramidkv', 'PyramidKV-adapted', {'invert_norm': True}), ('adakv', 'AdaKV-adapted', {'invert_norm': True}), ('ours', 'SalienceKV_wo_sink', {'sink_size': 0, 'invert_norm': True}), ('ours', 'SalienceKV_Sink4', {'sink_size': 4, 'invert_norm': True})]
+2026-08-20 11:18:45,372 [INFO] __main__:   Samples/task: 2
+2026-08-20 11:18:45,377 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-08-20 11:18:45,378 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-20 11:18:45,513 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-20 11:18:45,525 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-20 11:18:45,608 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-20 11:18:45,628 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-20 11:18:45,727 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-20 11:18:45,813 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-20 11:18:47,034 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-20 11:18:47,040 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-20 11:18:47,091 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-20 11:18:47,099 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-20 11:18:51,485 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-20 11:18:51,491 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-20 11:18:51,626 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-20 11:18:51,660 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-20 11:18:51,669 [INFO] __main__: 사전 데이터 로딩 중...
+2026-08-20 11:18:51,670 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-20 11:18:51,710 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-20 11:18:51,787 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-20 11:18:51,975 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-20 11:18:52,008 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-20 11:18:52,059 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-20 11:18:52,100 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-20 11:18:52,403 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-20 11:18:52,416 [INFO] __main__:   ✓ qmsum: 2샘플 로드 완료
+2026-08-20 11:18:52,418 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-20 11:18:52,459 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-20 11:18:52,500 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-20 11:18:52,857 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-20 11:18:52,858 [INFO] __main__:   ✓ gov_report: 2샘플 로드 완료
+2026-08-20 11:18:52,860 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-08-20 11:18:52,860 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-20 11:18:52,861 [INFO] __main__: Method: FULLKV | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-20 11:18:52,862 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-20 11:18:52,863 [INFO] __main__: 
+  Task: qmsum
+2026-08-20 11:18:52,864 [INFO] core.evaluator_v2: [fullkv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:18:59,936 [INFO] core.evaluator_v2: [fullkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-08-20 11:19:09,326 [INFO] core.evaluator_v2: [fullkv] pred='The document is a meeting transcript between a project manager, industrial designer, user interface designer, and market'
+2026-08-20 11:19:09,329 [INFO] __main__:   → score=8.89, collapse=0/2 (0.0%), mem_red=0.0%, ttft=808.6ms
+2026-08-20 11:19:09,330 [INFO] __main__: 
+  Task: gov_report
+2026-08-20 11:19:09,331 [INFO] core.evaluator_v2: [fullkv] gov_report (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:19:17,349 [INFO] core.evaluator_v2: [fullkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-08-20 11:19:24,625 [INFO] core.evaluator_v2: [fullkv] pred='The document outlines the challenges and efforts in managing federal IT systems and cybersecurity. Despite a $96 billion'
+2026-08-20 11:19:24,643 [INFO] __main__:   → score=15.93, collapse=0/2 (0.0%), mem_red=0.0%, ttft=553.3ms
+2026-08-20 11:19:24,652 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.csv
+2026-08-20 11:19:24,663 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.json
+2026-08-20 11:19:24,664 [INFO] __main__:   [중간 저장 완료] 1/8 설정
+2026-08-20 11:19:24,665 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-20 11:19:24,665 [INFO] __main__: Method: STREAMINGLLM | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-20 11:19:24,666 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-20 11:19:24,667 [INFO] __main__: 
+  Task: qmsum
+2026-08-20 11:19:24,668 [INFO] core.evaluator_v2: [streaming] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:19:30,653 [INFO] core.evaluator_v2: [streaming] pred='The meeting summary outlines a discussion among team members about the design of a new remote control. Key points includ'
+2026-08-20 11:19:39,643 [INFO] core.evaluator_v2: [streaming] pred='The meeting focused on finalizing the design and specifications for a new product, likely a device with a display (LCD) '
+2026-08-20 11:19:39,646 [INFO] __main__:   → score=8.87, collapse=0/2 (0.0%), mem_red=80.0%, ttft=748.8ms
+2026-08-20 11:19:39,646 [INFO] __main__: 
+  Task: gov_report
+2026-08-20 11:19:39,647 [INFO] core.evaluator_v2: [streaming] gov_report (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:19:49,661 [INFO] core.evaluator_v2: [streaming] pred='The National Science Foundation (NSF) manages two types of employee programs: IPA (Individuals with Persistent Academic)'
+2026-08-20 11:20:03,029 [INFO] core.evaluator_v2: [streaming] pred="The U.S. Government Accountability Office (GAO) provides an overview of the federal government's efforts to improve the "
+2026-08-20 11:20:03,061 [INFO] __main__:   → score=18.63, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1101.2ms
+2026-08-20 11:20:03,070 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.csv
+2026-08-20 11:20:03,085 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.json
+2026-08-20 11:20:03,086 [INFO] __main__:   [중간 저장 완료] 2/8 설정
+2026-08-20 11:20:03,086 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-20 11:20:03,087 [INFO] __main__: Method: H2O | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-20 11:20:03,088 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-20 11:20:03,089 [INFO] __main__: 
+  Task: qmsum
+2026-08-20 11:20:03,090 [INFO] core.evaluator_v2: [h2o] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:20:08,003 [INFO] core.evaluator_v2: [h2o] pred='The document details a meeting where team members introduce themselves and discuss a design project for a new remote con'
+2026-08-20 11:20:19,086 [INFO] core.evaluator_v2: [h2o] pred='The document is a meeting transcript between team members discussing the design of a remote control. Key points include:'
+2026-08-20 11:20:19,089 [INFO] __main__:   → score=9.33, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1566.6ms
+2026-08-20 11:20:19,090 [INFO] __main__: 
+  Task: gov_report
+2026-08-20 11:20:19,091 [INFO] core.evaluator_v2: [h2o] gov_report (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:20:28,160 [INFO] core.evaluator_v2: [h2o] pred='The document details the two main programs through which the National Science Foundation (NSF) recruits rotating personn'
+2026-08-20 11:20:34,604 [INFO] core.evaluator_v2: [h2o] pred='The document outlines the challenges and inefficiencies in federal IT spending and management, despite a $96 billion bud'
+2026-08-20 11:20:34,632 [INFO] __main__:   → score=10.59, collapse=1/2 (50.0%), mem_red=80.0%, ttft=1126.6ms
+2026-08-20 11:20:34,642 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.csv
+2026-08-20 11:20:34,657 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.json
+2026-08-20 11:20:34,657 [INFO] __main__:   [중간 저장 완료] 3/8 설정
+2026-08-20 11:20:34,658 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-20 11:20:34,659 [INFO] __main__: Method: SNAPKV | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-20 11:20:34,660 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-20 11:20:34,660 [INFO] __main__: 
+  Task: qmsum
+2026-08-20 11:20:34,660 [INFO] core.evaluator_v2: [snapkv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:20:40,573 [INFO] core.evaluator_v2: [snapkv] pred="The document describes a meeting for a design project focused on creating a new remote control. The meeting's agenda inc"
+2026-08-20 11:20:50,960 [INFO] core.evaluator_v2: [snapkv] pred='The document is a meeting transcript between team members discussing the design of a new remote control. Key points incl'
+2026-08-20 11:20:50,964 [INFO] __main__:   → score=8.79, collapse=0/2 (0.0%), mem_red=80.0%, ttft=975.8ms
+2026-08-20 11:20:50,965 [INFO] __main__: 
+  Task: gov_report
+2026-08-20 11:20:50,966 [INFO] core.evaluator_v2: [snapkv] gov_report (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:21:02,464 [INFO] core.evaluator_v2: [snapkv] pred="The document outlines the National Science Foundation's (NSF) use of two programs, IPA and VSEE, to bring in temporary s"
+2026-08-20 11:21:13,338 [INFO] core.evaluator_v2: [snapkv] pred='The document outlines the challenges and issues facing federal IT spending and management in the U.S. government. Despit'
+2026-08-20 11:21:13,365 [INFO] __main__:   → score=13.79, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1107.2ms
+2026-08-20 11:21:13,385 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.csv
+2026-08-20 11:21:13,399 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.json
+2026-08-20 11:21:13,400 [INFO] __main__:   [중간 저장 완료] 4/8 설정
+2026-08-20 11:21:13,401 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-20 11:21:13,402 [INFO] __main__: Method: PYRAMIDKV-ADAPTED | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-20 11:21:13,417 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-20 11:21:13,419 [INFO] __main__: 
+  Task: qmsum
+2026-08-20 11:21:13,421 [INFO] core.evaluator_v2: [pyramidkv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:21:18,702 [INFO] core.evaluator_v2: [pyramidkv] pred='The document details a meeting where team members introduce themselves and discuss a design project. The project involve'
+2026-08-20 11:21:28,996 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-20 11:21:29,000 [INFO] __main__:   → score=9.83, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1004.1ms
+2026-08-20 11:21:29,001 [INFO] __main__: 
+  Task: gov_report
+2026-08-20 11:21:29,002 [INFO] core.evaluator_v2: [pyramidkv] gov_report (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:21:38,984 [INFO] core.evaluator_v2: [pyramidkv] pred='The document details the two main programs through which the National Science Foundation (NSF) recruits rotating personn'
+2026-08-20 11:21:45,986 [INFO] core.evaluator_v2: [pyramidkv] pred='The document outlines the challenges and inefficiencies in federal IT spending and management, despite a $96 billion bud'
+2026-08-20 11:21:46,003 [INFO] __main__:   → score=10.59, collapse=1/2 (50.0%), mem_red=80.0%, ttft=1111.3ms
+2026-08-20 11:21:46,036 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.csv
+2026-08-20 11:21:46,052 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.json
+2026-08-20 11:21:46,052 [INFO] __main__:   [중간 저장 완료] 5/8 설정
+2026-08-20 11:21:46,053 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-20 11:21:46,054 [INFO] __main__: Method: ADAKV-ADAPTED | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-20 11:21:46,055 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-20 11:21:46,055 [INFO] __main__: 
+  Task: qmsum
+2026-08-20 11:21:46,056 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:21:51,117 [INFO] core.evaluator_v2: [adakv] pred='The document details a meeting where team members introduce themselves and discuss a design project. The project involve'
+2026-08-20 11:22:02,105 [INFO] core.evaluator_v2: [adakv] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-20 11:22:02,120 [INFO] __main__:   → score=9.83, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1005.3ms
+2026-08-20 11:22:02,121 [INFO] __main__: 
+  Task: gov_report
+2026-08-20 11:22:02,122 [INFO] core.evaluator_v2: [adakv] gov_report (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-20 11:22:11,000 [INFO] core.evaluator_v2: [adakv] pred='The document details the two main programs through which the National Science Foundation (NSF) recruits rotating personn'
+2026-08-20 11:22:17,320 [INFO] core.evaluator_v2: [adakv] pred='The document outlines the challenges and inefficiencies in federal IT spending and management, despite a $96 billion bud'
+2026-08-20 11:22:17,338 [INFO] __main__:   → score=10.59, collapse=1/2 (50.0%), mem_red=80.0%, ttft=1122.7ms
+2026-08-20 11:22:17,350 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.csv
+2026-08-20 11:22:17,364 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.json
+2026-08-20 11:22:17,365 [INFO] __main__:   [중간 저장 완료] 6/8 설정
+2026-08-20 11:22:17,365 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-20 11:22:17,366 [INFO] __main__: Method: SALIENCEKV_WO_SINK | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-20 11:22:17,367 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-20 11:22:17,368 [INFO] __main__: 
+  Task: qmsum
+2026-08-20 11:22:17,369 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-20 11:22:23,046 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-20 11:22:31,126 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-20 11:22:31,130 [INFO] __main__:   → score=9.25, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1025.1ms
+2026-08-20 11:22:31,130 [INFO] __main__: 
+  Task: gov_report
+2026-08-20 11:22:31,131 [INFO] core.evaluator_v2: [ours] gov_report (2샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-20 11:22:50,768 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-20 11:23:02,797 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-20 11:23:02,830 [INFO] __main__:   → score=14.08, collapse=1/2 (50.0%), mem_red=80.0%, ttft=1146.0ms
+2026-08-20 11:23:02,845 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.csv
+2026-08-20 11:23:02,858 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.json
+2026-08-20 11:23:02,859 [INFO] __main__:   [중간 저장 완료] 7/8 설정
+2026-08-20 11:23:02,861 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-20 11:23:02,862 [INFO] __main__: Method: SALIENCEKV_SINK4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-20 11:23:02,862 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-20 11:23:02,863 [INFO] __main__: 
+  Task: qmsum
+2026-08-20 11:23:02,864 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-20 11:23:12,833 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a'
+2026-08-20 11:23:21,824 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interfa'
+2026-08-20 11:23:21,828 [INFO] __main__:   → score=9.09, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1364.4ms
+2026-08-20 11:23:21,829 [INFO] __main__: 
+  Task: gov_report
+2026-08-20 11:23:21,830 [INFO] core.evaluator_v2: [ours] gov_report (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-20 11:23:38,775 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D'
+2026-08-20 11:23:51,387 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-20 11:23:51,432 [INFO] __main__:   → score=13.25, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1149.1ms
+2026-08-20 11:23:51,444 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.csv
+2026-08-20 11:23:51,459 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260820_111845.json
+2026-08-20 11:23:51,459 [INFO] __main__:   [중간 저장 완료] 8/8 설정
+2026-08-20 11:23:51,460 [INFO] __main__: Experiment 1 completed!
