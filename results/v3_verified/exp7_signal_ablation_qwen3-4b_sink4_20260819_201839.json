@@ -1,0 +1,369 @@
+{
+  "experiment": "exp7_signal_ablation",
+  "model": "qwen3-4b",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qmsum",
+    "gov_report"
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "results": [
+    {
+      "method": "3signal_NVP",
+      "task_scores": {
+        "qmsum": 9.08538253442354,
+        "gov_report": 13.248622136971015
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2",
+        "gov_report": "0/2"
+      },
+      "avg_score": 11.167002335697276,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/4",
+      "avg_ttft_ms": 1227.310008534453,
+      "avg_throughput": 31.034556237686264,
+      "avg_memory_reduction_pct": 80.00318804110623,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 5.988023952095809,
+            "prediction": "The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a television. The team discusses the goals of the project, emphasizing the need for a modern, user-friendly design that stands out from existing products. They outline the project structure, including the use of a whiteboard for brainstorming and the importance of collaboration.\n\nThe team members introduce themselves and share their roles. They then discuss the design process, focusing on user needs and the importance of creating an intuitive interface. The meeting includes a brainstorming session where ideas for the remote control's features are shared, with a focus on simplicity and functionality.\n\nThe team also discusses the budget and timeline for the project, and they agree on the next steps, including further research and planning. The meeting concludes with a plan to continue working on the project and a reminder to bring laptops back to their workspaces. The overall goal is to create a remote control that is both innovative and user-friendly, meeting the needs of its users while standing out in the market.",
+            "word_rep": 0.01666666666666672,
+            "char_rep": 0.2631118881118881,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.18274111675127,
+            "prediction": "The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interface**: The team is finalizing the layout and controls of the remote, focusing on user-friendly design and intuitive navigation.\n- **Design Considerations**: The remote is being designed with a focus on modern aesthetics, ease of use, and target audience (younger users).\n- **Technical Features**: The remote includes a scroll wheel for navigation, a joystick for precise control, and a customizable layout.\n- **Material and Durability**: The remote is being considered with materials that are both durable and user-friendly, such as rubber for grip and hard plastic for structure.\n- **Cost and Budget**: The team is working within a budget, considering cost-effective materials and features without compromising on quality.\n- **Future Steps**: The team plans to finalize the design and prepare for the next meeting, which will focus on detailed design and production considerations.\n\nThe meeting concludes with a plan to finalize the design and prepare for the next phase of development.",
+            "word_rep": 0.06586826347305386,
+            "char_rep": 0.27404718693284935,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 12.35813366960908,
+            "prediction": "The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D)** and **Voluntary Rotational (VR)**—to bring in external expertise and fresh perspectives. These programs allow scientists and engineers from outside the NSF to work temporarily at the agency, contributing to its mission of advancing science and engineering.\n\n**Key Differences Between IR&D and VR:**\n- **IR&D** involves individuals who are not currently employed by the NSF but are working on research projects.\n- **VR** involves individuals who are employed by the NSF but are rotating between different positions or departments.\n\n**Key Features of the Programs:**\n- **Compensation:** IR&D participants are typically paid by their home institutions, while VR participants are paid by the NSF.\n- **Duration:** IR&D is usually for a short period (e.g., 6 months), while VR can be longer (e.g., 1–2 years).\n- **Responsibilities:** IR&D participants focus on research, while VR participants may have broader responsibilities, including administrative and programmatic tasks.\n\n**Challenges and Concerns:**\n- **Workload and Integration:** VR participants may struggle to integrate into the NSF culture and may feel overburdened by their responsibilities.\n- **Evaluation:** The NSF has not fully evaluated the effectiveness of these programs in achieving its mission, and there is a need for better metrics to assess their impact.\n- **Balance:** There is a concern about the balance between using external experts and maintaining internal expertise within the NSF.\n\n**Recommendations:**\n- The NSF should develop a comprehensive evaluation of its rotational programs to assess their effectiveness in advancing its mission.\n- The agency should consider implementing a more structured approach to managing and evaluating these programs, including clear performance metrics and feedback mechanisms.\n- The NSF should also explore ways to better integrate rotational participants into the agency’s culture and ensure that they contribute meaningfully to the agency’s work.\n\nOverall, the NSF’s rotational programs are an important part of its strategy for engaging with the broader scientific community, but there is a need for more systematic evaluation and management to ensure they are achieving their intended goals.",
+            "word_rep": 0.04179104477611939,
+            "char_rep": 0.33619948409286327,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 14.139110604332952,
+            "prediction": "The document outlines the challenges and efforts in improving the management and security of federal information technology (IT) systems. It highlights that despite increased funding and initiatives, the federal government continues to face significant issues with IT project management, security, and efficiency. Key problems include:\n\n- **Poor Project Management**: Many IT projects are delayed, over budget, or fail to meet objectives due to inadequate planning, oversight, and coordination.\n- **Security Vulnerabilities**: Federal agencies struggle with securing their IT systems, leading to data breaches and other security incidents.\n- **Inefficiencies**: There is a lack of standardization and integration across agencies, resulting in redundant systems, high costs, and poor user experiences.\n- **Lack of Accountability**: Many agencies lack the necessary resources, expertise, and leadership to effectively manage their IT programs.\n\nThe document also discusses various initiatives and reforms aimed at addressing these issues, including:\n\n- **The Federal IT Modernization Initiative**: A multi-year effort to improve the efficiency and effectiveness of federal IT systems.\n- **The Federal IT Acquisition Reform Act**: A law aimed at improving the management and oversight of federal IT acquisitions.\n- **The National Institute of Standards and Technology (NIST) Framework**: A set of guidelines and best practices for improving cybersecurity and IT management.\n\nThe document concludes that while there have been some improvements, much more needs to be done to ensure that federal IT systems are secure, efficient, and effective. It calls for continued efforts to improve project management, security, and accountability in federal IT programs.",
+            "word_rep": 0.02857142857142858,
+            "char_rep": 0.30114285714285716,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "4signal_NVPS",
+      "task_scores": {
+        "qmsum": 8.73939287901321,
+        "gov_report": 14.87161102246639
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2",
+        "gov_report": "0/2"
+      },
+      "avg_score": 11.8055019507398,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/4",
+      "avg_ttft_ms": 1120.3061113895,
+      "avg_throughput": 28.201601939016896,
+      "avg_memory_reduction_pct": 80.00318804110623,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 6.211180124223603,
+            "prediction": "The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a television. The team discusses the goals of the project, emphasizing the need for a modern, user-friendly design that stands out from existing products. They outline the project structure, including the use of a whiteboard for brainstorming and the importance of collaboration.\n\nEach team member introduces themselves and shares their role in the project. The discussion moves to the design process, with a focus on creating a unique and functional remote control. The team explores ideas for the remote's features, such as a minimalist design, intuitive interface, and integration of technology. They also consider the target audience and the importance of usability.\n\nThe meeting concludes with a summary of the next steps, including the distribution of specific tasks and the need for continued collaboration. The team agrees to follow up in 30 minutes to review their ideas and begin the design process. The meeting ends with a reminder to carry laptops and unplug devices as needed.",
+            "word_rep": 0.023121387283236983,
+            "char_rep": 0.24275362318840576,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 11.267605633802814,
+            "prediction": "The document is a detailed meeting transcript involving team members discussing the design of a new remote control device. Key points include:\n\n- **Design Goals**: The remote should be user-friendly, modern, and appealing to younger users, incorporating trends like a pistol-shaped design and a compact, ergonomic form.\n- **Functionality**: The remote needs to include essential functions such as volume control, channel selection, and possibly advanced features like a joystick for navigation.\n- **User Interface**: There are discussions about the layout of buttons, the need for clear labeling, and the placement of important functions for ease of use.\n- **Material and Construction**: The team considers materials like hard plastic for durability and rubber for grip, with a focus on comfort and aesthetics.\n- **Cost and Budget**: The team discusses the cost implications of different design choices, including the use of advanced features like a joystick, and aims to keep the product affordable.\n- **Future Considerations**: The team plans to finalize the design and prepare for the next steps, including prototyping and testing.\n\nThe meeting concludes with a decision to finalize the design and prepare for the next phase of development.",
+            "word_rep": 0.048128342245989275,
+            "char_rep": 0.23325262308313155,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 15.241057542768274,
+            "prediction": "The report outlines the National Science Foundation's (NSF) use of rotating personnel (rotators) and its management of these programs. It details the two main types of rotator programs: the Independent Research and Development (IR&D) program and the Research Participation (RP) program. The report explains the differences between these programs, including their eligibility criteria, duration, and responsibilities.\n\nThe report also discusses the financial aspects of the rotator programs, including the costs associated with hiring and retaining rotators, and the NSF's efforts to manage these costs through various strategies, such as limiting the number of rotators, setting performance expectations, and providing incentives for rotators to stay with the NSF.\n\nThe report also addresses the challenges the NSF faces in managing its rotator programs, including the difficulty of measuring the impact of these programs on the NSF's mission and the need for a more comprehensive evaluation of the programs' effectiveness.\n\nFinally, the report recommends that the NSF develop a more comprehensive evaluation of its rotator programs to better understand their impact on the NSF's mission and to improve the programs' effectiveness.",
+            "word_rep": 0.05681818181818177,
+            "char_rep": 0.3284433577832111,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 14.502164502164502,
+            "prediction": "The document outlines the challenges and efforts in improving the management and security of federal information technology (IT) systems in the United States. Despite a significant budget allocation for IT, many federal agencies have struggled with inefficiencies, poor project outcomes, and security vulnerabilities. Key issues include:\n\n1. **Project Failures and Waste**: Many IT projects fail to meet goals, often due to poor planning, lack of oversight, and inadequate resources. This has led to wasted funds and inefficient use of taxpayer money.\n\n2. **Security Vulnerabilities**: Federal agencies face ongoing cybersecurity threats, with many systems lacking proper security measures. This puts sensitive data at risk and undermines public trust.\n\n3. **Ineffective Management Practices**: Agencies often lack the necessary leadership and expertise to manage IT projects effectively. This results in poor decision-making and a lack of accountability.\n\n4. **Consistent Oversight and Accountability**: There is a need for stronger oversight and accountability mechanisms to ensure that IT projects are managed properly and that agencies are held responsible for their outcomes.\n\n5. **Improving IT Management**: The government has implemented various initiatives to improve IT management, including the adoption of best practices, the use of performance metrics, and the establishment of oversight bodies.\n\n6. **Cybersecurity Measures**: The government has taken steps to enhance cybersecurity, including the development of new standards and the implementation of security measures to protect sensitive data.\n\n7. **Training and Education**: There is a need for ongoing training and education for IT professionals to ensure they have the necessary skills to manage and secure IT systems effectively.\n\nIn conclusion, while the government has made progress in improving IT management and security, there is still a need for continued efforts to address the challenges and ensure that federal IT systems are managed effectively and securely.",
+            "word_rep": 0.02076124567474047,
+            "char_rep": 0.3287469287469288,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_N",
+      "task_scores": {
+        "qmsum": 10.351579884290164,
+        "gov_report": 16.89098843748594
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2",
+        "gov_report": "0/2"
+      },
+      "avg_score": 13.621284160888052,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/4",
+      "avg_ttft_ms": 1154.4754227133394,
+      "avg_throughput": 25.564638512640727,
+      "avg_memory_reduction_pct": 80.00318804110623,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 7.6190476190476195,
+            "prediction": "The meeting focused on designing a new television remote control that is both innovative and user-friendly. The team discussed key features, aiming to balance originality with usability. They considered a sleek, minimalist design with a touchscreen interface, reducing the number of physical buttons. The remote should also have a long battery life and be aesthetically pleasing. The team emphasized the importance of intuitive design to avoid a steep learning curve for new users. They planned to continue their work with specific instructions upon returning to their workspaces. The meeting concluded with a reminder of the next meeting in thirty minutes.",
+            "word_rep": 0.0,
+            "char_rep": 0.12251148545176105,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.084112149532709,
+            "prediction": "The meeting focused on the design and development of a new remote control device. Key points included:\n\n- **Design and Functionality**: The team discussed the shape, size, and usability of the remote, aiming for a user-friendly, modern design that appeals to younger users. They considered various form factors, including a pistol-like shape and a joystick-style remote.\n\n- **User Interface**: The team emphasized the importance of an intuitive interface, with clear buttons and easy navigation. They also discussed the placement of buttons and the need for a simple, efficient layout.\n\n- **Technology and Components**: The team evaluated different components, including the battery type (normal vs. rechargeable), the type of chip (regular vs. advanced), and the inclusion of an LCD screen. They decided on a normal battery and a regular chip for cost-effectiveness.\n\n- **Cost Considerations**: The team balanced design and functionality with budget constraints, ensuring the product remains affordable while maintaining quality.\n\n- **Next Steps**: The team agreed on a detailed design meeting for the next session, where all aspects of the product would be finalized. They emphasized the need for a cohesive and functional design that meets both user needs and business goals.",
+            "word_rep": 0.010471204188481686,
+            "char_rep": 0.23312401883830458,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 20.362622036262206,
+            "prediction": "The report outlines the National Science Foundation's (NSF) use of Independent Assessors (IPA) and Visiting Experts (VSEE) to support its research and education missions. It highlights the importance of these individuals in bringing fresh perspectives, influencing research directions, and providing leadership in managing NSF programs. The report also discusses the challenges of evaluating the impact of these programs on NSF's human capital goals and programmatic outcomes, noting that the blended nature of IPA and VSEE with the permanent workforce complicates separate assessments.\n\nKey findings include:\n- IPA and VSEE contribute to scientific leadership, interdisciplinary research, and knowledge transfer.\n- There is a need for a comprehensive agency-wide workforce strategy to balance the use of IPA/VSEE with permanent staff, as recommended by the NSF's IPA steering committee.\n- The NSF has not fully evaluated the contributions of its IPA and VSEE programs to its human capital goals and programmatic results, which limits its ability to demonstrate the programs' benefits and make necessary adjustments.\n\nThe report recommends that the NSF Director of Human Resource Management:\n1. Develop an agency-wide workforce strategy to balance the use of IPA and VSEE with permanent staff.\n2. Evaluate the contributions of IPA and VSEE programs to NSF's human capital goals and programmatic results.\n\nThe NSF has agreed with these recommendations and stated that their implementation will enhance efforts to fulfill the agency's mission and strengthen its workforce. The report is available for public access and is provided to relevant stakeholders, including Congressional Committees and the NSF Director.",
+            "word_rep": 0.09638554216867468,
+            "char_rep": 0.3140011716461628,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.419354838709676,
+            "prediction": "The document outlines the challenges and opportunities in improving the management of federal IT acquisitions and operations, as well as ensuring the security of federal IT systems. Key issues include inefficient IT acquisition processes, inadequate cybersecurity measures, and insufficient implementation of recommendations from the Government Accountability Office (GAO). Despite some progress in areas like data center consolidation, CIO responsibilities, and compliance with FISMA requirements, many agencies have not fully implemented the necessary changes to address these issues effectively. The document highlights the importance of continued efforts by the Office of Management and Budget (OMB) and federal agencies to implement GAO recommendations, improve IT management, and enhance cybersecurity to save billions of dollars and protect federal systems. It also emphasizes the need for ongoing monitoring and evaluation to ensure these improvements are sustained.",
+            "word_rep": 0.007692307692307665,
+            "char_rep": 0.20721649484536087,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_V",
+      "task_scores": {
+        "qmsum": 9.366875131754622,
+        "gov_report": 12.701020958734208
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2",
+        "gov_report": "0/2"
+      },
+      "avg_score": 11.033948045244415,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/4",
+      "avg_ttft_ms": 1169.4438155235434,
+      "avg_throughput": 25.977733792055282,
+      "avg_memory_reduction_pct": 80.00318804110623,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 7.518796992481204,
+            "prediction": "The meeting begins with an introduction and overview of the project, focusing on designing a new remote control. The team discusses the goals of creating a unique, user-friendly device that stands out from existing models. They emphasize the importance of balancing innovation with usability. \n\nKey points include:\n- The remote control should be original and visually appealing.\n- It should be easy to use, with a focus on intuitive design.\n- The team explores ideas for a simplified interface, potentially reducing the number of buttons and using on-screen controls.\n- They consider features like long battery life and a modern, sleek design.\n- The team agrees to continue working on the project and will receive specific instructions upon returning to their workspaces.\n\nThe meeting ends with a plan to meet again in thirty minutes for further discussion.",
+            "word_rep": 0.014814814814814836,
+            "char_rep": 0.14185228604923794,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 11.214953271028039,
+            "prediction": "The meeting discusses the design of a new remote control device. Key points include:\n\n- **Design and Functionality**: The team is finalizing the remote's layout, including buttons, display, and user interface. They aim for a modern, user-friendly design that appeals to younger users.\n- **User Interface**: The remote will have a large display, with buttons for basic functions like volume and channel control. The team is considering a touchscreen or a physical keypad.\n- **Form Factor**: The remote is being designed to be compact and ergonomic, with a focus on ease of use and comfort.\n- **Cost and Materials**: The team is considering cost-effective materials, such as hard plastic for durability and rubber for grip. They are also exploring the use of a rechargeable battery.\n- **Market Trends**: The design is influenced by current trends in consumer electronics, with a focus on sleek, modern aesthetics and intuitive controls.\n- **Finalization**: The team is working on finalizing the design and will present it for review in the next meeting.\n\nThe meeting concludes with a decision to finalize the design and prepare for the next meeting to discuss detailed design specifications.",
+            "word_rep": 0.03743315508021394,
+            "char_rep": 0.23628691983122363,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 13.086770981507826,
+            "prediction": "The report outlines the structure and operations of the National Science Foundation's (NSF) rotational programs, detailing the differences between two main types of rotational positions: the **Institutional Affiliation (IA) Program** and the **Institutional Affiliation (IA) Program with a Non-IA Affiliation**. It explains how these programs function, the roles and responsibilities of participants, and the administrative processes involved in managing these positions.\n\nKey points include:\n\n- **IA Program**: Participants are affiliated with an institution outside the NSF, often in academia or research, and work on NSF-funded projects. They are typically based at their home institution and may have a limited time at NSF.\n- **IA Program with a Non-IA Affiliation**: Participants are affiliated with an institution that is not part of the NSF, but may have a non-IA affiliation, such as a government or private entity. These participants may have a more extended period at NSF and are often involved in more complex projects.\n\nThe report also discusses the administrative processes, including the application and selection procedures, the roles of the NSF and the participating institutions, and the responsibilities of the participants. It highlights the importance of these programs in bringing fresh perspectives and expertise to the NSF, as well as the challenges in managing and evaluating the effectiveness of these programs.\n\nThe report concludes with recommendations for the NSF to improve the management and evaluation of its rotational programs, including the need for a more comprehensive assessment of the programs' impact on the NSF's mission and the broader scientific community.",
+            "word_rep": 0.040322580645161255,
+            "char_rep": 0.3695395513577332,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.31527093596059,
+            "prediction": "The document outlines the challenges and efforts in improving the management and security of federal information technology (IT) systems. It highlights that despite increased funding and initiatives, the federal government continues to face significant issues with IT project management, security, and efficiency. Many IT projects are plagued by delays, cost overruns, and poor performance, often due to inadequate planning, poor oversight, and a lack of skilled personnel. The report also discusses the need for better implementation of security measures, including the adoption of best practices and the use of standardized frameworks. It emphasizes the importance of continuous monitoring and evaluation to ensure that IT systems are secure, efficient, and effective. The document also notes the progress made in some areas, such as the implementation of the Federal Information Security Management Act (FISMA) and the adoption of the National Institute of Standards and Technology (NIST) Cybersecurity Framework. However, it also points out that more work is needed to fully realize the benefits of these initiatives and to ensure that the federal government can effectively manage its IT resources.",
+            "word_rep": 0.017142857142857126,
+            "char_rep": 0.23352793994995835,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_P",
+      "task_scores": {
+        "qmsum": 8.800773694390717,
+        "gov_report": 12.693160357993266
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2",
+        "gov_report": "0/2"
+      },
+      "avg_score": 10.746967026191992,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/4",
+      "avg_ttft_ms": 1088.6288857695772,
+      "avg_throughput": 29.324333418586495,
+      "avg_memory_reduction_pct": 80.00318804110623,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 8.510638297872342,
+            "prediction": "The document describes a meeting where a design project for a new remote control is introduced. The team discusses the project's goals, the structure of the project, and the roles of each team member. They outline the project's objectives, including creating a user-friendly and innovative remote control. The meeting also includes an activity where each team member draws a cartoon character and explains its relevance to the project. The team discusses the design process, the importance of user-centered design, and the need for collaboration. The meeting concludes with a discussion on the project's timeline and next steps.",
+            "word_rep": 0.021052631578947323,
+            "char_rep": 0.2467948717948718,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.090909090909092,
+            "prediction": "The document is a transcript of a meeting between team members discussing the design of a new remote control. Key points include:\n\n- **User Interface Design**: The team is finalizing the layout and functionality of the remote, focusing on intuitive controls, clear labeling, and user-friendly navigation.\n- **Design Considerations**: The remote is being designed with a focus on aesthetics, ease of use, and target audience (primarily younger users). There is discussion about the color scheme, material, and form factor.\n- **Technical Features**: The team is considering advanced features like a scroll wheel, customizable buttons, and integration with television functions.\n- **Budget and Feasibility**: There are discussions about the cost of materials, production, and whether to include advanced features within the budget.\n- **Finalization**: The team is working towards a final design that balances functionality, aesthetics, and cost, with a focus on meeting user needs and market trends.\n\nThe meeting concludes with a decision to proceed with the final design, with further details to be finalized before the next meeting.",
+            "word_rep": 0.0239520958083832,
+            "char_rep": 0.22892635314995569,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 15.912636505460217,
+            "prediction": "The document outlines the NSF's use of rotating staff (rotators) through two programs: the Independent Program for Rotators (IPA) and the Visiting Scientist Exchange (VSEE). Key differences between the two include:\n\n- **IPA Rotators**: Work at NSF, with their home institutions covering their salary and benefits. They are not subject to federal salary caps and may receive higher compensation based on their position at their home institution.\n- **VSEE Rotators**: Work at NSF on a non-federal salary, with NSF covering their salary and benefits. They are subject to federal salary caps and may receive lower compensation.\n\nThe document details the roles and responsibilities of rotators, the structure of NSF's leadership, and the impact of rotators on NSF's operations. It also discusses the challenges and benefits of using rotators, including the need for clear policies and the importance of evaluating the effectiveness of these programs. The report concludes with recommendations for improving the management and evaluation of rotator programs to ensure they meet NSF's goals and objectives.",
+            "word_rep": 0.07317073170731703,
+            "char_rep": 0.29680365296803657,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.473684210526315,
+            "prediction": "The document outlines the challenges and efforts in managing federal IT investments, highlighting that despite significant funding, many projects fail to meet goals due to poor management, lack of oversight, and ineffective implementation. It details past failures, such as costly and unsuccessful IT projects, and discusses the need for better governance, accountability, and best practices in IT management. The text also covers legislative and executive actions aimed at improving IT management, including the adoption of new laws and policies, and the establishment of frameworks to enhance transparency, efficiency, and effectiveness in federal IT operations. Overall, the document emphasizes the importance of reforming federal IT management to ensure better outcomes and more effective use of resources.",
+            "word_rep": 0.0,
+            "char_rep": 0.16749379652605456,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "N_only",
+      "task_scores": {
+        "qmsum": 8.457971393116061,
+        "gov_report": 14.993557339676876
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0,
+        "gov_report": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2",
+        "gov_report": "0/2"
+      },
+      "avg_score": 11.725764366396469,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/4",
+      "avg_ttft_ms": 1221.6613039489328,
+      "avg_throughput": 26.98441187878016,
+      "avg_memory_reduction_pct": 80.00318804110623,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 6.557377049180328,
+            "prediction": "The document describes a team meeting for a design project focused on creating a new remote control for a television. The meeting begins with an introduction and overview of the project, followed by a discussion on the project structure, roles, and objectives. The team members introduce themselves, share their backgrounds, and discuss the project's goals of designing a user-friendly, innovative remote control. They also outline the project phases, including initial brainstorming, design development, and final presentation. The meeting includes a creative activity where each team member draws a cartoon character to represent their role and ideas for the remote control. The discussion highlights the importance of user-centered design, functionality, and creativity in the project. The meeting concludes with a summary of the project plan and next steps.",
+            "word_rep": 0.0,
+            "char_rep": 0.249708284714119,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.358565737051793,
+            "prediction": "The document is a transcript of a meeting between team members discussing the design and development of a new remote control. Key points include:\n\n- **User Interface Design**: The team is finalizing the layout and functionality of the remote, including button placement, color schemes, and user interaction elements. There are discussions about the need for clear, intuitive controls and the use of visual cues (e.g., color coding).\n\n- **Design Aesthetics**: The team is considering the appearance of the remote, with a focus on making it stand out from competitors. They are exploring bold colors and a modern, ergonomic design.\n\n- **User Experience**: There is a focus on usability, including the placement of essential functions (e.g., power, volume), the need for a tactile feel, and the inclusion of features like a scroll wheel for navigation.\n\n- **Technical Considerations**: The team is discussing the feasibility of incorporating advanced features like an LCD screen, which would require additional cost and complexity. They are also considering the use of a joystick for better navigation.\n\n- **Budget and Feasibility**: The team is aware of budget constraints and is exploring cost-effective solutions without compromising on key features. They are also considering the use of existing technologies to keep costs down.\n\n- **Finalization**: The meeting concludes with a decision to proceed with the proposed design, with the team agreeing to finalize the design and prepare for the next steps in the development process.",
+            "word_rep": 0.05555555555555558,
+            "char_rep": 0.28374836173001305,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 14.619883040935672,
+            "prediction": "The document outlines the NSF's use of two rotational programs, the IPA (Internship Program for Advancement) and VSEE (Visiting Scientists and Engineers Exchange), to bring external expertise into the agency. Key differences between the two programs include:\n\n- **IPA**: Rotators are employed by NSF, with their home institutions continuing to provide benefits and compensation. Rotators may receive higher salaries than the federal rate for their position. They are typically in scientific or technical roles and may serve in leadership positions.\n\n- **VSEE**: Rotators are not employed by NSF but are placed on a non-employee basis. They are eligible for certain benefits, such as health insurance, and are subject to federal salary limits. They are often in non-technical or administrative roles.\n\nThe document also discusses the roles and responsibilities of rotators, the structure of the NSF organization, and the impact of these programs on the agency's operations. It highlights the importance of these programs in bringing fresh perspectives and expertise to NSF, while also addressing challenges such as ensuring effective integration of rotators into the agency and maintaining the quality of NSF's scientific and technical work. The document concludes with recommendations for improving the effectiveness of these programs, including better tracking of outcomes and ensuring that the programs align with NSF's strategic goals.",
+            "word_rep": 0.004761904761904745,
+            "char_rep": 0.2468619246861925,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 15.36723163841808,
+            "prediction": "The document outlines the challenges and issues faced by the U.S. federal government in managing its IT infrastructure and programs. Despite a significant budget allocation for IT in fiscal year 2018, many federal IT projects have failed, leading to cost overruns, schedule delays, and limited mission outcomes. Examples include the failure of the National Polar-orbiting Environmental Satellite System and the Secure Border Initiative, which resulted in substantial financial losses. The report highlights systemic issues such as poor project management, inadequate oversight, and a lack of effective governance structures, which contribute to the failure of IT initiatives.\n\nThe document also discusses the importance of cybersecurity and the risks associated with inadequate security measures, citing examples like the Office of Personnel Management data breach. It emphasizes the need for better implementation of IT management practices, including the establishment of strong leadership roles, such as the Chief Information Officer (CIO), and the adoption of best practices in project management and risk management.\n\nThe report highlights the efforts made by the federal government to improve IT management through various initiatives, including the implementation of the Federal Information Security Management Act (FISMA), the establishment of the Office of the CIO, and the adoption of the Federal IT Acquisition Reform Act. It also discusses the importance of modernizing IT infrastructure and the need for better coordination among federal agencies to improve the efficiency and effectiveness of IT programs.\n\nIn conclusion, the document underscores the need for the federal government to improve its IT management practices, enhance cybersecurity measures, and ensure that IT programs are effectively managed to achieve their intended mission outcomes.",
+            "word_rep": 0.06818181818181823,
+            "char_rep": 0.34946236559139787,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ],
+  "completed_variants": 6,
+  "total_variants": 6
+}
