@@ -47,6 +47,17 @@ def make_patched_select_with_sink(slot: str):
         elif slot == "end":
             end_point = max(seq_len - recent_w - sink_size, 0)
             sink_idx = torch.arange(end_point, end_point + sink_size, device=device)
+        elif slot == "random":
+            # recent window를 제외한 범위에서 무작위 위치 sink_size개 선택.
+            # 재현성: main()에서 torch.manual_seed(SEED)를 한 번 고정하므로,
+            # 스크립트를 동일하게 재실행하면 호출 순서가 같아 동일 결과가 나옴.
+            candidate_range = max(seq_len - recent_w, 0)
+            if candidate_range > 0:
+                k = min(sink_size, candidate_range)
+                perm = torch.randperm(candidate_range, device=device)[:k]
+                sink_idx = torch.sort(perm).values
+            else:
+                sink_idx = torch.empty(0, dtype=torch.long, device=device)
         else:
             raise ValueError(f"unknown slot: {slot}")
 
@@ -86,21 +97,23 @@ def make_placeholder_tokenize_prompt(sink_size: int, placeholder_token_id: int):
     return patched
 
 
-def run_condition(evaluator, condition_name, mode, tasks, num_samples, budget, seed, tokenizer, invert_norm):
+def run_condition(evaluator, condition_name, mode, tasks, num_samples, budget, seed, tokenizer, invert_norm,
+                   sink_size_override=None):
     logger.info(f"\n{'='*60}")
     logger.info(f"Condition: {condition_name} (mode={mode})")
     logger.info(f"{'='*60}")
 
     kind, slot = mode
+    effective_sink_size = sink_size_override if sink_size_override is not None else SINK_SIZE
     if kind == "position":
         hook_module._select_with_sink = make_patched_select_with_sink(slot)
         ev2_module.tokenize_prompt = _ORIGINAL_TOKENIZE_PROMPT
-        sink_size_kwarg = SINK_SIZE if slot != "none" else 0
+        sink_size_kwarg = effective_sink_size if slot != "none" else 0
     elif kind == "content":
         hook_module._select_with_sink = _ORIGINAL_SELECT_WITH_SINK
         placeholder_id = tokenizer.pad_token_id
-        ev2_module.tokenize_prompt = make_placeholder_tokenize_prompt(SINK_SIZE, placeholder_id)
-        sink_size_kwarg = SINK_SIZE
+        ev2_module.tokenize_prompt = make_placeholder_tokenize_prompt(effective_sink_size, placeholder_id)
+        sink_size_kwarg = effective_sink_size
     else:
         raise ValueError(mode)
 
@@ -142,6 +155,7 @@ def run_condition(evaluator, condition_name, mode, tasks, num_samples, budget, s
     return {
         "condition": condition_name,
         "mode": f"{kind}:{slot}",
+        "sink_size_used": sink_size_kwarg,
         "task_scores": task_scores,
         "avg_score": round(avg_score, 2),
         "sample_records": all_sample_records,
@@ -177,23 +191,30 @@ def main():
     logger.info(f"  Key-norm direction: {'CORRECTED' if args.invert_norm else 'legacy'} | "
                 f"Results dir: {results_dir} | Log dir: {log_dir}")
 
+    import torch as _torch
+    _torch.manual_seed(SEED)  # random 슬롯 조건의 재현성 확보 (동일 실행 순서 시 동일 결과)
+
     model, tokenizer, model_config = load_model_and_tokenizer(MODEL_KEY)
     evaluator = EvaluatorV2(model, tokenizer, model_config)
     logger.info(f"  placeholder_token_id (pad_token): {tokenizer.pad_token_id}")
 
+    # (이름, mode, sink_size_override) — override=None이면 기본 SINK_SIZE(4) 사용
     conditions = [
-        ("front_real", ("position", "front")),
-        ("middle_real", ("position", "middle")),
-        ("end_real", ("position", "end")),
-        ("front_placeholder", ("content", None)),
-        ("none", ("position", "none")),
+        ("front_real", ("position", "front"), None),
+        ("middle_real", ("position", "middle"), None),
+        ("end_real", ("position", "end"), None),
+        ("random_real", ("position", "random"), None),   # 신규: sink=4를 무작위 위치에 (front_real과 대조)
+        ("front_placeholder", ("content", None), None),
+        ("none", ("position", "none"), None),
+        ("front_1", ("position", "front"), 1),            # 신규: 위치 0 단 하나만 고정
+        ("random_1", ("position", "random"), 1),          # 신규: 무작위 위치 단 하나만 고정 (front_1과 대조)
     ]
 
     all_results = []
     timestamp = get_timestamp()
-    for name, mode in conditions:
+    for name, mode, sink_override in conditions:
         result = run_condition(evaluator, name, mode, TASKS, args.num_samples, BUDGET_RATIO, SEED,
-                                tokenizer, args.invert_norm)
+                                tokenizer, args.invert_norm, sink_size_override=sink_override)
         all_results.append(result)
 
         json_data = {

@@ -1,0 +1,858 @@
+2026-08-21 10:24:18,760 [INFO] __main__: TABLE X: Sink Position/Content Controlled Validation
+2026-08-21 10:24:18,763 [INFO] __main__:   Model: qwen3-4b | Tasks: ['qmsum', 'gov_report'] | Samples: 30/task | Budget: 20%
+2026-08-21 10:24:18,764 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-21 10:24:18,770 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-21 10:24:18,979 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:24:18,990 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-21 10:24:19,098 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:24:19,108 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-21 10:24:19,216 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-21 10:24:19,308 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-21 10:24:20,866 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-21 10:24:20,870 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-21 10:24:20,914 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:24:20,924 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-21 10:25:00,604 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:25:00,627 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-21 10:25:00,758 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-21 10:25:00,796 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-21 10:25:00,828 [INFO] __main__:   placeholder_token_id (pad_token): 151643
+2026-08-21 10:25:00,830 [INFO] __main__: 
+============================================================
+2026-08-21 10:25:00,832 [INFO] __main__: Condition: front_real (mode=('position', 'front'))
+2026-08-21 10:25:00,833 [INFO] __main__: ============================================================
+2026-08-21 10:25:00,835 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 10:25:00,878 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:25:00,914 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:25:01,188 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:25:01,275 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:25:01,321 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:25:01,359 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-21 10:25:02,117 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-21 10:25:14,086 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a'
+2026-08-21 10:25:30,754 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interfa'
+2026-08-21 10:25:46,798 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses progress on a project involving natural language processing and artificial intelligence. Key point'
+2026-08-21 10:26:01,070 [INFO] core.evaluator_v2: [ours] pred='The document describes a collaborative meeting among team members (including a Project Manager, Industrial Designer, Use'
+2026-08-21 10:26:14,301 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and features of a new remote control device. Key points include:\n\n- **Material and Desi'
+2026-08-21 10:26:14,304 [INFO] __main__:   [front_real] qmsum [5/30] avg=7.51
+2026-08-21 10:26:14,655 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 10:26:26,200 [INFO] core.evaluator_v2: [ours] pred='The conversation details a discussion among researchers about their work on speech recognition and machine learning, foc'
+2026-08-21 10:26:26,846 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 10:26:42,697 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system to interpret and process natural language for navigation and location-'
+2026-08-21 10:26:43,927 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 10:26:53,426 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a new childcare and early years support scheme aimed at improving access to quality'
+2026-08-21 10:26:53,809 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-21 10:27:07,317 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of a research project, focusing on speech processing and machine learning. Key top'
+2026-08-21 10:27:28,383 [INFO] core.evaluator_v2: [ours] pred="The meeting focuses on the design of a new children's toy, emphasizing user-centered design and functionality. Key point"
+2026-08-21 10:27:28,388 [INFO] __main__:   [front_real] qmsum [10/30] avg=6.94
+2026-08-21 10:27:29,351 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 10:27:41,891 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of a speech recognition project, including microphone placement, audio recording t'
+2026-08-21 10:27:42,238 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 10:27:50,247 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a new childcare and early years support scheme aimed at improving access to quality'
+2026-08-21 10:27:58,168 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the impact of the COVID-19 pandemic on children, young people, and families in Wales. Key topics '
+2026-08-21 10:28:08,285 [INFO] core.evaluator_v2: [ours] pred='The team presented a final project for a new remote control shaped like a banana, incorporating unique features such as '
+2026-08-21 10:28:27,507 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on finalizing the design of a new remote control device. Key points included:\n\n- **Design Elements**'
+2026-08-21 10:28:27,549 [INFO] __main__:   [front_real] qmsum [15/30] avg=7.60
+2026-08-21 10:28:41,528 [INFO] core.evaluator_v2: [ours] pred='The meeting involved a team discussing the design of a new remote control for a television and DVD player. Key points in'
+2026-08-21 10:28:48,602 [INFO] core.evaluator_v2: [ours] pred="The meeting focuses on the design of a new children's toy, emphasizing user-centered design and functionality. Key point"
+2026-08-21 10:28:51,308 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 10:29:04,517 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of a speech recognition project, including microphone placement, audio recording t'
+2026-08-21 10:29:17,870 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new remote control device, focusing on design, functionality, and cost constr'
+2026-08-21 10:29:18,166 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 10:29:26,729 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a new childcare and early years support scheme aimed at improving access to quality'
+2026-08-21 10:29:26,733 [INFO] __main__:   [front_real] qmsum [20/30] avg=8.50
+2026-08-21 10:29:40,016 [INFO] core.evaluator_v2: [ours] pred='The document describes a project meeting where the team discusses the development of a new remote control device with a '
+2026-08-21 10:29:45,556 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-21 10:30:00,346 [INFO] core.evaluator_v2: [ours] pred='The document details a session of the House of Commons, focusing on various issues related to the COVID-19 pandemic. Key'
+2026-08-21 10:30:01,134 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 10:30:13,589 [INFO] core.evaluator_v2: [ours] pred='The conversation details a discussion among researchers about their work on speech recognition and machine learning, foc'
+2026-08-21 10:30:35,295 [INFO] core.evaluator_v2: [ours] pred='The document describes a collaborative meeting among team members (including a Project Manager, Industrial Designer, Use'
+2026-08-21 10:30:50,591 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where team members discuss a new remote control design. Key points include:\n\n- **'
+2026-08-21 10:30:50,599 [INFO] __main__:   [front_real] qmsum [25/30] avg=8.49
+2026-08-21 10:31:02,435 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed the design and development of a new television remote control. Key points include:\n\n- **Design Req'
+2026-08-21 10:31:13,335 [INFO] core.evaluator_v2: [ours] pred='The document describes a project meeting where the team discusses the development of a new remote control device with a '
+2026-08-21 10:31:13,666 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 10:31:24,971 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system to interpret and process natural language for navigation and location-'
+2026-08-21 10:31:35,263 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on discussing the design and functionality of a new remote control device. Key points included:\n\n- *'
+2026-08-21 10:31:44,288 [INFO] core.evaluator_v2: [ours] pred="The meeting focuses on the design of a new children's toy, emphasizing user-centered design and functionality. Key point"
+2026-08-21 10:31:44,293 [INFO] __main__:   [front_real] qmsum [30/30] avg=8.63
+2026-08-21 10:31:44,295 [INFO] __main__:   → qmsum: 8.63
+2026-08-21 10:31:44,298 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 10:31:44,468 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:31:44,505 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:31:45,194 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-21 10:32:08,106 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D'
+2026-08-21 10:32:23,199 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-21 10:32:24,588 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-21 10:32:49,410 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. perspective on China's growing assertiveness i"
+2026-08-21 10:32:54,551 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-21 10:33:17,066 [INFO] core.evaluator_v2: [ours] pred='The Clean Water Act (CWA) and the federal program established under it, the Clean Water State Revolving Fund (CWSRF), ha'
+2026-08-21 10:33:33,982 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) faced significant challenges in modernizing its financial manage'
+2026-08-21 10:33:34,018 [INFO] __main__:   [front_real] gov_report [5/30] avg=14.64
+2026-08-21 10:33:51,530 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the challenges and efforts related to cybersecurity in t'
+2026-08-21 10:34:08,187 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. government's efforts to support small businesses through vari"
+2026-08-21 10:34:08,629 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-21 10:34:26,985 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of the **Other Transaction Authority (OTA)** within the U.S. Department of De'
+2026-08-21 10:34:39,797 [INFO] core.evaluator_v2: [ours] pred='The document discusses the evolving role of cash in the modern economy, highlighting the increasing adoption of digital '
+2026-08-21 10:34:40,304 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-21 10:34:55,862 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has implemented a structured approach to managing its major acquisitions, guid'
+2026-08-21 10:34:55,894 [INFO] __main__:   [front_real] gov_report [10/30] avg=14.82
+2026-08-21 10:35:05,192 [INFO] core.evaluator_v2: [ours] pred='This report provides an overview of the 2019 Department of Homeland Security (DHS) budget and appropriations process. It'
+2026-08-21 10:35:19,867 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of the administrative and legal framework governing the management, use, and '
+2026-08-21 10:35:29,538 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth analysis of the financial and operational aspects of the Black Lung Disability Trust F'
+2026-08-21 10:35:47,392 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. foreign assistance, detailing its historical evolution, key progr'
+2026-08-21 10:36:10,102 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThe report examines the U.S. coal mining industry's environmental and financial management under the Surfa"
+2026-08-21 10:36:10,156 [INFO] __main__:   [front_real] gov_report [15/30] avg=14.57
+2026-08-21 10:36:23,325 [INFO] core.evaluator_v2: [ours] pred="The **Public Safety Officers' Benefits Act (PSOBA)** provides financial support to the families of deceased or permanent"
+2026-08-21 10:36:35,883 [INFO] core.evaluator_v2: [ours] pred="The summary outlines the ongoing challenges faced by the U.S. government in addressing the needs of the FBI's headquarte"
+2026-08-21 10:36:49,830 [INFO] core.evaluator_v2: [ours] pred='The document outlines challenges faced by the U.S. Department of Veterans Affairs (VA) in aligning its medical facilitie'
+2026-08-21 10:37:15,643 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of the 2019 budget for the U.S. International Trade Administration (ITA), which overse'
+2026-08-21 10:37:34,280 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. government's program for compensating coal miners affected by"
+2026-08-21 10:37:34,308 [INFO] __main__:   [front_real] gov_report [20/30] avg=14.78
+2026-08-21 10:37:51,958 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report examines the demographic trends and challenges within the technology sector, focusing on gende'
+2026-08-21 10:38:13,968 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report provides a comprehensive overview of the current state of Internet privacy and data protection'
+2026-08-21 10:38:28,774 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides an in-depth overview of the U.S. retirement system, focusing on the shift from defin'
+2026-08-21 10:38:41,386 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) is responsible for administering programs such as Social Security, Medicare, an'
+2026-08-21 10:38:57,387 [INFO] core.evaluator_v2: [ours] pred='The report outlines the financial challenges facing the U.S. Postal Service (USPS) regarding its retirement health benef'
+2026-08-21 10:38:57,421 [INFO] __main__:   [front_real] gov_report [25/30] avg=14.72
+2026-08-21 10:39:06,418 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of key issues related to housing and real estate in the United States, focusing on the'
+2026-08-21 10:39:30,615 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of the **National Popular Vote (NPV) Initiative**, a proposal aimed at re'
+2026-08-21 10:39:48,962 [INFO] core.evaluator_v2: [ours] pred='The document outlines the key aspects of the 2020 budget for the U.S. Department of Energy (DOE) and related agencies, f'
+2026-08-21 10:40:00,338 [INFO] core.evaluator_v2: [ours] pred='The report outlines the federal government\'s efforts to reduce its real estate footprint through the "Reduce the Footpri'
+2026-08-21 10:40:11,824 [INFO] core.evaluator_v2: [ours] pred='The document outlines the efforts of the Department of Veterans Affairs (VA) to improve access to burial sites for veter'
+2026-08-21 10:40:11,844 [INFO] __main__:   [front_real] gov_report [30/30] avg=14.84
+2026-08-21 10:40:11,845 [INFO] __main__:   → gov_report: 14.84
+2026-08-21 10:40:11,861 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_102500.json
+2026-08-21 10:40:11,862 [INFO] __main__: [중간 저장 완료] 1/8 조건
+2026-08-21 10:40:11,863 [INFO] __main__: 
+============================================================
+2026-08-21 10:40:11,863 [INFO] __main__: Condition: middle_real (mode=('position', 'middle'))
+2026-08-21 10:40:11,864 [INFO] __main__: ============================================================
+2026-08-21 10:40:11,865 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 10:40:11,952 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:40:11,989 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:40:12,522 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-21 10:40:18,046 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 10:40:28,775 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 10:40:46,294 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses progress on a project involving natural language processing and AI, focusing on the development of'
+2026-08-21 10:40:58,760 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 10:41:05,853 [INFO] core.evaluator_v2: [ours] pred='The project team is discussing the design of a new remote control. Key decisions include using titanium for the body, in'
+2026-08-21 10:41:05,857 [INFO] __main__:   [middle_real] qmsum [5/30] avg=8.52
+2026-08-21 10:41:06,298 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 10:41:21,688 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 10:41:23,119 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 10:41:38,322 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system for understanding and processing natural language in the context of to'
+2026-08-21 10:41:42,057 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 10:41:58,762 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 10:42:00,326 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-21 10:42:12,828 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of speech processing and machine learning projects, including transcription, data '
+2026-08-21 10:42:19,966 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 10:42:19,969 [INFO] __main__:   [middle_real] qmsum [10/30] avg=7.79
+2026-08-21 10:42:20,754 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 10:42:35,108 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 10:42:37,009 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 10:42:54,337 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 10:43:08,023 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the impact of the COVID-19 pandemic on children, young people, and their families in Wales. Key i'
+2026-08-21 10:43:22,626 [INFO] core.evaluator_v2: [ours] pred='The team presented a new remote control design shaped like a banana, featuring a unique, flip-open mechanism and a playf'
+2026-08-21 10:43:40,043 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on designing a new remote control, with key decisions including:\n\n- **Design**: A compact, vegetable'
+2026-08-21 10:43:40,049 [INFO] __main__:   [middle_real] qmsum [15/30] avg=7.93
+2026-08-21 10:43:52,781 [INFO] core.evaluator_v2: [ours] pred='The meeting involved a team discussing the design of a new remote control for a television. Key points included:\n\n- **Pr'
+2026-08-21 10:44:01,931 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 10:44:02,602 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 10:44:15,733 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 10:44:26,529 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new remote control device. Key points include:\n\n- The team is working on a de'
+2026-08-21 10:44:27,282 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 10:44:43,838 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 10:44:43,844 [INFO] __main__:   [middle_real] qmsum [20/30] avg=8.76
+2026-08-21 10:44:52,148 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 10:44:52,979 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-21 10:45:03,555 [INFO] core.evaluator_v2: [ours] pred='The House of Commons held a special committee session on the COVID-19 pandemic, featuring a range of questions and discu'
+2026-08-21 10:45:04,112 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 10:45:17,655 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 10:45:28,403 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 10:45:37,545 [INFO] core.evaluator_v2: [ours] pred='The summary outlines a project evaluation meeting involving a team of professionals, including a project manager, an ind'
+2026-08-21 10:45:37,549 [INFO] __main__:   [middle_real] qmsum [25/30] avg=8.84
+2026-08-21 10:45:46,251 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new television remote control. Key points include:\n\n- **Design Requirements**'
+2026-08-21 10:45:55,143 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 10:45:55,441 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 10:46:06,291 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system for understanding and processing natural language in the context of to'
+2026-08-21 10:46:22,975 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the design and functionality of a new television remote control. Key points included:\n\n- **Projec'
+2026-08-21 10:46:33,885 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 10:46:33,891 [INFO] __main__:   [middle_real] qmsum [30/30] avg=9.14
+2026-08-21 10:46:33,893 [INFO] __main__:   → qmsum: 9.14
+2026-08-21 10:46:33,895 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 10:46:34,003 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:46:34,049 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:46:34,739 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-21 10:46:59,147 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 10:47:14,472 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 10:47:15,224 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-21 10:47:39,834 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. perspective on China's actions in the South Ch"
+2026-08-21 10:47:40,699 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-21 10:48:09,431 [INFO] core.evaluator_v2: [ours] pred='The Clean Water Act (CWA) Section 319 grants funding for nonpoint source pollution control, which includes activities to'
+2026-08-21 10:48:35,843 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) faced significant challenges in modernizing its financial manage'
+2026-08-21 10:48:35,892 [INFO] __main__:   [middle_real] gov_report [5/30] avg=14.01
+2026-08-21 10:48:53,281 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document outlines the challenges and efforts in securing federal information systems, emphasizing the '
+2026-08-21 10:49:19,713 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. federal small business contracting programs, their objectives, im'
+2026-08-21 10:49:20,326 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-21 10:49:42,774 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of **Other Transaction Authority (OTA)** within the U.S. Department of Defens'
+2026-08-21 10:50:00,872 [INFO] core.evaluator_v2: [ours] pred='The document discusses the evolving landscape of payment systems in the United States, highlighting the increasing use o'
+2026-08-21 10:50:01,530 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-21 10:50:24,985 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has established processes to manage its major acquisitions, including defining'
+2026-08-21 10:50:25,020 [INFO] __main__:   [middle_real] gov_report [10/30] avg=14.09
+2026-08-21 10:50:34,572 [INFO] core.evaluator_v2: [ours] pred='This report provides an overview of the 2019 Department of Homeland Security (DHS) appropriations process. It details th'
+2026-08-21 10:50:53,337 [INFO] core.evaluator_v2: [ours] pred='The U.S. government manages approximately 64 million acres of public land, primarily through the Bureau of Land Manageme'
+2026-08-21 10:51:09,377 [INFO] core.evaluator_v2: [ours] pred='The document outlines the financial challenges and future projections of the Black Lung Disability Trust Fund (BLDTF), w'
+2026-08-21 10:51:24,060 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. foreign assistance, detailing its historical evolution, key progr'
+2026-08-21 10:51:49,345 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe report examines the U.S. Surface Mining Control and Reclamation Act (SMCRA) and its implementation, fo'
+2026-08-21 10:51:49,377 [INFO] __main__:   [middle_real] gov_report [15/30] avg=14.17
+2026-08-21 10:52:01,482 [INFO] core.evaluator_v2: [ours] pred='The PSOB (Public Safety Officer Benefits) program provides financial assistance to the dependents of public safety offic'
+2026-08-21 10:52:08,008 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text discusses the challenges faced by the FBI in locating a new fa'
+2026-08-21 10:52:26,930 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe Department of Veterans Affairs (DVA) faces challenges in aligning i'
+2026-08-21 10:52:43,538 [INFO] core.evaluator_v2: [ours] pred='The summary outlines the budgetary and operational details of the U.S. International Trade Administration (ITA), the U.S'
+2026-08-21 10:53:00,571 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. federal program for coal workers' compensation, known as the "
+2026-08-21 10:53:00,597 [INFO] __main__:   [middle_real] gov_report [20/30] avg=14.53
+2026-08-21 10:53:23,289 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report examines the technology sector in the United States, focusing on workforce demographics, emplo'
+2026-08-21 10:53:41,841 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the current state of Internet privacy and data protectio'
+2026-08-21 10:53:54,062 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides an in-depth overview of the U.S. retirement system, focusing on the transition from '
+2026-08-21 10:54:01,182 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) faces significant challenges in managing its IT systems, which are critical to '
+2026-08-21 10:54:18,076 [INFO] core.evaluator_v2: [ours] pred='The GAO report outlines the financial challenges facing the U.S. Postal Service (USPS) related to its retirement health '
+2026-08-21 10:54:18,114 [INFO] __main__:   [middle_real] gov_report [25/30] avg=14.49
+2026-08-21 10:54:33,509 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of key housing-related issues and potential legislative actions in the 116th Congress.'
+2026-08-21 10:54:58,269 [INFO] core.evaluator_v2: [ours] pred='The National Popular Vote (NPV) initiative seeks to elect the President of the United States based on the national popul'
+2026-08-21 10:55:19,395 [INFO] core.evaluator_v2: [ours] pred='The document outlines the key aspects of the 2020 budget for the U.S. Department of Energy (DOE) and related agencies, f'
+2026-08-21 10:55:40,239 [INFO] core.evaluator_v2: [ours] pred='The U.S. government is working to reduce its domestic office and facility footprint through the "Reduce the Footprint" ('
+2026-08-21 10:55:59,232 [INFO] core.evaluator_v2: [ours] pred="The National Cemetery Agency (NCA) is responsible for managing veterans' burials in the United States. Key points includ"
+2026-08-21 10:55:59,257 [INFO] __main__:   [middle_real] gov_report [30/30] avg=14.71
+2026-08-21 10:55:59,259 [INFO] __main__:   → gov_report: 14.71
+2026-08-21 10:55:59,279 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_102500.json
+2026-08-21 10:55:59,280 [INFO] __main__: [중간 저장 완료] 2/8 조건
+2026-08-21 10:55:59,281 [INFO] __main__: 
+============================================================
+2026-08-21 10:55:59,282 [INFO] __main__: Condition: end_real (mode=('position', 'end'))
+2026-08-21 10:55:59,284 [INFO] __main__: ============================================================
+2026-08-21 10:55:59,285 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 10:55:59,389 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:55:59,419 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:56:00,064 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-21 10:56:09,908 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 10:56:22,727 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 10:56:38,996 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses progress on a project involving natural language processing and AI, focusing on the development of'
+2026-08-21 10:56:52,314 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 10:57:02,970 [INFO] core.evaluator_v2: [ours] pred='The project team is discussing the design of a new remote control. Key decisions include using titanium for the body, in'
+2026-08-21 10:57:02,975 [INFO] __main__:   [end_real] qmsum [5/30] avg=8.17
+2026-08-21 10:57:03,654 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 10:57:19,720 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 10:57:20,534 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 10:57:34,973 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system for understanding and processing natural language in the context of to'
+2026-08-21 10:57:35,738 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 10:57:54,337 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 10:57:54,920 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-21 10:58:05,469 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of speech processing and machine learning projects, including transcription, data '
+2026-08-21 10:58:10,948 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 10:58:10,951 [INFO] __main__:   [end_real] qmsum [10/30] avg=7.82
+2026-08-21 10:58:11,191 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 10:58:21,501 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 10:58:22,061 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 10:58:37,775 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 10:58:49,880 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the impact of the COVID-19 pandemic on children, young people, and their families in Wales. Key i'
+2026-08-21 10:58:59,333 [INFO] core.evaluator_v2: [ours] pred='The team presented a new remote control design shaped like a banana, featuring a unique, flip-open mechanism and a playf'
+2026-08-21 10:59:10,925 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on designing a new remote control, with key decisions including:\n\n- **Design**: A compact, vegetable'
+2026-08-21 10:59:10,931 [INFO] __main__:   [end_real] qmsum [15/30] avg=7.93
+2026-08-21 10:59:16,263 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThis is a meeting between team members discussing the design of a new r'
+2026-08-21 10:59:21,379 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 10:59:21,766 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 10:59:33,078 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 10:59:43,175 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new remote control device. Key points include:\n\n- The team is working on a de'
+2026-08-21 10:59:43,605 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:00:01,889 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 11:00:01,896 [INFO] __main__:   [end_real] qmsum [20/30] avg=8.82
+2026-08-21 11:00:14,815 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 11:00:15,921 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-21 11:00:31,726 [INFO] core.evaluator_v2: [ours] pred='The House of Commons held a special committee session on the COVID-19 pandemic, featuring a range of questions and discu'
+2026-08-21 11:00:32,057 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 11:00:47,909 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 11:00:59,022 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 11:01:09,048 [INFO] core.evaluator_v2: [ours] pred='The summary outlines a project evaluation meeting involving a team of professionals, including a project manager, an ind'
+2026-08-21 11:01:09,053 [INFO] __main__:   [end_real] qmsum [25/30] avg=8.85
+2026-08-21 11:01:19,719 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new television remote control. Key points include:\n\n- **Design Requirements**'
+2026-08-21 11:01:27,716 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 11:01:28,355 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 11:01:38,793 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system for understanding and processing natural language in the context of to'
+2026-08-21 11:01:48,617 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the design and functionality of a new television remote control. Key points included:\n\n- **Projec'
+2026-08-21 11:01:53,195 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 11:01:53,200 [INFO] __main__:   [end_real] qmsum [30/30] avg=9.01
+2026-08-21 11:01:53,201 [INFO] __main__:   → qmsum: 9.01
+2026-08-21 11:01:53,202 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 11:01:53,308 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 11:01:53,350 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 11:01:53,941 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-21 11:02:08,689 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 11:02:20,547 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 11:02:21,279 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-21 11:02:38,562 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. perspective on China's actions in the South Ch"
+2026-08-21 11:02:38,899 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-21 11:03:00,692 [INFO] core.evaluator_v2: [ours] pred='The Clean Water Act (CWA) Section 319 grants funding for nonpoint source pollution control, which includes activities to'
+2026-08-21 11:03:22,184 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) faced significant challenges in modernizing its financial manage'
+2026-08-21 11:03:22,226 [INFO] __main__:   [end_real] gov_report [5/30] avg=13.73
+2026-08-21 11:03:38,210 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document outlines the challenges and efforts in securing federal information systems, emphasizing the '
+2026-08-21 11:04:03,384 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. federal small business contracting programs, their objectives, im'
+2026-08-21 11:04:04,344 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-21 11:04:26,829 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of **Other Transaction Authority (OTA)** within the U.S. Department of Defens'
+2026-08-21 11:04:43,070 [INFO] core.evaluator_v2: [ours] pred='The document discusses the evolving landscape of payment systems in the United States, highlighting the increasing use o'
+2026-08-21 11:04:44,531 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-21 11:05:03,837 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has established processes to manage its major acquisitions, including defining'
+2026-08-21 11:05:03,868 [INFO] __main__:   [end_real] gov_report [10/30] avg=13.98
+2026-08-21 11:05:11,971 [INFO] core.evaluator_v2: [ours] pred='This report provides an overview of the 2019 Department of Homeland Security (DHS) appropriations process. It details th'
+2026-08-21 11:05:26,957 [INFO] core.evaluator_v2: [ours] pred='The U.S. government manages approximately 64 million acres of public land, primarily through the Bureau of Land Manageme'
+2026-08-21 11:05:42,993 [INFO] core.evaluator_v2: [ours] pred='The document outlines the financial challenges and future projections of the Black Lung Disability Trust Fund (BLDTF), w'
+2026-08-21 11:05:55,200 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. foreign assistance, detailing its historical evolution, key progr'
+2026-08-21 11:06:14,032 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe report examines the U.S. Surface Mining Control and Reclamation Act (SMCRA) and its implementation, fo'
+2026-08-21 11:06:14,061 [INFO] __main__:   [end_real] gov_report [15/30] avg=14.01
+2026-08-21 11:06:28,843 [INFO] core.evaluator_v2: [ours] pred='The PSOB (Public Safety Officer Benefits) program provides financial assistance to the dependents of public safety offic'
+2026-08-21 11:06:33,334 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text discusses the challenges faced by the FBI in locating and main'
+2026-08-21 11:07:01,306 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe Department of Veterans Affairs (DVA) faces challenges in aligning i'
+2026-08-21 11:07:19,551 [INFO] core.evaluator_v2: [ours] pred='The summary outlines the budgetary and operational details of the U.S. International Trade Administration (ITA), the U.S'
+2026-08-21 11:07:41,825 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. federal program for coal workers' compensation, known as the "
+2026-08-21 11:07:41,855 [INFO] __main__:   [end_real] gov_report [20/30] avg=14.60
+2026-08-21 11:08:06,087 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report examines the technology sector in the United States, focusing on workforce demographics, emplo'
+2026-08-21 11:08:28,404 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the current state of Internet privacy and data protectio'
+2026-08-21 11:08:41,978 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides an in-depth overview of the U.S. retirement system, focusing on the transition from '
+2026-08-21 11:08:52,883 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) faces significant challenges in managing its IT systems, which are critical to '
+2026-08-21 11:09:05,125 [INFO] core.evaluator_v2: [ours] pred='The GAO report outlines the financial challenges facing the U.S. Postal Service (USPS) related to its retirement health '
+2026-08-21 11:09:05,150 [INFO] __main__:   [end_real] gov_report [25/30] avg=14.58
+2026-08-21 11:09:22,467 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of key housing-related issues and potential legislative actions in the 116th Congress.'
+2026-08-21 11:09:41,433 [INFO] core.evaluator_v2: [ours] pred='The National Popular Vote (NPV) initiative seeks to elect the President of the United States based on the national popul'
+2026-08-21 11:10:02,432 [INFO] core.evaluator_v2: [ours] pred='The document outlines the key aspects of the 2020 budget for the U.S. Department of Energy (DOE) and related agencies, f'
+2026-08-21 11:10:17,587 [INFO] core.evaluator_v2: [ours] pred='The U.S. government is working to reduce its domestic office and facility footprint through the "Reduce the Footprint" ('
+2026-08-21 11:10:32,809 [INFO] core.evaluator_v2: [ours] pred="The National Cemetery Agency (NCA) is responsible for managing veterans' burials in the United States. Key points includ"
+2026-08-21 11:10:32,845 [INFO] __main__:   [end_real] gov_report [30/30] avg=14.84
+2026-08-21 11:10:32,847 [INFO] __main__:   → gov_report: 14.84
+2026-08-21 11:10:32,871 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_102500.json
+2026-08-21 11:10:32,873 [INFO] __main__: [중간 저장 완료] 3/8 조건
+2026-08-21 11:10:32,875 [INFO] __main__: 
+============================================================
+2026-08-21 11:10:32,876 [INFO] __main__: Condition: random_real (mode=('position', 'random'))
+2026-08-21 11:10:32,879 [INFO] __main__: ============================================================
+2026-08-21 11:10:32,881 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 11:10:32,963 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 11:10:32,998 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 11:10:33,511 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-21 11:10:41,047 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 11:10:51,204 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 11:11:04,079 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses progress on a project involving natural language processing and AI, focusing on the development of'
+2026-08-21 11:11:12,982 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 11:11:18,032 [INFO] core.evaluator_v2: [ours] pred='The project team is discussing the design of a new remote control. Key decisions include using titanium for the body, in'
+2026-08-21 11:11:18,034 [INFO] __main__:   [random_real] qmsum [5/30] avg=9.12
+2026-08-21 11:11:18,231 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 11:11:29,543 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 11:11:29,771 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 11:11:48,090 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system for understanding and processing natural language in the context of to'
+2026-08-21 11:11:48,602 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:12:04,497 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 11:12:04,755 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-21 11:12:15,699 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of speech processing and machine learning projects, including transcription, data '
+2026-08-21 11:12:21,433 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 11:12:21,437 [INFO] __main__:   [random_real] qmsum [10/30] avg=8.28
+2026-08-21 11:12:21,984 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 11:12:34,087 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 11:12:34,420 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:12:52,447 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 11:13:10,152 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the impact of the COVID-19 pandemic on children, young people, and their families in Wales. Key i'
+2026-08-21 11:13:23,417 [INFO] core.evaluator_v2: [ours] pred='The team presented a new remote control design shaped like a banana, featuring a unique, flip-open mechanism and a playf'
+2026-08-21 11:13:36,518 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on designing a new remote control, with discussions on key components such as battery type, material'
+2026-08-21 11:13:36,523 [INFO] __main__:   [random_real] qmsum [15/30] avg=8.17
+2026-08-21 11:13:43,560 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThis is a meeting between team members discussing the design of a new r'
+2026-08-21 11:13:48,760 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 11:13:48,960 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 11:13:59,715 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 11:14:09,423 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new remote control device. Key points include:\n\n- The team is working on a de'
+2026-08-21 11:14:09,920 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:14:22,882 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 11:14:22,887 [INFO] __main__:   [random_real] qmsum [20/30] avg=8.92
+2026-08-21 11:14:33,932 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 11:14:34,321 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-21 11:14:55,561 [INFO] core.evaluator_v2: [ours] pred='The House of Commons held a special committee session on the COVID-19 pandemic, featuring a range of questions and discu'
+2026-08-21 11:15:01,291 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 11:15:17,033 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 11:15:26,937 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 11:15:41,326 [INFO] core.evaluator_v2: [ours] pred='The summary outlines a project evaluation meeting involving a team of professionals, including a project manager, an ind'
+2026-08-21 11:15:41,333 [INFO] __main__:   [random_real] qmsum [25/30] avg=8.89
+2026-08-21 11:15:53,586 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new television remote control. Key points include:\n\n- **Design Requirements**'
+2026-08-21 11:16:05,034 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 11:16:07,344 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 11:16:22,591 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system for understanding and processing natural language in the context of to'
+2026-08-21 11:16:32,018 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the design and functionality of a new television remote control. Key points included:\n\n- **Projec'
+2026-08-21 11:16:38,121 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 11:16:38,128 [INFO] __main__:   [random_real] qmsum [30/30] avg=9.15
+2026-08-21 11:16:38,129 [INFO] __main__:   → qmsum: 9.15
+2026-08-21 11:16:38,129 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 11:16:38,217 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 11:16:38,262 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 11:16:38,849 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-21 11:16:59,243 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 11:17:10,408 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 11:17:11,471 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-21 11:17:34,822 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. perspective on China's actions in the South Ch"
+2026-08-21 11:17:36,150 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-21 11:18:00,854 [INFO] core.evaluator_v2: [ours] pred='The Clean Water Act (CWA) Section 319 grants funding for nonpoint source pollution control, which includes activities to'
+2026-08-21 11:18:21,500 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) faced significant challenges in modernizing its financial manage'
+2026-08-21 11:18:21,547 [INFO] __main__:   [random_real] gov_report [5/30] avg=13.91
+2026-08-21 11:18:36,003 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document outlines the challenges and efforts in securing federal information systems, emphasizing the '
+2026-08-21 11:18:53,892 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. federal small business contracting programs, their objectives, an'
+2026-08-21 11:18:54,464 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-21 11:19:12,942 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of **Other Transaction Authority (OTA)** within the U.S. Department of Defens'
+2026-08-21 11:19:28,225 [INFO] core.evaluator_v2: [ours] pred='The document discusses the evolving landscape of payment systems in the United States, highlighting the increasing use o'
+2026-08-21 11:19:28,844 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-21 11:19:47,158 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has established processes to manage its major acquisitions, including defining'
+2026-08-21 11:19:47,196 [INFO] __main__:   [random_real] gov_report [10/30] avg=14.16
+2026-08-21 11:19:58,994 [INFO] core.evaluator_v2: [ours] pred='This report provides an overview of the 2019 Department of Homeland Security (DHS) appropriations process. It details th'
+2026-08-21 11:20:13,308 [INFO] core.evaluator_v2: [ours] pred='The U.S. government manages approximately 64 million acres of public land, primarily through the Bureau of Land Manageme'
+2026-08-21 11:20:27,314 [INFO] core.evaluator_v2: [ours] pred='The document outlines the financial challenges and future projections of the Black Lung Disability Trust Fund (BLDTF), w'
+2026-08-21 11:20:38,373 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. foreign assistance, detailing its historical evolution, key progr'
+2026-08-21 11:20:58,525 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe report examines the U.S. Surface Mining Control and Reclamation Act (SMCRA) and the Office of Surface '
+2026-08-21 11:20:58,556 [INFO] __main__:   [random_real] gov_report [15/30] avg=14.04
+2026-08-21 11:21:08,795 [INFO] core.evaluator_v2: [ours] pred='The PSOB (Public Safety Officer Benefits) program provides financial assistance to the dependents of public safety offic'
+2026-08-21 11:21:16,028 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text discusses the challenges faced by the FBI in locating and main'
+2026-08-21 11:21:41,734 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe Department of Veterans Affairs (DVA) faces challenges in aligning i'
+2026-08-21 11:22:08,906 [INFO] core.evaluator_v2: [ours] pred='The summary outlines the funding and budgetary details for the U.S. International Trade Administration (ITA), the U.S. I'
+2026-08-21 11:22:27,382 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. federal program for coal workers' compensation, known as the "
+2026-08-21 11:22:27,404 [INFO] __main__:   [random_real] gov_report [20/30] avg=14.38
+2026-08-21 11:22:44,051 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report examines the technology sector in the United States, focusing on workforce demographics, emplo'
+2026-08-21 11:22:59,088 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the current state of Internet privacy and data protectio'
+2026-08-21 11:23:11,132 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides an in-depth overview of the U.S. retirement system, focusing on the transition from '
+2026-08-21 11:23:18,641 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) faces significant challenges in managing its IT systems, which are critical to '
+2026-08-21 11:23:30,019 [INFO] core.evaluator_v2: [ours] pred='The GAO report outlines the financial challenges facing the U.S. Postal Service (USPS) related to its retirement health '
+2026-08-21 11:23:30,053 [INFO] __main__:   [random_real] gov_report [25/30] avg=14.33
+2026-08-21 11:23:46,836 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of key housing-related issues and potential legislative actions in the 116th Congress.'
+2026-08-21 11:24:04,515 [INFO] core.evaluator_v2: [ours] pred='The National Popular Vote (NPV) initiative seeks to elect the President of the United States based on the national popul'
+2026-08-21 11:24:24,316 [INFO] core.evaluator_v2: [ours] pred='The document outlines the key aspects of the 2020 budget for the U.S. Department of Energy (DOE) and related agencies, f'
+2026-08-21 11:24:40,462 [INFO] core.evaluator_v2: [ours] pred='The U.S. government is working to reduce its domestic office and facility footprint through the "Reduce the Footprint" ('
+2026-08-21 11:24:53,629 [INFO] core.evaluator_v2: [ours] pred="The National Cemeteries Act of 1988 (as amended) outlines the Department of Veterans Affairs' (VA) responsibilities in m"
+2026-08-21 11:24:53,648 [INFO] __main__:   [random_real] gov_report [30/30] avg=14.58
+2026-08-21 11:24:53,649 [INFO] __main__:   → gov_report: 14.58
+2026-08-21 11:24:53,680 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_102500.json
+2026-08-21 11:24:53,682 [INFO] __main__: [중간 저장 완료] 4/8 조건
+2026-08-21 11:24:53,684 [INFO] __main__: 
+============================================================
+2026-08-21 11:24:53,686 [INFO] __main__: Condition: front_placeholder (mode=('content', None))
+2026-08-21 11:24:53,687 [INFO] __main__: ============================================================
+2026-08-21 11:24:53,690 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 11:24:53,799 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 11:24:53,832 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 11:24:54,437 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-21 11:25:16,155 [INFO] core.evaluator_v2: [ours] pred="The meeting began with a discussion about the project's goals and objectives, with the team members introducing their ro"
+2026-08-21 11:25:32,877 [INFO] core.evaluator_v2: [ours] pred='The meeting discussion revolves around the design and development of a new remote control device, focusing on its functi'
+2026-08-21 11:25:54,466 [INFO] core.evaluator_v2: [ours] pred='The conversation is a discussion between a group of researchers, students, and researchers discussing various topics rel'
+2026-08-21 11:26:02,171 [INFO] core.evaluator_v2: [ours] pred='The meeting summary outlines a collaborative discussion among team members (Project Manager, Industrial Designer, and Us'
+2026-08-21 11:26:20,670 [INFO] core.evaluator_v2: [ours] pred='The meeting discussion centered on finalizing the design and features of a new remote control device, focusing on key as'
+2026-08-21 11:26:20,674 [INFO] __main__:   [front_placeholder] qmsum [5/30] avg=5.49
+2026-08-21 11:26:21,121 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 11:26:42,831 [INFO] core.evaluator_v2: [ours] pred='The conversation transcript appears to be a discussion between researchers or researchers discussing their work on a spe'
+2026-08-21 11:26:43,062 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 11:27:03,465 [INFO] core.evaluator_v2: [ours] pred='The provided text is a transcribed of a discussion or meeting between several individuals, likely in an academic or rese'
+2026-08-21 11:27:03,671 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:27:23,217 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Meeting:**\n\nThe meeting discusses a parliamentary session where officials from the Welsh Government, in'
+2026-08-21 11:27:23,419 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-21 11:27:42,566 [INFO] core.evaluator_v2: [ours] pred='The meeting is a discussion between a group of researchers or team members discussing various technical and project-rela'
+2026-08-21 11:28:01,233 [INFO] core.evaluator_v2: [ours] pred='The meeting summary is as follows:\n\nA team meeting was held to discuss the design of a new remote control device. The te'
+2026-08-21 11:28:01,239 [INFO] __main__:   [front_placeholder] qmsum [10/30] avg=4.47
+2026-08-21 11:28:01,430 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 11:28:20,806 [INFO] core.evaluator_v2: [ours] pred='The conversation transcript is a detailed discussion of a meeting between researchers and researchers discussing various'
+2026-08-21 11:28:21,006 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:28:40,647 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Meeting:**\n\nThe meeting discusses a parliamentary session where officials from the Welsh Government, in'
+2026-08-21 11:28:46,259 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe meeting convened in private, as per Standing Order 17.42, to conclude the remaining part of the meetin'
+2026-08-21 11:29:03,268 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nIn this meeting, a team discusses the development and evaluation of a new product: a banana-shaped remote '
+2026-08-21 11:29:13,997 [INFO] core.evaluator_v2: [ours] pred='The meeting discussion centered on finalizing the design and features of a new remote control device, focusing on key as'
+2026-08-21 11:29:14,002 [INFO] __main__:   [front_placeholder] qmsum [15/30] avg=5.14
+2026-08-21 11:29:21,528 [INFO] core.evaluator_v2: [ours] pred='The provided text appears to be a transcribed conversation of a meeting (meeting] between team members discussing the de'
+2026-08-21 11:29:38,793 [INFO] core.evaluator_v2: [ours] pred='The meeting summary is as follows:\n\nA team meeting was held to discuss the design of a new remote control device. The te'
+2026-08-21 11:29:38,973 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 11:29:59,938 [INFO] core.evaluator_v2: [ours] pred='The conversation transcript is a detailed discussion of a meeting between researchers and researchers discussing various'
+2026-08-21 11:30:27,932 [INFO] core.evaluator_v2: [ours] pred='The provided text appears to be a conversation or meeting transcript between team members discussing the design and deve'
+2026-08-21 11:30:28,204 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:30:54,503 [INFO] core.evaluator_v2: [ours] pred='**Summary of the Meeting:**\n\nThe meeting discusses a parliamentary session where officials from the Welsh Government, in'
+2026-08-21 11:30:54,527 [INFO] __main__:   [front_placeholder] qmsum [20/30] avg=5.48
+2026-08-21 11:31:16,546 [INFO] core.evaluator_v2: [ours] pred='The provided text appears to be a conversation log of a meeting or meeting meeting between team members discussing the d'
+2026-08-21 11:31:16,906 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-21 11:31:39,357 [INFO] core.evaluator_v2: [ours] pred='The provided text is a detailed transcript of a parliamentary session from the Canadian Parliament, likely from a parlia'
+2026-08-21 11:31:39,656 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 11:32:01,343 [INFO] core.evaluator_v2: [ours] pred='The conversation transcript appears to be a discussion between researchers or researchers discussing their work on a spe'
+2026-08-21 11:32:09,073 [INFO] core.evaluator_v2: [ours] pred='The meeting summary outlines a collaborative discussion among team members (Project Manager, Industrial Designer, and Us'
+2026-08-21 11:32:23,647 [INFO] core.evaluator_v2: [ours] pred='The conversation is a discussion among a project team (Project Manager, Industrial Designer, and User Interface speciali'
+2026-08-21 11:32:23,663 [INFO] __main__:   [front_placeholder] qmsum [25/30] avg=5.82
+2026-08-21 11:32:37,145 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed the design and development of a new remote control device with the following key points:\n\n1. **Des'
+2026-08-21 11:33:06,819 [INFO] core.evaluator_v2: [ours] pred='The provided text appears to be a conversation log of a meeting or meeting meeting between team members discussing the d'
+2026-08-21 11:33:07,150 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 11:33:30,793 [INFO] core.evaluator_v2: [ours] pred='The provided text is a transcribed of a discussion or meeting between several individuals, likely in an academic or rese'
+2026-08-21 11:33:52,269 [INFO] core.evaluator_v2: [ours] pred='The meeting summary outlines a project discussion focused on the design and development of a new remote control device. '
+2026-08-21 11:34:17,793 [INFO] core.evaluator_v2: [ours] pred='The meeting summary is as follows:\n\nA team meeting was held to discuss the design of a new remote control device. The te'
+2026-08-21 11:34:17,803 [INFO] __main__:   [front_placeholder] qmsum [30/30] avg=6.16
+2026-08-21 11:34:17,818 [INFO] __main__:   → qmsum: 6.16
+2026-08-21 11:34:17,820 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 11:34:17,906 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 11:34:17,959 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 11:34:18,502 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-21 11:34:37,034 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) manages two types of rotating positions: VSEE (Visiting Scientists and Engineers E'
+2026-08-21 11:34:52,938 [INFO] core.evaluator_v2: [ours] pred='The U.S. government has allocated a significant budget for IT, yet many projects fail due to poor management and impleme'
+2026-08-21 11:34:53,290 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-21 11:35:15,445 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis document provides a comprehensive overview of the complex and multifac issues surrounding the U.S. an'
+2026-08-21 11:35:15,776 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-21 11:35:36,139 [INFO] core.evaluator_v2: [ours] pred='The U.S. Environmental Protection Act (CWA) provides funding for the Clean Water SRF (CWSR) program, which supports the '
+2026-08-21 11:35:59,633 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) has been facing significant challenges in modernizing its financ'
+2026-08-21 11:35:59,683 [INFO] __main__:   [front_placeholder] gov_report [5/30] avg=15.15
+2026-08-21 11:36:22,470 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the challenges and progress in the federal government's efforts to enh"
+2026-08-21 11:36:51,408 [INFO] core.evaluator_v2: [ours] pred='The U.S. government has implemented a range of programs and policies aimed at promoting small business participation in '
+2026-08-21 11:36:53,117 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-21 11:37:21,564 [INFO] core.evaluator_v2: [ours] pred='The U.S. Department of Defense and the Secretaries of the military departments each buy experimental, signal,chemical,en'
+2026-08-21 11:37:35,178 [INFO] core.evaluator_v2: [ours] pred='The document discusses the evolving role of cash in the modern economy, highlighting the increasing shift towards digita'
+2026-08-21 11:37:35,672 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-21 11:37:57,335 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has conducted a comprehensive review of its acquisition management processes a'
+2026-08-21 11:37:57,383 [INFO] __main__:   [front_placeholder] gov_report [10/30] avg=14.67
+2026-08-21 11:38:22,685 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis document provides a detailed overview of the 2019 Department of Homeland Security (DHS) budget, focus'
+2026-08-21 11:38:42,294 [INFO] core.evaluator_v2: [ours] pred='The U.S. federal government manages approximately 647 million acres of land, with the majority located in Alaska and Nev'
+2026-08-21 11:39:03,326 [INFO] core.evaluator_v2: [ours] pred='The Black Lung Disability Trust Fund (BLDF) provides financial support to miners affected by black lung disease, a lung '
+2026-08-21 11:39:24,184 [INFO] core.evaluator_v2: [ours] pred='The U.S. provides foreign aid to other countries through various programs and policies, which are governed by laws and r'
+2026-08-21 11:39:47,403 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThe report examines the U.S. coal mining industry's regulatory framework under the Surface Mining Control "
+2026-08-21 11:39:47,451 [INFO] __main__:   [front_placeholder] gov_report [15/30] avg=15.31
+2026-08-21 11:40:05,584 [INFO] core.evaluator_v2: [ours] pred="The **Public Safety Officers' Benefits (PSOB)** program provides financial assistance to the families of deceased or per"
+2026-08-21 11:40:24,140 [INFO] core.evaluator_v2: [ours] pred="In 2017, the U.S. Government Accountability Office (GAO) conducted an audit of the FBI's facilities and operations, focu"
+2026-08-21 11:40:31,704 [INFO] core.evaluator_v2: [ours] pred='The report outlines the challenges faced by the Department of Veterans Affairs (VA) in aligning its healthcare facilitie'
+2026-08-21 11:40:55,703 [INFO] core.evaluator_v2: [ours] pred='The document provides a detailed overview of the budget and funding allocations for the U.S. International Trade Adminis'
+2026-08-21 11:41:16,259 [INFO] core.evaluator_v2: [ours] pred='The U.S. government provides benefits to coal miners affected by black lung disease through the Black Lung Disability Be'
+2026-08-21 11:41:16,292 [INFO] __main__:   [front_placeholder] gov_report [20/30] avg=15.18
+2026-08-21 11:41:37,795 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the technology sector in the United States, focusing on '
+2026-08-21 11:41:58,822 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of the regulatory, legal, and policy landscape surrounding internet priva'
+2026-08-21 11:42:21,852 [INFO] core.evaluator_v2: [ours] pred='**Summary of Key Findings and Recommendations**\n\n**Overview**  \nThe report examines the challenges and trends related to'
+2026-08-21 11:42:44,011 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) is a federal agency responsible for providing benefits and services to eligible'
+2026-08-21 11:43:00,528 [INFO] core.evaluator_v2: [ours] pred='The U.S. Postal Service (USPS) faces significant financial challenges related to its retirement health benefits program,'
+2026-08-21 11:43:00,561 [INFO] __main__:   [front_placeholder] gov_report [25/30] avg=15.12
+2026-08-21 11:43:21,702 [INFO] core.evaluator_v2: [ours] pred='The 116th U.S. Congress is examining a range of housing-related issues, including housing finance, affordability, and po'
+2026-08-21 11:43:46,047 [INFO] core.evaluator_v2: [ours] pred='The National Popular Vote (NPV) initiative is a proposed reform to the U.S. electoral system that aims to elect the Pres'
+2026-08-21 11:44:07,332 [INFO] core.evaluator_v2: [ours] pred="The document provides a detailed overview of the U.S. Department of Energy's (DOE) budget and funding priorities for fis"
+2026-08-21 11:44:30,118 [INFO] core.evaluator_v2: [ours] pred='The U.S. government is working to reduce the amount of space it occupies by implementing policies and strategies to opti'
+2026-08-21 11:44:54,557 [INFO] core.evaluator_v2: [ours] pred='The National Cemetery Administration (NCA) is responsible for managing and maintaining national cemeteries in the United'
+2026-08-21 11:44:54,596 [INFO] __main__:   [front_placeholder] gov_report [30/30] avg=15.37
+2026-08-21 11:44:54,597 [INFO] __main__:   → gov_report: 15.37
+2026-08-21 11:44:54,649 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_102500.json
+2026-08-21 11:44:54,651 [INFO] __main__: [중간 저장 완료] 5/8 조건
+2026-08-21 11:44:54,653 [INFO] __main__: 
+============================================================
+2026-08-21 11:44:54,655 [INFO] __main__: Condition: none (mode=('position', 'none'))
+2026-08-21 11:44:54,656 [INFO] __main__: ============================================================
+2026-08-21 11:44:54,659 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 11:44:54,757 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 11:44:54,791 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 11:44:55,488 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-21 11:45:02,991 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 11:45:13,604 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 11:45:30,584 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses progress on a project involving natural language processing and AI, focusing on the development of'
+2026-08-21 11:45:43,519 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 11:45:49,371 [INFO] core.evaluator_v2: [ours] pred='The project team is discussing the design of a new remote control. Key decisions include using titanium for the body, in'
+2026-08-21 11:45:49,375 [INFO] __main__:   [none] qmsum [5/30] avg=8.52
+2026-08-21 11:45:50,331 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 11:46:04,369 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 11:46:06,205 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 11:46:21,519 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system to interpret and process natural language for navigation and location-'
+2026-08-21 11:46:21,875 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:46:36,094 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 11:46:36,442 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-21 11:46:49,559 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of speech processing and machine learning projects, including transcription, data '
+2026-08-21 11:46:56,125 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 11:46:56,130 [INFO] __main__:   [none] qmsum [10/30] avg=8.12
+2026-08-21 11:46:56,657 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 11:47:07,889 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 11:47:08,656 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:47:24,446 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 11:47:39,014 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the impact of the COVID-19 pandemic on children, young people, and their families in Wales. Key i'
+2026-08-21 11:47:51,317 [INFO] core.evaluator_v2: [ours] pred='The team presented a new remote control design shaped like a banana, featuring a unique, flip-open mechanism and a playf'
+2026-08-21 11:48:03,404 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on designing a new remote control, with key decisions including:\n\n- **Design**: A compact, vegetable'
+2026-08-21 11:48:03,425 [INFO] __main__:   [none] qmsum [15/30] avg=8.08
+2026-08-21 11:48:14,025 [INFO] core.evaluator_v2: [ours] pred='The meeting involved a team discussing the design of a new remote control for a television. Key points included:\n\n- **Pr'
+2026-08-21 11:48:20,094 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 11:48:21,021 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 11:48:34,140 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 11:48:45,123 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new remote control device. Key points include:\n\n- The team is working on a de'
+2026-08-21 11:48:46,156 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 11:49:04,219 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 11:49:04,231 [INFO] __main__:   [none] qmsum [20/30] avg=8.75
+2026-08-21 11:49:14,840 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 11:49:15,092 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-21 11:49:25,622 [INFO] core.evaluator_v2: [ours] pred='The House of Commons held a special committee session on the COVID-19 pandemic, featuring a range of questions and discu'
+2026-08-21 11:49:26,373 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 11:49:39,353 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 11:49:51,526 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 11:50:01,575 [INFO] core.evaluator_v2: [ours] pred='The summary outlines a project evaluation meeting involving a team of professionals, including a project manager, an ind'
+2026-08-21 11:50:01,581 [INFO] __main__:   [none] qmsum [25/30] avg=8.81
+2026-08-21 11:50:11,303 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new television remote control. Key points include:\n\n- **Design Requirements**'
+2026-08-21 11:50:21,782 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 11:50:22,097 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 11:50:34,947 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system to interpret and process natural language for navigation and location-'
+2026-08-21 11:50:46,132 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the design and functionality of a new television remote control. Key points included:\n\n- **Projec'
+2026-08-21 11:50:50,825 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 11:50:50,833 [INFO] __main__:   [none] qmsum [30/30] avg=9.11
+2026-08-21 11:50:50,835 [INFO] __main__:   → qmsum: 9.11
+2026-08-21 11:50:50,836 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 11:50:50,912 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 11:50:50,957 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 11:50:51,632 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-21 11:51:13,098 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 11:51:24,550 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 11:51:25,103 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-21 11:51:42,035 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. perspective on China's actions in the South Ch"
+2026-08-21 11:51:43,426 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-21 11:52:05,094 [INFO] core.evaluator_v2: [ours] pred='The Clean Water Act (CWA) Section 319 grants funding for nonpoint source pollution control, which includes activities to'
+2026-08-21 11:52:24,851 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) faced significant challenges in modernizing its financial manage'
+2026-08-21 11:52:24,899 [INFO] __main__:   [none] gov_report [5/30] avg=14.01
+2026-08-21 11:52:43,072 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document outlines the challenges and efforts in securing federal information systems, emphasizing the '
+2026-08-21 11:53:00,944 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. federal small business contracting programs, their objectives, im'
+2026-08-21 11:53:01,804 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-21 11:53:22,286 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of **Other Transaction Authority (OTA)** within the U.S. Department of Defens'
+2026-08-21 11:53:37,679 [INFO] core.evaluator_v2: [ours] pred='The document discusses the evolving landscape of payment systems in the United States, highlighting the increasing use o'
+2026-08-21 11:53:39,209 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-21 11:53:57,539 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has established processes to manage its major acquisitions, including defining'
+2026-08-21 11:53:57,568 [INFO] __main__:   [none] gov_report [10/30] avg=14.03
+2026-08-21 11:54:05,433 [INFO] core.evaluator_v2: [ours] pred='This report provides an overview of the 2019 Department of Homeland Security (DHS) appropriations process. It details th'
+2026-08-21 11:54:18,610 [INFO] core.evaluator_v2: [ours] pred='The U.S. government manages approximately 64 million acres of public land, primarily through the Bureau of Land Manageme'
+2026-08-21 11:54:28,740 [INFO] core.evaluator_v2: [ours] pred='The document outlines the financial challenges and future projections of the Black Lung Disability Trust Fund (BLDTF), w'
+2026-08-21 11:54:40,490 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. foreign assistance, detailing its historical evolution, key progr'
+2026-08-21 11:54:58,090 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe report examines the U.S. Surface Mining Control and Reclamation Act (SMCRA) and its implementation, fo'
+2026-08-21 11:54:58,113 [INFO] __main__:   [none] gov_report [15/30] avg=14.07
+2026-08-21 11:55:08,429 [INFO] core.evaluator_v2: [ours] pred='The PSOB (Public Safety Officer Benefits) program provides financial assistance to the dependents of public safety offic'
+2026-08-21 11:55:12,515 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text discusses the challenges faced by the FBI in locating and main'
+2026-08-21 11:55:32,897 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe Department of Veterans Affairs (DVA) faces challenges in aligning i'
+2026-08-21 11:55:46,117 [INFO] core.evaluator_v2: [ours] pred='The summary outlines the budgetary and operational details of the U.S. International Trade Administration (ITA), the U.S'
+2026-08-21 11:56:03,045 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. federal program for coal workers' compensation, known as the "
+2026-08-21 11:56:03,067 [INFO] __main__:   [none] gov_report [20/30] avg=14.51
+2026-08-21 11:56:19,995 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report examines the technology sector in the United States, focusing on workforce demographics, emplo'
+2026-08-21 11:56:39,739 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the current state of Internet privacy and data protectio'
+2026-08-21 11:56:52,773 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides an in-depth overview of the U.S. retirement system, focusing on the transition from '
+2026-08-21 11:57:05,363 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) faces significant challenges in managing its IT systems, which are critical to '
+2026-08-21 11:57:19,971 [INFO] core.evaluator_v2: [ours] pred='The GAO report outlines the financial challenges facing the U.S. Postal Service (USPS) related to its retirement health '
+2026-08-21 11:57:20,004 [INFO] __main__:   [none] gov_report [25/30] avg=14.62
+2026-08-21 11:57:44,286 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of key housing-related issues and legislative considerations for the 116th Congress. I'
+2026-08-21 11:58:07,800 [INFO] core.evaluator_v2: [ours] pred='The National Popular Vote (NPV) initiative seeks to elect the President of the United States based on the national popul'
+2026-08-21 11:58:28,147 [INFO] core.evaluator_v2: [ours] pred='The document outlines the key aspects of the 2020 budget for the U.S. Department of Energy (DOE) and related agencies, f'
+2026-08-21 11:58:43,854 [INFO] core.evaluator_v2: [ours] pred='The U.S. government is working to reduce its domestic office and facility footprint through the "Reduce the Footprint" ('
+2026-08-21 11:59:03,199 [INFO] core.evaluator_v2: [ours] pred="The National Cemetery Agency (NCA) is responsible for managing veterans' burials in the United States. Key points includ"
+2026-08-21 11:59:03,231 [INFO] __main__:   [none] gov_report [30/30] avg=14.86
+2026-08-21 11:59:03,233 [INFO] __main__:   → gov_report: 14.86
+2026-08-21 11:59:03,272 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_102500.json
+2026-08-21 11:59:03,274 [INFO] __main__: [중간 저장 완료] 6/8 조건
+2026-08-21 11:59:03,276 [INFO] __main__: 
+============================================================
+2026-08-21 11:59:03,278 [INFO] __main__: Condition: front_1 (mode=('position', 'front'))
+2026-08-21 11:59:03,280 [INFO] __main__: ============================================================
+2026-08-21 11:59:03,282 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 11:59:03,396 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 11:59:03,430 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 11:59:04,078 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-21 11:59:13,368 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a'
+2026-08-21 11:59:21,295 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interfa'
+2026-08-21 11:59:36,409 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses progress on a project involving natural language processing and artificial intelligence. Key point'
+2026-08-21 11:59:51,767 [INFO] core.evaluator_v2: [ours] pred='The document describes a collaborative meeting among team members (including a Project Manager, Industrial Designer, Use'
+2026-08-21 12:00:04,185 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and features of a new remote control device. Key points include:\n\n- **Material and Desi'
+2026-08-21 12:00:04,190 [INFO] __main__:   [front_1] qmsum [5/30] avg=7.57
+2026-08-21 12:00:06,856 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 12:00:19,944 [INFO] core.evaluator_v2: [ours] pred='The conversation details a discussion among researchers about their work on speech recognition and machine learning, foc'
+2026-08-21 12:00:21,461 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 12:00:35,390 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system to interpret and process natural language for navigation and location-'
+2026-08-21 12:00:36,152 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 12:00:44,694 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a new childcare and early years support scheme aimed at improving access to quality'
+2026-08-21 12:00:45,807 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-21 12:01:02,079 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of a research project, focusing on speech processing and machine learning. Key top'
+2026-08-21 12:01:13,240 [INFO] core.evaluator_v2: [ours] pred="The meeting focuses on the design of a new children's toy, emphasizing user-centered design and functionality. Key point"
+2026-08-21 12:01:13,246 [INFO] __main__:   [front_1] qmsum [10/30] avg=6.99
+2026-08-21 12:01:13,800 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 12:01:27,066 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of a speech recognition project, including microphone placement, audio recording t'
+2026-08-21 12:01:28,467 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 12:01:36,789 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a new childcare and early years support scheme aimed at improving access to quality'
+2026-08-21 12:01:44,713 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the impact of the COVID-19 pandemic on children, young people, and families in Wales. Key topics '
+2026-08-21 12:01:52,368 [INFO] core.evaluator_v2: [ours] pred='The team presented a final project for a new remote control shaped like a banana, incorporating unique features such as '
+2026-08-21 12:02:04,199 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on finalizing the design of a new remote control device. Key points included:\n\n- **Design Elements**'
+2026-08-21 12:02:04,204 [INFO] __main__:   [front_1] qmsum [15/30] avg=7.57
+2026-08-21 12:02:18,627 [INFO] core.evaluator_v2: [ours] pred='The meeting involved a team discussing the design of a new remote control for a television and DVD player. Key points in'
+2026-08-21 12:02:24,392 [INFO] core.evaluator_v2: [ours] pred="The meeting focuses on the design of a new children's toy, emphasizing user-centered design and functionality. Key point"
+2026-08-21 12:02:24,587 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 12:02:35,418 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of a speech recognition project, including microphone placement, audio recording t'
+2026-08-21 12:02:47,196 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new remote control device, focusing on design, functionality, and cost constr'
+2026-08-21 12:02:47,759 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 12:02:55,394 [INFO] core.evaluator_v2: [ours] pred='The Welsh Government is implementing a new childcare and early years support scheme aimed at improving access to quality'
+2026-08-21 12:02:55,398 [INFO] __main__:   [front_1] qmsum [20/30] avg=8.36
+2026-08-21 12:03:08,854 [INFO] core.evaluator_v2: [ours] pred='The document describes a project meeting where the team discusses the development of a new remote control device with a '
+2026-08-21 12:03:10,658 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-21 12:03:24,610 [INFO] core.evaluator_v2: [ours] pred='The document details a session of the House of Commons, focusing on various issues related to the COVID-19 pandemic. Key'
+2026-08-21 12:03:26,001 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 12:03:37,026 [INFO] core.evaluator_v2: [ours] pred='The conversation details a discussion among researchers about their work on speech recognition and machine learning, foc'
+2026-08-21 12:03:51,708 [INFO] core.evaluator_v2: [ours] pred='The document describes a collaborative meeting among team members (including a Project Manager, Industrial Designer, Use'
+2026-08-21 12:04:03,256 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where team members discuss a new remote control design. Key points include:\n\n- **'
+2026-08-21 12:04:03,267 [INFO] __main__:   [front_1] qmsum [25/30] avg=8.41
+2026-08-21 12:04:12,381 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed the design and development of a new television remote control. Key points include:\n\n- **Design Req'
+2026-08-21 12:04:25,449 [INFO] core.evaluator_v2: [ours] pred='The document describes a project meeting where the team discusses the development of a new remote control device with a '
+2026-08-21 12:04:26,734 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 12:04:42,161 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system to interpret and process natural language for navigation and location-'
+2026-08-21 12:04:58,401 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on discussing the design and functionality of a new remote control device. Key points included:\n\n- *'
+2026-08-21 12:05:08,658 [INFO] core.evaluator_v2: [ours] pred="The meeting focuses on the design of a new children's toy, emphasizing user-centered design and functionality. Key point"
+2026-08-21 12:05:08,668 [INFO] __main__:   [front_1] qmsum [30/30] avg=8.56
+2026-08-21 12:05:08,669 [INFO] __main__:   → qmsum: 8.56
+2026-08-21 12:05:08,670 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 12:05:08,761 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 12:05:08,800 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 12:05:09,496 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-21 12:05:29,645 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D'
+2026-08-21 12:05:45,436 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-21 12:05:46,905 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-21 12:06:08,837 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. perspective on China's growing assertiveness i"
+2026-08-21 12:06:10,679 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-21 12:06:30,120 [INFO] core.evaluator_v2: [ours] pred="The Clean Water Act (CWA) and the federal government's funding mechanisms for water infrastructure have evolved signific"
+2026-08-21 12:06:45,655 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) faced significant challenges in modernizing its financial manage'
+2026-08-21 12:06:45,692 [INFO] __main__:   [front_1] gov_report [5/30] avg=14.84
+2026-08-21 12:07:09,753 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the challenges and efforts related to cybersecurity in t'
+2026-08-21 12:07:30,766 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. government's efforts to support small businesses through vari"
+2026-08-21 12:07:31,113 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-21 12:07:53,107 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of the **Other Transaction Authority (OTA)** within the U.S. Department of De'
+2026-08-21 12:08:09,542 [INFO] core.evaluator_v2: [ours] pred='The document discusses the evolving role of cash in the modern economy, highlighting the increasing adoption of digital '
+2026-08-21 12:08:09,858 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-21 12:08:25,994 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has implemented a structured approach to managing its major acquisitions, guid'
+2026-08-21 12:08:26,034 [INFO] __main__:   [front_1] gov_report [10/30] avg=14.90
+2026-08-21 12:08:37,944 [INFO] core.evaluator_v2: [ours] pred='This report provides an overview of the 2019 Department of Homeland Security (DHS) budget and appropriations process. It'
+2026-08-21 12:08:52,388 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of the administrative and legal framework governing the management, use, and '
+2026-08-21 12:09:01,457 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth analysis of the financial and operational aspects of the Black Lung Disability Trust F'
+2026-08-21 12:09:09,052 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. foreign assistance, detailing its historical evolution, key progr'
+2026-08-21 12:09:37,951 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThe report examines the U.S. coal mining industry's environmental and financial management under the Surfa"
+2026-08-21 12:09:37,979 [INFO] __main__:   [front_1] gov_report [15/30] avg=14.63
+2026-08-21 12:09:48,180 [INFO] core.evaluator_v2: [ours] pred="The **Public Safety Officers' Benefits Act (PSOBA)** provides financial support to the families of deceased or permanent"
+2026-08-21 12:09:56,226 [INFO] core.evaluator_v2: [ours] pred="The summary outlines the ongoing challenges faced by the U.S. government in addressing the needs of the FBI's headquarte"
+2026-08-21 12:10:04,971 [INFO] core.evaluator_v2: [ours] pred='The document outlines challenges faced by the U.S. Department of Veterans Affairs (VA) in aligning its medical facilitie'
+2026-08-21 12:10:18,576 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of the 2019 budget for the U.S. International Trade Administration (ITA), which overse'
+2026-08-21 12:10:33,799 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. government's program for compensating coal miners affected by"
+2026-08-21 12:10:33,827 [INFO] __main__:   [front_1] gov_report [20/30] avg=14.83
+2026-08-21 12:10:56,581 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report examines the demographic trends and challenges within the technology sector, focusing on gende'
+2026-08-21 12:11:17,984 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report provides a comprehensive overview of the current state of Internet privacy and data protection'
+2026-08-21 12:11:28,361 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides an in-depth overview of the U.S. retirement system, focusing on the shift from defin'
+2026-08-21 12:11:43,401 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) is responsible for administering programs such as Social Security, Medicare, an'
+2026-08-21 12:11:55,046 [INFO] core.evaluator_v2: [ours] pred='The report outlines the financial challenges facing the U.S. Postal Service (USPS) related to its retirement benefits fo'
+2026-08-21 12:11:55,068 [INFO] __main__:   [front_1] gov_report [25/30] avg=14.79
+2026-08-21 12:12:01,969 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of key issues related to housing and real estate in the United States, focusing on the'
+2026-08-21 12:12:20,172 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of the **National Popular Vote (NPV) Initiative**, a proposal aimed at re'
+2026-08-21 12:12:41,240 [INFO] core.evaluator_v2: [ours] pred='The document outlines the key aspects of the 2020 budget for the U.S. Department of Energy (DOE) and related agencies, f'
+2026-08-21 12:12:55,927 [INFO] core.evaluator_v2: [ours] pred='The report outlines the federal government\'s efforts to reduce its real estate footprint through the "Reduce the Footpri'
+2026-08-21 12:13:08,701 [INFO] core.evaluator_v2: [ours] pred='The document outlines the efforts of the Department of Veterans Affairs (VA) to improve access to burial sites for veter'
+2026-08-21 12:13:08,720 [INFO] __main__:   [front_1] gov_report [30/30] avg=14.88
+2026-08-21 12:13:08,723 [INFO] __main__:   → gov_report: 14.88
+2026-08-21 12:13:08,756 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_102500.json
+2026-08-21 12:13:08,759 [INFO] __main__: [중간 저장 완료] 7/8 조건
+2026-08-21 12:13:08,761 [INFO] __main__: 
+============================================================
+2026-08-21 12:13:08,762 [INFO] __main__: Condition: random_1 (mode=('position', 'random'))
+2026-08-21 12:13:08,764 [INFO] __main__: ============================================================
+2026-08-21 12:13:08,765 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 12:13:08,842 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 12:13:08,875 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 12:13:09,528 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-21 12:13:17,698 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 12:13:28,034 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 12:13:41,414 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses progress on a project involving natural language processing and AI, focusing on the development of'
+2026-08-21 12:13:51,327 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 12:13:57,384 [INFO] core.evaluator_v2: [ours] pred='The project team is discussing the design of a new remote control. Key decisions include using titanium for the body, in'
+2026-08-21 12:13:57,387 [INFO] __main__:   [random_1] qmsum [5/30] avg=8.47
+2026-08-21 12:13:58,596 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 12:14:11,424 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 12:14:12,119 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 12:14:23,397 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system for understanding and processing natural language in the context of to'
+2026-08-21 12:14:23,730 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 12:14:39,275 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 12:14:41,140 [WARNING] core.model_loader: Input length 16924 > max 16000, truncating...
+2026-08-21 12:14:55,376 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of speech processing and machine learning projects, including transcription, data '
+2026-08-21 12:15:02,478 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 12:15:02,481 [INFO] __main__:   [random_1] qmsum [10/30] avg=7.88
+2026-08-21 12:15:03,566 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 12:15:18,632 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 12:15:19,790 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 12:15:33,818 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 12:15:46,465 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the impact of the COVID-19 pandemic on children, young people, and their families in Wales. Key i'
+2026-08-21 12:15:58,679 [INFO] core.evaluator_v2: [ours] pred='The team presented a new remote control design shaped like a banana, featuring a unique, flip-open mechanism and a playf'
+2026-08-21 12:16:17,321 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on designing a new remote control, with key decisions including:\n\n- **Design**: A compact, vegetable'
+2026-08-21 12:16:17,331 [INFO] __main__:   [random_1] qmsum [15/30] avg=7.94
+2026-08-21 12:16:36,484 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThis is a meeting between team members discussing the design of a new r'
+2026-08-21 12:16:43,984 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 12:16:44,563 [WARNING] core.model_loader: Input length 16844 > max 16000, truncating...
+2026-08-21 12:16:57,242 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses various aspects of speech recognition and data collection, including microphone placement, audio p'
+2026-08-21 12:17:06,003 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new remote control device. Key points include:\n\n- The team is working on a de'
+2026-08-21 12:17:06,226 [WARNING] core.model_loader: Input length 16224 > max 16000, truncating...
+2026-08-21 12:17:18,818 [INFO] core.evaluator_v2: [ours] pred="The meeting focused on the Welsh Government's childcare and early years policy, with key points including:\n\n- **Pilot Sc"
+2026-08-21 12:17:18,825 [INFO] __main__:   [random_1] qmsum [20/30] avg=8.88
+2026-08-21 12:17:29,651 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 12:17:33,968 [WARNING] core.model_loader: Input length 25564 > max 16000, truncating...
+2026-08-21 12:17:47,467 [INFO] core.evaluator_v2: [ours] pred='The House of Commons held a special committee session on the COVID-19 pandemic, featuring a range of questions and discu'
+2026-08-21 12:17:48,793 [WARNING] core.model_loader: Input length 18386 > max 16000, truncating...
+2026-08-21 12:18:03,198 [INFO] core.evaluator_v2: [ours] pred='The conversation details a research meeting focused on evaluating and discussing the performance of a speech recognition'
+2026-08-21 12:18:15,925 [INFO] core.evaluator_v2: [ours] pred='The document details a collaborative meeting among team members (including a Project Manager, Industrial Designer, User '
+2026-08-21 12:18:23,553 [INFO] core.evaluator_v2: [ours] pred='The summary outlines a project evaluation meeting involving a team of professionals, including a project manager, an ind'
+2026-08-21 12:18:23,557 [INFO] __main__:   [random_1] qmsum [25/30] avg=8.91
+2026-08-21 12:18:34,960 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a new television remote control. Key points include:\n\n- **Design Requirements**'
+2026-08-21 12:18:45,740 [INFO] core.evaluator_v2: [ours] pred='The document details a project meeting where the team discusses the development of a remote control device with unique f'
+2026-08-21 12:18:48,691 [WARNING] core.model_loader: Input length 18553 > max 16000, truncating...
+2026-08-21 12:19:08,402 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the development of a system for understanding and processing natural language in the context of to'
+2026-08-21 12:19:20,513 [INFO] core.evaluator_v2: [ours] pred='The meeting focused on the design and functionality of a new television remote control. Key points included:\n\n- **Projec'
+2026-08-21 12:19:27,246 [INFO] core.evaluator_v2: [ours] pred='The meeting focuses on designing a child-friendly remote control. Key points include:\n\n- The remote should be simple, sa'
+2026-08-21 12:19:27,250 [INFO] __main__:   [random_1] qmsum [30/30] avg=9.09
+2026-08-21 12:19:27,251 [INFO] __main__:   → qmsum: 9.09
+2026-08-21 12:19:27,254 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 12:19:27,338 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 12:19:27,373 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 12:19:28,093 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-21 12:19:45,182 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 12:19:58,557 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 12:20:04,803 [WARNING] core.model_loader: Input length 51949 > max 16000, truncating...
+2026-08-21 12:20:27,224 [INFO] core.evaluator_v2: [ours] pred="**Summary:**\n\nThis document provides a comprehensive overview of the U.S. perspective on China's actions in the South Ch"
+2026-08-21 12:20:30,231 [WARNING] core.model_loader: Input length 28135 > max 16000, truncating...
+2026-08-21 12:20:53,008 [INFO] core.evaluator_v2: [ours] pred='The Clean Water Act (CWA) Section 319 grants funding for nonpoint source pollution control, which includes activities to'
+2026-08-21 12:21:19,759 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe Department of Homeland Security (DHS) faced significant challenges in modernizing its financial manage'
+2026-08-21 12:21:19,809 [INFO] __main__:   [random_1] gov_report [5/30] avg=13.76
+2026-08-21 12:21:44,543 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document outlines the challenges and efforts in securing federal information systems, emphasizing the '
+2026-08-21 12:22:02,876 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. federal small business contracting programs, their objectives, im'
+2026-08-21 12:22:03,591 [WARNING] core.model_loader: Input length 19434 > max 16000, truncating...
+2026-08-21 12:22:19,353 [INFO] core.evaluator_v2: [ours] pred='The document provides an in-depth overview of **Other Transaction Authority (OTA)** within the U.S. Department of Defens'
+2026-08-21 12:22:31,943 [INFO] core.evaluator_v2: [ours] pred='The document discusses the evolving landscape of payment systems in the United States, highlighting the increasing use o'
+2026-08-21 12:22:32,436 [WARNING] core.model_loader: Input length 41630 > max 16000, truncating...
+2026-08-21 12:22:50,662 [INFO] core.evaluator_v2: [ours] pred='The Department of Homeland Security (DHS) has established processes to manage its major acquisitions, including defining'
+2026-08-21 12:22:50,694 [INFO] __main__:   [random_1] gov_report [10/30] avg=14.08
+2026-08-21 12:23:05,014 [INFO] core.evaluator_v2: [ours] pred='This report provides an overview of the 2019 Department of Homeland Security (DHS) appropriations process. It details th'
+2026-08-21 12:23:23,505 [INFO] core.evaluator_v2: [ours] pred='The U.S. government manages approximately 64 million acres of public land, primarily through the Bureau of Land Manageme'
+2026-08-21 12:23:38,077 [INFO] core.evaluator_v2: [ours] pred='The document outlines the financial challenges and future projections of the Black Lung Disability Trust Fund (BLDTF), w'
+2026-08-21 12:23:48,930 [INFO] core.evaluator_v2: [ours] pred='The document provides a comprehensive overview of U.S. foreign assistance, detailing its historical evolution, key progr'
+2026-08-21 12:24:10,782 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe report examines the U.S. Surface Mining Control and Reclamation Act (SMCRA) and its implementation, fo'
+2026-08-21 12:24:10,811 [INFO] __main__:   [random_1] gov_report [15/30] avg=13.95
+2026-08-21 12:24:19,307 [INFO] core.evaluator_v2: [ours] pred='The PSOB (Public Safety Officer Benefits) program provides financial assistance to the dependents of public safety offic'
+2026-08-21 12:24:24,131 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe text discusses the challenges faced by the FBI in locating and main'
+2026-08-21 12:24:48,372 [INFO] core.evaluator_v2: [ours] pred='The summary of the provided text is as follows:\n\nThe Department of Veterans Affairs (DVA) faces challenges in aligning i'
+2026-08-21 12:25:04,590 [INFO] core.evaluator_v2: [ours] pred='The summary outlines the budgetary and operational details of the U.S. International Trade Administration (ITA), the U.S'
+2026-08-21 12:25:24,173 [INFO] core.evaluator_v2: [ours] pred="The document provides a comprehensive overview of the U.S. federal program for coal workers' compensation, known as the "
+2026-08-21 12:25:24,201 [INFO] __main__:   [random_1] gov_report [20/30] avg=14.37
+2026-08-21 12:25:50,033 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThis report examines the technology sector in the United States, focusing on workforce demographics, emplo'
+2026-08-21 12:26:08,260 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides a comprehensive overview of the current state of Internet privacy and data protectio'
+2026-08-21 12:26:24,121 [INFO] core.evaluator_v2: [ours] pred='**Summary:**\n\nThe document provides an in-depth overview of the U.S. retirement system, focusing on the transition from '
+2026-08-21 12:26:32,599 [INFO] core.evaluator_v2: [ours] pred='The Social Security Administration (SSA) faces significant challenges in managing its IT systems, which are critical to '
+2026-08-21 12:26:50,642 [INFO] core.evaluator_v2: [ours] pred='The GAO report outlines the financial challenges facing the U.S. Postal Service (USPS) related to its retirement health '
+2026-08-21 12:26:50,671 [INFO] __main__:   [random_1] gov_report [25/30] avg=14.31
+2026-08-21 12:27:09,394 [INFO] core.evaluator_v2: [ours] pred='The document provides an overview of key housing-related issues and potential legislative actions in the 116th Congress.'
+2026-08-21 12:27:34,767 [INFO] core.evaluator_v2: [ours] pred='The National Popular Vote (NPV) initiative seeks to elect the President of the United States based on the national popul'
+2026-08-21 12:27:51,475 [INFO] core.evaluator_v2: [ours] pred='The document outlines the key aspects of the 2020 budget for the U.S. Department of Energy (DOE) and related agencies, f'
+2026-08-21 12:28:09,394 [INFO] core.evaluator_v2: [ours] pred='The U.S. government is working to reduce its domestic office and facility footprint through the "Reduce the Footprint" ('
+2026-08-21 12:28:34,982 [INFO] core.evaluator_v2: [ours] pred="The National Cemetery Agency (NCA) is responsible for managing veterans' burials in the United States. Key points includ"
+2026-08-21 12:28:35,006 [INFO] __main__:   [random_1] gov_report [30/30] avg=14.56
+2026-08-21 12:28:35,020 [INFO] __main__:   → gov_report: 14.56
+2026-08-21 12:28:35,053 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_102500.json
+2026-08-21 12:28:35,055 [INFO] __main__: [중간 저장 완료] 8/8 조건
+2026-08-21 12:28:35,099 [INFO] core.results_manager: Results saved to results/v3_verified/table13_position_content_20260821_102500.csv
+2026-08-21 12:28:35,100 [INFO] __main__: 
+완료: 8개 조건
+2026-08-21 12:28:35,102 [INFO] __main__:   front_real           avg_score=11.73
+2026-08-21 12:28:35,118 [INFO] __main__:   middle_real          avg_score=11.93
+2026-08-21 12:28:35,121 [INFO] __main__:   end_real             avg_score=11.93
+2026-08-21 12:28:35,122 [INFO] __main__:   random_real          avg_score=11.87
+2026-08-21 12:28:35,122 [INFO] __main__:   front_placeholder    avg_score=10.77
+2026-08-21 12:28:35,124 [INFO] __main__:   none                 avg_score=11.98
+2026-08-21 12:28:35,124 [INFO] __main__:   front_1              avg_score=11.72
+2026-08-21 12:28:35,125 [INFO] __main__:   random_1             avg_score=11.82

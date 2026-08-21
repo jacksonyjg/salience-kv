@@ -1,0 +1,1040 @@
+2026-08-21 09:37:41,302 [INFO] __main__: Experiment 8: Budget Sensitivity (TABLE VIII)
+2026-08-21 09:37:41,302 [INFO] __main__:   Model: qwen3-4b | Budgets: ['10%', '20%', '40%', '60%', '80%'] | Tasks: ['qmsum', 'hotpotqa', 'gov_report'] | Samples: 2
+2026-08-21 09:37:41,336 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-21 09:37:41,337 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-21 09:37:41,503 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:37:41,531 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-21 09:37:41,607 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:37:41,633 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-21 09:37:41,713 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-21 09:37:41,788 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-21 09:37:42,892 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-21 09:37:42,894 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-21 09:37:42,929 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:37:42,935 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-21 09:38:21,378 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:38:21,385 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-21 09:38:21,514 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-21 09:38:21,574 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-21 09:38:21,591 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:38:21,592 [INFO] __main__: Method: StreamingLLM | Budget: 10% | kwargs={'invert_norm': True}
+2026-08-21 09:38:21,594 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:38:21,595 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:38:21,654 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:38:21,695 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:38:21,908 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:38:21,952 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:38:21,994 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:38:22,034 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-21 09:38:22,509 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:38:30,870 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting summary outlines a collaborative discussion among team members focused on the design and development of a ne'
+2026-08-21 09:38:37,663 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting discussed the design and development of a new product, focusing on user experience, functionality, and aesth'
+2026-08-21 09:38:37,666 [INFO] __main__:   → qmsum: 7.83
+2026-08-21 09:38:37,667 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:38:37,729 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:38:37,757 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:38:38,117 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:38:38,378 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:38:40,977 [INFO] core.evaluator_v2: [streamingllm] pred='Brian Stokes Mitchell.'
+2026-08-21 09:38:41,299 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:38:44,597 [INFO] core.evaluator_v2: [streamingllm] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:38:44,598 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-21 09:38:44,599 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:38:44,672 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:38:44,703 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:38:45,073 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:38:52,141 [INFO] core.evaluator_v2: [streamingllm] pred="The report outlines the National Science Foundation's (NSF) use of two types of staff: Institutional Partners (IPA) and "
+2026-08-21 09:39:02,620 [INFO] core.evaluator_v2: [streamingllm] pred="The U.S. Government Accountability Office (GAO) provides an overview of the federal government's efforts to improve the "
+2026-08-21 09:39:02,651 [INFO] __main__:   → gov_report: 16.72
+2026-08-21 09:39:02,660 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:39:02,661 [INFO] __main__:   [중간 저장 완료] 1/35 설정
+2026-08-21 09:39:02,661 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:39:02,662 [INFO] __main__: Method: H2O | Budget: 10% | kwargs={'invert_norm': True}
+2026-08-21 09:39:02,663 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:39:02,663 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:39:02,744 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:39:02,775 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:39:03,112 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:39:09,051 [INFO] core.evaluator_v2: [h2o] pred='The summary of the provided text is as follows:\n\nThe meeting starts with the team introducing the project. The project i'
+2026-08-21 09:39:17,107 [INFO] core.evaluator_v2: [h2o] pred='The document is a meeting between team members discussing the design of a remote control device. Key points include:\n\n- '
+2026-08-21 09:39:17,120 [INFO] __main__:   → qmsum: 9.66
+2026-08-21 09:39:17,121 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:39:17,184 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:39:17,214 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:39:17,553 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:39:17,803 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:39:22,651 [INFO] core.evaluator_v2: [h2o] pred='Brian L. Smith (also known as Brian Smith) is a baritone singer and actor, noted for his powerful baritone voice and sig'
+2026-08-21 09:39:22,891 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:39:28,853 [INFO] core.evaluator_v2: [h2o] pred='The question is asking: "The text discusses the role of SINEs in the human genome, including their impact on gene functi'
+2026-08-21 09:39:28,855 [INFO] __main__:   → hotpotqa: 1.72
+2026-08-21 09:39:28,856 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:39:28,917 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:39:28,950 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:39:29,260 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:39:46,362 [INFO] core.evaluator_v2: [h2o] pred='The Department of Science and Technology (DST) uses two programs to bring in rotators: (1) the Independent Science and T'
+2026-08-21 09:40:03,353 [INFO] core.evaluator_v2: [h2o] pred='The document outlines the challenges and issues related to federal IT spending and management. It highlights the large a'
+2026-08-21 09:40:03,402 [INFO] __main__:   → gov_report: 14.19
+2026-08-21 09:40:03,431 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:40:03,432 [INFO] __main__:   [중간 저장 완료] 2/35 설정
+2026-08-21 09:40:03,432 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:40:03,433 [INFO] __main__: Method: SnapKV | Budget: 10% | kwargs={'invert_norm': True}
+2026-08-21 09:40:03,434 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:40:03,434 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:40:03,493 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:40:03,525 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:40:03,867 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:40:08,075 [INFO] core.evaluator_v2: [snapkv] pred='The document describes a project meeting where the team discusses the design of a new remote control. The project aims t'
+2026-08-21 09:40:15,913 [INFO] core.evaluator_v2: [snapkv] pred='The document is a meeting transcript where team members discuss the design and features of a new remote control device. '
+2026-08-21 09:40:15,923 [INFO] __main__:   → qmsum: 10.15
+2026-08-21 09:40:15,923 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:40:15,985 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:40:16,017 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:40:16,373 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:40:16,615 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:40:22,632 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell (full name: Brian Stokes Mitchell) won the Tony Award for Best Actor in 2000 for his performance i'
+2026-08-21 09:40:22,863 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:40:31,209 [INFO] core.evaluator_v2: [snapkv] pred='The major components that make up a ribosome are the large and small subunits, which use two types of RNA: ribosomal RNA'
+2026-08-21 09:40:31,224 [INFO] __main__:   → hotpotqa: 3.80
+2026-08-21 09:40:31,226 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:40:31,288 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:40:31,323 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:40:31,705 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:40:42,781 [INFO] core.evaluator_v2: [snapkv] pred='The document outlines the National Science Foundation\'s (NSF) process for recruiting and managing "rotators"—individuals'
+2026-08-21 09:40:52,690 [INFO] core.evaluator_v2: [snapkv] pred='The document outlines the challenges and issues surrounding federal IT spending and management in the United States. It '
+2026-08-21 09:40:52,717 [INFO] __main__:   → gov_report: 14.26
+2026-08-21 09:40:52,733 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:40:52,734 [INFO] __main__:   [중간 저장 완료] 3/35 설정
+2026-08-21 09:40:52,734 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:40:52,735 [INFO] __main__: Method: PyramidKV-adapted | Budget: 10% | kwargs={'invert_norm': True}
+2026-08-21 09:40:52,735 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:40:52,735 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:40:52,794 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:40:52,826 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:40:53,144 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:41:09,778 [INFO] core.evaluator_v2: [pyramidkv] pred='The summary of the provided text is as follows:\n\nThe meeting starts with the team introducing themselves and discussing '
+2026-08-21 09:41:16,689 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a meeting between a Project Manager, an Industrial Designer, and other team members discussing the desig'
+2026-08-21 09:41:16,692 [INFO] __main__:   → qmsum: 5.14
+2026-08-21 09:41:16,692 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:41:16,757 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:41:16,793 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:41:17,136 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:41:17,377 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:41:22,858 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Brian Mitchell (the text refers to Brian Brian Mitchell as Brian Brian Mitchell, but the correct answer based on t'
+2026-08-21 09:41:23,093 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:41:26,540 [INFO] core.evaluator_v2: [pyramidkv] pred='The major components that make up a ribosome are the two types of RNA: ribosomal RNA (rRNA) and transfer RNA (tRNA).'
+2026-08-21 09:41:26,541 [INFO] __main__:   → hotpotqa: 2.86
+2026-08-21 09:41:26,541 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:41:26,602 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:41:26,632 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:41:26,954 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:41:43,551 [INFO] core.evaluator_v2: [pyramidkv] pred='The Department of Science and Technology (DST) uses two programs to bring in rotators: (1) the Independent Science and T'
+2026-08-21 09:42:00,294 [INFO] core.evaluator_v2: [pyramidkv] pred='The document outlines the challenges and issues related to federal IT spending and management. It highlights the large a'
+2026-08-21 09:42:00,341 [INFO] __main__:   → gov_report: 15.33
+2026-08-21 09:42:00,355 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:42:00,356 [INFO] __main__:   [중간 저장 완료] 4/35 설정
+2026-08-21 09:42:00,356 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:42:00,357 [INFO] __main__: Method: AdaKV-adapted | Budget: 10% | kwargs={'invert_norm': True}
+2026-08-21 09:42:00,357 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:42:00,359 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:42:00,445 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:42:00,478 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:42:00,811 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:42:18,248 [INFO] core.evaluator_v2: [adakv] pred='The summary of the provided text is as follows:\n\nThe meeting starts with the team introducing themselves and discussing '
+2026-08-21 09:42:25,184 [INFO] core.evaluator_v2: [adakv] pred='The document is a meeting between a Project Manager, an Industrial Designer, and other team members discussing the desig'
+2026-08-21 09:42:25,187 [INFO] __main__:   → qmsum: 5.14
+2026-08-21 09:42:25,188 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:42:25,248 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:42:25,276 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:42:25,643 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:42:25,865 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:42:31,308 [INFO] core.evaluator_v2: [adakv] pred='Brian Brian Mitchell (the text refers to Brian Brian Mitchell as Brian Brian Mitchell, but the correct answer based on t'
+2026-08-21 09:42:31,548 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:42:34,999 [INFO] core.evaluator_v2: [adakv] pred='The major components that make up a ribosome are the two types of RNA: ribosomal RNA (rRNA) and transfer RNA (tRNA).'
+2026-08-21 09:42:35,000 [INFO] __main__:   → hotpotqa: 2.86
+2026-08-21 09:42:35,001 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:42:35,082 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:42:35,117 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:42:35,450 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:42:52,150 [INFO] core.evaluator_v2: [adakv] pred='The Department of Science and Technology (DST) uses two programs to bring in rotators: (1) the Independent Science and T'
+2026-08-21 09:43:08,999 [INFO] core.evaluator_v2: [adakv] pred='The document outlines the challenges and issues related to federal IT spending and management. It highlights the large a'
+2026-08-21 09:43:09,047 [INFO] __main__:   → gov_report: 15.33
+2026-08-21 09:43:09,059 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:43:09,060 [INFO] __main__:   [중간 저장 완료] 5/35 설정
+2026-08-21 09:43:09,060 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:43:09,061 [INFO] __main__: Method: SalienceKV (w/o sink) | Budget: 10% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-21 09:43:09,061 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:43:09,062 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:43:09,139 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:43:09,171 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:43:09,535 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:43:13,936 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, followed by a discussion on the design of a television remote. Ke'
+2026-08-21 09:43:20,788 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where team members discuss the design of a remote control device. Key points includ'
+2026-08-21 09:43:20,791 [INFO] __main__:   → qmsum: 8.77
+2026-08-21 09:43:20,791 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:43:20,855 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:43:20,887 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:43:21,206 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:43:21,449 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:43:39,259 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell (commonly known as Brian Stokes Mitchell, but the text refers to him as Brian Stokes Mitchell) won'
+2026-08-21 09:43:39,473 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:43:42,764 [INFO] core.evaluator_v2: [ours] pred='The large and small subunits that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:43:42,765 [INFO] __main__:   → hotpotqa: 0.76
+2026-08-21 09:43:42,767 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:43:42,827 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:43:42,858 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:43:43,192 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:43:59,592 [INFO] core.evaluator_v2: [ours] pred='The report outlines the structure and operations of the National Science Foundation (NSF) regarding its use of rotating '
+2026-08-21 09:44:05,237 [INFO] core.evaluator_v2: [ours] pred="The document outlines the challenges and inefficiencies in the U.S. federal government's use of information technology ("
+2026-08-21 09:44:05,251 [INFO] __main__:   → gov_report: 10.95
+2026-08-21 09:44:05,268 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:44:05,269 [INFO] __main__:   [중간 저장 완료] 6/35 설정
+2026-08-21 09:44:05,269 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:44:05,270 [INFO] __main__: Method: SalienceKV-Sink-4 | Budget: 10% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-21 09:44:05,270 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:44:05,270 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:44:05,328 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:44:05,361 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:44:05,671 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:44:12,448 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction to the project, focusing on designing a new remote control for a television. The'
+2026-08-21 09:44:19,781 [INFO] core.evaluator_v2: [ours] pred='The document describes a meeting among team members discussing the design and development of a new remote control device'
+2026-08-21 09:44:19,784 [INFO] __main__:   → qmsum: 8.67
+2026-08-21 09:44:19,784 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:44:19,864 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:44:19,898 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:44:20,206 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:44:20,442 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:44:24,905 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell, also known as Brian Stokes Mitchell, won the Tony Award for Best Actor in a Musical in 2000 for h'
+2026-08-21 09:44:25,253 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:44:28,438 [INFO] core.evaluator_v2: [ours] pred='The large and small subunits that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:44:28,439 [INFO] __main__:   → hotpotqa: 6.38
+2026-08-21 09:44:28,440 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:44:28,504 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:44:28,550 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:44:28,893 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:44:35,211 [INFO] core.evaluator_v2: [ours] pred="The report outlines the structure and operations of the National Science Foundation's (NSF) rotational programs, which i"
+2026-08-21 09:44:44,836 [INFO] core.evaluator_v2: [ours] pred="The document outlines the challenges and inefficiencies in the U.S. federal government's management of information techn"
+2026-08-21 09:44:44,867 [INFO] __main__:   → gov_report: 11.12
+2026-08-21 09:44:44,879 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:44:44,880 [INFO] __main__:   [중간 저장 완료] 7/35 설정
+2026-08-21 09:44:44,880 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:44:44,881 [INFO] __main__: Method: StreamingLLM | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-21 09:44:44,881 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:44:44,882 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:44:44,941 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:44:44,972 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:44:45,338 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:44:51,571 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting summary outlines a discussion among team members about the design of a new remote control. Key points includ'
+2026-08-21 09:45:00,494 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting focused on finalizing the design and specifications for a new product, likely a device with a display (LCD) '
+2026-08-21 09:45:00,498 [INFO] __main__:   → qmsum: 8.87
+2026-08-21 09:45:00,499 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:45:00,586 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:45:00,616 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:45:00,959 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:45:01,208 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:45:03,874 [INFO] core.evaluator_v2: [streamingllm] pred='Brian Stokes Mitchell.'
+2026-08-21 09:45:04,418 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:45:07,801 [INFO] core.evaluator_v2: [streamingllm] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:45:07,803 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-21 09:45:07,822 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:45:07,888 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:45:07,919 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:45:08,292 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:45:17,909 [INFO] core.evaluator_v2: [streamingllm] pred='The National Science Foundation (NSF) manages two types of employee programs: IPA (Individuals with Persistent Academic)'
+2026-08-21 09:45:29,416 [INFO] core.evaluator_v2: [streamingllm] pred="The U.S. Government Accountability Office (GAO) provides an overview of the federal government's efforts to improve the "
+2026-08-21 09:45:29,455 [INFO] __main__:   → gov_report: 18.63
+2026-08-21 09:45:29,471 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:45:29,472 [INFO] __main__:   [중간 저장 완료] 8/35 설정
+2026-08-21 09:45:29,473 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:45:29,474 [INFO] __main__: Method: H2O | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-21 09:45:29,474 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:45:29,474 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:45:29,546 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:45:29,577 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:45:29,901 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:45:34,830 [INFO] core.evaluator_v2: [h2o] pred='The document details a meeting where team members introduce themselves and discuss a design project for a new remote con'
+2026-08-21 09:45:42,357 [INFO] core.evaluator_v2: [h2o] pred='The document is a meeting transcript between team members discussing the design of a remote control. Key points include:'
+2026-08-21 09:45:42,361 [INFO] __main__:   → qmsum: 9.33
+2026-08-21 09:45:42,361 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:45:42,415 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:45:42,453 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:45:42,772 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:45:42,986 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:45:46,444 [INFO] core.evaluator_v2: [h2o] pred='Brian Stokes Mitchell received the Tony Award for Best Actor in a Musical in 2000 for his performance in "Ragtime."'
+2026-08-21 09:45:46,661 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:46:05,419 [INFO] core.evaluator_v2: [h2o] pred='The answer is: The question is asking about the structure of the text, specifically the part that discusses the role of '
+2026-08-21 09:46:05,426 [INFO] __main__:   → hotpotqa: 14.29
+2026-08-21 09:46:05,427 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:46:05,496 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:46:05,531 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:46:05,889 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:46:15,052 [INFO] core.evaluator_v2: [h2o] pred='The document details the two main programs through which the National Science Foundation (NSF) recruits rotating personn'
+2026-08-21 09:46:21,162 [INFO] core.evaluator_v2: [h2o] pred='The document outlines the challenges and inefficiencies in federal IT spending and management, despite a $96 billion bud'
+2026-08-21 09:46:21,178 [INFO] __main__:   → gov_report: 10.59
+2026-08-21 09:46:21,193 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:46:21,194 [INFO] __main__:   [중간 저장 완료] 9/35 설정
+2026-08-21 09:46:21,195 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:46:21,196 [INFO] __main__: Method: SnapKV | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-21 09:46:21,197 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:46:21,198 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:46:21,278 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:46:21,308 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:46:21,707 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:46:27,177 [INFO] core.evaluator_v2: [snapkv] pred="The document describes a meeting for a design project focused on creating a new remote control. The meeting's agenda inc"
+2026-08-21 09:46:36,033 [INFO] core.evaluator_v2: [snapkv] pred='The document is a meeting transcript between team members discussing the design of a new remote control. Key points incl'
+2026-08-21 09:46:36,046 [INFO] __main__:   → qmsum: 8.79
+2026-08-21 09:46:36,047 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:46:36,108 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:46:36,151 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:46:36,478 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:46:36,718 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:46:39,398 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell.'
+2026-08-21 09:46:39,774 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:46:43,495 [INFO] core.evaluator_v2: [snapkv] pred='The major components that make up a ribosome are the large and small subunits that use two types of RNA: ribosomal RNA ('
+2026-08-21 09:46:43,497 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-21 09:46:43,497 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:46:43,582 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:46:43,614 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:46:43,983 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:46:54,254 [INFO] core.evaluator_v2: [snapkv] pred="The document outlines the National Science Foundation's (NSF) use of two programs, IPA and VSEE, to bring in temporary s"
+2026-08-21 09:47:04,301 [INFO] core.evaluator_v2: [snapkv] pred='The document outlines the challenges and issues facing federal IT spending and management in the U.S. government. Despit'
+2026-08-21 09:47:04,323 [INFO] __main__:   → gov_report: 13.79
+2026-08-21 09:47:04,338 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:47:04,339 [INFO] __main__:   [중간 저장 완료] 10/35 설정
+2026-08-21 09:47:04,340 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:47:04,340 [INFO] __main__: Method: PyramidKV-adapted | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-21 09:47:04,341 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:47:04,341 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:47:04,406 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:47:04,448 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:47:04,855 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:47:09,814 [INFO] core.evaluator_v2: [pyramidkv] pred='The document details a meeting where team members introduce themselves and discuss a design project. The project involve'
+2026-08-21 09:47:18,610 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-21 09:47:18,624 [INFO] __main__:   → qmsum: 9.83
+2026-08-21 09:47:18,625 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:47:18,687 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:47:18,720 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:47:19,093 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:47:19,321 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:47:22,491 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Stokes Mitchell won the Tony Award for Best Actor in 2000.'
+2026-08-21 09:47:22,743 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:47:26,310 [INFO] core.evaluator_v2: [pyramidkv] pred='The major components that make up a ribosome are the two types of RNA: ribosomal RNA (rRNA) and transfer RNA (tRNA).'
+2026-08-21 09:47:26,321 [INFO] __main__:   → hotpotqa: 21.43
+2026-08-21 09:47:26,322 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:47:26,382 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:47:26,414 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:47:26,755 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:47:35,124 [INFO] core.evaluator_v2: [pyramidkv] pred='The document details the two main programs through which the National Science Foundation (NSF) recruits rotating personn'
+2026-08-21 09:47:41,125 [INFO] core.evaluator_v2: [pyramidkv] pred='The document outlines the challenges and inefficiencies in federal IT spending and management, despite a $96 billion bud'
+2026-08-21 09:47:41,140 [INFO] __main__:   → gov_report: 10.59
+2026-08-21 09:47:41,156 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:47:41,157 [INFO] __main__:   [중간 저장 완료] 11/35 설정
+2026-08-21 09:47:41,158 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:47:41,159 [INFO] __main__: Method: AdaKV-adapted | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-21 09:47:41,160 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:47:41,161 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:47:41,216 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:47:41,250 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:47:41,595 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:47:45,887 [INFO] core.evaluator_v2: [adakv] pred='The document details a meeting where team members introduce themselves and discuss a design project. The project involve'
+2026-08-21 09:47:54,596 [INFO] core.evaluator_v2: [adakv] pred='The document is a meeting transcript where team members discuss the design of a remote control. Key points include:\n\n- *'
+2026-08-21 09:47:54,600 [INFO] __main__:   → qmsum: 9.83
+2026-08-21 09:47:54,600 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:47:54,684 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:47:54,714 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:47:55,098 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:47:55,362 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:47:58,512 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell won the Tony Award for Best Actor in 2000.'
+2026-08-21 09:47:58,746 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:48:02,210 [INFO] core.evaluator_v2: [adakv] pred='The major components that make up a ribosome are the two types of RNA: ribosomal RNA (rRNA) and transfer RNA (tRNA).'
+2026-08-21 09:48:02,220 [INFO] __main__:   → hotpotqa: 21.43
+2026-08-21 09:48:02,222 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:48:02,284 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:48:02,313 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:48:02,668 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:48:11,512 [INFO] core.evaluator_v2: [adakv] pred='The document details the two main programs through which the National Science Foundation (NSF) recruits rotating personn'
+2026-08-21 09:48:17,452 [INFO] core.evaluator_v2: [adakv] pred='The document outlines the challenges and inefficiencies in federal IT spending and management, despite a $96 billion bud'
+2026-08-21 09:48:17,467 [INFO] __main__:   → gov_report: 10.59
+2026-08-21 09:48:17,484 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:48:17,484 [INFO] __main__:   [중간 저장 완료] 12/35 설정
+2026-08-21 09:48:17,485 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:48:17,485 [INFO] __main__: Method: SalienceKV (w/o sink) | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-21 09:48:17,486 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:48:17,486 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:48:17,555 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:48:17,590 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:48:17,908 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:48:22,718 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 09:48:30,164 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 09:48:30,168 [INFO] __main__:   → qmsum: 9.25
+2026-08-21 09:48:30,168 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:48:30,252 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:48:30,287 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:48:30,642 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:48:31,017 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:48:34,053 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell won the Tony Award for Best Actor in 2000.'
+2026-08-21 09:48:34,236 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:48:37,561 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:48:37,562 [INFO] __main__:   → hotpotqa: 21.43
+2026-08-21 09:48:37,563 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:48:37,624 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:48:37,658 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:48:37,976 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:48:54,550 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 09:49:04,256 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 09:49:04,282 [INFO] __main__:   → gov_report: 14.08
+2026-08-21 09:49:04,296 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:49:04,297 [INFO] __main__:   [중간 저장 완료] 13/35 설정
+2026-08-21 09:49:04,297 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:49:04,298 [INFO] __main__: Method: SalienceKV-Sink-4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-21 09:49:04,299 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:49:04,299 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:49:04,379 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:49:04,414 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:49:04,780 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:49:12,253 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a'
+2026-08-21 09:49:19,838 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interfa'
+2026-08-21 09:49:19,841 [INFO] __main__:   → qmsum: 9.09
+2026-08-21 09:49:19,842 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:49:19,910 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:49:19,950 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:49:20,298 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:49:20,544 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:49:24,236 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell, also known as Brian Stokes Mitchell, is a powerful baritone who won the Tony Award for Best Actor'
+2026-08-21 09:49:24,480 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:49:27,805 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:49:27,820 [INFO] __main__:   → hotpotqa: 12.50
+2026-08-21 09:49:27,824 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:49:27,892 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:49:27,921 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:49:28,275 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:49:43,606 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D'
+2026-08-21 09:49:54,180 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-21 09:49:54,209 [INFO] __main__:   → gov_report: 13.25
+2026-08-21 09:49:54,242 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:49:54,243 [INFO] __main__:   [중간 저장 완료] 14/35 설정
+2026-08-21 09:49:54,243 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:49:54,244 [INFO] __main__: Method: StreamingLLM | Budget: 40% | kwargs={'invert_norm': True}
+2026-08-21 09:49:54,244 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:49:54,245 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:49:54,305 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:49:54,372 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:49:54,696 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:50:01,407 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting focused on the design and development of a new remote control. Key points included:\n\n- **Project Overview**:'
+2026-08-21 09:50:07,264 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting focused on designing a new remote control for younger users, emphasizing usability, cost-effectiveness, and '
+2026-08-21 09:50:07,267 [INFO] __main__:   → qmsum: 11.01
+2026-08-21 09:50:07,267 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:50:07,327 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:50:07,360 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:50:07,691 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:50:07,950 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:50:10,608 [INFO] core.evaluator_v2: [streamingllm] pred='Brian Stokes Mitchell.'
+2026-08-21 09:50:10,862 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:50:14,206 [INFO] core.evaluator_v2: [streamingllm] pred='The large subunit and small subunit that use two types of RNA are major components that make up ribosomes.'
+2026-08-21 09:50:14,231 [INFO] __main__:   → hotpotqa: 55.26
+2026-08-21 09:50:14,233 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:50:14,302 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:50:14,354 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:50:14,767 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:50:26,851 [INFO] core.evaluator_v2: [streamingllm] pred='The National Science Foundation (NSF) uses two types of rotating personnel—Individuals in Academic Positions (IPA) and V'
+2026-08-21 09:50:39,546 [INFO] core.evaluator_v2: [streamingllm] pred="The document outlines the U.S. Government Accountability Office's (GAO) findings and recommendations regarding the manag"
+2026-08-21 09:50:39,618 [INFO] __main__:   → gov_report: 18.43
+2026-08-21 09:50:39,647 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:50:39,649 [INFO] __main__:   [중간 저장 완료] 15/35 설정
+2026-08-21 09:50:39,669 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:50:39,672 [INFO] __main__: Method: H2O | Budget: 40% | kwargs={'invert_norm': True}
+2026-08-21 09:50:39,673 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:50:39,674 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:50:39,808 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:50:39,860 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:50:40,282 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:50:46,450 [INFO] core.evaluator_v2: [h2o] pred='The document describes a project meeting where the team discusses the design of a new remote control for a TV. Key point'
+2026-08-21 09:50:55,064 [INFO] core.evaluator_v2: [h2o] pred='The document is a meeting transcript between a Project Manager, Industrial Designer, User Interface Designer, and Market'
+2026-08-21 09:50:55,067 [INFO] __main__:   → qmsum: 8.18
+2026-08-21 09:50:55,068 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:50:55,134 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:50:55,166 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:50:55,572 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:50:55,809 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:50:59,234 [INFO] core.evaluator_v2: [h2o] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000.'
+2026-08-21 09:50:59,446 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:51:02,219 [INFO] core.evaluator_v2: [h2o] pred='The answer is: Ribosomes.'
+2026-08-21 09:51:02,226 [INFO] __main__:   → hotpotqa: 39.29
+2026-08-21 09:51:02,228 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:51:02,288 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:51:02,322 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:51:02,748 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:51:10,913 [INFO] core.evaluator_v2: [h2o] pred="The GAO report outlines the structure and operation of the National Science Foundation's (NSF) Rotator Program, which em"
+2026-08-21 09:51:19,950 [INFO] core.evaluator_v2: [h2o] pred='The document outlines the challenges and progress in federal IT management. Despite a $96 billion budget for IT in FY 20'
+2026-08-21 09:51:19,974 [INFO] __main__:   → gov_report: 14.42
+2026-08-21 09:51:19,990 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:51:19,990 [INFO] __main__:   [중간 저장 완료] 16/35 설정
+2026-08-21 09:51:19,991 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:51:19,991 [INFO] __main__: Method: SnapKV | Budget: 40% | kwargs={'invert_norm': True}
+2026-08-21 09:51:19,992 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:51:19,993 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:51:20,058 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:51:20,090 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:51:20,438 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:51:25,185 [INFO] core.evaluator_v2: [snapkv] pred='The document describes a meeting for a design project focused on creating a new user-friendly remote control. The projec'
+2026-08-21 09:51:33,540 [INFO] core.evaluator_v2: [snapkv] pred='The document is a meeting transcript between a Project Manager, Industrial Designer, User Interface specialist, and Mark'
+2026-08-21 09:51:33,544 [INFO] __main__:   → qmsum: 7.35
+2026-08-21 09:51:33,544 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:51:33,612 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:51:33,660 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:51:34,000 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:51:34,247 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:51:38,070 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000 for his perf'
+2026-08-21 09:51:38,306 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:51:41,478 [INFO] core.evaluator_v2: [snapkv] pred='The large subunits that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:51:41,480 [INFO] __main__:   → hotpotqa: 10.71
+2026-08-21 09:51:41,480 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:51:41,541 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:51:41,573 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:51:41,897 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:51:48,816 [INFO] core.evaluator_v2: [snapkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in temporary staff (rotators). IPA rotat'
+2026-08-21 09:51:54,682 [INFO] core.evaluator_v2: [snapkv] pred='The document outlines the challenges and efforts in federal IT management and cybersecurity. Despite a $96 billion budge'
+2026-08-21 09:51:54,697 [INFO] __main__:   → gov_report: 12.31
+2026-08-21 09:51:54,727 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:51:54,729 [INFO] __main__:   [중간 저장 완료] 17/35 설정
+2026-08-21 09:51:54,730 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:51:54,731 [INFO] __main__: Method: PyramidKV-adapted | Budget: 40% | kwargs={'invert_norm': True}
+2026-08-21 09:51:54,732 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:51:54,733 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:51:54,803 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:51:54,855 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:51:55,266 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:52:00,724 [INFO] core.evaluator_v2: [pyramidkv] pred='The document describes a project meeting where the team discusses the design of a new remote control for a TV. Key point'
+2026-08-21 09:52:08,607 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a meeting transcript between a Project Manager, Industrial Designer, User Interface Designer, and Market'
+2026-08-21 09:52:08,624 [INFO] __main__:   → qmsum: 8.76
+2026-08-21 09:52:08,626 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:52:08,686 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:52:08,717 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:52:09,141 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:52:09,442 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:52:12,681 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Stokes Mitchell won the Tony Award for Best Actor in a Musical in 2000.'
+2026-08-21 09:52:12,932 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:52:16,413 [INFO] core.evaluator_v2: [pyramidkv] pred='The major components that make up the ribosome are the two types of RNA: ribosomal RNA (rRNA) and transfer RNA (tRNA).'
+2026-08-21 09:52:16,421 [INFO] __main__:   → hotpotqa: 18.75
+2026-08-21 09:52:16,423 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:52:16,487 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:52:16,527 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:52:16,861 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:52:25,134 [INFO] core.evaluator_v2: [pyramidkv] pred="The GAO report outlines the structure and operation of the National Science Foundation's (NSF) Rotator Program, which em"
+2026-08-21 09:52:34,512 [INFO] core.evaluator_v2: [pyramidkv] pred='The document outlines the challenges and progress in federal IT management. Despite a $96 billion budget for IT in FY 20'
+2026-08-21 09:52:34,546 [INFO] __main__:   → gov_report: 14.42
+2026-08-21 09:52:34,571 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:52:34,572 [INFO] __main__:   [중간 저장 완료] 18/35 설정
+2026-08-21 09:52:34,573 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:52:34,574 [INFO] __main__: Method: AdaKV-adapted | Budget: 40% | kwargs={'invert_norm': True}
+2026-08-21 09:52:34,574 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:52:34,575 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:52:34,638 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:52:34,668 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:52:34,991 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:52:40,210 [INFO] core.evaluator_v2: [adakv] pred='The document describes a project meeting where the team discusses the design of a new remote control for a TV. Key point'
+2026-08-21 09:52:48,449 [INFO] core.evaluator_v2: [adakv] pred='The document is a meeting transcript between a Project Manager, Industrial Designer, User Interface Designer, and Market'
+2026-08-21 09:52:48,453 [INFO] __main__:   → qmsum: 8.76
+2026-08-21 09:52:48,454 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:52:48,522 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:52:48,553 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:52:49,100 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:52:49,351 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:52:52,522 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell won the Tony Award for Best Actor in a Musical in 2000.'
+2026-08-21 09:52:52,734 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:52:56,218 [INFO] core.evaluator_v2: [adakv] pred='The major components that make up the ribosome are the two types of RNA: ribosomal RNA (rRNA) and transfer RNA (tRNA).'
+2026-08-21 09:52:56,220 [INFO] __main__:   → hotpotqa: 18.75
+2026-08-21 09:52:56,222 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:52:56,324 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:52:56,358 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:52:56,794 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:53:04,821 [INFO] core.evaluator_v2: [adakv] pred="The GAO report outlines the structure and operation of the National Science Foundation's (NSF) Rotator Program, which em"
+2026-08-21 09:53:13,997 [INFO] core.evaluator_v2: [adakv] pred='The document outlines the challenges and progress in federal IT management. Despite a $96 billion budget for IT in FY 20'
+2026-08-21 09:53:14,021 [INFO] __main__:   → gov_report: 14.42
+2026-08-21 09:53:14,035 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:53:14,036 [INFO] __main__:   [중간 저장 완료] 19/35 설정
+2026-08-21 09:53:14,036 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:53:14,037 [INFO] __main__: Method: SalienceKV (w/o sink) | Budget: 40% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-21 09:53:14,037 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:53:14,038 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:53:14,099 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:53:14,129 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:53:14,462 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:53:18,638 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction to the project, focusing on designing a user-friendly, original remote control. '
+2026-08-21 09:53:25,657 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between project managers, designers, and marketers discussing the design of a new r'
+2026-08-21 09:53:25,661 [INFO] __main__:   → qmsum: 10.14
+2026-08-21 09:53:25,661 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:53:25,734 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:53:25,764 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:53:26,107 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:53:26,371 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:53:29,063 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-08-21 09:53:29,262 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:53:32,628 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:53:32,629 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-21 09:53:32,630 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:53:32,690 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:53:32,719 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:53:33,002 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:53:45,644 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs, the Independent Program for Rotators (IPA) and the VSEE (Visiti'
+2026-08-21 09:53:51,535 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and opportunities in managing federal IT and ensuring cybersecurity. Despite a $96 '
+2026-08-21 09:53:51,550 [INFO] __main__:   → gov_report: 14.99
+2026-08-21 09:53:51,569 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:53:51,570 [INFO] __main__:   [중간 저장 완료] 20/35 설정
+2026-08-21 09:53:51,570 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:53:51,571 [INFO] __main__: Method: SalienceKV-Sink-4 | Budget: 40% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-21 09:53:51,571 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:53:51,572 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:53:51,631 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:53:51,662 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:53:51,996 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:53:57,321 [INFO] core.evaluator_v2: [ours] pred='The document describes a project meeting where team members introduce themselves and discuss the goals of designing a ne'
+2026-08-21 09:54:05,146 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript where a team discusses the design of a new remote control. Key points include:\n\n- *'
+2026-08-21 09:54:05,149 [INFO] __main__:   → qmsum: 8.17
+2026-08-21 09:54:05,150 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:54:05,211 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:54:05,254 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:54:05,597 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:54:05,876 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:54:08,559 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-08-21 09:54:08,820 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:54:12,178 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:54:12,180 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-21 09:54:12,180 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:54:12,238 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:54:12,269 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:54:12,585 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:54:23,088 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs, the Independent Program for Academic Personnel (IPA) and the Vi'
+2026-08-21 09:54:28,766 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and opportunities in managing federal IT and ensuring cybersecurity. It highlights '
+2026-08-21 09:54:28,781 [INFO] __main__:   → gov_report: 14.16
+2026-08-21 09:54:28,796 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:54:28,796 [INFO] __main__:   [중간 저장 완료] 21/35 설정
+2026-08-21 09:54:28,797 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:54:28,797 [INFO] __main__: Method: StreamingLLM | Budget: 60% | kwargs={'invert_norm': True}
+2026-08-21 09:54:28,798 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:54:28,798 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:54:28,880 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:54:28,908 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:54:29,256 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:54:34,450 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting begins with an introduction and overview of the project, focusing on designing a new remote control. The tea'
+2026-08-21 09:54:43,822 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting focused on designing a new remote control, with discussions on its user interface, physical design, and func'
+2026-08-21 09:54:43,827 [INFO] __main__:   → qmsum: 14.86
+2026-08-21 09:54:43,827 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:54:43,892 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:54:43,926 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:54:44,261 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:54:44,521 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:54:47,174 [INFO] core.evaluator_v2: [streamingllm] pred='Brian Stokes Mitchell.'
+2026-08-21 09:54:47,395 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:54:50,658 [INFO] core.evaluator_v2: [streamingllm] pred='The large subunit and small subunit that use two types of RNA are major components that make up ribosomes.'
+2026-08-21 09:54:50,660 [INFO] __main__:   → hotpotqa: 55.26
+2026-08-21 09:54:50,660 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:54:50,720 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:54:50,750 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:54:51,079 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:55:03,660 [INFO] core.evaluator_v2: [streamingllm] pred='The National Science Foundation (NSF) uses two types of rotating personnel—Independent (IPA) and Visiting (VSEE) researc'
+2026-08-21 09:55:14,437 [INFO] core.evaluator_v2: [streamingllm] pred='The document outlines the challenges and progress in managing federal IT acquisitions and operations, as well as ensurin'
+2026-08-21 09:55:14,467 [INFO] __main__:   → gov_report: 17.22
+2026-08-21 09:55:14,483 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:55:14,484 [INFO] __main__:   [중간 저장 완료] 22/35 설정
+2026-08-21 09:55:14,484 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:55:14,485 [INFO] __main__: Method: H2O | Budget: 60% | kwargs={'invert_norm': True}
+2026-08-21 09:55:14,485 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:55:14,486 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:55:14,566 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:55:14,598 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:55:14,939 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:55:19,508 [INFO] core.evaluator_v2: [h2o] pred='The document describes a project meeting where the team discusses the goals of creating a new, original, and user-friend'
+2026-08-21 09:55:25,508 [INFO] core.evaluator_v2: [h2o] pred='The document is a meeting between a Project Manager, User Interface designer, Industrial Designer, and Marketing special'
+2026-08-21 09:55:25,522 [INFO] __main__:   → qmsum: 10.91
+2026-08-21 09:55:25,523 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:55:25,588 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:55:25,622 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:55:26,000 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:55:26,413 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:55:30,432 [INFO] core.evaluator_v2: [h2o] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000 for his perf'
+2026-08-21 09:55:30,702 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:55:33,504 [INFO] core.evaluator_v2: [h2o] pred='The answer is: Ribosomes.'
+2026-08-21 09:55:33,519 [INFO] __main__:   → hotpotqa: 35.71
+2026-08-21 09:55:33,521 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:55:33,587 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:55:33,620 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:55:33,976 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:55:42,796 [INFO] core.evaluator_v2: [h2o] pred="The GAO report outlines NSF's use of two programs—IPA and VSEE—to bring in rotators. IPA rotators are employed by their "
+2026-08-21 09:55:51,417 [INFO] core.evaluator_v2: [h2o] pred='The document outlines the challenges and efforts related to federal IT management. Despite a $96 billion budget for IT i'
+2026-08-21 09:55:51,444 [INFO] __main__:   → gov_report: 15.16
+2026-08-21 09:55:51,464 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:55:51,465 [INFO] __main__:   [중간 저장 완료] 23/35 설정
+2026-08-21 09:55:51,465 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:55:51,466 [INFO] __main__: Method: SnapKV | Budget: 60% | kwargs={'invert_norm': True}
+2026-08-21 09:55:51,466 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:55:51,467 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:55:51,536 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:55:51,603 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:55:52,036 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:55:58,247 [INFO] core.evaluator_v2: [snapkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-08-21 09:56:06,243 [INFO] core.evaluator_v2: [snapkv] pred='The document is a meeting transcript between a project manager, industrial designer, user interface designer, and market'
+2026-08-21 09:56:06,247 [INFO] __main__:   → qmsum: 9.91
+2026-08-21 09:56:06,249 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:56:06,313 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:56:06,351 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:56:06,697 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:56:07,100 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:56:09,725 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell.'
+2026-08-21 09:56:10,040 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:56:13,311 [INFO] core.evaluator_v2: [snapkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:56:13,322 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-21 09:56:13,324 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:56:13,389 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:56:13,419 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:56:13,755 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:56:21,324 [INFO] core.evaluator_v2: [snapkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in temporary staff (rotators) to support'
+2026-08-21 09:56:28,671 [INFO] core.evaluator_v2: [snapkv] pred='The document outlines the challenges and efforts in federal IT management and cybersecurity. Despite a $96 billion IT bu'
+2026-08-21 09:56:28,690 [INFO] __main__:   → gov_report: 13.04
+2026-08-21 09:56:28,722 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:56:28,723 [INFO] __main__:   [중간 저장 완료] 24/35 설정
+2026-08-21 09:56:28,724 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:56:28,725 [INFO] __main__: Method: PyramidKV-adapted | Budget: 60% | kwargs={'invert_norm': True}
+2026-08-21 09:56:28,726 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:56:28,726 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:56:28,786 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:56:28,815 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:56:29,158 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:56:34,161 [INFO] core.evaluator_v2: [pyramidkv] pred='The document describes a project meeting where the team discusses the goals of creating a new, original, and user-friend'
+2026-08-21 09:56:40,626 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a meeting between a Project Manager, User Interface designer, Industrial Designer, and Marketing special'
+2026-08-21 09:56:40,634 [INFO] __main__:   → qmsum: 10.37
+2026-08-21 09:56:40,635 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:56:40,715 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:56:40,751 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:56:41,092 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:56:41,289 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:56:45,021 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000 for his perf'
+2026-08-21 09:56:45,232 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:56:48,754 [INFO] core.evaluator_v2: [pyramidkv] pred='The major components that make up the ribosome are the two types of RNA: ribosomal RNA (rRNA) and transfer RNA (tRNA).'
+2026-08-21 09:56:48,755 [INFO] __main__:   → hotpotqa: 10.71
+2026-08-21 09:56:48,757 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:56:48,817 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:56:48,864 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:56:49,209 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:56:56,967 [INFO] core.evaluator_v2: [pyramidkv] pred="The GAO report outlines NSF's use of two programs—IPA and VSEE—to bring in rotators. IPA rotators are employed by their "
+2026-08-21 09:57:04,077 [INFO] core.evaluator_v2: [pyramidkv] pred='The document outlines the challenges and efforts related to federal IT management. Despite a $96 billion budget for IT i'
+2026-08-21 09:57:04,097 [INFO] __main__:   → gov_report: 14.66
+2026-08-21 09:57:04,135 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:57:04,136 [INFO] __main__:   [중간 저장 완료] 25/35 설정
+2026-08-21 09:57:04,137 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:57:04,139 [INFO] __main__: Method: AdaKV-adapted | Budget: 60% | kwargs={'invert_norm': True}
+2026-08-21 09:57:04,140 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:57:04,141 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:57:04,207 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:57:04,247 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:57:04,665 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:57:09,723 [INFO] core.evaluator_v2: [adakv] pred='The document describes a project meeting where the team discusses the goals of creating a new, original, and user-friend'
+2026-08-21 09:57:16,138 [INFO] core.evaluator_v2: [adakv] pred='The document is a meeting between a Project Manager, User Interface designer, Industrial Designer, and Marketing special'
+2026-08-21 09:57:16,141 [INFO] __main__:   → qmsum: 10.37
+2026-08-21 09:57:16,142 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:57:16,202 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:57:16,233 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:57:16,588 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:57:16,820 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:57:20,649 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000 for his perf'
+2026-08-21 09:57:20,893 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:57:24,489 [INFO] core.evaluator_v2: [adakv] pred='The major components that make up the ribosome are the two types of RNA: ribosomal RNA (rRNA) and transfer RNA (tRNA).'
+2026-08-21 09:57:24,491 [INFO] __main__:   → hotpotqa: 10.71
+2026-08-21 09:57:24,491 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:57:24,553 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:57:24,586 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:57:24,948 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:57:32,813 [INFO] core.evaluator_v2: [adakv] pred="The GAO report outlines NSF's use of two programs—IPA and VSEE—to bring in rotators. IPA rotators are employed by their "
+2026-08-21 09:57:39,994 [INFO] core.evaluator_v2: [adakv] pred='The document outlines the challenges and efforts related to federal IT management. Despite a $96 billion budget for IT i'
+2026-08-21 09:57:40,014 [INFO] __main__:   → gov_report: 14.66
+2026-08-21 09:57:40,039 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:57:40,039 [INFO] __main__:   [중간 저장 완료] 26/35 설정
+2026-08-21 09:57:40,040 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:57:40,044 [INFO] __main__: Method: SalienceKV (w/o sink) | Budget: 60% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-21 09:57:40,045 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:57:40,045 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:57:40,102 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:57:40,150 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:57:40,483 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:57:45,760 [INFO] core.evaluator_v2: [ours] pred='The document describes a project meeting where the team discusses the design of a new television remote control. Key poi'
+2026-08-21 09:57:51,310 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between a project manager, an industrial designer, a user interface specialist, and'
+2026-08-21 09:57:51,325 [INFO] __main__:   → qmsum: 15.47
+2026-08-21 09:57:51,326 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:57:51,388 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:57:51,420 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:57:51,759 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:57:51,999 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:57:54,706 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-08-21 09:57:54,965 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:57:58,323 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:57:58,324 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-21 09:57:58,325 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:57:58,392 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:57:58,422 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:57:58,746 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:58:12,376 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in temporary staff (rotators) to support'
+2026-08-21 09:58:17,936 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and opportunities in managing federal IT and ensuring cybersecurity. Despite a $96 '
+2026-08-21 09:58:17,950 [INFO] __main__:   → gov_report: 16.22
+2026-08-21 09:58:17,965 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:58:17,966 [INFO] __main__:   [중간 저장 완료] 27/35 설정
+2026-08-21 09:58:17,966 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:58:17,967 [INFO] __main__: Method: SalienceKV-Sink-4 | Budget: 60% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-21 09:58:17,969 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:58:17,969 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:58:18,036 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:58:18,066 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:58:18,400 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:58:24,427 [INFO] core.evaluator_v2: [ours] pred='The document is a transcript of a project meeting where team members introduce themselves, discuss the goals of their de'
+2026-08-21 09:58:34,673 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between a project team discussing the design of a new remote control. Key points in'
+2026-08-21 09:58:34,677 [INFO] __main__:   → qmsum: 8.60
+2026-08-21 09:58:34,678 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:58:34,753 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:58:34,785 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:58:35,107 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:58:35,410 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:58:38,121 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-08-21 09:58:38,357 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:58:41,705 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 09:58:41,722 [INFO] __main__:   → hotpotqa: 50.00
+2026-08-21 09:58:41,723 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:58:41,792 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:58:41,824 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:58:42,190 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:58:54,093 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs, the Independent Assignments Program (IPA) and the Visiting Scie'
+2026-08-21 09:59:00,689 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and progress in managing federal IT systems and ensuring cybersecurity. Despite a $'
+2026-08-21 09:59:00,706 [INFO] __main__:   → gov_report: 15.68
+2026-08-21 09:59:00,736 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:59:00,737 [INFO] __main__:   [중간 저장 완료] 28/35 설정
+2026-08-21 09:59:00,737 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:59:00,738 [INFO] __main__: Method: StreamingLLM | Budget: 80% | kwargs={'invert_norm': True}
+2026-08-21 09:59:00,739 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:59:00,739 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:59:00,805 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:59:00,847 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:59:01,188 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:59:06,651 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting begins with an introduction and team bonding activity where each member draws their favorite animal and shar'
+2026-08-21 09:59:17,092 [INFO] core.evaluator_v2: [streamingllm] pred='The meeting focuses on designing a new remote control for a television, with input from the Project Manager, Industrial '
+2026-08-21 09:59:17,097 [INFO] __main__:   → qmsum: 12.07
+2026-08-21 09:59:17,098 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:59:17,181 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:59:17,213 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:59:17,594 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 09:59:17,854 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 09:59:20,526 [INFO] core.evaluator_v2: [streamingllm] pred='Brian Stokes Mitchell.'
+2026-08-21 09:59:20,780 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 09:59:24,015 [INFO] core.evaluator_v2: [streamingllm] pred='The large subunit and small subunit that use two types of RNA are major components that make up ribosomes.'
+2026-08-21 09:59:24,019 [INFO] __main__:   → hotpotqa: 55.26
+2026-08-21 09:59:24,021 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 09:59:24,079 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:59:24,109 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:59:24,431 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 09:59:32,262 [INFO] core.evaluator_v2: [streamingllm] pred='The National Science Foundation (NSF) uses two types of rotating participants—Independent (IPA) and Visiting (VSEE) part'
+2026-08-21 09:59:45,964 [INFO] core.evaluator_v2: [streamingllm] pred='The document outlines the challenges and progress in managing federal IT acquisitions and operations, as well as ensurin'
+2026-08-21 09:59:46,001 [INFO] __main__:   → gov_report: 17.16
+2026-08-21 09:59:46,042 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 09:59:46,043 [INFO] __main__:   [중간 저장 완료] 29/35 설정
+2026-08-21 09:59:46,043 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 09:59:46,045 [INFO] __main__: Method: H2O | Budget: 80% | kwargs={'invert_norm': True}
+2026-08-21 09:59:46,046 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 09:59:46,047 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 09:59:46,115 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:59:46,151 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 09:59:46,509 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 09:59:52,777 [INFO] core.evaluator_v2: [h2o] pred='The document describes a meeting where the project team introduces a new TV remote control project. The main goals are t'
+2026-08-21 09:59:59,824 [INFO] core.evaluator_v2: [h2o] pred='The document is a meeting transcript between a Project Manager, Industrial Designer, User Interface designer, and Market'
+2026-08-21 09:59:59,827 [INFO] __main__:   → qmsum: 8.45
+2026-08-21 09:59:59,827 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 09:59:59,892 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 09:59:59,924 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:00:00,291 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 10:00:00,716 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 10:00:04,250 [INFO] core.evaluator_v2: [h2o] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000.'
+2026-08-21 10:00:04,539 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 10:00:08,120 [INFO] core.evaluator_v2: [h2o] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 10:00:08,123 [INFO] __main__:   → hotpotqa: 14.29
+2026-08-21 10:00:08,124 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 10:00:08,200 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:00:08,234 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:00:08,660 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 10:00:16,379 [INFO] core.evaluator_v2: [h2o] pred="The GAO report outlines NSF's use of two rotator programs—IPA and VSEE—to bring in temporary staff for science and engin"
+2026-08-21 10:00:26,436 [INFO] core.evaluator_v2: [h2o] pred='The document outlines the challenges and efforts related to federal IT management. Despite a $96 billion budget for IT i'
+2026-08-21 10:00:26,461 [INFO] __main__:   → gov_report: 14.44
+2026-08-21 10:00:26,478 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 10:00:26,479 [INFO] __main__:   [중간 저장 완료] 30/35 설정
+2026-08-21 10:00:26,479 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 10:00:26,480 [INFO] __main__: Method: SnapKV | Budget: 80% | kwargs={'invert_norm': True}
+2026-08-21 10:00:26,481 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 10:00:26,481 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 10:00:26,546 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:00:26,587 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:00:26,912 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 10:00:34,169 [INFO] core.evaluator_v2: [snapkv] pred='The document is a transcript of a project meeting where the team discusses the goals and structure of a design project t'
+2026-08-21 10:00:42,176 [INFO] core.evaluator_v2: [snapkv] pred='The document is a meeting transcript between a project manager, industrial designer, user interface designer, and market'
+2026-08-21 10:00:42,180 [INFO] __main__:   → qmsum: 8.27
+2026-08-21 10:00:42,181 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 10:00:42,251 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:00:42,287 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:00:42,655 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 10:00:42,918 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 10:00:46,763 [INFO] core.evaluator_v2: [snapkv] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000 for his perf'
+2026-08-21 10:00:47,026 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 10:00:50,316 [INFO] core.evaluator_v2: [snapkv] pred='The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.'
+2026-08-21 10:00:50,319 [INFO] __main__:   → hotpotqa: 10.71
+2026-08-21 10:00:50,321 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 10:00:50,386 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:00:50,414 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:00:50,808 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 10:00:59,347 [INFO] core.evaluator_v2: [snapkv] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in rotators. IPA rotators are employed b'
+2026-08-21 10:01:06,696 [INFO] core.evaluator_v2: [snapkv] pred='The document outlines the challenges and efforts in federal IT management and cybersecurity. Despite a $96 billion IT bu'
+2026-08-21 10:01:06,718 [INFO] __main__:   → gov_report: 15.70
+2026-08-21 10:01:06,753 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 10:01:06,754 [INFO] __main__:   [중간 저장 완료] 31/35 설정
+2026-08-21 10:01:06,754 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 10:01:06,755 [INFO] __main__: Method: PyramidKV-adapted | Budget: 80% | kwargs={'invert_norm': True}
+2026-08-21 10:01:06,756 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 10:01:06,757 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 10:01:06,843 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:01:06,873 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:01:07,259 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 10:01:12,970 [INFO] core.evaluator_v2: [pyramidkv] pred='The document describes a meeting where the project team introduces a new TV remote control project. The main goals are t'
+2026-08-21 10:01:19,946 [INFO] core.evaluator_v2: [pyramidkv] pred='The document is a meeting transcript between a Project Manager, Industrial Designer, User Interface designer, and Market'
+2026-08-21 10:01:19,949 [INFO] __main__:   → qmsum: 8.49
+2026-08-21 10:01:19,950 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 10:01:20,016 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:01:20,051 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:01:20,377 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 10:01:20,691 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 10:01:24,413 [INFO] core.evaluator_v2: [pyramidkv] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000 for his perf'
+2026-08-21 10:01:24,762 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 10:01:28,560 [INFO] core.evaluator_v2: [pyramidkv] pred='The major components that make up the ribosome are the large subunit and the small subunit, which use two types of RNA: '
+2026-08-21 10:01:28,561 [INFO] __main__:   → hotpotqa: 10.71
+2026-08-21 10:01:28,561 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 10:01:28,619 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:01:28,651 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:01:28,971 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 10:01:35,806 [INFO] core.evaluator_v2: [pyramidkv] pred="The GAO report outlines NSF's use of two rotator programs—IPA and VSEE—to bring in temporary staff for science and engin"
+2026-08-21 10:01:46,083 [INFO] core.evaluator_v2: [pyramidkv] pred='The document outlines the challenges and efforts related to federal IT management. Despite a $96 billion budget for IT i'
+2026-08-21 10:01:46,109 [INFO] __main__:   → gov_report: 14.73
+2026-08-21 10:01:46,185 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 10:01:46,187 [INFO] __main__:   [중간 저장 완료] 32/35 설정
+2026-08-21 10:01:46,189 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 10:01:46,190 [INFO] __main__: Method: AdaKV-adapted | Budget: 80% | kwargs={'invert_norm': True}
+2026-08-21 10:01:46,191 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 10:01:46,193 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 10:01:46,281 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:01:46,318 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:01:46,808 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 10:01:52,062 [INFO] core.evaluator_v2: [adakv] pred='The document describes a meeting where the project team introduces a new TV remote control project. The main goals are t'
+2026-08-21 10:01:59,093 [INFO] core.evaluator_v2: [adakv] pred='The document is a meeting transcript between a Project Manager, Industrial Designer, User Interface designer, and Market'
+2026-08-21 10:01:59,097 [INFO] __main__:   → qmsum: 8.49
+2026-08-21 10:01:59,098 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 10:01:59,183 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:01:59,213 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:01:59,896 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 10:02:00,159 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 10:02:03,921 [INFO] core.evaluator_v2: [adakv] pred='Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in a Musical in 2000 for his perf'
+2026-08-21 10:02:04,256 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 10:02:08,246 [INFO] core.evaluator_v2: [adakv] pred='The major components that make up the ribosome are the large subunit and the small subunit, which use two types of RNA: '
+2026-08-21 10:02:08,250 [INFO] __main__:   → hotpotqa: 10.71
+2026-08-21 10:02:08,253 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 10:02:08,315 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:02:08,353 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:02:08,706 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 10:02:15,581 [INFO] core.evaluator_v2: [adakv] pred="The GAO report outlines NSF's use of two rotator programs—IPA and VSEE—to bring in temporary staff for science and engin"
+2026-08-21 10:02:25,279 [INFO] core.evaluator_v2: [adakv] pred='The document outlines the challenges and efforts related to federal IT management. Despite a $96 billion budget for IT i'
+2026-08-21 10:02:25,305 [INFO] __main__:   → gov_report: 14.73
+2026-08-21 10:02:25,344 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 10:02:25,345 [INFO] __main__:   [중간 저장 완료] 33/35 설정
+2026-08-21 10:02:25,345 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 10:02:25,346 [INFO] __main__: Method: SalienceKV (w/o sink) | Budget: 80% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-21 10:02:25,346 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 10:02:25,347 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 10:02:25,409 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:02:25,463 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:02:25,795 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 10:02:31,410 [INFO] core.evaluator_v2: [ours] pred='The document describes a project meeting where the team discusses the design of a new remote control for a television. K'
+2026-08-21 10:02:39,916 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between a Project Manager, Industrial Designer, User Interface specialist, and Mark'
+2026-08-21 10:02:39,925 [INFO] __main__:   → qmsum: 13.48
+2026-08-21 10:02:39,926 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 10:02:39,993 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:02:40,025 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:02:40,453 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 10:02:40,724 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 10:02:43,464 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-08-21 10:02:43,716 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 10:02:46,997 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up ribosomes.'
+2026-08-21 10:02:46,999 [INFO] __main__:   → hotpotqa: 55.26
+2026-08-21 10:02:46,999 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 10:02:47,082 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:02:47,122 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:02:47,436 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 10:02:56,893 [INFO] core.evaluator_v2: [ours] pred="The document outlines NSF's use of two programs—IPA (Individual Participation Agreement) and VSEE (Visiting Scientists a"
+2026-08-21 10:03:07,060 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and opportunities in managing federal IT acquisitions and operations, emphasizing t'
+2026-08-21 10:03:07,087 [INFO] __main__:   → gov_report: 18.93
+2026-08-21 10:03:07,121 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 10:03:07,123 [INFO] __main__:   [중간 저장 완료] 34/35 설정
+2026-08-21 10:03:07,123 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-21 10:03:07,124 [INFO] __main__: Method: SalienceKV-Sink-4 | Budget: 80% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-21 10:03:07,125 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-21 10:03:07,126 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 10:03:07,189 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:03:07,223 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:03:07,584 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 10:03:14,500 [INFO] core.evaluator_v2: [ours] pred='The document is a transcript of a project meeting where team members introduce themselves, discuss the project goals, an'
+2026-08-21 10:03:24,318 [INFO] core.evaluator_v2: [ours] pred='The document is a meeting transcript between a project team discussing the design of a new remote control. Key points in'
+2026-08-21 10:03:24,323 [INFO] __main__:   → qmsum: 7.90
+2026-08-21 10:03:24,324 [INFO] core.dataset_loader: Loading LongBench/hotpotqa ...
+2026-08-21 10:03:24,398 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:03:24,430 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:03:24,791 [INFO] core.dataset_loader: Loaded 2 samples from hotpotqa
+2026-08-21 10:03:25,079 [WARNING] core.model_loader: Input length 17130 > max 16000, truncating...
+2026-08-21 10:03:27,762 [INFO] core.evaluator_v2: [ours] pred='Brian Stokes Mitchell.'
+2026-08-21 10:03:27,964 [WARNING] core.model_loader: Input length 16583 > max 16000, truncating...
+2026-08-21 10:03:31,239 [INFO] core.evaluator_v2: [ours] pred='The large subunit and small subunit that use two types of RNA are major components that make up ribosomes.'
+2026-08-21 10:03:31,241 [INFO] __main__:   → hotpotqa: 55.26
+2026-08-21 10:03:31,241 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 10:03:31,303 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 10:03:31,352 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 10:03:31,704 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 10:03:42,348 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs, IPA and VSEE, to bring in temporary staff (rotators) to support'
+2026-08-21 10:03:50,370 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in managing federal IT acquisitions and operations, as well as ensuring'
+2026-08-21 10:03:50,389 [INFO] __main__:   → gov_report: 16.85
+2026-08-21 10:03:50,420 [INFO] core.results_manager: JSON saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.json
+2026-08-21 10:03:50,422 [INFO] __main__:   [중간 저장 완료] 35/35 설정
+2026-08-21 10:03:50,444 [INFO] core.results_manager: Results saved to results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.csv
+2026-08-21 10:03:50,445 [INFO] __main__: 
+완료: 35개 설정. 저장: results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260821_093741.csv
