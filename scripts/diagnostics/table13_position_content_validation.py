@@ -111,7 +111,14 @@ def run_condition(evaluator, condition_name, mode, tasks, num_samples, budget, s
         sink_size_kwarg = effective_sink_size if slot != "none" else 0
     elif kind == "content":
         hook_module._select_with_sink = _ORIGINAL_SELECT_WITH_SINK
-        placeholder_id = tokenizer.pad_token_id
+        if slot == "newline":
+            # StreamingLLM 원 논문(Xiao et al.)의 실제 실험과 동일 — "\n" 토큰으로 치환
+            newline_ids = tokenizer.encode("\n", add_special_tokens=False)
+            placeholder_id = newline_ids[0] if newline_ids else tokenizer.pad_token_id
+        else:
+            # 기존(pad_token, 특수 제어 토큰 <|endoftext|>) — chat template 구조 마커까지
+            # 덮어쓰게 되어 "special-token poisoning" 가능성 있음, front_newline과 대조용으로 유지
+            placeholder_id = tokenizer.pad_token_id
         ev2_module.tokenize_prompt = make_placeholder_tokenize_prompt(effective_sink_size, placeholder_id)
         sink_size_kwarg = effective_sink_size
     else:
@@ -204,7 +211,8 @@ def main():
         ("middle_real", ("position", "middle"), None),
         ("end_real", ("position", "end"), None),
         ("random_real", ("position", "random"), None),   # 신규: sink=4를 무작위 위치에 (front_real과 대조)
-        ("front_placeholder", ("content", None), None),
+        ("front_placeholder", ("content", "pad"), None),   # slot 명시(하위호환 동일 동작)
+        ("front_newline", ("content", "newline"), None),  # 신규: StreamingLLM과 동일 조건(GPT 제안)
         ("none", ("position", "none"), None),
         ("front_1", ("position", "front"), 1),            # 신규: 위치 0 단 하나만 고정
         ("random_1", ("position", "random"), 1),          # 신규: 무작위 위치 단 하나만 고정 (front_1과 대조)
