@@ -1,0 +1,279 @@
+2026-08-21 13:59:38,050 [INFO] __main__: TABLE X: Sink Position/Content Controlled Validation
+2026-08-21 13:59:38,051 [INFO] __main__:   Model: qwen3-4b | Tasks: ['qmsum', 'gov_report'] | Samples: 2/task | Budget: 20%
+2026-08-21 13:59:38,052 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-21 13:59:38,056 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-21 13:59:38,203 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 13:59:38,228 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-21 13:59:38,315 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 13:59:38,328 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-21 13:59:38,419 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-21 13:59:38,518 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-21 13:59:39,966 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-21 13:59:39,969 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-21 13:59:40,013 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 13:59:40,024 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-21 14:01:04,918 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:01:04,930 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-21 14:01:05,036 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-21 14:01:05,070 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-21 14:01:05,087 [INFO] __main__:   placeholder_token_id (pad_token): 151643
+2026-08-21 14:01:05,156 [INFO] __main__:   문서 내용 시작 오프셋(고정 지시어 템플릿 길이): 14 토큰 (qmsum/gov_report 둘 다 task_type=summarization, 동일 템플릿 공유)
+2026-08-21 14:01:05,157 [INFO] __main__: 
+============================================================
+2026-08-21 14:01:05,158 [INFO] __main__: Condition: front_real (mode=('position', 'front'), content_offset=0)
+2026-08-21 14:01:05,160 [INFO] __main__: ============================================================
+2026-08-21 14:01:05,160 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:01:05,202 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:01:05,257 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:01:05,478 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:01:05,512 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:01:05,558 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:01:05,601 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-21 14:01:06,002 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:01:17,231 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a'
+2026-08-21 14:01:31,599 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interfa'
+2026-08-21 14:01:31,603 [INFO] __main__:   → qmsum: 9.09
+2026-08-21 14:01:31,620 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:01:31,685 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:01:31,721 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:01:32,385 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:01:52,689 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D'
+2026-08-21 14:02:16,278 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-21 14:02:16,313 [INFO] __main__:   → gov_report: 13.25
+2026-08-21 14:02:16,337 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:02:16,339 [INFO] __main__: [중간 저장 완료] 1/12 조건
+2026-08-21 14:02:16,340 [INFO] __main__: 
+============================================================
+2026-08-21 14:02:16,342 [INFO] __main__: Condition: middle_real (mode=('position', 'middle'), content_offset=0)
+2026-08-21 14:02:16,344 [INFO] __main__: ============================================================
+2026-08-21 14:02:16,345 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:02:16,409 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:02:16,450 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:02:16,872 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:02:24,856 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 14:02:37,657 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 14:02:37,661 [INFO] __main__:   → qmsum: 9.25
+2026-08-21 14:02:37,662 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:02:37,727 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:02:37,760 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:02:38,189 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:03:00,610 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 14:03:22,444 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 14:03:22,471 [INFO] __main__:   → gov_report: 14.08
+2026-08-21 14:03:22,484 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:03:22,485 [INFO] __main__: [중간 저장 완료] 2/12 조건
+2026-08-21 14:03:22,485 [INFO] __main__: 
+============================================================
+2026-08-21 14:03:22,486 [INFO] __main__: Condition: end_real (mode=('position', 'end'), content_offset=0)
+2026-08-21 14:03:22,487 [INFO] __main__: ============================================================
+2026-08-21 14:03:22,488 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:03:22,555 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:03:22,593 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:03:23,090 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:03:39,434 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 14:03:52,641 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 14:03:52,645 [INFO] __main__:   → qmsum: 9.25
+2026-08-21 14:03:52,646 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:03:52,728 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:03:52,761 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:03:53,183 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:04:11,230 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 14:04:31,891 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 14:04:31,922 [INFO] __main__:   → gov_report: 13.23
+2026-08-21 14:04:31,941 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:04:31,942 [INFO] __main__: [중간 저장 완료] 3/12 조건
+2026-08-21 14:04:31,942 [INFO] __main__: 
+============================================================
+2026-08-21 14:04:31,944 [INFO] __main__: Condition: random_real (mode=('position', 'random'), content_offset=0)
+2026-08-21 14:04:31,944 [INFO] __main__: ============================================================
+2026-08-21 14:04:31,945 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:04:32,034 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:04:32,073 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:04:32,576 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:04:40,593 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 14:04:52,201 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 14:04:52,225 [INFO] __main__:   → qmsum: 9.99
+2026-08-21 14:04:52,226 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:04:52,305 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:04:52,353 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:04:52,770 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:05:17,255 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 14:05:35,218 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 14:05:35,248 [INFO] __main__:   → gov_report: 13.89
+2026-08-21 14:05:35,259 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:05:35,260 [INFO] __main__: [중간 저장 완료] 4/12 조건
+2026-08-21 14:05:35,260 [INFO] __main__: 
+============================================================
+2026-08-21 14:05:35,261 [INFO] __main__: Condition: front_placeholder (mode=('content', 'pad'), content_offset=0)
+2026-08-21 14:05:35,262 [INFO] __main__: ============================================================
+2026-08-21 14:05:35,262 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:05:35,327 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:05:35,360 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:05:35,767 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:05:58,112 [INFO] core.evaluator_v2: [ours] pred="The meeting began with a discussion about the project's goals and objectives, with the team members introducing their ro"
+2026-08-21 14:06:13,043 [INFO] core.evaluator_v2: [ours] pred='The meeting discussion revolves around the design and development of a new remote control device, focusing on its functi'
+2026-08-21 14:06:13,049 [INFO] __main__:   → qmsum: 4.94
+2026-08-21 14:06:13,050 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:06:13,103 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:06:13,153 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:06:13,477 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:06:40,264 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) manages two types of rotating positions: VSEE (Visiting Scientists and Engineers E'
+2026-08-21 14:07:02,791 [INFO] core.evaluator_v2: [ours] pred='The U.S. government has allocated a significant budget for IT, yet many projects fail due to poor management and impleme'
+2026-08-21 14:07:02,841 [INFO] __main__:   → gov_report: 15.55
+2026-08-21 14:07:02,862 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:07:02,864 [INFO] __main__: [중간 저장 완료] 5/12 조건
+2026-08-21 14:07:02,866 [INFO] __main__: 
+============================================================
+2026-08-21 14:07:02,868 [INFO] __main__: Condition: front_newline (mode=('content', 'newline'), content_offset=0)
+2026-08-21 14:07:02,870 [INFO] __main__: ============================================================
+2026-08-21 14:07:02,874 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:07:02,960 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:07:02,994 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:07:03,564 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:07:14,046 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, focusing on designing a new remote control for a TV'
+2026-08-21 14:07:32,771 [INFO] core.evaluator_v2: [ours] pred='The meeting involved a team discussing the design of a new remote control device. Key points included:\n\n- **Design and F'
+2026-08-21 14:07:32,777 [INFO] __main__:   → qmsum: 9.36
+2026-08-21 14:07:32,781 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:07:32,853 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:07:32,888 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:07:33,275 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:07:52,417 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) employs two types of rotating scientists: the **Institutional Scientist (IS)** and'
+2026-08-21 14:08:12,484 [INFO] core.evaluator_v2: [ours] pred='The document discusses the challenges and issues facing the U.S. federal government in managing its information technolo'
+2026-08-21 14:08:12,533 [INFO] __main__:   → gov_report: 13.99
+2026-08-21 14:08:12,562 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:08:12,564 [INFO] __main__: [중간 저장 완료] 6/12 조건
+2026-08-21 14:08:12,565 [INFO] __main__: 
+============================================================
+2026-08-21 14:08:12,567 [INFO] __main__: Condition: none (mode=('position', 'none'), content_offset=0)
+2026-08-21 14:08:12,569 [INFO] __main__: ============================================================
+2026-08-21 14:08:12,570 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:08:12,644 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:08:12,678 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:08:13,162 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:08:20,770 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 14:08:32,681 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 14:08:32,686 [INFO] __main__:   → qmsum: 9.25
+2026-08-21 14:08:32,687 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:08:32,755 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:08:32,785 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:08:33,255 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:08:55,957 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 14:09:07,453 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 14:09:07,479 [INFO] __main__:   → gov_report: 14.08
+2026-08-21 14:09:07,488 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:09:07,489 [INFO] __main__: [중간 저장 완료] 7/12 조건
+2026-08-21 14:09:07,489 [INFO] __main__: 
+============================================================
+2026-08-21 14:09:07,490 [INFO] __main__: Condition: front_1 (mode=('position', 'front'), content_offset=0)
+2026-08-21 14:09:07,491 [INFO] __main__: ============================================================
+2026-08-21 14:09:07,491 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:09:07,556 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:09:07,588 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:09:07,943 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:09:15,500 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a'
+2026-08-21 14:09:24,511 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interfa'
+2026-08-21 14:09:24,522 [INFO] __main__:   → qmsum: 9.52
+2026-08-21 14:09:24,522 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:09:24,583 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:09:24,618 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:09:24,939 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:09:39,181 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D'
+2026-08-21 14:09:49,956 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-21 14:09:49,987 [INFO] __main__:   → gov_report: 13.83
+2026-08-21 14:09:50,003 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:09:50,018 [INFO] __main__: [중간 저장 완료] 8/12 조건
+2026-08-21 14:09:50,020 [INFO] __main__: 
+============================================================
+2026-08-21 14:09:50,021 [INFO] __main__: Condition: random_1 (mode=('position', 'random'), content_offset=0)
+2026-08-21 14:09:50,022 [INFO] __main__: ============================================================
+2026-08-21 14:09:50,022 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:09:50,088 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:09:50,121 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:09:50,553 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:09:55,256 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the project, focusing on designing a new remote control. The team discussed th'
+2026-08-21 14:10:03,099 [INFO] core.evaluator_v2: [ours] pred='The meeting involves a team discussing the design of a new remote control. Key points include:\n\n- **User Interface**: Th'
+2026-08-21 14:10:03,104 [INFO] __main__:   → qmsum: 8.67
+2026-08-21 14:10:03,118 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:10:03,196 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:10:03,239 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:10:03,657 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:10:20,678 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—Independent Rotating Assignments (IPA) and the Visiting Scientis'
+2026-08-21 14:10:30,470 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 14:10:30,495 [INFO] __main__:   → gov_report: 13.17
+2026-08-21 14:10:30,528 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:10:30,529 [INFO] __main__: [중간 저장 완료] 9/12 조건
+2026-08-21 14:10:30,530 [INFO] __main__: 
+============================================================
+2026-08-21 14:10:30,531 [INFO] __main__: Condition: front_real_content (mode=('position', 'front'), content_offset=14)
+2026-08-21 14:10:30,531 [INFO] __main__: ============================================================
+2026-08-21 14:10:30,532 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:10:30,600 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:10:30,635 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:10:30,996 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:10:37,125 [INFO] core.evaluator_v2: [ours] pred='The meeting began with an introduction to the user interface project. The team discussed the goal of designing a new rem'
+2026-08-21 14:10:45,670 [INFO] core.evaluator_v2: [ours] pred='The meeting involved project managers, designers, and team members discussing the development of a new remote control. K'
+2026-08-21 14:10:45,674 [INFO] __main__:   → qmsum: 9.54
+2026-08-21 14:10:45,674 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:10:45,784 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:10:45,817 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:10:46,158 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:11:02,970 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) uses two programs—NSF relies on two programs: the NSF Rotating Assistant Professor'
+2026-08-21 14:11:12,799 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management of federal information technology (IT) syst'
+2026-08-21 14:11:12,824 [INFO] __main__:   → gov_report: 14.11
+2026-08-21 14:11:12,851 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:11:12,852 [INFO] __main__: [중간 저장 완료] 10/12 조건
+2026-08-21 14:11:12,853 [INFO] __main__: 
+============================================================
+2026-08-21 14:11:12,854 [INFO] __main__: Condition: front_placeholder_content (mode=('content', 'pad'), content_offset=14)
+2026-08-21 14:11:12,855 [INFO] __main__: ============================================================
+2026-08-21 14:11:12,857 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:11:12,918 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:11:12,952 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:11:13,388 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:11:19,778 [INFO] core.evaluator_v2: [ours] pred='The project meeting involves a team of students working on a design project for a new remote control device. The meeting'
+2026-08-21 14:11:29,712 [INFO] core.evaluator_v2: [ours] pred='The meeting discussion revolves around the design and functionality of a new remote control device. Key points include:\n'
+2026-08-21 14:11:29,725 [INFO] __main__:   → qmsum: 8.99
+2026-08-21 14:11:29,726 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:11:29,798 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:11:29,830 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:11:30,277 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:11:43,990 [INFO] core.evaluator_v2: [ours] pred='The National Science Foundation (NSF) employs two types of rotating personnel: the Independent Rotating Assistant Profes'
+2026-08-21 14:11:58,080 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-21 14:11:58,118 [INFO] __main__:   → gov_report: 15.01
+2026-08-21 14:11:58,145 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:11:58,146 [INFO] __main__: [중간 저장 완료] 11/12 조건
+2026-08-21 14:11:58,146 [INFO] __main__: 
+============================================================
+2026-08-21 14:11:58,147 [INFO] __main__: Condition: front_newline_content (mode=('content', 'newline'), content_offset=14)
+2026-08-21 14:11:58,153 [INFO] __main__: ============================================================
+2026-08-21 14:11:58,154 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-21 14:11:58,220 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:11:58,257 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:11:58,670 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-21 14:12:06,445 [INFO] core.evaluator_v2: [ours] pred='The meeting begins with an introduction to the project, which involves designing a new remote control for a television. '
+2026-08-21 14:12:13,529 [INFO] core.evaluator_v2: [ours] pred='The meeting discusses the design of a new remote control device. Key points include:\n\n- **User Interface**: The team is '
+2026-08-21 14:12:13,532 [INFO] __main__:   → qmsum: 8.88
+2026-08-21 14:12:13,533 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-21 14:12:13,596 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-21 14:12:13,628 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-21 14:12:14,073 [INFO] core.dataset_loader: Loaded 2 samples from gov_report
+2026-08-21 14:12:23,609 [INFO] core.evaluator_v2: [ours] pred="The report outlines the structure and operations of the National Science Foundation's (NSF) two primary rotational progr"
+2026-08-21 14:12:35,761 [INFO] core.evaluator_v2: [ours] pred='The document outlines the challenges and efforts in improving the management and security of federal information technol'
+2026-08-21 14:12:35,795 [INFO] __main__:   → gov_report: 15.14
+2026-08-21 14:12:35,834 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260821_140105.json
+2026-08-21 14:12:35,835 [INFO] __main__: [중간 저장 완료] 12/12 조건
+2026-08-21 14:12:35,854 [INFO] core.results_manager: Results saved to results/v3_verified/table13_position_content_20260821_140105.csv
+2026-08-21 14:12:35,855 [INFO] __main__: 
+완료: 12개 조건
+2026-08-21 14:12:35,857 [INFO] __main__:   front_real           avg_score=11.17
+2026-08-21 14:12:35,859 [INFO] __main__:   middle_real          avg_score=11.66
+2026-08-21 14:12:35,860 [INFO] __main__:   end_real             avg_score=11.24
+2026-08-21 14:12:35,861 [INFO] __main__:   random_real          avg_score=11.94
+2026-08-21 14:12:35,862 [INFO] __main__:   front_placeholder    avg_score=10.25
+2026-08-21 14:12:35,863 [INFO] __main__:   front_newline        avg_score=11.68
+2026-08-21 14:12:35,865 [INFO] __main__:   none                 avg_score=11.66
+2026-08-21 14:12:35,866 [INFO] __main__:   front_1              avg_score=11.68
+2026-08-21 14:12:35,868 [INFO] __main__:   random_1             avg_score=10.92
+2026-08-21 14:12:35,869 [INFO] __main__:   front_real_content   avg_score=11.82
+2026-08-21 14:12:35,869 [INFO] __main__:   front_placeholder_content avg_score=12.0
+2026-08-21 14:12:35,870 [INFO] __main__:   front_newline_content avg_score=12.01

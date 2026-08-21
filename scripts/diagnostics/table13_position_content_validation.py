@@ -27,7 +27,7 @@ _ORIGINAL_SELECT_WITH_SINK = hook_module._select_with_sink
 _ORIGINAL_TOKENIZE_PROMPT = ev2_module.tokenize_prompt
 
 
-def make_patched_select_with_sink(slot: str):
+def make_patched_select_with_sink(slot: str, offset: int = 0):
     def patched(score, seq_len, budget, recent_w, sink_size, device):
         if slot == "none":
             sink_size = 0
@@ -39,7 +39,10 @@ def make_patched_select_with_sink(slot: str):
         if sink_size == 0:
             sink_idx = torch.empty(0, dtype=torch.long, device=device)
         elif slot == "front":
-            sink_idx = torch.arange(sink_size, device=device)
+            # offset=0이면 기존과 완전히 동일(하위호환). offset>0이면 "문서 내용 시작 지점"
+            # 기준으로 sink 위치를 잡음 (절대 위치 0이 아니라 고정 지시어 템플릿 이후).
+            start = min(offset, max(seq_len - sink_size, 0))
+            sink_idx = torch.arange(start, start + sink_size, device=device)
         elif slot == "middle":
             mid_point = seq_len // 2
             start = max(mid_point - sink_size // 2, 0)
@@ -86,27 +89,50 @@ def make_patched_select_with_sink(slot: str):
     return patched
 
 
-def make_placeholder_tokenize_prompt(sink_size: int, placeholder_token_id: int):
+def make_placeholder_tokenize_prompt(sink_size: int, placeholder_token_id: int, offset: int = 0):
     def patched(prompt, tokenizer, model_key, max_input_length, device):
         inputs = _ORIGINAL_TOKENIZE_PROMPT(prompt, tokenizer, model_key, max_input_length, device)
         input_ids = inputs["input_ids"].clone()
-        n = min(sink_size, input_ids.shape[1])
-        input_ids[:, :n] = placeholder_token_id
+        seq_len = input_ids.shape[1]
+        start = min(offset, max(seq_len - sink_size, 0))
+        n = min(sink_size, seq_len - start)
+        input_ids[:, start:start + n] = placeholder_token_id
         inputs["input_ids"] = input_ids
         return inputs
     return patched
 
 
+def compute_content_start_offset(tokenizer, model_key, task_type="summarization"):
+    """고정 지시어 템플릿(예: 'Please summarize the following document concisely.\\n\\nDocument:\\n')이
+    몇 토큰인지 계산 — 실제 문서 내용이 시작하는 위치. make_prompt의 내부 문자열을 하드코딩하지 않고,
+    실제 context와 마커 context 두 프롬프트를 각각 토큰화해서 공통 접두부 길이를 재는 방식으로
+    강건하게 계산(make_prompt 구현이 바뀌어도 자동으로 맞음)."""
+    from core.model_loader import make_prompt
+    real_context = "This is a placeholder real-looking document body used only to diverge from the marker."
+    marker_context = "\uE000\uE000\uE000\uE000 MARKERMARKERMARKER \uE000\uE000\uE000\uE000"
+    dummy_question = ""  # summarization 템플릿은 question 미사용
+    p1 = make_prompt(model_key, tokenizer, real_context, dummy_question, task_type)
+    p2 = make_prompt(model_key, tokenizer, marker_context, dummy_question, task_type)
+    ids1 = tokenizer(p1, add_special_tokens=False)["input_ids"]
+    ids2 = tokenizer(p2, add_special_tokens=False)["input_ids"]
+    offset = 0
+    for a, b in zip(ids1, ids2):
+        if a != b:
+            break
+        offset += 1
+    return offset
+
+
 def run_condition(evaluator, condition_name, mode, tasks, num_samples, budget, seed, tokenizer, invert_norm,
-                   sink_size_override=None):
+                   sink_size_override=None, content_offset=0):
     logger.info(f"\n{'='*60}")
-    logger.info(f"Condition: {condition_name} (mode={mode})")
+    logger.info(f"Condition: {condition_name} (mode={mode}, content_offset={content_offset})")
     logger.info(f"{'='*60}")
 
     kind, slot = mode
     effective_sink_size = sink_size_override if sink_size_override is not None else SINK_SIZE
     if kind == "position":
-        hook_module._select_with_sink = make_patched_select_with_sink(slot)
+        hook_module._select_with_sink = make_patched_select_with_sink(slot, offset=content_offset)
         ev2_module.tokenize_prompt = _ORIGINAL_TOKENIZE_PROMPT
         sink_size_kwarg = effective_sink_size if slot != "none" else 0
     elif kind == "content":
@@ -119,7 +145,8 @@ def run_condition(evaluator, condition_name, mode, tasks, num_samples, budget, s
             # 기존(pad_token, 특수 제어 토큰 <|endoftext|>) — chat template 구조 마커까지
             # 덮어쓰게 되어 "special-token poisoning" 가능성 있음, front_newline과 대조용으로 유지
             placeholder_id = tokenizer.pad_token_id
-        ev2_module.tokenize_prompt = make_placeholder_tokenize_prompt(effective_sink_size, placeholder_id)
+        ev2_module.tokenize_prompt = make_placeholder_tokenize_prompt(effective_sink_size, placeholder_id,
+                                                                        offset=content_offset)
         sink_size_kwarg = effective_sink_size
     else:
         raise ValueError(mode)
@@ -205,24 +232,37 @@ def main():
     evaluator = EvaluatorV2(model, tokenizer, model_config)
     logger.info(f"  placeholder_token_id (pad_token): {tokenizer.pad_token_id}")
 
+    content_offset = compute_content_start_offset(tokenizer, MODEL_KEY, task_type="summarization")
+    logger.info(f"  문서 내용 시작 오프셋(고정 지시어 템플릿 길이): {content_offset} 토큰 "
+                f"(qmsum/gov_report 둘 다 task_type=summarization, 동일 템플릿 공유)")
+
     # (이름, mode, sink_size_override) — override=None이면 기본 SINK_SIZE(4) 사용
+    # (이름, mode, sink_size_override, use_content_offset) — override=None이면 기본 SINK_SIZE(4) 사용
+    # use_content_offset=True면 절대 위치 0이 아니라 "문서 내용이 실제로 시작하는 지점" 기준으로
+    # sink을 잡음 — 8/8 세션 원본 설계(real_content_sink vs meaningless_prefix_sink) 복원.
     conditions = [
-        ("front_real", ("position", "front"), None),
-        ("middle_real", ("position", "middle"), None),
-        ("end_real", ("position", "end"), None),
-        ("random_real", ("position", "random"), None),   # 신규: sink=4를 무작위 위치에 (front_real과 대조)
-        ("front_placeholder", ("content", "pad"), None),   # slot 명시(하위호환 동일 동작)
-        ("front_newline", ("content", "newline"), None),  # 신규: StreamingLLM과 동일 조건(GPT 제안)
-        ("none", ("position", "none"), None),
-        ("front_1", ("position", "front"), 1),            # 신규: 위치 0 단 하나만 고정
-        ("random_1", ("position", "random"), 1),          # 신규: 무작위 위치 단 하나만 고정 (front_1과 대조)
+        ("front_real", ("position", "front"), None, False),
+        ("middle_real", ("position", "middle"), None, False),
+        ("end_real", ("position", "end"), None, False),
+        ("random_real", ("position", "random"), None, False),   # 신규: sink=4를 무작위 위치에 (front_real과 대조)
+        ("front_placeholder", ("content", "pad"), None, False),   # slot 명시(하위호환 동일 동작)
+        ("front_newline", ("content", "newline"), None, False),  # 신규: StreamingLLM과 동일 조건(GPT 제안)
+        ("none", ("position", "none"), None, False),
+        ("front_1", ("position", "front"), 1, False),            # 신규: 위치 0 단 하나만 고정
+        ("random_1", ("position", "random"), 1, False),          # 신규: 무작위 위치 단 하나만 고정 (front_1과 대조)
+        # 신규(2026-08-21): 문서 내용 시작 지점 기준 — 고정 지시어 템플릿은 안 건드림
+        ("front_real_content", ("position", "front"), None, True),
+        ("front_placeholder_content", ("content", "pad"), None, True),
+        ("front_newline_content", ("content", "newline"), None, True),
     ]
 
     all_results = []
     timestamp = get_timestamp()
-    for name, mode, sink_override in conditions:
+    for name, mode, sink_override, use_content_offset in conditions:
+        offset = content_offset if use_content_offset else 0
         result = run_condition(evaluator, name, mode, TASKS, args.num_samples, BUDGET_RATIO, SEED,
-                                tokenizer, args.invert_norm, sink_size_override=sink_override)
+                                tokenizer, args.invert_norm, sink_size_override=sink_override,
+                                content_offset=offset)
         all_results.append(result)
 
         json_data = {
@@ -233,6 +273,7 @@ def main():
             "budget_ratio": BUDGET_RATIO,
             "sink_size": SINK_SIZE,
             "invert_norm": args.invert_norm,
+            "content_offset": content_offset,
             "results": all_results,
         }
         save_results_json(json_data, f"table13_position_content_{timestamp}.json")
