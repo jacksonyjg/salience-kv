@@ -142,8 +142,9 @@ class EvaluatorV2:
             # tokenizer.eos_token_id(단일값)만 확인하면 자연스러운 턴 종료를 인식 못 하고
             # max_new_tokens까지 생성이 계속되어(방금 답을 그대로 재반복) 퇴화 출력이 발생함
             # (Gemma-2/Phi-3-mini 진단으로 확인, 2026-08-16/2026-08-22).
-            # Qwen3-4B는 eos_token_id=151645 하나뿐이라 이 변경으로 결과 영향이 없을 것으로 예상됨
-            # (2026-08-22 regression sanity check 완료: 9/9 조합 prediction/score 완전 일치 확인됨)
+            # [2026-08-22 정정] Qwen3-4B도 generation_config.eos_token_id=[151645,151643] 2개짜리임이
+            # 나중에 확인됨(이전 주석의 "151645 하나뿐" 가정은 틀렸음) — targeted audit으로 검증 수행
+            # (results/v3_verified/qwen_eos_audit_table2.json 참고)
             raw_eos = self.model.generation_config.eos_token_id
             if raw_eos is None:
                 raw_eos = self.tokenizer.eos_token_id
@@ -195,6 +196,10 @@ class EvaluatorV2:
                 "kv_size_after_mb": kv_after, "memory_reduction_pct": mem_red,
                 "prefill_ms": prefill_time_ms, "compress_ms": compress_time_ms,
                 "first_decode_step_ms": 0.0, "decode_throughput": 0.0,
+                # [2026-08-22 추가, GPT 지적] 호출부가 실패를 정상(""=non-collapse)으로
+                # 오인하지 않도록 error 필드 명시. 호출부는 반드시 이 필드를 확인해야 함.
+                "error": str(e), "num_new_tokens": None,
+                "terminated_by_eos": None, "final_token_id": None, "hit_max_new_tokens": None,
             }
 
         gen_elapsed = time.perf_counter() - gen_start
@@ -209,6 +214,11 @@ class EvaluatorV2:
         logger.info(f"[{method_name}] pred={prediction[:120]!r}")
         score = compute_score(prediction, sample["answers"], sample["metric"])
 
+        # [2026-08-22 추가, GPT 지적] EOS 종료 여부·최종 토큰·max_new_tokens 도달 여부 기록
+        # — Phi-3 등에서 후반부 퇴화/미종료 여부를 사후 분석하기 위함
+        terminated_by_eos = generated_ids[-1] in eos_ids
+        hit_max_new_tokens = (len(generated_ids) >= max_new) and not terminated_by_eos
+
         return {
             "score": score, "prediction": prediction, "ttft_ms": ttft_ms,
             "throughput": throughput, "kv_size_before_mb": kv_before,
@@ -218,6 +228,10 @@ class EvaluatorV2:
             "compress_ms": compress_time_ms,
             "first_decode_step_ms": first_decode_step_ms if first_decode_step_ms is not None else 0.0,
             "decode_throughput": decode_throughput,
+            "error": None, "num_new_tokens": int(num_new),
+            "terminated_by_eos": bool(terminated_by_eos),
+            "final_token_id": int(generated_ids[-1]),
+            "hit_max_new_tokens": bool(hit_max_new_tokens),
         }
 
     def evaluate_task(self, samples, method_name, budget_ratio, max_samples=None,
