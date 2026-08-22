@@ -86,11 +86,28 @@ def make_prompt(model_key: str, tokenizer, context: str, question: str, task_typ
             f"Answer concisely based on the text."
         )
     else:  # summarization
-        user_content = (
-            f"Please summarize the following document concisely.\n\n"
-            f"Document:\n{context}\n\n"
-            f"Summary:"
-        )
+        # [2026-08-22 정식 반영] LongBench 공식 dataset2prompt.json의 QMSum 형식 채택.
+        # question이 있으면(QMSum) 쿼리 기반 프롬프트, question=""이면(gov_report) 기존 동작
+        # 완전히 그대로 유지 - "우리 이전 구현" 기준 byte-identical(LongBench 공식 gov_report
+        # 템플릿과 동일하다는 뜻 아님 - 공식 gov_report 템플릿은 "You are given a report by a
+        # government agency..."로 시작해서 현재 구현과 다름, 2026-08-22 GPT 21차 검토 지적).
+        # 이 파일이 QMSum corrected 템플릿의 단일 출처(freeze).
+        if question:
+            user_content = (
+                "You are given a meeting transcript and a query containing a question or "
+                "instruction. Answer the query in one or more sentences.\n\n"
+                f"Transcript:\n{context}\n\n"
+                "Now, answer the query based on the above meeting transcript in one or more "
+                "sentences.\n\n"
+                f"Query: {question}\n"
+                "Answer:"
+            )
+        else:
+            user_content = (
+                f"Please summarize the following document concisely.\n\n"
+                f"Document:\n{context}\n\n"
+                f"Summary:"
+            )
 
     if fmt == "qwen3_chat":
         # Qwen3: apply_chat_template 사용 (enable_thinking=False 필수)
