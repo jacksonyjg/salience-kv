@@ -1,0 +1,389 @@
+{
+  "experiment": "exp10_cross_arch_sink",
+  "model": "phi-3-mini",
+  "tasks": [
+    "qmsum",
+    "gov_report"
+  ],
+  "num_samples": 2,
+  "budget_ratio": 0.2,
+  "invert_norm": true,
+  "results": [
+    {
+      "method": "FullKV",
+      "task_scores": {
+        "qmsum": 15.74,
+        "gov_report": 18.14
+      },
+      "avg_score": 16.94,
+      "avg_collapse_pct": 0.0,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 16.9811320754717,
+            "prediction": "In the first meeting of a design project, the team introduces themselves and discusses the project's goal to create a new, trendy, and user-friendly TV remote control. They outline the project's three-phase approach: functional design, conceptual design, and detailed design. Each team member shares their favorite animal and role in the project. They also touch on the project's budget and aim for a profit of fifty million Euros by selling the remote controls for twenty-five Euros each. The team brainstorms potential unique features for the remote control, such as a menu-based system, to make it less cluttered and more user-friendly.",
+            "word_rep": 0.0,
+            "char_rep": 0.18267716535433076,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 14.492753623188406,
+            "prediction": "The team discussed the design of a new remote control, focusing on user interface and aesthetics. They considered using a scroll wheel for channel navigation and a menu button for additional functions. The remote should be soft, with a hand-shaped design and recognizable colors. The team debated the inclusion of an LCD screen, which would increase costs. They also discussed the use of a kinetic battery and the importance of trend-watching in design. Two concepts were proposed: one with an LCD screen and one without. The team agreed to further investigate costs and materials before the next meeting.",
+            "word_rep": 0.0,
+            "char_rep": 0.151414309484193,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 19.213973799126634,
+            "prediction": "The National Science Foundation (NSF) utilizes two programs, IPA and VSEE, to bring rotators into the agency, with IPA rotators being salaried employees with benefits from their home institutions and VSEE rotators being federal employees on non-paid leave. NSF's Office of Personnel Management develops policies for IPA rotators, while VSEE rotators receive salaries from NSF and are reimbursed for certain benefits by their home institutions. NSF's Steering Committee for Policy and Oversight of the IPA Program oversees IPA rotators, but there is no similar committee for VSEE rotators. NSF's Office of Information and Resource Management and its Division of Human Resource Management manage human capital. NSF's use of rotators has remained stable over time, with most rotators being IPA rotators. NSF has implemented cost-management strategies for IPA rotators, including obtaining a minimum cost-share from home institutions, limiting paid trips, and ending reimbursements for foregone consulting income. NSF has not developed an agency-wide workforce strategy for rotators, but it has adopted cost-management strategies for IPA rotators. NSF has not fully evaluated the results of its rotator programs in terms of human capital goals or programmatic results. We recommend that NSF develop an agency-wide workforce strategy and evaluate the contributions of its rotator programs.",
+            "word_rep": 0.050000000000000044,
+            "char_rep": 0.3398550724637681,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 17.073170731707314,
+            "prediction": "The federal government plans to invest over $96 billion in IT for fiscal year 2018, marking the largest budget allocation ever. Despite this, past IT projects have often resulted in cost overruns and schedule delays, with notable failures including the National Polar-orbiting Operational Environmental Satellite System, the Secure Border Initiative Network, and the Expeditionary Combat Support System. These failures frequently stemmed from inadequate management, oversight, and governance. To address these issues, various reforms, such as the Federal Information Technology Acquisition Reform Act (FITARA) and the Modernizing Government Technology (MGT) Act, have been enacted, aiming to enhance CIO authority, improve data center consolidation, and strengthen cybersecurity. The administration has also initiated efforts to modernize federal IT, including the establishment of the Office of American Innovation and the American Technology Council. However, agencies still face challenges in implementing IT management and cybersecurity recommendations, with only 61% of FITARA recommendations fully implemented as of May 2018. Agencies need to address shortcomings in IT acquisitions, data center consolidation, software license management, and information security to realize cost savings and improve IT management.",
+            "word_rep": 0.005681818181818232,
+            "char_rep": 0.20045558086560367,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "StreamingLLM",
+      "task_scores": {
+        "qmsum": 9.44,
+        "gov_report": 9.86
+      },
+      "avg_score": 9.65,
+      "avg_collapse_pct": 0.0,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 6.382978723404255,
+            "prediction": "In this meeting, the team discussed the design of a new remote control. They aimed for a sleek, stylish, and functional product with a menu-based system, potentially with one button for a menu, to avoid confusion and clutter. They considered high battery life but acknowledged it's not a major issue for remote controls. The team agreed to keep the design familiar to avoid a steep learning curve for new users. They will continue working on specific aspects of the design individually and reconvene in half an hour.",
+            "word_rep": 0.0,
+            "char_rep": 0.123046875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.5,
+            "prediction": "The team discussed the design and components of a new product, focusing on the shape, materials, and cost. They considered using a kinetic battery, but decided against it due to cost. The shape would depend on the inclusion of a LCD screen and a scroll wheel, with the possibility of using a regular or advanced chip. The design would be small and possibly have a rubber hand shape for comfort. The team agreed to finalize the design in the next meeting, with a detailed design due in the following session.",
+            "word_rep": 0.0,
+            "char_rep": 0.15506958250497016,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 10.657193605683837,
+            "prediction": "The U.S. Government Accountability Office (GAO) recommends that the NSF Director of Human Resource Management develop an agency-wide workforce strategy to balance the use of IPA and VESE rotators with permanent staff. The NSF should also evaluate the contributions of the rotator programs toward NSF's human capital goals and programmatic results. The NSF agrees with these recommendations, stating that implementing them will enhance efforts to fulfill the agency's mission and strengthen its workforce. The report is available on the GAO website.",
+            "word_rep": 0.0,
+            "char_rep": 0.10110294117647056,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.05349794238683,
+            "prediction": "The U.S. government's efforts to improve IT management and security have led to the implementation of key initiatives, including CIO responsibilities, IT acquisition reviews, data center consolidation, and compliance with FISMA. Despite progress, further efforts are needed to fully implement recommendations and strengthen cybersecurity, as many high-risk areas remain unaddressed. The government has made significant strides in IT management and cybersecurity, but continued monitoring and implementation of past recommendations are essential for enhancing the management and security of federal IT.",
+            "word_rep": 0.02564102564102566,
+            "char_rep": 0.19765494137353434,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "H2O(sink=0)",
+      "task_scores": {
+        "qmsum": 11.89,
+        "gov_report": 14.76
+      },
+      "avg_score": 13.32,
+      "avg_collapse_pct": 0.0,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 9.70873786407767,
+            "prediction": "In the first meeting of a design project to create a new remote control for a television, the project manager introduces the team and the project's goals. The team consists of an Interface Designer, an Industrial Designer, and a Marketing Expert, each with specific roles. They discuss the project's three-component approach: functional, conceptual, and detailed design. The team also identifies the need for the remote control to be original, trendy, and user-friendly. They brainstorm ideas for unique features, such as a menu-based system, and consider the importance of a high battery life. The meeting concludes with a discussion on the project's budget and profit target.",
+            "word_rep": 0.0,
+            "char_rep": 0.1797919762258544,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 14.062500000000004,
+            "prediction": "The team discussed the design of a new remote control, focusing on user interface concepts and trends. They considered using a hand shape for the remote, with soft materials and primary colors, and a scroll wheel for channel navigation. The team also discussed the importance of cost-effective components, such as batteries and chips, and the potential for a curved design. They planned to create two concepts for the next meeting, taking into account the preferences of younger consumers and the need for a durable, easy-to-use product.",
+            "word_rep": 0.0,
+            "char_rep": 0.1313320825515948,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 16.939078751857352,
+            "prediction": "The National Science Foundation (NSF) utilizes the IPA and VSEE programs to bring rotators into the agency, with IPA rotators being salaried employees with benefits from their home institutions, while VSEE rotators are on nonpaid leave with NSF covering certain benefits. NSF's Office of Personnel Management sets policies for IPA rotators, and NSF's Office of Information and Resource Management oversees human capital management. NSF's use of rotators has remained stable over time, with IPA rotators often in executive positions and VSEE rotators in program director roles. NSF's Steering Committee for IPA Policy oversees IPA rotator policies, while VSEE rotators are individually managed. NSF's cost-sharing strategies for IPA rotators have been implemented, but no similar strategies exist for VSEE rotators due to their federal employee status. NSF's use of rotators has not significantly impacted permanent staff opportunities for advancement, and NSF has not established a comprehensive workforce strategy for rotators. NSF's IPA program has seen cost savings through new strategies, but the full impact on recruitment is yet to be determined. NSF has not fully evaluated the effectiveness of its rotator programs in achieving human capital goals.",
+            "word_rep": 0.04347826086956519,
+            "char_rep": 0.2803514376996805,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.578616352201259,
+            "prediction": "The federal government plans to invest over $96 billion in IT for fiscal year 2018, marking the largest budget allocation for IT to date. However, past investments have often resulted in cost overruns, schedule delays, and minimal mission-related outcomes, with notable failures such as the National Polar-orbiting Operational Environmental Satellite System, Secure Border Initiative Network, and Expeditionary Combat Support System. These failures frequently stemmed from inadequate management, oversight, and governance. Despite legislative reforms like FITARA aimed at improving IT management, challenges persist, including security deficiencies and the need for CIOs to have greater authority. The government has made progress in some areas, such as IT modernization and cybersecurity, but still faces issues with software licensing, data center consolidation, and IT workforce development. The President's budget and various reforms aim to address these challenges, but agencies must continue to implement recommendations to realize potential savings and improve IT management.",
+            "word_rep": 0.0,
+            "char_rep": 0.11873840445269013,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "H2O(sink=4)",
+      "task_scores": {
+        "qmsum": 10.78,
+        "gov_report": 13.8
+      },
+      "avg_score": 12.29,
+      "avg_collapse_pct": 0.0,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 9.70873786407767,
+            "prediction": "In the first meeting of a design project to create a new remote control for a television, the project manager introduces the team and the project's goals. The team consists of an Interface Designer, an Industrial Designer, and a Marketing Expert, each with specific roles. They discuss the project's three-component approach: functional, conceptual, and detailed design. The team also identifies the need for the remote control to be original, trendy, and user-friendly. They brainstorm ideas for unique features, such as a menu-based system, and consider the importance of a high battery life. The meeting concludes with a discussion on the project's budget and profit target.",
+            "word_rep": 0.0,
+            "char_rep": 0.1797919762258544,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 11.851851851851853,
+            "prediction": "The team discussed the design of a new remote control, focusing on user interface concepts and trends. They considered using a hand-shaped design with soft materials and primary colors to appeal to younger consumers. The team debated the inclusion of a LCD screen, which would increase costs, versus a simpler design with a scroll wheel and basic buttons. They also discussed the importance of the remote's durability and ease of use. The team agreed to create two design concepts for the next meeting, taking into account cost differences and the target market's preferences.",
+            "word_rep": 0.0,
+            "char_rep": 0.14860139860139865,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 15.015974440894569,
+            "prediction": "The National Science Foundation (NSF) utilizes the IPA and VSEE programs to bring rotators into the agency, with IPA rotators being salaried employees with benefits from their home institutions, while VSEE rotators are on nonpaid leave with NSF covering certain benefits. NSF's Office of Personnel Management sets policies for IPA rotators, and NSF's Office of Information and Resource Management oversees human capital management. NSF's IPA program has seen an increase in executive positions filled by rotators since 2012, with IPA rotators often paired with federal staff for diverse perspectives. NSF's IPA program's costs have remained stable, and the agency has implemented cost-management strategies for IPA rotators, including salary supplements and travel expense reimbursements. NSF has not yet developed a comprehensive workforce strategy for rotators, and the agency's use of rotators has not been fully evaluated against its human capital goals.",
+            "word_rep": 0.021739130434782594,
+            "char_rep": 0.2337526205450734,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.578616352201259,
+            "prediction": "The federal government plans to invest over $96 billion in IT for fiscal year 2018, marking the largest budget allocation for IT to date. However, past investments have often resulted in cost overruns, schedule delays, and minimal mission-related outcomes, with notable failures such as the National Polar-orbiting Operational Environmental Satellite System, Secure Border Initiative Network, and Expeditionary Combat Support System. These failures frequently stemmed from inadequate management, oversight, and governance. Despite legislative reforms like FITARA aimed at improving IT management, challenges persist, including security deficiencies and the need for CIOs to have greater authority. The government has made progress in some areas, such as IT modernization and cybersecurity, but still faces issues with software licensing, data center consolidation, and IT workforce development. The President's budget and various reforms aim to address these challenges, but agencies must continue to implement recommendations to realize potential savings and improve IT management.",
+            "word_rep": 0.0,
+            "char_rep": 0.11873840445269013,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SnapKV",
+      "task_scores": {
+        "qmsum": 13.54,
+        "gov_report": 13.91
+      },
+      "avg_score": 13.72,
+      "avg_collapse_pct": 0.0,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 12.698412698412698,
+            "prediction": "In the first meeting of a design project aimed at creating a new, trendy, and user-friendly remote control, the project manager introduces the team and outlines the agenda. The team consists of an Interface Designer, an Industrial Designer, and a Marketing Expert. The project will have three phases: functional design, conceptual design, and detailed design. The functional design will focus on the remote control's functions, while the conceptual design will consider how users will interact with it. The team will use a whiteboard to brainstorm and sketch ideas. The project aims to sell the remote controls for €25 each, targeting a profit of €50 million. The team discusses the importance of originality, user-friendliness, and high battery life. The meeting concludes with a discussion on potential unique features for the remote control.",
+            "word_rep": 0.0,
+            "char_rep": 0.26190476190476186,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 14.37908496732026,
+            "prediction": "The team discussed the design of a new remote control, focusing on user interface concepts and trends. They considered using high-quality materials and curved shapes to appeal to younger consumers, but also discussed the importance of cost-effectiveness and battery options. The team debated the inclusion of a LCD display, which would increase costs, and considered alternative designs like a hand-shaped remote or a joystick for better usability. They also discussed the need for clear icons and buttons, and the potential for using a kinetic battery. The team agreed to create two design concepts and investigate the cost differences between LCD and non-LCD options. They planned to finalize the design in the next meeting.",
+            "word_rep": 0.009009009009009028,
+            "char_rep": 0.19944598337950137,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 14.692653673163417,
+            "prediction": "The National Science Foundation (NSF) employs rotators through two programs: the IPA and VSEE, with differences in employment status, compensation, and benefits. IPA rotators have written agreements with their home institutions, while VSEE rotators are federal employees on non-paid leave. NSF sets salaries for VSEE rotators at the federal maximum and reimburses home institutions for certain benefits. Both programs allow for reimbursement of moving expenses and per diem allowances. NSF uses rotators in various positions, including executive roles, to support agency operations and research funding decisions. The NSF Steering Committee oversees IPA rotator policies, aiming to balance rotator and federal staff and improve the program. The number of rotators has remained stable over time, and their use is generally seen as beneficial for NSF's scientific community engagement. However, there are concerns about the impact on permanent staff advancement opportunities. NSF's Office of Human Capital Management and the Division of Human Resource Management manage human capital, and NSF's Office of Information and Resource Management oversees rotator expenses. NSF's use of rotators aligns with its human capital goals, but a comprehensive workforce strategy is lacking.",
+            "word_rep": 0.0055248618784530246,
+            "char_rep": 0.2295597484276729,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.118811881188119,
+            "prediction": "The federal government plans to invest over $96 billion in IT for fiscal year 2018, marking the largest budget allocation ever. However, past IT investments have often resulted in cost overruns, schedule delays, and minimal mission-related outcomes, with notable failures such as the National Polar-orbiting Operational Environmental Satellite System, Secure Border Initiative Network, and Expeditionary Combat Support System. These failures frequently stemmed from inadequate management, oversight, and governance. Despite legislative reforms like FITARA aimed at improving IT acquisition and management, challenges persist, including security deficiencies and the need for better CIO authority and oversight. The government has also faced cybersecurity risks, with agencies spending billions on IT security but still encountering vulnerabilities. Reforms have been made, but agencies have yet to fully implement them, with only 61% of recommendations addressed from fiscal years 2010 to 2015. The government continues to struggle with IT management, with only 61% of recommendations addressed, and ongoing efforts to modernize IT and enhance cybersecurity remain critical.",
+            "word_rep": 0.018867924528301883,
+            "char_rep": 0.17863247863247866,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "PyramidKV-adapted",
+      "task_scores": {
+        "qmsum": 12.28,
+        "gov_report": 14.71
+      },
+      "avg_score": 13.5,
+      "avg_collapse_pct": 0.0,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 12.698412698412698,
+            "prediction": "In the first meeting of a design project to create a new remote control for a television, the project manager introduces the team and the project's goals. The team consists of an Interface Designer, an Industrial Designer, and a Marketing Expert. They discuss the project's three-component approach: functional, conceptual, and detailed design. The team also identifies their roles and responsibilities. They use a whiteboard exercise to introduce themselves and their animal preferences, which they believe relate to their roles. The project aims to create an original, user-friendly, and trendy remote control, with a target profit of fifty million Euros. The team discusses potential unique features, such as a menu-based system, and considers the importance of battery life. The meeting concludes with a brief budget discussion and the next meeting's agenda.",
+            "word_rep": 0.0,
+            "char_rep": 0.1981351981351981,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 11.851851851851853,
+            "prediction": "The team discussed the design of a new remote control, focusing on user interface concepts and trends. They considered using a hand-shaped design with soft materials and primary colors to appeal to younger consumers. The team debated the inclusion of a LCD screen, which would increase costs, versus a simpler design with a scroll wheel and basic buttons. They also discussed the importance of the remote's durability and ease of use. The team agreed to create two design concepts for the next meeting, taking into account cost differences and the target market's preferences.",
+            "word_rep": 0.0,
+            "char_rep": 0.14860139860139865,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 16.842105263157894,
+            "prediction": "The National Science Foundation (NSF) utilizes the IPA and VSEE programs to bring rotators into the agency, with IPA rotators being salaried employees with benefits from their home institutions, while VSEE rotators are on nonpaid leave with NSF covering certain benefits. NSF's Office of Personnel Management sets policies for IPA rotators, and the Steering Committee oversees IPA program policies. NSF's use of rotators has remained stable over time, with rotators filling executive positions alongside permanent staff. NSF's Office of Information and Resource Management manages human capital, and NSF's Office of Human Resources develops personnel policies. NSF's IPA program has seen an increase in the proportion of IPA rotators in executive roles since 2012. NSF has implemented cost-management strategies for IPA rotators, including obtaining cost-sharing agreements and limiting paid trips. However, NSF has not established a comprehensive workforce strategy for rotators, and there is no policy restricting the replacement of rotators with permanent staff. NSF's IPA program's costs and the proportion of rotators have remained stable, and NSF has not fully evaluated the impact of rotators on its workforce or human capital goals.",
+            "word_rep": 0.033333333333333326,
+            "char_rep": 0.30177993527508096,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.578616352201259,
+            "prediction": "The federal government plans to invest over $96 billion in IT for fiscal year 2018, marking the largest budget allocation for IT to date. However, past investments have often resulted in cost overruns, schedule delays, and minimal mission-related outcomes, with notable failures such as the National Polar-orbiting Operational Environmental Satellite System, Secure Border Initiative Network, and Expeditionary Combat Support System. These failures frequently stemmed from inadequate management, oversight, and governance. Despite legislative reforms like FITARA aimed at improving IT management, challenges persist, including security deficiencies and the need for CIOs to have greater authority. The government has made progress in some areas, such as IT modernization and cybersecurity, but still faces issues with software licensing, data center consolidation, and IT workforce development. The President's budget and various reforms aim to address these challenges, but agencies must continue to implement recommendations to realize potential savings and improve IT management.",
+            "word_rep": 0.0,
+            "char_rep": 0.11873840445269013,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SalienceKV(sink=0)",
+      "task_scores": {
+        "qmsum": 16.38,
+        "gov_report": 10.25
+      },
+      "avg_score": 13.31,
+      "avg_collapse_pct": 0.0,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 22.68041237113402,
+            "prediction": "In a project team meeting, the project manager from Melbourne, Australia, introduces the team and outlines the project's goal to design a trendy, user-friendly, and original remote control with a target profit of 50 million Euros by selling each unit for 25 Euros. The team discusses the project's budget, with production costs estimated at 12.5 Euros per unit. They brainstorm features, considering a menu-based interface to replace traditional buttons, and agree on the importance of a high-battery-life design. The meeting concludes with the project manager assigning tasks and scheduling the next meeting.",
+            "word_rep": 0.011111111111111072,
+            "char_rep": 0.1454545454545455,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.071942446043165,
+            "prediction": "The team discussed various concepts for a new remote control design, focusing on user interface, cost, and target demographic. They considered a remote with a joystick or a PlayStation-like controller for younger users, but also discussed the feasibility and cost implications of such features. The team agreed on a design with a soft rubber exterior and hard plastic inside, with the option to include an LCD screen. They also debated the use of a scroll wheel versus a regular wheel, with the latter being cheaper. The design would be ready for the next meeting, with a detailed design phase to follow.",
+            "word_rep": 0.0,
+            "char_rep": 0.13,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 10.81081081081081,
+            "prediction": "The National Science Foundation (NSF) has implemented cost-saving measures for its rotational programs involving Institutional Postdoctoral Research Fellows (IPRFs) and Postdoctoral Scholars (PSs) but has not yet developed a comprehensive agency-wide workforce strategy to balance the use of IPRFs and PSs with permanent staff. The NSF's Human Resource Management (HRM) Director should evaluate the contributions of these programs towards NSF's human capital goals and programmatic results. The NSF Director should also complete an agency-wide workforce strategy as part of NSF's current agency reform planning or update the human capital operating plan. The NSF concurred with the recommendations and stated that implementation will enhance NSF's mission and strengthen its workforce.",
+            "word_rep": 0.009345794392523366,
+            "char_rep": 0.19846350832266324,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.69529085872576,
+            "prediction": "The U.S. government's management of IT acquisitions and operations has been a high-risk area, with previous recommendations to improve these processes not fully implemented. Despite efforts to execute IT management and cybersecurity initiatives, including CIO responsibilities, IT acquisition reviews, data center consolidation, and compliance with FISMA, further efforts are needed to enhance the management and security of federal IT. The Government Accountability Office (GAO) will continue to monitor agency efforts and provide recommendations.",
+            "word_rep": 0.0,
+            "char_rep": 0.15625,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SalienceKV(sink=4)",
+      "task_scores": {
+        "qmsum": 16.38,
+        "gov_report": 12.53
+      },
+      "avg_score": 14.45,
+      "avg_collapse_pct": 0.0,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 22.68041237113402,
+            "prediction": "In a project team meeting, the project manager from Melbourne, Australia, introduces the team and outlines the project's goal to design a trendy, user-friendly, and original remote control with a target profit of 50 million Euros by selling each unit for 25 Euros. The team discusses the project's budget, with production costs estimated at 12.5 Euros per unit. They brainstorm features, considering a menu-based interface to replace traditional buttons, and agree on the importance of a high-battery-life design. The meeting concludes with the project manager assigning tasks and scheduling the next meeting.",
+            "word_rep": 0.011111111111111072,
+            "char_rep": 0.1454545454545455,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.071942446043165,
+            "prediction": "The team discussed various concepts for a new remote control design, focusing on user interface, cost, and target demographic. They considered a remote with a joystick or a PlayStation-like controller for younger users, but also discussed the feasibility and cost implications of such features. The team agreed on a design with a soft rubber exterior and hard plastic inside, with the option to include an LCD screen. They also debated the use of a scroll wheel versus a regular wheel, with the latter being cheaper. The design would be ready for the next meeting, with a detailed design phase to follow.",
+            "word_rep": 0.0,
+            "char_rep": 0.13,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 15.359477124183007,
+            "prediction": "The National Science Foundation (NSF) has implemented cost-saving measures for its rotational programs involving IPA and VPE rotators, but has not yet developed a comprehensive agency-wide strategy to balance the use of rotators with permanent staff. The NSF Director of Human Resource Management should create a workforce strategy that includes evaluating the contributions of rotator programs towards NSF's goals and results. The NSF has not separately assessed the impact of rotator programs on its human capital objectives and programmatic outcomes, which limits its ability to demonstrate their benefits to external stakeholders. The NSF has taken steps to manage rotator costs but has not fully aligned its workforce planning with OPM requirements. The NSF has not yet evaluated the contributions of rotator programs towards its human capital goals and programmatic results.",
+            "word_rep": 0.0859375,
+            "char_rep": 0.26369863013698636,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.69529085872576,
+            "prediction": "The U.S. government's management of IT acquisitions and operations has been a high-risk area, with previous recommendations to improve these processes not fully implemented. Despite efforts to execute IT management and cybersecurity initiatives, including CIO responsibilities, IT acquisition reviews, data center consolidation, and compliance with FISMA, further efforts are needed to enhance the management and security of federal IT. The Government Accountability Office (GAO) will continue to monitor agency efforts and provide recommendations.",
+            "word_rep": 0.0,
+            "char_rep": 0.15625,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ]
+}
