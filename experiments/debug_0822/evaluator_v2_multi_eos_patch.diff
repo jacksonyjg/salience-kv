@@ -1,0 +1,32 @@
+diff --git a/core/evaluator_v2.py b/core/evaluator_v2.py
+index 56a5853..c5e0383 100644
+--- a/core/evaluator_v2.py
++++ b/core/evaluator_v2.py
+@@ -137,7 +137,17 @@ class EvaluatorV2:
+         # ── Step 3: Generate ──────────────────────────────────
+         gen_start = time.perf_counter()
+         try:
+-            eos_id = self.tokenizer.eos_token_id
++            # [2026-08-22 수정] 단일 eos_id 대신 model.generation_config의 전체 EOS 리스트 사용.
++            # 일부 모델(Gemma-2, Phi-3-mini 등)은 유효 종료토큰이 여러 개인데
++            # tokenizer.eos_token_id(단일값)만 확인하면 자연스러운 턴 종료를 인식 못 하고
++            # max_new_tokens까지 생성이 계속되어(방금 답을 그대로 재반복) 퇴화 출력이 발생함
++            # (Gemma-2/Phi-3-mini 진단으로 확인, 2026-08-16/2026-08-22).
++            # Qwen3-4B는 eos_token_id=151645 하나뿐이라 이 변경으로 결과 영향이 없을 것으로 예상됨
++            # (regression sanity check 아직 미실행 — 실행 전까지 미확정으로 취급할 것)
++            raw_eos = self.model.generation_config.eos_token_id
++            if raw_eos is None:
++                raw_eos = self.tokenizer.eos_token_id
++            eos_ids = set(raw_eos) if isinstance(raw_eos, (list, tuple)) else {raw_eos}
+             max_new = sample["max_new_tokens"]
+ 
+             cache_len = compressed_cache.layers[0].keys.shape[2]
+@@ -149,7 +159,7 @@ class EvaluatorV2:
+             step = 0
+             first_decode_step_ms = None
+             step_times = []  # 첫 스텝 제외한 이후 스텝들의 소요시간(초)
+-            while step < max_new - 1 and generated_ids[-1] != eos_id:
++            while step < max_new - 1 and generated_ids[-1] not in eos_ids:
+                 step_start = time.perf_counter()
+                 cache_position = torch.tensor([cur_pos], device=self.device)
+                 attn_mask_step = torch.ones(

@@ -1,0 +1,9 @@
+Method,Cap,Budget,Prefill_ms,Compression_ms,First_Decode_Step_ms,Decode_Throughput_tok_s,Legacy_TTFT_ms,Legacy_Throughput_tok_s,Memory_Reduction_pct
+FullKV,default,20%,605.7,0.0,80.7,31.12,640.4,28.92,0.0
+StreamingLLM,default,20%,503.5,209.9,31.2,33.79,743.7,33.03,80.0
+H2O,default,20%,454.0,507.6,31.1,33.76,991.0,33.98,80.0
+SnapKV,default,20%,478.8,447.8,30.8,33.45,956.3,33.65,80.0
+PyramidKV-adapted,default,20%,458.0,475.6,30.9,33.87,962.9,34.08,80.0
+AdaKV-adapted,default,20%,454.9,492.4,31.7,33.95,976.7,34.15,80.0
+SalienceKV (w/o sink),default,20%,453.6,542.8,34.6,32.02,1027.6,32.2,80.0
+SalienceKV-Sink-4,default,20%,455.0,494.4,33.3,32.65,979.9,32.79,80.0

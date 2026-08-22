@@ -56,12 +56,12 @@ def make_patched_compress(exclude_positions, sink_size_check):
 
 
 CONDITIONS = [
-    ("H2O-natural", set(), 0),
-    ("H2O-no-pos1", {1}, 0),
-    ("H2O-no-pos1+pos0", {1}, 1),
+    ("A-Natural", set(), 0),
+    ("D-Block-0to3", {0, 1, 2, 3}, 0),
+    ("E-Rescue-pos0", {1, 2, 3}, 1),
 ]
 
-samples = load_longbench_task("gov_report", num_samples=30, seed=42)
+samples = load_longbench_task("gov_report", num_samples=60, seed=42)  # 기존 30개 자동 포함(dataset.shuffle이 num_samples와 무관하게 고정 순서라 prefix 일관성 확인됨, 2026-08-22)
 
 all_results = {}
 for label, exclude_pos, sink_size in CONDITIONS:
@@ -94,7 +94,7 @@ for label, exclude_pos, sink_size in CONDITIONS:
         records.append(rec)
         if (i + 1) % 10 == 0:
             n_c = sum(1 for x in records if x["collapsed"])
-            print(f"  [{i+1}/30] 누적 collapse: {n_c}")
+            print(f"  [{i+1}/{len(samples)}] 누적 collapse: {n_c}")
 
     kvh.H2OCache._compress = _orig_h2o_compress  # 조건 끝날 때마다 원복
 
@@ -102,16 +102,16 @@ for label, exclude_pos, sink_size in CONDITIONS:
     avg_score = sum(x["score"] for x in records) / len(records)
     avg_tokens = sum(x["num_new_tokens"] or 0 for x in records) / len(records)
     n_hit_max = sum(1 for x in records if x["hit_max_new_tokens"])
-    print(f"결과: avg_score={avg_score:.2f}  collapse={n_c}/30  avg_tokens={avg_tokens:.0f}  "
-          f"max_tokens_도달={n_hit_max}/30")
+    print(f"결과: avg_score={avg_score:.2f}  collapse={n_c}/{len(records)}  avg_tokens={avg_tokens:.0f}  "
+          f"max_tokens_도달={n_hit_max}/{len(records)}")
     all_results[label] = {"records": records, "avg_score": avg_score, "collapse_n": n_c,
                            "avg_tokens": avg_tokens, "n_hit_max": n_hit_max}
 
 print("\n\n=== 최종 요약 ===")
 for label, _, _ in CONDITIONS:
     r = all_results[label]
-    print(f"  {label:20s} avg_score={r['avg_score']:6.2f}  collapse={r['collapse_n']}/30  "
-          f"avg_tokens={r['avg_tokens']:.0f}  max_tokens_도달={r['n_hit_max']}/30")
+    print(f"  {label:20s} avg_score={r['avg_score']:6.2f}  collapse={r['collapse_n']}/{len(r['records'])}  "
+          f"avg_tokens={r['avg_tokens']:.0f}  max_tokens_도달={r['n_hit_max']}/{len(r['records'])}")
 
 with open("/workspace/kv-cache-exp/results/v3_verified/phi3_h2o_causal_test.json", "w") as f:
     json.dump(all_results, f, indent=2, ensure_ascii=False)

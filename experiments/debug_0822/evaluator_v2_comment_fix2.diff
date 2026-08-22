@@ -1,0 +1,16 @@
+diff --git a/core/evaluator_v2.py b/core/evaluator_v2.py
+index eba9584..cd285e2 100644
+--- a/core/evaluator_v2.py
++++ b/core/evaluator_v2.py
+@@ -142,8 +142,9 @@ class EvaluatorV2:
+             # tokenizer.eos_token_id(단일값)만 확인하면 자연스러운 턴 종료를 인식 못 하고
+             # max_new_tokens까지 생성이 계속되어(방금 답을 그대로 재반복) 퇴화 출력이 발생함
+             # (Gemma-2/Phi-3-mini 진단으로 확인, 2026-08-16/2026-08-22).
+-            # Qwen3-4B는 eos_token_id=151645 하나뿐이라 이 변경으로 결과 영향이 없을 것으로 예상됨
+-            # (2026-08-22 regression sanity check 완료: 9/9 조합 prediction/score 완전 일치 확인됨)
++            # [2026-08-22 정정] Qwen3-4B도 generation_config.eos_token_id=[151645,151643] 2개짜리임이
++            # 나중에 확인됨(이전 주석의 "151645 하나뿐" 가정은 틀렸음) — targeted audit으로 검증 수행
++            # (results/v3_verified/qwen_eos_audit_table2.json 참고)
+             raw_eos = self.model.generation_config.eos_token_id
+             if raw_eos is None:
+                 raw_eos = self.tokenizer.eos_token_id

@@ -1,0 +1,38 @@
+diff --git a/core/evaluator_v2.py b/core/evaluator_v2.py
+index eba9584..91c203a 100644
+--- a/core/evaluator_v2.py
++++ b/core/evaluator_v2.py
+@@ -195,6 +195,10 @@ class EvaluatorV2:
+                 "kv_size_after_mb": kv_after, "memory_reduction_pct": mem_red,
+                 "prefill_ms": prefill_time_ms, "compress_ms": compress_time_ms,
+                 "first_decode_step_ms": 0.0, "decode_throughput": 0.0,
++                # [2026-08-22 추가, GPT 지적] 호출부가 실패를 정상(""=non-collapse)으로
++                # 오인하지 않도록 error 필드 명시. 호출부는 반드시 이 필드를 확인해야 함.
++                "error": str(e), "num_new_tokens": None,
++                "terminated_by_eos": None, "final_token_id": None, "hit_max_new_tokens": None,
+             }
+ 
+         gen_elapsed = time.perf_counter() - gen_start
+@@ -209,6 +213,11 @@ class EvaluatorV2:
+         logger.info(f"[{method_name}] pred={prediction[:120]!r}")
+         score = compute_score(prediction, sample["answers"], sample["metric"])
+ 
++        # [2026-08-22 추가, GPT 지적] EOS 종료 여부·최종 토큰·max_new_tokens 도달 여부 기록
++        # — Phi-3 등에서 후반부 퇴화/미종료 여부를 사후 분석하기 위함
++        terminated_by_eos = generated_ids[-1] in eos_ids
++        hit_max_new_tokens = (len(generated_ids) >= max_new) and not terminated_by_eos
++
+         return {
+             "score": score, "prediction": prediction, "ttft_ms": ttft_ms,
+             "throughput": throughput, "kv_size_before_mb": kv_before,
+@@ -218,6 +227,10 @@ class EvaluatorV2:
+             "compress_ms": compress_time_ms,
+             "first_decode_step_ms": first_decode_step_ms if first_decode_step_ms is not None else 0.0,
+             "decode_throughput": decode_throughput,
++            "error": None, "num_new_tokens": int(num_new),
++            "terminated_by_eos": bool(terminated_by_eos),
++            "final_token_id": int(generated_ids[-1]),
++            "hit_max_new_tokens": bool(hit_max_new_tokens),
+         }
+ 
+     def evaluate_task(self, samples, method_name, budget_ratio, max_samples=None,
