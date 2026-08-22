@@ -1,0 +1,334 @@
+{
+  "results": [
+    {
+      "prefill_ms": 243.08540341444314,
+      "compress_ms": 0.008787401020526886,
+      "ttft_ms": 243.09419081546366,
+      "decode_throughput": 33.63044237845634,
+      "kv_before_mb": 288.0,
+      "kv_after_mb": 288.0,
+      "mem_reduction_pct": 0.0,
+      "prefill_ms_std": 0.8157117487480646,
+      "compress_ms_std": 0.0017290478393774092,
+      "ttft_ms_std": 0.8150530328315339,
+      "decode_throughput_std": 0.44607344921015235,
+      "kv_before_mb_std": 0.0,
+      "kv_after_mb_std": 0.0,
+      "mem_reduction_pct_std": 0.0,
+      "seq_len": 2048,
+      "method": "FullKV",
+      "trials": [
+        {
+          "prefill_ms": 242.16645071282983,
+          "compress_ms": 0.010196119546890259,
+          "ttft_ms": 242.17664683237672,
+          "decode_throughput": 32.89615872806935,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 242.70559987053275,
+          "compress_ms": 0.012835953384637833,
+          "ttft_ms": 242.7184358239174,
+          "decode_throughput": 32.697925500748774,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 242.58601805195212,
+          "compress_ms": 0.009069684892892838,
+          "ttft_ms": 242.59508773684502,
+          "decode_throughput": 33.81453324708149,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 243.11064882203937,
+          "compress_ms": 0.008122995495796204,
+          "ttft_ms": 243.11877181753516,
+          "decode_throughput": 33.94527674962631,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 242.62352706864476,
+          "compress_ms": 0.007868744432926178,
+          "ttft_ms": 242.6313958130777,
+          "decode_throughput": 33.83293425832327,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 242.87257809191942,
+          "compress_ms": 0.009221024811267853,
+          "ttft_ms": 242.8817991167307,
+          "decode_throughput": 33.79901599148522,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 242.2191551886499,
+          "compress_ms": 0.007420312613248825,
+          "ttft_ms": 242.22657550126314,
+          "decode_throughput": 33.886562806072405,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 243.95975610241294,
+          "compress_ms": 0.0070962123572826385,
+          "ttft_ms": 243.96685231477022,
+          "decode_throughput": 33.86877365013457,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 244.28703915327787,
+          "compress_ms": 0.008754897862672806,
+          "ttft_ms": 244.29579405114055,
+          "decode_throughput": 33.705681775699105,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        },
+        {
+          "prefill_ms": 244.3232610821724,
+          "compress_ms": 0.007288064807653427,
+          "ttft_ms": 244.33054914698005,
+          "decode_throughput": 33.85756107732284,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 288.0,
+          "mem_reduction_pct": 0.0
+        }
+      ]
+    },
+    {
+      "prefill_ms": 244.18370886705816,
+      "compress_ms": 27.536739967763424,
+      "ttft_ms": 271.7204488348216,
+      "decode_throughput": 33.56855394625721,
+      "kv_before_mb": 288.0,
+      "kv_after_mb": 57.515625,
+      "mem_reduction_pct": 80.029296875,
+      "prefill_ms_std": 2.2496476952188256,
+      "compress_ms_std": 12.57377505208894,
+      "ttft_ms_std": 12.662033647823195,
+      "decode_throughput_std": 0.2206496865540331,
+      "kv_before_mb_std": 0.0,
+      "kv_after_mb_std": 0.0,
+      "mem_reduction_pct_std": 0.0,
+      "seq_len": 2048,
+      "method": "AdaKV-adapted",
+      "trials": [
+        {
+          "prefill_ms": 243.491904810071,
+          "compress_ms": 22.455311845988035,
+          "ttft_ms": 265.947216656059,
+          "decode_throughput": 33.69178170189752,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 243.91598207876086,
+          "compress_ms": 25.690759997814894,
+          "ttft_ms": 269.60674207657576,
+          "decode_throughput": 33.124900100575594,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 243.4722618199885,
+          "compress_ms": 24.932337924838066,
+          "ttft_ms": 268.40459974482656,
+          "decode_throughput": 33.60172423750194,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 244.041308760643,
+          "compress_ms": 63.17923916503787,
+          "ttft_ms": 307.2205479256809,
+          "decode_throughput": 33.67927327770852,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 242.3872952349484,
+          "compress_ms": 23.345988243818283,
+          "ttft_ms": 265.7332834787667,
+          "decode_throughput": 33.909648335415426,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 244.48673194274306,
+          "compress_ms": 22.715770173817873,
+          "ttft_ms": 267.20250211656094,
+          "decode_throughput": 33.547074356059355,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 242.65063181519508,
+          "compress_ms": 22.84021722152829,
+          "ttft_ms": 265.4908490367234,
+          "decode_throughput": 33.41610653346758,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 245.06928119808435,
+          "compress_ms": 22.808946203440428,
+          "ttft_ms": 267.8782274015248,
+          "decode_throughput": 33.689039462853486,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 250.04671094939113,
+          "compress_ms": 22.74141786620021,
+          "ttft_ms": 272.78812881559134,
+          "decode_throughput": 33.67434402395816,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 242.2749800607562,
+          "compress_ms": 24.65741103515029,
+          "ttft_ms": 266.9323910959065,
+          "decode_throughput": 33.35164743313454,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        }
+      ]
+    },
+    {
+      "prefill_ms": 243.60822034068406,
+      "compress_ms": 32.33850123360753,
+      "ttft_ms": 275.9467215742916,
+      "decode_throughput": 33.400447664516484,
+      "kv_before_mb": 288.0,
+      "kv_after_mb": 57.515625,
+      "mem_reduction_pct": 80.029296875,
+      "prefill_ms_std": 1.1017580430358014,
+      "compress_ms_std": 0.8422362494332322,
+      "ttft_ms_std": 1.599538445239432,
+      "decode_throughput_std": 0.7255113903782205,
+      "kv_before_mb_std": 0.0,
+      "kv_after_mb_std": 0.0,
+      "mem_reduction_pct_std": 0.0,
+      "seq_len": 2048,
+      "method": "SalienceKV-Sink4",
+      "trials": [
+        {
+          "prefill_ms": 244.98791294172406,
+          "compress_ms": 32.34687494114041,
+          "ttft_ms": 277.3347878828645,
+          "decode_throughput": 33.32556523364479,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 241.8226390145719,
+          "compress_ms": 31.837048940360546,
+          "ttft_ms": 273.65968795493245,
+          "decode_throughput": 33.4713388104248,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 244.14944695308805,
+          "compress_ms": 32.177189365029335,
+          "ttft_ms": 276.3266363181174,
+          "decode_throughput": 33.55189803484079,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 242.9526229389012,
+          "compress_ms": 32.67626790329814,
+          "ttft_ms": 275.6288908421993,
+          "decode_throughput": 33.612808725181374,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 244.2865250632167,
+          "compress_ms": 33.60676858574152,
+          "ttft_ms": 277.8932936489582,
+          "decode_throughput": 33.3614955435486,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 243.4786199592054,
+          "compress_ms": 33.480738289654255,
+          "ttft_ms": 276.95935824885964,
+          "decode_throughput": 33.51108750275815,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 244.83107402920723,
+          "compress_ms": 32.97533793374896,
+          "ttft_ms": 277.8064119629562,
+          "decode_throughput": 33.608890280897214,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 242.48831113800406,
+          "compress_ms": 31.782513950020075,
+          "ttft_ms": 274.27082508802414,
+          "decode_throughput": 31.461877574250845,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 244.51081221923232,
+          "compress_ms": 31.25325171276927,
+          "ttft_ms": 275.7640639320016,
+          "decode_throughput": 34.05887950655222,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        },
+        {
+          "prefill_ms": 242.57423914968967,
+          "compress_ms": 31.249020714312792,
+          "ttft_ms": 273.82325986400247,
+          "decode_throughput": 34.04063543306609,
+          "kv_before_mb": 288.0,
+          "kv_after_mb": 57.515625,
+          "mem_reduction_pct": 80.029296875
+        }
+      ]
+    }
+  ]
+}

@@ -166,7 +166,9 @@ def run_one_trial(model, tokenizer, model_cfg, method_name, method_kwargs,
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--seq_lens", type=int, nargs="+", default=TARGET_SEQ_LENS)
+    parser.add_argument("--n_trials", type=int, default=N_TRIALS)
     args = parser.parse_args()
+    n_trials = args.n_trials
 
     log_dir = "logs/v3_verified"
     results_dir = "results/v3_verified"
@@ -182,7 +184,7 @@ def main():
     rm.RESULTS_DIR = results_dir
 
     logger.info(f"TABLE VII: Efficiency | seq_lens={args.seq_lens} | budget={BUDGET_RATIO:.0%} | "
-                f"warmup={N_WARMUP} trials={N_TRIALS} decode_steps={DECODE_STEPS}")
+                f"warmup={N_WARMUP} trials={n_trials} decode_steps={DECODE_STEPS}")
 
     model, tokenizer, model_cfg = load_model_and_tokenizer("qwen3-4b")
     device = next(model.parameters()).device
@@ -203,11 +205,11 @@ def main():
                                input_ids, attention_mask, device, BUDGET_RATIO)
 
             trials = []
-            for t in range(N_TRIALS):
+            for t in range(n_trials):
                 r = run_one_trial(model, tokenizer, model_cfg, method_name, method_kwargs,
                                    input_ids, attention_mask, device, BUDGET_RATIO)
                 trials.append(r)
-                logger.info(f"  trial {t+1}/{N_TRIALS}: prefill={r['prefill_ms']:.1f}ms "
+                logger.info(f"  trial {t+1}/{n_trials}: prefill={r['prefill_ms']:.1f}ms "
                             f"compress={r['compress_ms']:.1f}ms decode_tp={r['decode_throughput']:.2f}tok/s")
 
             avg = {k: statistics.mean(x[k] for x in trials) for k in trials[0].keys()}
