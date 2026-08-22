@@ -1,0 +1,56 @@
+2026-08-22 11:55:29,000 [INFO] __main__: TABLE VII: Efficiency | seq_lens=[2048] | budget=20% | warmup=1 trials=5 decode_steps=100
+2026-08-22 11:55:29,000 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-22 11:55:29,141 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 11:55:29,148 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 11:55:29,257 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 11:55:29,265 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-22 11:55:29,361 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-22 11:55:29,432 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-22 11:55:30,470 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-22 11:55:30,473 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-22 11:55:30,508 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 11:55:30,526 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 11:56:00,033 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 11:56:00,040 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-22 11:56:00,126 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-22 11:56:00,159 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-22 11:56:00,160 [INFO] __main__: 
+============================================================
+SeqLen: 2048
+============================================================
+2026-08-22 11:56:00,161 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-22 11:56:00,202 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 11:56:00,235 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 11:56:00,464 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 11:56:00,497 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 11:56:00,556 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 11:56:00,594 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-22 11:56:01,008 [INFO] core.dataset_loader: Loaded 5 samples from gov_report
+2026-08-22 11:56:01,444 [WARNING] core.model_loader: Input length 108522 > max 2048, truncating...
+2026-08-22 11:56:01,452 [INFO] __main__: Method: FullKV | kwargs={}
+2026-08-22 11:56:09,232 [INFO] __main__:   trial 1/5: prefill=242.7ms compress=0.0ms decode_tp=32.68tok/s
+2026-08-22 11:56:12,540 [INFO] __main__:   trial 2/5: prefill=244.3ms compress=0.0ms decode_tp=34.21tok/s
+2026-08-22 11:56:15,848 [INFO] __main__:   trial 3/5: prefill=242.7ms compress=0.0ms decode_tp=34.24tok/s
+2026-08-22 11:56:19,150 [INFO] __main__:   trial 4/5: prefill=243.5ms compress=0.0ms decode_tp=34.32tok/s
+2026-08-22 11:56:22,484 [INFO] __main__:   trial 5/5: prefill=243.4ms compress=0.0ms decode_tp=33.81tok/s
+2026-08-22 11:56:22,485 [INFO] __main__:   평균: prefill=243.3ms compress=0.0ms ttft=243.3ms decode_tp=33.85tok/s mem_reduction=0.0%
+2026-08-22 11:56:22,495 [INFO] core.results_manager: JSON saved to results/v3_verified/table7_efficiency_20260822_115600.json
+2026-08-22 11:56:22,495 [INFO] __main__: Method: AdaKV-adapted | kwargs={'invert_norm': True}
+2026-08-22 11:56:29,319 [INFO] __main__:   trial 1/5: prefill=242.8ms compress=60.9ms decode_tp=33.98tok/s
+2026-08-22 11:56:32,659 [INFO] __main__:   trial 2/5: prefill=242.8ms compress=22.3ms decode_tp=33.87tok/s
+2026-08-22 11:56:35,956 [INFO] __main__:   trial 3/5: prefill=242.4ms compress=22.1ms decode_tp=34.23tok/s
+2026-08-22 11:56:39,341 [INFO] __main__:   trial 4/5: prefill=244.4ms compress=22.7ms decode_tp=33.51tok/s
+2026-08-22 11:56:42,742 [INFO] __main__:   trial 5/5: prefill=244.4ms compress=23.6ms decode_tp=33.63tok/s
+2026-08-22 11:56:42,744 [INFO] __main__:   평균: prefill=243.4ms compress=30.3ms ttft=273.7ms decode_tp=33.84tok/s mem_reduction=80.0%
+2026-08-22 11:56:42,756 [INFO] core.results_manager: JSON saved to results/v3_verified/table7_efficiency_20260822_115600.json
+2026-08-22 11:56:42,757 [INFO] __main__: Method: SalienceKV-Sink4 | kwargs={'invert_norm': True, 'sink_size': 4}
+2026-08-22 11:56:49,481 [INFO] __main__:   trial 1/5: prefill=244.9ms compress=31.4ms decode_tp=34.03tok/s
+2026-08-22 11:56:52,862 [INFO] __main__:   trial 2/5: prefill=244.2ms compress=76.6ms decode_tp=34.01tok/s
+2026-08-22 11:56:56,231 [INFO] __main__:   trial 3/5: prefill=245.9ms compress=74.8ms decode_tp=34.02tok/s
+2026-08-22 11:56:59,598 [INFO] __main__:   trial 4/5: prefill=244.0ms compress=31.6ms decode_tp=33.81tok/s
+2026-08-22 11:57:02,998 [INFO] __main__:   trial 5/5: prefill=246.7ms compress=32.4ms decode_tp=33.93tok/s
+2026-08-22 11:57:03,000 [INFO] __main__:   평균: prefill=245.1ms compress=49.3ms ttft=294.5ms decode_tp=33.96tok/s mem_reduction=80.0%
+2026-08-22 11:57:03,026 [INFO] core.results_manager: JSON saved to results/v3_verified/table7_efficiency_20260822_115600.json
+2026-08-22 11:57:03,035 [INFO] core.results_manager: Results saved to results/v3_verified/table7_efficiency_20260822_115600.csv
+2026-08-22 11:57:03,036 [INFO] __main__: 
+완료: 3개 설정
