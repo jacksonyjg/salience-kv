@@ -1,0 +1,265 @@
+{
+  "results": [
+    {
+      "prefill_ms": 1071.7714172787964,
+      "compress_ms": 0.008852686733007431,
+      "prefill_plus_comp_ms": 1071.7802699655294,
+      "decode_throughput": 31.059065353312256,
+      "kv_before_mb": 1152.0,
+      "kv_after_mb": 1152.0,
+      "mem_reduction_pct": 0.0,
+      "prefill_ms_std": 2.721114627388708,
+      "compress_ms_std": 0.0016906317448617777,
+      "prefill_plus_comp_ms_std": 2.719760780126937,
+      "decode_throughput_std": 0.4682796758406084,
+      "kv_before_mb_std": 0.0,
+      "kv_after_mb_std": 0.0,
+      "mem_reduction_pct_std": 0.0,
+      "seq_len": 8192,
+      "method": "FullKV",
+      "n_prompts": 6,
+      "per_prompt": [
+        {
+          "prefill_ms": 1069.6060718037188,
+          "compress_ms": 0.010679941624403,
+          "prefill_plus_comp_ms": 1069.6167517453432,
+          "decode_throughput": 30.85170425591943,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 1152.0,
+          "mem_reduction_pct": 0.0,
+          "task": "gov_report",
+          "sample_idx": 2
+        },
+        {
+          "prefill_ms": 1072.4699879065156,
+          "compress_ms": 0.007671769708395004,
+          "prefill_plus_comp_ms": 1072.477659676224,
+          "decode_throughput": 31.922818983020267,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 1152.0,
+          "mem_reduction_pct": 0.0,
+          "task": "gov_report",
+          "sample_idx": 3
+        },
+        {
+          "prefill_ms": 1068.9579490572214,
+          "compress_ms": 0.011309050023555756,
+          "prefill_plus_comp_ms": 1068.969258107245,
+          "decode_throughput": 30.717748260765013,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 1152.0,
+          "mem_reduction_pct": 0.0,
+          "task": "qmsum",
+          "sample_idx": 1
+        },
+        {
+          "prefill_ms": 1072.0498827286065,
+          "compress_ms": 0.007865019142627716,
+          "prefill_plus_comp_ms": 1072.057747747749,
+          "decode_throughput": 30.659335693517292,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 1152.0,
+          "mem_reduction_pct": 0.0,
+          "task": "qmsum",
+          "sample_idx": 2
+        },
+        {
+          "prefill_ms": 1070.9575819782913,
+          "compress_ms": 0.008190050721168518,
+          "prefill_plus_comp_ms": 1070.9657720290124,
+          "decode_throughput": 31.218644306407896,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 1152.0,
+          "mem_reduction_pct": 0.0,
+          "task": "narrativeqa",
+          "sample_idx": 0
+        },
+        {
+          "prefill_ms": 1076.587030198425,
+          "compress_ms": 0.007400289177894592,
+          "prefill_plus_comp_ms": 1076.594430487603,
+          "decode_throughput": 30.984140620243636,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 1152.0,
+          "mem_reduction_pct": 0.0,
+          "task": "narrativeqa",
+          "sample_idx": 1
+        }
+      ]
+    },
+    {
+      "prefill_ms": 1070.3042598906904,
+      "compress_ms": 33.62121510629853,
+      "prefill_plus_comp_ms": 1103.925474996989,
+      "decode_throughput": 31.194541688269727,
+      "kv_before_mb": 1152.0,
+      "kv_after_mb": 230.34375,
+      "mem_reduction_pct": 80.0048828125,
+      "prefill_ms_std": 3.2952399927891243,
+      "compress_ms_std": 0.4444542695934035,
+      "prefill_plus_comp_ms_std": 3.0070287004292493,
+      "decode_throughput_std": 0.4709972610339652,
+      "kv_before_mb_std": 0.0,
+      "kv_after_mb_std": 0.0,
+      "mem_reduction_pct_std": 0.0,
+      "seq_len": 8192,
+      "method": "AdaKV-adapted",
+      "n_prompts": 6,
+      "per_prompt": [
+        {
+          "prefill_ms": 1067.941500339657,
+          "compress_ms": 33.79928879439831,
+          "prefill_plus_comp_ms": 1101.7407891340554,
+          "decode_throughput": 30.92629995784347,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "gov_report",
+          "sample_idx": 2
+        },
+        {
+          "prefill_ms": 1073.006384074688,
+          "compress_ms": 33.09756377711892,
+          "prefill_plus_comp_ms": 1106.1039478518069,
+          "decode_throughput": 32.116243920175435,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "gov_report",
+          "sample_idx": 3
+        },
+        {
+          "prefill_ms": 1067.9224929772317,
+          "compress_ms": 33.417643047869205,
+          "prefill_plus_comp_ms": 1101.340136025101,
+          "decode_throughput": 31.03593943382405,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "qmsum",
+          "sample_idx": 1
+        },
+        {
+          "prefill_ms": 1068.4612449258566,
+          "compress_ms": 34.27292499691248,
+          "prefill_plus_comp_ms": 1102.734169922769,
+          "decode_throughput": 30.825778504777325,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "qmsum",
+          "sample_idx": 2
+        },
+        {
+          "prefill_ms": 1068.7262318097055,
+          "compress_ms": 33.894242253154516,
+          "prefill_plus_comp_ms": 1102.62047406286,
+          "decode_throughput": 31.035025181885448,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "narrativeqa",
+          "sample_idx": 0
+        },
+        {
+          "prefill_ms": 1075.7677052170038,
+          "compress_ms": 33.24562776833773,
+          "prefill_plus_comp_ms": 1109.0133329853415,
+          "decode_throughput": 31.227963131112627,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "narrativeqa",
+          "sample_idx": 1
+        }
+      ]
+    },
+    {
+      "prefill_ms": 1071.4337795507163,
+      "compress_ms": 46.65167133013407,
+      "prefill_plus_comp_ms": 1118.0854508808504,
+      "decode_throughput": 31.11164701816285,
+      "kv_before_mb": 1152.0,
+      "kv_after_mb": 230.34375,
+      "mem_reduction_pct": 80.0048828125,
+      "prefill_ms_std": 2.1285815993650523,
+      "compress_ms_std": 4.518572581066297,
+      "prefill_plus_comp_ms_std": 5.0399654975871035,
+      "decode_throughput_std": 0.46126429050220213,
+      "kv_before_mb_std": 0.0,
+      "kv_after_mb_std": 0.0,
+      "mem_reduction_pct_std": 0.0,
+      "seq_len": 8192,
+      "method": "SalienceKV-Sink4",
+      "n_prompts": 6,
+      "per_prompt": [
+        {
+          "prefill_ms": 1070.9220538847148,
+          "compress_ms": 43.97657699882984,
+          "prefill_plus_comp_ms": 1114.8986308835447,
+          "decode_throughput": 30.849421829395006,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "gov_report",
+          "sample_idx": 2
+        },
+        {
+          "prefill_ms": 1074.208702892065,
+          "compress_ms": 44.50499080121517,
+          "prefill_plus_comp_ms": 1118.7136936932802,
+          "decode_throughput": 31.95668707503951,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "gov_report",
+          "sample_idx": 3
+        },
+        {
+          "prefill_ms": 1068.6168908141553,
+          "compress_ms": 51.757791079580784,
+          "prefill_plus_comp_ms": 1120.3746818937361,
+          "decode_throughput": 30.672788490150484,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "qmsum",
+          "sample_idx": 1
+        },
+        {
+          "prefill_ms": 1071.1541809141636,
+          "compress_ms": 43.731193989515305,
+          "prefill_plus_comp_ms": 1114.885374903679,
+          "decode_throughput": 30.87464751323654,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "qmsum",
+          "sample_idx": 2
+        },
+        {
+          "prefill_ms": 1070.071096997708,
+          "compress_ms": 42.85862809047103,
+          "prefill_plus_comp_ms": 1112.929725088179,
+          "decode_throughput": 31.27622556332624,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "narrativeqa",
+          "sample_idx": 0
+        },
+        {
+          "prefill_ms": 1073.6297518014908,
+          "compress_ms": 53.08084702119231,
+          "prefill_plus_comp_ms": 1126.710598822683,
+          "decode_throughput": 31.04011163782932,
+          "kv_before_mb": 1152.0,
+          "kv_after_mb": 230.34375,
+          "mem_reduction_pct": 80.0048828125,
+          "task": "narrativeqa",
+          "sample_idx": 1
+        }
+      ]
+    }
+  ]
+}

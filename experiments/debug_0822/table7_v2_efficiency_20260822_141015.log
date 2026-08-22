@@ -1,0 +1,54 @@
+2026-08-22 14:10:15,637 [INFO] __main__: TABLE VII v2: Efficiency (6 independent prompts) | seq_lens=[8192] | tasks=['gov_report', 'qmsum', 'narrativeqa'] | n_per_task=2 | budget=20%
+2026-08-22 14:10:15,638 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-22 14:10:15,761 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:15,768 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 14:10:15,824 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:15,829 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-22 14:10:15,901 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-22 14:10:16,003 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-22 14:10:17,045 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-22 14:10:17,048 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-22 14:10:17,087 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:17,094 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 14:10:24,318 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:24,330 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-22 14:10:24,460 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-22 14:10:24,480 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-22 14:10:24,480 [INFO] core.dataset_loader: Loading LongBench/gov_report ...
+2026-08-22 14:10:24,519 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:24,557 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 14:10:24,768 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:24,799 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 14:10:24,862 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:24,902 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-22 14:10:25,221 [INFO] core.dataset_loader: Loaded 30 samples from gov_report
+2026-08-22 14:10:25,533 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 14:10:25,569 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:25,605 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 14:10:26,135 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-22 14:10:26,239 [INFO] core.dataset_loader: Loading LongBench/narrativeqa ...
+2026-08-22 14:10:26,276 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 14:10:26,307 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 14:10:26,862 [INFO] core.dataset_loader: Loaded 30 samples from narrativeqa
+2026-08-22 14:10:26,991 [INFO] __main__: 확보된 프롬프트 pool: 6개 (기대값 6개, 각 문서는 최대 목표 길이(8192) 이상으로 사전 검증됨)
+2026-08-22 14:10:26,992 [INFO] __main__: 
+============================================================
+SeqLen: 8192
+============================================================
+2026-08-22 14:10:27,163 [WARNING] core.model_loader: Input length 51949 > max 8192, truncating...
+2026-08-22 14:10:27,243 [WARNING] core.model_loader: Input length 28135 > max 8192, truncating...
+2026-08-22 14:10:27,267 [WARNING] core.model_loader: Input length 8198 > max 8192, truncating...
+2026-08-22 14:10:27,307 [WARNING] core.model_loader: Input length 15552 > max 8192, truncating...
+2026-08-22 14:10:27,395 [WARNING] core.model_loader: Input length 23148 > max 8192, truncating...
+2026-08-22 14:10:27,426 [WARNING] core.model_loader: Input length 9008 > max 8192, truncating...
+2026-08-22 14:10:27,428 [INFO] __main__:   토큰화 완료: 6/6개 프롬프트 확보(assert 통과)
+2026-08-22 14:10:42,090 [INFO] __main__:   warm-up 완료: 방법 3개 × 1회
+2026-08-22 14:12:01,918 [INFO] __main__:   평균(n=6): prefill=1071.8±2.7ms compress=0.0±0.0ms decode_tp=31.06±0.47tok/s mem_reduction=0.0%
+2026-08-22 14:12:01,931 [INFO] core.results_manager: JSON saved to results/v3_verified/table7_v2_efficiency_20260822_141026.json
+2026-08-22 14:12:01,932 [INFO] __main__:   평균(n=6): prefill=1070.3±3.3ms compress=33.6±0.4ms decode_tp=31.19±0.47tok/s mem_reduction=80.0%
+2026-08-22 14:12:01,944 [INFO] core.results_manager: JSON saved to results/v3_verified/table7_v2_efficiency_20260822_141026.json
+2026-08-22 14:12:01,945 [INFO] __main__:   평균(n=6): prefill=1071.4±2.1ms compress=46.7±4.5ms decode_tp=31.11±0.46tok/s mem_reduction=80.0%
+2026-08-22 14:12:01,958 [INFO] core.results_manager: JSON saved to results/v3_verified/table7_v2_efficiency_20260822_141026.json
+2026-08-22 14:12:01,968 [INFO] core.results_manager: Results saved to results/v3_verified/table7_v2_efficiency_20260822_141026.csv
+2026-08-22 14:12:01,969 [INFO] __main__: 
+완료: 3개 설정 (각 최대 6개 프롬프트 기반)
