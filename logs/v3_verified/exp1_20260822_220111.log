@@ -1,0 +1,142 @@
+2026-08-22 22:01:11,255 [INFO] __main__:   Key-norm direction: CORRECTED (low-norm 우선)
+2026-08-22 22:01:11,256 [INFO] __main__:   Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-22 22:01:11,256 [INFO] __main__: Experiment 1: Main Results
+2026-08-22 22:01:11,257 [INFO] __main__:   Model: qwen3-4b
+2026-08-22 22:01:11,258 [INFO] __main__:   Mode: full
+2026-08-22 22:01:11,258 [INFO] __main__:   Budget: 20%
+2026-08-22 22:01:11,260 [INFO] __main__:   Tasks: ['qmsum']
+2026-08-22 22:01:11,261 [INFO] __main__:   Methods: [('fullkv', 'FullKV', {'invert_norm': True}), ('streaming', 'StreamingLLM', {'invert_norm': True}), ('h2o', 'H2O', {'invert_norm': True}), ('snapkv', 'SnapKV', {'invert_norm': True}), ('pyramidkv', 'PyramidKV-adapted', {'invert_norm': True}), ('adakv', 'AdaKV-adapted', {'invert_norm': True}), ('ours', 'SalienceKV_wo_sink', {'sink_size': 0, 'invert_norm': True}), ('ours', 'SalienceKV_Sink4', {'sink_size': 4, 'invert_norm': True})]
+2026-08-22 22:01:11,262 [INFO] __main__:   Samples/task: 2
+2026-08-22 22:01:11,263 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-08-22 22:01:11,264 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-22 22:01:11,416 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:01:11,426 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 22:01:11,522 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:01:11,531 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-22 22:01:11,628 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-22 22:01:11,725 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-22 22:01:13,170 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-22 22:01:13,173 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-22 22:01:13,224 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:01:13,233 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 22:01:51,291 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:01:51,299 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-22 22:01:51,387 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-22 22:01:51,402 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-22 22:01:51,425 [INFO] __main__: 사전 데이터 로딩 중...
+2026-08-22 22:01:51,426 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:01:51,464 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:01:51,503 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:01:51,721 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:01:51,754 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:01:51,790 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:01:51,867 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-22 22:01:52,071 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:01:52,072 [INFO] __main__:   ✓ qmsum: 2샘플 로드 완료
+2026-08-22 22:01:52,077 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-08-22 22:01:52,078 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:01:52,079 [INFO] __main__: Method: FULLKV | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:01:52,079 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:01:52,079 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:01:52,080 [INFO] core.evaluator_v2: [fullkv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:01:54,925 [INFO] core.evaluator_v2: [fullkv] pred='The target price for the remote control is 25 Euros each, the target cost is a maximum of 12.5 Euros, and the target pro'
+2026-08-22 22:01:58,944 [INFO] core.evaluator_v2: [fullkv] pred='Marketing discussed market trend findings and mentioned that young and trendy people are starting to like themes such as'
+2026-08-22 22:01:58,947 [INFO] __main__:   → score=27.83, collapse=0/2 (0.0%), mem_red=0.0%, ttft=755.7ms
+2026-08-22 22:01:58,958 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.csv
+2026-08-22 22:01:58,967 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.json
+2026-08-22 22:01:58,967 [INFO] __main__:   [중간 저장 완료] 1/8 설정
+2026-08-22 22:01:58,968 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:01:58,969 [INFO] __main__: Method: STREAMINGLLM | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:01:58,970 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:01:58,970 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:01:58,971 [INFO] core.evaluator_v2: [streaming] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:02:01,505 [INFO] core.evaluator_v2: [streaming] pred='The target price for the remote control is not explicitly mentioned in the discussion. The target cost is $0, as it refe'
+2026-08-22 22:02:05,742 [INFO] core.evaluator_v2: [streaming] pred='Marketing discussed market trend findings related to the design of a new product, emphasizing the importance of making i'
+2026-08-22 22:02:05,745 [INFO] __main__:   → score=12.96, collapse=0/2 (0.0%), mem_red=80.0%, ttft=896.3ms
+2026-08-22 22:02:05,754 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.csv
+2026-08-22 22:02:05,766 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.json
+2026-08-22 22:02:05,767 [INFO] __main__:   [중간 저장 완료] 2/8 설정
+2026-08-22 22:02:05,767 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:02:05,769 [INFO] __main__: Method: H2O | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:02:05,769 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:02:05,770 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:02:05,770 [INFO] core.evaluator_v2: [h2o] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:02:09,031 [INFO] core.evaluator_v2: [h2o] pred='The project team discussed designing a remote control that is both innovative and user-friendly. They mentioned that the'
+2026-08-22 22:02:12,830 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed market trend findings that indicate a preference for bold, noticeable designs, with a focus on color'
+2026-08-22 22:02:12,832 [INFO] __main__:   → score=9.40, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1038.8ms
+2026-08-22 22:02:12,855 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.csv
+2026-08-22 22:02:12,871 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.json
+2026-08-22 22:02:12,872 [INFO] __main__:   [중간 저장 완료] 3/8 설정
+2026-08-22 22:02:12,872 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:02:12,873 [INFO] __main__: Method: SNAPKV | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:02:12,873 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:02:12,874 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:02:12,875 [INFO] core.evaluator_v2: [snapkv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:02:16,418 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-22 22:02:21,273 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed market trend findings related to consumer preferences for products that are distinct from competitor'
+2026-08-22 22:02:21,275 [INFO] __main__:   → score=9.77, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1045.0ms
+2026-08-22 22:02:21,283 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.csv
+2026-08-22 22:02:21,291 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.json
+2026-08-22 22:02:21,292 [INFO] __main__:   [중간 저장 완료] 4/8 설정
+2026-08-22 22:02:21,293 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:02:21,293 [INFO] __main__: Method: PYRAMIDKV-ADAPTED | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:02:21,294 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:02:21,294 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:02:21,295 [INFO] core.evaluator_v2: [pyramidkv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:02:23,647 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit'
+2026-08-22 22:02:27,462 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctiv'
+2026-08-22 22:02:27,464 [INFO] __main__:   → score=12.66, collapse=0/2 (0.0%), mem_red=80.0%, ttft=981.9ms
+2026-08-22 22:02:27,474 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.csv
+2026-08-22 22:02:27,482 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.json
+2026-08-22 22:02:27,482 [INFO] __main__:   [중간 저장 완료] 5/8 설정
+2026-08-22 22:02:27,483 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:02:27,484 [INFO] __main__: Method: ADAKV-ADAPTED | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:02:27,484 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:02:27,484 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:02:27,485 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:02:30,116 [INFO] core.evaluator_v2: [adakv] pred='The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit'
+2026-08-22 22:02:33,784 [INFO] core.evaluator_v2: [adakv] pred='Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctiv'
+2026-08-22 22:02:33,787 [INFO] __main__:   → score=12.66, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1025.1ms
+2026-08-22 22:02:33,796 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.csv
+2026-08-22 22:02:33,819 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.json
+2026-08-22 22:02:33,821 [INFO] __main__:   [중간 저장 완료] 6/8 설정
+2026-08-22 22:02:33,822 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:02:33,822 [INFO] __main__: Method: SALIENCEKV_WO_SINK | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-22 22:02:33,823 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:02:33,823 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:02:33,824 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-22 22:02:36,398 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-22 22:02:40,515 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-22 22:02:40,528 [INFO] __main__:   → score=12.09, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1089.5ms
+2026-08-22 22:02:40,542 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.csv
+2026-08-22 22:02:40,554 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.json
+2026-08-22 22:02:40,555 [INFO] __main__:   [중간 저장 완료] 7/8 설정
+2026-08-22 22:02:40,556 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:02:40,556 [INFO] __main__: Method: SALIENCEKV_SINK4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-22 22:02:40,557 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:02:40,558 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:02:40,560 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-22 22:02:44,089 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-22 22:02:48,515 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-22 22:02:48,521 [INFO] __main__:   → score=9.35, collapse=0/2 (0.0%), mem_red=80.0%, ttft=1141.7ms
+2026-08-22 22:02:48,535 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.csv
+2026-08-22 22:02:48,550 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220111.json
+2026-08-22 22:02:48,551 [INFO] __main__:   [중간 저장 완료] 8/8 설정
+2026-08-22 22:02:48,551 [INFO] __main__: Experiment 1 completed!

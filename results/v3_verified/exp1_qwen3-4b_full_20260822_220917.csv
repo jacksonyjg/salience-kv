@@ -1,0 +1,9 @@
+Method,qmsum,Avg,Mem_Reduction_%,TTFT_ms,Throughput_tps,qmsum_collapse_%,qmsum_collapse_n,Avg_Collapse_%,Avg_Collapse_n
+FullKV,15.7,15.7,0.0,1025.1,23.3,0.0,0/30,0.0,0/30
+StreamingLLM,14.4,14.4,80.0,1667.8,27.0,0.0,0/30,0.0,0/30
+H2O,13.0,13.0,80.0,1938.1,30.1,6.7,2/30,6.7,2/30
+SnapKV,14.3,14.3,80.0,1924.7,28.9,0.0,0/30,0.0,0/30
+PyramidKV-adapted,14.7,14.7,80.0,1948.6,29.7,3.3,1/30,3.3,1/30
+AdaKV-adapted,14.7,14.7,80.0,1931.5,29.4,3.3,1/30,3.3,1/30
+SalienceKV_wo_sink,14.0,14.0,80.0,2112.3,29.5,3.3,1/30,3.3,1/30
+SalienceKV_Sink4,13.6,13.6,80.0,2098.8,29.3,0.0,0/30,0.0,0/30

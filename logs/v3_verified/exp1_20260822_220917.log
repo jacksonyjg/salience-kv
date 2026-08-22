@@ -1,0 +1,502 @@
+2026-08-22 22:09:17,277 [INFO] __main__:   Key-norm direction: CORRECTED (low-norm 우선)
+2026-08-22 22:09:17,279 [INFO] __main__:   Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-22 22:09:17,280 [INFO] __main__: Experiment 1: Main Results
+2026-08-22 22:09:17,282 [INFO] __main__:   Model: qwen3-4b
+2026-08-22 22:09:17,284 [INFO] __main__:   Mode: full
+2026-08-22 22:09:17,286 [INFO] __main__:   Budget: 20%
+2026-08-22 22:09:17,288 [INFO] __main__:   Tasks: ['qmsum']
+2026-08-22 22:09:17,289 [INFO] __main__:   Methods: [('fullkv', 'FullKV', {'invert_norm': True}), ('streaming', 'StreamingLLM', {'invert_norm': True}), ('h2o', 'H2O', {'invert_norm': True}), ('snapkv', 'SnapKV', {'invert_norm': True}), ('pyramidkv', 'PyramidKV-adapted', {'invert_norm': True}), ('adakv', 'AdaKV-adapted', {'invert_norm': True}), ('ours', 'SalienceKV_wo_sink', {'sink_size': 0, 'invert_norm': True}), ('ours', 'SalienceKV_Sink4', {'sink_size': 4, 'invert_norm': True})]
+2026-08-22 22:09:17,290 [INFO] __main__:   Samples/task: 30
+2026-08-22 22:09:17,292 [INFO] __main__: 
+Loading model: qwen3-4b ...
+2026-08-22 22:09:17,293 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-22 22:09:17,501 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:09:17,511 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 22:09:17,622 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:09:17,635 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-22 22:09:17,759 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-22 22:09:17,888 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-22 22:09:19,486 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-22 22:09:19,491 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-22 22:09:19,555 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:09:19,564 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 22:09:53,816 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:09:53,827 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-22 22:09:53,932 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-22 22:09:53,959 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-22 22:09:53,975 [INFO] __main__: 사전 데이터 로딩 중...
+2026-08-22 22:09:53,976 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:09:54,025 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:09:54,058 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:09:54,280 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:09:54,316 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:09:54,360 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:09:54,398 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-22 22:09:54,996 [INFO] core.dataset_loader: Loaded 30 samples from qmsum
+2026-08-22 22:09:54,999 [INFO] __main__:   ✓ qmsum: 30샘플 로드 완료
+2026-08-22 22:09:55,001 [INFO] __main__: 모든 태스크 데이터 로딩 완료!
+2026-08-22 22:09:55,002 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:09:55,019 [INFO] __main__: Method: FULLKV | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:09:55,021 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:09:55,023 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:09:55,025 [INFO] core.evaluator_v2: [fullkv] qmsum (30샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:09:58,419 [INFO] core.evaluator_v2: [fullkv] pred='The target price for the remote control is 25 Euros each, the target cost is a maximum of 12.5 Euros, and the target pro'
+2026-08-22 22:10:03,166 [INFO] core.evaluator_v2: [fullkv] pred='Marketing discussed market trend findings and mentioned that young and trendy people are starting to like themes such as'
+2026-08-22 22:10:11,557 [INFO] core.evaluator_v2: [fullkv] pred='The SmartKom system faced several challenges, including the need to adapt to different languages, such as German and Eng'
+2026-08-22 22:10:18,021 [INFO] core.evaluator_v2: [fullkv] pred='The review of problems from the past meetings highlighted several issues. The team faced challenges with the budget, as '
+2026-08-22 22:10:21,869 [INFO] core.evaluator_v2: [fullkv] pred='The user interface designer proposed a remote control with a simple design featuring push buttons instead of an LCD disp'
+2026-08-22 22:10:21,871 [INFO] core.evaluator_v2:   [5/30] avg=20.80
+2026-08-22 22:10:22,125 [WARNING] core.model_loader: Input length 18429 > max 16000, truncating...
+2026-08-22 22:10:27,590 [INFO] core.evaluator_v2: [fullkv] pred='The professor thought that MSG was a promising approach but noted that it might be complicated to fully understand and i'
+2026-08-22 22:10:27,903 [WARNING] core.model_loader: Input length 18602 > max 16000, truncating...
+2026-08-22 22:10:35,421 [INFO] core.evaluator_v2: [fullkv] pred='Grad D thought the experimental setup of the computer navigation system was ambitious and complex. They mentioned that t'
+2026-08-22 22:10:35,739 [WARNING] core.model_loader: Input length 16280 > max 16000, truncating...
+2026-08-22 22:10:42,685 [INFO] core.evaluator_v2: [fullkv] pred='The intensity of demand for the services in the early implementer areas is not spread evenly across Wales because there '
+2026-08-22 22:10:42,941 [WARNING] core.model_loader: Input length 16971 > max 16000, truncating...
+2026-08-22 22:10:49,095 [INFO] core.evaluator_v2: [fullkv] pred='Grad E contributed to the discussion on storage disks by mentioning that he has an 18 gigabyte drive hanging off of his '
+2026-08-22 22:10:56,017 [INFO] core.evaluator_v2: [fullkv] pred='The discussion focused on designing a remote control that is children-proof, robust, and user-friendly. The team agreed '
+2026-08-22 22:10:56,022 [INFO] core.evaluator_v2:   [10/30] avg=19.07
+2026-08-22 22:10:56,414 [WARNING] core.model_loader: Input length 16887 > max 16000, truncating...
+2026-08-22 22:11:03,645 [INFO] core.evaluator_v2: [fullkv] pred='The meeting decided on specific microphone procedures, including using wireless mikes for participants, positioning them'
+2026-08-22 22:11:04,051 [WARNING] core.model_loader: Input length 16288 > max 16000, truncating...
+2026-08-22 22:11:11,534 [INFO] core.evaluator_v2: [fullkv] pred='Huw Irranca-Davies ensured the high qualification and quality of the workforce by focusing on registered and inspected p'
+2026-08-22 22:11:21,892 [INFO] core.evaluator_v2: [fullkv] pred="The Welsh Government acknowledges the significant impact of the coronavirus pandemic on children's rights, protection, a"
+2026-08-22 22:11:28,098 [INFO] core.evaluator_v2: [fullkv] pred='The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user be'
+2026-08-22 22:11:34,184 [INFO] core.evaluator_v2: [fullkv] pred='The team decided to proceed with a remote control that includes an LCD display, a spinning wheel, and voice recognition.'
+2026-08-22 22:11:34,187 [INFO] core.evaluator_v2:   [15/30] avg=17.52
+2026-08-22 22:11:41,269 [INFO] core.evaluator_v2: [fullkv] pred='The meeting started with a kick-off discussion where the team outlined their goal of designing a new, modern television '
+2026-08-22 22:11:47,447 [INFO] core.evaluator_v2: [fullkv] pred='The team decided that the new remote control should be original, trendy, and user-friendly. They agreed on the design as'
+2026-08-22 22:11:47,611 [WARNING] core.model_loader: Input length 16890 > max 16000, truncating...
+2026-08-22 22:11:54,716 [INFO] core.evaluator_v2: [fullkv] pred='The meeting discussed various aspects of microphone data and setup. They talked about the importance of proper microphon'
+2026-08-22 22:12:00,465 [INFO] core.evaluator_v2: [fullkv] pred='The Industrial Designer and the Project Manager discussed the LCD screen, considering its design and functionality. They'
+2026-08-22 22:12:00,650 [WARNING] core.model_loader: Input length 16271 > max 16000, truncating...
+2026-08-22 22:12:08,340 [INFO] core.evaluator_v2: [fullkv] pred="The discussion about the early implementer areas focused on the initial rollout of the Welsh Government's childcare offe"
+2026-08-22 22:12:08,343 [INFO] core.evaluator_v2:   [20/30] avg=16.56
+2026-08-22 22:12:14,637 [INFO] core.evaluator_v2: [fullkv] pred='The discussion about the presentation on the prototype model involved Mark and Rama presenting the prototype, followed b'
+2026-08-22 22:12:14,845 [WARNING] core.model_loader: Input length 25613 > max 16000, truncating...
+2026-08-22 22:12:19,053 [INFO] core.evaluator_v2: [fullkv] pred='The government was going to roll out a policy to ease the deficit by committing to not raise taxes after the crisis, as '
+2026-08-22 22:12:19,238 [WARNING] core.model_loader: Input length 18430 > max 16000, truncating...
+2026-08-22 22:12:24,718 [INFO] core.evaluator_v2: [fullkv] pred='The team thought that their progress was mixed, with some experiments showing improvement and others not performing as w'
+2026-08-22 22:12:28,680 [INFO] core.evaluator_v2: [fullkv] pred='The group disagreed with the Project Manager when reflecting on the previous meetings and their project progress because'
+2026-08-22 22:12:33,504 [INFO] core.evaluator_v2: [fullkv] pred="The meeting discussed the evaluation of a new remote control prototype. The team reviewed the product's design, function"
+2026-08-22 22:12:33,522 [INFO] core.evaluator_v2:   [25/30] avg=16.25
+2026-08-22 22:12:37,691 [INFO] core.evaluator_v2: [fullkv] pred='The Project Manager suggested cutting down the functions when discussing the design of the remote control because the ma'
+2026-08-22 22:12:42,953 [INFO] core.evaluator_v2: [fullkv] pred='The meeting focused on discussing a remote control prototype, evaluating its design and functionality, and assessing its'
+2026-08-22 22:12:43,307 [WARNING] core.model_loader: Input length 18599 > max 16000, truncating...
+2026-08-22 22:12:47,847 [INFO] core.evaluator_v2: [fullkv] pred='Grad A thought that the recording equipment was not a major concern and that the main focus should be on figuring out ho'
+2026-08-22 22:12:51,624 [INFO] core.evaluator_v2: [fullkv] pred='The Project Manager thought of the advanced technology design when presenting the technical functions because they wante'
+2026-08-22 22:12:57,844 [INFO] core.evaluator_v2: [fullkv] pred='The meeting was a kick-off for designing a new remote control that needs to be original, trendy, and user-friendly. The '
+2026-08-22 22:12:57,847 [INFO] core.evaluator_v2:   [30/30] avg=15.75
+2026-08-22 22:12:57,848 [INFO] __main__:   → score=15.75, collapse=0/30 (0.0%), mem_red=0.0%, ttft=1025.1ms
+2026-08-22 22:12:57,859 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.csv
+2026-08-22 22:12:57,870 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
+2026-08-22 22:12:57,871 [INFO] __main__:   [중간 저장 완료] 1/8 설정
+2026-08-22 22:12:57,871 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:12:57,872 [INFO] __main__: Method: STREAMINGLLM | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:12:57,872 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:12:57,873 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:12:57,874 [INFO] core.evaluator_v2: [streaming] qmsum (30샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:13:00,188 [INFO] core.evaluator_v2: [streaming] pred='The target price for the remote control is not explicitly mentioned in the discussion. The target cost is $0, as it refe'
+2026-08-22 22:13:04,307 [INFO] core.evaluator_v2: [streaming] pred='Marketing discussed market trend findings related to the design of a new product, emphasizing the importance of making i'
+2026-08-22 22:13:09,514 [INFO] core.evaluator_v2: [streaming] pred='The problems encountered with the SmartKom system included difficulties in implementing the system, challenges in unders'
+2026-08-22 22:13:15,090 [INFO] core.evaluator_v2: [streaming] pred='The review of problems from the past meetings highlighted several issues. The team encountered challenges with the produ'
+2026-08-22 22:13:18,576 [INFO] core.evaluator_v2: [streaming] pred='The user interface designer proposed exploring two options for the industrial components: one involving a titanium-shape'
+2026-08-22 22:13:18,578 [INFO] core.evaluator_v2:   [5/30] avg=12.39
+2026-08-22 22:13:18,767 [WARNING] core.model_loader: Input length 18429 > max 16000, truncating...
+2026-08-22 22:13:24,456 [INFO] core.evaluator_v2: [streaming] pred='The professor had mixed feelings about MSG. While he appreciated its unique temporal properties and potential for incorp'
+2026-08-22 22:13:24,689 [WARNING] core.model_loader: Input length 18602 > max 16000, truncating...
+2026-08-22 22:13:30,108 [INFO] core.evaluator_v2: [streaming] pred='Grad D thought the experimental setup of the computer navigation system was valid and useful. They acknowledged that the'
+2026-08-22 22:13:30,403 [WARNING] core.model_loader: Input length 16280 > max 16000, truncating...
+2026-08-22 22:13:35,987 [INFO] core.evaluator_v2: [streaming] pred='The intensity of demands for the services in the early implementer areas would not be spread across Wales because the ea'
+2026-08-22 22:13:36,203 [WARNING] core.model_loader: Input length 16971 > max 16000, truncating...
+2026-08-22 22:13:40,101 [INFO] core.evaluator_v2: [streaming] pred='Grad E contributed to the discussion on storage disks by mentioning the need to consider the size of the training data a'
+2026-08-22 22:13:44,796 [INFO] core.evaluator_v2: [streaming] pred='The discussion focused on designing a remote control that is suitable for children, emphasizing the need for simplicity '
+2026-08-22 22:13:44,799 [INFO] core.evaluator_v2:   [10/30] avg=14.15
+2026-08-22 22:13:45,003 [WARNING] core.model_loader: Input length 16887 > max 16000, truncating...
+2026-08-22 22:13:51,087 [INFO] core.evaluator_v2: [streaming] pred='The meeting decided on specific microphone procedures, including the use of lapel microphones for most participants, wit'
+2026-08-22 22:13:51,607 [WARNING] core.model_loader: Input length 16288 > max 16000, truncating...
+2026-08-22 22:13:57,687 [INFO] core.evaluator_v2: [streaming] pred='Huw Irranca-Davies ensured the high qualification and quality of the workforce by focusing on registered and inspected p'
+2026-08-22 22:14:05,618 [INFO] core.evaluator_v2: [streaming] pred="The evaluation of children's rights, protection, and demands during the meeting highlighted the importance of ensuring t"
+2026-08-22 22:14:09,675 [INFO] core.evaluator_v2: [streaming] pred='The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user be'
+2026-08-22 22:14:16,110 [INFO] core.evaluator_v2: [streaming] pred='The team decided on the following key remote control concepts: a simple battery power source, an advanced integrated cir'
+2026-08-22 22:14:16,124 [INFO] core.evaluator_v2:   [15/30] avg=14.11
+2026-08-22 22:14:22,466 [INFO] core.evaluator_v2: [streaming] pred='The meeting summarized the key points discussed among the team members. They discussed the design and functionality of a'
+2026-08-22 22:14:25,689 [INFO] core.evaluator_v2: [streaming] pred='The discussion about function design concluded with the team deciding to focus on key features that are important for th'
+2026-08-22 22:14:25,904 [WARNING] core.model_loader: Input length 16890 > max 16000, truncating...
+2026-08-22 22:14:32,712 [INFO] core.evaluator_v2: [streaming] pred='The meeting discussed various aspects of microphone data, including the use of different microphones such as lapel mikes'
+2026-08-22 22:14:37,954 [INFO] core.evaluator_v2: [streaming] pred="The Industrial Designer and the Project Manager discussed the LCD screen's importance in the design of the remote contro"
+2026-08-22 22:14:38,236 [WARNING] core.model_loader: Input length 16271 > max 16000, truncating...
+2026-08-22 22:14:46,873 [INFO] core.evaluator_v2: [streaming] pred="The discussion about the early implementer areas focused on the rollout of the Welsh Government's childcare offer, which"
+2026-08-22 22:14:46,877 [INFO] core.evaluator_v2:   [20/30] avg=13.81
+2026-08-22 22:14:53,523 [INFO] core.evaluator_v2: [streaming] pred='The discussion about the presentation on the prototype model focused on showcasing the design and features of the new re'
+2026-08-22 22:14:53,878 [WARNING] core.model_loader: Input length 25613 > max 16000, truncating...
+2026-08-22 22:14:57,795 [INFO] core.evaluator_v2: [streaming] pred='The government was going to roll out policies to ease the deficit, including the emergency wage subsidy and the Canada e'
+2026-08-22 22:14:58,179 [WARNING] core.model_loader: Input length 18430 > max 16000, truncating...
+2026-08-22 22:15:03,604 [INFO] core.evaluator_v2: [streaming] pred='The team felt that they had made progress in their work, acknowledging that they had tried many different approaches and'
+2026-08-22 22:15:07,579 [INFO] core.evaluator_v2: [streaming] pred='The group disagreed with the Project Manager when reflecting on the previous meetings and their project progress because'
+2026-08-22 22:15:13,561 [INFO] core.evaluator_v2: [streaming] pred='The meeting summarized the progress of the project, discussed the evaluation of the remote control design, and reviewed '
+2026-08-22 22:15:13,565 [INFO] core.evaluator_v2:   [25/30] avg=14.41
+2026-08-22 22:15:19,354 [INFO] core.evaluator_v2: [streaming] pred='The Project Manager suggested cutting down the functions when discussing the design of the remote control to simplify th'
+2026-08-22 22:15:23,834 [INFO] core.evaluator_v2: [streaming] pred="The meeting summarized the progress of a project, discussed the prototype, evaluated the team's performance, and confirm"
+2026-08-22 22:15:24,083 [WARNING] core.model_loader: Input length 18599 > max 16000, truncating...
+2026-08-22 22:15:29,546 [INFO] core.evaluator_v2: [streaming] pred='Grad A thought that the recording equipment should be set up as soon as possible, and that the team should start trying '
+2026-08-22 22:15:33,985 [INFO] core.evaluator_v2: [streaming] pred='The Project Manager thought of the advanced technology design when presenting the technical functions because they wante'
+2026-08-22 22:15:37,995 [INFO] core.evaluator_v2: [streaming] pred="The meeting summarized the key points discussed during the session. The team discussed the project's goals, the importan"
+2026-08-22 22:15:37,999 [INFO] core.evaluator_v2:   [30/30] avg=14.39
+2026-08-22 22:15:38,000 [INFO] __main__:   → score=14.39, collapse=0/30 (0.0%), mem_red=80.0%, ttft=1667.8ms
+2026-08-22 22:15:38,029 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.csv
+2026-08-22 22:15:38,038 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
+2026-08-22 22:15:38,039 [INFO] __main__:   [중간 저장 완료] 2/8 설정
+2026-08-22 22:15:38,040 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:15:38,040 [INFO] __main__: Method: H2O | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:15:38,041 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:15:38,041 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:15:38,041 [INFO] core.evaluator_v2: [h2o] qmsum (30샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:15:41,330 [INFO] core.evaluator_v2: [h2o] pred='The project team discussed designing a remote control that is both innovative and user-friendly. They mentioned that the'
+2026-08-22 22:15:44,504 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed market trend findings that indicate a preference for bold, noticeable designs, with a focus on color'
+2026-08-22 22:15:49,642 [INFO] core.evaluator_v2: [h2o] pred='The SmartKom system faced challenges such as the system not being fully functional, requiring data to be manually entere'
+2026-08-22 22:15:54,010 [INFO] core.evaluator_v2: [h2o] pred='The team reviewed the past meetings and identified several issues, including the need to clarify the second bullet point'
+2026-08-22 22:15:57,169 [INFO] core.evaluator_v2: [h2o] pred='The user discussed industrial components, and the industrial components were determined to use a battery, with the batte'
+2026-08-22 22:15:57,171 [INFO] core.evaluator_v2:   [5/30] avg=11.43
+2026-08-22 22:15:57,393 [WARNING] core.model_loader: Input length 18429 > max 16000, truncating...
+2026-08-22 22:16:01,690 [INFO] core.evaluator_v2: [h2o] pred='The professor thought that MSG was kind of a marker, but it was not very helpful, and there was some kind of issue with '
+2026-08-22 22:16:01,892 [WARNING] core.model_loader: Input length 18602 > max 16000, truncating...
+2026-08-22 22:16:07,659 [INFO] core.evaluator_v2: [h2o] pred='Grad D mentioned that the computer navigation system was designed to help users reach their destination, but they also c'
+2026-08-22 22:16:07,946 [WARNING] core.model_loader: Input length 16280 > max 16000, truncating...
+2026-08-22 22:16:11,986 [INFO] core.evaluator_v2: [h2o] pred='The reason the spread of the Welsh workforce is not uniform is because of the complex nature of the workforce and the di'
+2026-08-22 22:16:12,181 [WARNING] core.model_loader: Input length 16971 > max 16000, truncating...
+2026-08-22 22:16:16,969 [INFO] core.evaluator_v2: [h2o] pred='Grad A mentioned that they had four agenda items, three of which were requested by Jane who was not attending the meetin'
+2026-08-22 22:16:20,882 [INFO] core.evaluator_v2: [h2o] pred="The remote control for children was discussed in the meeting, with the goal of creating a children's remote control that"
+2026-08-22 22:16:20,884 [INFO] core.evaluator_v2:   [10/30] avg=13.39
+2026-08-22 22:16:21,058 [WARNING] core.model_loader: Input length 16887 > max 16000, truncating...
+2026-08-22 22:16:26,444 [INFO] core.evaluator_v2: [h2o] pred='The group discussed procedures for using microphones, including positioning them close to the mouth, using wireless mics'
+2026-08-22 22:16:26,668 [WARNING] core.model_loader: Input length 16288 > max 16000, truncating...
+2026-08-22 22:16:32,411 [INFO] core.evaluator_v2: [h2o] pred='Huw Irranca-Davies addressed the issue of ensuring that the £4.50 per hour rate does not hinder the quality of care by e'
+2026-08-22 22:16:37,698 [INFO] core.evaluator_v2: [h2o] pred="The Welsh Government acknowledged the challenges posed by the pandemic, including the impact on children's health and pr"
+2026-08-22 22:16:42,099 [INFO] core.evaluator_v2: [h2o] pred="The user questioned whether the remote control's design aligns with user behavior. The answer is that the remote control"
+2026-08-22 22:16:50,786 [INFO] core.evaluator_v2: [h2o] pred='The team discussed key remote control concepts, focusing on the design and functionality of the remote. They decided on '
+2026-08-22 22:16:50,791 [INFO] core.evaluator_v2:   [15/30] avg=13.25
+2026-08-22 22:16:57,298 [INFO] core.evaluator_v2: [h2o] pred='The meeting started with a project kickoff, where the team discussed the goals of creating a new television remote. They'
+2026-08-22 22:17:00,357 [INFO] core.evaluator_v2: [h2o] pred='The discussion about function design focused on designing a new remote control that is complex, unique, and user-friendl'
+2026-08-22 22:17:00,572 [WARNING] core.model_loader: Input length 16890 > max 16000, truncating...
+2026-08-22 22:17:06,849 [INFO] core.evaluator_v2: [h2o] pred='The microphone data discussed involved proper placement of microphones for optimal data collection, with specific advice'
+2026-08-22 22:17:11,294 [INFO] core.evaluator_v2: [h2o] pred='The Industrial Designer and the Project Manager discussed the LCD screen, agreeing on its design and functionality, incl'
+2026-08-22 22:17:11,645 [WARNING] core.model_loader: Input length 16271 > max 16000, truncating...
+2026-08-22 22:17:17,705 [INFO] core.evaluator_v2: [h2o] pred="The early implementer areas, such as Blanew Gwynedd, are undergoing pilot programs for the Welsh Government's childcare "
+2026-08-22 22:17:17,719 [INFO] core.evaluator_v2:   [20/30] avg=13.57
+2026-08-22 22:17:22,673 [INFO] core.evaluator_v2: [h2o] pred='The project team discussed the prototype model during the meeting, reviewing its features, functionality, and potential '
+2026-08-22 22:17:23,006 [WARNING] core.model_loader: Input length 25613 > max 16000, truncating...
+2026-08-22 22:17:29,438 [INFO] core.evaluator_v2: [h2o] pred='The query does not directly ask about a specific policy to ease the deficit, but based on the discussion in the meeting '
+2026-08-22 22:17:30,237 [WARNING] core.model_loader: Input length 18430 > max 16000, truncating...
+2026-08-22 22:17:34,822 [INFO] core.evaluator_v2: [h2o] pred='The team thought that their progress was positive, with improvements in accuracy and efficiency, but they also identifie'
+2026-08-22 22:17:39,533 [INFO] core.evaluator_v2: [h2o] pred='The project team disagreed on whether to include the edible remote in the final product due to concerns about its edibil'
+2026-08-22 22:17:43,285 [INFO] core.evaluator_v2: [h2o] pred="The meeting involved discussing a new remote control prototype. The team evaluated the remote's design, functionality, a"
+2026-08-22 22:17:43,288 [INFO] core.evaluator_v2:   [25/30] avg=13.19
+2026-08-22 22:17:47,170 [INFO] core.evaluator_v2: [h2o] pred="The project team decided to simplify the remote control's features to focus on essential functions, as the team found th"
+2026-08-22 22:17:51,812 [INFO] core.evaluator_v2: [h2o] pred="The meeting summarized the project's progress, discussed the prototype of a remote control with features like speech rec"
+2026-08-22 22:17:52,080 [WARNING] core.model_loader: Input length 18599 > max 16000, truncating...
+2026-08-22 22:17:57,075 [INFO] core.evaluator_v2: [h2o] pred='Grad A mentioned checking the wireless microphone setup, ensuring it was on if they were wearing one. They also discusse'
+2026-08-22 22:18:01,439 [INFO] core.evaluator_v2: [h2o] pred='The Project Manager presented the technical functions to discuss the design and functionality of the remote control, ens'
+2026-08-22 22:18:20,213 [INFO] core.evaluator_v2: [h2o] pred='The meeting started with the team discussing the design of a new remote control, emphasizing the need for it to be innov'
+2026-08-22 22:18:20,229 [INFO] core.evaluator_v2:   [30/30] avg=12.95
+2026-08-22 22:18:20,232 [INFO] __main__:   → score=12.95, collapse=2/30 (6.7%), mem_red=80.0%, ttft=1938.1ms
+2026-08-22 22:18:20,242 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.csv
+2026-08-22 22:18:20,256 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
+2026-08-22 22:18:20,257 [INFO] __main__:   [중간 저장 완료] 3/8 설정
+2026-08-22 22:18:20,258 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:18:20,258 [INFO] __main__: Method: SNAPKV | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:18:20,259 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:18:20,259 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:18:20,260 [INFO] core.evaluator_v2: [snapkv] qmsum (30샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:18:23,420 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-22 22:18:27,984 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed market trend findings related to consumer preferences for products that are distinct from competitor'
+2026-08-22 22:18:34,595 [INFO] core.evaluator_v2: [snapkv] pred='The SmartKom system faced several challenges, including difficulties in making the system understand and respond to spok'
+2026-08-22 22:18:40,994 [INFO] core.evaluator_v2: [snapkv] pred="The review of problems from the past meetings included issues such as the remote control's design being too similar to a"
+2026-08-22 22:18:45,601 [INFO] core.evaluator_v2: [snapkv] pred='The user interface designer proposed using a simple interface with push buttons and suggested that the remote control sh'
+2026-08-22 22:18:45,603 [INFO] core.evaluator_v2:   [5/30] avg=12.04
+2026-08-22 22:18:46,048 [WARNING] core.model_loader: Input length 18429 > max 16000, truncating...
+2026-08-22 22:18:51,316 [INFO] core.evaluator_v2: [snapkv] pred='The professor thought that MSG was a useful tool but had some issues, such as not being fully understood and possibly no'
+2026-08-22 22:18:52,275 [WARNING] core.model_loader: Input length 18602 > max 16000, truncating...
+2026-08-22 22:18:56,947 [INFO] core.evaluator_v2: [snapkv] pred='Grad D thought the experimental setup of the computer navigation system was reasonable and that it would help in underst'
+2026-08-22 22:18:57,457 [WARNING] core.model_loader: Input length 16280 > max 16000, truncating...
+2026-08-22 22:19:03,070 [INFO] core.evaluator_v2: [snapkv] pred='The intensity of demands for the services in the early implementer areas would not be spread across Wales because the pi'
+2026-08-22 22:19:04,597 [WARNING] core.model_loader: Input length 16971 > max 16000, truncating...
+2026-08-22 22:19:09,338 [INFO] core.evaluator_v2: [snapkv] pred='Grad E contributed to the discussion on storage disks by mentioning a potential improvement in the display of prosodic i'
+2026-08-22 22:19:13,950 [INFO] core.evaluator_v2: [snapkv] pred='The discussion focused on designing a remote control for children, emphasizing the need for a user-friendly, safe, and i'
+2026-08-22 22:19:13,953 [INFO] core.evaluator_v2:   [10/30] avg=12.68
+2026-08-22 22:19:14,495 [WARNING] core.model_loader: Input length 16887 > max 16000, truncating...
+2026-08-22 22:19:20,172 [INFO] core.evaluator_v2: [snapkv] pred='The meeting decided on specific microphone procedures, including positioning the microphones close to the mouth, using w'
+2026-08-22 22:19:20,580 [WARNING] core.model_loader: Input length 16288 > max 16000, truncating...
+2026-08-22 22:19:27,285 [INFO] core.evaluator_v2: [snapkv] pred='Huw Irranca-Davies ensured the high qualification and quality of the workforce by emphasizing the importance of training'
+2026-08-22 22:19:32,519 [INFO] core.evaluator_v2: [snapkv] pred="The committee evaluated the legitimacy of children's rights, protection, and demands by acknowledging the importance of "
+2026-08-22 22:19:38,422 [INFO] core.evaluator_v2: [snapkv] pred='The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user be'
+2026-08-22 22:19:45,422 [INFO] core.evaluator_v2: [snapkv] pred='The team decided on key remote control concepts including the use of a customizable circuit board, various battery optio'
+2026-08-22 22:19:45,425 [INFO] core.evaluator_v2:   [15/30] avg=13.27
+2026-08-22 22:19:50,698 [INFO] core.evaluator_v2: [snapkv] pred='The meeting started with the team discussing the project and the goals of creating a new television remote control. They'
+2026-08-22 22:19:54,732 [INFO] core.evaluator_v2: [snapkv] pred='The discussion about function design concluded that the new project should focus on creating a user-friendly and visuall'
+2026-08-22 22:19:54,933 [WARNING] core.model_loader: Input length 16890 > max 16000, truncating...
+2026-08-22 22:20:02,520 [INFO] core.evaluator_v2: [snapkv] pred='The meeting discussed various aspects of microphone data, including the placement and positioning of microphones for opt'
+2026-08-22 22:20:07,927 [INFO] core.evaluator_v2: [snapkv] pred="The Industrial Designer and the Project Manager discussed the LCD screen's design, including its appearance, the use of "
+2026-08-22 22:20:08,680 [WARNING] core.model_loader: Input length 16271 > max 16000, truncating...
+2026-08-22 22:20:16,199 [INFO] core.evaluator_v2: [snapkv] pred="The discussion focused on the early implementer areas of the Welsh Government's childcare initiative, where pilot progra"
+2026-08-22 22:20:16,202 [INFO] core.evaluator_v2:   [20/30] avg=13.85
+2026-08-22 22:20:22,990 [INFO] core.evaluator_v2: [snapkv] pred='The discussion about the presentation on the prototype model began with the Project Manager and Marketing team welcoming'
+2026-08-22 22:20:23,355 [WARNING] core.model_loader: Input length 25613 > max 16000, truncating...
+2026-08-22 22:20:28,558 [INFO] core.evaluator_v2: [snapkv] pred='The government was going to roll out a policy to ease the deficit by ensuring that the economy remains strong in the fut'
+2026-08-22 22:20:29,323 [WARNING] core.model_loader: Input length 18430 > max 16000, truncating...
+2026-08-22 22:20:34,623 [INFO] core.evaluator_v2: [snapkv] pred='The team thought that their progress was positive, with some successful experiments and improvements in accuracy, but th'
+2026-08-22 22:20:39,569 [INFO] core.evaluator_v2: [snapkv] pred='The group disagreed with the Project Manager when reflecting on the previous meetings and their project progress because'
+2026-08-22 22:20:44,570 [INFO] core.evaluator_v2: [snapkv] pred='The meeting discussed the presentation of a new product prototype, with the team reviewing its features, design, and fun'
+2026-08-22 22:20:44,573 [INFO] core.evaluator_v2:   [25/30] avg=14.24
+2026-08-22 22:20:47,662 [INFO] core.evaluator_v2: [snapkv] pred='The Project Manager suggested cutting down the functions when discussing the design of the remote control because resear'
+2026-08-22 22:20:52,546 [INFO] core.evaluator_v2: [snapkv] pred='The meeting summarized the progress of a project, with the project manager outlining the agenda for the meeting. The tea'
+2026-08-22 22:20:53,191 [WARNING] core.model_loader: Input length 18599 > max 16000, truncating...
+2026-08-22 22:20:57,649 [INFO] core.evaluator_v2: [snapkv] pred='Grad A thought that the recording equipment should be set up properly to ensure clear audio, and they mentioned checking'
+2026-08-22 22:21:01,712 [INFO] core.evaluator_v2: [snapkv] pred='The Project Manager thought of the advanced technology design when presenting the technical functions because they wante'
+2026-08-22 22:21:08,137 [INFO] core.evaluator_v2: [snapkv] pred='The meeting started with the Project Manager, Christa Pavlov, welcoming everyone and outlining the purpose of the meetin'
+2026-08-22 22:21:08,142 [INFO] core.evaluator_v2:   [30/30] avg=14.31
+2026-08-22 22:21:08,143 [INFO] __main__:   → score=14.31, collapse=0/30 (0.0%), mem_red=80.0%, ttft=1924.7ms
+2026-08-22 22:21:08,154 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.csv
+2026-08-22 22:21:08,174 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
+2026-08-22 22:21:08,175 [INFO] __main__:   [중간 저장 완료] 4/8 설정
+2026-08-22 22:21:08,176 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:21:08,177 [INFO] __main__: Method: PYRAMIDKV-ADAPTED | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:21:08,178 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:21:08,179 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:21:08,180 [INFO] core.evaluator_v2: [pyramidkv] qmsum (30샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:21:10,871 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit'
+2026-08-22 22:21:14,434 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctiv'
+2026-08-22 22:21:20,709 [INFO] core.evaluator_v2: [pyramidkv] pred="The problems encountered with the SmartKom system included issues with the system's ability to understand and generate s"
+2026-08-22 22:21:26,403 [INFO] core.evaluator_v2: [pyramidkv] pred='The review of problems from the past meetings included issues such as the team not having enough information to proceed,'
+2026-08-22 22:21:30,065 [INFO] core.evaluator_v2: [pyramidkv] pred='The user interface designer proposed a remote control with a speech recognition feature, a simple and less expensive des'
+2026-08-22 22:21:30,067 [INFO] core.evaluator_v2:   [5/30] avg=13.80
+2026-08-22 22:21:30,585 [WARNING] core.model_loader: Input length 18429 > max 16000, truncating...
+2026-08-22 22:21:35,164 [INFO] core.evaluator_v2: [pyramidkv] pred='The professor thought that MSG was kind of a marker, but it was not very helpful, and there was some kind of issue with '
+2026-08-22 22:21:35,954 [WARNING] core.model_loader: Input length 18602 > max 16000, truncating...
+2026-08-22 22:21:42,088 [INFO] core.evaluator_v2: [pyramidkv] pred='Grad D thought the experimental setup of the computer navigation system was interesting and discussed the challenges of '
+2026-08-22 22:21:42,731 [WARNING] core.model_loader: Input length 16280 > max 16000, truncating...
+2026-08-22 22:21:46,934 [INFO] core.evaluator_v2: [pyramidkv] pred='The intensity of demands for the services in the early implementer areas would not be spread across Wales because the se'
+2026-08-22 22:21:47,257 [WARNING] core.model_loader: Input length 16971 > max 16000, truncating...
+2026-08-22 22:21:50,939 [INFO] core.evaluator_v2: [pyramidkv] pred='Grad E contributed to the discussion on storage disks by suggesting that they could look at the X Window system for pote'
+2026-08-22 22:21:54,132 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion focused on designing a remote control that is children-friendly, with features such as being colorful, ha'
+2026-08-22 22:21:54,134 [INFO] core.evaluator_v2:   [10/30] avg=14.87
+2026-08-22 22:21:54,325 [WARNING] core.model_loader: Input length 16887 > max 16000, truncating...
+2026-08-22 22:21:59,627 [INFO] core.evaluator_v2: [pyramidkv] pred='The group decided on procedures for microphones, including positioning the microphone close to the mouth, using a wirele'
+2026-08-22 22:22:00,507 [WARNING] core.model_loader: Input length 16288 > max 16000, truncating...
+2026-08-22 22:22:05,484 [INFO] core.evaluator_v2: [pyramidkv] pred='Huw Irranca-Davies ensured the high qualification and quality of the workforce by investing in training and development,'
+2026-08-22 22:22:11,724 [INFO] core.evaluator_v2: [pyramidkv] pred="The evaluations discussed during the meeting highlighted the importance of protecting children's rights and demands, par"
+2026-08-22 22:22:15,912 [INFO] core.evaluator_v2: [pyramidkv] pred='The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user be'
+2026-08-22 22:22:21,342 [INFO] core.evaluator_v2: [pyramidkv] pred='The team decided on key remote control concepts, including an advanced design with an LCD screen, a customizable interfa'
+2026-08-22 22:22:21,345 [INFO] core.evaluator_v2:   [15/30] avg=14.88
+2026-08-22 22:22:29,012 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting started with a project kickoff, where the team discussed the goals of creating a new television remote. They'
+2026-08-22 22:22:32,158 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion decided that the function design should focus on creating a remote control that is unique, complex, and u'
+2026-08-22 22:22:32,440 [WARNING] core.model_loader: Input length 16890 > max 16000, truncating...
+2026-08-22 22:22:38,412 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting discussed various aspects of microphone data, including the placement of microphones for optimal data collec'
+2026-08-22 22:22:43,767 [INFO] core.evaluator_v2: [pyramidkv] pred='The Industrial Designer and the Project Manager discussed the LCD screen, discussing its design, including the use of di'
+2026-08-22 22:22:44,031 [WARNING] core.model_loader: Input length 16271 > max 16000, truncating...
+2026-08-22 22:22:50,446 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion about the early implementer areas focused on the challenges faced, including administrative burdens, the '
+2026-08-22 22:22:50,451 [INFO] core.evaluator_v2:   [20/30] avg=15.11
+2026-08-22 22:22:55,428 [INFO] core.evaluator_v2: [pyramidkv] pred='The discussion about the presentation on the prototype model involved the team reviewing the model, discussing its featu'
+2026-08-22 22:22:56,008 [WARNING] core.model_loader: Input length 25613 > max 16000, truncating...
+2026-08-22 22:23:00,225 [INFO] core.evaluator_v2: [pyramidkv] pred='The government was going to roll out policies to ease the deficit, including a $260 billion economic stimulus package an'
+2026-08-22 22:23:00,862 [WARNING] core.model_loader: Input length 18430 > max 16000, truncating...
+2026-08-22 22:23:05,660 [INFO] core.evaluator_v2: [pyramidkv] pred='The team thought that their progress was positive, with improvements in accuracy due to the use of a neural network, but'
+2026-08-22 22:23:09,306 [INFO] core.evaluator_v2: [pyramidkv] pred='The group disagreed with the Project Manager because they felt the project progress was not being adequately reflected i'
+2026-08-22 22:23:14,627 [INFO] core.evaluator_v2: [pyramidkv] pred="The meeting involved discussing a new remote control prototype. The team evaluated the remote's design, functionality, a"
+2026-08-22 22:23:14,631 [INFO] core.evaluator_v2:   [25/30] avg=15.12
+2026-08-22 22:23:17,659 [INFO] core.evaluator_v2: [pyramidkv] pred='The Project Manager suggested cutting down the functions when discussing the design of the remote control because market'
+2026-08-22 22:23:22,587 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting focused on discussing a new remote control device, reviewing its design, and evaluating its feasibility. Pro'
+2026-08-22 22:23:23,424 [WARNING] core.model_loader: Input length 18599 > max 16000, truncating...
+2026-08-22 22:23:27,625 [INFO] core.evaluator_v2: [pyramidkv] pred='Grad A thought that the recording equipment was already set up, as they were just needing to make sure the wireless mic '
+2026-08-22 22:23:31,284 [INFO] core.evaluator_v2: [pyramidkv] pred='The Project Manager thought of the advanced technology design when presenting the technical functions because they wante'
+2026-08-22 22:23:49,060 [INFO] core.evaluator_v2: [pyramidkv] pred='The meeting started with the project team discussing the design of a new remote control, emphasizing the need for it to '
+2026-08-22 22:23:49,067 [INFO] core.evaluator_v2:   [30/30] avg=14.74
+2026-08-22 22:23:49,068 [INFO] __main__:   → score=14.74, collapse=1/30 (3.3%), mem_red=80.0%, ttft=1948.6ms
+2026-08-22 22:23:49,077 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.csv
+2026-08-22 22:23:49,091 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
+2026-08-22 22:23:49,092 [INFO] __main__:   [중간 저장 완료] 5/8 설정
+2026-08-22 22:23:49,092 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:23:49,093 [INFO] __main__: Method: ADAKV-ADAPTED | Budget: 20% | kwargs={'invert_norm': True}
+2026-08-22 22:23:49,094 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:23:49,094 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:23:49,095 [INFO] core.evaluator_v2: [adakv] qmsum (30샘플, budget=20%, kwargs={'invert_norm': True})
+2026-08-22 22:23:51,241 [INFO] core.evaluator_v2: [adakv] pred='The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit'
+2026-08-22 22:23:54,779 [INFO] core.evaluator_v2: [adakv] pred='Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctiv'
+2026-08-22 22:24:00,861 [INFO] core.evaluator_v2: [adakv] pred="The problems encountered with the SmartKom system included issues with the system's ability to understand and generate s"
+2026-08-22 22:24:06,864 [INFO] core.evaluator_v2: [adakv] pred='The review of problems from the past meetings included issues such as the team not having enough information to proceed,'
+2026-08-22 22:24:10,297 [INFO] core.evaluator_v2: [adakv] pred='The user interface designer proposed a remote control with a speech recognition feature, a simple and less expensive des'
+2026-08-22 22:24:10,299 [INFO] core.evaluator_v2:   [5/30] avg=13.80
+2026-08-22 22:24:10,726 [WARNING] core.model_loader: Input length 18429 > max 16000, truncating...
+2026-08-22 22:24:15,101 [INFO] core.evaluator_v2: [adakv] pred='The professor thought that MSG was kind of a marker, but it was not very helpful, and there was some kind of issue with '
+2026-08-22 22:24:15,376 [WARNING] core.model_loader: Input length 18602 > max 16000, truncating...
+2026-08-22 22:24:21,570 [INFO] core.evaluator_v2: [adakv] pred='Grad D thought the experimental setup of the computer navigation system was interesting and discussed the challenges of '
+2026-08-22 22:24:22,225 [WARNING] core.model_loader: Input length 16280 > max 16000, truncating...
+2026-08-22 22:24:26,444 [INFO] core.evaluator_v2: [adakv] pred='The intensity of demands for the services in the early implementer areas would not be spread across Wales because the se'
+2026-08-22 22:24:27,209 [WARNING] core.model_loader: Input length 16971 > max 16000, truncating...
+2026-08-22 22:24:30,862 [INFO] core.evaluator_v2: [adakv] pred='Grad E contributed to the discussion on storage disks by suggesting that they could look at the X Window system for pote'
+2026-08-22 22:24:38,575 [INFO] core.evaluator_v2: [adakv] pred='The discussion focused on designing a remote control that is children-friendly, with features such as being colorful, ha'
+2026-08-22 22:24:38,577 [INFO] core.evaluator_v2:   [10/30] avg=14.87
+2026-08-22 22:24:38,779 [WARNING] core.model_loader: Input length 16887 > max 16000, truncating...
+2026-08-22 22:24:45,046 [INFO] core.evaluator_v2: [adakv] pred='The group decided on procedures for microphones, including positioning the microphone close to the mouth, using a wirele'
+2026-08-22 22:24:49,196 [WARNING] core.model_loader: Input length 16288 > max 16000, truncating...
+2026-08-22 22:24:54,884 [INFO] core.evaluator_v2: [adakv] pred='Huw Irranca-Davies ensured the high qualification and quality of the workforce by investing in training and development,'
+2026-08-22 22:25:01,963 [INFO] core.evaluator_v2: [adakv] pred="The evaluations discussed during the meeting highlighted the importance of protecting children's rights and demands, par"
+2026-08-22 22:25:07,087 [INFO] core.evaluator_v2: [adakv] pred='The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user be'
+2026-08-22 22:25:13,391 [INFO] core.evaluator_v2: [adakv] pred='The team decided on key remote control concepts, including an advanced design with an LCD screen, a customizable interfa'
+2026-08-22 22:25:13,395 [INFO] core.evaluator_v2:   [15/30] avg=14.88
+2026-08-22 22:25:20,343 [INFO] core.evaluator_v2: [adakv] pred='The meeting started with a project kickoff, where the team discussed the goals of creating a new television remote. They'
+2026-08-22 22:25:22,693 [INFO] core.evaluator_v2: [adakv] pred='The discussion decided that the function design should focus on creating a remote control that is unique, complex, and u'
+2026-08-22 22:25:22,864 [WARNING] core.model_loader: Input length 16890 > max 16000, truncating...
+2026-08-22 22:25:28,291 [INFO] core.evaluator_v2: [adakv] pred='The meeting discussed various aspects of microphone data, including the placement of microphones for optimal data collec'
+2026-08-22 22:25:32,992 [INFO] core.evaluator_v2: [adakv] pred='The Industrial Designer and the Project Manager discussed the LCD screen, discussing its design, including the use of di'
+2026-08-22 22:25:33,204 [WARNING] core.model_loader: Input length 16271 > max 16000, truncating...
+2026-08-22 22:25:38,322 [INFO] core.evaluator_v2: [adakv] pred='The discussion about the early implementer areas focused on the challenges faced, including administrative burdens, the '
+2026-08-22 22:25:38,325 [INFO] core.evaluator_v2:   [20/30] avg=15.11
+2026-08-22 22:25:43,138 [INFO] core.evaluator_v2: [adakv] pred='The discussion about the presentation on the prototype model involved the team reviewing the model, discussing its featu'
+2026-08-22 22:25:43,442 [WARNING] core.model_loader: Input length 25613 > max 16000, truncating...
+2026-08-22 22:25:47,710 [INFO] core.evaluator_v2: [adakv] pred='The government was going to roll out policies to ease the deficit, including a $260 billion economic stimulus package an'
+2026-08-22 22:25:48,791 [WARNING] core.model_loader: Input length 18430 > max 16000, truncating...
+2026-08-22 22:25:53,634 [INFO] core.evaluator_v2: [adakv] pred='The team thought that their progress was positive, with improvements in accuracy due to the use of a neural network, but'
+2026-08-22 22:25:57,287 [INFO] core.evaluator_v2: [adakv] pred='The group disagreed with the Project Manager because they felt the project progress was not being adequately reflected i'
+2026-08-22 22:26:01,936 [INFO] core.evaluator_v2: [adakv] pred="The meeting involved discussing a new remote control prototype. The team evaluated the remote's design, functionality, a"
+2026-08-22 22:26:01,939 [INFO] core.evaluator_v2:   [25/30] avg=15.12
+2026-08-22 22:26:04,692 [INFO] core.evaluator_v2: [adakv] pred='The Project Manager suggested cutting down the functions when discussing the design of the remote control because market'
+2026-08-22 22:26:09,583 [INFO] core.evaluator_v2: [adakv] pred='The meeting focused on discussing a new remote control device, reviewing its design, and evaluating its feasibility. Pro'
+2026-08-22 22:26:10,254 [WARNING] core.model_loader: Input length 18599 > max 16000, truncating...
+2026-08-22 22:26:14,444 [INFO] core.evaluator_v2: [adakv] pred='Grad A thought that the recording equipment was already set up, as they were just needing to make sure the wireless mic '
+2026-08-22 22:26:18,358 [INFO] core.evaluator_v2: [adakv] pred='The Project Manager thought of the advanced technology design when presenting the technical functions because they wante'
+2026-08-22 22:26:35,354 [INFO] core.evaluator_v2: [adakv] pred='The meeting started with the project team discussing the design of a new remote control, emphasizing the need for it to '
+2026-08-22 22:26:35,363 [INFO] core.evaluator_v2:   [30/30] avg=14.74
+2026-08-22 22:26:35,364 [INFO] __main__:   → score=14.74, collapse=1/30 (3.3%), mem_red=80.0%, ttft=1931.5ms
+2026-08-22 22:26:35,373 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.csv
+2026-08-22 22:26:35,389 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
+2026-08-22 22:26:35,389 [INFO] __main__:   [중간 저장 완료] 6/8 설정
+2026-08-22 22:26:35,390 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:26:35,390 [INFO] __main__: Method: SALIENCEKV_WO_SINK | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-22 22:26:35,391 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:26:35,391 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:26:35,392 [INFO] core.evaluator_v2: [ours] qmsum (30샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-22 22:26:37,616 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-22 22:26:40,977 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-22 22:26:49,062 [INFO] core.evaluator_v2: [ours] pred='The problems encountered with the SmartKom system included difficulties in understanding and generating natural language'
+2026-08-22 22:26:55,246 [INFO] core.evaluator_v2: [ours] pred="The review of problems from the past meetings included issues such as the remote control's design being too similar to a"
+2026-08-22 22:27:00,893 [INFO] core.evaluator_v2: [ours] pred='The user interface designer proposed a remote control with a simple design, featuring a small number of buttons that eac'
+2026-08-22 22:27:00,898 [INFO] core.evaluator_v2:   [5/30] avg=13.83
+2026-08-22 22:27:01,098 [WARNING] core.model_loader: Input length 18429 > max 16000, truncating...
+2026-08-22 22:27:07,534 [INFO] core.evaluator_v2: [ours] pred='The professor thought that MSG had potential but also noted some issues, such as the need for further investigation into'
+2026-08-22 22:27:08,390 [WARNING] core.model_loader: Input length 18602 > max 16000, truncating...
+2026-08-22 22:27:13,814 [INFO] core.evaluator_v2: [ours] pred='Grad D thought the experimental setup of the computer navigation system was valid and useful, as it allowed for the demo'
+2026-08-22 22:27:14,034 [WARNING] core.model_loader: Input length 16280 > max 16000, truncating...
+2026-08-22 22:27:20,167 [INFO] core.evaluator_v2: [ours] pred='The intensity of demands for the services in the early implementer areas would not be spread across Wales because the se'
+2026-08-22 22:27:20,445 [WARNING] core.model_loader: Input length 16971 > max 16000, truncating...
+2026-08-22 22:27:24,499 [INFO] core.evaluator_v2: [ours] pred='Grad E contributed to the discussion on storage disks by suggesting the use of a disk with a capacity of approximately 1'
+2026-08-22 22:27:29,438 [INFO] core.evaluator_v2: [ours] pred='The discussion about the design of a remote control for children focused on creating a user-friendly, safe, and effectiv'
+2026-08-22 22:27:29,440 [INFO] core.evaluator_v2:   [10/30] avg=14.16
+2026-08-22 22:27:29,621 [WARNING] core.model_loader: Input length 16887 > max 16000, truncating...
+2026-08-22 22:27:35,680 [INFO] core.evaluator_v2: [ours] pred='The meeting decided on procedures for microphones, including the use of wireless microphones for participants, the need '
+2026-08-22 22:27:36,649 [WARNING] core.model_loader: Input length 16288 > max 16000, truncating...
+2026-08-22 22:27:44,224 [INFO] core.evaluator_v2: [ours] pred="Huw Irranca-Davies ensured the high qualification and quality of the workforce by focusing on aligning the early years' "
+2026-08-22 22:27:49,783 [INFO] core.evaluator_v2: [ours] pred="The evaluations on the legitimacy of children's rights, protection, and demands highlight the importance of ensuring tha"
+2026-08-22 22:27:53,335 [INFO] core.evaluator_v2: [ours] pred='The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user be'
+2026-08-22 22:27:58,483 [INFO] core.evaluator_v2: [ours] pred='The team decided on the key remote control concepts, opting for a design with a simple battery, a folded structure that '
+2026-08-22 22:27:58,485 [INFO] core.evaluator_v2:   [15/30] avg=13.82
+2026-08-22 22:28:04,835 [INFO] core.evaluator_v2: [ours] pred='The meeting started with a welcome and an introduction to the project. The team discussed the design of a new remote con'
+2026-08-22 22:28:08,366 [INFO] core.evaluator_v2: [ours] pred='The discussion about function design decided on the need for a user-friendly remote control that can be customized to th'
+2026-08-22 22:28:08,533 [WARNING] core.model_loader: Input length 16890 > max 16000, truncating...
+2026-08-22 22:28:14,674 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of microphone data, including the placement and use of microphones for capturing s'
+2026-08-22 22:28:19,815 [INFO] core.evaluator_v2: [ours] pred="The Industrial Designer and the Project Manager discussed the LCD screen's design, including its appearance, functionali"
+2026-08-22 22:28:20,054 [WARNING] core.model_loader: Input length 16271 > max 16000, truncating...
+2026-08-22 22:28:38,692 [INFO] core.evaluator_v2: [ours] pred="The discussion about the early implementer areas focused on the challenges and progress of the Welsh Government's initia"
+2026-08-22 22:28:38,697 [INFO] core.evaluator_v2:   [20/30] avg=13.66
+2026-08-22 22:28:43,729 [INFO] core.evaluator_v2: [ours] pred='The discussion about the presentation on the prototype model involved showcasing the remote control device with a unique'
+2026-08-22 22:28:44,046 [WARNING] core.model_loader: Input length 25613 > max 16000, truncating...
+2026-08-22 22:28:49,336 [INFO] core.evaluator_v2: [ours] pred='The government was going to roll out policies to ease the deficit, including the Canada Emergency Response Benefit (CERB'
+2026-08-22 22:28:49,567 [WARNING] core.model_loader: Input length 18430 > max 16000, truncating...
+2026-08-22 22:28:54,004 [INFO] core.evaluator_v2: [ours] pred='The team thought that their progress was positive, with improvements in accuracy and effectiveness of their methods. The'
+2026-08-22 22:28:58,477 [INFO] core.evaluator_v2: [ours] pred='The group disagreed with the Project Manager when reflecting on the previous meetings and their project progress because'
+2026-08-22 22:29:04,902 [INFO] core.evaluator_v2: [ours] pred="The meeting summarized the project's progress, discussed the prototype remote control, evaluated its design and cost, an"
+2026-08-22 22:29:04,917 [INFO] core.evaluator_v2:   [25/30] avg=13.78
+2026-08-22 22:29:09,382 [INFO] core.evaluator_v2: [ours] pred='The Project Manager suggested cutting down the functions and buttons of the remote control to focus on essential feature'
+2026-08-22 22:29:15,442 [INFO] core.evaluator_v2: [ours] pred="The meeting summarized the project's progress, discussed the remote control prototype, evaluated its features, and decid"
+2026-08-22 22:29:16,042 [WARNING] core.model_loader: Input length 18599 > max 16000, truncating...
+2026-08-22 22:29:20,609 [INFO] core.evaluator_v2: [ours] pred='Grad A thought that the recording equipment should be set up properly, including checking the microphone and ensuring th'
+2026-08-22 22:29:26,374 [INFO] core.evaluator_v2: [ours] pred='The Project Manager thought of the advanced technology design when presenting the technical functions because the team w'
+2026-08-22 22:29:30,422 [INFO] core.evaluator_v2: [ours] pred='The meeting summarized the key points of the project, including the need for a child-friendly remote control, the import'
+2026-08-22 22:29:30,425 [INFO] core.evaluator_v2:   [30/30] avg=13.97
+2026-08-22 22:29:30,427 [INFO] __main__:   → score=13.97, collapse=1/30 (3.3%), mem_red=80.0%, ttft=2112.3ms
+2026-08-22 22:29:30,438 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.csv
+2026-08-22 22:29:30,456 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
+2026-08-22 22:29:30,457 [INFO] __main__:   [중간 저장 완료] 7/8 설정
+2026-08-22 22:29:30,458 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:29:30,459 [INFO] __main__: Method: SALIENCEKV_SINK4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-22 22:29:30,460 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:29:30,461 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:29:30,462 [INFO] core.evaluator_v2: [ours] qmsum (30샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-22 22:29:33,842 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-22 22:29:37,887 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-22 22:29:43,143 [INFO] core.evaluator_v2: [ours] pred='The SmartKom system faced several challenges, including difficulties in processing natural language inputs, issues with '
+2026-08-22 22:29:49,030 [INFO] core.evaluator_v2: [ours] pred='The review of problems from the past meetings highlighted several issues. The team faced challenges with the budget, as '
+2026-08-22 22:29:53,652 [INFO] core.evaluator_v2: [ours] pred='The user interface designer proposed using a combination of materials, including a rubber body with a titanium-like desi'
+2026-08-22 22:29:53,656 [INFO] core.evaluator_v2:   [5/30] avg=11.46
+2026-08-22 22:29:54,399 [WARNING] core.model_loader: Input length 18429 > max 16000, truncating...
+2026-08-22 22:29:59,090 [INFO] core.evaluator_v2: [ours] pred='The professor had mixed thoughts about MSG. He acknowledged its potential and the importance of addressing the issues re'
+2026-08-22 22:29:59,498 [WARNING] core.model_loader: Input length 18602 > max 16000, truncating...
+2026-08-22 22:30:05,837 [INFO] core.evaluator_v2: [ours] pred='Grad D thought the experimental setup of the computer navigation system was valid and useful, acknowledging that it was '
+2026-08-22 22:30:07,206 [WARNING] core.model_loader: Input length 16280 > max 16000, truncating...
+2026-08-22 22:30:12,555 [INFO] core.evaluator_v2: [ours] pred='The intensity of demands for the services in the early implementer areas would not be spread across Wales because the ea'
+2026-08-22 22:30:13,909 [WARNING] core.model_loader: Input length 16971 > max 16000, truncating...
+2026-08-22 22:30:19,096 [INFO] core.evaluator_v2: [ours] pred='Grad E contributed to the discussion on storage disks by mentioning the availability of a disk with a capacity of approx'
+2026-08-22 22:30:24,029 [INFO] core.evaluator_v2: [ours] pred='The discussion focused on designing a remote control tailored for children, emphasizing usability and safety. The team c'
+2026-08-22 22:30:24,032 [INFO] core.evaluator_v2:   [10/30] avg=12.52
+2026-08-22 22:30:24,563 [WARNING] core.model_loader: Input length 16887 > max 16000, truncating...
+2026-08-22 22:30:31,287 [INFO] core.evaluator_v2: [ours] pred='The meeting decided on specific microphone procedures, including the use of wireless microphones for participants, the n'
+2026-08-22 22:30:31,574 [WARNING] core.model_loader: Input length 16288 > max 16000, truncating...
+2026-08-22 22:30:37,528 [INFO] core.evaluator_v2: [ours] pred='Huw Irranca-Davies ensured the high qualification and quality of the workforce by focusing on aligning the early years e'
+2026-08-22 22:30:46,602 [INFO] core.evaluator_v2: [ours] pred="The committee evaluated the legitimacy of children's rights, protection, and demands by discussing the impact of the pan"
+2026-08-22 22:30:51,273 [INFO] core.evaluator_v2: [ours] pred='The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user be'
+2026-08-22 22:30:59,027 [INFO] core.evaluator_v2: [ours] pred='The team decided on a remote control concept featuring a sleek, vegetable-themed design with a curved, foldable shape. I'
+2026-08-22 22:30:59,034 [INFO] core.evaluator_v2:   [15/30] avg=13.04
+2026-08-22 22:31:06,357 [INFO] core.evaluator_v2: [ours] pred='The meeting started with a discussion about the design of a new remote control, focusing on its functionality, user inte'
+2026-08-22 22:31:10,014 [INFO] core.evaluator_v2: [ours] pred='The team decided that the function design of the new product should focus on user-friendly features, including a customi'
+2026-08-22 22:31:10,184 [WARNING] core.model_loader: Input length 16890 > max 16000, truncating...
+2026-08-22 22:31:16,946 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed various aspects of microphone data, including the setup and use of microphones for recording speec'
+2026-08-22 22:31:23,250 [INFO] core.evaluator_v2: [ours] pred="The Industrial Designer and the Project Manager discussed the LCD screen's design, including its appearance, functionali"
+2026-08-22 22:31:23,909 [WARNING] core.model_loader: Input length 16271 > max 16000, truncating...
+2026-08-22 22:31:31,303 [INFO] core.evaluator_v2: [ours] pred="The discussion focused on the early implementer areas of the Welsh government's childcare initiative, highlighting chall"
+2026-08-22 22:31:31,314 [INFO] core.evaluator_v2:   [20/30] avg=13.39
+2026-08-22 22:31:37,954 [INFO] core.evaluator_v2: [ours] pred='The discussion about the presentation on the prototype model involved showcasing the remote control device with a unique'
+2026-08-22 22:31:38,211 [WARNING] core.model_loader: Input length 25613 > max 16000, truncating...
+2026-08-22 22:31:43,475 [INFO] core.evaluator_v2: [ours] pred='The government was going to roll out a policy to ease the deficit by providing financial support to small businesses and'
+2026-08-22 22:31:44,046 [WARNING] core.model_loader: Input length 18430 > max 16000, truncating...
+2026-08-22 22:31:49,289 [INFO] core.evaluator_v2: [ours] pred='The team thought that their progress was positive, with some improvements in accuracy and a better understanding of the '
+2026-08-22 22:31:53,764 [INFO] core.evaluator_v2: [ours] pred='The group disagreed with the Project Manager when reflecting on the previous meetings and their project progress because'
+2026-08-22 22:31:59,555 [INFO] core.evaluator_v2: [ours] pred='The meeting discussed the development of a new product, focusing on its design and functionality. The team reviewed the '
+2026-08-22 22:31:59,560 [INFO] core.evaluator_v2:   [25/30] avg=13.52
+2026-08-22 22:32:03,978 [INFO] core.evaluator_v2: [ours] pred='The Project Manager suggested cutting down the functions and buttons of the remote control to make it simpler and more u'
+2026-08-22 22:32:09,934 [INFO] core.evaluator_v2: [ours] pred='The meeting summarized the progress of a project, discussed the prototype of a new remote control device with features l'
+2026-08-22 22:32:10,170 [WARNING] core.model_loader: Input length 18599 > max 16000, truncating...
+2026-08-22 22:32:14,070 [INFO] core.evaluator_v2: [ours] pred='Grad A thought that the recording equipment should be set up properly to capture the meetings effectively. They mentione'
+2026-08-22 22:32:18,178 [INFO] core.evaluator_v2: [ours] pred='The Project Manager thought of the advanced technology design when presenting the technical functions because the team w'
+2026-08-22 22:32:22,811 [INFO] core.evaluator_v2: [ours] pred="The meeting summarized the project's goals for a new remote control device, discussing its design, functionality, and ta"
+2026-08-22 22:32:22,814 [INFO] core.evaluator_v2:   [30/30] avg=13.56
+2026-08-22 22:32:22,815 [INFO] __main__:   → score=13.56, collapse=0/30 (0.0%), mem_red=80.0%, ttft=2098.8ms
+2026-08-22 22:32:22,825 [INFO] core.results_manager: Results saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.csv
+2026-08-22 22:32:22,841 [INFO] core.results_manager: JSON saved to results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
+2026-08-22 22:32:22,841 [INFO] __main__:   [중간 저장 완료] 8/8 설정
+2026-08-22 22:32:22,844 [INFO] __main__: Experiment 1 completed!
