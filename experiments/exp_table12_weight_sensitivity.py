@@ -24,6 +24,8 @@ WEIGHT_SETTINGS = [
     ("Default", 0.40, 0.20, 0.20),
     ("Uniform", 0.25, 0.25, 0.25),
     ("N-centric", 0.55, 0.15, 0.15),
+    ("V-centric", 0.15, 0.55, 0.15),   # 신규(2026-08-22, GPT 지적 반영) — alpha=N, beta=V, delta=P
+    ("P-centric", 0.15, 0.15, 0.55),   # 신규 — N-centric과 동일 패턴으로 V/P도 완성
 ]
 
 

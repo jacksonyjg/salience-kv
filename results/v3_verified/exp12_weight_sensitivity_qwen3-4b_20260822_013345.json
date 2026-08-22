@@ -1,0 +1,739 @@
+{
+  "experiment": "exp12_weight_sensitivity",
+  "model": "qwen3-4b",
+  "tasks": [
+    "narrativeqa",
+    "qasper",
+    "multifieldqa_en",
+    "hotpotqa",
+    "2wikimqa",
+    "gov_report",
+    "qmsum"
+  ],
+  "num_samples": 2,
+  "budget_ratio": 0.2,
+  "sink_size": 4,
+  "invert_norm": true,
+  "results": [
+    {
+      "setting": "Default",
+      "alpha": 0.4,
+      "beta": 0.2,
+      "delta": 0.2,
+      "task_scores": {
+        "narrativeqa": 6.36,
+        "qasper": 8.3,
+        "multifieldqa_en": 41.9,
+        "hotpotqa": 12.5,
+        "2wikimqa": 6.25,
+        "gov_report": 13.25,
+        "qmsum": 9.09
+      },
+      "avg_score": 13.95,
+      "sample_records": {
+        "narrativeqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "Daisy encountered Jim in Eatonville, Florida.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.727272727272728,
+            "prediction": "Socrates decides it is unjust to escape because he believes in the importance of obeying the laws of the state, even when faced with a death sentence. He argues that the laws are a social contract to which he has implicitly agreed by living in Athens. Escaping would be a violation of this contract and would be unjust. Additionally, he reasons that the laws are designed to maintain order and justice in society, and breaking them would undermine the very system that has protected and guided him throughout his life. Therefore, he concludes that it is morally wrong to escape, as it would be a betrayal of the principles he holds dear.",
+            "word_rep": 0.027272727272727226,
+            "char_rep": 0.1327014218009479,
+            "collapsed": false
+          }
+        ],
+        "qasper": [
+          {
+            "sample_idx": 0,
+            "score": 13.513513513513514,
+            "prediction": "The proposed strategies show that the combined approach of policy chaining with backtracking and the use of knowledge graphs for state representation outperforms other methods. Specifically, the strategy that uses policy chaining with backtracking achieves higher scores, reaching a score of 40 in the Zork game, while other methods fail to surpass this score. The use of knowledge graphs helps in better state representation, leading to more effective decision-making in the game.",
+            "word_rep": 0.05714285714285716,
+            "char_rep": 0.21802935010482183,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 3.076923076923077,
+            "prediction": "The encoder in the described system is a character-based sequence-to-sequence model with an encoder-decoder architecture. The encoder processes the input sequence (the word to be inflected) and encodes it into a context vector, which is then used by the decoder to generate the output sequence (the inflected word). The specific architecture details mentioned include the use of a bidirectional LSTM or a similar recurrent neural network for the encoder, though the text does not explicitly state the exact type of encoder used.",
+            "word_rep": 0.0,
+            "char_rep": 0.18129770992366412,
+            "collapsed": false
+          }
+        ],
+        "multifieldqa_en": [
+          {
+            "sample_idx": 0,
+            "score": 64.28571428571428,
+            "prediction": "After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 19.51219512195122,
+            "prediction": "Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the method is designed to handle non-Clifford noise, as it is applicable to a wide range of quantum circuits and noise models.",
+            "word_rep": 0.0,
+            "char_rep": 0.14084507042253525,
+            "collapsed": false
+          }
+        ],
+        "hotpotqa": [
+          {
+            "sample_idx": 0,
+            "score": 25.0,
+            "prediction": "Brian Stokes Mitchell, also known as Brian Stokes Mitchell, is a powerful baritone who won the Tony Award for Best Actor in 2000.",
+            "word_rep": 0.04761904761904767,
+            "char_rep": 0.15200000000000002,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.",
+            "word_rep": 0.0,
+            "char_rep": 0.06666666666666665,
+            "collapsed": false
+          }
+        ],
+        "2wikimqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "El director de la película \"Eisenstein in Guanajuato\", Peter Greenaway, fue nacido en Inglaterra.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.5,
+            "prediction": "\"Jugband Blues\" came out first. According to the text, \"Jugband Blues\" is a song by Pink Floyd, released in 1968, while \"Joel The Lump Of Coal\" is a song by The Killers, released in 2014.",
+            "word_rep": 0.06060606060606055,
+            "char_rep": 0.18579234972677594,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 12.35813366960908,
+            "prediction": "The National Science Foundation (NSF) uses two types of rotational programs—**Independent Research and Development (IR&D)** and **Voluntary Rotational (VR)**—to bring in external expertise and fresh perspectives. These programs allow scientists and engineers from outside the NSF to work temporarily at the agency, contributing to its mission of advancing science and engineering.\n\n**Key Differences Between IR&D and VR:**\n- **IR&D** involves individuals who are not currently employed by the NSF but are working on research projects.\n- **VR** involves individuals who are employed by the NSF but are rotating between different positions or departments.\n\n**Key Features of the Programs:**\n- **Compensation:** IR&D participants are typically paid by their home institutions, while VR participants are paid by the NSF.\n- **Duration:** IR&D is usually for a short period (e.g., 6 months), while VR can be longer (e.g., 1–2 years).\n- **Responsibilities:** IR&D participants focus on research, while VR participants may have broader responsibilities, including administrative and programmatic tasks.\n\n**Challenges and Concerns:**\n- **Workload and Integration:** VR participants may struggle to integrate into the NSF culture and may feel overburdened by their responsibilities.\n- **Evaluation:** The NSF has not fully evaluated the effectiveness of these programs in achieving its mission, and there is a need for better metrics to assess their impact.\n- **Balance:** There is a concern about the balance between using external experts and maintaining internal expertise within the NSF.\n\n**Recommendations:**\n- The NSF should develop a comprehensive evaluation of its rotational programs to assess their effectiveness in advancing its mission.\n- The agency should consider implementing a more structured approach to managing and evaluating these programs, including clear performance metrics and feedback mechanisms.\n- The NSF should also explore ways to better integrate rotational participants into the agency’s culture and ensure that they contribute meaningfully to the agency’s work.\n\nOverall, the NSF’s rotational programs are an important part of its strategy for engaging with the broader scientific community, but there is a need for more systematic evaluation and management to ensure they are achieving their intended goals.",
+            "word_rep": 0.04179104477611939,
+            "char_rep": 0.33619948409286327,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 14.139110604332952,
+            "prediction": "The document outlines the challenges and efforts in improving the management and security of federal information technology (IT) systems. It highlights that despite increased funding and initiatives, the federal government continues to face significant issues with IT project management, security, and efficiency. Key problems include:\n\n- **Poor Project Management**: Many IT projects are delayed, over budget, or fail to meet objectives due to inadequate planning, oversight, and coordination.\n- **Security Vulnerabilities**: Federal agencies struggle with securing their IT systems, leading to data breaches and other security incidents.\n- **Inefficiencies**: There is a lack of standardization and integration across agencies, resulting in redundant systems, high costs, and poor user experiences.\n- **Lack of Accountability**: Many agencies lack the necessary resources, expertise, and leadership to effectively manage their IT programs.\n\nThe document also discusses various initiatives and reforms aimed at addressing these issues, including:\n\n- **The Federal IT Modernization Initiative**: A multi-year effort to improve the efficiency and effectiveness of federal IT systems.\n- **The Federal IT Acquisition Reform Act**: A law aimed at improving the management and oversight of federal IT acquisitions.\n- **The National Institute of Standards and Technology (NIST) Framework**: A set of guidelines and best practices for improving cybersecurity and IT management.\n\nThe document concludes that while there have been some improvements, much more needs to be done to ensure that federal IT systems are secure, efficient, and effective. It calls for continued efforts to improve project management, security, and accountability in federal IT programs.",
+            "word_rep": 0.02857142857142858,
+            "char_rep": 0.30114285714285716,
+            "collapsed": false
+          }
+        ],
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 5.988023952095809,
+            "prediction": "The meeting begins with an introduction and overview of the project, which involves designing a new remote control for a television. The team discusses the goals of the project, emphasizing the need for a modern, user-friendly design that stands out from existing products. They outline the project structure, including the use of a whiteboard for brainstorming and the importance of collaboration.\n\nThe team members introduce themselves and share their roles. They then discuss the design process, focusing on user needs and the importance of creating an intuitive interface. The meeting includes a brainstorming session where ideas for the remote control's features are shared, with a focus on simplicity and functionality.\n\nThe team also discusses the budget and timeline for the project, and they agree on the next steps, including further research and planning. The meeting concludes with a plan to continue working on the project and a reminder to bring laptops back to their workspaces. The overall goal is to create a remote control that is both innovative and user-friendly, meeting the needs of its users while standing out in the market.",
+            "word_rep": 0.01666666666666672,
+            "char_rep": 0.2631118881118881,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.18274111675127,
+            "prediction": "The meeting discusses the design and functionality of a new remote control device. Key points include:\n\n- **User Interface**: The team is finalizing the layout and controls of the remote, focusing on user-friendly design and intuitive navigation.\n- **Design Considerations**: The remote is being designed with a focus on modern aesthetics, ease of use, and target audience (younger users).\n- **Technical Features**: The remote includes a scroll wheel for navigation, a joystick for precise control, and a customizable layout.\n- **Material and Durability**: The remote is being considered with materials that are both durable and user-friendly, such as rubber for grip and hard plastic for structure.\n- **Cost and Budget**: The team is working within a budget, considering cost-effective materials and features without compromising on quality.\n- **Future Steps**: The team plans to finalize the design and prepare for the next meeting, which will focus on detailed design and production considerations.\n\nThe meeting concludes with a plan to finalize the design and prepare for the next phase of development.",
+            "word_rep": 0.06586826347305386,
+            "char_rep": 0.27404718693284935,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "setting": "Uniform",
+      "alpha": 0.25,
+      "beta": 0.25,
+      "delta": 0.25,
+      "task_scores": {
+        "narrativeqa": 5.38,
+        "qasper": 3.85,
+        "multifieldqa_en": 41.9,
+        "hotpotqa": 12.5,
+        "2wikimqa": 6.25,
+        "gov_report": 13.09,
+        "qmsum": 8.48
+      },
+      "avg_score": 13.06,
+      "sample_records": {
+        "narrativeqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "Daisy encountered Jim in Eatonville.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.75268817204301,
+            "prediction": "Socrates decides it is unjust to escape because he believes in the importance of obeying the laws of the state, even when faced with a wrongful conviction. He argues that the laws are a social contract to which he has implicitly agreed by living in Athens. Escaping would be a violation of this contract and a betrayal of the principles of justice and civic duty. Additionally, he reasons that breaking the law would make him a worse person than those who condemn him, and that true justice cannot be achieved through rebellion against the state's laws.",
+            "word_rep": 0.0,
+            "char_rep": 0.10018214936247727,
+            "collapsed": false
+          }
+        ],
+        "qasper": [
+          {
+            "sample_idx": 0,
+            "score": 7.692307692307692,
+            "prediction": "The proposed strategies show that the combined approach of policy chaining with backtracking and the knowledge graph-based exploration outperforms other methods. Specifically, the strategy that uses policy chaining with backtracking achieves higher performance in navigating the environment and successfully passes the critical \"grue\" obstacle, reaching higher scores compared to other methods. The knowledge graph-based exploration also performs better than simple text-based methods in identifying promising states for exploration.",
+            "word_rep": 0.045454545454545414,
+            "char_rep": 0.22117202268431002,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The encoder in the described system is a character-based encoder, which is part of a sequence-to-sequence model. It is used to process input sequences (like words or sentences) and encode them into a form that can be used by the decoder to generate the output sequence (like the inflected form of a word). The specific architecture mentioned is a character-level encoder, which processes input character by character.",
+            "word_rep": 0.0,
+            "char_rep": 0.21791767554479424,
+            "collapsed": false
+          }
+        ],
+        "multifieldqa_en": [
+          {
+            "sample_idx": 0,
+            "score": 64.28571428571428,
+            "prediction": "After attacking Jacobo at a workers' strike, Ngotho is arrested and imprisoned.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 19.51219512195122,
+            "prediction": "Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the method is designed to handle non-Clifford noise, as it is applicable to a wide range of quantum circuits and noise models.",
+            "word_rep": 0.0,
+            "char_rep": 0.14084507042253525,
+            "collapsed": false
+          }
+        ],
+        "hotpotqa": [
+          {
+            "sample_idx": 0,
+            "score": 25.0,
+            "prediction": "Brian Stokes Mitchell. He is a powerful baritone who won the Tony Award for Best Actor in 2000 for his performance in \"Ragtime.\"",
+            "word_rep": 0.0,
+            "char_rep": 0.008064516129032251,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.",
+            "word_rep": 0.0,
+            "char_rep": 0.06666666666666665,
+            "collapsed": false
+          }
+        ],
+        "2wikimqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "Elmer Bäck was born in Finland.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.5,
+            "prediction": "\"Jugband Blues\" came out first. According to the text, \"Jugband Blues\" is a song by Pink Floyd, released in 1968, while \"Joel The Lump Of Coal\" is a song by The Killers, released in 2014.",
+            "word_rep": 0.06060606060606055,
+            "char_rep": 0.18579234972677594,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 15.968586387434556,
+            "prediction": "The report outlines the National Science Foundation's (NSF) use of rotating personnel (rotators) in its operations, focusing on two main programs: the Independent Administrative Review (IAR) and the Office of the Director (OD) programs. These programs aim to bring fresh perspectives and expertise to the NSF by temporarily assigning professionals from outside the agency to key roles. The report details the structure, benefits, and challenges of these programs, as well as the NSF's efforts to manage costs and ensure effective performance.\n\nKey points include:\n\n- **Program Structure**: Rotators are typically assigned for a fixed term, often one year, and are placed in various roles across the NSF. They are selected based on qualifications and are expected to contribute to the agency's mission.\n  \n- **Benefits**: Rotators bring diverse perspectives, enhance programmatic and administrative effectiveness, and provide opportunities for professional development. They also help in influencing research directions and fostering interdisciplinary collaboration.\n\n- **Challenges**: The program faces challenges in retaining qualified individuals, ensuring effective integration of rotators into the agency, and measuring the impact of the program on NSF's objectives.\n\n- **Cost Management**: The NSF has implemented cost-saving measures, such as reducing the number of rotators and focusing on high-impact roles, to manage expenses while maintaining program effectiveness.\n\n- **Evaluation and Improvement**: The NSF has recognized the need for a more strategic approach to managing its rotator programs. It has initiated efforts to evaluate the programs' effectiveness, including assessing their contributions to the agency's mission and programmatic goals.\n\n- **Recommendations**: The report recommends that the NSF Director of Human Resources develop a comprehensive agency-wide strategy for managing rotator programs, including evaluating their impact on the agency's mission and programmatic outcomes.\n\nThe report concludes that while the NSF's rotator programs have value, there is a need for more systematic evaluation and strategic planning to ensure they contribute effectively to the agency's goals.",
+            "word_rep": 0.019543973941368087,
+            "char_rep": 0.3371091980063434,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.209424083769633,
+            "prediction": "The document outlines the challenges and progress in managing federal IT systems and cybersecurity. It highlights that while the federal government has made strides in implementing key IT initiatives—such as enhancing CIO responsibilities, achieving cost savings from data center consolidation, and improving cybersecurity measures—significant challenges remain. These include inefficiencies in IT project management, high costs of IT operations, and ongoing cybersecurity risks. The report emphasizes the need for continued efforts to improve the effectiveness and security of federal IT systems, ensuring they are more efficient, secure, and aligned with the government's strategic goals. It also notes that while some progress has been made, further action is required to fully realize the potential savings and improvements in federal IT management.",
+            "word_rep": 0.0,
+            "char_rep": 0.18492343934040045,
+            "collapsed": false
+          }
+        ],
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 5.594405594405593,
+            "prediction": "The meeting discusses the design of a new television remote control. The team aims to create a modern, user-friendly device that stands out from existing models. Key points include:\n\n- **Design Goals**: The remote should be original, stylish, and easy to use, balancing innovation with practicality.\n- **Functionality**: The team suggests simplifying the interface, reducing the number of buttons, and using a touchscreen or menu system for easier navigation.\n- **User Experience**: Emphasis is placed on making the remote intuitive, avoiding a steep learning curve for new users.\n- **Budget and Practicality**: While aiming for innovation, the team acknowledges the need to stay within realistic constraints, such as battery life and cost.\n- **Next Steps**: The team will receive specific instructions upon returning to their workspaces, with a follow-up meeting scheduled in thirty minutes.\n\nThe meeting concludes with a friendly farewell and a reminder to carry laptops back.",
+            "word_rep": 0.0,
+            "char_rep": 0.1314168377823408,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 11.374407582938389,
+            "prediction": "The meeting involved a team discussing the design of a new remote control device. Key points included:\n\n- **Design and Functionality**: The team explored various designs, focusing on user-friendliness, aesthetics, and functionality. They considered a compact, ergonomic shape with a soft rubber grip for better handling.\n  \n- **User Interface**: The remote control needed intuitive controls, with clear labeling and easy-to-use buttons. They discussed the placement of buttons and the need for a simple, effective interface.\n\n- **Technology and Components**: The team considered using a standard battery and a basic chip for functionality. They also discussed the possibility of incorporating a scroll feature and a joystick for more advanced control.\n\n- **Cost and Budget**: The team had to balance design with cost, ensuring the product was affordable while maintaining quality. They discussed the feasibility of different components and their costs.\n\n- **Future Steps**: The team agreed on the need for a detailed design meeting to finalize the product specifications and ensure all aspects were covered before production.\n\nThe meeting concluded with a plan to finalize the design and prepare for the next meeting to discuss detailed design and production.",
+            "word_rep": 0.021505376344086002,
+            "char_rep": 0.2756972111553785,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "setting": "N-centric",
+      "alpha": 0.55,
+      "beta": 0.15,
+      "delta": 0.15,
+      "task_scores": {
+        "narrativeqa": 6.31,
+        "qasper": 5.81,
+        "multifieldqa_en": 44.1,
+        "hotpotqa": 50.0,
+        "2wikimqa": 5.26,
+        "gov_report": 11.01,
+        "qmsum": 9.0
+      },
+      "avg_score": 18.78,
+      "sample_records": {
+        "narrativeqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "Daisy encountered Jim in Eatonville, Florida.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.612612612612613,
+            "prediction": "Socrates decides it is unjust to escape because he believes in the importance of obeying the laws of the state, even when faced with death. He argues that the laws of Athens are just and that he has always lived according to them. By escaping, he would be breaking the laws and betraying his commitment to the state, which he considers a moral duty. Additionally, he reasons that the laws are designed to maintain order and justice in society, and that refusing to obey them would set a dangerous precedent. Therefore, he concludes that it is unjust to escape and that it would be a betrayal of the principles he has lived by.",
+            "word_rep": 0.04504504504504503,
+            "char_rep": 0.20900321543408362,
+            "collapsed": false
+          }
+        ],
+        "qasper": [
+          {
+            "sample_idx": 0,
+            "score": 11.627906976744185,
+            "prediction": "The proposed strategies show that the combined approach of policy improvement with policy evaluation (PPO) and a custom policy that incorporates a buffer for handling long-term dependencies outperforms other methods. Specifically, the custom policy achieves a higher score (4.0) compared to the baseline PPO (3.5) and the policy with a buffer but without the custom policy (3.3). The results indicate that the custom policy is more effective in navigating the complex environment of the text-based game, particularly in handling the challenging \"grue\" scenario where the player must light the lamp before encountering the monster.",
+            "word_rep": 0.021739130434782594,
+            "char_rep": 0.1693290734824281,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The encoder in the system described uses a character-based approach, with the encoder and decoder both operating on character levels. The text mentions that the system uses a character-level encoder-decoder architecture for morphological reinflection tasks.",
+            "word_rep": 0.0,
+            "char_rep": 0.18972332015810278,
+            "collapsed": false
+          }
+        ],
+        "multifieldqa_en": [
+          {
+            "sample_idx": 0,
+            "score": 61.53846153846153,
+            "prediction": "After attacking Jacobo at a workers' strike, Ngotho is killed.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 26.666666666666668,
+            "prediction": "Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the denoiser is designed to handle non-Clifford noise, as it is based on a framework that works for general quantum circuits, including those with non-Clifford operations.",
+            "word_rep": 0.0,
+            "char_rep": 0.1937984496124031,
+            "collapsed": false
+          }
+        ],
+        "hotpotqa": [
+          {
+            "sample_idx": 0,
+            "score": 100.0,
+            "prediction": "Brian Stokes Mitchell.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The major components that make up the ribosome are the large subunit and the small subunit, which use two types of RNA: ribosomal RNA (rRNA).",
+            "word_rep": 0.0,
+            "char_rep": 0.07299270072992703,
+            "collapsed": false
+          }
+        ],
+        "2wikimqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "El director de la película \"Eisenstein en Guanajuato\", Peter Greenaway, fue nacido en Inglaterra.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.526315789473683,
+            "prediction": "\"Jugband Blues\" came out first. According to the text, \"Jugband Blues\" is a song by Pink Floyd from their album \"The Dark Side of the Moon,\" released in 1973. \"Joel The Lump Of Coal\" is a song by The Killers, released in 2014.",
+            "word_rep": 0.04878048780487809,
+            "char_rep": 0.15315315315315314,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 11.497730711043873,
+            "prediction": "The National Science Foundation (NSF) uses two programs, the Rotating Assistant Professor (RAP) and the Visiting Researcher (VRE), to bring external expertise into its operations. RAPs are typically university faculty members who rotate through NSF for a period of time, while VREs are researchers from other institutions who come to NSF for a shorter duration. Both programs aim to enhance the agency's capabilities by bringing in fresh perspectives and expertise.\n\nKey differences between the two programs include the duration of the assignment, the type of work performed, and the level of involvement with NSF's operations. RAPs are more involved in the day-to-day operations of the agency, while VREs are more focused on research and development activities.\n\nThe NSF also has a formal process for selecting and managing these individuals, including a competitive selection process and a structured assignment period. The agency has also implemented various measures to ensure that these individuals are effectively integrated into the organization and that their contributions are recognized and valued.\n\nOverall, the NSF's use of these programs is a key part of its strategy for maintaining a high level of expertise and innovation within the agency.",
+            "word_rep": 0.015873015873015928,
+            "char_rep": 0.22204472843450485,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.526315789473683,
+            "prediction": "The document outlines the challenges and efforts in managing federal IT systems, highlighting past failures in project execution, cost overruns, and inefficiencies. Despite a $96 billion budget for IT in 2018, many projects have failed to meet goals, with examples like the failed National Weather Service satellite program and the troubled implementation of the Healthcare.gov website. The report emphasizes the need for better oversight, improved project management, and stronger accountability to ensure that IT investments deliver value and meet mission objectives. It also discusses ongoing efforts to improve IT governance, including the implementation of the Federal IT Modernization Strategy, the establishment of the Federal CIO Council, and the adoption of new standards and best practices. The report concludes that while progress has been made, more needs to be done to ensure that federal IT systems are effective, efficient, and secure.",
+            "word_rep": 0.021739130434782594,
+            "char_rep": 0.16913319238900637,
+            "collapsed": false
+          }
+        ],
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 8.275862068965518,
+            "prediction": "The meeting begins with a welcome and introduction of the project, which is to design a new remote control for a television. The team discusses the project's goals, emphasizing the need for a user-friendly, innovative design. They outline the project structure, including roles and responsibilities. The team then engages in a creative activity by drawing on the whiteboard, where each member shares their chosen animal and its characteristics, symbolizing the design process. \n\nThe discussion moves to the project's technical aspects, including the design process, user needs, and the importance of balancing innovation with usability. The team explores ideas for the remote control, focusing on simplicity and functionality, while also considering the target audience. The meeting concludes with a summary of the project's objectives and a plan for the next steps, including further design work and collaboration. The team agrees to continue working on the project and to carry back their laptops for continued work.",
+            "word_rep": 0.0,
+            "char_rep": 0.23175542406311633,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.72972972972973,
+            "prediction": "The document is a meeting transcript where a team discusses the design of a new remote control. Key points include:\n\n- **User Interface Design**: The team is finalizing the layout and functionality of the remote, focusing on intuitive controls and user experience.\n- **Design Considerations**: They are exploring a compact, user-friendly design with a focus on aesthetics and ease of use, including a potential \"trigger\" style button for better grip.\n- **Technical Specifications**: Discussions include the use of a simple, cost-effective design with a focus on durability and affordability.\n- **Market Trends**: The team is considering trends in consumer electronics, aiming to create a product that appeals to younger users with a modern, stylish look.\n- **Budget and Timeline**: The team is working within a budget and has a tight deadline, with the final design to be ready for the next meeting.\n\nThe meeting concludes with a decision to finalize the design and prepare for the next phase of development.",
+            "word_rep": 0.03797468354430378,
+            "char_rep": 0.19023904382470125,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "setting": "V-centric",
+      "alpha": 0.15,
+      "beta": 0.55,
+      "delta": 0.15,
+      "task_scores": {
+        "narrativeqa": 5.26,
+        "qasper": 1.67,
+        "multifieldqa_en": 41.15,
+        "hotpotqa": 13.64,
+        "2wikimqa": 8.0,
+        "gov_report": 13.17,
+        "qmsum": 8.66
+      },
+      "avg_score": 13.08,
+      "sample_records": {
+        "narrativeqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "Daisy encountered Jim in Eatonville, Florida.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.526315789473683,
+            "prediction": "Socrates ultimately decides it is unjust to escape because he believes that the laws of Athens are just and that he has a duty to obey them. He argues that escaping would be a violation of the social contract and that he has already accepted the judgment of the court. Furthermore, he reasons that if he escapes, he would be setting a bad example and undermining the authority of the laws, which he considers to be a fundamental part of a just society. Socrates also emphasizes that he has lived his life according to the laws of Athens and that breaking them would be a betrayal of his principles. Therefore, he concludes that it is unjust to escape.",
+            "word_rep": 0.06896551724137934,
+            "char_rep": 0.22256568778979913,
+            "collapsed": false
+          }
+        ],
+        "qasper": [
+          {
+            "sample_idx": 0,
+            "score": 3.3333333333333335,
+            "prediction": "The proposed strategies show that using knowledge graphs with exploration strategies (like policy gradient and A2C) outperforms baselines. Specifically, the KG-A2C method achieves higher rewards and successfully navigates the environment, including passing the critical \"grue\" obstacle, while the A2C method struggles with this challenge. The results indicate that incorporating knowledge graphs improves performance in complex environments.",
+            "word_rep": 0.0,
+            "char_rep": 0.1258581235697941,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The encoder in the described system is a character-level encoder, which processes input text sequentially character by character. It is part of a character-level encoder-decoder architecture, where the encoder converts the input text into a sequence of hidden states, and the decoder generates the output text based on these hidden states. The encoder is specifically designed to handle the task of morphological reinflection by considering the sequence of characters in the input word.",
+            "word_rep": 0.0,
+            "char_rep": 0.2593360995850622,
+            "collapsed": false
+          }
+        ],
+        "multifieldqa_en": [
+          {
+            "sample_idx": 0,
+            "score": 64.51612903225806,
+            "prediction": "After attacking Jacobo at a workers' strike, Ngotho is injured and dies from his wounds.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 17.77777777777778,
+            "prediction": "Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the method is designed to handle non-Clifford noise, as it is based on a general approach that does not rely on the specific properties of Clifford gates.",
+            "word_rep": 0.0,
+            "char_rep": 0.11203319502074693,
+            "collapsed": false
+          }
+        ],
+        "hotpotqa": [
+          {
+            "sample_idx": 0,
+            "score": 27.27272727272727,
+            "prediction": "Brian Stokes Mitchell. He won the Tony Award for Best Actor in a Musical in 2000 for his role in \"Ragtime.\"",
+            "word_rep": 0.0,
+            "char_rep": 0.009708737864077666,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The large and small subunits that use two types of RNA are major components that make up the ribosome.",
+            "word_rep": 0.0,
+            "char_rep": 0.04081632653061229,
+            "collapsed": false
+          }
+        ],
+        "2wikimqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "El director de la película \"Eisenstein in Guanajuato\", Peter Greenaway, fue nacido en Inglaterra.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 16.0,
+            "prediction": "\"Jugband Blues\" came out first. According to the text, \"Jugband Blues\" was released in 1968, while \"Joel The Lump Of Coal\" was released in 2014.",
+            "word_rep": 0.04347826086956519,
+            "char_rep": 0.18571428571428572,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 14.035087719298245,
+            "prediction": "The document outlines the NSF's use of rotating personnel (rotators) in its operations, detailing the programs, regulations, and challenges associated with this practice. It explains the two main types of rotators: those who are temporarily assigned to NSF from other federal agencies and those who are hired directly by NSF. The document discusses the roles and responsibilities of these rotators, the compensation structure, and the administrative processes involved in their management.\n\nKey points include:\n\n- **Program Structure**: Rotators are assigned for specific durations and may be involved in various roles, including administrative, technical, and research support.\n- **Compensation**: Rotators receive a salary, benefits, and housing, with some receiving additional allowances for travel and subsistence.\n- **Management**: Rotators are managed through a formal process involving nominations, evaluations, and performance reviews.\n- **Challenges**: The document highlights issues such as the difficulty in evaluating the effectiveness of rotator programs, the need for better data collection, and the importance of aligning rotator programs with NSF's strategic goals.\n- **Recommendations**: The document recommends that NSF develop a more comprehensive evaluation framework for its rotator programs, including clear metrics for success and a more structured approach to managing and assessing the impact of these programs.\n\nOverall, the document provides a detailed overview of the NSF's rotator program, its implementation, challenges, and recommendations for improvement.",
+            "word_rep": 0.00462962962962965,
+            "char_rep": 0.27479469361970943,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.296983758700698,
+            "prediction": "The document outlines the challenges and efforts in improving IT management and cybersecurity within the U.S. federal government. Despite significant investments, many projects fail due to poor planning, execution, and oversight. Key issues include:\n\n1. **Project Failures**: Many IT projects exceed budgets, miss deadlines, and fail to meet objectives. This is often due to inadequate planning, poor leadership, and lack of accountability.\n\n2. **Management and Oversight**: There is a need for stronger management practices, including better project management, more effective oversight, and clearer accountability for project outcomes.\n\n3. **Cybersecurity**: The government faces ongoing cybersecurity threats, and there is a need for improved cybersecurity measures to protect sensitive information and infrastructure.\n\n4. **Legislative and Regulatory Efforts**: Various legislative and regulatory efforts have been made to improve IT management and cybersecurity, including the Federal Information Security Management Act (FISMA) and the National Institute of Standards and Technology (NIST) guidelines.\n\n5. **Training and Education**: There is a need for better training and education for IT professionals to ensure they have the skills and knowledge needed to manage and secure IT systems effectively.\n\n6. **Technology and Innovation**: The government needs to invest in new technologies and innovation to improve IT systems and cybersecurity capabilities.\n\nThe document also highlights the importance of continuous improvement and the need for a culture of accountability and transparency in IT management and cybersecurity.",
+            "word_rep": 0.036036036036036,
+            "char_rep": 0.3103872157344807,
+            "collapsed": false
+          }
+        ],
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 6.741573033707865,
+            "prediction": "The meeting discusses the project to design a new television remote control. The team introduces the project goals and outlines the design process. They discuss the remote's features, aiming for a modern, user-friendly design that stands out from traditional remotes. Key points include focusing on functionality, simplicity, and a unique aesthetic. The team also plans to explore innovative features, such as a minimalist interface and intuitive controls, to enhance user experience. The meeting concludes with a plan to continue the project in the next session.",
+            "word_rep": 0.0,
+            "char_rep": 0.15384615384615385,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.572687224669602,
+            "prediction": "The document describes a meeting among team members (including a Project Manager, User Interface Designer, and Industrial Designer) discussing the design and development of a new remote control device. Key points include:\n\n- **Design Concepts**: The team is exploring a remote control with a unique, user-friendly interface, featuring a scrollable design, customizable buttons, and a focus on ease of use for younger users.\n- **User Interface**: The UI includes a main screen with buttons for basic functions (e.g., power, volume), a scrollable menu for advanced settings, and a customizable layout.\n- **Industrial Design**: The remote is designed to be compact, ergonomic, and visually appealing, with a focus on modern aesthetics and intuitive interaction.\n- **Technical Considerations**: The team is considering the use of a low-cost, high-performance microcontroller (e.g., Arduino) and a simple, user-friendly interface for programming and customization.\n- **Challenges**: The team is addressing issues such as cost, usability, and the need for a balance between functionality and design.\n- **Next Steps**: The team plans to finalize the design and prepare for further development, with a focus on user testing and refinement.\n\nThe meeting concludes with a decision to proceed with the design and development of the remote control, with a focus on user-centered design and practical implementation.",
+            "word_rep": 0.05339805825242716,
+            "char_rep": 0.28877769835596856,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "setting": "P-centric",
+      "alpha": 0.15,
+      "beta": 0.15,
+      "delta": 0.55,
+      "task_scores": {
+        "narrativeqa": 5.1,
+        "qasper": 5.71,
+        "multifieldqa_en": 42.13,
+        "hotpotqa": 50.0,
+        "2wikimqa": 6.45,
+        "gov_report": 19.35,
+        "qmsum": 6.89
+      },
+      "avg_score": 19.38,
+      "sample_records": {
+        "narrativeqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "Daisy encountered Jim in Eatonville.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.20408163265306,
+            "prediction": "Socrates decides it is unjust to escape because he believes he has made agreements with the laws of Athens and is bound by them. He argues that escaping would be a violation of these agreements and that he is responsible for his actions as a citizen. Additionally, he reasons that fleeing would make him an enemy of the state and that he would not be just before the laws of the underworld. Ultimately, Socrates concludes that it is morally wrong to break the covenants he has made and that he should accept his fate rather than escape.",
+            "word_rep": 0.04210526315789476,
+            "char_rep": 0.17481203007518797,
+            "collapsed": false
+          }
+        ],
+        "qasper": [
+          {
+            "sample_idx": 0,
+            "score": 11.428571428571429,
+            "prediction": "The proposed strategies show that KG-A2C with policy chaining and backtracking outperforms other methods. It converges faster and achieves higher scores by efficiently navigating the game's structure, particularly in handling the critical \"bottleneck\" at score 40 where the player must light the lamp in the dark cellar. In contrast, Go-Explore-based methods take longer to find promising cell representations and are less efficient in this specific task.",
+            "word_rep": 0.0,
+            "char_rep": 0.055432372505543226,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The encoder in the system described uses a character-based encoder-decoder model.",
+            "word_rep": 0.0,
+            "char_rep": 0.07792207792207795,
+            "collapsed": false
+          }
+        ],
+        "multifieldqa_en": [
+          {
+            "sample_idx": 0,
+            "score": 61.53846153846153,
+            "prediction": "After attacking Jacobo at a workers' strike, Ngotho is killed.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 22.72727272727273,
+            "prediction": "Yes, the denoiser can be applied to circuits with non-Clifford noise. The text states that the denoiser is designed to handle non-Clifford noise, as it is used to correct for noise in quantum circuits, including those with non-Clifford operations.",
+            "word_rep": 0.0,
+            "char_rep": 0.21810699588477367,
+            "collapsed": false
+          }
+        ],
+        "hotpotqa": [
+          {
+            "sample_idx": 0,
+            "score": 100.0,
+            "prediction": "Brian Stokes Mitchell.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 0.0,
+            "prediction": "The large subunit and small subunit that use two types of RNA are major components that make up the ribosome.",
+            "word_rep": 0.0,
+            "char_rep": 0.06666666666666665,
+            "collapsed": false
+          }
+        ],
+        "2wikimqa": [
+          {
+            "sample_idx": 0,
+            "score": 0.0,
+            "prediction": "Elmer Bäck was born in Finland.",
+            "word_rep": 0.0,
+            "char_rep": 0.0,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 12.903225806451612,
+            "prediction": "\"Jugband Blues\" came out first. According to the text, \"Jugband Blues\" is a song by The Rolling Stones, released in 1968. \"Joel The Lump Of Coal\" is a song by The Killers, released in 2011.",
+            "word_rep": 0.09090909090909094,
+            "char_rep": 0.21081081081081077,
+            "collapsed": false
+          }
+        ],
+        "gov_report": [
+          {
+            "sample_idx": 0,
+            "score": 20.954907161803714,
+            "prediction": "The report evaluates the National Science Foundation's (NSF) use of temporary staff (IPA and VSEE rotators) and its efforts to balance these with permanent federal employees. It highlights the importance of strategic workforce planning, cost management, and performance evaluation in ensuring the effectiveness of the rotator programs. Key findings include:\n\n- **Program Overview**: The NSF uses temporary staff (IPA and VSEE) to bring fresh perspectives and expertise, which supports its mission in science and engineering. However, these staff members are blended into the permanent workforce, complicating separate evaluation of their contributions.\n\n- **Cost Management**: The NSF has implemented several cost-saving strategies since 2017, including changes to hiring practices and performance metrics, to manage the financial impact of temporary staff.\n\n- **Workforce Balance**: While the NSF has not yet developed a comprehensive agency-wide strategy to balance the use of temporary staff with permanent employees, it has recognized the need for such a strategy, as recommended by its IPA steering committee.\n\n- **Performance Evaluation**: The NSF has not fully evaluated the contributions of its rotator programs to its human capital goals and programmatic outcomes. This limits its ability to demonstrate the value of these programs to external stakeholders and to make necessary adjustments.\n\n- **Recommendations**: The report recommends that the NSF Director of Human Resource Management:\n  1. Develop an agency-wide workforce strategy to balance the use of IPA and VSEE rotators with permanent staff.\n  2. Evaluate the contributions of the rotator programs to the NSF's human capital goals and programmatic results.\n\nThe NSF has concurred with these recommendations and stated that their implementation will enhance the agency's mission and strengthen its workforce. The report is available for public access and is intended to inform Congress and other stakeholders about the NSF's workforce planning and management practices.",
+            "word_rep": 0.05821917808219179,
+            "char_rep": 0.3500491642084562,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 17.74891774891775,
+            "prediction": "The document outlines the U.S. Government Accountability Office's (GAO) assessment of the federal government's efforts to improve the management of information technology (IT) acquisitions and operations, as well as the security of federal IT systems. Key findings include:\n\n1. **IT Acquisition and Operations**: \n   - The federal government has made progress in implementing key IT management initiatives, such as assigning Chief Information Officers (CIOs) responsibilities, requiring CIO review of IT acquisitions, and achieving cost savings from data center consolidation.\n   - However, challenges remain in effectively managing software assets and ensuring consistent implementation of IT policies and procedures.\n\n2. **IT Security**:\n   - The government has taken steps to enhance cybersecurity, including implementing the Federal Information Security Management Act (FISMA) requirements and working on the National Institute of Standards and Technology (NIST) Cybersecurity Framework.\n   - Despite these efforts, many agencies continue to face challenges in securing their systems and protecting sensitive information.\n\n3. **Recommendations**:\n   - The GAO has made numerous recommendations to improve IT management and cybersecurity, but many have not been fully implemented.\n   - Further efforts by the Office of Management and Budget (OMB) and federal agencies are needed to fully realize the opportunities presented by the Federal Information Technology Acquisition Reform Act (FITARA) and FISMA.\n\n4. **Maturity Model**:\n   - A maturity model was developed to assess the effectiveness of agencies' information security programs. The model evaluates agencies on a five-level scale, with the median rating across the five NIST Cybersecurity Framework areas being level 3 (consistently implemented).\n\nIn conclusion, while the federal government has made progress in improving IT management and cybersecurity, further action is needed to fully realize the benefits of FITARA and FISMA, ensuring the security and efficiency of federal IT systems. The GAO will continue to monitor agencies' efforts to implement recommendations and improve federal IT management and security.",
+            "word_rep": 0.04347826086956519,
+            "char_rep": 0.3602941176470589,
+            "collapsed": false
+          }
+        ],
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 4.054054054054054,
+            "prediction": "The meeting focused on designing a new, original remote control that balances innovation with user-friendliness. Key points included:\n\n- **Design Goals**: The remote should be modern, stylish, and functional, avoiding excessive buttons while maintaining ease of use.\n- **User Experience**: Simplify controls, possibly using a menu-based system or touchscreen for common functions, reducing the need for physical buttons.\n- **Battery Life**: While not a major concern, a long battery life is a desirable feature.\n- **Aesthetic Appeal**: The remote should fit into the modern, sleek design trend, similar to minimalist devices like trains or websites.\n- **Workshop Instructions**: Participants were given specific tasks to follow upon returning to their workspaces, including technical design and user requirements.\n\nThe team agreed to focus on creating a remote that is both innovative and user-friendly, ensuring it meets the needs of both tech-savvy users and those less familiar with remote controls.",
+            "word_rep": 0.006896551724137945,
+            "char_rep": 0.14529058116232463,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.72972972972973,
+            "prediction": "The meeting focused on designing a new remote control device, with discussions on its form, function, and cost. Key points included:\n\n- **Design**: The remote should be user-friendly, possibly with a pistol-like shape or a game controller-style design, featuring a screen (LCD) for better usability. It should be small, ergonomic, and made of hard plastic with rubber for grip.\n  \n- **Functionality**: The remote should include a screen, buttons, and possibly a joystick for better control. It should be compatible with a normal battery, avoiding more expensive kinetic options.\n\n- **Cost**: The design must be cost-effective, with a focus on using simple chips if no screen is included. The team agreed to prioritize cost efficiency while ensuring the product is appealing to younger users.\n\n- **Next Steps**: The team will finalize the design and prepare for a detailed design meeting in thirty minutes. All elements must be ready for the next meeting.",
+            "word_rep": 0.01342281879194629,
+            "char_rep": 0.18947368421052635,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ]
+}
