@@ -1,0 +1,71 @@
+{
+  "results": [
+    {
+      "variant": "V_only",
+      "avg_score": 8.596491228070175,
+      "avg_collapse_pct": 0.0,
+      "task_scores": {
+        "qmsum": 8.596491228070175
+      },
+      "task_collapse_pct": {
+        "qmsum": 0.0
+      },
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.526315789473683,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12,000, and the target profit is $5,000.",
+            "word_rep": 0.0,
+            "char_rep": 0.1472868217054264,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 6.666666666666667,
+            "prediction": "Marketing discussed market trend findings related to the preferences of younger consumers, who prefer devices with a modern, visually appealing design. They mentioned that younger audiences are drawn to products with a primary color scheme, such as yellow, and that these trends influence the design of the television remote control. Marketing also highlighted the importance of considering the primary color scheme in the design of the remote control to appeal to this demographic.",
+            "word_rep": 0.028169014084507005,
+            "char_rep": 0.18619246861924688,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "variant": "P_only",
+      "avg_score": 9.948652118100128,
+      "avg_collapse_pct": 0.0,
+      "task_scores": {
+        "qmsum": 9.948652118100128
+      },
+      "task_collapse_pct": {
+        "qmsum": 0.0
+      },
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 14.634146341463413,
+            "prediction": "The target price of the remote control is $5, the target cost of the remote control is $5, and the target profit of the remote control is $5.",
+            "word_rep": 0.2692307692307693,
+            "char_rep": 0.4963503649635036,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 5.263157894736841,
+            "prediction": "Marketing talked about market trend findings, specifically discussing trends in the industry, such as the need for a design that is something new.",
+            "word_rep": 0.0,
+            "char_rep": 0.035211267605633756,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    "qmsum"
+  ],
+  "num_samples": 2,
+  "sink_size": 0
+}

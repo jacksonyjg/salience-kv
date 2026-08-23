@@ -1,0 +1,129 @@
+2026-08-23 04:20:54,336 [INFO] __main__: ============================================================
+2026-08-23 04:20:54,337 [INFO] __main__: Table7: Signal Ablation (TABLE VII)
+2026-08-23 04:20:54,338 [INFO] __main__:   Model: qwen3-4b | Budget: 20% | sink_size=4 고정
+2026-08-23 04:20:54,339 [INFO] __main__:   Tasks: ['qmsum'] | Samples: 2
+2026-08-23 04:20:54,340 [INFO] __main__:   Variants: 6개
+2026-08-23 04:20:54,341 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-23 04:20:54,342 [INFO] __main__: ============================================================
+2026-08-23 04:20:54,343 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-23 04:20:54,484 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:20:54,494 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-23 04:20:54,615 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:20:54,629 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-23 04:20:54,722 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-23 04:20:54,813 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-23 04:20:56,482 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-23 04:20:56,485 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-23 04:20:56,531 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:20:56,539 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-23 04:21:07,420 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:21:07,430 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-23 04:21:07,511 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-23 04:21:07,552 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-23 04:21:07,564 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-23 04:21:07,565 [INFO] __main__: Variant: 3signal_NVP | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True}
+2026-08-23 04:21:07,566 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-23 04:21:07,567 [INFO] __main__: 
+  Task: qmsum
+2026-08-23 04:21:07,568 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 04:21:07,609 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:21:07,654 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:21:07,837 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:21:07,869 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:21:07,915 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:21:07,956 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-23 04:21:08,283 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 04:21:08,285 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True})
+2026-08-23 04:21:15,137 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-23 04:21:24,125 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-23 04:21:24,129 [INFO] __main__:   → score=9.35, collapse=0/2 (0.0%)
+2026-08-23 04:21:24,143 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.csv
+2026-08-23 04:21:24,158 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.json
+2026-08-23 04:21:24,159 [INFO] __main__:   [중간 저장 완료] 1/6 설정
+2026-08-23 04:21:24,161 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-23 04:21:24,162 [INFO] __main__: Variant: 4signal_NVPS | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': True, 'sink_size': 4, 'invert_norm': True}
+2026-08-23 04:21:24,163 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-23 04:21:24,164 [INFO] __main__: 
+  Task: qmsum
+2026-08-23 04:21:24,165 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 04:21:24,232 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:21:24,266 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:21:24,614 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 04:21:24,623 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': True, 'use_semantic': True, 'sink_size': 4, 'invert_norm': True})
+2026-08-23 04:21:28,583 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-23 04:21:35,288 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-23 04:21:35,292 [INFO] __main__:   → score=10.97, collapse=0/2 (0.0%)
+2026-08-23 04:21:35,325 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.csv
+2026-08-23 04:21:35,341 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.json
+2026-08-23 04:21:35,343 [INFO] __main__:   [중간 저장 완료] 2/6 설정
+2026-08-23 04:21:35,344 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-23 04:21:35,346 [INFO] __main__: Variant: wo_N | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True}
+2026-08-23 04:21:35,347 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-23 04:21:35,349 [INFO] __main__: 
+  Task: qmsum
+2026-08-23 04:21:35,350 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 04:21:35,423 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:21:35,457 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:21:35,891 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 04:21:35,894 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': True, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True})
+2026-08-23 04:21:40,999 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned in the discussion. The target cost is $12,000, and t'
+2026-08-23 04:21:47,323 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to consumer preferences, emphasizing the importance of designing a pro'
+2026-08-23 04:21:47,327 [INFO] __main__:   → score=8.55, collapse=0/2 (0.0%)
+2026-08-23 04:21:47,341 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.csv
+2026-08-23 04:21:47,354 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.json
+2026-08-23 04:21:47,356 [INFO] __main__:   [중간 저장 완료] 3/6 설정
+2026-08-23 04:21:47,357 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-23 04:21:47,358 [INFO] __main__: Variant: wo_V | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True}
+2026-08-23 04:21:47,360 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-23 04:21:47,361 [INFO] __main__: 
+  Task: qmsum
+2026-08-23 04:21:47,362 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 04:21:47,436 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:21:47,469 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:21:47,896 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 04:21:47,897 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True})
+2026-08-23 04:21:51,423 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $25, and the target p'
+2026-08-23 04:21:58,154 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-23 04:21:58,159 [INFO] __main__:   → score=11.07, collapse=0/2 (0.0%)
+2026-08-23 04:21:58,178 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.csv
+2026-08-23 04:21:58,193 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.json
+2026-08-23 04:21:58,197 [INFO] __main__:   [중간 저장 완료] 4/6 설정
+2026-08-23 04:21:58,197 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-23 04:21:58,198 [INFO] __main__: Variant: wo_P | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True}
+2026-08-23 04:21:58,199 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-23 04:21:58,200 [INFO] __main__: 
+  Task: qmsum
+2026-08-23 04:21:58,200 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 04:21:58,289 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:21:58,324 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:21:58,735 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 04:21:58,737 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True})
+2026-08-23 04:22:02,782 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $20, and the target profit i'
+2026-08-23 04:22:10,397 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-23 04:22:10,400 [INFO] __main__:   → score=11.82, collapse=0/2 (0.0%)
+2026-08-23 04:22:10,430 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.csv
+2026-08-23 04:22:10,445 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.json
+2026-08-23 04:22:10,446 [INFO] __main__:   [중간 저장 완료] 5/6 설정
+2026-08-23 04:22:10,447 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-23 04:22:10,448 [INFO] __main__: Variant: N_only | Budget: 20% | kwargs={'use_attention': True, 'use_entropy': False, 'use_position': False, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True}
+2026-08-23 04:22:10,449 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-23 04:22:10,450 [INFO] __main__: 
+  Task: qmsum
+2026-08-23 04:22:10,451 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 04:22:10,528 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:22:10,573 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:22:11,012 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 04:22:11,022 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': True, 'use_entropy': False, 'use_position': False, 'use_semantic': False, 'sink_size': 4, 'invert_norm': True})
+2026-08-23 04:22:15,374 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-23 04:22:22,436 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-23 04:22:22,440 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%)
+2026-08-23 04:22:22,451 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.csv
+2026-08-23 04:22:22,462 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_042054.json
+2026-08-23 04:22:22,462 [INFO] __main__:   [중간 저장 완료] 6/6 설정
+2026-08-23 04:22:22,464 [INFO] __main__: Table VII (Signal Ablation) completed!

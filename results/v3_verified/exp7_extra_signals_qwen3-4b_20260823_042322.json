@@ -1,0 +1,71 @@
+{
+  "results": [
+    {
+      "variant": "V_only",
+      "avg_score": 13.2044713553796,
+      "avg_collapse_pct": 0.0,
+      "task_scores": {
+        "qmsum": 13.2044713553796
+      },
+      "task_collapse_pct": {
+        "qmsum": 0.0
+      },
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.619469026548673,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences, specifically mentioning that younger audiences prefer products with a primary color, such as primary colors, and that there is a trend towards products that are more visually appealing and have a distinct design. They also mentioned that the market is moving towards products that are more user-friendly and have a modern, sleek appearance.",
+            "word_rep": 0.06666666666666665,
+            "char_rep": 0.2043795620437956,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "variant": "P_only",
+      "avg_score": 12.956521739130434,
+      "avg_collapse_pct": 0.0,
+      "task_scores": {
+        "qmsum": 12.956521739130434
+      },
+      "task_collapse_pct": {
+        "qmsum": 0.0
+      },
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 12.000000000000002,
+            "prediction": "The target price for the remote control is not explicitly mentioned in the discussion. The target cost is $0, as it refers to the cost of producing the remote control. The target profit is not explicitly mentioned either.",
+            "word_rep": 0.05555555555555558,
+            "char_rep": 0.29032258064516125,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.913043478260867,
+            "prediction": "Marketing discussed market trend findings related to the design of a new product, emphasizing the importance of making it appealing to younger consumers. They mentioned the need for a product that is innovative and has a unique design, such as a hand-shaped design with rubber around it for better grip and comfort. Additionally, Marketing highlighted the importance of the product's usability and its potential for selling in the market.",
+            "word_rep": 0.014925373134328401,
+            "char_rep": 0.13133640552995396,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    "qmsum"
+  ],
+  "num_samples": 2,
+  "sink_size": 4
+}

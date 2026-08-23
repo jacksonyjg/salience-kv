@@ -1,0 +1,242 @@
+{
+  "experiment": "exp7_signal_ablation",
+  "model": "qwen3-4b",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qmsum"
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "results": [
+    {
+      "method": "3signal_NVP",
+      "task_scores": {
+        "qmsum": 12.087155963302752
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 12.087155963302752,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 2969.260964741776,
+      "avg_throughput": 17.872429858303843,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.0,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.15555555555555556,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.174311926605506,
+            "prediction": "Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importance of understanding consumer preferences and trends to create a product that appeals to the target audience. They mentioned the need for a remote control that is easy to use, has a modern and appealing design, and incorporates features that align with current market demands.",
+            "word_rep": 0.0,
+            "char_rep": 0.10230179028132991,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "4signal_NVPS",
+      "task_scores": {
+        "qmsum": 7.596329416171169
+      },
+      "task_collapse_rates": {
+        "qmsum": 50.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "1/2"
+      },
+      "avg_score": 7.596329416171169,
+      "avg_collapse_rate_pct": 50.0,
+      "avg_collapse_frac": "1/2",
+      "avg_ttft_ms": 3046.04981401768,
+      "avg_throughput": 21.762688614708196,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 1.9851116625310175,
+            "prediction": "The target price of the remote control is not explicitly mentioned, but the target cost is described as \"let's make it five and a half,\" which appears to be a reference to a budget or financial target. The target profit is described as \"we need to make it five and a half,\" which seems to be a reference to a profit target. However, based on the discussion, the target cost is described as \"let's make it five and a half,\" and the target profit is described as \"we need to make it five and a half.\" These seem to be references to specific financial targets, but the exact figures are not provided. Based on the discussion, the target cost is described as \"let's make it five and a half,\" and the target profit is described as \"we need to make it five and a half.\" These seem to be references to specific financial targets, but the exact figures are not provided. Based on the discussion, the target cost is described as \"let's make it five and a half,\" and the target profit is described as \"we need to make it five and a half.\" These seem to be references to specific financial targets, but the exact figures are not provided. Based on the discussion, the target cost is described as \"let's make it five and a half,\" and the target profit is described as \"we need to make it five and a half.\" These seem to be references to specific financial targets, but the exact figures are not provided. Based on the discussion, the target cost is described as \"let's make it five and a half,\" and the target profit is described as \"we need to make it five and a half.\" These seem to be references to specific financial targets, but the exact figures are not provided. Based on the discussion, the target cost is described as \"let's make it five and a half,\" and the target profit is described as \"we need to make it five and a half.\" These seem to be references to specific financial targets, but the exact figures are not provided. Based on the discussion, the target cost is described as \"let's make it five and a half,\" and the target profit is described as \"we need to make it five and a half.\" These seem to be references to specific financial targets, but the exact figures are not provided. Based on the discussion, the target cost is described as \"let's make it five and a half,\" and the target profit is described as \"we need to make it five and a half.\" These seem",
+            "word_rep": 0.8154897494305239,
+            "char_rep": 0.8542372881355932,
+            "collapsed": true
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.20754716981132,
+            "prediction": "Marketing talked about findings regarding market trends, particularly focusing on the preferences of younger consumers, such as their desire for a new, innovative remote control with a gun-shaped design that is easy to use, has a soft touch for the thumb, and includes features like a scroll wheel and a joystick for better functionality and user experience.",
+            "word_rep": 0.0,
+            "char_rep": 0.019774011299435013,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_N",
+      "task_scores": {
+        "qmsum": 5.47542943270705
+      },
+      "task_collapse_rates": {
+        "qmsum": 50.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "1/2"
+      },
+      "avg_score": 5.47542943270705,
+      "avg_collapse_rate_pct": 50.0,
+      "avg_collapse_frac": "1/2",
+      "avg_ttft_ms": 1780.6519028452906,
+      "avg_throughput": 22.548896121177528,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 1.0498687664041995,
+            "prediction": "The target price of the remote control is not explicitly mentioned, but the target cost is $12, and the target profit is not explicitly mentioned. However, based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but the target cost is $12, and the target profit is calculated as the difference between the target price and the target cost. The target profit is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as the difference between the target price and the target cost. The target price is not explicitly stated, but based on the discussion, the target profit is calculated as",
+            "word_rep": 0.8903508771929824,
+            "char_rep": 0.9283363802559415,
+            "collapsed": true
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.900990099009901,
+            "prediction": "Marketing talked about market trend findings, specifically discussing the importance of designing a remote control that is easy to use, with features that appeal to younger people. They mentioned the need for a device that is innovative and suitable for the target market, which includes considerations for cost and usability.",
+            "word_rep": 0.0,
+            "char_rep": 0.05590062111801242,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_V",
+      "task_scores": {
+        "qmsum": 15.111231687466088
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 15.111231687466088,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1862.0690208768779,
+      "avg_throughput": 20.758859368753992,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price of the remote control is not explicitly mentioned, but the target cost is $25, and the target profit is $25.",
+            "word_rep": 0.0,
+            "char_rep": 0.17355371900826444,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 14.432989690721648,
+            "prediction": "Marketing discussed market trend findings related to the preferences of younger consumers, emphasizing the importance of design and functionality in the product. They mentioned findings that indicate a desire for innovative and user-friendly designs, as well as a need for a product that stands out in the market.",
+            "word_rep": 0.0,
+            "char_rep": 0.10032362459546929,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "wo_P",
+      "task_scores": {
+        "qmsum": 10.081053698074975
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 10.081053698074975,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1888.493369848352,
+      "avg_throughput": 21.503567988344834,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 9.523809523809524,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is stated as being under $10, and the target profit is not explicitly mentioned. However, the project aims to create a remote control that is both innovative and user-friendly, with the goal of achieving a profitable design.",
+            "word_rep": 0.020000000000000018,
+            "char_rep": 0.19741100323624594,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.638297872340425,
+            "prediction": "Marketing discussed market trend findings, noting that the target audience, particularly younger consumers, prefer products with a modern, distinctive design. They emphasized the importance of incorporating trends such as large, bold colors and a unique, recognizable appearance in the design of the remote control.",
+            "word_rep": 0.0,
+            "char_rep": 0.045016077170418,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "N_only",
+      "task_scores": {
+        "qmsum": 12.656641604010025
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 12.656641604010025,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1485.0251055380522,
+      "avg_throughput": 21.836294575395655,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1889763779527559,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.523809523809524,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctive and user-friendly remote control design. They mentioned that the market is trending towards larger, more prominent buttons and a design that stands out from other remote controls, emphasizing the importance of a unique and recognizable design in the competitive market.",
+            "word_rep": 0.0,
+            "char_rep": 0.1136950904392765,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ],
+  "completed_variants": 6,
+  "total_variants": 6
+}

@@ -1,0 +1,64 @@
+2026-08-23 04:22:30,802 [INFO] __main__: ============================================================
+2026-08-23 04:22:30,803 [INFO] __main__: TABLE VII 보완: V_only, P_only 절제 실험
+2026-08-23 04:22:30,818 [INFO] __main__:   Model: qwen3-4b | Sink: 0 | Budget: 20%
+2026-08-23 04:22:30,820 [INFO] __main__:   Tasks: ['qmsum'] | Samples: 2
+2026-08-23 04:22:30,821 [INFO] __main__: ============================================================
+2026-08-23 04:22:30,822 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-23 04:22:30,979 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:22:30,988 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-23 04:22:31,104 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:22:31,128 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-23 04:22:31,236 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-23 04:22:31,324 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-23 04:22:32,993 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-23 04:22:32,997 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-23 04:22:33,100 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:22:33,110 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-23 04:22:44,384 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:22:44,391 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-23 04:22:44,477 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-23 04:22:44,499 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-23 04:22:44,527 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-23 04:22:44,528 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-23 04:22:44,528 [INFO] __main__: Variant: V_only | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-23 04:22:44,532 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-23 04:22:44,534 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 04:22:44,585 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:22:44,614 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:22:44,808 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:22:44,851 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:22:44,891 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:22:44,928 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-23 04:22:45,213 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 04:22:45,219 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': True, 'use_position': False, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-23 04:22:51,254 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12,000, and the target prof'
+2026-08-23 04:23:04,282 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the preferences of younger consumers, who prefer devices with a mod'
+2026-08-23 04:23:04,289 [INFO] __main__:   qmsum: score=8.60, collapse=0.0%
+2026-08-23 04:23:04,327 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_extra_signals_qwen3-4b_20260823_042230.csv
+2026-08-23 04:23:04,345 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_extra_signals_qwen3-4b_20260823_042230.json
+2026-08-23 04:23:04,347 [INFO] __main__:   [중간 저장 완료] V_only
+2026-08-23 04:23:04,348 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-23 04:23:04,349 [INFO] __main__: Variant: P_only | Budget: 20% | kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True}
+2026-08-23 04:23:04,351 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-23 04:23:04,352 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 04:23:04,431 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 04:23:04,462 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 04:23:04,904 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 04:23:04,922 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'use_attention': False, 'use_entropy': False, 'use_position': True, 'use_semantic': False, 'sink_size': 0, 'invert_norm': True})
+2026-08-23 04:23:09,679 [INFO] core.evaluator_v2: [ours] pred='The target price of the remote control is $5, the target cost of the remote control is $5, and the target profit of the '
+2026-08-23 04:23:14,216 [INFO] core.evaluator_v2: [ours] pred='Marketing talked about market trend findings, specifically discussing trends in the industry, such as the need for a des'
+2026-08-23 04:23:14,227 [INFO] __main__:   qmsum: score=9.95, collapse=0.0%
+2026-08-23 04:23:14,244 [INFO] core.results_manager: Results saved to results/v3_verified/exp7_extra_signals_qwen3-4b_20260823_042230.csv
+2026-08-23 04:23:14,259 [INFO] core.results_manager: JSON saved to results/v3_verified/exp7_extra_signals_qwen3-4b_20260823_042230.json
+2026-08-23 04:23:14,260 [INFO] __main__:   [중간 저장 완료] P_only
+2026-08-23 04:23:14,265 [INFO] __main__: 
+============================================================
+2026-08-23 04:23:14,268 [INFO] __main__: 완료. 기존 TABLE VII(a) 6개 변형과 비교:
+2026-08-23 04:23:14,270 [INFO] __main__:   참고 - 기존: 3signal_NVP=13.67, 4signal_NVPS=12.50, wo_N=16.52,
+2026-08-23 04:23:14,271 [INFO] __main__:                 wo_V=12.77, wo_P=16.11, N_only=12.39
+2026-08-23 04:23:14,273 [INFO] __main__:   V_only: score=8.60, collapse=0.0%
+2026-08-23 04:23:14,275 [INFO] __main__:   P_only: score=9.95, collapse=0.0%
+2026-08-23 04:23:14,276 [INFO] __main__: CSV: results/v3_verified/exp7_extra_signals_qwen3-4b_20260823_042230.csv
+2026-08-23 04:23:14,277 [INFO] __main__: ============================================================
