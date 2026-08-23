@@ -1,3 +1,13 @@
+# ARCHIVED — NON-CANONICAL
+
+This document records the July 2026 development state (4-signal, 50-sample,
+pre-direction-fix, pre-QMSum-fix results). It must not be used for manuscript
+reproduction. See `PAPER_TABLE_MAPPING.md` (repository root) or the
+Manuscript-to-Code Mapping in `README.md` for canonical results and their
+exact data provenance.
+
+---
+
 # 신뢰 가능한 실험 결과 소스 (2026-07-04 확정)
 
 ## Exp1-A 50샘플 최종 (4-signal, 4-8k context, 구버전 — 패치 이전)
