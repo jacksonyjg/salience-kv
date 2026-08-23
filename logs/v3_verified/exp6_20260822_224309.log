@@ -1,0 +1,537 @@
+2026-08-22 22:43:09,276 [INFO] __main__: ============================================================
+2026-08-22 22:43:09,279 [INFO] __main__: Table6: Sink Intervention (TABLE VI)
+2026-08-22 22:43:09,281 [INFO] __main__:   Model: qwen3-4b | Budget: 20%
+2026-08-22 22:43:09,282 [INFO] __main__:   Tasks: ['qmsum'] | Samples: 2
+2026-08-22 22:43:09,284 [INFO] __main__:   Methods: 30개 설정 (5방법 x 6 sink크기)
+2026-08-22 22:43:09,285 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-22 22:43:09,286 [INFO] __main__: ============================================================
+2026-08-22 22:43:09,288 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-22 22:43:09,465 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:43:09,472 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 22:43:09,575 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:43:09,584 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-22 22:43:09,699 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-22 22:43:09,824 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-22 22:43:11,442 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-22 22:43:11,446 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-22 22:43:11,491 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:43:11,499 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-22 22:43:50,060 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:43:50,068 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-22 22:43:50,172 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-22 22:43:50,209 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-22 22:43:50,224 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:43:50,226 [INFO] __main__: Method: SalienceKV_m0 | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-22 22:43:50,227 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:43:50,228 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:43:50,229 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:43:50,273 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:43:50,305 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:43:50,523 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:43:50,558 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:43:50,601 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:43:50,672 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-22 22:43:51,126 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:43:51,128 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-22 22:43:54,726 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-22 22:43:59,204 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-22 22:43:59,211 [INFO] __main__:   → score=12.09, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:43:59,225 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:43:59,237 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:43:59,239 [INFO] __main__:   [중간 저장 완료] 1/30 설정
+2026-08-22 22:43:59,240 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:43:59,242 [INFO] __main__: Method: SalienceKV_m1 | Budget: 20% | kwargs={'sink_size': 1, 'invert_norm': True}
+2026-08-22 22:43:59,243 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:43:59,244 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:43:59,246 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:43:59,321 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:43:59,352 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:43:59,759 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:43:59,761 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 1, 'invert_norm': True})
+2026-08-22 22:44:03,465 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-22 22:44:07,385 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-22 22:44:07,388 [INFO] __main__:   → score=9.35, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:44:07,399 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:44:07,416 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:44:07,417 [INFO] __main__:   [중간 저장 완료] 2/30 설정
+2026-08-22 22:44:07,418 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:44:07,419 [INFO] __main__: Method: SalienceKV_m2 | Budget: 20% | kwargs={'sink_size': 2, 'invert_norm': True}
+2026-08-22 22:44:07,421 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:44:07,421 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:44:07,422 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:44:07,491 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:44:07,523 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:44:07,868 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:44:07,870 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 2, 'invert_norm': True})
+2026-08-22 22:44:11,384 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-22 22:44:15,338 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-22 22:44:15,341 [INFO] __main__:   → score=9.35, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:44:15,354 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:44:15,364 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:44:15,364 [INFO] __main__:   [중간 저장 완료] 3/30 설정
+2026-08-22 22:44:15,365 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:44:15,366 [INFO] __main__: Method: SalienceKV_m4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-22 22:44:15,367 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:44:15,368 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:44:15,369 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:44:15,436 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:44:15,467 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:44:15,809 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:44:15,820 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-22 22:44:19,271 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-22 22:44:23,500 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-22 22:44:23,503 [INFO] __main__:   → score=9.35, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:44:23,523 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:44:23,534 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:44:23,535 [INFO] __main__:   [중간 저장 완료] 4/30 설정
+2026-08-22 22:44:23,536 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:44:23,536 [INFO] __main__: Method: SalienceKV_m8 | Budget: 20% | kwargs={'sink_size': 8, 'invert_norm': True}
+2026-08-22 22:44:23,537 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:44:23,537 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:44:23,538 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:44:23,605 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:44:23,644 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:44:23,972 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:44:23,974 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 8, 'invert_norm': True})
+2026-08-22 22:44:27,194 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-22 22:44:31,235 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-22 22:44:31,237 [INFO] __main__:   → score=9.76, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:44:31,250 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:44:31,258 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:44:31,259 [INFO] __main__:   [중간 저장 완료] 5/30 설정
+2026-08-22 22:44:31,259 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:44:31,260 [INFO] __main__: Method: SalienceKV_m16 | Budget: 20% | kwargs={'sink_size': 16, 'invert_norm': True}
+2026-08-22 22:44:31,260 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:44:31,261 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:44:31,261 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:44:31,324 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:44:31,355 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:44:31,655 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:44:31,656 [INFO] core.evaluator_v2: [ours] qmsum (2샘플, budget=20%, kwargs={'sink_size': 16, 'invert_norm': True})
+2026-08-22 22:44:35,052 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as stated in the transc'
+2026-08-22 22:44:39,222 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-22 22:44:39,224 [INFO] __main__:   → score=11.14, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:44:39,234 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:44:39,246 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:44:39,247 [INFO] __main__:   [중간 저장 완료] 6/30 설정
+2026-08-22 22:44:39,247 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:44:39,248 [INFO] __main__: Method: AdaKV-adapted_m0 | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-22 22:44:39,249 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:44:39,249 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:44:39,250 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:44:39,311 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:44:39,343 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:44:39,630 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:44:39,631 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-22 22:44:41,964 [INFO] core.evaluator_v2: [adakv] pred='The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit'
+2026-08-22 22:44:45,739 [INFO] core.evaluator_v2: [adakv] pred='Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctiv'
+2026-08-22 22:44:45,742 [INFO] __main__:   → score=12.66, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:44:45,754 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:44:45,764 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:44:45,764 [INFO] __main__:   [중간 저장 완료] 7/30 설정
+2026-08-22 22:44:45,765 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:44:45,765 [INFO] __main__: Method: AdaKV-adapted_m1 | Budget: 20% | kwargs={'sink_size': 1, 'invert_norm': True}
+2026-08-22 22:44:45,766 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:44:45,766 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:44:45,767 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:44:45,827 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:44:45,859 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:44:46,166 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:44:46,166 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 1, 'invert_norm': True})
+2026-08-22 22:44:48,733 [INFO] core.evaluator_v2: [adakv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:44:53,258 [INFO] core.evaluator_v2: [adakv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:44:53,261 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:44:53,271 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:44:53,282 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:44:53,283 [INFO] __main__:   [중간 저장 완료] 8/30 설정
+2026-08-22 22:44:53,283 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:44:53,284 [INFO] __main__: Method: AdaKV-adapted_m2 | Budget: 20% | kwargs={'sink_size': 2, 'invert_norm': True}
+2026-08-22 22:44:53,284 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:44:53,284 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:44:53,285 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:44:53,349 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:44:53,408 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:44:53,727 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:44:53,729 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 2, 'invert_norm': True})
+2026-08-22 22:44:56,266 [INFO] core.evaluator_v2: [adakv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:45:00,789 [INFO] core.evaluator_v2: [adakv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:45:00,792 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:45:00,802 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:45:00,817 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:45:00,817 [INFO] __main__:   [중간 저장 완료] 9/30 설정
+2026-08-22 22:45:00,818 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:45:00,819 [INFO] __main__: Method: AdaKV-adapted_m4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-22 22:45:00,819 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:45:00,819 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:45:00,820 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:45:00,890 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:45:00,921 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:45:01,239 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:45:01,240 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-22 22:45:04,038 [INFO] core.evaluator_v2: [adakv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:45:09,151 [INFO] core.evaluator_v2: [adakv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:45:09,156 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:45:09,168 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:45:09,180 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:45:09,181 [INFO] __main__:   [중간 저장 완료] 10/30 설정
+2026-08-22 22:45:09,182 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:45:09,182 [INFO] __main__: Method: AdaKV-adapted_m8 | Budget: 20% | kwargs={'sink_size': 8, 'invert_norm': True}
+2026-08-22 22:45:09,183 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:45:09,184 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:45:09,185 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:45:09,304 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:45:09,343 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:45:09,732 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:45:09,734 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 8, 'invert_norm': True})
+2026-08-22 22:45:12,259 [INFO] core.evaluator_v2: [adakv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:45:18,040 [INFO] core.evaluator_v2: [adakv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:45:18,043 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:45:18,053 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:45:18,066 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:45:18,067 [INFO] __main__:   [중간 저장 완료] 11/30 설정
+2026-08-22 22:45:18,067 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:45:18,067 [INFO] __main__: Method: AdaKV-adapted_m16 | Budget: 20% | kwargs={'sink_size': 16, 'invert_norm': True}
+2026-08-22 22:45:18,068 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:45:18,068 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:45:18,069 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:45:18,135 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:45:18,164 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:45:18,460 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:45:18,462 [INFO] core.evaluator_v2: [adakv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 16, 'invert_norm': True})
+2026-08-22 22:45:20,826 [INFO] core.evaluator_v2: [adakv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:45:24,928 [INFO] core.evaluator_v2: [adakv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:45:24,930 [INFO] __main__:   → score=13.02, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:45:24,939 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:45:24,946 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:45:24,947 [INFO] __main__:   [중간 저장 완료] 12/30 설정
+2026-08-22 22:45:24,948 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:45:24,948 [INFO] __main__: Method: PyramidKV-adapted_m0 | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-22 22:45:24,948 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:45:24,949 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:45:24,949 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:45:25,080 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:45:25,118 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:45:25,472 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:45:25,474 [INFO] core.evaluator_v2: [pyramidkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-22 22:45:28,048 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit'
+2026-08-22 22:45:31,941 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctiv'
+2026-08-22 22:45:31,944 [INFO] __main__:   → score=12.66, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:45:31,956 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:45:31,969 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:45:31,969 [INFO] __main__:   [중간 저장 완료] 13/30 설정
+2026-08-22 22:45:31,970 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:45:31,971 [INFO] __main__: Method: PyramidKV-adapted_m1 | Budget: 20% | kwargs={'sink_size': 1, 'invert_norm': True}
+2026-08-22 22:45:31,971 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:45:31,972 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:45:31,972 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:45:32,034 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:45:32,064 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:45:32,385 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:45:32,387 [INFO] core.evaluator_v2: [pyramidkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 1, 'invert_norm': True})
+2026-08-22 22:45:35,020 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:45:39,608 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:45:39,613 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:45:39,624 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:45:39,634 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:45:39,634 [INFO] __main__:   [중간 저장 완료] 14/30 설정
+2026-08-22 22:45:39,635 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:45:39,635 [INFO] __main__: Method: PyramidKV-adapted_m2 | Budget: 20% | kwargs={'sink_size': 2, 'invert_norm': True}
+2026-08-22 22:45:39,636 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:45:39,637 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:45:39,637 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:45:39,702 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:45:39,739 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:45:40,033 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:45:40,034 [INFO] core.evaluator_v2: [pyramidkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 2, 'invert_norm': True})
+2026-08-22 22:45:42,640 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:45:47,110 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:45:47,114 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:45:47,137 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:45:47,149 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:45:47,150 [INFO] __main__:   [중간 저장 완료] 15/30 설정
+2026-08-22 22:45:47,151 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:45:47,152 [INFO] __main__: Method: PyramidKV-adapted_m4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-22 22:45:47,153 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:45:47,154 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:45:47,155 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:45:47,221 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:45:47,253 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:45:47,637 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:45:47,638 [INFO] core.evaluator_v2: [pyramidkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-22 22:45:50,494 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:45:55,061 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:45:55,064 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:45:55,094 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:45:55,110 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:45:55,111 [INFO] __main__:   [중간 저장 완료] 16/30 설정
+2026-08-22 22:45:55,111 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:45:55,112 [INFO] __main__: Method: PyramidKV-adapted_m8 | Budget: 20% | kwargs={'sink_size': 8, 'invert_norm': True}
+2026-08-22 22:45:55,112 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:45:55,114 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:45:55,114 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:45:55,178 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:45:55,213 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:45:55,546 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:45:55,548 [INFO] core.evaluator_v2: [pyramidkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 8, 'invert_norm': True})
+2026-08-22 22:45:58,248 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:46:03,483 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:46:03,486 [INFO] __main__:   → score=11.93, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:46:03,499 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:46:03,519 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:46:03,520 [INFO] __main__:   [중간 저장 완료] 17/30 설정
+2026-08-22 22:46:03,523 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:46:03,524 [INFO] __main__: Method: PyramidKV-adapted_m16 | Budget: 20% | kwargs={'sink_size': 16, 'invert_norm': True}
+2026-08-22 22:46:03,525 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:46:03,526 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:46:03,527 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:46:03,596 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:46:03,629 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:46:04,068 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:46:04,070 [INFO] core.evaluator_v2: [pyramidkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 16, 'invert_norm': True})
+2026-08-22 22:46:06,871 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-22 22:46:12,289 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:46:12,292 [INFO] __main__:   → score=13.02, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:46:12,301 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:46:12,320 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:46:12,320 [INFO] __main__:   [중간 저장 완료] 18/30 설정
+2026-08-22 22:46:12,321 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:46:12,321 [INFO] __main__: Method: H2O_m0 | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-22 22:46:12,322 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:46:12,322 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:46:12,323 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:46:12,387 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:46:12,419 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:46:12,780 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:46:12,781 [INFO] core.evaluator_v2: [h2o] qmsum (2샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-22 22:46:16,065 [INFO] core.evaluator_v2: [h2o] pred='The project team discussed designing a remote control that is both innovative and user-friendly. They mentioned that the'
+2026-08-22 22:46:19,658 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed market trend findings that indicate a preference for bold, noticeable designs, with a focus on color'
+2026-08-22 22:46:19,661 [INFO] __main__:   → score=9.40, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:46:19,670 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:46:19,681 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:46:19,681 [INFO] __main__:   [중간 저장 완료] 19/30 설정
+2026-08-22 22:46:19,682 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:46:19,682 [INFO] __main__: Method: H2O_m1 | Budget: 20% | kwargs={'sink_size': 1, 'invert_norm': True}
+2026-08-22 22:46:19,683 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:46:19,683 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:46:19,684 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:46:19,743 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:46:19,779 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:46:20,070 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:46:20,072 [INFO] core.evaluator_v2: [h2o] qmsum (2샘플, budget=20%, kwargs={'sink_size': 1, 'invert_norm': True})
+2026-08-22 22:46:24,187 [INFO] core.evaluator_v2: [h2o] pred='The project aims to design a new remote control for a television that is both innovative and user-friendly. The team dis'
+2026-08-22 22:46:28,262 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the need for '
+2026-08-22 22:46:28,265 [INFO] __main__:   → score=10.52, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:46:28,276 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:46:28,290 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:46:28,290 [INFO] __main__:   [중간 저장 완료] 20/30 설정
+2026-08-22 22:46:28,291 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:46:28,291 [INFO] __main__: Method: H2O_m2 | Budget: 20% | kwargs={'sink_size': 2, 'invert_norm': True}
+2026-08-22 22:46:28,292 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:46:28,292 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:46:28,293 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:46:28,360 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:46:28,394 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:46:28,695 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:46:28,696 [INFO] core.evaluator_v2: [h2o] qmsum (2샘플, budget=20%, kwargs={'sink_size': 2, 'invert_norm': True})
+2026-08-22 22:46:32,717 [INFO] core.evaluator_v2: [h2o] pred='The project aims to design a new remote control for a television that is both innovative and user-friendly. The team dis'
+2026-08-22 22:46:37,001 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the need for '
+2026-08-22 22:46:37,003 [INFO] __main__:   → score=10.52, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:46:37,021 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:46:37,031 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:46:37,032 [INFO] __main__:   [중간 저장 완료] 21/30 설정
+2026-08-22 22:46:37,033 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:46:37,034 [INFO] __main__: Method: H2O_m4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-22 22:46:37,034 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:46:37,035 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:46:37,036 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:46:37,101 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:46:37,134 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:46:37,469 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:46:37,471 [INFO] core.evaluator_v2: [h2o] qmsum (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-22 22:46:42,220 [INFO] core.evaluator_v2: [h2o] pred='The project aims to design a new remote control for a television that is both innovative and user-friendly. The team dis'
+2026-08-22 22:46:47,893 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:46:47,896 [INFO] __main__:   → score=12.82, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:46:47,920 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:46:47,935 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:46:47,936 [INFO] __main__:   [중간 저장 완료] 22/30 설정
+2026-08-22 22:46:47,938 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:46:47,939 [INFO] __main__: Method: H2O_m8 | Budget: 20% | kwargs={'sink_size': 8, 'invert_norm': True}
+2026-08-22 22:46:47,940 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:46:47,942 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:46:47,943 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:46:48,019 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:46:48,050 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:46:48,466 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:46:48,468 [INFO] core.evaluator_v2: [h2o] qmsum (2샘플, budget=20%, kwargs={'sink_size': 8, 'invert_norm': True})
+2026-08-22 22:46:54,151 [INFO] core.evaluator_v2: [h2o] pred='The meeting discussed the design of a new remote control, with the goal of creating a product that is both innovative an'
+2026-08-22 22:46:59,486 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:46:59,490 [INFO] __main__:   → score=11.54, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:46:59,511 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:46:59,525 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:46:59,526 [INFO] __main__:   [중간 저장 완료] 23/30 설정
+2026-08-22 22:46:59,527 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:46:59,529 [INFO] __main__: Method: H2O_m16 | Budget: 20% | kwargs={'sink_size': 16, 'invert_norm': True}
+2026-08-22 22:46:59,530 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:46:59,531 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:46:59,532 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:46:59,620 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:46:59,652 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:47:00,070 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:47:00,072 [INFO] core.evaluator_v2: [h2o] qmsum (2샘플, budget=20%, kwargs={'sink_size': 16, 'invert_norm': True})
+2026-08-22 22:47:06,172 [INFO] core.evaluator_v2: [h2o] pred='The meeting transcript indicates that the project aims to design a new remote control for a television. The remote contr'
+2026-08-22 22:47:11,792 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importanc'
+2026-08-22 22:47:11,796 [INFO] __main__:   → score=12.16, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:47:11,823 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:47:11,839 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:47:11,840 [INFO] __main__:   [중간 저장 완료] 24/30 설정
+2026-08-22 22:47:11,843 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:47:11,844 [INFO] __main__: Method: SnapKV_m0 | Budget: 20% | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-22 22:47:11,846 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:47:11,847 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:47:11,849 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:47:11,923 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:47:11,957 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:47:12,391 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:47:12,393 [INFO] core.evaluator_v2: [snapkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 0, 'invert_norm': True})
+2026-08-22 22:47:16,276 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-22 22:47:21,230 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed market trend findings related to consumer preferences for products that are distinct from competitor'
+2026-08-22 22:47:21,233 [INFO] __main__:   → score=9.77, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:47:21,249 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:47:21,263 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:47:21,264 [INFO] __main__:   [중간 저장 완료] 25/30 설정
+2026-08-22 22:47:21,265 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:47:21,266 [INFO] __main__: Method: SnapKV_m1 | Budget: 20% | kwargs={'sink_size': 1, 'invert_norm': True}
+2026-08-22 22:47:21,266 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:47:21,267 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:47:21,267 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:47:21,332 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:47:21,363 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:47:21,698 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:47:21,700 [INFO] core.evaluator_v2: [snapkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 1, 'invert_norm': True})
+2026-08-22 22:47:25,272 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-22 22:47:30,730 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed market trend findings related to consumer preferences for products that are distinct from competitor'
+2026-08-22 22:47:30,733 [INFO] __main__:   → score=9.77, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:47:30,747 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:47:30,764 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:47:30,765 [INFO] __main__:   [중간 저장 완료] 26/30 설정
+2026-08-22 22:47:30,766 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:47:30,767 [INFO] __main__: Method: SnapKV_m2 | Budget: 20% | kwargs={'sink_size': 2, 'invert_norm': True}
+2026-08-22 22:47:30,767 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:47:30,769 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:47:30,770 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:47:30,847 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:47:30,879 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:47:31,340 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:47:31,342 [INFO] core.evaluator_v2: [snapkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 2, 'invert_norm': True})
+2026-08-22 22:47:35,737 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-22 22:47:41,787 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed market trend findings related to consumer preferences for products that are distinct from competitor'
+2026-08-22 22:47:41,791 [INFO] __main__:   → score=9.77, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:47:41,821 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:47:41,836 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:47:41,837 [INFO] __main__:   [중간 저장 완료] 27/30 설정
+2026-08-22 22:47:41,838 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:47:41,839 [INFO] __main__: Method: SnapKV_m4 | Budget: 20% | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-22 22:47:41,840 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:47:41,841 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:47:41,841 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:47:41,921 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:47:41,959 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:47:42,438 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:47:42,441 [INFO] core.evaluator_v2: [snapkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 4, 'invert_norm': True})
+2026-08-22 22:47:46,452 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-22 22:47:50,854 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed market trend findings related to consumer preferences for electronic devices, specifically mentionin'
+2026-08-22 22:47:50,856 [INFO] __main__:   → score=9.40, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:47:50,865 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:47:50,876 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:47:50,877 [INFO] __main__:   [중간 저장 완료] 28/30 설정
+2026-08-22 22:47:50,877 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:47:50,878 [INFO] __main__: Method: SnapKV_m8 | Budget: 20% | kwargs={'sink_size': 8, 'invert_norm': True}
+2026-08-22 22:47:50,879 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:47:50,879 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:47:50,880 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:47:50,960 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:47:50,990 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:47:51,304 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:47:51,322 [INFO] core.evaluator_v2: [snapkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 8, 'invert_norm': True})
+2026-08-22 22:47:54,985 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-22 22:47:59,216 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed market trend findings related to consumer preferences for electronic devices, specifically mentionin'
+2026-08-22 22:47:59,219 [INFO] __main__:   → score=9.40, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:47:59,237 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:47:59,249 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:47:59,250 [INFO] __main__:   [중간 저장 완료] 29/30 설정
+2026-08-22 22:47:59,250 [INFO] __main__: 
+────────────────────────────────────────────────────────────
+2026-08-22 22:47:59,250 [INFO] __main__: Method: SnapKV_m16 | Budget: 20% | kwargs={'sink_size': 16, 'invert_norm': True}
+2026-08-22 22:47:59,251 [INFO] __main__: ────────────────────────────────────────────────────────────
+2026-08-22 22:47:59,251 [INFO] __main__: 
+  Task: qmsum
+2026-08-22 22:47:59,251 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-22 22:47:59,315 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-22 22:47:59,347 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-22 22:47:59,639 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-22 22:47:59,640 [INFO] core.evaluator_v2: [snapkv] qmsum (2샘플, budget=20%, kwargs={'sink_size': 16, 'invert_norm': True})
+2026-08-22 22:48:02,903 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is'
+2026-08-22 22:48:06,982 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed market trend findings related to consumer preferences for electronic devices, specifically mentionin'
+2026-08-22 22:48:06,985 [INFO] __main__:   → score=9.40, collapse=0/2 (0.0%), mem_red=80.0%
+2026-08-22 22:48:06,996 [INFO] core.results_manager: Results saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.csv
+2026-08-22 22:48:07,030 [INFO] core.results_manager: JSON saved to results/v3_verified/exp6_sink_intervention_qwen3-4b_budget20_20260822_224309.json
+2026-08-22 22:48:07,032 [INFO] __main__:   [중간 저장 완료] 30/30 설정
+2026-08-22 22:48:07,034 [INFO] __main__: Table VI (Sink Intervention) completed!

@@ -1,0 +1,1154 @@
+{
+  "experiment": "exp6_sink_intervention",
+  "model": "qwen3-4b",
+  "budget_ratio": 0.2,
+  "tasks": [
+    "qmsum"
+  ],
+  "num_samples": 2,
+  "seed": 42,
+  "results": [
+    {
+      "method": "SalienceKV_m0",
+      "task_scores": {
+        "qmsum": 12.087155963302752
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 12.087155963302752,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1333.4860312620551,
+      "avg_throughput": 21.52008129726586,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.0,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.15555555555555556,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.174311926605506,
+            "prediction": "Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importance of understanding consumer preferences and trends to create a product that appeals to the target audience. They mentioned the need for a remote control that is easy to use, has a modern and appealing design, and incorporates features that align with current market demands.",
+            "word_rep": 0.0,
+            "char_rep": 0.10230179028132991,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SalienceKV_m1",
+      "task_scores": {
+        "qmsum": 9.349060725207515
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.349060725207515,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 999.5347342255367,
+      "avg_throughput": 27.39068558102238,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 9.523809523809524,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that they want to keep the cost under $12). The target profit is $24, as it is mentioned that they aim to make a $24 profit on each unit.",
+            "word_rep": 0.0,
+            "char_rep": 0.19512195121951215,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.174311926605506,
+            "prediction": "Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of appealing to younger consumers. They mentioned that the remote should have a modern, user-friendly design with large buttons and a sleek appearance. Additionally, Marketing highlighted the need for the remote to be ergonomic and easy to use, reflecting current trends in consumer electronics.",
+            "word_rep": 0.0,
+            "char_rep": 0.10319410319410316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SalienceKV_m2",
+      "task_scores": {
+        "qmsum": 9.349060725207515
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.349060725207515,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1035.3590749142832,
+      "avg_throughput": 27.459875150123754,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 9.523809523809524,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that they want to keep the cost under $12). The target profit is $24, as it is mentioned that they aim to make a $24 profit on each unit.",
+            "word_rep": 0.0,
+            "char_rep": 0.19512195121951215,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.174311926605506,
+            "prediction": "Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of appealing to younger consumers. They mentioned that the remote should have a modern, user-friendly design with large buttons and a sleek appearance. Additionally, Marketing highlighted the need for the remote to be ergonomic and easy to use, reflecting current trends in consumer electronics.",
+            "word_rep": 0.0,
+            "char_rep": 0.10319410319410316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SalienceKV_m4",
+      "task_scores": {
+        "qmsum": 9.349060725207515
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.349060725207515,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1017.8553168721139,
+      "avg_throughput": 26.31606187553677,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 9.523809523809524,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that they want to keep the cost under $12). The target profit is $24, as it is mentioned that they aim to make a $24 profit on each unit.",
+            "word_rep": 0.0,
+            "char_rep": 0.19512195121951215,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.174311926605506,
+            "prediction": "Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of appealing to younger consumers. They mentioned that the remote should have a modern, user-friendly design with large buttons and a sleek appearance. Additionally, Marketing highlighted the need for the remote to be ergonomic and easy to use, reflecting current trends in consumer electronics.",
+            "word_rep": 0.0,
+            "char_rep": 0.10319410319410316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SalienceKV_m8",
+      "task_scores": {
+        "qmsum": 9.7595697564062
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.7595697564062,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 988.9058190811645,
+      "avg_throughput": 26.391636115696052,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.344827586206897,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that they want to keep the cost low), and the target profit is $24, calculated as the difference between the target price and the target cost.",
+            "word_rep": 0.022222222222222254,
+            "char_rep": 0.22709163346613548,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.174311926605506,
+            "prediction": "Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of appealing to younger consumers. They mentioned that the remote should have a modern, user-friendly design with large buttons and a sleek appearance. Additionally, Marketing highlighted the need for the remote to be ergonomic and easy to use, reflecting current trends in consumer electronics.",
+            "word_rep": 0.0,
+            "char_rep": 0.10319410319410316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SalienceKV_m16",
+      "task_scores": {
+        "qmsum": 11.14453301248308
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.14453301248308,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 991.3327104997934,
+      "avg_throughput": 27.909013241027225,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 13.114754098360656,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as stated in the transcript, \"we need to make sure that the cost is under $12\"), and the target profit is $28, calculated as the difference between the target price and the target cost.",
+            "word_rep": 0.020408163265306145,
+            "char_rep": 0.21942446043165464,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.174311926605506,
+            "prediction": "Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of appealing to younger consumers. They mentioned that the remote should have a modern, user-friendly design with large buttons and a sleek appearance. Additionally, Marketing highlighted the need for the remote to be ergonomic and easy to use, reflecting current trends in consumer electronics.",
+            "word_rep": 0.0,
+            "char_rep": 0.10319410319410316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "AdaKV-adapted_m0",
+      "task_scores": {
+        "qmsum": 12.656641604010025
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 12.656641604010025,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 989.4505075825492,
+      "avg_throughput": 28.083996111266828,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1889763779527559,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.523809523809524,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctive and user-friendly remote control design. They mentioned that the market is trending towards larger, more prominent buttons and a design that stands out from other remote controls, emphasizing the importance of a unique and recognizable design in the competitive market.",
+            "word_rep": 0.0,
+            "char_rep": 0.1136950904392765,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "AdaKV-adapted_m1",
+      "task_scores": {
+        "qmsum": 11.926994906621392
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.926994906621392,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 980.5714964201857,
+      "avg_throughput": 27.051604544250715,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.064516129032258,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. Specifically, Marketing mentioned that younger consumers prefer remote controls that are distinct from existing models, with a focus on design elements such as color, shape, and user-friendly features. Additionally, Marketing referenced trends in fashion and design, suggesting that the remote control should align with current aesthetic preferences to appeal to the target demographic.",
+            "word_rep": 0.0,
+            "char_rep": 0.17636022514071292,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "AdaKV-adapted_m2",
+      "task_scores": {
+        "qmsum": 11.926994906621392
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.926994906621392,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 985.683740411215,
+      "avg_throughput": 27.384636428663214,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.064516129032258,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. Specifically, Marketing mentioned that younger consumers prefer remote controls that are distinct from existing models, with a focus on design elements such as color, shape, and user-friendly features. Additionally, Marketing referenced trends in fashion and design, suggesting that the remote control should align with current aesthetic preferences to appeal to the target demographic.",
+            "word_rep": 0.0,
+            "char_rep": 0.17636022514071292,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "AdaKV-adapted_m4",
+      "task_scores": {
+        "qmsum": 11.926994906621392
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.926994906621392,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1137.4364040812666,
+      "avg_throughput": 24.985847388742666,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.064516129032258,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. Specifically, Marketing mentioned that younger consumers prefer remote controls that are distinct from existing ones, with a focus on design elements such as color, shape, and user-friendly features. Additionally, Marketing referenced trends in fashion and design, suggesting that the remote control should align with current aesthetic preferences to appeal to the target demographic.",
+            "word_rep": 0.0,
+            "char_rep": 0.17514124293785316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "AdaKV-adapted_m8",
+      "task_scores": {
+        "qmsum": 11.926994906621392
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.926994906621392,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1071.6224625186624,
+      "avg_throughput": 25.84934795341841,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.064516129032258,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. Specifically, Marketing mentioned that younger consumers prefer remote controls that are distinct from existing ones, with a focus on design elements such as color, shape, and user-friendly features. Additionally, Marketing referenced trends in fashion and design, suggesting that the remote control should align with current aesthetic preferences to appeal to the target demographic.",
+            "word_rep": 0.0,
+            "char_rep": 0.17514124293785316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "AdaKV-adapted_m16",
+      "task_scores": {
+        "qmsum": 13.022941970310391
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 13.022941970310391,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 995.0262929065636,
+      "avg_throughput": 28.236478819684677,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.256410256410255,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. They mentioned that the target audience, particularly younger users, prefers a more distinctive and user-friendly design, which includes features like a unique shape, intuitive controls, and a modern aesthetic. Additionally, Marketing highlighted the importance of considering trends in color and material choices to align with current consumer preferences.",
+            "word_rep": 0.01538461538461533,
+            "char_rep": 0.13492063492063489,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "PyramidKV-adapted_m0",
+      "task_scores": {
+        "qmsum": 12.656641604010025
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 12.656641604010025,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 996.223909637848,
+      "avg_throughput": 25.6197323420619,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price of the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1889763779527559,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.523809523809524,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences, particularly the desire for a more distinctive and user-friendly remote control design. They mentioned that the market is trending towards larger, more prominent buttons and a design that stands out from other remote controls, emphasizing the importance of a unique and recognizable design in the competitive market.",
+            "word_rep": 0.0,
+            "char_rep": 0.1136950904392765,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "PyramidKV-adapted_m1",
+      "task_scores": {
+        "qmsum": 11.926994906621392
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.926994906621392,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1011.1225428184953,
+      "avg_throughput": 26.92463498636884,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.064516129032258,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. Specifically, Marketing mentioned that younger consumers prefer remote controls that are distinct from existing models, with a focus on design elements such as color, shape, and user-friendly features. Additionally, Marketing referenced trends in fashion and design, suggesting that the remote control should align with current aesthetic preferences to appeal to the target demographic.",
+            "word_rep": 0.0,
+            "char_rep": 0.17636022514071292,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "PyramidKV-adapted_m2",
+      "task_scores": {
+        "qmsum": 11.926994906621392
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.926994906621392,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 965.6018429206406,
+      "avg_throughput": 27.302512182117766,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.064516129032258,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. Specifically, Marketing mentioned that younger consumers prefer remote controls that are distinct from existing models, with a focus on design elements such as color, shape, and user-friendly features. Additionally, Marketing referenced trends in fashion and design, suggesting that the remote control should align with current aesthetic preferences to appeal to the target demographic.",
+            "word_rep": 0.0,
+            "char_rep": 0.17636022514071292,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "PyramidKV-adapted_m4",
+      "task_scores": {
+        "qmsum": 11.926994906621392
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.926994906621392,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 971.539084191666,
+      "avg_throughput": 24.91284025349988,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.064516129032258,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. Specifically, Marketing mentioned that younger consumers prefer remote controls that are distinct from existing ones, with a focus on design elements such as color, shape, and user-friendly features. Additionally, Marketing referenced trends in fashion and design, suggesting that the remote control should align with current aesthetic preferences to appeal to the target demographic.",
+            "word_rep": 0.0,
+            "char_rep": 0.17514124293785316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "PyramidKV-adapted_m8",
+      "task_scores": {
+        "qmsum": 11.926994906621392
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.926994906621392,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1065.251016191748,
+      "avg_throughput": 24.67803254174907,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.064516129032258,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. Specifically, Marketing mentioned that younger consumers prefer remote controls that are distinct from existing ones, with a focus on design elements such as color, shape, and user-friendly features. Additionally, Marketing referenced trends in fashion and design, suggesting that the remote control should align with current aesthetic preferences to appeal to the target demographic.",
+            "word_rep": 0.0,
+            "char_rep": 0.17514124293785316,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "PyramidKV-adapted_m16",
+      "task_scores": {
+        "qmsum": 13.022941970310391
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 13.022941970310391,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1039.911980760162,
+      "avg_throughput": 22.300641507986054,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.256410256410255,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. They mentioned that the target audience, particularly younger users, prefers a more distinctive and user-friendly design, which includes features like a unique shape, intuitive controls, and a modern aesthetic. Additionally, Marketing highlighted the importance of considering trends in color and material choices to align with current consumer preferences.",
+            "word_rep": 0.01538461538461533,
+            "char_rep": 0.13492063492063489,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "H2O_m0",
+      "task_scores": {
+        "qmsum": 9.39982347749338
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.39982347749338,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 985.0626129585997,
+      "avg_throughput": 28.072465535881477,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 9.09090909090909,
+            "prediction": "The project team discussed designing a remote control that is both innovative and user-friendly. They mentioned that the remote control should have a unique feature, be trendy, and be able to be used by users easily. The team also discussed the budget for the project, stating that they would like to keep the costs low.",
+            "word_rep": 0.0,
+            "char_rep": 0.14240506329113922,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.70873786407767,
+            "prediction": "Marketing discussed market trend findings that indicate a preference for bold, noticeable designs, with a focus on color and aesthetics. They mentioned that the market is interested in designs that stand out from other products, such as a remote control, and that there is a trend towards more innovative and distinctive designs.",
+            "word_rep": 0.0,
+            "char_rep": 0.0953846153846154,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "H2O_m1",
+      "task_scores": {
+        "qmsum": 10.522339736671702
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 10.522339736671702,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 963.3113578430457,
+      "avg_throughput": 27.601951532773615,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 12.195121951219512,
+            "prediction": "The project aims to design a new remote control for a television that is both innovative and user-friendly. The team discussed the importance of creating a remote control that is distinct from existing ones, emphasizing the need for it to be trendy and easy to use. They also mentioned the goal of making the remote control visually appealing and functional, ensuring that it meets the needs of users while standing out in the market.",
+            "word_rep": 0.0,
+            "char_rep": 0.1325581395348837,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.849557522123892,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the need for a design that appeals to younger audiences. They mentioned that trends indicate a preference for larger, more noticeable buttons and a design that stands out from other remote controls. Additionally, they referenced findings from trend research that suggest a move towards more distinctive and user-friendly designs.",
+            "word_rep": 0.01666666666666672,
+            "char_rep": 0.1527777777777778,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "H2O_m2",
+      "task_scores": {
+        "qmsum": 10.522339736671702
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 10.522339736671702,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 987.3213917903136,
+      "avg_throughput": 27.657262918328065,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 12.195121951219512,
+            "prediction": "The project aims to design a new remote control for a television that is both innovative and user-friendly. The team discussed the importance of creating a remote control that is distinct from existing ones, emphasizing the need for it to be trendy and easy to use. They also mentioned the goal of making the remote control visually appealing and functional, ensuring that it meets the needs of users while standing out in the market.",
+            "word_rep": 0.0,
+            "char_rep": 0.1325581395348837,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.849557522123892,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the need for a design that appeals to younger audiences. They mentioned that trends indicate a preference for larger, more noticeable buttons and a design that stands out from other remote controls. Additionally, they referenced findings from trend research that suggest a move towards more distinctive and user-friendly designs.",
+            "word_rep": 0.01666666666666672,
+            "char_rep": 0.1527777777777778,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "H2O_m4",
+      "task_scores": {
+        "qmsum": 12.82025005124001
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 12.82025005124001,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 972.9022629911366,
+      "avg_throughput": 21.656706276899648,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 12.195121951219512,
+            "prediction": "The project aims to design a new remote control for a television that is both innovative and user-friendly. The team discussed the importance of creating a remote control that is distinct from existing ones, emphasizing the need for it to be trendy and easy to use. They also mentioned the goal of making the remote control visually appealing and functional, ensuring that it meets the needs of users while standing out in the market.",
+            "word_rep": 0.0,
+            "char_rep": 0.1325581395348837,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.445378151260504,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. They mentioned that the target audience, particularly younger users, prefers a more distinctive and user-friendly design, with a focus on color, size, and ease of use. Additionally, they referenced trends in design and color that are popular in the market, such as large, bold colors and a modern, ergonomic shape.",
+            "word_rep": 0.0,
+            "char_rep": 0.09110629067245124,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "H2O_m8",
+      "task_scores": {
+        "qmsum": 11.541966184063988
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 11.541966184063988,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1057.0181407189618,
+      "avg_throughput": 21.089284501981332,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 9.63855421686747,
+            "prediction": "The meeting discussed the design of a new remote control, with the goal of creating a product that is both innovative and user-friendly. The project aims to develop a remote control that is distinct from existing ones, incorporating unique features that align with current trends. The team emphasized the importance of making the remote control intuitive and easy to use, ensuring that it meets the needs of its users while also standing out in the market.",
+            "word_rep": 0.0,
+            "char_rep": 0.13053097345132747,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.445378151260504,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. They mentioned that the target audience, particularly younger users, prefers a more distinctive and user-friendly design, with a focus on color, size, and ease of use. Additionally, they referenced trends in design and color that are popular in the market, such as large, bold colors and a modern, ergonomic shape.",
+            "word_rep": 0.0,
+            "char_rep": 0.09110629067245124,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "H2O_m16",
+      "task_scores": {
+        "qmsum": 12.157471684325905
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 12.157471684325905,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1078.1332141787866,
+      "avg_throughput": 21.75799352697525,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.869565217391305,
+            "prediction": "The meeting transcript indicates that the project aims to design a new remote control for a television. The remote control is intended to be innovative and user-friendly, with a focus on being both functional and aesthetically appealing. The team is working on the design of the remote control, considering its usability and the need for it to stand out in the market. The project's goal is to create a remote control that is not only practical but also incorporates a unique design element to appeal to users.",
+            "word_rep": 0.0,
+            "char_rep": 0.14822134387351782,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.445378151260504,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for remote controls, emphasizing the importance of design and functionality. They mentioned that the target audience, particularly younger users, prefers a more distinctive and user-friendly design, with a focus on color, size, and ease of use. Additionally, they referenced trends in design and color that are popular in the market, such as large, bold colors and a modern, ergonomic shape.",
+            "word_rep": 0.0,
+            "char_rep": 0.09110629067245124,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SnapKV_m0",
+      "task_scores": {
+        "qmsum": 9.772245762711865
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.772245762711865,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1042.5368682814442,
+      "avg_throughput": 24.510507886975407,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.169491525423728,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is not specified. However, the project aims to create a product that is both innovative and user-friendly, with the goal of making it appealing to consumers.",
+            "word_rep": 0.0,
+            "char_rep": 0.09963099630996308,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.375,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for products that are distinct from competitors, emphasizing the importance of design and functionality. They mentioned that the target audience, particularly younger consumers, prefer products that are easy to use, have a unique design, and align with current trends in aesthetics and technology. Marketing also highlighted the need to consider research findings when making design decisions to ensure the product meets consumer expectations and stands out in the market.",
+            "word_rep": 0.013157894736842146,
+            "char_rep": 0.14944649446494462,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SnapKV_m1",
+      "task_scores": {
+        "qmsum": 9.772245762711865
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.772245762711865,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1079.2479751245382,
+      "avg_throughput": 25.212506888506635,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.169491525423728,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is not specified. However, the project aims to create a product that is both innovative and user-friendly, with the goal of making it appealing to consumers.",
+            "word_rep": 0.0,
+            "char_rep": 0.09963099630996308,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.375,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for products that are distinct from competitors, emphasizing the importance of design and functionality. They mentioned that the target audience, particularly younger consumers, prefer products that are easy to use, have a unique design, and align with current trends in aesthetics and technology. Marketing also highlighted the need to consider research findings when making design decisions to ensure the product meets consumer expectations and stands out in the market.",
+            "word_rep": 0.013157894736842146,
+            "char_rep": 0.14944649446494462,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SnapKV_m2",
+      "task_scores": {
+        "qmsum": 9.772245762711865
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.772245762711865,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1319.9082125157133,
+      "avg_throughput": 22.347902787539475,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.169491525423728,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is not specified. However, the project aims to create a product that is both innovative and user-friendly, with the goal of making it appealing to consumers.",
+            "word_rep": 0.0,
+            "char_rep": 0.09963099630996308,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 9.375,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for products that are distinct from competitors, emphasizing the importance of design and functionality. They mentioned that the target audience, particularly younger consumers, prefer products that are easy to use, have a unique design, and align with current trends in aesthetics and technology. Marketing also highlighted the need to consider research findings when making design decisions to ensure the product meets consumer expectations and stands out in the market.",
+            "word_rep": 0.013157894736842146,
+            "char_rep": 0.14944649446494462,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SnapKV_m4",
+      "task_scores": {
+        "qmsum": 9.395090590298071
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.395090590298071,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1201.2604011056412,
+      "avg_throughput": 24.267144775828243,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.169491525423728,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is not specified. However, the project aims to create a product that is both innovative and user-friendly, with the goal of making it appealing to consumers.",
+            "word_rep": 0.0,
+            "char_rep": 0.09963099630996308,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.620689655172413,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for electronic devices, specifically mentioning that younger consumers prefer devices with a more unique design, such as a gun-shaped remote control that is easier to use and more visually appealing. They also mentioned that trends in design can change quickly, and it's important to stay updated with these changes to meet consumer demands.",
+            "word_rep": 0.0,
+            "char_rep": 0.10705596107055959,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SnapKV_m8",
+      "task_scores": {
+        "qmsum": 9.395090590298071
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.395090590298071,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 1036.8564180930011,
+      "avg_throughput": 27.06505359436489,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.169491525423728,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is not specified. However, the project aims to create a product that is both innovative and user-friendly, with the goal of making it appealing to consumers.",
+            "word_rep": 0.0,
+            "char_rep": 0.09963099630996308,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.620689655172413,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for electronic devices, specifically mentioning that younger consumers prefer devices with a more unique design, such as a gun-shaped remote control that is easier to use and more visually appealing. They also mentioned that trends in design can change quickly, and it's important to stay updated with these changes to meet consumer demands.",
+            "word_rep": 0.0,
+            "char_rep": 0.10705596107055959,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "method": "SnapKV_m16",
+      "task_scores": {
+        "qmsum": 9.395090590298071
+      },
+      "task_collapse_rates": {
+        "qmsum": 0.0
+      },
+      "task_collapse_fracs": {
+        "qmsum": "0/2"
+      },
+      "avg_score": 9.395090590298071,
+      "avg_collapse_rate_pct": 0.0,
+      "avg_collapse_frac": "0/2",
+      "avg_ttft_ms": 991.1870863862403,
+      "avg_throughput": 26.676382730948916,
+      "avg_memory_reduction_pct": 80.00779524258746,
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 10.169491525423728,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $5, and the target profit is not specified. However, the project aims to create a product that is both innovative and user-friendly, with the goal of making it appealing to consumers.",
+            "word_rep": 0.0,
+            "char_rep": 0.09963099630996308,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 8.620689655172413,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences for electronic devices, specifically mentioning that younger consumers prefer devices with a more unique design, such as a gun-shaped remote control that is easier to use and more visually appealing. They also mentioned that trends in design can change quickly, and it's important to stay updated with these changes to meet consumer demands.",
+            "word_rep": 0.0,
+            "char_rep": 0.10705596107055959,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ],
+  "completed_methods": 30,
+  "total_methods": 30
+}
