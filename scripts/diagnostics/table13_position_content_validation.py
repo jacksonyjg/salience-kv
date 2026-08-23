@@ -102,15 +102,18 @@ def make_placeholder_tokenize_prompt(sink_size: int, placeholder_token_id: int, 
     return patched
 
 
-def compute_content_start_offset(tokenizer, model_key, task_type="summarization"):
-    """고정 지시어 템플릿(예: 'Please summarize the following document concisely.\\n\\nDocument:\\n')이
-    몇 토큰인지 계산 — 실제 문서 내용이 시작하는 위치. make_prompt의 내부 문자열을 하드코딩하지 않고,
-    실제 context와 마커 context 두 프롬프트를 각각 토큰화해서 공통 접두부 길이를 재는 방식으로
-    강건하게 계산(make_prompt 구현이 바뀌어도 자동으로 맞음)."""
+def compute_content_start_offset(tokenizer, model_key, task_type="summarization", dummy_question=""):
+    """고정 지시어 템플릿이 몇 토큰인지 계산 — 실제 문서 내용이 시작하는 위치. make_prompt의 내부
+    문자열을 하드코딩하지 않고, 실제 context와 마커 context 두 프롬프트를 각각 토큰화해서 공통
+    접두부 길이를 재는 방식으로 강건하게 계산(make_prompt 구현이 바뀌어도 자동으로 맞음).
+
+    [2026-08-23 수정] dummy_question 파라미터화 - QMSum corrected 템플릿(question 있음)과
+    gov_report 템플릿(question="")이 이제 서로 다른 프리픽스를 쓰므로(실측 14 vs 30 토큰 차이),
+    태스크별로 정확한 question 유무를 넘겨서 각각 다른 offset을 계산해야 함. question이 비어있지
+    않으면(QMSum) 어떤 구체적 질문을 쓰든 무방 - 템플릿 분기(if question:)만 다르게 타면 됨."""
     from core.model_loader import make_prompt
     real_context = "This is a placeholder real-looking document body used only to diverge from the marker."
     marker_context = "\uE000\uE000\uE000\uE000 MARKERMARKERMARKER \uE000\uE000\uE000\uE000"
-    dummy_question = ""  # summarization 템플릿은 question 미사용
     p1 = make_prompt(model_key, tokenizer, real_context, dummy_question, task_type)
     p2 = make_prompt(model_key, tokenizer, marker_context, dummy_question, task_type)
     ids1 = tokenizer(p1, add_special_tokens=False)["input_ids"]
@@ -124,36 +127,38 @@ def compute_content_start_offset(tokenizer, model_key, task_type="summarization"
 
 
 def run_condition(evaluator, condition_name, mode, tasks, num_samples, budget, seed, tokenizer, invert_norm,
-                   sink_size_override=None, content_offset=0):
+                   sink_size_override=None, content_offset_by_task=None):
+    """[2026-08-23 수정] content_offset을 태스크별 dict로 받음(qmsum corrected와 gov_report의
+    프리픽스 길이가 이제 다르므로 - 실측 14 vs 30 토큰 차이). 태스크 루프 안에서 매번 재패치."""
     logger.info(f"\n{'='*60}")
-    logger.info(f"Condition: {condition_name} (mode={mode}, content_offset={content_offset})")
+    logger.info(f"Condition: {condition_name} (mode={mode}, content_offset_by_task={content_offset_by_task})")
     logger.info(f"{'='*60}")
 
     kind, slot = mode
     effective_sink_size = sink_size_override if sink_size_override is not None else SINK_SIZE
-    if kind == "position":
-        hook_module._select_with_sink = make_patched_select_with_sink(slot, offset=content_offset)
-        ev2_module.tokenize_prompt = _ORIGINAL_TOKENIZE_PROMPT
-        sink_size_kwarg = effective_sink_size if slot != "none" else 0
-    elif kind == "content":
-        hook_module._select_with_sink = _ORIGINAL_SELECT_WITH_SINK
-        if slot == "newline":
-            # StreamingLLM 원 논문(Xiao et al.)의 실제 실험과 동일 — "\n" 토큰으로 치환
-            newline_ids = tokenizer.encode("\n", add_special_tokens=False)
-            placeholder_id = newline_ids[0] if newline_ids else tokenizer.pad_token_id
-        else:
-            # 기존(pad_token, 특수 제어 토큰 <|endoftext|>) — chat template 구조 마커까지
-            # 덮어쓰게 되어 "special-token poisoning" 가능성 있음, front_newline과 대조용으로 유지
-            placeholder_id = tokenizer.pad_token_id
-        ev2_module.tokenize_prompt = make_placeholder_tokenize_prompt(effective_sink_size, placeholder_id,
-                                                                        offset=content_offset)
-        sink_size_kwarg = effective_sink_size
-    else:
-        raise ValueError(mode)
 
     task_scores = {}
     all_sample_records = {}
     for task_name in tasks:
+        content_offset = (content_offset_by_task or {}).get(task_name, 0)
+
+        if kind == "position":
+            hook_module._select_with_sink = make_patched_select_with_sink(slot, offset=content_offset)
+            ev2_module.tokenize_prompt = _ORIGINAL_TOKENIZE_PROMPT
+            sink_size_kwarg = effective_sink_size if slot != "none" else 0
+        elif kind == "content":
+            hook_module._select_with_sink = _ORIGINAL_SELECT_WITH_SINK
+            if slot == "newline":
+                newline_ids = tokenizer.encode("\n", add_special_tokens=False)
+                placeholder_id = newline_ids[0] if newline_ids else tokenizer.pad_token_id
+            else:
+                placeholder_id = tokenizer.pad_token_id
+            ev2_module.tokenize_prompt = make_placeholder_tokenize_prompt(effective_sink_size, placeholder_id,
+                                                                            offset=content_offset)
+            sink_size_kwarg = effective_sink_size
+        else:
+            raise ValueError(mode)
+
         samples = load_longbench_task(task_name, num_samples=num_samples, seed=seed)
         scores = []
         sample_records = []
@@ -199,6 +204,10 @@ def run_condition(evaluator, condition_name, mode, tasks, num_samples, budget, s
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--num_samples", type=int, default=NUM_SAMPLES)
+    parser.add_argument("--tasks", nargs="+", default=None, choices=["qmsum", "gov_report"],
+                        help="지정 안 하면 기존 TASKS 상수([qmsum, gov_report]) 사용 - 하위호환 유지. "
+                             "이 스크립트는 qmsum/gov_report 전용이라 choices로 제한(다른 태스크 넣으면 "
+                             "content_offset_by_task에 없어 조용히 offset=0으로 새는 것 방지)")
     parser.add_argument("--invert_norm", action="store_true",
                         help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
     args = parser.parse_args()
@@ -221,7 +230,8 @@ def main():
     rm.RESULTS_DIR = results_dir
 
     logger.info("TABLE X: Sink Position/Content Controlled Validation")
-    logger.info(f"  Model: {MODEL_KEY} | Tasks: {TASKS} | Samples: {args.num_samples}/task | Budget: {BUDGET_RATIO:.0%}")
+    tasks_to_run = args.tasks if args.tasks else TASKS
+    logger.info(f"  Model: {MODEL_KEY} | Tasks: {tasks_to_run} | Samples: {args.num_samples}/task | Budget: {BUDGET_RATIO:.0%}")
     logger.info(f"  Key-norm direction: {'CORRECTED' if args.invert_norm else 'legacy'} | "
                 f"Results dir: {results_dir} | Log dir: {log_dir}")
 
@@ -232,9 +242,18 @@ def main():
     evaluator = EvaluatorV2(model, tokenizer, model_config)
     logger.info(f"  placeholder_token_id (pad_token): {tokenizer.pad_token_id}")
 
-    content_offset = compute_content_start_offset(tokenizer, MODEL_KEY, task_type="summarization")
-    logger.info(f"  문서 내용 시작 오프셋(고정 지시어 템플릿 길이): {content_offset} 토큰 "
-                f"(qmsum/gov_report 둘 다 task_type=summarization, 동일 템플릿 공유)")
+    # [2026-08-23 수정] gov_report(question="")와 qmsum(question 있음, corrected)이 이제 서로 다른
+    # 프리픽스를 쓰므로(실측 14 vs 30 토큰) 태스크별로 각각 계산. representative_question은 offset
+    # 계산 목적일 뿐 실제 값은 중요하지 않음(if question: 분기만 타면 됨, 뒤에서 실제 사용 안 함).
+    representative_question = "What did the team discuss?"
+    content_offset_by_task = {
+        "gov_report": compute_content_start_offset(tokenizer, MODEL_KEY, task_type="summarization",
+                                                     dummy_question=""),
+        "qmsum": compute_content_start_offset(tokenizer, MODEL_KEY, task_type="summarization",
+                                               dummy_question=representative_question),
+    }
+    logger.info(f"  문서 내용 시작 오프셋(태스크별, gov_report와 qmsum corrected 프리픽스 길이가 다름): "
+                f"{content_offset_by_task}")
 
     # (이름, mode, sink_size_override) — override=None이면 기본 SINK_SIZE(4) 사용
     # (이름, mode, sink_size_override, use_content_offset) — override=None이면 기본 SINK_SIZE(4) 사용
@@ -259,21 +278,21 @@ def main():
     all_results = []
     timestamp = get_timestamp()
     for name, mode, sink_override, use_content_offset in conditions:
-        offset = content_offset if use_content_offset else 0
-        result = run_condition(evaluator, name, mode, TASKS, args.num_samples, BUDGET_RATIO, SEED,
+        offset_by_task = content_offset_by_task if use_content_offset else {t: 0 for t in tasks_to_run}
+        result = run_condition(evaluator, name, mode, tasks_to_run, args.num_samples, BUDGET_RATIO, SEED,
                                 tokenizer, args.invert_norm, sink_size_override=sink_override,
-                                content_offset=offset)
+                                content_offset_by_task=offset_by_task)
         all_results.append(result)
 
         json_data = {
             "experiment": "table13_position_content_validation",
             "model": MODEL_KEY,
-            "tasks": TASKS,
+            "tasks": tasks_to_run,
             "num_samples": args.num_samples,
             "budget_ratio": BUDGET_RATIO,
             "sink_size": SINK_SIZE,
             "invert_norm": args.invert_norm,
-            "content_offset": content_offset,
+            "content_offset_by_task": {t: content_offset_by_task[t] for t in tasks_to_run},
             "results": all_results,
         }
         save_results_json(json_data, f"table13_position_content_{timestamp}.json")

@@ -1,0 +1,195 @@
+2026-08-23 10:06:35,742 [INFO] __main__: TABLE X: Sink Position/Content Controlled Validation
+2026-08-23 10:06:35,743 [INFO] __main__:   Model: qwen3-4b | Tasks: ['qmsum'] | Samples: 2/task | Budget: 20%
+2026-08-23 10:06:35,743 [INFO] __main__:   Key-norm direction: CORRECTED | Results dir: results/v3_verified | Log dir: logs/v3_verified
+2026-08-23 10:06:35,745 [INFO] core.model_loader: Loading tokenizer: Qwen/Qwen3-4B
+2026-08-23 10:06:35,840 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:06:35,845 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-23 10:06:35,907 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:06:35,924 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-23 10:06:35,984 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-23 10:06:36,056 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-23 10:06:36,977 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen3-4B "HTTP/1.1 200 OK"
+2026-08-23 10:06:36,979 [INFO] core.model_loader: Loading model: Qwen/Qwen3-4B in torch.float16
+2026-08-23 10:06:37,022 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:06:37,028 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/config.json "HTTP/1.1 200 OK"
+2026-08-23 10:07:10,146 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:10,153 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen3-4B/1cfa9a7208912126459214e8b04321603b3df60c/generation_config.json "HTTP/1.1 200 OK"
+2026-08-23 10:07:10,229 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/Qwen/Qwen3-4B/resolve/main/custom_generate/generate.py "HTTP/1.1 404 Not Found"
+2026-08-23 10:07:10,248 [INFO] core.model_loader: Model loaded: layers=36, num_heads=32, num_kv_heads=8
+2026-08-23 10:07:10,269 [INFO] __main__:   placeholder_token_id (pad_token): 151643
+2026-08-23 10:07:10,335 [INFO] __main__:   문서 내용 시작 오프셋(태스크별, gov_report와 qmsum corrected 프리픽스 길이가 다름): {'gov_report': 14, 'qmsum': 30}
+2026-08-23 10:07:10,336 [INFO] __main__: 
+============================================================
+2026-08-23 10:07:10,337 [INFO] __main__: Condition: front_real (mode=('position', 'front'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:07:10,338 [INFO] __main__: ============================================================
+2026-08-23 10:07:10,338 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:07:10,378 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:10,409 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:07:10,621 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:10,654 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:07:10,696 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:10,736 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-23 10:07:10,955 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:07:14,742 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-23 10:07:18,264 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-23 10:07:18,266 [INFO] __main__:   → qmsum: 9.35
+2026-08-23 10:07:18,274 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:07:18,275 [INFO] __main__: [중간 저장 완료] 1/12 조건
+2026-08-23 10:07:18,275 [INFO] __main__: 
+============================================================
+2026-08-23 10:07:18,275 [INFO] __main__: Condition: middle_real (mode=('position', 'middle'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:07:18,276 [INFO] __main__: ============================================================
+2026-08-23 10:07:18,276 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:07:18,339 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:18,376 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:07:18,671 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:07:21,063 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-23 10:07:24,667 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-23 10:07:24,669 [INFO] __main__:   → qmsum: 12.09
+2026-08-23 10:07:24,678 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:07:24,679 [INFO] __main__: [중간 저장 완료] 2/12 조건
+2026-08-23 10:07:24,680 [INFO] __main__: 
+============================================================
+2026-08-23 10:07:24,681 [INFO] __main__: Condition: end_real (mode=('position', 'end'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:07:24,682 [INFO] __main__: ============================================================
+2026-08-23 10:07:24,683 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:07:24,747 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:24,775 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:07:25,090 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:07:27,283 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-23 10:07:30,774 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-23 10:07:30,777 [INFO] __main__:   → qmsum: 12.05
+2026-08-23 10:07:30,785 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:07:30,785 [INFO] __main__: [중간 저장 완료] 3/12 조건
+2026-08-23 10:07:30,786 [INFO] __main__: 
+============================================================
+2026-08-23 10:07:30,786 [INFO] __main__: Condition: random_real (mode=('position', 'random'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:07:30,787 [INFO] __main__: ============================================================
+2026-08-23 10:07:30,787 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:07:30,847 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:30,879 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:07:31,178 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:07:33,332 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-23 10:07:36,513 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-23 10:07:36,520 [INFO] __main__:   → qmsum: 10.50
+2026-08-23 10:07:36,529 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:07:36,530 [INFO] __main__: [중간 저장 완료] 4/12 조건
+2026-08-23 10:07:36,530 [INFO] __main__: 
+============================================================
+2026-08-23 10:07:36,530 [INFO] __main__: Condition: front_placeholder (mode=('content', 'pad'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:07:36,531 [INFO] __main__: ============================================================
+2026-08-23 10:07:36,532 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:07:36,591 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:36,622 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:07:36,951 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:07:41,388 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned in the transcript. However, the target profit is men'
+2026-08-23 10:07:46,871 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trends related to the design of a remote control device, focusing on what appeals to younger '
+2026-08-23 10:07:46,874 [INFO] __main__:   → qmsum: 10.50
+2026-08-23 10:07:46,883 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:07:46,883 [INFO] __main__: [중간 저장 완료] 5/12 조건
+2026-08-23 10:07:46,884 [INFO] __main__: 
+============================================================
+2026-08-23 10:07:46,884 [INFO] __main__: Condition: front_newline (mode=('content', 'newline'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:07:46,885 [INFO] __main__: ============================================================
+2026-08-23 10:07:46,885 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:07:46,953 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:46,983 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:07:47,266 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:07:51,003 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned in the transcript. The target cost is not explicitly'
+2026-08-23 10:07:55,815 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control. They mentioned that the target '
+2026-08-23 10:07:55,820 [INFO] __main__:   → qmsum: 8.53
+2026-08-23 10:07:55,830 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:07:55,830 [INFO] __main__: [중간 저장 완료] 6/12 조건
+2026-08-23 10:07:55,831 [INFO] __main__: 
+============================================================
+2026-08-23 10:07:55,831 [INFO] __main__: Condition: none (mode=('position', 'none'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:07:55,831 [INFO] __main__: ============================================================
+2026-08-23 10:07:55,832 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:07:55,917 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:07:55,948 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:07:56,265 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:07:58,432 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-23 10:08:01,741 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-23 10:08:01,743 [INFO] __main__:   → qmsum: 12.09
+2026-08-23 10:08:01,751 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:08:01,752 [INFO] __main__: [중간 저장 완료] 7/12 조건
+2026-08-23 10:08:01,752 [INFO] __main__: 
+============================================================
+2026-08-23 10:08:01,753 [INFO] __main__: Condition: front_1 (mode=('position', 'front'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:08:01,753 [INFO] __main__: ============================================================
+2026-08-23 10:08:01,754 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:08:01,816 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:08:01,852 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:08:02,171 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:08:05,254 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12 (as it is stated that th'
+2026-08-23 10:08:08,684 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of a'
+2026-08-23 10:08:08,685 [INFO] __main__:   → qmsum: 9.35
+2026-08-23 10:08:08,694 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:08:08,695 [INFO] __main__: [중간 저장 완료] 8/12 조건
+2026-08-23 10:08:08,695 [INFO] __main__: 
+============================================================
+2026-08-23 10:08:08,695 [INFO] __main__: Condition: random_1 (mode=('position', 'random'), content_offset_by_task={'qmsum': 0})
+2026-08-23 10:08:08,696 [INFO] __main__: ============================================================
+2026-08-23 10:08:08,696 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:08:08,756 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:08:08,785 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:08:09,073 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:08:11,210 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-23 10:08:14,604 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-23 10:08:14,623 [INFO] __main__:   → qmsum: 12.09
+2026-08-23 10:08:14,633 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:08:14,633 [INFO] __main__: [중간 저장 완료] 9/12 조건
+2026-08-23 10:08:14,634 [INFO] __main__: 
+============================================================
+2026-08-23 10:08:14,634 [INFO] __main__: Condition: front_real_content (mode=('position', 'front'), content_offset_by_task={'gov_report': 14, 'qmsum': 30})
+2026-08-23 10:08:14,635 [INFO] __main__: ============================================================
+2026-08-23 10:08:14,635 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:08:14,692 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:08:14,722 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:08:15,035 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:08:17,151 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is set at $12.50, and the targe'
+2026-08-23 10:08:20,474 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a television remote control, emphasizing the importan'
+2026-08-23 10:08:20,477 [INFO] __main__:   → qmsum: 12.09
+2026-08-23 10:08:20,485 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:08:20,485 [INFO] __main__: [중간 저장 완료] 10/12 조건
+2026-08-23 10:08:20,486 [INFO] __main__: 
+============================================================
+2026-08-23 10:08:20,486 [INFO] __main__: Condition: front_placeholder_content (mode=('content', 'pad'), content_offset_by_task={'gov_report': 14, 'qmsum': 30})
+2026-08-23 10:08:20,486 [INFO] __main__: ============================================================
+2026-08-23 10:08:20,487 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:08:20,542 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:08:20,570 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:08:20,876 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:08:24,456 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned in the transcript. However, the target cost is menti'
+2026-08-23 10:08:28,719 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a remote control device, emphasizing the importance o'
+2026-08-23 10:08:28,723 [INFO] __main__:   → qmsum: 9.91
+2026-08-23 10:08:28,733 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:08:28,733 [INFO] __main__: [중간 저장 완료] 11/12 조건
+2026-08-23 10:08:28,734 [INFO] __main__: 
+============================================================
+2026-08-23 10:08:28,734 [INFO] __main__: Condition: front_newline_content (mode=('content', 'newline'), content_offset_by_task={'gov_report': 14, 'qmsum': 30})
+2026-08-23 10:08:28,735 [INFO] __main__: ============================================================
+2026-08-23 10:08:28,735 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 10:08:28,792 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 10:08:28,826 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 10:08:29,102 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 10:08:31,177 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profi'
+2026-08-23 10:08:35,324 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed market trend findings related to the design of a new remote control, emphasizing the importance of i'
+2026-08-23 10:08:35,326 [INFO] __main__:   → qmsum: 13.36
+2026-08-23 10:08:35,338 [INFO] core.results_manager: JSON saved to results/v3_verified/table13_position_content_20260823_100710.json
+2026-08-23 10:08:35,339 [INFO] __main__: [중간 저장 완료] 12/12 조건
+2026-08-23 10:08:35,346 [INFO] core.results_manager: Results saved to results/v3_verified/table13_position_content_20260823_100710.csv
+2026-08-23 10:08:35,346 [INFO] __main__: 
+완료: 12개 조건
+2026-08-23 10:08:35,347 [INFO] __main__:   front_real           avg_score=9.35
+2026-08-23 10:08:35,347 [INFO] __main__:   middle_real          avg_score=12.09
+2026-08-23 10:08:35,348 [INFO] __main__:   end_real             avg_score=12.05
+2026-08-23 10:08:35,348 [INFO] __main__:   random_real          avg_score=10.5
+2026-08-23 10:08:35,349 [INFO] __main__:   front_placeholder    avg_score=10.5
+2026-08-23 10:08:35,349 [INFO] __main__:   front_newline        avg_score=8.53
+2026-08-23 10:08:35,349 [INFO] __main__:   none                 avg_score=12.09
+2026-08-23 10:08:35,350 [INFO] __main__:   front_1              avg_score=9.35
+2026-08-23 10:08:35,350 [INFO] __main__:   random_1             avg_score=12.09
+2026-08-23 10:08:35,351 [INFO] __main__:   front_real_content   avg_score=12.09
+2026-08-23 10:08:35,351 [INFO] __main__:   front_placeholder_content avg_score=9.91
+2026-08-23 10:08:35,351 [INFO] __main__:   front_newline_content avg_score=13.36
