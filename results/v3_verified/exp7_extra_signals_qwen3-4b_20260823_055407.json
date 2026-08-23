@@ -1,0 +1,519 @@
+{
+  "results": [
+    {
+      "variant": "V_only",
+      "avg_score": 14.72498369884781,
+      "avg_collapse_pct": 0.0,
+      "task_scores": {
+        "qmsum": 14.72498369884781
+      },
+      "task_collapse_pct": {
+        "qmsum": 0.0
+      },
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 15.789473684210526,
+            "prediction": "The target price for the remote control is not explicitly mentioned, but the target cost is $12.50, and the target profit is $12.50.",
+            "word_rep": 0.0,
+            "char_rep": 0.1875,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 10.619469026548673,
+            "prediction": "Marketing discussed market trend findings related to consumer preferences, specifically mentioning that younger audiences prefer products with a primary color, such as primary colors, and that there is a trend towards products that are more visually appealing and have a distinct design. They also mentioned that the market is moving towards products that are more user-friendly and have a modern, sleek appearance.",
+            "word_rep": 0.06666666666666665,
+            "char_rep": 0.2043795620437956,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 2,
+            "score": 15.217391304347828,
+            "prediction": "The SmartKom system faced several challenges, including difficulties in making the system respond to spoken input, issues with the synthesis of speech, and the need to exchange information between different components of the system. Additionally, there were problems with the system's ability to handle different languages and the need for further development in order to make the system more efficient and effective.",
+            "word_rep": 0.01666666666666672,
+            "char_rep": 0.13801452784503632,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 3,
+            "score": 12.76595744680851,
+            "prediction": "The review of problems from past meetings highlighted several issues, including the need for better communication and coordination among team members, challenges with the prototype's design that required adjustments, and difficulties in meeting project deadlines. Additionally, there were concerns about the prototype's functionality and user experience, which needed further refinement. The team also discussed the importance of clarifying roles and responsibilities to improve efficiency and ensure that all project goals were met.",
+            "word_rep": 0.0,
+            "char_rep": 0.07939508506616255,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 4,
+            "score": 18.918918918918916,
+            "prediction": "The user interface designer proposed that the industrial components should use simple push buttons instead of more complex interfaces, and they suggested using a material that is both durable and aesthetically pleasing. They also mentioned the importance of considering the user experience and simplicity in design.",
+            "word_rep": 0.0,
+            "char_rep": 0.08681672025723475,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 5,
+            "score": 19.35483870967742,
+            "prediction": "The professor thought that MSG was a promising approach but had some concerns. He acknowledged its potential in improving performance but also noted that there were issues to address, such as the need to understand why certain features were not working as expected and how to better integrate MSG into the overall system. The professor also mentioned that while MSG showed some promise, there was still a need for further investigation and experimentation to fully understand its effectiveness and limitations.",
+            "word_rep": 0.0,
+            "char_rep": 0.11462450592885376,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 6,
+            "score": 14.37908496732026,
+            "prediction": "Grad B thought the experimental setup of the computer navigation system was ambitious and had potential, but also acknowledged the challenges in determining the exact features and context that would influence the system's performance. He mentioned that the system would need to account for various factors like the time of day, the user's location, and the specific building or location they were trying to navigate to. Additionally, he noted that the system would need to handle different types of user interactions and responses, which could vary depending on the situation. Overall, Grad B saw the potential for the system to be useful but recognized the complexity involved in making it effective.",
+            "word_rep": 0.03669724770642202,
+            "char_rep": 0.16642754662840742,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 7,
+            "score": 2.2727272727272725,
+            "prediction": "The intensity of demands for the services in the early implementer areas would not be spread across Wales because the pilot programs are focused on specific regions, which may have unique characteristics, such as higher concentrations of families in need, different local circumstances, or varying levels of existing childcare infrastructure. These factors can lead to higher demand in certain areas, resulting in a more concentrated intensity of service requests compared to other parts of Wales.",
+            "word_rep": 0.0,
+            "char_rep": 0.08113590263691683,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 8,
+            "score": 26.923076923076923,
+            "prediction": "Grad E contributed to the discussion on storage disks by mentioning that he has a spare drive with approximately 120 gigabytes of space available, which could be used for storage purposes.",
+            "word_rep": 0.0,
+            "char_rep": 0.03260869565217395,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 9,
+            "score": 15.841584158415841,
+            "prediction": "The discussion focused on designing a remote control that is safe and user-friendly for children. The team considered features such as a simple design, easy-to-use buttons, and a durable build. They also discussed the importance of making the remote control visually appealing to children and ensuring it is not too small to hold. Additionally, they mentioned the need for the remote control to be robust enough to withstand rough handling by children.",
+            "word_rep": 0.014285714285714235,
+            "char_rep": 0.1339285714285714,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 10,
+            "score": 11.538461538461538,
+            "prediction": "The meeting decided on specific microphone procedures, including the use of wireless microphones for meetings, the placement of microphones close to the speaker, and the need to ensure proper synchronization and setup to avoid issues with the recognition system. They also discussed the importance of using the correct microphone setup to capture clear audio for the speech recognition system.",
+            "word_rep": 0.0,
+            "char_rep": 0.1773778920308483,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 11,
+            "score": 11.111111111111112,
+            "prediction": "Huw Irranca-Davies ensured the high qualification and quality of the workforce by emphasizing the importance of trained and qualified staff through collaboration with educational institutions and professional bodies. The £4.50 rate was designed to support the provision of high-quality care, and the government committed to investing in the training and development of the childcare sector. Additionally, the focus on the 10-hour early education provision, which is part of the broader childcare scheme, helps ensure that children receive high-quality care and education, which in turn supports the overall quality of the workforce. The government also worked with the sector to address any challenges related to staffing and training, ensuring that the workforce remained well-qualified and capable of providing high-quality care.",
+            "word_rep": 0.008547008547008517,
+            "char_rep": 0.26360338573155984,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 12,
+            "score": 17.647058823529413,
+            "prediction": "The committee evaluated the legitimacy of children's rights, protection, and demands by acknowledging the importance of children's voices in decision-making processes. They emphasized the need for continued support and protection of children's rights, particularly in the context of the pandemic, and recognized the challenges faced by children in accessing services and maintaining their well-being. The committee also highlighted the importance of monitoring and addressing the impact of the pandemic on children's rights and protection, ensuring that their needs are met and that they are included in decisions affecting their lives.",
+            "word_rep": 0.022727272727272707,
+            "char_rep": 0.2768987341772152,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 13,
+            "score": 12.389380530973451,
+            "prediction": "The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user because they both recognized that the design was generally user-friendly and intuitive. The remote control's layout and functionality were considered suitable for typical user interactions, making it easy for users to operate the device without significant learning curves.",
+            "word_rep": 0.0,
+            "char_rep": 0.05943152454780365,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 14,
+            "score": 17.857142857142858,
+            "prediction": "The meeting discussed key remote control concepts, focusing on design, materials, and user interface. They decided on using a simple and intuitive user interface with a combination of physical buttons and a touchscreen display. The remote was to be made from a durable, lightweight material that is both aesthetically pleasing and functional. They also agreed on incorporating advanced features such as voice control and a customizable interface to enhance user experience. The design was to be sleek and modern, with a focus on ergonomics and ease of use. The team also considered the use of different colors and shapes to make the remote more appealing to a wider audience.",
+            "word_rep": 0.009345794392523366,
+            "char_rep": 0.14456035767511177,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 15,
+            "score": 20.74074074074074,
+            "prediction": "The meeting started with a discussion about the project's goals, focusing on designing a new remote control. The team reviewed the project's presentation, discussed the design requirements, and brainstormed ideas for the remote's functionality and appearance. They also talked about the importance of making the remote user-friendly and culturally appropriate. The meeting concluded with a plan to continue working on the project and to present their ideas in the next meeting.",
+            "word_rep": 0.0,
+            "char_rep": 0.18816067653276958,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 16,
+            "score": 18.181818181818183,
+            "prediction": "The team decided that the remote control should have a functional design that is user-friendly, with a focus on intuitive controls and a simple interface. They also agreed that the remote should be designed to be visually appealing and include features that make it easy to use, such as clear buttons and a compact size. The discussion emphasized the importance of making the remote control both functional and aesthetically pleasing to enhance the overall user experience.",
+            "word_rep": 0.027027027027026973,
+            "char_rep": 0.15138592750533053,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 17,
+            "score": 16.107382550335572,
+            "prediction": "The meeting discussed various aspects of microphone data, including the setup and use of microphones during meetings. They talked about the placement of microphones, the importance of proper positioning for clear audio capture, and the use of different types of microphones. There was also discussion about the recognition and adaptation of speech using the microphone data, as well as the challenges faced in capturing high-quality audio. Additionally, they mentioned the need for accurate transcription and the importance of ensuring that the audio data is suitable for further analysis and processing.",
+            "word_rep": 0.011363636363636354,
+            "char_rep": 0.21499999999999997,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 18,
+            "score": 14.492753623188406,
+            "prediction": "The Industrial Designer and the Project Manager discussed the LCD screen's design, including its placement, appearance, and functionality. They agreed on the layout of the screen, the buttons, and the overall user experience. The Project Manager noted that the screen was part of the design decisions and that they needed to consider the cost and practicality of the design. The Industrial Designer explained the design details of the screen, including the placement of the buttons and the overall look of the device. They also discussed the importance of the screen in the overall product design and how it would be used by customers.",
+            "word_rep": 0.02970297029702973,
+            "char_rep": 0.3343898573692552,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 19,
+            "score": 15.172413793103448,
+            "prediction": "The discussion about the early implementer areas focused on the pilot program launched by the Welsh Government to test and expand childcare and early education services. The committee heard that the program has been implemented in various areas, with the goal of learning from these pilots to inform a broader rollout across Wales. Key challenges discussed included administrative burdens, the need for clear communication with parents and providers, and the importance of ensuring that the services are accessible and of high quality. The government emphasized the importance of learning from these early implementations to make informed decisions about scaling up the program.",
+            "word_rep": 0.030000000000000027,
+            "char_rep": 0.1973293768545994,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 20,
+            "score": 14.516129032258066,
+            "prediction": "The discussion about the presentation on the prototype model focused on evaluating the design, functionality, and feasibility of the remote control device. The team reviewed the prototype, discussed its features such as the ability to control devices, the use of titanium, and the inclusion of sensors. They also considered the device's potential for marketability and its alignment with the project's goals. The team expressed positive feedback about the prototype's design and functionality, and they agreed to proceed with further development and testing.",
+            "word_rep": 0.0,
+            "char_rep": 0.21299638989169678,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 21,
+            "score": 10.434782608695652,
+            "prediction": "The government was going to roll out a policy to ease the deficit by providing financial support to businesses and individuals through programs such as the Canada Emergency Response Benefit (CERB), the Canada Emergency Wage Subsidy (CEWS), and the Canada Recovery Benefit (CRB). These programs aimed to support Canadians during the pandemic by providing financial assistance to those who were unable to work due to the pandemic.",
+            "word_rep": 0.03076923076923077,
+            "char_rep": 0.19575471698113212,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 22,
+            "score": 18.181818181818183,
+            "prediction": "The team felt that they had made progress in their experiments, noting that the results were promising and that they were able to achieve significant improvements in accuracy. They also discussed the importance of continuing their work and exploring further improvements, particularly in addressing the challenges related to noise robustness and feature extraction.",
+            "word_rep": 0.0,
+            "char_rep": 0.11634349030470914,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 23,
+            "score": 15.0,
+            "prediction": "The group disagreed with the Project Manager when reflecting on the previous meetings and their project progress because they felt that the Project Manager's approach was too rigid and did not allow for enough creativity and flexibility in the design process. They believed that the Project Manager's emphasis on following a strict structure and meeting deadlines was limiting their ability to innovate and adapt to the project's needs.",
+            "word_rep": 0.030303030303030276,
+            "char_rep": 0.16435185185185186,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 24,
+            "score": 12.97297297297297,
+            "prediction": "The meeting discussed the presentation and evaluation of a new product prototype. The team reviewed the design, functionality, and user interface of the product, addressing various aspects such as the prototype's appearance, usability, and features. They also evaluated the product's potential for the market, considering factors like cost, design, and user experience. The team discussed the prototype's features, including its buttons, display, and overall design, and evaluated its performance in terms of user interaction and functionality. They also discussed the product's potential for the market and the team's overall satisfaction with the prototype. The meeting concluded with a discussion on the next steps, including further testing and refinement of the product.",
+            "word_rep": 0.02752293577981646,
+            "char_rep": 0.3411154345006485,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 25,
+            "score": 15.384615384615385,
+            "prediction": "The project manager suggested cutting down the functions when discussing the design of the remote control to make the device simpler and more user-friendly, aligning with the findings that most users only need basic functions. This approach would also help in reducing complexity, improving usability, and making the remote control more appealing to a broader audience.",
+            "word_rep": 0.01851851851851849,
+            "char_rep": 0.10684931506849316,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 26,
+            "score": 9.356725146198828,
+            "prediction": "The meeting summarized the project's progress, discussed the prototype's design and functionality, evaluated its feasibility, and addressed feedback from team members. The team reviewed the remote control device, its features, and its potential for market success. They also discussed the prototype's criteria, such as usability, functionality, and cost, and decided on the next steps for the project. The meeting concluded with a positive outlook on the project's potential and a plan to move forward with the development of the remote control device.",
+            "word_rep": 0.025000000000000022,
+            "char_rep": 0.2572992700729927,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 27,
+            "score": 11.363636363636363,
+            "prediction": "Grad A thought that setting up the recording equipment was necessary for the meeting, as they mentioned the need to record the discussion for future reference. They also expressed that they would need to ensure the equipment was properly set up and functioning during the meeting.",
+            "word_rep": 0.0,
+            "char_rep": 0.1376811594202898,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 28,
+            "score": 11.428571428571429,
+            "prediction": "The Project Manager thought of the advanced technology design when presenting the technical functions because they wanted to ensure the remote control was efficient and user-friendly, considering future needs and the importance of having a reliable and effective design that could handle potential advancements in technology.",
+            "word_rep": 0.0,
+            "char_rep": 0.07165109034267914,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 29,
+            "score": 15.789473684210527,
+            "prediction": "The meeting focused on designing a new remote control. The team discussed the features the remote should have, such as being user-friendly, functional, and visually appealing. They decided on the remote's design, functionality, and pricing. The team also talked about the importance of making the remote intuitive and easy to use. They agreed to work on the design and functionality of the remote in the following weeks.",
+            "word_rep": 0.0,
+            "char_rep": 0.19711538461538458,
+            "collapsed": false
+          }
+        ]
+      }
+    },
+    {
+      "variant": "P_only",
+      "avg_score": 14.392536812876301,
+      "avg_collapse_pct": 0.0,
+      "task_scores": {
+        "qmsum": 14.392536812876301
+      },
+      "task_collapse_pct": {
+        "qmsum": 0.0
+      },
+      "sample_records": {
+        "qmsum": [
+          {
+            "sample_idx": 0,
+            "score": 12.000000000000002,
+            "prediction": "The target price for the remote control is not explicitly mentioned in the discussion. The target cost is $0, as it refers to the cost of producing the remote control. The target profit is not explicitly mentioned either.",
+            "word_rep": 0.05555555555555558,
+            "char_rep": 0.29032258064516125,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 1,
+            "score": 13.913043478260867,
+            "prediction": "Marketing discussed market trend findings related to the design of a new product, emphasizing the importance of making it appealing to younger consumers. They mentioned the need for a product that is innovative and has a unique design, such as a hand-shaped design with rubber around it for better grip and comfort. Additionally, Marketing highlighted the importance of the product's usability and its potential for selling in the market.",
+            "word_rep": 0.014925373134328401,
+            "char_rep": 0.13133640552995396,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 2,
+            "score": 8.333333333333332,
+            "prediction": "The problems encountered with the SmartKom system included difficulties in implementing the system, challenges in understanding and defining the system's structure, and issues with the system's formalization. Additionally, there were problems with the system's design and the need to make decisions regarding its structure and functionality. There were also challenges in coordinating with other groups and ensuring that the system's development was aligned with the project's goals.",
+            "word_rep": 0.01538461538461533,
+            "char_rep": 0.2359081419624217,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 3,
+            "score": 11.464968152866243,
+            "prediction": "The review of problems from the past meetings highlighted several issues. The team encountered challenges with the product's design, particularly its appearance, which some found unappealing. There were also difficulties with the project's budget, as the costs exceeded the initial estimates. Additionally, the team faced issues with the project evaluation process, as it was not clearly defined whether the evaluation was focused on the product or the project itself. Lastly, there were challenges with the initial slides provided, which were blank and lacked content, leading to inconsistencies in how each team member approached their presentations.",
+            "word_rep": 0.010752688172043001,
+            "char_rep": 0.17901234567901236,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 4,
+            "score": 16.216216216216218,
+            "prediction": "The user interface designer proposed exploring two options for the industrial components: one involving a titanium-shaped remote control that smells like fruit and another involving a spongy, fruity-like design. They also discussed the possibility of using a rubber body with titanium panels and modeling clay for prototyping.",
+            "word_rep": 0.0,
+            "char_rep": 0.08695652173913049,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 5,
+            "score": 24.8062015503876,
+            "prediction": "The professor had mixed feelings about MSG. While he appreciated its unique temporal properties and potential for incorporating different temporal characteristics, he also acknowledged the challenges and limitations of the system. He believed that MSG had the potential to contribute to the project, but he emphasized that the most critical issues to focus on were the training set, training targets, and integrating their work with others' systems. Ultimately, he thought that MSG was a useful tool but not a complete solution to the problems they were trying to address.",
+            "word_rep": 0.0,
+            "char_rep": 0.1161971830985915,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 6,
+            "score": 16.129032258064516,
+            "prediction": "Grad D thought the experimental setup of the computer navigation system was valid and useful. They acknowledged that the system's current behavior of taking users to the geometric center of a building was a problem, and they agreed that the goal of developing a system that could take users to specific points like the Vista point, Tango point, or the door was a worthwhile objective. D also expressed interest in seeing pictures of Heidelberg, indicating a positive engagement with the discussion.",
+            "word_rep": 0.0,
+            "char_rep": 0.09716599190283404,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 7,
+            "score": 4.301075268817204,
+            "prediction": "The intensity of demands for the services in the early implementer areas would not be spread across Wales because the early implementer areas are specifically chosen and targeted regions where the childcare offer is initially piloted. These areas may have higher concentrations of eligible families, leading to greater demand in those specific regions compared to other parts of Wales. Additionally, the initial rollout of the service is focused on these selected areas, which can result in uneven distribution of demand across the country.",
+            "word_rep": 0.024691358024691357,
+            "char_rep": 0.15671641791044777,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 8,
+            "score": 21.428571428571427,
+            "prediction": "Grad E contributed to the discussion on storage disks by mentioning the need to consider the size of the training data and the number of hidden units in the neural network when deciding on the appropriate size for the storage disks.",
+            "word_rep": 0.0,
+            "char_rep": 0.13157894736842102,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 9,
+            "score": 12.903225806451612,
+            "prediction": "The discussion focused on designing a remote control that is suitable for children, emphasizing the need for simplicity and safety. The team considered features like a straightforward interface, easy-to-use buttons, and a durable design. They also discussed the importance of making the remote control child-friendly, ensuring it is safe for young users and easy to handle. Additionally, they explored the inclusion of features such as a history function and a back button to enhance the user experience for children. The meeting concluded with a plan to meet again in thirty minutes to further develop these ideas and finalize the design specifications.",
+            "word_rep": 0.0,
+            "char_rep": 0.12307692307692308,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 10,
+            "score": 12.698412698412698,
+            "prediction": "The meeting decided on specific microphone procedures, including the use of lapel microphones for most participants, with a ninth microphone passed around for use by those who need to speak without being tied to a specific location. They also discussed the importance of using a consistent channel for the microphones and ensuring that the microphone setup does not interfere with the transcription forms. Additionally, they planned to record the meeting and have a follow-up meeting where transcribers would discuss the data and their observations.",
+            "word_rep": 0.0,
+            "char_rep": 0.1688073394495413,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 11,
+            "score": 15.555555555555559,
+            "prediction": "Huw Irranca-Davies ensured the high qualification and quality of the workforce by focusing on registered and inspected providers, which emphasizes the importance of qualified and trained staff. The £4.50 rate was designed to support this standard, as evidenced by the example of a high-quality childcare facility in the Valleys that met these criteria. Additionally, the Welsh Government is committed to increasing qualifications within the workforce, aligning with the goal of improving the quality of childcare while maintaining affordability.",
+            "word_rep": 0.0,
+            "char_rep": 0.12569316081330872,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 12,
+            "score": 16.113744075829384,
+            "prediction": "The evaluation of children's rights, protection, and demands during the meeting highlighted the importance of ensuring that children's voices are heard and their rights are protected, especially in the context of the pandemic. The committee discussed various aspects including the need for continued support for the childcare sector, the importance of maintaining access to childcare for vulnerable children, and the necessity of protecting children's rights in the context of family court proceedings. They also emphasized the importance of providing necessary technology to ensure that vulnerable children can maintain contact with social workers and key workers. The committee expressed concern about the potential collapse of some childcare providers and the need for a bespoke support package to ensure the sector's survival. Overall, the evaluation stressed the importance of children's rights and protection in all aspects of policy and service provision.",
+            "word_rep": 0.04379562043795615,
+            "char_rep": 0.31941544885177453,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 13,
+            "score": 11.650485436893204,
+            "prediction": "The Project Manager agreed with Marketing when assessing the criteria of matching the operating behaviour of the user because they both found the design of the remote control to be user-friendly and practical, aligning well with how users would expect to interact with such a device.",
+            "word_rep": 0.0,
+            "char_rep": 0.06810035842293904,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 14,
+            "score": 14.102564102564106,
+            "prediction": "The team decided on the following key remote control concepts: a simple battery power source, an advanced integrated circuit for the LCD display and voice recognition, a curved on one side case made of rubber with a folded design, rubber buttons, an LCD screen with a spinning wheel inside, and a design incorporating vegetable colors for a trendy look. The remote will have a minimalist exterior with an LCD screen and spinning wheel inside when opened, inspired by the iPod design. The team also decided to focus on trends rather than usability, and the remote will be evaluated by the Marketing Expert.",
+            "word_rep": 0.010000000000000009,
+            "char_rep": 0.16638935108153075,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 15,
+            "score": 14.52513966480447,
+            "prediction": "The meeting summarized the key points discussed among the team members. They discussed the design and functionality of a new universal remote control, focusing on its form, buttons, and the standardization of its transmission method. They also talked about the remote's front design, considering different color options and their appeal to various demographics. The team discussed the importance of a standard infrared transmission method to ensure compatibility with different devices. They also covered the remote's materials and construction, ensuring it is durable and not loose. Additionally, they discussed the need for marketing research to determine the best color options and front designs for the remote. The meeting concluded with plans for the next meeting in thirty minutes.",
+            "word_rep": 0.008695652173912993,
+            "char_rep": 0.24137931034482762,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 16,
+            "score": 8.0,
+            "prediction": "The discussion about function design concluded with the team deciding to focus on key features that are important for the user, while eliminating less important ones. They also decided to delve deeper into the technical aspects to determine what they want to implement. The team agreed to meet again in thirty minutes to review their ideas and make final decisions.",
+            "word_rep": 0.0,
+            "char_rep": 0.06648199445983383,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 17,
+            "score": 19.607843137254903,
+            "prediction": "The meeting discussed various aspects of microphone data, including the use of different microphones such as lapel mikes, hand-held mikes, and the need for proper setup and configuration. They discussed the challenges of overlapping speech and how to handle it, with one participant proposing the use of echo cancellation to manage overlapping talk. There was also a mention of the importance of accurate transcription and the need for a meta-meeting where transcribers could discuss the data and their observations. Additionally, the group planned to record a meeting with transcribers to discuss the data and their findings.",
+            "word_rep": 0.06382978723404253,
+            "char_rep": 0.21704180064308687,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 18,
+            "score": 11.009174311926607,
+            "prediction": "The Industrial Designer and the Project Manager discussed the LCD screen's importance in the design of the remote control, highlighting its role in making the device visually appealing and modern. They also addressed the challenges of incorporating the LCD screen into the final product due to cost constraints, ultimately deciding to proceed with a design that included the LCD screen despite the financial challenges.",
+            "word_rep": 0.016129032258064502,
+            "char_rep": 0.14939759036144573,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 19,
+            "score": 11.428571428571429,
+            "prediction": "The discussion about the early implementer areas focused on the rollout of the Welsh Government's childcare offer, which provides 30 hours of free childcare per week for working families. The early implementer areas were used to test the scheme and gather feedback. The minister highlighted that the scheme is designed to be accessible to a wide range of families, with eligibility based on the term after a child's third birthday. The discussion also touched on the importance of communication to ensure parents and providers understand the scheme, as well as the need to integrate the Welsh offer with the UK's tax-free childcare scheme. The minister emphasized that the scheme is intended to support child development and reduce the financial burden on families, with early evidence suggesting that many families, particularly those below the average income, are benefiting from the offer.",
+            "word_rep": 0.021739130434782594,
+            "char_rep": 0.22409909909909909,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 20,
+            "score": 14.925373134328357,
+            "prediction": "The discussion about the presentation on the prototype model focused on showcasing the design and features of the new remote control device. The team presented the prototype, highlighting its innovative features such as the use of new materials, speech recognition, and location finding capabilities. They also discussed the design elements, including the unique \"strawberry\" design and the use of pink titanium. The team emphasized the creativity and potential of the product, and the presentation was well-received, with positive feedback on the design and functionality. The meeting concluded with a decision to celebrate the successful completion of the project.",
+            "word_rep": 0.02083333333333337,
+            "char_rep": 0.21450151057401812,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 21,
+            "score": 13.953488372093023,
+            "prediction": "The government was going to roll out policies to ease the deficit, including the emergency wage subsidy and the Canada emergency response benefit, which are designed to protect employees and support the economy during the pandemic.",
+            "word_rep": 0.0,
+            "char_rep": 0.07488986784140972,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 22,
+            "score": 15.09433962264151,
+            "prediction": "The team felt that they had made progress in their work, acknowledging that they had tried many different approaches and that there were still plenty of things to do. They recognized that while they had shown improvements in certain areas, there were still core issues related to training sets, training targets, and integrating their work with others that needed further attention. Despite the challenges, they were generally positive about their current standing and felt that they were on the right track.",
+            "word_rep": 0.03797468354430378,
+            "char_rep": 0.18253968253968256,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 23,
+            "score": 22.857142857142858,
+            "prediction": "The group disagreed with the Project Manager when reflecting on the previous meetings and their project progress because they felt the Project Manager did not fully understand the concepts phase of the project and misunderstood the focus of the project evaluation, which they believed should have been on the product rather than the project itself.",
+            "word_rep": 0.037735849056603765,
+            "char_rep": 0.20639534883720934,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 24,
+            "score": 17.218543046357617,
+            "prediction": "The meeting summarized the progress of the project, discussed the evaluation of the remote control design, and reviewed the project process. The team discussed changes to the design to reduce costs, including removing the joystick and using push-buttons instead. They also reflected on the project's teamwork, creativity, and the effectiveness of tools like the SMARTboard. The meeting concluded with a positive assessment of the project and a plan to move forward with the revised design.",
+            "word_rep": 0.0,
+            "char_rep": 0.18762886597938144,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 25,
+            "score": 11.111111111111112,
+            "prediction": "The Project Manager suggested cutting down the functions when discussing the design of the remote control to simplify the user interface, making it more intuitive and easier to use. By reducing the number of functions and buttons, the remote control would be more user-friendly, especially for those who might find a complex interface confusing or difficult to navigate. This approach also helps in focusing on the essential functions that users are most likely to need, such as turning the device on/off, changing channels, and adjusting volume. Additionally, a simpler interface can improve the overall aesthetic of the product, aligning with the company's branding and the goal of incorporating fashion into electronics.",
+            "word_rep": 0.00917431192660545,
+            "char_rep": 0.12378303198887342,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 26,
+            "score": 13.986013986013985,
+            "prediction": "The meeting summarized the progress of a project, discussed the prototype, evaluated the team's performance, and confirmed that the project is within budget. The team expressed satisfaction with the project's development and decided to celebrate their success with a party. They also discussed future steps and plans for the project.",
+            "word_rep": 0.0,
+            "char_rep": 0.15805471124620063,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 27,
+            "score": 18.01801801801802,
+            "prediction": "Grad A thought that the recording equipment should be set up as soon as possible, and that the team should start trying to populate the belief-net package for the problem at hand. A also mentioned that they would like to have a first cut at what the belief-net looks like, even if it's really crude, and that they would like to discuss the idea of making up a data file for the belief-net.",
+            "word_rep": 0.04225352112676062,
+            "char_rep": 0.20779220779220775,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 28,
+            "score": 11.864406779661017,
+            "prediction": "The Project Manager thought of the advanced technology design when presenting the technical functions because they wanted to ensure the remote control could incorporate features like voice recognition, which would make it more user-friendly and modern. This aligns with the goal of targeting a younger demographic (15-35 years old) and making the product stand out in the market with innovative technology.",
+            "word_rep": 0.0,
+            "char_rep": 0.06716417910447758,
+            "collapsed": false
+          },
+          {
+            "sample_idx": 29,
+            "score": 16.56050955414013,
+            "prediction": "The meeting summarized the key points discussed during the session. The team discussed the project's goals, the importance of user requirements, and the need to prioritize ideas for the next meeting. They also covered topics such as the design of the remote control, the functionality of the device, and the need for further discussion and planning in the next thirty minutes. The meeting concluded with a thank you and a reminder to meet again in thirty minutes.",
+            "word_rep": 0.013333333333333308,
+            "char_rep": 0.18082788671023964,
+            "collapsed": false
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    "qmsum"
+  ],
+  "num_samples": 30,
+  "sink_size": 4
+}
