@@ -85,6 +85,8 @@ def run_setting(evaluator, label, alpha, beta, delta, tasks, num_samples, seed, 
 def parse_args():
     parser = argparse.ArgumentParser(description="Exp12: Weight Sensitivity (TABLE XII)")
     parser.add_argument("--model", default="qwen3-4b")
+    parser.add_argument("--tasks", nargs="+", default=None,
+                        help="지정 안 하면 기존 7-task 전체(TASKS 상수) 사용 - 하위호환 유지")
     parser.add_argument("--num_samples", type=int, default=50)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--invert_norm", action="store_true",
@@ -112,8 +114,9 @@ def main():
     rm.RESULTS_DIR = "results/v3_verified"
     os.makedirs(rm.RESULTS_DIR, exist_ok=True)
 
+    tasks_to_run = args.tasks if args.tasks else TASKS
     logger.info("Experiment 12: Weight Sensitivity (TABLE XII)")
-    logger.info(f"  Model: {args.model} | Tasks: {TASKS} | Samples: {args.num_samples} | "
+    logger.info(f"  Model: {args.model} | Tasks: {tasks_to_run} | Samples: {args.num_samples} | "
                 f"Sink: {SINK_SIZE} | Budget: {BUDGET_RATIO:.0%}")
     logger.info(f"  Key-norm direction: {'CORRECTED' if args.invert_norm else 'legacy'} | Results dir: {rm.RESULTS_DIR} | Log dir: {log_dir}")
 
@@ -122,7 +125,7 @@ def main():
 
     all_results = []
     for label, alpha, beta, delta in WEIGHT_SETTINGS:
-        result = run_setting(evaluator, label, alpha, beta, delta, TASKS, args.num_samples, args.seed,
+        result = run_setting(evaluator, label, alpha, beta, delta, tasks_to_run, args.num_samples, args.seed,
                               invert_norm=args.invert_norm)
         all_results.append(result)
 
