@@ -1,137 +1,330 @@
-# KV Cache 실험 코드
+# SalienceKV: KV-Cache Compression and Generation Robustness
 
-**논문:** Adaptive Layer-wise Hybrid KV Cache Management for Resource-Constrained Small Language Models
+Research code and experimental artifacts for a study of generation robustness under aggressive KV-cache compression in long-context language models.
 
----
+> **Repository status:** Manuscript in preparation.  
+> This repository is currently under active development and will be made public after manuscript submission.  
+> The public release will include a submission-tagged snapshot of the code and canonical experimental artifacts.
 
-## 디렉토리 구조
+## Overview
 
+This project studies how KV-cache compression affects both **task quality** and **generation stability** under aggressive memory budgets.
+
+The experiments focus on three questions:
+
+1. Can conventional aggregate task scores hide severe generation failures such as repetition collapse?
+2. How do different KV-cache selection strategies behave when the cache budget is strongly constrained?
+3. Does preserving or implicitly retaining early-position tokens improve generation robustness?
+
+The repository includes baseline implementations, controlled sink-token interventions, signal ablations, budget sensitivity experiments, efficiency measurements, cross-architecture evaluation, and position/content interventions.
+
+The main empirical focus is on **Qwen3-4B**, with additional cross-architecture evaluation using **Phi-3 Mini**.
+
+## Scope of the Study
+
+### Models
+
+- **Qwen3-4B** — primary model
+- **Phi-3 Mini** — cross-architecture validation
+
+Gemma-2 was explored during development but is not included in the final quantitative compression comparison because the current evaluation path does not implement the HybridCache semantics required by its mixed sliding-window/global-attention architecture at long sequence lengths.
+
+### Long-context tasks
+
+Experiments use seven tasks derived from LongBench:
+
+- NarrativeQA
+- Qasper
+- MultiFieldQA-en
+- HotpotQA
+- 2WikiMQA
+- GovReport
+- QMSum
+
+The dataset revision is pinned in `core/dataset_loader.py` for reproducibility.
+
+## Methods
+
+The evaluation framework includes:
+
+- FullKV
+- StreamingLLM
+- H2O-adapted
+- SnapKV-adapted
+- PyramidKV-adapted
+- AdaKV-adapted
+- SalienceKV without explicit sink preservation
+- SalienceKV with explicit early-token preservation
+
+The exact method settings used for each manuscript experiment are defined in the corresponding scripts under `experiments/`.
+
+## Important Implementation Notes
+
+### Key-norm direction
+
+The corrected experiments prioritize **low L2-norm keys** when key norm is used as an importance signal.
+
+Runs used for the final manuscript use:
+
+```text
+invert_norm=True
 ```
-kv_cache_exp/
-├── core/                        ← 공통 코드 (수정 불필요)
-│   ├── model_loader.py            모델 로드, 프롬프트 생성
-│   ├── dataset_loader.py          LongBench 7개 태스크
-│   ├── metrics.py                 F1, ROUGE-L
-│   ├── kv_base.py                 KV 캐시 기반 클래스
-│   ├── kv_methods.py              7개 KV 방법
-│   ├── evaluator.py               평가 엔진
-│   └── results_manager.py         CSV/JSON 저장
+
+Legacy development runs that used the opposite direction are retained only for traceability and are not used as canonical manuscript results.
+
+### Fixed KV-cache budget
+
+Explicitly preserved early tokens are counted **inside the fixed total KV-cache budget**. They are not added on top of the nominal cache budget.
+
+### QMSum prompt handling
+
+QMSum uses the official LongBench query-focused instruction template within the model-specific chat wrapper.
+
+Earlier development runs used a generic summarization prompt that omitted the QMSum query. That issue was identified and corrected before the final manuscript results were frozen.
+
+Legacy results generated before this correction are retained for traceability but are not used as canonical final results.
+
+### EOS handling
+
+Generation uses all EOS token IDs defined by each model's generation configuration when applicable.
+
+### Repetition-collapse evaluation
+
+Generation robustness is evaluated using a predefined repetition-collapse criterion implemented in the evaluation code. Reported collapse rates refer only to this predefined detector and should not be interpreted as a universal measure of all possible degeneration modes.
+
+## Repository Structure
+
+```text
+salience-kv/
+├── core/
+│   ├── model_loader.py          # model loading, prompt construction, tokenization
+│   ├── dataset_loader.py        # LongBench loading and pinned dataset revision
+│   ├── evaluator_v2.py          # evaluation and generation pipeline
+│   ├── kv_base.py               # KV-cache utilities
+│   ├── kv_methods.py            # KV-cache compression / eviction methods
+│   ├── metrics.py               # task-quality metrics
+│   └── results_manager.py       # CSV / JSON result serialization
 │
-├── experiments/                 ← 실험별 실행 파일
-│   ├── sanity_check.py            환경 검증 (실험 전 필수)
-│   ├── exp1_main_results.py       주요 성능 비교
-│   ├── exp2_ablation_score.py     Ablation - Score 성분
-│   ├── exp3_ablation_allocation.py Ablation - 레이어 할당
-│   ├── exp4_budget_sensitivity.py  예산 민감도
-│   ├── exp5_hyperparam_sensitivity.py 하이퍼파라미터 민감도
-│   └── exp6_overhead.py           계산 오버헤드
+├── experiments/
+│   ├── exp1_main_results.py
+│   ├── exp_table6_sink_intervention.py
+│   ├── exp_table7_signal_ablation.py
+│   ├── exp_table8_budget_sensitivity.py
+│   ├── exp_table7_efficiency_v2.py
+│   ├── exp_table10_cross_arch_sink.py
+│   ├── exp_table12_weight_sensitivity.py
+│   ├── sanity_check.py
+│   ├── deprecated/
+│   └── debug_*/
 │
-├── notebooks/                   ← 환경 확인 및 결과 분석
-│   ├── 01_환경확인.ipynb
-│   ├── 02_결과분석.ipynb
-│   └── 03_그래프작성.ipynb
+├── results/
+│   └── v3_verified/             # verified experimental artifacts
 │
-├── configs/                     ← 하이퍼파라미터 설정
-│   ├── default.yaml               공통 기본값
-│   ├── qwen3-4b.yaml              주 모델 설정
-│   ├── phi-3-mini.yaml            교차 검증 모델
-│   └── gemma-2-2b.yaml            교차 검증 모델
+├── logs/
+│   └── v3_verified/             # execution logs for verified runs
 │
-├── scripts/                     ← RunPod 실행 스크립트
-│   ├── run_all.sh                 전체 실험 순차 실행
-│   ├── run_baselines.sh           실험 1: 베이스라인 비교
-│   ├── run_ablation.sh            실험 2+3: Ablation
-│   └── run_sensitivity.sh         실험 4+5: 민감도 분석
-│
-├── logs/                        ← 실험 로그 자동 저장
-├── results/                     ← CSV 결과 자동 저장
-│   ├── longbench/
-│   ├── latency/
-│   └── memory/
-├── figures/                     ← 그래프 저장
-├── setup.sh                     ← RunPod 초기 환경 설정
-└── requirements.txt
+├── legacy/                      # historical development artifacts; non-canonical
+├── configs/
+├── scripts/
+├── setup.sh
+├── requirements.txt
+└── README.md
 ```
 
----
+> Files under `legacy/`, `experiments/deprecated/`, `experiments/debug_*`, intermediate sanity runs, and superseded result files are retained for research traceability. They are **not** canonical manuscript results unless explicitly listed in the table mapping below.
 
-## RunPod 실행 순서
+## Environment
 
-### 1. 초기 환경 설정 (Pod 생성 후 최초 1회)
+The experiments were run on NVIDIA GPUs using PyTorch and Hugging Face Transformers.
+
+Core dependencies are listed in:
+
 ```bash
-cd /workspace
-git clone <repo_url> kv_cache_exp
-cd kv_cache_exp
-bash setup.sh
+requirements.txt
 ```
 
-### 2. 환경 확인 (실험 전 필수)
+Install with:
+
 ```bash
-python experiments/sanity_check.py --model qwen3-4b --full_check
+pip install -r requirements.txt
 ```
 
-### 3. 빠른 검증 (샘플 20개, ~1시간)
+For the submission release, the exact software environment used for the canonical experiments should be recorded here:
+
+```text
+Python:          [TO FILL AT SUBMISSION]
+PyTorch:         [TO FILL AT SUBMISSION]
+Transformers:    [TO FILL AT SUBMISSION]
+Datasets:        2.21.0
+CUDA:            [TO FILL AT SUBMISSION]
+Primary GPU:     NVIDIA A40
+Seed:            42
+LongBench rev.:  [pinned in core/dataset_loader.py]
+```
+
+A frozen dependency snapshot should be added before public release.
+
+## Quick Start
+
+Clone the repository and install dependencies:
+
 ```bash
-bash scripts/run_all.sh --quick
+git clone https://github.com/jacksonyjg/salience-kv.git
+cd salience-kv
+pip install -r requirements.txt
 ```
 
-### 4. 전체 실험 (tmux 권장)
+Run a basic environment check:
+
 ```bash
-tmux new -s kvcache
-bash scripts/run_all.sh
-# Ctrl+B → D  (백그라운드로 분리)
-# tmux attach -t kvcache  (재접속)
+python3 experiments/sanity_check.py --model qwen3-4b --full_check
 ```
 
-### 5. 개별 실험 실행
+## Example Reproduction Commands
+
+### Main comparison
+
 ```bash
-# 실험 1: 베이스라인 비교
-bash scripts/run_baselines.sh --num_samples 20
-
-# 실험 2+3: Ablation
-bash scripts/run_ablation.sh --num_samples 20
-
-# 실험 4+5: 민감도 분석
-bash scripts/run_sensitivity.sh --num_samples 20
-
-# 실험 6: 오버헤드
-python experiments/exp6_overhead.py --model qwen3-4b
+python3 -u experiments/exp1_main_results.py \
+  --model qwen3-4b \
+  --mode full \
+  --budget 0.20 \
+  --num_samples 30 \
+  --seed 42 \
+  --invert_norm
 ```
 
----
+### Sink-size intervention
 
-## 로컬 모델/데이터셋 전환 방법
+20% KV-cache budget:
 
-현재는 HuggingFace Hub에서 자동 다운로드합니다.
-로컬 경로로 전환 시 `# LOCAL:` 주석 부분을 수정하세요.
-
-**파일 위치:**
-- 모델 경로: `core/model_loader.py` → `MODEL_CONFIGS` 안의 `hf_name`
-- 데이터셋 경로: `core/dataset_loader.py` → `load_longbench_task()` 안의 주석
-- yaml 경로: `configs/qwen3-4b.yaml` → `model_source: local` 로 변경
-
-**다운로드 명령어:**
 ```bash
-# 모델
-huggingface-cli download Qwen/Qwen3-4B \
-    --local-dir /workspace/models/Qwen3-4B
-
-# 데이터셋
-huggingface-cli download THUDM/LongBench \
-    --repo-type dataset \
-    --local-dir /workspace/datasets/longbench
+python3 -u experiments/exp_table6_sink_intervention.py \
+  --model qwen3-4b \
+  --budget 0.20 \
+  --tasks qmsum gov_report \
+  --num_samples 30 \
+  --seed 42 \
+  --invert_norm
 ```
 
----
+80% KV-cache budget:
 
-## 결과 파일
+```bash
+python3 -u experiments/exp_table6_sink_intervention.py \
+  --model qwen3-4b \
+  --budget 0.80 \
+  --tasks qmsum gov_report \
+  --num_samples 30 \
+  --seed 42 \
+  --invert_norm
+```
 
-실험 완료 후 `results/` 에 자동 저장:
+The exact commands used for every reported table will be frozen and listed in the submission release.
+
+## Manuscript-to-Code Mapping
+
+The script numbering reflects the development history and does not always match the final paper table number.
+
+| Manuscript Table | Experiment | Primary script | Canonical result |
+|---|---|---|---|
+| Table II–III | Main task-quality and collapse comparison | `experiments/exp1_main_results.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
+| Table IV | Sink-size intervention at 20% and 80% budgets | `experiments/exp_table6_sink_intervention.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
+| Table V | Signal ablation | `experiments/exp_table7_signal_ablation.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
+| Table VI | Budget sensitivity | `experiments/exp_table8_budget_sensitivity.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
+| Table VII | Efficiency benchmark | `experiments/exp_table7_efficiency_v2.py` | `results/v3_verified/table7_v2_efficiency_20260822_141505.json` |
+| Table VIII | Cross-architecture robustness | `experiments/exp_table10_cross_arch_sink.py` + controlled Phi-3 intervention | `[TO FILL AFTER QMSUM FINALIZATION]` |
+| Table IX | Weight sensitivity | `experiments/exp_table12_weight_sensitivity.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
+| Table X | Position/content intervention | corresponding position/content experiment | `[TO FILL AFTER QMSUM FINALIZATION]` |
+
+Before public release, every placeholder above should be replaced with the exact JSON artifact used to generate the submitted manuscript table.
+
+## Canonical Results Policy
+
+Only files explicitly listed in the **Manuscript-to-Code Mapping** section are considered canonical manuscript results.
+
+The repository contains additional development artifacts because the study included multiple validation and debugging stages. These files are preserved to maintain traceability, but they must not be mixed with the final manuscript results.
+
+In particular:
+
+- `results/v3_verified/` contains both final and intermediate verified runs.
+- `legacy/` contains historical experiments.
+- debug and sanity artifacts are not manuscript results unless explicitly mapped above.
+- superseded QMSum results generated before the query-prompt correction are non-canonical.
+
+## Reproducibility and Traceability
+
+For each final manuscript experiment, the public release should provide:
+
+- exact script,
+- command-line arguments,
+- model and dataset revision,
+- random seed,
+- result JSON,
+- corresponding execution log,
+- manuscript table mapping.
+
+At manuscript submission, the corresponding repository state should be tagged, for example:
+
+```bash
+git tag -a submission-v1.0 -m "Code and artifacts for submitted manuscript"
+git push origin submission-v1.0
 ```
-results/
-├── exp1_qwen3-4b_full_YYYYMMDD.csv    ← 논문 Table I
-├── exp2_score_ablation_*.csv           ← 논문 Table III
-├── exp3_allocation_*.csv               ← 논문 Table IV
-├── exp4_budget_sensitivity_*.csv       ← 논문 Table V
-└── exp5_*.csv                          ← 논문 Table VI
+
+This tag should remain immutable so that later repository updates do not change the code corresponding to the submitted paper.
+
+## Main Research Interpretation
+
+The study distinguishes **task correctness** from **generation robustness**.
+
+Under the tested aggressive-compression settings, some score-based eviction methods exhibit substantial repetition collapse even when aggregate task scores alone do not make the instability obvious.
+
+The experiments investigate early-position anchoring as a strong robustness factor. Controlled interventions are used to test whether removing or restoring early-position retention changes collapse behavior.
+
+These findings are intentionally bounded to the evaluated models, tasks, compression methods, and cache budgets; they should not be interpreted as evidence that early-token preservation is necessary, sufficient, or universally protective for all language models.
+
+## Known Limitations
+
+- The primary quantitative evaluation is centered on Qwen3-4B.
+- Phi-3 Mini is used for cross-architecture validation, but cross-model behavior remains architecture-dependent.
+- Gemma-2 is not included in the quantitative compression comparison because the current harness does not implement the HybridCache semantics required by its long-context attention architecture.
+- Experiments were executed on data-center GPUs; deployment on physical on-device hardware remains future work.
+- The repetition-collapse detector captures a predefined form of generation degeneration and does not cover all possible failure modes.
+
+## Paper
+
+**Title:** `[FINAL MANUSCRIPT TITLE TO BE INSERTED]`
+
+**Venue:** IEEE Access  
+**Status:** Manuscript in preparation
+
+After submission, update only the status line:
+
+```text
+Status: Submitted to IEEE Access.
 ```
+
+After publication, add the DOI and final bibliographic citation.
+
+## Citation
+
+Citation information will be added after manuscript submission/publication.
+
+```bibtex
+@article{saliencekv2026,
+  title   = {[FINAL TITLE]},
+  author  = {[AUTHOR LIST]},
+  journal = {IEEE Access},
+  year    = {2026}
+}
+```
+
+## License
+
+A repository license will be finalized before public release after confirming compatibility with all third-party baseline implementations and dependencies.
+
+Third-party code, models, and datasets remain subject to their respective licenses and terms of use.
+
+## Acknowledgments
+
+This repository uses publicly available language models and the LongBench benchmark for research evaluation. Please cite the original model, dataset, and baseline-method papers when reusing this code.
