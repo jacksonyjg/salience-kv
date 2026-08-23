@@ -1,0 +1,140 @@
+2026-08-23 11:14:37,595 [INFO] __main__: TABLE VIII: Cross-Architecture Sink Anchoring (Phi-3-mini)
+2026-08-23 11:14:37,595 [INFO] __main__:   Model: phi-3-mini | Tasks: ['qmsum'] | Samples: 2/task | Budget: 20% | invert_norm: True
+2026-08-23 11:14:37,596 [INFO] core.model_loader: Loading tokenizer: microsoft/Phi-3-mini-128k-instruct
+2026-08-23 11:14:37,759 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:14:37,767 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-08-23 11:14:37,878 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/configuration_phi3.py "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:14:37,887 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/configuration_phi3.py "HTTP/1.1 200 OK"
+2026-08-23 11:14:38,016 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:14:38,036 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-08-23 11:14:38,095 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:14:38,104 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-23 11:14:38,192 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:14:38,202 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/tokenizer_config.json "HTTP/1.1 200 OK"
+2026-08-23 11:14:38,277 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/microsoft/Phi-3-mini-128k-instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+2026-08-23 11:14:38,375 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/models/microsoft/Phi-3-mini-128k-instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+2026-08-23 11:14:38,739 [INFO] core.model_loader: Loading model: microsoft/Phi-3-mini-128k-instruct in torch.float16
+2026-08-23 11:14:38,785 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:14:38,793 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/config.json "HTTP/1.1 200 OK"
+2026-08-23 11:15:07,387 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/microsoft/Phi-3-mini-128k-instruct/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:07,394 [INFO] httpx: HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/Phi-3-mini-128k-instruct/f3c06aed622e14ca0abf5115094e4fc9a9948f36/generation_config.json "HTTP/1.1 200 OK"
+2026-08-23 11:15:07,445 [INFO] core.model_loader: Model loaded: layers=32, num_heads=32, num_kv_heads=32
+2026-08-23 11:15:07,463 [INFO] __main__: 
+============================================================
+2026-08-23 11:15:07,464 [INFO] __main__: Method: FullKV | kwargs={'invert_norm': True}
+2026-08-23 11:15:07,465 [INFO] __main__: ============================================================
+2026-08-23 11:15:07,466 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 11:15:07,506 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:07,552 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:07,731 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:07,764 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:07,806 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:07,862 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/tree/5e628be450b7e67fb7ae6e201bd6d8f7056f7672?recursive=false&expand=false "HTTP/1.1 200 OK"
+2026-08-23 11:15:08,250 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 11:15:11,046 [INFO] core.evaluator_v2: [fullkv] pred='The target price for the remote control is 25 Euros, the target cost is estimated to be no more than 12.5 Euros per unit'
+2026-08-23 11:15:15,027 [INFO] core.evaluator_v2: [fullkv] pred='Marketing discussed market trend findings from Trendwatchers, revealing that younger, trendy individuals prefer fruit an'
+2026-08-23 11:15:15,030 [INFO] __main__:   → qmsum: avg=26.64  collapse=0/2
+2026-08-23 11:15:15,039 [INFO] core.results_manager: JSON saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.json
+2026-08-23 11:15:15,039 [INFO] __main__: [중간 저장 완료] 1/8 방법
+2026-08-23 11:15:15,039 [INFO] __main__: 
+============================================================
+2026-08-23 11:15:15,040 [INFO] __main__: Method: StreamingLLM | kwargs={'invert_norm': True}
+2026-08-23 11:15:15,040 [INFO] __main__: ============================================================
+2026-08-23 11:15:15,040 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 11:15:15,095 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:15,124 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:15,455 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 11:15:19,495 [INFO] core.evaluator_v2: [streamingllm] pred='The target price for the remote control is not explicitly mentioned, but the team is considering a high-end, buttonless '
+2026-08-23 11:15:21,956 [INFO] core.evaluator_v2: [streamingllm] pred='Marketing discussed that younger people are interested in new designs, as indicated by the mention of a "something new" '
+2026-08-23 11:15:21,958 [INFO] __main__:   → qmsum: avg=9.26  collapse=0/2
+2026-08-23 11:15:21,972 [INFO] core.results_manager: JSON saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.json
+2026-08-23 11:15:21,973 [INFO] __main__: [중간 저장 완료] 2/8 방법
+2026-08-23 11:15:21,974 [INFO] __main__: 
+============================================================
+2026-08-23 11:15:21,974 [INFO] __main__: Method: H2O(sink=0) | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-23 11:15:21,975 [INFO] __main__: ============================================================
+2026-08-23 11:15:21,976 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 11:15:22,038 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:22,072 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:22,467 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 11:15:24,926 [INFO] core.evaluator_v2: [h2o] pred='The target price for the remote control is 25 Euros, the estimated production cost is 12 Euros, and the target profit is'
+2026-08-23 11:15:27,853 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed findings from a market trend investigation, noting that younger people prefer soft materials, primar'
+2026-08-23 11:15:27,855 [INFO] __main__:   → qmsum: avg=16.25  collapse=0/2
+2026-08-23 11:15:27,868 [INFO] core.results_manager: JSON saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.json
+2026-08-23 11:15:27,869 [INFO] __main__: [중간 저장 완료] 3/8 방법
+2026-08-23 11:15:27,870 [INFO] __main__: 
+============================================================
+2026-08-23 11:15:27,871 [INFO] __main__: Method: H2O(sink=4) | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-23 11:15:27,871 [INFO] __main__: ============================================================
+2026-08-23 11:15:27,871 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 11:15:27,928 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:27,963 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:28,286 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 11:15:30,446 [INFO] core.evaluator_v2: [h2o] pred='The target price for the remote control is 25 Euros, the target cost is 12 Euros, and the target profit is 5 million Eur'
+2026-08-23 11:15:33,395 [INFO] core.evaluator_v2: [h2o] pred='Marketing discussed findings from a market trend investigation, noting that younger people prefer soft materials, primar'
+2026-08-23 11:15:33,397 [INFO] __main__:   → qmsum: avg=16.51  collapse=0/2
+2026-08-23 11:15:33,425 [INFO] core.results_manager: JSON saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.json
+2026-08-23 11:15:33,426 [INFO] __main__: [중간 저장 완료] 4/8 방법
+2026-08-23 11:15:33,427 [INFO] __main__: 
+============================================================
+2026-08-23 11:15:33,428 [INFO] __main__: Method: SnapKV | kwargs={'invert_norm': True}
+2026-08-23 11:15:33,429 [INFO] __main__: ============================================================
+2026-08-23 11:15:33,430 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 11:15:33,497 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:33,527 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:33,854 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 11:15:36,035 [INFO] core.evaluator_v2: [snapkv] pred='The target price for the remote control is 25 Euros, the target cost is 12.5 Euros, and the target profit is 50 million '
+2026-08-23 11:15:39,294 [INFO] core.evaluator_v2: [snapkv] pred='Marketing discussed findings from a trend-watching report by Trendwatchers, indicating that younger people prefer soft m'
+2026-08-23 11:15:39,297 [INFO] __main__:   → qmsum: avg=12.53  collapse=0/2
+2026-08-23 11:15:39,326 [INFO] core.results_manager: JSON saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.json
+2026-08-23 11:15:39,328 [INFO] __main__: [중간 저장 완료] 5/8 방법
+2026-08-23 11:15:39,329 [INFO] __main__: 
+============================================================
+2026-08-23 11:15:39,329 [INFO] __main__: Method: PyramidKV-adapted | kwargs={'invert_norm': True}
+2026-08-23 11:15:39,330 [INFO] __main__: ============================================================
+2026-08-23 11:15:39,331 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 11:15:39,392 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:39,421 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:39,704 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 11:15:41,944 [INFO] core.evaluator_v2: [pyramidkv] pred='The target price for the remote control is 25 Euros each, with a target cost of maximum 12 Euros per unit and a target p'
+2026-08-23 11:15:45,296 [INFO] core.evaluator_v2: [pyramidkv] pred='Marketing discussed findings from a market trend investigation, noting that younger people prefer soft materials, primar'
+2026-08-23 11:15:45,298 [INFO] __main__:   → qmsum: avg=20.10  collapse=0/2
+2026-08-23 11:15:45,325 [INFO] core.results_manager: JSON saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.json
+2026-08-23 11:15:45,325 [INFO] __main__: [중간 저장 완료] 6/8 방법
+2026-08-23 11:15:45,326 [INFO] __main__: 
+============================================================
+2026-08-23 11:15:45,327 [INFO] __main__: Method: SalienceKV(sink=0) | kwargs={'sink_size': 0, 'invert_norm': True}
+2026-08-23 11:15:45,327 [INFO] __main__: ============================================================
+2026-08-23 11:15:45,328 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 11:15:45,390 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:45,419 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:45,800 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 11:15:48,247 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is 25 Euros, the target cost is estimated to be no more than 12.5 Euros per unit'
+2026-08-23 11:15:51,261 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed that young people prefer remote controls with a soft, rubber hand shape and a curved design, similar'
+2026-08-23 11:15:51,263 [INFO] __main__:   → qmsum: avg=17.57  collapse=0/2
+2026-08-23 11:15:51,273 [INFO] core.results_manager: JSON saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.json
+2026-08-23 11:15:51,274 [INFO] __main__: [중간 저장 완료] 7/8 방법
+2026-08-23 11:15:51,274 [INFO] __main__: 
+============================================================
+2026-08-23 11:15:51,275 [INFO] __main__: Method: SalienceKV(sink=4) | kwargs={'sink_size': 4, 'invert_norm': True}
+2026-08-23 11:15:51,276 [INFO] __main__: ============================================================
+2026-08-23 11:15:51,276 [INFO] core.dataset_loader: Loading LongBench/qmsum ...
+2026-08-23 11:15:51,334 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/THUDM/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 307 Temporary Redirect"
+2026-08-23 11:15:51,363 [INFO] httpx: HTTP Request: GET https://huggingface.co/api/datasets/zai-org/LongBench/revision/5e628be450b7e67fb7ae6e201bd6d8f7056f7672 "HTTP/1.1 200 OK"
+2026-08-23 11:15:51,681 [INFO] core.dataset_loader: Loaded 2 samples from qmsum
+2026-08-23 11:15:54,159 [INFO] core.evaluator_v2: [ours] pred='The target price for the remote control is 25 Euros, the target cost is estimated to be no more than 12.5 Euros per unit'
+2026-08-23 11:15:57,326 [INFO] core.evaluator_v2: [ours] pred='Marketing discussed that young people prefer remote controls with a soft, rubber hand shape and a curved design, similar'
+2026-08-23 11:15:57,332 [INFO] __main__:   → qmsum: avg=17.57  collapse=0/2
+2026-08-23 11:15:57,343 [INFO] core.results_manager: JSON saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.json
+2026-08-23 11:15:57,344 [INFO] __main__: [중간 저장 완료] 8/8 방법
+2026-08-23 11:15:57,354 [INFO] core.results_manager: Results saved to results/v3_verified/exp10_crossarch_phi3_20260823_111507.csv
+2026-08-23 11:15:57,355 [INFO] __main__: 
+완료: 8개 방법
+2026-08-23 11:15:57,355 [INFO] __main__:   FullKV                   avg_score= 26.64  collapse=  0.0%
+2026-08-23 11:15:57,356 [INFO] __main__:   StreamingLLM             avg_score=  9.26  collapse=  0.0%
+2026-08-23 11:15:57,357 [INFO] __main__:   H2O(sink=0)              avg_score= 16.25  collapse=  0.0%
+2026-08-23 11:15:57,357 [INFO] __main__:   H2O(sink=4)              avg_score= 16.51  collapse=  0.0%
+2026-08-23 11:15:57,358 [INFO] __main__:   SnapKV                   avg_score= 12.53  collapse=  0.0%
+2026-08-23 11:15:57,358 [INFO] __main__:   PyramidKV-adapted        avg_score= 20.10  collapse=  0.0%
+2026-08-23 11:15:57,359 [INFO] __main__:   SalienceKV(sink=0)       avg_score= 17.57  collapse=  0.0%
+2026-08-23 11:15:57,359 [INFO] __main__:   SalienceKV(sink=4)       avg_score= 17.57  collapse=  0.0%

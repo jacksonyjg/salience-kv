@@ -76,6 +76,8 @@ def run_method(evaluator, method_name, label, base_kwargs, tasks, num_samples, s
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--num_samples", type=int, default=10)
+    parser.add_argument("--tasks", nargs="+", default=None, choices=["qmsum", "gov_report"],
+                        help="지정 안 하면 기존 TASKS 상수([qmsum, gov_report]) 사용 - 하위호환 유지")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--invert_norm", action="store_true",
                         help="key-norm 선택 방향을 corrected(low-norm 우선)로 전환.")
@@ -95,8 +97,9 @@ def main():
     import core.results_manager as rm
     rm.RESULTS_DIR = results_dir
 
+    tasks_to_run = args.tasks if args.tasks else TASKS
     logger.info(f"TABLE VIII: Cross-Architecture Sink Anchoring (Phi-3-mini)")
-    logger.info(f"  Model: {MODEL_KEY} | Tasks: {TASKS} | Samples: {args.num_samples}/task | "
+    logger.info(f"  Model: {MODEL_KEY} | Tasks: {tasks_to_run} | Samples: {args.num_samples}/task | "
                 f"Budget: {BUDGET_RATIO:.0%} | invert_norm: {args.invert_norm}")
 
     model, tokenizer, model_config = load_model_and_tokenizer(MODEL_KEY)
@@ -105,12 +108,12 @@ def main():
     all_results = []
     timestamp = get_timestamp()
     for method_name, label, base_kwargs in METHODS:
-        result = run_method(evaluator, method_name, label, base_kwargs, TASKS,
+        result = run_method(evaluator, method_name, label, base_kwargs, tasks_to_run,
                              args.num_samples, args.seed, args.invert_norm)
         all_results.append(result)
 
         json_data = {
-            "experiment": "exp10_cross_arch_sink", "model": MODEL_KEY, "tasks": TASKS,
+            "experiment": "exp10_cross_arch_sink", "model": MODEL_KEY, "tasks": tasks_to_run,
             "num_samples": args.num_samples, "budget_ratio": BUDGET_RATIO,
             "invert_norm": args.invert_norm, "results": all_results,
         }
