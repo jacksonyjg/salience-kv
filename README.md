@@ -259,16 +259,20 @@ is applied around each timed region.
 
 ## Citation
 
+This work is currently under review. If you use this code, please cite:
+
 ```bibtex
-@article{yi2026saliencekv,
-  title   = {An Empirical Study on KV Cache Compression in Small Language
-             Models: Signal Composition, Repetition Collapse, and
-             Early-Position Retention},
-  author  = {Yi, Jaegyun and Chang, Joongho},
-  journal = {IEEE Access},
-  year    = {2026}
+@unpublished{yi2026saliencekv,
+  title  = {An Empirical Study on KV Cache Compression in Small Language
+            Models: Signal Composition, Repetition Collapse, and
+            Early-Position Retention},
+  author = {Yi, Jaegyun},
+  year   = {2026},
+  note   = {Manuscript under review}
 }
 ```
+
+The citation will be updated upon publication.
 
 ## License
 
