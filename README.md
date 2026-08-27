@@ -1,10 +1,7 @@
 # SalienceKV: KV-Cache Compression and Generation Robustness
 
-Research code and experimental artifacts for a study of generation robustness under aggressive KV-cache compression in long-context language models.
-
-> **Repository status:** Manuscript in preparation.  
-> This repository is currently under active development and will be made public after manuscript submission.  
-> The public release will include a submission-tagged snapshot of the code and canonical experimental artifacts used in the manuscript.
+Research code and experimental artifacts for the manuscript
+**"An Empirical Study on KV Cache Compression in Small Language Models: Signal Composition, Repetition Collapse, and Early-Position Retention"** (submitted to *IEEE Access*).
 
 ---
 
@@ -12,15 +9,13 @@ Research code and experimental artifacts for a study of generation robustness un
 
 This project studies how KV-cache compression affects both **task quality** and **generation stability** under aggressive memory budgets.
 
-The study focuses on three questions:
+The study addresses three research questions:
 
-1. Can conventional aggregate task scores hide severe generation failures such as repetition collapse?
-2. How do different KV-cache selection strategies behave when the cache budget is strongly constrained?
-3. Does preserving or implicitly retaining early-position tokens improve generation robustness?
+1. At SLM scale, how do the composition and weighting of the importance signal affect task quality and generation stability, and are these two affected in the same way?
+2. Can aggregate task score mask repetition instability in compressed generation, and under what evaluated conditions does that instability emerge or diminish?
+3. What role does early-position retention play in generation stability, and what does a controlled removal-and-rescue intervention on that retention show?
 
-The experiments distinguish **task correctness** from **generation robustness** and investigate early-position anchoring as a strong robustness factor under aggressive KV-cache compression.
-
-The main empirical evaluation uses **Qwen3-4B**, with additional cross-architecture robustness validation on **Phi-3 Mini**.
+The main evaluation uses **Qwen3-4B**, with cross-architecture validation on **Phi-3-mini**.
 
 ---
 
@@ -29,96 +24,190 @@ The main empirical evaluation uses **Qwen3-4B**, with additional cross-architect
 ### Models
 
 - **Qwen3-4B** — primary model
-- **Phi-3 Mini** — cross-architecture validation
+- **Phi-3-mini-128k** — cross-architecture validation
 
-Gemma-2 was explored during development but is not included in the final quantitative compression comparison because the evaluation path used in this study does not implement the HybridCache semantics required for its mixed sliding-window/global-attention architecture at long sequence lengths.
+Gemma-2-2b was explored during development but is **not** included in the final quantitative comparison: the evaluation harness does not implement the `HybridCache` semantics required by its mixed sliding-window/global-attention design. This reflects a limitation of the harness, not of the architecture.
 
 ### Long-context tasks
 
-The Qwen3-4B experiments use seven LongBench tasks:
+Seven LongBench tasks: NarrativeQA, Qasper, MultiFieldQA-en, HotpotQA, 2WikiMQA, GovReport, QMSum.
 
-- NarrativeQA
-- Qasper
-- MultiFieldQA-en
-- HotpotQA
-- 2WikiMQA
-- GovReport
-- QMSum
-
-The LongBench dataset revision is pinned in `core/dataset_loader.py` for reproducibility.
+The LongBench dataset revision is pinned in `core/dataset_loader.py`.
 
 ---
 
-## Evaluated KV-Cache Methods
+## Evaluated Configurations
 
-The evaluation framework includes:
-
-- FullKV
-- StreamingLLM
-- H2O-adapted
-- SnapKV-adapted
-- PyramidKV-adapted
-- AdaKV-adapted
-- SalienceKV without explicit sink preservation
-- SalienceKV with explicit early-token preservation
+FullKV · StreamingLLM · H2O-adapted · SnapKV-adapted · PyramidKV-adapted · AdaKV-adapted · SalienceKV (w/o sink) · SalienceKV-Sink-4
 
 ### Important note on adapted baselines
 
-H2O, SnapKV, PyramidKV, and AdaKV are implemented as **adapted proxy baselines under a unified cache-compression interface**.
+H2O, SnapKV, PyramidKV, and AdaKV are implemented as **adapted proxy baselines under a unified cache-compression interface**, not as exact reproductions of the published algorithms.
 
-They are used for controlled comparative evaluation in the experimental framework and should **not** be interpreted as exact reproductions of the authors' original repositories or every implementation detail of the corresponding papers.
-
-The exact method settings used for each manuscript experiment are defined in the corresponding scripts under `experiments/`.
+Under this interface all four replace attention-based importance computation with a common key-norm proxy, and all operate under a uniform per-layer cache length. Results characterize **these adapted configurations**, not the original published methods.
 
 ---
 
-## Important Implementation Notes
+## Implementation Notes
 
 ### 1. Key-norm direction
 
-The corrected experiments prioritize **low L2-norm keys** when key norm is used as an importance signal.
-
-Canonical runs use:
+Canonical runs prioritize **low L2-norm keys** and use:
 
 ```text
 invert_norm=True
 ```
 
-Legacy development runs that used the opposite direction are retained only for traceability and are not used as canonical manuscript results.
+Legacy development runs using the opposite direction are retained for traceability only.
 
 ### 2. Fixed KV-cache budget
 
-Explicitly preserved early tokens are counted **inside the fixed total KV-cache budget**.
+Explicitly preserved early positions are counted **inside** the fixed total budget, not added on top of it. Under a 20% retention budget, reserving four early positions reduces the score-selected budget accordingly.
 
-They are not added on top of the nominal retention budget.
+### 3. Prompt templates
 
-For example, under a 20% retention budget, allocating four early-position tokens reduces the remaining score-selected token budget accordingly.
+| Task | Template |
+|---|---|
+| QMSum | **Official LongBench** query-focused instruction (Transcript/Query/Answer) within the model-specific chat wrapper |
+| GovReport | Separate query-free summarization instruction written for this study |
+| QA tasks (5) | Common reading-comprehension instruction written for this study |
 
-### 3. QMSum prompt handling
+⚠️ Because only QMSum uses the official LongBench instruction, and because F1/ROUGE-L are computed by `core/metrics.py` rather than the official LongBench evaluator, **absolute scores are not directly comparable to published LongBench results.** All comparisons in the manuscript are within this evaluation setting, where every configuration sees identical prompts and scoring.
 
-Canonical QMSum experiments use the official LongBench query-focused instruction template within the model-specific chat wrapper.
-
-Pre-freeze development artifacts using earlier prompt configurations are retained only for traceability and are non-canonical.
-
-GovReport remains a query-free summarization task and follows its separate summarization path.
-
-### 4. EOS handling
-
-Generation termination follows all end-of-sequence identifiers specified in each model's generation configuration.
-
-This is especially important for models such as Qwen3 and Phi-3 that define multiple valid EOS identifiers.
-
-### 5. Repetition-collapse evaluation
-
-Generation robustness is evaluated using a predefined repetition-collapse criterion implemented in:
+### 4. Generation settings
 
 ```text
-core/collapse_metrics.py
+seed              42
+do_sample         False   (deterministic)
+enable_thinking   False   (Qwen3)
+max_new_tokens    512
+input cap         16,000 tokens (head+tail truncation: first 500 tokens + tail)
 ```
 
-Reported collapse rates refer to this predefined detector and should not be interpreted as a universal measure of all possible forms of generation degeneration.
+Generation termination honours **all** end-of-sequence identifiers declared in each model's generation configuration.
 
-Qualitative inspection is used only as supporting analysis where explicitly stated.
+### 5. Repetition-collapse criterion
+
+Implemented in `core/collapse_metrics.py`:
+
+```text
+collapse  =  word 3-gram repetition ratio > 0.3
+          OR char 5-gram repetition ratio > 0.7
+```
+
+The ratio follows the sequence-level repetition measure `rep-n = 1 − U_n/T_n` used in the neural text degeneration literature. **The two cutoffs are study-specific operational thresholds**, not externally validated boundaries.
+
+---
+
+## Environment
+
+```text
+Python:          3.12.3
+PyTorch:         2.8.0 (CUDA 12.8)
+Transformers:    5.0.0
+Datasets:        2.21.0
+Primary GPU:     NVIDIA A40 (46 GB), RunPod
+Seed:            42
+LongBench rev.:  5e628be450b7e67fb7ae6e201bd6d8f7056f7672
+```
+
+Install:
+
+```bash
+pip install -r requirements.txt
+```
+
+⚠️ `transformers==5.0.0` is required. The cache implementation relies on the
+`cache.layers[i].keys / .values` structure introduced in Transformers 5.x and
+will not run on 4.x.
+
+### Model revisions are not pinned
+
+Model checkpoints are loaded with `from_pretrained(model_name)` without a pinned
+revision. Re-running with a later checkpoint published under the same model name
+may not reproduce the reported values exactly. This limitation is stated in the
+manuscript (Appendix B).
+
+---
+
+## Quick Start
+
+```bash
+git clone https://github.com/jacksonyjg/salience-kv.git
+cd salience-kv
+pip install -r requirements.txt
+
+# environment check
+python3 experiments/sanity_check.py --model qwen3-4b --full_check
+```
+
+---
+
+## Example Reproduction Commands
+
+```bash
+# Main comparison (TABLE 5 / TABLE 6)
+python3 -u experiments/exp1_main_results.py \
+  --model qwen3-4b --mode full --budget 0.20 \
+  --num_samples 30 --seed 42 --invert_norm
+
+# Sink-size intervention at 20% retention (TABLE 7)
+python3 -u experiments/exp_table6_sink_intervention.py \
+  --model qwen3-4b --budget 0.20 --tasks qmsum gov_report \
+  --num_samples 30 --seed 42 --invert_norm
+
+# Sink-size intervention at 80% retention (TABLE 7)
+python3 -u experiments/exp_table6_sink_intervention.py \
+  --model qwen3-4b --budget 0.80 --tasks qmsum gov_report \
+  --num_samples 30 --seed 42 --invert_norm
+```
+
+Long runs are best executed under `tmux` or with `nohup ... &`.
+
+---
+
+## Manuscript-to-Code Mapping
+
+Experiment script filenames reflect development history and **do not match the
+final manuscript table numbers.** Use this table, not the internal number printed
+by a script. `PAPER_TABLE_MAPPING.md` gives the full artifact-level detail
+including SHA-256 digests.
+
+| Manuscript | Experiment | Script | Canonical artifact(s) in `results/v3_verified/` |
+|---|---|---|---|
+| **TABLE 5** | Main task results | `experiments/exp1_main_results.py` | `exp1_qwen3-4b_full_20260820_112755.json` (6 tasks) + `exp1_qwen3-4b_full_20260822_220917.json` (QMSum) |
+| **TABLE 6** | Repetition-collapse survey | same run as TABLE 5 | same as above |
+| **TABLE 7** | Sink-size intervention (20% / 80%) | `experiments/exp_table6_sink_intervention.py` | `exp6_sink_intervention_qwen3-4b_budget20_20260820_143453.json` · `..._budget80_20260820_200418.json` + QMSum `..._budget20_20260822_224940.json` · `..._budget80_20260823_011727.json` |
+| **TABLE 8** | Signal ablation (a)(b) | `experiments/exp_table7_signal_ablation.py` + `exp_table7_extra_signals.py` | `exp7_signal_ablation_qwen3-4b_sink0_20260819_130428.json` · `..._sink4_20260819_202543.json` · `exp7_extra_signals_qwen3-4b_20260819_151144.json` · `..._20260819_223806.json` + QMSum `..._20260823_043358 / 050944 / 054206 / 055407.json` |
+| **TABLE 9** | Position/content controlled validation | `scripts/diagnostics/table13_position_content_validation.py` | `table13_position_content_20260821_152211_merged_v2.json` + QMSum `table13_position_content_20260823_101113.json` |
+| **TABLE 10(a)** | Phi-3 compression results | `experiments/exp_table10_cross_arch_sink.py` | `exp10_crossarch_phi3_20260822_055401.json` + QMSum `..._20260823_111747.json` |
+| **TABLE 10(b)** | Phi-3 removal-and-rescue intervention | `experiments/debug_0822/verify_h2o_causal_intervention.py` | `phi3_h2o_causal_test.json` |
+| **TABLE 11** | Weight sensitivity | `experiments/exp_table12_weight_sensitivity.py` | `exp12_weight_sensitivity_qwen3-4b_20260822_015451.json` + QMSum `..._20260823_092617.json` |
+| **TABLE 12** | Budget sensitivity | `experiments/exp_table8_budget_sensitivity.py` | `exp8_budget_sensitivity_qwen3-4b_20260821_152826.json` + QMSum `..._20260823_060549.json` |
+| **TABLE 13** | Efficiency benchmark | `experiments/exp_table7_efficiency_v2.py` | `table7_v2_efficiency_20260822_141505.json` |
+
+### Note on the two-file composition
+
+Most tables combine a **base run** (six or seven tasks) with a **corrected QMSum
+rerun**. The QMSum prompt originally dropped the query for this query-focused
+task; after the fix, QMSum alone was re-run and merged with the earlier results
+for the remaining tasks. Both files are listed above; the merge is arithmetic
+(per-task substitution of the QMSum column).
+
+---
+
+## Artifact Hierarchy
+
+| Path | Status |
+|---|---|
+| `results/v3_verified/`, `logs/v3_verified/` | **Canonical.** Only the files listed in the mapping above back reported values; the directory also holds intermediate verified runs |
+| `results/v2_verified/`, `logs/v2_verified/` | Earlier verified runs, superseded |
+| `results/legacy_pre_fix/`, `logs/legacy_pre_fix/` | Produced **before** the evaluation-pipeline correction described in Appendix B of the manuscript. Retained for traceability. **These do not correspond to any reported value.** |
+| `legacy/` | Historical V1 pipeline and superseded experiment scripts. See `legacy/README.md` |
+| `experiments/deprecated/`, `experiments/debug_*/` | Development and diagnostic scripts. Not manuscript results unless explicitly mapped above |
+
+Internal script table numbers (e.g. "Table VI" in a log line) are **development-era
+numbers** and must not be used to infer the final manuscript table.
 
 ---
 
@@ -128,418 +217,59 @@ Qualitative inspection is used only as supporting analysis where explicitly stat
 salience-kv/
 ├── core/
 │   ├── model_loader.py          # model loading, prompt construction, tokenization
-│   ├── dataset_loader.py        # LongBench loading and pinned dataset revision
+│   ├── dataset_loader.py        # LongBench loading, pinned dataset revision
 │   ├── evaluator_v2.py          # evaluation and generation pipeline
-│   ├── kv_cache_hook.py         # KV-cache selection/compression implementation
-│   ├── collapse_metrics.py      # repetition-collapse detection
-│   ├── metrics.py               # task-quality metrics
-│   └── results_manager.py       # CSV / JSON result serialization
+│   ├── kv_cache_hook.py         # KV-cache selection / compression
+│   ├── collapse_metrics.py      # repetition-collapse criterion
+│   ├── metrics.py               # F1 / ROUGE-L
+│   └── results_manager.py       # CSV / JSON serialization
 │
-├── experiments/
-│   ├── exp1_main_results.py
-│   ├── exp_table6_sink_intervention.py
-│   ├── exp_table7_signal_ablation.py
-│   ├── exp_table7_extra_signals.py
-│   ├── exp_table8_budget_sensitivity.py
-│   ├── exp_table7_efficiency_v2.py
-│   ├── exp_table10_cross_arch_sink.py
-│   ├── exp_table12_weight_sensitivity.py
-│   ├── sanity_check.py
-│   ├── debug_0822/
-│   ├── deprecated/
-│   └── debug_*/
-│
-├── scripts/
-│   └── diagnostics/
-│       └── table13_position_content_validation.py
-│
-├── results/
-│   └── v3_verified/             # verified experimental artifacts
-│
-├── logs/
-│   └── v3_verified/             # execution logs for verified runs
-│
-├── legacy/                      # historical development artifacts; non-canonical
-├── configs/
+├── experiments/                 # per-table experiment scripts
+├── scripts/diagnostics/         # position/content validation
+├── results/                     # experimental artifacts (see hierarchy above)
+├── logs/                        # execution logs
+├── legacy/                      # historical, non-canonical
 ├── setup.sh
 ├── requirements.txt
+├── PAPER_TABLE_MAPPING.md
 └── README.md
 ```
 
-Files under `legacy/`, `experiments/deprecated/`, `experiments/debug_*`, intermediate sanity runs, and superseded result files are retained for research traceability.
-
-They are **not** canonical manuscript results unless explicitly listed in the manuscript-to-code mapping below.
-
 ---
 
-## Environment
+## Deprecated — Do Not Use for Reproduction
 
-The experiments were run on NVIDIA GPUs using PyTorch and Hugging Face Transformers.
-
-Core dependencies are listed in:
-
-```bash
-requirements.txt
-```
-
-Install with:
-
-```bash
-pip install -r requirements.txt
-```
-
-Before public release, the exact environment used for the canonical manuscript experiments should be frozen and recorded here:
-
-```text
-Python:          [TO FILL AT SUBMISSION]
-PyTorch:         [TO FILL AT SUBMISSION]
-Transformers:    [TO FILL AT SUBMISSION]
-Datasets:        2.21.0
-CUDA:            [TO FILL AT SUBMISSION]
-Primary GPU:     NVIDIA A40
-Seed:            42
-LongBench rev.:  [PINNED IN core/dataset_loader.py]
-```
-
-A frozen dependency snapshot such as `requirements-lock.txt` or an equivalent environment file should be added before public release.
-
----
-
-## Quick Start
-
-Clone the repository:
-
-```bash
-git clone https://github.com/jacksonyjg/salience-kv.git
-cd salience-kv
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Run a basic environment check:
-
-```bash
-python3 experiments/sanity_check.py --model qwen3-4b --full_check
-```
-
----
-
-## Example Reproduction Commands
-
-### Main comparison — Qwen3-4B
-
-```bash
-python3 -u experiments/exp1_main_results.py \
-  --model qwen3-4b \
-  --mode full \
-  --budget 0.20 \
-  --num_samples 30 \
-  --seed 42 \
-  --invert_norm
-```
-
-### Sink-size intervention — 20% retention
-
-```bash
-python3 -u experiments/exp_table6_sink_intervention.py \
-  --model qwen3-4b \
-  --budget 0.20 \
-  --tasks qmsum gov_report \
-  --num_samples 30 \
-  --seed 42 \
-  --invert_norm
-```
-
-### Sink-size intervention — 80% retention
-
-```bash
-python3 -u experiments/exp_table6_sink_intervention.py \
-  --model qwen3-4b \
-  --budget 0.80 \
-  --tasks qmsum gov_report \
-  --num_samples 30 \
-  --seed 42 \
-  --invert_norm
-```
-
-The exact commands used for every reported manuscript table will be frozen in the submission release.
-
----
-
-## Manuscript-to-Code Mapping
-
-The experiment script numbering reflects the development history and does **not always match the final manuscript table number**.
-
-Use the mapping below rather than the internal table number printed by a script.
-
-| Manuscript Table | Experiment | Primary script(s) | Canonical artifact |
-|---|---|---|---|
-| Table II | Main task-quality results | `experiments/exp1_main_results.py` | `[FINAL MERGED ARTIFACT TO BE FROZEN]` |
-| Table III | Repetition-collapse survey | `experiments/exp1_main_results.py` | `[FINAL MERGED ARTIFACT TO BE FROZEN]` |
-| Table IV | Sink intervention at 20% and 80% retention | `experiments/exp_table6_sink_intervention.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
-| Table V | Signal ablation | `experiments/exp_table7_signal_ablation.py` + `experiments/exp_table7_extra_signals.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
-| Table VI | Budget sensitivity | `experiments/exp_table8_budget_sensitivity.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
-| Table VII | Efficiency benchmark | `experiments/exp_table7_efficiency_v2.py` | `results/v3_verified/table7_v2_efficiency_20260822_141505.json` |
-| Table VIII-A | Phi-3 compression results | `experiments/exp_table10_cross_arch_sink.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
-| Table VIII-B | Controlled Phi-3 early-anchor intervention | `experiments/debug_0822/verify_h2o_causal_intervention.py` | `results/v3_verified/phi3_h2o_causal_test.json` |
-| Table IX | Weight sensitivity | `experiments/exp_table12_weight_sensitivity.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
-| Table X | Position/content intervention | `scripts/diagnostics/table13_position_content_validation.py` | `[TO FILL AFTER QMSUM FINALIZATION]` |
-
-### Current Table II–III source composition
-
-The current Table II–III manuscript values combine:
-
-```text
-Base six-task run:
-results/v3_verified/exp1_qwen3-4b_full_20260820_112755.json
-
-Corrected QMSum targeted rerun:
-results/v3_verified/exp1_qwen3-4b_full_20260822_220917.json
-```
-
-Before public release, these should preferably be merged into a single canonical manuscript artifact so that users do not need to manually reconstruct the final table.
-
----
-
-## Canonical Results Policy
-
-Only files explicitly listed in the **Manuscript-to-Code Mapping** section are considered canonical manuscript results.
-
-The repository contains additional development artifacts because the study included multiple validation, ablation, and debugging stages.
-
-These files are preserved to maintain traceability, but they must not be mixed with the final manuscript results.
-
-In particular:
-
-- `results/v3_verified/` may contain both final and intermediate verified runs.
-- `legacy/` contains historical experiments.
-- debug and sanity artifacts are not manuscript results unless explicitly mapped above.
-- superseded prompt configurations are non-canonical.
-- superseded efficiency experiments are non-canonical.
-- internal script table numbers should not be used to infer the final manuscript table number.
-
----
-
-## Deprecated / Non-Canonical Experiments
-
-The following scripts are retained only for development traceability and must **not** be used to reproduce manuscript results.
-
-### Superseded efficiency benchmark
-
-```text
-experiments/exp_table7_efficiency.py
-```
-
-This was the v1 efficiency benchmark based on repeated measurements of a single prompt and was replaced by:
-
-```text
-experiments/exp_table7_efficiency_v2.py
-```
-
-The v2 benchmark uses **30 distinct LongBench-derived prompts** (10 each from GovReport, QMSum, and NarrativeQA) and reuses the same document set across controlled context lengths.
-
-### Deprecated timing script
-
-```text
-experiments/deprecated/exp_table9_efficiency_UNUSED.py
-```
-
-This script does not implement the final timing methodology and is non-canonical.
-
-### Legacy overhead script
-
-```text
-experiments/exp6_overhead.py
-```
-
-This script does not implement the final evaluation protocol and must not be used for manuscript efficiency results.
-
-### Diagnostic-only cross-architecture scripts
-
-```text
-scripts/diagnostics/table10_cross_arch_check.py
-scripts/diagnostics/table10_gemma_eos_fix_check.py
-```
-
-These are diagnostic scripts rather than quantitative manuscript experiments.
-
-The canonical Phi-3 quantitative experiment is:
-
-```text
-experiments/exp_table10_cross_arch_sink.py
-```
-
-with the controlled early-anchor intervention implemented separately in:
-
-```text
-experiments/debug_0822/verify_h2o_causal_intervention.py
-```
+| Script | Reason |
+|---|---|
+| `experiments/exp_table7_efficiency.py` (v1) | Repeated a single prompt; superseded by `exp_table7_efficiency_v2.py` (30 distinct prompts) |
+| `experiments/deprecated/exp_table9_efficiency_UNUSED.py` | No `torch.cuda.synchronize()`, no real generation |
+| `experiments/deprecated/exp6_overhead.py` | Does not pass `invert_norm` / `sink_size`, no real generation, no CUDA sync |
+| `scripts/diagnostics/table10_cross_arch_check.py`, `table10_gemma_eos_fix_check.py` | N=2 diagnostics, no `invert_norm` support |
 
 ---
 
 ## Efficiency Benchmark Design
 
-The final efficiency benchmark uses controlled context lengths of:
-
-- 2,048 tokens
-- 4,096 tokens
-- 8,192 tokens
-
-The benchmark uses **30 distinct long-context prompts** drawn from LongBench:
-
-- 10 GovReport prompts
-- 10 QMSum prompts
-- 10 NarrativeQA prompts
-
-The same document set is reused across context lengths to enable paired scaling comparisons.
-
-All methods are evaluated on identical prompts, and method order is rotated across prompts to reduce systematic time-dependent GPU effects.
-
-At a 20% retention budget:
-
-- FullKV retains the full KV cache.
-- AdaKV-adapted retains 20% of the KV cache.
-- SalienceKV-Sink4 retains 20% of the KV cache.
-
-KV-cache footprint is measured directly from key/value tensor sizes.
-
-Timing uses CUDA synchronization around the measured sections.
-
-The final benchmark should be interpreted as a **system-level efficiency comparison**, not as an independent task-quality evaluation.
-
----
-
-## Reproducibility and Traceability
-
-For each final manuscript experiment, the public release should provide:
-
-- exact script,
-- command-line arguments,
-- model revision,
-- dataset revision,
-- random seed,
-- result JSON,
-- corresponding execution log,
-- manuscript table mapping.
-
-At manuscript submission, the corresponding repository state should be tagged, for example:
-
-```bash
-git tag -a submission-v1.0 -m "Code and artifacts for submitted manuscript"
-git push origin submission-v1.0
-```
-
-The submission tag should remain immutable so that later repository updates do not change the code corresponding to the submitted paper.
-
----
-
-## Main Research Interpretation
-
-This study distinguishes **task correctness** from **generation robustness**.
-
-Under aggressive KV-cache compression, some score-based eviction methods exhibit substantial repetition collapse even when aggregate task scores alone do not make the instability obvious.
-
-The experiments investigate early-position anchoring as a strong robustness factor.
-
-On Qwen3-4B, explicit or implicit retention of early positions is associated with substantially lower repetition-collapse rates across several eviction strategies.
-
-Controlled position manipulations further show that this effect cannot be reduced to a simple universal rule about specific token identity.
-
-A separate controlled removal-and-rescue intervention on Phi-3 provides strong causal evidence, under the tested setting, that early-position anchoring contributes to generation robustness.
-
-These findings should **not** be interpreted as evidence that early-token preservation is necessary, sufficient, or universally protective across all models and methods.
-
-The specific manifestation of the effect remains architecture- and method-dependent.
-
----
-
-## Cross-Architecture Validation
-
-Phi-3 Mini is used as an independent architectural setting for robustness validation.
-
-The quantitative Phi-3 analysis contains two components:
-
-### Panel A — Compression comparison
-
-The corrected evaluation pipeline is used to compare multiple KV-cache compression configurations on QMSum and GovReport.
-
-### Panel B — Controlled early-anchor intervention
-
-Under an otherwise fixed H2O-adapted compression setting on GovReport:
-
-- Natural early-position retention: `0/60` collapse
-- Blocking positions 0–3: `15/60` collapse
-- Restoring position 0 while keeping positions 1–3 excluded: `1/60` collapse
-
-The removal and rescue contrasts provide strong causal evidence under the tested setting that early-position anchoring contributes to generation robustness.
-
-This result is interpreted as **cross-architecture evidence**, not as proof of a universal mechanism.
-
----
-
-## Known Limitations
-
-- The primary quantitative evaluation is centered on Qwen3-4B.
-- Phi-3 Mini provides an independent cross-architecture validation setting, but the specific anchor mechanism remains architecture- and method-dependent.
-- Gemma-2 is not included in the quantitative compression comparison because the evaluation harness used in this study does not implement the HybridCache semantics required for its mixed sliding-window/global-attention architecture at long sequence lengths.
-- Experiments were executed on data-center GPUs rather than on physical 8GB on-device hardware.
-- The study controls KV-cache retention in software but does not reproduce the full latency, power, thermal, and memory-management behavior of an actual on-device deployment.
-- The repetition-collapse detector captures a predefined form of degeneration and does not cover every possible generation failure mode.
-- Several baseline implementations are adapted proxies under a shared evaluation interface rather than exact reproductions of the original authors' repositories.
-
----
-
-## Paper
-
-**Title:** `[FINAL MANUSCRIPT TITLE TO BE INSERTED]`
-
-**Target venue:** IEEE Access  
-**Status:** Manuscript in preparation
-
-After submission, update the status to:
-
-```text
-Status: Submitted to IEEE Access.
-```
-
-After acceptance/publication, add:
-
-- final title,
-- author list,
-- DOI,
-- IEEE bibliographic citation.
+Context lengths 2,048 / 4,096 / 8,192 tokens. **30 distinct long-context prompts**
+(10 each from GovReport, QMSum, NarrativeQA), reused across lengths for paired
+scaling comparison. Method order is rotated across prompts; CUDA synchronization
+is applied around each timed region.
 
 ---
 
 ## Citation
 
-Citation information will be finalized after manuscript submission/publication.
-
 ```bibtex
-@article{saliencekv2026,
-  title   = {[FINAL TITLE]},
-  author  = {[AUTHOR LIST]},
+@article{yi2026saliencekv,
+  title   = {An Empirical Study on KV Cache Compression in Small Language
+             Models: Signal Composition, Repetition Collapse, and
+             Early-Position Retention},
+  author  = {Yi, Jaegyun and Chang, Joongho},
   journal = {IEEE Access},
   year    = {2026}
 }
 ```
 
----
-
 ## License
 
-A repository license will be finalized before public release after confirming compatibility with all third-party baseline implementations and dependencies.
-
-Third-party models, datasets, and code remain subject to their respective licenses and terms of use.
-
----
-
-## Acknowledgments
-
-This repository uses publicly available language models and the LongBench benchmark for research evaluation.
-
-Please cite the original model, dataset, and baseline-method papers when reusing this code or reproducing the experiments.
+MIT — see [LICENSE](LICENSE).

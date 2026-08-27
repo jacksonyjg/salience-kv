@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *.egg-info/
+.venv/
+venv/
 
 # Jupyter
 .ipynb_checkpoints/
@@ -9,6 +11,20 @@ __pycache__/
 # Environment / secrets
 .env
 .env.*
+*.pem
+*.key
+
+# Model weights and large binaries (never commit)
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.ckpt
+
+# Experiment tracking / caches
+wandb/
+.cache/
+huggingface/
 
 # OS / editor
 .DS_Store
@@ -18,3 +34,4 @@ __pycache__/
 # Temp files
 *.tmp
 *.swp
+nohup.out

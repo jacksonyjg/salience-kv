@@ -86,7 +86,7 @@ def _select_with_sink(score: torch.Tensor, seq_len: int, budget: int,
 class BaseHookCache(DynamicCache):
     """
     DynamicCache 상속. prefill KV 복사 완료 후 apply_compression_all_layers()로
-    일괄 압축. Transformers 5.10.2: layers[i].keys / layers[i].values 구조.
+    일괄 압축. Transformers 5.0.0: layers[i].keys / layers[i].values 구조.
     """
 
     def __init__(self, budget_ratio: float, num_layers: int, model_config: Dict, sink_size: int = 0,
