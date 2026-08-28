@@ -39,14 +39,14 @@ The merge is arithmetic: the QMSum column is substituted, other tasks unchanged.
 | **TABLE 5 / 6** | `experiments/exp1_main_results.py` | `exp1_qwen3-4b_full_20260820_112755.json` | `exp1_qwen3-4b_full_20260822_220917.json` |
 | **TABLE 7** | `experiments/exp_table6_sink_intervention.py` | 20%: `exp6_sink_intervention_qwen3-4b_budget20_20260820_143453.json`<br>80%: `..._budget80_20260820_200418.json` | 20%: `..._budget20_20260822_224940.json`<br>80%: `..._budget80_20260823_011727.json` |
 | **TABLE 8** | `experiments/exp_table7_signal_ablation.py`<br>`experiments/exp_table7_extra_signals.py` | sink0: `exp7_signal_ablation_qwen3-4b_sink0_20260819_130428.json`<br>sink4: `..._sink4_20260819_202543.json`<br>extra sink0: `exp7_extra_signals_qwen3-4b_20260819_151144.json`<br>extra sink4: `..._20260819_223806.json` | `..._sink0_20260823_043358.json`<br>`..._sink4_20260823_050944.json`<br>`exp7_extra_signals_qwen3-4b_20260823_054206.json`<br>`..._20260823_055407.json` |
-| **TABLE 9** | `scripts/diagnostics/table13_position_content_validation.py` | `table13_position_content_20260821_152211_merged_v2.json` | `table13_position_content_20260823_101113.json` |
+| **TABLE 9** | `experiments/exp_table9_position_content.py` | `table13_position_content_20260821_152211_merged_v2.json` | `table13_position_content_20260823_101113.json` |
 | **TABLE 10(a)** | `experiments/exp_table10_cross_arch_sink.py` | `exp10_crossarch_phi3_20260822_055401.json` | `..._20260823_111747.json` |
-| **TABLE 10(b)** | `experiments/debug_0822/verify_h2o_causal_intervention.py` | `phi3_h2o_causal_test.json` | — (GovReport only) |
+| **TABLE 10(b)** | `experiments/exp_table10b_removal_rescue.py` | `phi3_h2o_causal_test.json` | — (GovReport only) |
 | **TABLE 11** | `experiments/exp_table12_weight_sensitivity.py` | `exp12_weight_sensitivity_qwen3-4b_20260822_015451.json` | `..._20260823_092617.json` |
 | **TABLE 12** | `experiments/exp_table8_budget_sensitivity.py` | `exp8_budget_sensitivity_qwen3-4b_20260821_152826.json` | `..._20260823_060549.json` |
 | **TABLE 13** | `experiments/exp_table7_efficiency_v2.py` | `table7_v2_efficiency_20260822_141505.json` | — (QMSum not involved) |
 
-All paths are relative to `results/v3_verified/`.
+All paths are relative to `results/final/`.
 
 ---
 

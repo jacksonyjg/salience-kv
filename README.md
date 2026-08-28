@@ -1,7 +1,7 @@
 # SalienceKV: KV-Cache Compression and Generation Robustness
 
 Research code and experimental artifacts for the manuscript
-**"An Empirical Study on KV Cache Compression in Small Language Models: Signal Composition, Repetition Collapse, and Early-Position Retention"** (submitted to *IEEE Access*).
+**"An Empirical Study on KV Cache Compression in Small Language Models: Signal Composition, Repetition Collapse, and Early-Position Retention"** (prepared for submission to *IEEE Access*).
 
 ---
 
@@ -173,15 +173,15 @@ final manuscript table numbers.** Use this table, not the internal number printe
 by a script. `PAPER_TABLE_MAPPING.md` gives the full artifact-level detail
 including SHA-256 digests.
 
-| Manuscript | Experiment | Script | Canonical artifact(s) in `results/v3_verified/` |
+| Manuscript | Experiment | Script | Canonical artifact(s) in `results/final/` |
 |---|---|---|---|
 | **TABLE 5** | Main task results | `experiments/exp1_main_results.py` | `exp1_qwen3-4b_full_20260820_112755.json` (6 tasks) + `exp1_qwen3-4b_full_20260822_220917.json` (QMSum) |
 | **TABLE 6** | Repetition-collapse survey | same run as TABLE 5 | same as above |
 | **TABLE 7** | Sink-size intervention (20% / 80%) | `experiments/exp_table6_sink_intervention.py` | `exp6_sink_intervention_qwen3-4b_budget20_20260820_143453.json` · `..._budget80_20260820_200418.json` + QMSum `..._budget20_20260822_224940.json` · `..._budget80_20260823_011727.json` |
 | **TABLE 8** | Signal ablation (a)(b) | `experiments/exp_table7_signal_ablation.py` + `exp_table7_extra_signals.py` | `exp7_signal_ablation_qwen3-4b_sink0_20260819_130428.json` · `..._sink4_20260819_202543.json` · `exp7_extra_signals_qwen3-4b_20260819_151144.json` · `..._20260819_223806.json` + QMSum `..._20260823_043358 / 050944 / 054206 / 055407.json` |
-| **TABLE 9** | Position/content controlled validation | `scripts/diagnostics/table13_position_content_validation.py` | `table13_position_content_20260821_152211_merged_v2.json` + QMSum `table13_position_content_20260823_101113.json` |
+| **TABLE 9** | Position/content controlled validation | `experiments/exp_table9_position_content.py` | `table13_position_content_20260821_152211_merged_v2.json` + QMSum `table13_position_content_20260823_101113.json` |
 | **TABLE 10(a)** | Phi-3 compression results | `experiments/exp_table10_cross_arch_sink.py` | `exp10_crossarch_phi3_20260822_055401.json` + QMSum `..._20260823_111747.json` |
-| **TABLE 10(b)** | Phi-3 removal-and-rescue intervention | `experiments/debug_0822/verify_h2o_causal_intervention.py` | `phi3_h2o_causal_test.json` |
+| **TABLE 10(b)** | Phi-3 removal-and-rescue intervention | `experiments/exp_table10b_removal_rescue.py` | `phi3_h2o_causal_test.json` |
 | **TABLE 11** | Weight sensitivity | `experiments/exp_table12_weight_sensitivity.py` | `exp12_weight_sensitivity_qwen3-4b_20260822_015451.json` + QMSum `..._20260823_092617.json` |
 | **TABLE 12** | Budget sensitivity | `experiments/exp_table8_budget_sensitivity.py` | `exp8_budget_sensitivity_qwen3-4b_20260821_152826.json` + QMSum `..._20260823_060549.json` |
 | **TABLE 13** | Efficiency benchmark | `experiments/exp_table7_efficiency_v2.py` | `table7_v2_efficiency_20260822_141505.json` |
@@ -200,16 +200,14 @@ for the remaining tasks. Both files are listed above; the merge is arithmetic
 
 | Path | Status |
 |---|---|
-| `results/v3_verified/`, `logs/v3_verified/` | **Canonical.** Only the files listed in the mapping above back reported values; the directory also holds intermediate verified runs |
-| `results/v2_verified/`, `logs/v2_verified/` | Earlier verified runs, superseded |
-| `results/legacy_pre_fix/`, `logs/legacy_pre_fix/` | Produced **before** the evaluation-pipeline correction described in Appendix B of the manuscript. Retained for traceability. **These do not correspond to any reported value.** |
+| `results/final/`, `logs/final/` | **Canonical.** Only the files listed in the Manuscript-to-Code Mapping back reported values; the directory also holds intermediate verified runs |
+| `results/superseded/`, `logs/superseded/` | Earlier verified runs, replaced by `final/` |
+| `results/pre_correction/`, `logs/pre_correction/` | Produced **before** the evaluation-pipeline correction described in Appendix B of the manuscript. Retained for traceability. **These do not correspond to any reported value** |
+| `experiments/development/` | Verification and superseded scripts. **Not manuscript results.** See `experiments/development/README.md` |
 | `legacy/` | Historical V1 pipeline and superseded experiment scripts. See `legacy/README.md` |
-| `experiments/deprecated/`, `experiments/debug_*/` | Development and diagnostic scripts. Not manuscript results unless explicitly mapped above |
 
 Internal script table numbers (e.g. "Table VI" in a log line) are **development-era
 numbers** and must not be used to infer the final manuscript table.
-
----
 
 ## Repository Structure
 
@@ -224,14 +222,18 @@ salience-kv/
 │   ├── metrics.py               # F1 / ROUGE-L
 │   └── results_manager.py       # CSV / JSON serialization
 │
-├── experiments/                 # per-table experiment scripts
-├── scripts/diagnostics/         # position/content validation
-├── results/                     # experimental artifacts (see hierarchy above)
-├── logs/                        # execution logs
-├── legacy/                      # historical, non-canonical
+├── experiments/                 # canonical per-table scripts
+│   └── development/             # verification & superseded scripts (not canonical)
+│
+├── scripts/                     # run wrappers
+├── results/                     # final/ · superseded/ · pre_correction/
+├── logs/                        # final/ · superseded/ · pre_correction/
+├── legacy/                      # historical V1 pipeline
+│
 ├── setup.sh
 ├── requirements.txt
 ├── PAPER_TABLE_MAPPING.md
+├── LICENSE
 └── README.md
 ```
 
@@ -242,9 +244,9 @@ salience-kv/
 | Script | Reason |
 |---|---|
 | `experiments/exp_table7_efficiency.py` (v1) | Repeated a single prompt; superseded by `exp_table7_efficiency_v2.py` (30 distinct prompts) |
-| `experiments/deprecated/exp_table9_efficiency_UNUSED.py` | No `torch.cuda.synchronize()`, no real generation |
-| `experiments/deprecated/exp6_overhead.py` | Does not pass `invert_norm` / `sink_size`, no real generation, no CUDA sync |
-| `scripts/diagnostics/table10_cross_arch_check.py`, `table10_gemma_eos_fix_check.py` | N=2 diagnostics, no `invert_norm` support |
+| `experiments/development/superseded/exp_table9_efficiency_UNUSED.py` | No `torch.cuda.synchronize()`, no real generation |
+| `experiments/development/superseded/exp6_overhead.py` | Does not pass `invert_norm` / `sink_size`, no real generation, no CUDA sync |
+| `experiments/development/verification_architecture/table10_cross_arch_check.py`, `table10_gemma_eos_fix_check.py` | N=2 diagnostics, no `invert_norm` support |
 
 ---
 
