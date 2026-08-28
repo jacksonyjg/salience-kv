@@ -90,13 +90,15 @@ class BaseHookCache(DynamicCache):
     """
 
     def __init__(self, budget_ratio: float, num_layers: int, model_config: Dict, sink_size: int = 0,
-                 invert_norm: bool = False):
+                 invert_norm: bool = True):
         super().__init__()
         self.budget_ratio = budget_ratio
         self.num_layers = num_layers
         self.model_config = model_config
         self.sink_size = sink_size  # 0이면 기존 baseline과 완전히 동일한 동작
-        self.invert_norm = invert_norm  # True면 low-key-norm 토큰 우선 (Devoto et al. 방향)
+        # True면 low-key-norm 토큰 우선 (Devoto et al. 방향). 논문의 모든 결과가 이 설정이며,
+        # 2026-08-28 이후 기본값이다. False 는 초기 개발용 legacy 방향이므로 논문 수치를 재현하지 않는다.
+        self.invert_norm = invert_norm
         # prefill key tensor 저장 (importance 계산용)
         self._prefill_keys: List[Optional[torch.Tensor]] = [None] * num_layers
         self._prefill_done = False
@@ -147,7 +149,7 @@ class FullKVCache(DynamicCache):
 
 class StreamingLLMCache(BaseHookCache):
     def __init__(self, budget_ratio, num_layers, model_config, sink_size=4,
-                 invert_norm=False):
+                 invert_norm=True):
         super().__init__(budget_ratio, num_layers, model_config, invert_norm=invert_norm)
         self.sink_size = sink_size
 
@@ -195,7 +197,7 @@ class H2OCache(BaseHookCache):
 
 class SnapKVCache(BaseHookCache):
     def __init__(self, budget_ratio, num_layers, model_config, window_size=32, kernel_size=5, sink_size=0,
-                 invert_norm=False):
+                 invert_norm=True):
         super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size,
                          invert_norm=invert_norm)
         self.window_size = window_size
@@ -246,7 +248,7 @@ class PyramidKVCache(BaseHookCache):
     key norm으로 중요 토큰 선택.
     """
     def __init__(self, budget_ratio, num_layers, model_config, min_ratio=0.1, sink_size=0,
-                 invert_norm=False):
+                 invert_norm=True):
         super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size,
                          invert_norm=invert_norm)
         self.min_ratio = min_ratio
@@ -363,21 +365,24 @@ class AdaKVCache(BaseHookCache):
 
 class OursHybridCache(BaseHookCache):
     """
-    4-signal Hybrid Score + entropy 기반 레이어별 dynamic budget.
+    SalienceKV — 3-signal 가중합 + 앞 m개 / 뒤 w개 예약 + 중간 구간 top-k.
 
-    신호 구성:
-      A (α=0.40): key norm 기반 누적 importance (attention 근사)
-      E (β=0.20): 헤드 간 key norm 분산 (정보 다양성)
-      Sem (γ=0.20): prefill 평균 키와의 cosine similarity (의미적 관련성 근사)
-      P (δ=0.20): 위치 감쇠 exp(-λ*(L-i)/L)
+    신호 구성 (논문 Eq. (5)):
+      N (α=0.40): head-averaged key L2 norm. invert_norm=True 이므로 low-norm 우선
+      V (β=0.20): 헤드 간 key norm 분산
+      P (δ=0.20): 위치 감쇠 exp(-λ*(N-1-i)/N)
+
+      Sem (γ): use_semantic=True 일 때만 활성. 논문의 주 수식에는 포함되지 않으며
+               §V-D 의 4-signal 절제 조건에서만 사용된다.
 
     레이어 budget:
-      key norm variance 기반 동적 할당 (AdaKV와 동일 원리, 더 정교한 score)
+      균일. B_l = floor(r*N) 로 모든 레이어 동일. 레이어별 동적 할당(DLBA)은
+      설계만 존재하고 구현/평가되지 않았다 (논문 §III-C, Appendix C).
     """
     def __init__(self, budget_ratio, num_layers, model_config,
                  alpha=0.40, beta=0.20, gamma=0.20, delta=0.20, lambda_pos=1.0,
                  use_attention=True, use_entropy=True, use_semantic=False, use_position=True,
-                 sink_size=0, invert_norm=False):
+                 sink_size=0, invert_norm=True):
         super().__init__(budget_ratio, num_layers, model_config, sink_size=sink_size,
                          invert_norm=invert_norm)
         total = alpha + beta + gamma + delta

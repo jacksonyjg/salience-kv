@@ -79,9 +79,11 @@ def parse_args():
     parser.add_argument("--use_flash_attn", action="store_true",
                         help="FlashAttention2 활성화")
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--invert_norm", action="store_true",
-                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환. "
-                             "기본값(미지정)은 기존 legacy 방향(high-norm 우선) 유지.")
+    parser.add_argument("--invert_norm", action="store_true", default=True,
+                        help="key-norm 선택 방향을 low-norm 우선(Devoto et al. 방향)으로 둔다. "
+                             "논문의 모든 결과가 이 설정이며 기본값이다.")
+    parser.add_argument("--no_invert_norm", dest="invert_norm", action="store_false",
+                        help="legacy 방향(high-norm 우선). 논문 수치를 재현하지 않는다.")
     return parser.parse_args()
 
 

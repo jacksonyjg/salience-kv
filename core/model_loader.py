@@ -22,11 +22,14 @@ logger = logging.getLogger(__name__)
 # 모델별 설정
 # ─────────────────────────────────────────────
 MODEL_CONFIGS = {
+    # NOTE: num_layers / num_heads / num_kv_heads 는 load_model_and_tokenizer() 가
+    #       model.config 의 실제 값으로 덮어쓴다(아래 "CONFIG를 실제 값으로 업데이트").
+    #       아래 값은 로드 전 참고용이며, 실제 실행에는 사용되지 않는다.
     "qwen3-4b": {
         "hf_name": "Qwen/Qwen3-4B",
-        "num_layers": 32,
-        "num_heads": 8,          # num_attention_heads (GQA query heads)
-        "num_kv_heads": 8,       # num_key_value_heads (GQA kv heads) — Qwen3-4B는 8로 동일
+        "num_layers": 36,        # Qwen3-4B 실제 값
+        "num_heads": 32,         # num_attention_heads (GQA query heads)
+        "num_kv_heads": 8,       # num_key_value_heads (GQA kv heads)
         "head_dim": 128,
         "dtype": torch.float16,
         "max_length": 32768,

@@ -52,17 +52,51 @@ Under this interface all four replace attention-based importance computation wit
 
 ### 1. Key-norm direction
 
-Canonical runs prioritize **low L2-norm keys** and use:
+Every reported result prioritizes **low L2-norm keys**, following the inverse
+norm–attention relationship reported by Devoto et al. (EMNLP 2024):
 
 ```text
 invert_norm=True
 ```
 
-Legacy development runs using the opposite direction are retained for traceability only.
+This has been the **default since 2026-08-28**. Between 2026-08-18 and that date the
+flag existed but defaulted to `False`, so the canonical runs passed `--invert_norm`
+explicitly; the setting is recorded per method in every result JSON.
 
-### 2. Fixed KV-cache budget
+`invert_norm=False` inverts the selection policy entirely and **does not reproduce
+the reported numbers.** It is retained for ablation only and is selected with
+`--no_invert_norm`.
 
-Explicitly preserved early positions are counted **inside** the fixed total budget, not added on top of it. Under a 20% retention budget, reserving four early positions reduces the score-selected budget accordingly.
+### 2. Selection rule and fixed KV-cache budget
+
+`core/kv_cache_hook.py::_select_with_sink()` is shared by all five score-based
+configurations. It reserves positions at **both** ends of the sequence and runs
+top-k selection only over the region in between:
+
+```text
+sink m  |  score-based top-k over the middle  |  recent w
+```
+
+All reserved positions are counted **inside** the fixed per-layer budget `B_l`, not
+added on top of it, so every configuration operates at the same retention ratio.
+Under a 20% budget, reserving four early positions reduces the score-selected
+budget accordingly.
+
+Per-configuration values of the recency window `w`:
+
+| Configuration | `w` expression | value under the evaluated conditions |
+|---|---|---|
+| H2O-adapted | `min(16, seq_len//4, budget//4)` | 16 |
+| SnapKV-adapted | `window_size` | 32 |
+| PyramidKV-adapted | `min(32, seq_len//4)` | 32 |
+| AdaKV-adapted | `min(32, seq_len//4, budget//2)` | 32 |
+| SalienceKV | `min(32, seq_len//4, budget//2)` | 32 |
+
+`StreamingLLM` does not use this routine: it takes a fixed initial sink plus the
+contiguous tail specified by its algorithm definition.
+
+Changing `w` will not reproduce the reported numbers. This corresponds to
+Eq. (7)–(9) and §IV-E of the manuscript.
 
 ### 3. Prompt templates
 

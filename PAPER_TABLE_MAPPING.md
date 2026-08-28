@@ -29,9 +29,28 @@ the number printed by a script or written in a log line.
 
 ---
 
-## 2. Table → script → artifact
+## 2. Canonical run settings
 
-Most tables combine a **base run** with a **corrected QMSum rerun** (see §4).
+Every artifact listed in the next section was produced with these settings.
+
+| Setting | Value | Where it is enforced |
+|---|---|---|
+| `invert_norm` | `True` | default since 2026-08-28; recorded per method in each result JSON |
+| Recency window `w` | 16 (H2O-adapted) / 32 (all other score-based configurations) | `core/kv_cache_hook.py::_select_with_sink()` |
+| Per-layer budget | uniform `floor(r × N)` | `apply_compression_all_layers()`; the pyramidal and entropy-derived schedules are averaged back before compression is applied |
+| Seed | 42 | `--seed 42` |
+| Decoding | deterministic (`do_sample=False`), `max_new_tokens=512` | `core/evaluator_v2.py` |
+| Input cap | 16,000 tokens, head+tail truncation | `core/evaluator_v2.py` |
+| Dataset revision | `5e628be450b7e67fb7ae6e201bd6d8f7056f7672` | pinned in `load_dataset()` |
+
+Results produced with `invert_norm=False`, or with a modified recency window, are
+**not** comparable to the values reported in the manuscript.
+
+---
+
+## 3. Table → script → artifact
+
+Most tables combine a **base run** with a **corrected QMSum rerun** (see §5).
 The merge is arithmetic: the QMSum column is substituted, other tasks unchanged.
 
 | Manuscript | Script | Base artifact | Corrected QMSum artifact |
@@ -50,7 +69,7 @@ All paths are relative to `results/final/`.
 
 ---
 
-## 3. Canonical artifacts — SHA-256
+## 4. Canonical artifacts — SHA-256
 
 Filenames differ only by timestamp, so digests are given to make identification
 unambiguous. Digests are the first 16 hex characters of the SHA-256.
@@ -75,10 +94,10 @@ unambiguous. Digests are the first 16 hex characters of the SHA-256.
 | 10(a) | corrected | `exp10_crossarch_phi3_20260823_111747.json` | 30 | qmsum | `d6ac3d4bc6f41607` |
 | 10(b) | single | `phi3_h2o_causal_test.json` | 60 records | gov_report | `e62b7a42fed831a1` |
 | 11 | base | `exp12_weight_sensitivity_qwen3-4b_20260822_015451.json` | 30 | 7 tasks | `197b9470131f2f68` |
-| 11 | corrected | `exp12_weight_sensitivity_qwen3-4b_20260823_092617.json` | 30 | qmsum (see §5) | `7180aebf1317c7bb` |
+| 11 | corrected | `exp12_weight_sensitivity_qwen3-4b_20260823_092617.json` | 30 | qmsum (see §6) | `7180aebf1317c7bb` |
 | 12 | base | `exp8_budget_sensitivity_qwen3-4b_20260821_152826.json` | 30 | qmsum, hotpotqa, gov_report | `9843cc7842b062dd` |
 | 12 | corrected | `exp8_budget_sensitivity_qwen3-4b_20260823_060549.json` | 30 | qmsum | `df761935e8f138a8` |
-| 13 | single | `table7_v2_efficiency_20260822_141505.json` | see §5 | — | `1bf14dc3cc0ff7a7` |
+| 13 | single | `table7_v2_efficiency_20260822_141505.json` | see §6 | — | `1bf14dc3cc0ff7a7` |
 
 ### Not canonical — do not use
 
@@ -92,7 +111,7 @@ the canonical runs only by timestamp:
 
 ---
 
-## 4. Corrections applied during development
+## 5. Corrections applied during development
 
 **QMSum prompt.** `make_prompt()` in `core/model_loader.py` originally routed
 QMSum through the summarization branch, which discarded the `question`
@@ -109,7 +128,7 @@ mismatches.
 
 ---
 
-## 5. Notes on JSON metadata
+## 6. Notes on JSON metadata
 
 1. **Do not use the `tasks` field to infer experiment scope.**
    `exp12_weight_sensitivity_qwen3-4b_20260823_092617.json` lists all seven
@@ -134,7 +153,7 @@ mismatches.
 
 ---
 
-## 6. Excluded from the quantitative comparison
+## 7. Excluded from the quantitative comparison
 
 Gemma-2-2b is not part of the final comparison: the FullKV baseline is not
 trustworthy because the evaluation harness does not implement the `HybridCache`

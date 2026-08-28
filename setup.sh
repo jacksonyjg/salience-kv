@@ -40,8 +40,8 @@ if [ -z "$HF_TOKEN" ]; then
     echo "    export HF_TOKEN=<your token>"
     echo "    hf auth login --token \$HF_TOKEN"
 else
-    hf auth login --token "$HF_TOKEN" --add-to-git-credential 2>/dev/null \
-        || huggingface-cli login --token "$HF_TOKEN" --add-to-git-credential 2>/dev/null \
+    hf auth login --token "$HF_TOKEN" 2>/dev/null \
+        || huggingface-cli login --token "$HF_TOKEN" 2>/dev/null \
         || true
     echo "  HuggingFace login done."
 fi

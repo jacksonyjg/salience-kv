@@ -44,7 +44,9 @@ TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 MASTER_LOG="$LOG_DIR/run_all_${MODEL}_${TIMESTAMP}.log"
 
 # ── 공통 인자 ──────────────────────────────
-COMMON_ARGS="--model $MODEL"
+# invert_norm: low-norm 우선(Devoto et al. 방향). 논문의 모든 결과가 이 설정이다.
+# core/kv_cache_hook.py 의 기본값도 True 이지만, 의도를 남기기 위해 명시한다.
+COMMON_ARGS="--model $MODEL --invert_norm"
 if [ -n "$NUM_SAMPLES" ]; then
     COMMON_ARGS="$COMMON_ARGS --num_samples $NUM_SAMPLES"
 fi

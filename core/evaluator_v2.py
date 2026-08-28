@@ -1,7 +1,7 @@
 """
 core/evaluator_v2.py (v3)
 ===========================
-Hook Cache 방식 평가 엔진. Transformers 5.10.2 DynamicCache 구조 대응.
+Hook Cache 방식 평가 엔진. Transformers 5.0.0 DynamicCache 구조 대응.
 
 변경사항 (v2 → v3):
   - _collect_prefill_attn() 완전 제거 (output_attentions=True OOM 문제 해결)
