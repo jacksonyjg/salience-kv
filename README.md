@@ -243,7 +243,7 @@ salience-kv/
 
 | Script | Reason |
 |---|---|
-| `experiments/exp_table7_efficiency.py` (v1) | Repeated a single prompt; superseded by `exp_table7_efficiency_v2.py` (30 distinct prompts) |
+| `experiments/development/superseded/exp_table7_efficiency_v1.py` | Repeated a single prompt; superseded by `exp_table7_efficiency_v2.py` (30 distinct prompts) |
 | `experiments/development/superseded/exp_table9_efficiency_UNUSED.py` | No `torch.cuda.synchronize()`, no real generation |
 | `experiments/development/superseded/exp6_overhead.py` | Does not pass `invert_norm` / `sink_size`, no real generation, no CUDA sync |
 | `experiments/development/verification_architecture/table10_cross_arch_check.py`, `table10_gemma_eos_fix_check.py` | N=2 diagnostics, no `invert_norm` support |
