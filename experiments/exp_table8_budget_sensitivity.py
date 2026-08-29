@@ -29,7 +29,8 @@ METHODS = [
     ("ours", "SalienceKV-Sink-4", {"sink_size": 4}),
 ]
 
-DEFAULT_TASKS = ["qmsum", "hotpotqa"]
+# 논문 TABLE 12 의 3개 태스크 (30/task = 90 samples)
+DEFAULT_TASKS = ["qmsum", "hotpotqa", "gov_report"]
 
 
 def run_method_at_budget(
@@ -96,8 +97,11 @@ def parse_args():
     parser.add_argument("--tasks", nargs="+", default=None)
     parser.add_argument("--num_samples", type=int, default=30)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--invert_norm", action="store_true",
-                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
+    parser.add_argument("--invert_norm", action="store_true", default=True,
+                        help="key-norm 선택 방향을 low-norm 우선(Devoto et al. 방향)으로 둔다. "
+                             "논문의 모든 결과가 이 설정이며 기본값이다.")
+    parser.add_argument("--no_invert_norm", dest="invert_norm", action="store_false",
+                        help="legacy 방향(high-norm 우선). 논문 수치를 재현하지 않는다.")
     return parser.parse_args()
 
 

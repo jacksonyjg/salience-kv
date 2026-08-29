@@ -113,12 +113,18 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Exp7: Signal Ablation (TABLE VII)")
     parser.add_argument("--model", default="qwen3-4b")
     parser.add_argument("--budget", type=float, default=0.20)
-    parser.add_argument("--tasks", nargs="+", default=["qmsum", "gov_report"])
+    parser.add_argument("--tasks", nargs="+",
+                        default=["narrativeqa", "qasper", "multifieldqa_en", "hotpotqa",
+                                 "2wikimqa", "gov_report", "qmsum"],
+                        help="기본값: 논문 TABLE 8 의 7개 태스크 (30/task = 210 samples)")
     parser.add_argument("--num_samples", type=int, default=30)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--sink_size", type=int, default=0, help="모든 variant에 고정 적용할 sink 크기 (기본 0)")
-    parser.add_argument("--invert_norm", action="store_true",
-                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
+    parser.add_argument("--invert_norm", action="store_true", default=True,
+                        help="key-norm 선택 방향을 low-norm 우선(Devoto et al. 방향)으로 둔다. "
+                             "논문의 모든 결과가 이 설정이며 기본값이다.")
+    parser.add_argument("--no_invert_norm", dest="invert_norm", action="store_false",
+                        help="legacy 방향(high-norm 우선). 논문 수치를 재현하지 않는다.")
     return parser.parse_args()
 
 

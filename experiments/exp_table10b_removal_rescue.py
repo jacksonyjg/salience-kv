@@ -121,4 +121,4 @@ _OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
 os.makedirs(_OUT, exist_ok=True)
 with open(os.path.join(_OUT, "phi3_h2o_causal_test.json"), "w") as f:
     json.dump(all_results, f, indent=2, ensure_ascii=False)
-print("\n저장 완료: results/v3_verified/phi3_h2o_causal_test.json")
+print("\n저장 완료: results/runs/phi3_h2o_causal_test.json")

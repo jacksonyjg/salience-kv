@@ -311,7 +311,7 @@ is applied around each timed region.
 
 ## Citation
 
-This work is currently under review. If you use this code, please cite:
+This manuscript is being prepared for submission. If you use this code, please cite:
 
 ```bibtex
 @unpublished{yi2026saliencekv,
@@ -320,7 +320,7 @@ This work is currently under review. If you use this code, please cite:
             Early-Position Retention},
   author = {Yi, Jaegyun and Chang, Joongho},
   year   = {2026},
-  note   = {Manuscript under review}
+  note   = {Manuscript in preparation}
 }
 ```
 

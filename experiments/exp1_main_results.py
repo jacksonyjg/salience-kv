@@ -49,8 +49,8 @@ TASK_ORDER = [
 METHODS_FULL = [
     ("fullkv", "FullKV", {}),
     ("streaming", "StreamingLLM", {}),
-    ("h2o", "H2O", {}),
-    ("snapkv", "SnapKV", {}),
+    ("h2o", "H2O-adapted", {}),
+    ("snapkv", "SnapKV-adapted", {}),
     ("pyramidkv", "PyramidKV-adapted", {}),
     ("adakv", "AdaKV-adapted", {}),
     ("ours", "SalienceKV_wo_sink", {"sink_size": 0}),
@@ -72,8 +72,8 @@ def parse_args():
                         help="full=모든 베이스라인, cross=Full KV+AdaKV+Ours만")
     parser.add_argument("--budget", type=float, default=0.20,
                         help="KV 캐시 예산 비율 (기본값: 0.20 = 20%%)")
-    parser.add_argument("--num_samples", type=int, default=None,
-                        help="태스크별 샘플 수 제한 (None=전체)")
+    parser.add_argument("--num_samples", type=int, default=30,
+                        help="태스크별 샘플 수 (기본값: 30 = 논문 canonical)")
     parser.add_argument("--tasks", nargs="+", default=None,
                         help="평가할 태스크 (기본값: 전체 7개)")
     parser.add_argument("--use_flash_attn", action="store_true",
