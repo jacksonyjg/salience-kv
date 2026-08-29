@@ -1,16 +1,19 @@
 """
-Phi-3 H2O implicit early-token retention의 causal test.
-GPT 설계 그대로: 프롬프트는 절대 안 건드리고, cache selection에서만 위치를 조작.
+Controlled removal-and-rescue intervention on Phi-3-mini (manuscript TABLE 10b).
 
-A. H2O-natural       : sink_size=0, 조작 없음 (기존 baseline)
-B. H2O-no-pos1        : 위치 1을 score=-inf로 만들어 절대 선택 안 되게 강제 배제, sink_size=0
-C. H2O-no-pos1+pos0   : 위치 1 배제(B와 동일) + sink_size=1로 위치 0 강제 보존
+The prompt is never modified; only the cache-retention policy is manipulated.
 
-전체 KV budget은 세 조건 다 동일(budget=20%) — 빠진 자리는 항상 다음 순위 토큰으로 자동 보충됨
-(_select_with_sink의 top-k 로직 그대로 사용하므로).
+A. Natural            : sink_size=0, no intervention
+D. Block positions 0-3: positions 0-3 excluded from retention candidacy
+E. Rescue position 0  : positions 1-3 remain excluded, position 0 forced into the retained set
+
+The KV budget is identical across the three conditions (20% retention); freed slots are
+always refilled by the next-ranked tokens, since the standard top-k path of
+_select_with_sink() is used throughout.
 """
-import sys, json
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os, sys, json
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import torch
 from core.model_loader import load_model_and_tokenizer
 from core.dataset_loader import load_longbench_task
@@ -113,6 +116,9 @@ for label, _, _ in CONDITIONS:
     print(f"  {label:20s} avg_score={r['avg_score']:6.2f}  collapse={r['collapse_n']}/{len(r['records'])}  "
           f"avg_tokens={r['avg_tokens']:.0f}  max_tokens_도달={r['n_hit_max']}/{len(r['records'])}")
 
-with open("/workspace/kv-cache-exp/results/v3_verified/phi3_h2o_causal_test.json", "w") as f:
+_OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                    "results", "runs")
+os.makedirs(_OUT, exist_ok=True)
+with open(os.path.join(_OUT, "phi3_h2o_causal_test.json"), "w") as f:
     json.dump(all_results, f, indent=2, ensure_ascii=False)
 print("\n저장 완료: results/v3_verified/phi3_h2o_causal_test.json")

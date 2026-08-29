@@ -5,7 +5,7 @@ that do not match the final manuscript. This file is the authoritative mapping
 from each manuscript table to the exact artifact files that back it, including
 sample counts and SHA-256 digests.
 
-**Manuscript:** *An Empirical Study on KV Cache Compression in Small Language
+**Manuscript:** *An Empirical Study of KV Cache Compression in Small Language
 Models: Signal Composition, Repetition Collapse, and Early-Position Retention*
 
 ---

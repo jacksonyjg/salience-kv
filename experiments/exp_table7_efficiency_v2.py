@@ -1,10 +1,11 @@
 """
 experiments/exp_table7_efficiency_v2.py
 ========================================
-TABLE VII v2: Efficiency (30 independent prompts per sequence length, GPT 19차 검토 반영)
+Efficiency benchmark (manuscript TABLE 13).
 
-기존 v1의 문제(GPT 지적): 같은 프롬프트 하나를 N번 반복 측정 -> "timing repetition"이지
-"30-sample 실험"이 아님. 다른 모든 TABLE(II~VI, IX)의 N=30/task와 개념이 안 맞음.
+30 independent prompts per sequence length. An earlier version timed a single prompt
+repeatedly, which measures timing repetition rather than 30 distinct samples, and did
+not match the N=30/task convention used by the other tables.
 
 v2 설계:
 - 3개 긴 컨텍스트 태스크(gov_report/qmsum/narrativeqa) x 10개 서로 다른 실제 문서 = 30개 독립 프롬프트

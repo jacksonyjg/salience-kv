@@ -29,7 +29,7 @@ echo "  PYTORCH_CUDA_ALLOC_CONF set."
 # ── 2. Directories ─────────────────────────
 echo ""
 echo "[2/4] Creating directories..."
-mkdir -p "$PROJECT_ROOT"/{logs,results/{longbench,latency,memory},figures}
+mkdir -p "$PROJECT_ROOT"/{logs/runs,results/runs}
 
 # ── 3. HuggingFace token (for gated models) ─
 echo ""

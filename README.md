@@ -1,7 +1,7 @@
 # SalienceKV: KV-Cache Compression and Generation Robustness
 
 Research code and experimental artifacts for the manuscript
-**"An Empirical Study on KV Cache Compression in Small Language Models: Signal Composition, Repetition Collapse, and Early-Position Retention"** (prepared for submission to *IEEE Access*).
+**"An Empirical Study of KV Cache Compression in Small Language Models: Signal Composition, Repetition Collapse, and Early-Position Retention."**
 
 ---
 
@@ -177,6 +177,22 @@ python3 experiments/sanity_check.py --model qwen3-4b --full_check
 
 ---
 
+## Default Run Configuration
+
+Every canonical script defaults to the configuration used in the manuscript, so the
+commands below reproduce the reported conditions without extra flags:
+
+| Setting | Default |
+|---|---|
+| `--num_samples` | 30 per task |
+| `--seed` | 42 |
+| key-norm direction | `invert_norm=True` (low-norm first) |
+
+The legacy high-norm direction is available with `--no_invert_norm` for ablation only;
+it does **not** reproduce the reported numbers.
+
+---
+
 ## Example Reproduction Commands
 
 ```bash
@@ -259,7 +275,7 @@ salience-kv/
 ├── experiments/                 # canonical per-table scripts
 │   └── development/             # verification & superseded scripts (not canonical)
 │
-├── scripts/                     # run wrappers
+├── scripts/                     # run_baselines.sh (TABLE 5/6 wrapper)
 ├── results/                     # final/ · superseded/ · pre_correction/
 ├── logs/                        # final/ · superseded/ · pre_correction/
 ├── legacy/                      # historical V1 pipeline
@@ -299,10 +315,10 @@ This work is currently under review. If you use this code, please cite:
 
 ```bibtex
 @unpublished{yi2026saliencekv,
-  title  = {An Empirical Study on KV Cache Compression in Small Language
+  title  = {An Empirical Study of KV Cache Compression in Small Language
             Models: Signal Composition, Repetition Collapse, and
             Early-Position Retention},
-  author = {Yi, Jaegyun},
+  author = {Yi, Jaegyun and Chang, Joongho},
   year   = {2026},
   note   = {Manuscript under review}
 }
@@ -313,3 +329,7 @@ The citation will be updated upon publication.
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+This license applies to the code in this repository. Pretrained models, datasets, and
+other third-party resources used by these experiments are subject to their own licenses
+and terms of use.

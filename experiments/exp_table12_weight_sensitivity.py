@@ -29,7 +29,7 @@ WEIGHT_SETTINGS = [
 ]
 
 
-def run_setting(evaluator, label, alpha, beta, delta, tasks, num_samples, seed, invert_norm=False):
+def run_setting(evaluator, label, alpha, beta, delta, tasks, num_samples, seed, invert_norm=True):
     logger.info(f"\n{'='*60}")
     logger.info(f"Setting: {label} (α={alpha}, β={beta}, δ={delta}) | invert_norm={invert_norm}")
     logger.info(f"{'='*60}")
@@ -87,10 +87,13 @@ def parse_args():
     parser.add_argument("--model", default="qwen3-4b")
     parser.add_argument("--tasks", nargs="+", default=None,
                         help="지정 안 하면 기존 7-task 전체(TASKS 상수) 사용 - 하위호환 유지")
-    parser.add_argument("--num_samples", type=int, default=50)
+    parser.add_argument("--num_samples", type=int, default=30)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--invert_norm", action="store_true",
-                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
+    parser.add_argument("--invert_norm", action="store_true", default=True,
+                        help="key-norm 선택 방향을 low-norm 우선(Devoto et al. 방향)으로 둔다. "
+                             "논문의 모든 결과가 이 설정이며 기본값이다.")
+    parser.add_argument("--no_invert_norm", dest="invert_norm", action="store_false",
+                        help="legacy 방향(high-norm 우선). 논문 수치를 재현하지 않는다.")
     return parser.parse_args()
 
 

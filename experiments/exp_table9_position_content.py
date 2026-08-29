@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 MODEL_KEY = "qwen3-4b"
 TASKS = ["qmsum", "gov_report"]
-NUM_SAMPLES = 10
+NUM_SAMPLES = 30          # 논문 canonical (30 instances/task)
 BUDGET_RATIO = 0.20
 SINK_SIZE = 4
 SEED = 42
@@ -208,8 +208,11 @@ def main():
                         help="지정 안 하면 기존 TASKS 상수([qmsum, gov_report]) 사용 - 하위호환 유지. "
                              "이 스크립트는 qmsum/gov_report 전용이라 choices로 제한(다른 태스크 넣으면 "
                              "content_offset_by_task에 없어 조용히 offset=0으로 새는 것 방지)")
-    parser.add_argument("--invert_norm", action="store_true",
-                        help="key-norm 선택 방향을 corrected(low-norm 우선, Devoto et al. 방향)로 전환.")
+    parser.add_argument("--invert_norm", action="store_true", default=True,
+                        help="key-norm 선택 방향을 low-norm 우선(Devoto et al. 방향)으로 둔다. "
+                             "논문의 모든 결과가 이 설정이며 기본값이다.")
+    parser.add_argument("--no_invert_norm", dest="invert_norm", action="store_false",
+                        help="legacy 방향(high-norm 우선). 논문 수치를 재현하지 않는다.")
     args = parser.parse_args()
 
     log_dir = "logs/v3_verified" if args.invert_norm else "logs/v2_verified"
