@@ -5,7 +5,9 @@ GPT 지적 반영: multi-EOS patch(evaluator_v2.py)가 기존 TABLE II Qwen coll
 방법당 15개(총 45개)만 뽑아서 patched evaluator로 재실행 → old prediction과 직접 비교.
 """
 import sys, json
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from core.model_loader import load_model_and_tokenizer
 from core.dataset_loader import load_longbench_task
 from core.evaluator_v2 import EvaluatorV2
@@ -76,6 +78,6 @@ print(f"prediction 불일치: {mismatch_count}개")
 print(f"151643(<|endoftext|>)으로 종료: {eos_151643_count}개")
 print(f"{'='*60}")
 
-with open("/workspace/kv-cache-exp/results/v3_verified/qwen_eos_audit_table2.json", "w") as f:
+with open("/workspace/kv-cache-exp/results/final/qwen_eos_audit_table2.json", "w") as f:
     json.dump(results_log, f, indent=2, ensure_ascii=False)
-print("저장 완료: results/v3_verified/qwen_eos_audit_table2.json")
+print("저장 완료: results/final/qwen_eos_audit_table2.json")

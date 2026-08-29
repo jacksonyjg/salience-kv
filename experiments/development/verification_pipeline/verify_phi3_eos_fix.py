@@ -5,7 +5,9 @@ eos_id 비교 부분만 리스트(set) 기준으로 바꾼 서브클래스로 �
 (Gemma-2 EOS 버그 수정 때와 동일한 안전 원칙 - 원본 파일 무변경)
 """
 import sys, gc, time, torch
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from core.model_loader import load_model_and_tokenizer, make_prompt, tokenize_prompt
 from core.dataset_loader import load_longbench_task
 from core.evaluator_v2 import EvaluatorV2, compute_score

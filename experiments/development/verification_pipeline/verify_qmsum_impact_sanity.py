@@ -4,7 +4,9 @@ core/model_loader.py는 건드리지 않음 - evaluator_v2.EvaluatorV2.evaluate_
 쓰는 make_prompt를 이 스크립트 실행 중에만 monkeypatch.
 """
 import sys
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 import core.model_loader as ml
 from core.model_loader import load_model_and_tokenizer
 from core.dataset_loader import load_longbench_task

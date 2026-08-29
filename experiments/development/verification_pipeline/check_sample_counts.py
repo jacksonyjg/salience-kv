@@ -1,11 +1,11 @@
 import json
 
 files = [
-    ("signal_ablation sink0", "results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260823_043358.json"),
-    ("signal_ablation sink4", "results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260823_050944.json"),
-    ("extra_signals sink0", "results/v3_verified/exp7_extra_signals_qwen3-4b_20260823_054206.json"),
-    ("extra_signals sink4", "results/v3_verified/exp7_extra_signals_qwen3-4b_20260823_055407.json"),
-    ("budget_sensitivity", "results/v3_verified/exp8_budget_sensitivity_qwen3-4b_20260823_060549.json"),
+    ("signal_ablation sink0", "results/final/exp7_signal_ablation_qwen3-4b_sink0_20260823_043358.json"),
+    ("signal_ablation sink4", "results/final/exp7_signal_ablation_qwen3-4b_sink4_20260823_050944.json"),
+    ("extra_signals sink0", "results/final/exp7_extra_signals_qwen3-4b_20260823_054206.json"),
+    ("extra_signals sink4", "results/final/exp7_extra_signals_qwen3-4b_20260823_055407.json"),
+    ("budget_sensitivity", "results/final/exp8_budget_sensitivity_qwen3-4b_20260823_060549.json"),
 ]
 
 for label, path in files:

@@ -1,5 +1,7 @@
 import sys
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from core.model_loader import load_model_and_tokenizer
 
 model, tok, cfg = load_model_and_tokenizer("phi-3-mini")

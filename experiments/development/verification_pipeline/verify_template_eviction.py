@@ -1,5 +1,7 @@
 import sys, json, importlib.util
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 
 spec = importlib.util.spec_from_file_location(
     "table13_mod", "/workspace/kv-cache-exp/scripts/diagnostics/table13_position_content_validation.py"

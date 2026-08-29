@@ -1,5 +1,7 @@
 import sys
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from transformers import AutoTokenizer
 from core.model_loader import make_prompt
 

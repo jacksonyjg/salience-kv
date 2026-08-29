@@ -3,7 +3,9 @@ QMSum query 미사용 문제 CPU 전용 확인(GPT 20차 검토 제안).
 GPU/모델 가중치 로드 불필요 - AutoTokenizer만 사용.
 """
 import sys
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from transformers import AutoTokenizer
 from core.model_loader import make_prompt
 from core.dataset_loader import load_longbench_task

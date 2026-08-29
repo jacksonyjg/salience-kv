@@ -4,7 +4,9 @@ H2O-no-pos1+pos0(C, sink=1)와 사실상 동일한 캐시가 되는지 확인.
 Generation 없이 prefill+selection만 봄(빠름).
 """
 import sys
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from core.model_loader import load_model_and_tokenizer
 from core.dataset_loader import load_longbench_task
 from core.evaluator_v2 import EvaluatorV2

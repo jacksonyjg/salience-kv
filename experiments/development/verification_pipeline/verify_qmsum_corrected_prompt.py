@@ -4,7 +4,9 @@ core/model_loader.py는 아직 건드리지 않음 - 여기서 별도로 두 프
 GPU/모델 로드 불필요 - AutoTokenizer만 사용.
 """
 import sys
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from transformers import AutoTokenizer
 from core.model_loader import make_prompt, MODEL_CONFIGS
 from core.dataset_loader import load_longbench_task

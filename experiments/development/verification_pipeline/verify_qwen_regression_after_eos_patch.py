@@ -4,7 +4,9 @@ patch 적용 전(원본 로직 재현, eos_id 단일값 비교)과 patch 적용 
 같은 샘플에 대해 직접 비교 - prediction/score/토큰 수가 완전히 동일해야 통과.
 """
 import sys, gc, time, torch
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from core.model_loader import load_model_and_tokenizer, make_prompt, tokenize_prompt
 from core.dataset_loader import load_longbench_task
 from core.evaluator_v2 import EvaluatorV2, compute_score  # patch 적용된 현재 버전

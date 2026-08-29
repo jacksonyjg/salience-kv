@@ -5,7 +5,9 @@ Case A: HF generate()도 똑같이 깨짐 -> Phi-3 자체의 특성, evaluator �
 Case B: HF generate()는 정상 -> EvaluatorV2의 커스텀 루프에 문제 있음
 """
 import sys
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from core.model_loader import load_model_and_tokenizer, make_prompt, tokenize_prompt
 from core.dataset_loader import load_longbench_task
 from core.evaluator_v2 import EvaluatorV2

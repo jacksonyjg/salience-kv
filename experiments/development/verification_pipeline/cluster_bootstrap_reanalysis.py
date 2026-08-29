@@ -4,10 +4,16 @@ from scipy.stats import binomtest
 
 np.random.seed(42)
 
-SINK0 = "/home/claude/salience-kv-review/results/v3_verified/exp7_signal_ablation_qwen3-4b_sink0_20260819_130428.json"
-SINK4 = "/home/claude/salience-kv-review/results/v3_verified/exp7_signal_ablation_qwen3-4b_sink4_20260819_202543.json"
-SINK0_EXTRA = "/home/claude/salience-kv-review/results/v3_verified/exp7_extra_signals_qwen3-4b_20260819_151144.json"
-SINK4_EXTRA = "/home/claude/salience-kv-review/results/v3_verified/exp7_extra_signals_qwen3-4b_20260819_223806.json"
+import os
+
+_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__)))))
+_FINAL = os.path.join(_ROOT, "results", "final")
+
+SINK0 = os.path.join(_FINAL, "exp7_signal_ablation_qwen3-4b_sink0_20260819_130428.json")
+SINK4 = os.path.join(_FINAL, "exp7_signal_ablation_qwen3-4b_sink4_20260819_202543.json")
+SINK0_EXTRA = os.path.join(_FINAL, "exp7_extra_signals_qwen3-4b_20260819_151144.json")
+SINK4_EXTRA = os.path.join(_FINAL, "exp7_extra_signals_qwen3-4b_20260819_223806.json")
 
 def load(path):
     d = json.load(open(path))

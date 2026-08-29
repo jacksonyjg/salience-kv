@@ -3,7 +3,9 @@ H2O(sink=0)가 Phi-3에서 위치 0~3을 암묵적으로 이미 보존하는지 
 (GPT Case C 가설: implicit anchoring이 sink intervention의 대조 효과를 지웠을 가능성)
 """
 import sys
-sys.path.insert(0, "/workspace/kv-cache-exp")
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
+    os.path.dirname(os.path.abspath(__file__))))))
 from core.model_loader import load_model_and_tokenizer
 from core.dataset_loader import load_longbench_task
 from core.evaluator_v2 import EvaluatorV2

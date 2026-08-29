@@ -13,7 +13,7 @@ CUDA synchronize 없음)와 exp_table9_efficiency.py(CUDA synchronize 없음) �
 - warm-up 1회 + 측정 5회 평균
 - 고정 길이 decode(100토큰)로 throughput 측정
 - KV 캐시 크기: K+V 전부, 각 텐서의 element_size() 기반 정확한 byte 수 사용
-- 저장: results/v3_verified/table7_efficiency_*.json/csv
+- 저장: results/final/table7_efficiency_*.json/csv
 
 논문 컬럼명 권고(GPT 검토, 2026-08-22):
   | Method | Seq. Len. | Prefill | Compression | Prefill+Comp.(TTFT) | Decode tok/s | KV Footprint | KV Reduction |
