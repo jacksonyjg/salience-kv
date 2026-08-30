@@ -22,6 +22,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--label", required=True, choices=["CAPPED", "EXPANDED"])
     parser.add_argument("--model", default="qwen3-4b")
+    parser.add_argument("--max_input_length", type=int, default=16000,
+                        help="16000 for CAPPED, 31768 for EXPANDED")
     args = parser.parse_args()
 
     print(f"=== Truncation 영향 검증 [{args.label}] ===")
@@ -40,6 +42,7 @@ def main():
                 method_name=method_name,
                 budget_ratio=BUDGET_RATIO,
                 method_kwargs=method_kwargs,
+                max_input_length=args.max_input_length,
             )
             print(f"[{label}] task={task_name} score={result['avg_score']:.2f} "
                   f"collapse={result['collapse_count']}/{result['collapse_total']}")
@@ -53,8 +56,8 @@ def main():
                 "collapse_total": result["collapse_total"],
             })
 
-    out_path = f"results/v2_verified/truncation_verify_{args.label}.json"
-    os.makedirs("results/v2_verified", exist_ok=True)
+    out_path = f"results/final/truncation_verify_{args.label}.json"
+    os.makedirs("results/final", exist_ok=True)
     with open(out_path, "w") as f:
         json.dump(all_results, f, indent=2, ensure_ascii=False)
     print(f"\n저장됨: {out_path}")

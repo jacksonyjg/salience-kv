@@ -6,6 +6,9 @@ Scripts and outputs used while developing and verifying the implementation.
 manuscript.** For the canonical scripts and artifacts behind each table, see
 [`PAPER_TABLE_MAPPING.md`](../../PAPER_TABLE_MAPPING.md).
 
+**Exception:** `analysis/verify_truncation_impact.py` produced the artifacts
+behind TABLE 15 (Appendix D of the manuscript).
+
 | Directory | Purpose |
 |---|---|
 | `verification_selection/` | Token-selection rule: sink/window overlap, smoothing behaviour of the score-based baselines |

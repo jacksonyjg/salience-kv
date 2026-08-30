@@ -64,6 +64,7 @@ The merge is arithmetic: the QMSum column is substituted, other tasks unchanged.
 | **TABLE 11** | `experiments/exp_table12_weight_sensitivity.py` | `exp12_weight_sensitivity_qwen3-4b_20260822_015451.json` | `..._20260823_092617.json` |
 | **TABLE 12** | `experiments/exp_table8_budget_sensitivity.py` | `exp8_budget_sensitivity_qwen3-4b_20260821_152826.json` | `..._20260823_060549.json` |
 | **TABLE 13** | `experiments/exp_table7_efficiency_v2.py` | `table7_v2_efficiency_20260822_141505.json` | — (QMSum not involved) |
+| **TABLE 15** | `experiments/development/analysis/verify_truncation_impact.py` | `truncation_verify_CAPPED.json` (16k cap) | `truncation_verify_EXPANDED.json` (31,768 cap) |
 
 All paths are relative to `results/final/`.
 
