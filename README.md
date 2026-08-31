@@ -11,8 +11,8 @@ This project studies how KV-cache compression affects both **task quality** and 
 
 The study addresses three research questions:
 
-1. At SLM scale, how do the composition and weighting of the importance signal affect task quality and generation stability, and are these two affected in the same way?
-2. Can aggregate task score mask repetition instability in compressed generation, and under what evaluated conditions does that instability emerge or diminish?
+1. At the SLM scale, how do the composition and weighting of the importance signal affect task quality and generation stability, and are these two affected in the same way?
+2. Can aggregate task scores mask repetition instability in compressed generation, and under what evaluated conditions does that instability emerge or diminish?
 3. What role does early-position retention play in generation stability, and what does a controlled removal-and-rescue intervention on that retention show?
 
 The main evaluation uses **Qwen3-4B**, with cross-architecture validation on **Phi-3-mini**.
@@ -235,6 +235,7 @@ including SHA-256 digests.
 | **TABLE 11** | Weight sensitivity | `experiments/exp_table12_weight_sensitivity.py` | `exp12_weight_sensitivity_qwen3-4b_20260822_015451.json` + QMSum `..._20260823_092617.json` |
 | **TABLE 12** | Budget sensitivity | `experiments/exp_table8_budget_sensitivity.py` | `exp8_budget_sensitivity_qwen3-4b_20260821_152826.json` + QMSum `..._20260823_060549.json` |
 | **TABLE 13** | Efficiency benchmark | `experiments/exp_table7_efficiency_v2.py` | `table7_v2_efficiency_20260822_141505.json` |
+| **TABLE 15** | 16k-cap sensitivity check (Appendix D) | `experiments/development/analysis/verify_truncation_impact.py` | `truncation_verify_CAPPED.json` (16k) · `truncation_verify_EXPANDED.json` (31,768) |
 
 ### Note on the two-file composition
 
@@ -253,7 +254,7 @@ for the remaining tasks. Both files are listed above; the merge is arithmetic
 | `results/final/`, `logs/final/` | **Canonical.** Only the files listed in the Manuscript-to-Code Mapping back reported values; the directory also holds intermediate verified runs |
 | `results/superseded/`, `logs/superseded/` | Earlier verified runs, replaced by `final/` |
 | `results/pre_correction/`, `logs/pre_correction/` | Produced **before** the evaluation-pipeline correction described in Appendix B of the manuscript. Retained for traceability. **These do not correspond to any reported value** |
-| `experiments/development/` | Verification and superseded scripts. **Not manuscript results.** See `experiments/development/README.md` |
+| `experiments/development/` | Verification and superseded scripts. **Not manuscript results**, with one exception noted in `experiments/development/README.md` |
 | `legacy/` | Historical V1 pipeline and superseded experiment scripts. See `legacy/README.md` |
 
 Internal script table numbers (e.g. "Table VI" in a log line) are **development-era
@@ -311,7 +312,7 @@ is applied around each timed region.
 
 ## Citation
 
-This manuscript is being prepared for submission. If you use this code, please cite:
+The manuscript is currently under review at IEEE Access. If you use this code, please cite:
 
 ```bibtex
 @unpublished{yi2026saliencekv,
@@ -320,7 +321,7 @@ This manuscript is being prepared for submission. If you use this code, please c
             Early-Position Retention},
   author = {Yi, Jaegyun and Chang, Joongho},
   year   = {2026},
-  note   = {Manuscript in preparation}
+  note   = {Under review at IEEE Access}
 }
 ```
 
