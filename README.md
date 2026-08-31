@@ -3,6 +3,17 @@
 Research code and experimental artifacts for the manuscript
 **"An Empirical Study of KV Cache Compression in Small Language Models: Signal Composition, Repetition Collapse, and Early-Position Retention."**
 
+> **Submission snapshot — [`v1.0.0`](https://github.com/jacksonyjg/salience-kv/releases/tag/v1.0.0) (2026-08-31)**
+> Tagged at commit [`2d2c482`](https://github.com/jacksonyjg/salience-kv/commit/2d2c4823267fdd474bc3d48fd2f680d9c5aeb255).
+> This tag is the exact repository state corresponding to the manuscript under review.
+> To reproduce the reported values, check out the tag rather than `main`:
+>
+> ```bash
+> git clone --branch v1.0.0 https://github.com/jacksonyjg/salience-kv.git
+> ```
+>
+> `main` may receive later corrections that do not correspond to the reviewed manuscript.
+
 ---
 
 ## Overview
@@ -167,7 +178,7 @@ manuscript (Appendix B).
 ## Quick Start
 
 ```bash
-git clone https://github.com/jacksonyjg/salience-kv.git
+git clone --branch v1.0.0 https://github.com/jacksonyjg/salience-kv.git
 cd salience-kv
 pip install -r requirements.txt
 
@@ -320,8 +331,10 @@ The manuscript is currently under review at IEEE Access. If you use this code, p
             Models: Signal Composition, Repetition Collapse, and
             Early-Position Retention},
   author = {Yi, Jaegyun and Chang, Joongho},
-  year   = {2026},
-  note   = {Under review at IEEE Access}
+  year    = {2026},
+  note    = {Under review at IEEE Access},
+  version = {v1.0.0},
+  url     = {https://github.com/jacksonyjg/salience-kv/releases/tag/v1.0.0}
 }
 ```
 
