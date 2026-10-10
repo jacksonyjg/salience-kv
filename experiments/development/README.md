@@ -7,21 +7,21 @@ manuscript.** For the canonical scripts and artifacts behind each table, see
 [`PAPER_TABLE_MAPPING.md`](../../PAPER_TABLE_MAPPING.md).
 
 **Exception:** `analysis/verify_truncation_impact.py` produced the artifacts
-behind TABLE 15 (Appendix D of the manuscript).
+behind TABLE 15 (Appendix C of the manuscript).
 
 | Directory | Purpose |
 |---|---|
 | `verification_selection/` | Token-selection rule: sink/window overlap, smoothing behaviour of the score-based baselines |
 | `verification_direction/` | Key-norm direction (`invert_norm`): whether low-norm or high-norm keys are prioritized |
 | `verification_pipeline/` | Evaluation pipeline: EOS handling, prompt construction, truncation, sample counts, statistical reanalysis |
-| `verification_architecture/` | Architecture-specific checks, including the Gemma-2-2b investigations behind the exclusion stated in the manuscript (Section IV-C and Appendix B) |
+| `verification_architecture/` | Architecture-specific checks, including the Gemma-2-2b investigations behind the exclusion stated in the manuscript (Section IV-C and Appendix A) |
 | `analysis/` | Post-hoc analysis helpers and plotting |
 | `superseded/` | Earlier implementations replaced by the canonical scripts. Do not use for reproduction |
 
 ## Why these are kept
 
 Two corrections applied during development are documented in the manuscript
-(Appendix B) and in `PAPER_TABLE_MAPPING.md`:
+(Appendix A) and in `PAPER_TABLE_MAPPING.md`:
 
 - the QMSum prompt originally dropped the query for this query-focused task
 - the evaluation pipeline originally advanced the decoding position from the

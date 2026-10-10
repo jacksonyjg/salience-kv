@@ -13,6 +13,16 @@ Research code and experimental artifacts for the manuscript
 > ```
 >
 > `main` may receive later corrections that do not correspond to the reviewed manuscript.
+>
+> **Revision snapshot — [`v1.1.0`](https://github.com/jacksonyjg/salience-kv/releases/tag/v1.1.0)**
+> Corresponds to the revised manuscript (resubmission). It adds the TABLE 6 significance analysis
+> (`experiments/exp_table5_significance.py`) and updates table and appendix numbers to the revised
+> manuscript, in which the notation table moved forward (submitted TABLEs 2–13 are now TABLEs 3–14;
+> Appendix B/C/D are now A/B/C). No experimental result changed.
+>
+> ```bash
+> git clone --branch v1.1.0 https://github.com/jacksonyjg/salience-kv.git
+> ```
 
 ---
 
@@ -171,7 +181,7 @@ will not run on 4.x.
 Model checkpoints are loaded with `from_pretrained(model_name)` without a pinned
 revision. Re-running with a later checkpoint published under the same model name
 may not reproduce the reported values exactly. This limitation is stated in the
-manuscript (Appendix B).
+manuscript (Appendix A).
 
 ---
 
@@ -207,20 +217,24 @@ it does **not** reproduce the reported numbers.
 ## Example Reproduction Commands
 
 ```bash
-# Main comparison (TABLE 5 / TABLE 6)
+# Main comparison (TABLE 6 / TABLE 7)
 python3 -u experiments/exp1_main_results.py \
   --model qwen3-4b --mode full --budget 0.20 \
   --num_samples 30 --seed 42 --invert_norm
 
-# Sink-size intervention at 20% retention (TABLE 7)
+# Sink-size intervention at 20% retention (TABLE 8)
 python3 -u experiments/exp_table6_sink_intervention.py \
   --model qwen3-4b --budget 0.20 --tasks qmsum gov_report \
   --num_samples 30 --seed 42 --invert_norm
 
-# Sink-size intervention at 80% retention (TABLE 7)
+# Sink-size intervention at 80% retention (TABLE 8)
 python3 -u experiments/exp_table6_sink_intervention.py \
   --model qwen3-4b --budget 0.80 --tasks qmsum gov_report \
   --num_samples 30 --seed 42 --invert_norm
+
+# Paired significance tests for TABLE 6 (no model run; reads results/final)
+python3 experiments/exp_table5_significance.py \
+  --results_dir results/final --out results/final/table5_significance.json
 ```
 
 Long runs are best executed under `tmux` or with `nohup ... &`.
@@ -236,17 +250,18 @@ including SHA-256 digests.
 
 | Manuscript | Experiment | Script | Canonical artifact(s) in `results/final/` |
 |---|---|---|---|
-| **TABLE 5** | Main task results | `experiments/exp1_main_results.py` | `exp1_qwen3-4b_full_20260820_112755.json` (6 tasks) + `exp1_qwen3-4b_full_20260822_220917.json` (QMSum) |
-| **TABLE 6** | Repetition-collapse survey | same run as TABLE 5 | same as above |
-| **TABLE 7** | Sink-size intervention (20% / 80%) | `experiments/exp_table6_sink_intervention.py` | `exp6_sink_intervention_qwen3-4b_budget20_20260820_143453.json` · `..._budget80_20260820_200418.json` + QMSum `..._budget20_20260822_224940.json` · `..._budget80_20260823_011727.json` |
-| **TABLE 8** | Signal ablation (a)(b) | `experiments/exp_table7_signal_ablation.py` + `exp_table7_extra_signals.py` | `exp7_signal_ablation_qwen3-4b_sink0_20260819_130428.json` · `..._sink4_20260819_202543.json` · `exp7_extra_signals_qwen3-4b_20260819_151144.json` · `..._20260819_223806.json` + QMSum `..._20260823_043358 / 050944 / 054206 / 055407.json` |
-| **TABLE 9** | Position/content controlled validation | `experiments/exp_table9_position_content.py` | `table13_position_content_20260821_152211_merged_v2.json` + QMSum `table13_position_content_20260823_101113.json` |
-| **TABLE 10(a)** | Phi-3 compression results | `experiments/exp_table10_cross_arch_sink.py` | `exp10_crossarch_phi3_20260822_055401.json` + QMSum `..._20260823_111747.json` |
-| **TABLE 10(b)** | Phi-3 removal-and-rescue intervention | `experiments/exp_table10b_removal_rescue.py` | `phi3_h2o_causal_test.json` |
-| **TABLE 11** | Weight sensitivity | `experiments/exp_table12_weight_sensitivity.py` | `exp12_weight_sensitivity_qwen3-4b_20260822_015451.json` + QMSum `..._20260823_092617.json` |
-| **TABLE 12** | Budget sensitivity | `experiments/exp_table8_budget_sensitivity.py` | `exp8_budget_sensitivity_qwen3-4b_20260821_152826.json` + QMSum `..._20260823_060549.json` |
-| **TABLE 13** | Efficiency benchmark | `experiments/exp_table7_efficiency_v2.py` | `table7_v2_efficiency_20260822_141505.json` |
-| **TABLE 15** | 16k-cap sensitivity check (Appendix D) | `experiments/development/analysis/verify_truncation_impact.py` | `truncation_verify_CAPPED.json` (16k) · `truncation_verify_EXPANDED.json` (31,768) |
+| **TABLE 6** | Main task results | `experiments/exp1_main_results.py` | `exp1_qwen3-4b_full_20260820_112755.json` (6 tasks) + `exp1_qwen3-4b_full_20260822_220917.json` (QMSum) |
+| **TABLE 7** | Repetition-collapse survey | same run as TABLE 6 | same as above |
+| **TABLE 6** (paired tests) | Δ vs FullKV and pairwise significance | `experiments/exp_table5_significance.py` | `table5_significance.json` |
+| **TABLE 8** | Sink-size intervention (20% / 80%) | `experiments/exp_table6_sink_intervention.py` | `exp6_sink_intervention_qwen3-4b_budget20_20260820_143453.json` · `..._budget80_20260820_200418.json` + QMSum `..._budget20_20260822_224940.json` · `..._budget80_20260823_011727.json` |
+| **TABLE 9** | Signal ablation (a)(b) | `experiments/exp_table7_signal_ablation.py` + `exp_table7_extra_signals.py` | `exp7_signal_ablation_qwen3-4b_sink0_20260819_130428.json` · `..._sink4_20260819_202543.json` · `exp7_extra_signals_qwen3-4b_20260819_151144.json` · `..._20260819_223806.json` + QMSum `..._20260823_043358 / 050944 / 054206 / 055407.json` |
+| **TABLE 10** | Position/content controlled validation | `experiments/exp_table9_position_content.py` | `table13_position_content_20260821_152211_merged_v2.json` + QMSum `table13_position_content_20260823_101113.json` |
+| **TABLE 11(a)** | Phi-3 compression results | `experiments/exp_table10_cross_arch_sink.py` | `exp10_crossarch_phi3_20260822_055401.json` + QMSum `..._20260823_111747.json` |
+| **TABLE 11(b)** | Phi-3 removal-and-rescue intervention | `experiments/exp_table10b_removal_rescue.py` | `phi3_h2o_causal_test.json` |
+| **TABLE 12** | Weight sensitivity | `experiments/exp_table12_weight_sensitivity.py` | `exp12_weight_sensitivity_qwen3-4b_20260822_015451.json` + QMSum `..._20260823_092617.json` |
+| **TABLE 13** | Budget sensitivity | `experiments/exp_table8_budget_sensitivity.py` | `exp8_budget_sensitivity_qwen3-4b_20260821_152826.json` + QMSum `..._20260823_060549.json` |
+| **TABLE 14** | Efficiency benchmark | `experiments/exp_table7_efficiency_v2.py` | `table7_v2_efficiency_20260822_141505.json` |
+| **TABLE 15** | 16k-cap sensitivity check (Appendix C) | `experiments/development/analysis/verify_truncation_impact.py` | `truncation_verify_CAPPED.json` (16k) · `truncation_verify_EXPANDED.json` (31,768) |
 
 ### Note on the two-file composition
 
@@ -264,7 +279,7 @@ for the remaining tasks. Both files are listed above; the merge is arithmetic
 |---|---|
 | `results/final/`, `logs/final/` | **Canonical.** Only the files listed in the Manuscript-to-Code Mapping back reported values; the directory also holds intermediate verified runs |
 | `results/superseded/`, `logs/superseded/` | Earlier verified runs, replaced by `final/` |
-| `results/pre_correction/`, `logs/pre_correction/` | Produced **before** the evaluation-pipeline correction described in Appendix B of the manuscript. Retained for traceability. **These do not correspond to any reported value** |
+| `results/pre_correction/`, `logs/pre_correction/` | Produced **before** the evaluation-pipeline correction described in Appendix A of the manuscript. Retained for traceability. **These do not correspond to any reported value** |
 | `experiments/development/` | Verification and superseded scripts. **Not manuscript results**, with one exception noted in `experiments/development/README.md` |
 | `legacy/` | Historical V1 pipeline and superseded experiment scripts. See `legacy/README.md` |
 
@@ -287,7 +302,7 @@ salience-kv/
 ├── experiments/                 # canonical per-table scripts
 │   └── development/             # verification & superseded scripts (not canonical)
 │
-├── scripts/                     # run_baselines.sh (TABLE 5/6 wrapper)
+├── scripts/                     # run_baselines.sh (TABLE 6/7 wrapper)
 ├── results/                     # final/ · superseded/ · pre_correction/
 ├── logs/                        # final/ · superseded/ · pre_correction/
 ├── legacy/                      # historical V1 pipeline
